@@ -3,7 +3,7 @@ import { Button, Input } from "../elements";
 
 import { useHistory } from "react-router-dom";
 import { useInput } from "../hooks";
-import { PostList } from "../components";
+import { PostList, SimpleSlider } from "../components";
 
 const ArtWork = (props) => {
   let history = useHistory();
@@ -30,6 +30,7 @@ const ArtWork = (props) => {
         />
 
         <PostList />
+        <SimpleSlider />
     </div>
   );
 };

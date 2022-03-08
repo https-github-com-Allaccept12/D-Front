@@ -4,9 +4,9 @@ import tw from "tailwind-styled-components";
 import AcUnitIcon from '@mui/icons-material/AcUnit';
 
 const Color = tw.div`
-  text-yellow-800 animate-spin
+  text-blue-800 animate-spin
 `
-
+// 무한스크롤 스피너!
 const SpinnerWrap = tw.div`
   w-full flex justify-center items-center
   pt-3
