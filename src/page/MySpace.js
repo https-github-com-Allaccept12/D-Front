@@ -3,16 +3,17 @@ import { Button, Grid } from "../elements";
 
 import { useHistory } from "react-router-dom";
 import { useTabs } from "../hooks";
+import { PostList } from "../components";
 
 
 
 const array_sample = [{
   tab: "1번탭",
-  content: "여기가 오버뷰",
+  content: "여기가 소개 페이지",
 },
 {
   tab: "2번탭",
-  content: "여기가 작품 페이지",
+  content: <PostList />,
 }]
 
 

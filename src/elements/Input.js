@@ -1,7 +1,8 @@
-import React, { KeyboardEvent } from "react";
+import React from "react";
 import { Text } from "../elements";
 import tw from "tailwind-styled-components";
 
+// 작업 완료!
 
 const InputStyles = tw.input`
     w-full px-3 py-2 leading-tight text-gray-700 text-lg
@@ -77,7 +78,6 @@ Input.defaultProps = {
   placeholder: "입력해주세요!",
   value: "",
   is_submit: false,
-  is_upload: false,
   onChange: () => {},
   onSubmit: () => {},
   size_textarea: 10,

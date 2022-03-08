@@ -3,6 +3,7 @@ import { Button, Input } from "../elements";
 
 import { useHistory } from "react-router-dom";
 import { useInput } from "../hooks";
+import { PostList } from "../components";
 
 const ArtWork = (props) => {
   let history = useHistory();
@@ -27,6 +28,8 @@ const ArtWork = (props) => {
 					size_textarea="8" // 숫자!
           onChange={for_textarea.onChange}
         />
+
+        <PostList />
     </div>
   );
 };
