@@ -4,7 +4,7 @@ import { Button } from "../elements";
 import { useHistory } from "react-router-dom";
 
 
-const Main = (props) => {
+const Dimo = (props) => {
   let history = useHistory();
   return (
     <div className="flex flex-col p-3 justify-center items-center">
@@ -13,10 +13,10 @@ const Main = (props) => {
           history.goBack();
         }}
       >
-        메인페이지
+        커뮤니티페이지
       </Button>
     </div>
   );
 };
 
-export default Main;
+export default Dimo;
