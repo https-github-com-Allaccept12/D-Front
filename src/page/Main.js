@@ -1,11 +1,14 @@
-import React from "react";
-import { Button } from "../elements";
+import React, {useState} from "react";
+import { Button, Input } from "../elements";
 
 import { useHistory } from "react-router-dom";
-
+import { useInput } from "../hooks";
 
 const Main = (props) => {
   let history = useHistory();
+  const noEmail = v => !v.includes("@");
+  const maxLen = v => v.length < 10;
+  const name = useInput("이름은최대10글자", maxLen);
   return (
     <div className="flex flex-col p-3 justify-center items-center">
       <Button
@@ -15,6 +18,7 @@ const Main = (props) => {
       >
         메인페이지
       </Button>
+      <Input {...name} />
     </div>
   );
 };

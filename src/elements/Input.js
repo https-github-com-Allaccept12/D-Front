@@ -20,7 +20,7 @@ const Input = (props) => {
     type,
     placeholder,
     value,
-    _onChange,
+    onChange,
     is_submit,
     _onSubmit,
     textarea,
@@ -34,7 +34,7 @@ const Input = (props) => {
           type={type}
           value={value}
           placeholder={placeholder}
-          onChange={_onChange}
+          onChange={onChange}
           onKeyPress={(e) => {
             if (e.key === "Enter") {
               _onSubmit(e);
@@ -51,7 +51,7 @@ const Input = (props) => {
           value={value}
           rows={10}
           placeholder={placeholder}
-          onChange={_onChange}
+          onChange={onChange}
         />
       </label>
     );
@@ -63,7 +63,7 @@ const Input = (props) => {
           type={type}
           value={value}
           placeholder={placeholder}
-          onChange={_onChange}
+          onChange={onChange}
         />
       </label>
     );
@@ -77,8 +77,8 @@ Input.defaultProps = {
   value: "",
   is_submit: false,
   is_upload: false,
-  _onChange: () => {},
-  _onSubmit: () => {},
+  onChange: () => {},
+  onSubmit: () => {},
 };
 
 
