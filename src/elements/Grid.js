@@ -2,7 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 const Btime = tw.div` 
-    bg-blue-400 p-1 flex flex-row
+    bg-blue-400 p-1 flex
     text-gray-200 font-sanss2 justify-evenly items-center
      shadow-md flex-wrap
 ` 

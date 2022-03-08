@@ -14,13 +14,15 @@ const Main = (props) => {
   // dispatch(userActions.loginFB({...name}));
   return (
     <div className="flex flex-col p-3 justify-center items-center">
-      <Button
+      <Button size="large" color="red"
         _onClick={() => {
           history.goBack();
         }}
       >
         메인페이지
       </Button>
+      <Button size="medium">중간버튼</Button>
+      <Button color="green">작은버튼</Button>
       <Input {...name} />
     </div>
   );
