@@ -4,14 +4,14 @@ import tw from "tailwind-styled-components";
 
 
 const InputStyles = tw.input`
-    w-full px-3 py-2 leading-tight text-yellow-700 text-lg
-    border-1 rounded-md shadow-md hover:ring-4 hover:ring-yellow-300
-    focus-visible:ring-yellow-200 outline-none
+    w-full px-3 py-2 leading-tight text-gray-700 text-lg
+    border-1 rounded-md shadow-md hover:ring-4 hover:ring-blue-300
+    focus-visible:ring-blue-200 outline-none
 `
 const TextAreaField = tw.textarea`
   w-full box-border px-5 py-4 text-yellow-700 text-lg
-  border-1 rounded-md shadow-md hover:ring-4 hover:ring-yellow-300
-    focus-visible:ring-yellow-200 outline-none
+  border-1 rounded-md shadow-md hover:ring-4 hover:ring-blue-300
+    focus-visible:ring-blue-200 outline-none
 `;
 
 const Input = (props) => {
@@ -22,8 +22,9 @@ const Input = (props) => {
     value,
     onChange,
     is_submit,
-    _onSubmit,
+    onSubmit,
     textarea,
+    size_textarea,
   } = props;
 
   if (is_submit) {
@@ -37,7 +38,7 @@ const Input = (props) => {
           onChange={onChange}
           onKeyPress={(e) => {
             if (e.key === "Enter") {
-              _onSubmit(e);
+              onSubmit(e);
             }
           }}
         />
@@ -49,7 +50,7 @@ const Input = (props) => {
         <Text>{label}</Text>
         <TextAreaField
           value={value}
-          rows={10}
+          rows={size_textarea}
           placeholder={placeholder}
           onChange={onChange}
         />
@@ -79,6 +80,7 @@ Input.defaultProps = {
   is_upload: false,
   onChange: () => {},
   onSubmit: () => {},
+  size_textarea: 10,
 };
 
 

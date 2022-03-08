@@ -1,3 +1,3 @@
 import useInput from "./useInput";
-
-export { useInput }
+import useTabs from "./useTabs";
+export { useInput, useTabs }
