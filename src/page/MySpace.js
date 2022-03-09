@@ -1,20 +1,9 @@
 import React from "react";
-import { Button, Grid } from "../elements";
+import { Button, Grid, Image } from "../elements";
 
 import { useHistory } from "react-router-dom";
 import { useTabs } from "../hooks";
-import { PostList } from "../components";
-
-
-
-const array_sample = [{
-  tab: "1번탭",
-  content: "여기가 소개 페이지",
-},
-{
-  tab: "2번탭",
-  content: <PostList />,
-}]
+import { AdjBar, PostList, SideBar } from "../components";
 
 
 
@@ -22,20 +11,27 @@ const MySpace = (props) => {
 
 
   let history = useHistory();
-  const {currentItem, changeItem} = useTabs(0, array_sample);
+
 
   return (
     <div>
-      <div className="flex flex-row p-3 justify-center items-center">
-      {array_sample.map((t, index) => 
-      (
-        <Button onClick={()=>changeItem(index)}>{t.tab}</Button>
-        ))}
-</div>  
-<hr className="border-4" />
-<Grid>
-      <div className="flex flex-col">{currentItem.content}</div>
-      </Grid>
+      <div className="bg-gray-200 fixed h-screen w-40 left-32 top-0">둘러보기</div>
+    <div className="flex flex-row w-full bg-blue-500 p-20">
+      
+      <div className="flex flex-col justify-center items-center mt-28 bg-slate-400">
+        <div className="absolute top-28 z-10">
+      <Image size="5xl" />
+
+      </div>
+
+      <div className="mt-72">
+      <PostList />
+      </div>
+      </div>
+     
+
+    </div>
+
     </div>
   );
 };

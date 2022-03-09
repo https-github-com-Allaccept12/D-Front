@@ -5,7 +5,7 @@ import {Main, ArtWork, Dimo, MySpace, MyPosts} from "./page";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App w-full md:w-5/6 m-auto container">
       <Header />
           <Switch>
             <Route exact path="/" component={Main} />
