@@ -21,16 +21,17 @@ const Main = (props) => {
           <Text>현재 가장 많은 관심을 받은 디자이너님들을 소개합니다</Text>
           </div>
           <MainSlider />
+          
 
           </div>
      
           </Container>
       
-      <Container color="trans" size="small">
+      <div className="pt-10 mt-40">
 
-      <div className="text-4xl mt-64 md:mt-32 ml-24 font-sanss2">추천 아트워크</div>
+      <div className="text-3xl flex font-sanss2 justify-center items-center">추천 아트워크</div>
       <PostList />
-      </Container>
+      </div>
     </div>
   );
 };

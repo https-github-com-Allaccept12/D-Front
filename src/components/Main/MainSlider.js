@@ -1,15 +1,15 @@
 import React, { useRef } from "react";
 import Slider from "react-slick";
 import tw from "tailwind-styled-components";
-import SlideBottom from "./SlideBottom";
-import { Image, Text } from "../elements";
+import SlideBottom from "./MainSlide";
+import { Image, Text } from "../../elements";
 
 // 리액트 슬라이더 중에 제일 많이들쓰는거
 // 구글링해서 커스텀 css 만들기!
 export const Slide = tw(Slider)`
-    bg-transparent mx-auto mt-10 grid
-    opacity-75 text-white
-    font-sanss2 text-lg w-3/4
+    bg-transparent mx-auto mt-5 md:mt-10 grid
+    opacity-90 text-white overflow-hidden
+    font-sanss2 text-lg w-64 md:w-3/4
 
 `
 const SS = tw.div`
@@ -23,7 +23,7 @@ const NextBtn = tw.button`
 text-white opacity-75 mx-auto md:mt-10 hidden md:contents
 `
 
-const SimpleSlider = ()=>{
+const MainSlider = ()=>{
     const slider = React.useRef(null);
 
     const settings = {
@@ -91,4 +91,4 @@ const SimpleSlider = ()=>{
 }
 
 
-export default SimpleSlider;
+export default MainSlider;

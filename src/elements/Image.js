@@ -18,7 +18,7 @@ const SmallSquareImage = tw.img`
 
 
 const MainSlideImage = tw.img`
-  rounded-xl w-full md:w-56 md:h-64 overflow-hidden object-cover object-center
+  rounded-xl w-full h-64 md:w-64 md:h-64 overflow-hidden object-cover object-center
   flex justify-center items-center mx-auto flex-shrink-0 card
 `;
 

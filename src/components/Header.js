@@ -9,17 +9,14 @@ const Header = (props) => {
   let history = useHistory();
   return (
     <div className="w-full flex flex-row justify-center items-center md:justify-start bg-blue-400">
-        <div className="w-24 flex-shrink-0"><Image /></div>
+        <div className="flex-shrink-0"><Image /></div>
         <Title><Link to="/">홈</Link></Title>
         <Title><Link to="/artwork">Artwork</Link></Title>
         <Title><Link to="/dimo">Dimo</Link></Title>
         <Title><Link to="/myspace">MySpace</Link></Title>
         <Title></Title>
 
-        <div className="flex justify-end flex-shrink-0">
-        <GoogleIcon />
-        <GoogleIcon />
-        </div>
+
         <div className="pb-10">
 
         </div>

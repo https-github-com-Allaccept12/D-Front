@@ -2,12 +2,12 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 const Btime = tw.div` 
-    bg-blue-400 h-80 container
+    bg-blue-400 h-96 md:h-72  container
      ${(props) => (props.direction === "right" ? `grid col-end-7 row-span-2` : "")};
      ${(props) => (props.direction === "left" ? `absolute left-2` : "")};
      ${(props) => (props.color === "trans" ? `bg-transparent` : "")};
      ${(props) => (props.is_flex ? `flex` : "")};
-     ${(props) => (props.size === "large" ? `p-40` : "")};
+     ${(props) => (props.size === "large" ? `p-20 md:p-40` : "")};
      ${(props) => (props.size === "small" ? `w-full mx-auto p-4` : "")};
 ` 
 
