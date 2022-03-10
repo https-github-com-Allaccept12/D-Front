@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../elements";
 
 import { useHistory } from "react-router-dom";
-import { PostList , DimoSlider, AdjBar, DimoList } from "../components";
+import { PostList , DimoSlider, AdjBar, DimoList, QNADimo } from "../components";
 import { useTabs } from "../hooks";
 
 
@@ -12,7 +12,7 @@ const array_sample = [{
 },
 {
   tab: "UI / UX",
-  content: <DimoList />,
+  content: <QNADimo />,
 },
 {
   tab: "건축 / 인테리어 / 환경디자인",

@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import Slider from "react-slick";
 import tw from "tailwind-styled-components";
-import SlideBottom from "./SlideBottom";
-import { Image, Text } from "../elements";
+import MainSlide from "../Main/MainSlide";
+import { Image, Text } from "../../elements";
 import PostDimo from "./PostDimo";
 
 // 리액트 슬라이더 중에 제일 많이들쓰는거

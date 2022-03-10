@@ -1,16 +1,18 @@
 import Header from "./Header";
 import NotFound from "./NotFound";
 import Post from "./Post";
-import PostDimo from "./PostDimo"
+import PostDimo from "./Dimo/PostDimo"
+import QNADimo from "./Dimo/QNADimo"
 import PostList from "./PostList";
-import DimoList from "./DImoList";
+import DimoList from "./Dimo/DImoList";
+import DimoQNAList from "./Dimo/DimoQNAList";
 import DropDown from "./DropDown";
-import MainSlider from "./MainSlider";
-import DimoSlider from "./DimoSlider";
+import MainSlider from "./Main/MainSlider";
+import DimoSlider from "./Dimo/DimoSlider";
 import SideBar from "./SideBar";
 import AdjBar from "./AdjBar";
-import SlideBottom from "./SlideBottom";
-import MySpaceUser from "./MySpaceUser";
+import MainSlide from "./Main/MainSlide";
+import MySpaceUser from "./MySpace/MySpaceUser";
 
 
-export { Header, NotFound, Post, PostDimo, PostList, DimoList, DropDown, MainSlider, DimoSlider, SideBar, AdjBar, SlideBottom, MySpaceUser };
+export { Header, NotFound, Post, PostDimo, PostList, DimoList, DimoQNAList, DropDown, MainSlider, DimoSlider, SideBar, AdjBar, MainSlide, MySpaceUser, QNADimo };
