@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
+
 /* 폰트 추가하는 법 1. 이렇게 구글폰트 임포트, 폰트파일을 스태틱에 넣기 */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Festive&family=Noto+Serif+KR&display=swap');

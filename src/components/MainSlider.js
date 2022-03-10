@@ -1,30 +1,26 @@
 import React, { useRef } from "react";
 import Slider from "react-slick";
 import tw from "tailwind-styled-components";
-import SlideButtom from "./SlideButtom";
+import SlideBottom from "./SlideBottom";
 import { Image, Text } from "../elements";
-
-
-
 
 // 리액트 슬라이더 중에 제일 많이들쓰는거
 // 구글링해서 커스텀 css 만들기!
 export const Slide = tw(Slider)`
-    .slick-list{ 
-        w-full md:w-2/4 h-72 bg-transparent mx-auto mt-10
-        box-border selection:opacity-75 text-white
-        font-sanss2 text-lg px-1
-    }
+    bg-transparent mx-auto mt-10 grid
+    opacity-75 text-white
+    font-sanss2 text-lg w-3/4
+
 `
 const SS = tw.div`
-    container
+    box-border container
 `
 const PrevBtn = tw.button`
-  text-white opacity-75 mx-auto mt-10
+  text-white opacity-75 mx-auto md:mt-10 hidden md:contents
 `
 
 const NextBtn = tw.button`
-text-white opacity-75 mx-auto mt-10
+text-white opacity-75 mx-auto md:mt-10 hidden md:contents
 `
 
 const SimpleSlider = ()=>{
@@ -71,27 +67,21 @@ const SimpleSlider = ()=>{
        <PrevBtn onClick={() => slider?.current?.slickPrev()}>◀</PrevBtn>
     	<Slide {...settings} ref={slider}>
          
-                <SS>
-                    <Image src="https://images.unsplash.com/photo-1609385509807-f191a8dc2bd2?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=4800" shape="big_square" />
-                    <SlideButtom />
+                <SS> 
+                    <SlideBottom />
                 </SS>
                 <SS>
-                    <Image src="https://images.unsplash.com/photo-1609385509807-f191a8dc2bd2?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=4800" shape="big_square" />
-                    <SlideButtom />
+                    <SlideBottom />
                 </SS>
                 <SS>
-                    <Image src="https://images.unsplash.com/photo-1609385509807-f191a8dc2bd2?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=4800" shape="big_square" />
-                    <SlideButtom />
+                    <SlideBottom />
                 </SS>
                 <SS>
-                    <Image src="https://images.unsplash.com/photo-1609385509807-f191a8dc2bd2?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=4800" shape="big_square" />
-                    <SlideButtom />
+                    <SlideBottom />
                 </SS>
                 <SS>
-                    <Image src="https://images.unsplash.com/photo-1609385509807-f191a8dc2bd2?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=4800" shape="big_square" />
-                    <SlideButtom />
+                    <SlideBottom />
                 </SS>
-                
                
             </Slide>
             <NextBtn onClick={() => slider?.current?.slickNext()}>▶</NextBtn>  

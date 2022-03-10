@@ -3,12 +3,12 @@ import { Grid, Title, Image } from "../elements";
 import DropDown from "./DropDown"
 
 import { useHistory, Link } from "react-router-dom";
-
+import GoogleIcon from '@mui/icons-material/Google';
 
 const Header = (props) => {
   let history = useHistory();
   return (
-    <div className="w-full flex flex-row justify-center items-center md:justify-start gap-40 bg-blue-400">
+    <div className="w-full flex flex-row justify-center items-center md:justify-start bg-blue-400">
         <div className="w-24 flex-shrink-0"><Image /></div>
         <Title><Link to="/">홈</Link></Title>
         <Title><Link to="/artwork">Artwork</Link></Title>
@@ -17,10 +17,10 @@ const Header = (props) => {
         <Title></Title>
 
         <div className="flex justify-end flex-shrink-0">
-        <Image size="small" />
-        <Image size="small" />
+        <GoogleIcon />
+        <GoogleIcon />
         </div>
-        <div className="p-10">
+        <div className="pb-10">
 
         </div>
         

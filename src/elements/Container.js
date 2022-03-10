@@ -2,7 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 const Btime = tw.div` 
-    bg-blue-400 h-80
+    bg-blue-400 h-80 container
      ${(props) => (props.direction === "right" ? `grid col-end-7 row-span-2` : "")};
      ${(props) => (props.direction === "left" ? `absolute left-2` : "")};
      ${(props) => (props.color === "trans" ? `bg-transparent` : "")};

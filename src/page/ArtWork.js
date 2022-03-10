@@ -57,11 +57,11 @@ const ArtWork = (props) => {
 
   return (
     <div className="flex flex-row w-full">
-      <div className="h-96 w-1/3 flex-flex-row p-4 bg-blue-400 font-sanss2 mt-10">
+      <div className="h-96 w-1/5 hidden md:flex md:flex-col p-4 bg-blue-400 rounded-md font-sanss2 mt-10 flex-shrink-0">
       {array_sample.map((arrays, index) => 
       (
         <div className="flex-1 flex justify-start items-center">
-        <div className="text-lg bg-slate-300 rounded-md m-1 cursor-pointer" onClick={()=>changeItem(index)}>
+        <div className=" bg-slate-300 rounded-md m-1 cursor-pointer text-xs md:text-sm" onClick={()=>changeItem(index)}>
 				{arrays.tab}</div>
         </div>
 
