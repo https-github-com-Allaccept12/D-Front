@@ -15,7 +15,7 @@ const MySpace = (props) => {
 
   return (
 <div class="items-center md:flex bg-white">
-  <ul class="nav nav-tabs flex flex-col flex-wrap list-none border-r-4 border-blue-600 pl-0" id="tabs-tabVertical"
+  <ul class="nav nav-tabs flex flex-col flex-wrap list-none border-x-4 md:border-r-4 md:border-l-0 border-blue-600 pl-0" id="tabs-tabVertical"
     role="tablist">
     <li class="nav-item flex-grow text-center" role="presentation">
       <a href="#tabs-homeVertical" class="
