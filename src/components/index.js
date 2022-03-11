@@ -2,10 +2,8 @@ import Header from "./Header";
 import NotFound from "./NotFound";
 import ArtWork from "./ArtWork/ArtWork";
 import PostDimo from "./Dimo/PostDimo"
-import QNADimo from "./Dimo/QNADimo"
 import ArtWorkList from "./ArtWork/ArtWorkList";
-import DimoList from "./Dimo/DImoList";
-import DimoQNAList from "./Dimo/DimoQNAList";
+import DimoList from "./Dimo/DimoList";
 import DropDown from "./DropDown";
 import MainSlider from "./Main/MainSlider";
 import DimoSlider from "./Dimo/DimoSlider";
@@ -22,4 +20,4 @@ import ArtWorkDetail from "./ArtWork/ArtWorkDetail";
 import DimoDetail from "./Dimo/DimoDetail";
 
 
-export { Header, NotFound, ArtWork, PostDimo, ArtWorkList, DimoList, DimoQNAList, DropDown, MainSlider, DimoSlider, SideBar, AdjBar, MainSlide, MySpaceUser, QNADimo, MyTimeLine, CreateArtWork, CreateDimoPost, CreateProfile, SocialLogin, ArtWorkDetail };
+export { Header, NotFound, ArtWork, PostDimo, ArtWorkList, DropDown, MainSlider, DimoSlider, SideBar, AdjBar, MainSlide, MySpaceUser, MyTimeLine, CreateArtWork, CreateDimoPost, CreateProfile, SocialLogin, ArtWorkDetail, DimoList };

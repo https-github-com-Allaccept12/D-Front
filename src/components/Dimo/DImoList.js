@@ -2,8 +2,8 @@ import React from "react";
 import { Button } from "../../elements";
 import DimoSlider from "./DimoSlider";
 import AdjBar from "../AdjBar";
-import QNADimo from "./QNADimo";
-import {ArtWorkList} from "../../components";
+
+import {ArtWorkList} from "..";
 
 import { useHistory } from "react-router-dom";
 
@@ -16,7 +16,7 @@ const array_sample = [{
 },
 {
   tab: "UI / UX",
-  content: <QNADimo />,
+  content: <ArtWorkList />,
 },
 {
   tab: "건축 / 인테리어 / 환경디자인",
