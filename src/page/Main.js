@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Input, Container, Text, Title, Grid } from "../elements";
-import { PostList, MainSlider } from "../components";
+import { ArtWorkList, MainSlider } from "../components";
 import { useHistory } from "react-router-dom";
 import { useInput } from "../hooks";
 
@@ -30,7 +30,7 @@ const Main = (props) => {
       <div className="pt-10 mt-40">
 
       <div className="text-3xl flex font-sanss2 justify-center items-center">추천 아트워크</div>
-      <PostList />
+      <ArtWorkList />
       </div>
     </div>
   );

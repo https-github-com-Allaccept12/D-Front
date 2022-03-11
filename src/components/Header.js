@@ -14,6 +14,7 @@ const Header = (props) => {
         <Title><Link to="/artwork">Artwork</Link></Title>
         <Title><Link to="/dimo">Dimo</Link></Title>
         <Title><Link to="/myspace">MySpace</Link></Title>
+        <Title><Link to="/myposts">logins</Link></Title>
         <Title></Title>
 
 

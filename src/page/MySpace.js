@@ -3,7 +3,7 @@ import { Button, Grid, Image } from "../elements";
 
 import { useHistory } from "react-router-dom";
 import { useTabs } from "../hooks";
-import { AdjBar, PostList, SideBar, MySpaceUser } from "../components";
+import { AdjBar, PostList, SideBar, MySpaceUser, ArtWorkList, MyTimeLine } from "../components";
 
 
 
@@ -14,7 +14,7 @@ const MySpace = (props) => {
 
 
   return (
-<div class="items-center md:flex bg-white">
+<div class="items-baseline md:flex bg-white">
   <ul class="nav nav-tabs flex flex-col flex-wrap list-none border-x-4 md:border-r-4 md:border-l-0 border-blue-600 pl-0" id="tabs-tabVertical"
     role="tablist">
     <li class="nav-item flex-grow text-center" role="presentation">
@@ -33,7 +33,7 @@ const MySpace = (props) => {
           focus:border-transparent
           active
         " id="tabs-home-tabVertical" data-bs-toggle="pill" data-bs-target="#tabs-homeVertical" role="tab"
-        aria-controls="tabs-homeVertical" aria-selected="true">Home</a>
+        aria-controls="tabs-homeVertical" aria-selected="true">Profile</a>
     </li>
     <li class="nav-item flex-grow text-center" role="presentation">
       <a href="#tabs-profileVertical" class="
@@ -50,7 +50,7 @@ const MySpace = (props) => {
           hover:border-transparent hover:bg-gray-100
           focus:border-transparent
         " id="tabs-profile-tabVertical" data-bs-toggle="pill" data-bs-target="#tabs-profileVertical" role="tab"
-        aria-controls="tabs-profileVertical" aria-selected="false">Profile</a>
+        aria-controls="tabs-profileVertical" aria-selected="false">Artwork</a>
     </li>
     <li class="nav-item flex-grow text-center" role="presentation">
       <a href="#tabs-messagesVertical" class="
@@ -67,7 +67,7 @@ const MySpace = (props) => {
           hover:border-transparent hover:bg-gray-100
           focus:border-transparent
         " id="tabs-messages-tabVertical" data-bs-toggle="pill" data-bs-target="#tabs-messagesVertical" role="tab"
-        aria-controls="tabs-messagesVertical" aria-selected="false">Messages</a>
+        aria-controls="tabs-messagesVertical" aria-selected="false">Dimo</a>
     </li>
   </ul>
 
@@ -77,9 +77,11 @@ const MySpace = (props) => {
       aria-labelledby="tabs-home-tabVertical">
 
       <MySpaceUser />
+      <MyTimeLine />
     </div>
-    <div class="tab-pane fade" id="tabs-profileVertical" role="tabpanel" aria-labelledby="tabs-profile-tabVertical">
+    <div className="tab-pane fade" id="tabs-profileVertical" role="tabpanel" aria-labelledby="tabs-profile-tabVertical">
     <MySpaceUser />
+    <ArtWorkList />
     </div>
     <div class="tab-pane fade" id="tabs-messagesVertical" role="tabpanel"
       aria-labelledby="tabs-profile-tabVertical">

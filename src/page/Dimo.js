@@ -2,80 +2,67 @@ import React from "react";
 import { Button } from "../elements";
 
 import { useHistory } from "react-router-dom";
-import { PostList , DimoSlider, AdjBar, DimoList, QNADimo } from "../components";
-import { useTabs } from "../hooks";
+import { PostList , DimoSlider, AdjBar, DimoList, QNADimo, ArtWorkList, DimoQNAList } from "../components";
 
-
-const array_sample = [{
-  tab: "전체보기",
-  content: <DimoList />,
-},
-{
-  tab: "UI / UX",
-  content: <QNADimo />,
-},
-{
-  tab: "건축 / 인테리어 / 환경디자인",
-  content: "없음!",
-},
-{
-  tab: "게임 / 캐릭터 디자인",
-  content: <DimoList />,
-},
-{
-  tab: "그래픽디자인",
-  content: <DimoList />,
-},
-{
-  tab: "브랜딩 / 편집디자인",
-  content: <DimoList />,
-},
-{
-  tab: "영상 / 모션그래픽",
-  content: <DimoList />,
-},
-{
-  tab: "제품 / 패키지 디자인",
-  content: <DimoList />,
-},
-{
-  tab: "패션",
-  content: <DimoList />,
-},
-{
-  tab: "기타",
-  content: <DimoList />,
-},
-
-
-]
 
 const Dimo = (props) => {
   let history = useHistory();
-  const {currentItem, changeItem} = useTabs(0, array_sample);
+
   return (
     <>
-    <div className="flex p-3">
-      <DimoSlider />
-      
-    </div>
+    <ul class="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4" id="tabs-tab"
+  role="tablist">
+  <li class="nav-item" role="presentation">
+    <a href="#tabs-home" class="
+      nav-link
+      block
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      border-x-0 border-t-0 border-b-2 border-transparent
+      px-6
+      py-3
+      my-2
+      hover:border-transparent hover:bg-gray-100
+      focus:border-transparent
+      active
+    " id="tabs-home-tab" data-bs-toggle="pill" data-bs-target="#tabs-home" role="tab" aria-controls="tabs-home"
+      aria-selected="true">QnA</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a href="#tabs-profile" class="
+      nav-link
+      block
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      border-x-0 border-t-0 border-b-2 border-transparent
+      px-6
+      py-3
+      my-2
+      hover:border-transparent hover:bg-gray-100
+      focus:border-transparent
+    " id="tabs-profile-tab" data-bs-toggle="pill" data-bs-target="#tabs-profile" role="tab"
+      aria-controls="tabs-profile" aria-selected="false">정보공유</a>
+  </li>
+ 
+</ul>
+<div class="tab-content" id="tabs-tabContent">
+  <div class="tab-pane fade show active" id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab">
+   <DimoQNAList />
+  </div>
+  <div class="tab-pane fade" id="tabs-profile" role="tabpanel" aria-labelledby="tabs-profile-tab">
+  <DimoList />
+  </div>
+</div>
 
-    <div className="flex flex-row w-full">
-      <div className="h-96 w-1/5 hidden md:flex md:flex-col p-4 bg-blue-400 rounded-md font-sanss2 mt-10 flex-shrink-0">
-      {array_sample.map((arrays, index) => 
-      (
-        <div className="flex-1 flex justify-start items-center">
-        <div className=" bg-slate-300 rounded-md m-1 cursor-pointer text-xs md:text-sm" onClick={()=>changeItem(index)}>
-				{arrays.tab}</div>
-        </div>
 
-        ))}
-      </div>
-      <div className="flex flex-col">
-        <AdjBar />
-        <div>{currentItem.content}</div>
-        </div>
-    </div>
+    
+
+
+    
     </>
   );
 };
