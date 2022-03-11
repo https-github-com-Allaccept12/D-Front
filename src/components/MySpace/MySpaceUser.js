@@ -18,12 +18,20 @@ const MySpaceUser = (props) => {
             <div class="flex flex-col items-center">
                 
                 <div class="ml-2">
-                    <h3 class="text-lg text-gray-800 font-medium">Khatab Wedaa</h3>
-                    <span class="text-gray-600">Khatabwedaa@test.com</span>
+                    
+                    <div className="flex flex-col px-28 p-2 shadow-lg rounded-2xl font-sanss2">
+                    <h3 class="text-xl text-gray-800 font-medium">펭귄 님</h3>
+                    <span class="text-gray-600">UX/UI Designer</span>
+                    <span class="text-gray-600">성향 : 라라라라</span>
                     <button class="flex items-center text-white bg-blue-600 rounded px-2 py-1 hover:bg-blue-500 focus:outline-none focus:shadow-outline">
                     <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     <span class="ml-1 text-sm">Follow</span> 
                 </button>
+                <div className="flex flex-row justify-center text-2xl">
+                <span>🐧</span> <span>🐧</span> <span>🐧</span> <span>🐧</span>
+                </div>
+                    </div>
+                    
                 </div>
             </div>
             <div class="mt-2 sm:mt-0">
@@ -69,6 +77,7 @@ const MySpaceUser = (props) => {
             </div>
         </div>
         </div>
+
 
     </>
 

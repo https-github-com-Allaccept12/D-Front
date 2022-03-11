@@ -1,29 +1,51 @@
 import React from "react";
-import { Button, Image } from "../elements";
+import { Button, Image } from "../../elements";
 
 import { useHistory } from "react-router-dom";
 
 
-const Post = (props) => {
+const MyArtWork = (props) => {
   let history = useHistory();
   return (
     <>
-    <div className="m-1 my-10 w-full md:w-64 md:h-72 p-1 flex justify-center items-center flex-col">
-      <div className="">
-      <button type="button" className=" active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalXl">
-        <div className="h-56 md:h-64 w-64 overflow-hidden">
+    <div className="m-1 w-full md:w-64 md:h-72 p-1 -mb-7 flex flex-col justify-center items-center">
+    
+        <div className="h-64 w-64 overflow-hidden relative">
       <Image src="https://images.unsplash.com/photo-1609385509807-f191a8dc2bd2?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=4800" shape="art_work" />
-      </div>
-      <div className="justify-start items-center flex flex-row pt-1">
-        <Image size="x-small" /> <span className="font-sanss2 text-white">작가이름</span>
-        <span className="flex-row-reverse font-sanss2 text-white ml-28">❤ 12</span>
-      </div>
+      <div className="absolute top-32 left-4 space-x-2
+      opacity-0 hover:opacity-100 md:h-64 
+      w-68">
+      <button type="button" className="shadow-lg transition duration-150 ease-in-out text-white bg-blue-300 p-3 font-sanss2
+      rounded-full h-12
+      " data-bs-toggle="modal" data-bs-target="#exampleModalXl">
+          수정
       </button>
+      <button type="button" className="shadow-lg transition duration-150 ease-in-out text-white bg-blue-300 p-3 font-sanss2
+      rounded-full h-12
+      " data-bs-toggle="modal" data-bs-target="#exampleModalXl">
+          삭제
+      </button>
+      <button type="button" className="shadow-lg transition duration-150 ease-in-out text-white bg-blue-300 p-3 font-sanss2
+      rounded-full h-12
+      " data-bs-toggle="modal" data-bs-target="#exampleModalXl">
+          뭔가
+      </button>
+      <button type="button" className="shadow-lg transition duration-150 ease-in-out text-white bg-blue-300 p-3 font-sanss2
+      rounded-full h-12
+      " data-bs-toggle="modal" data-bs-target="#exampleModalXl">
+          버튼
+      </button>
+      </div>
+      </div>
+
+      
         
-    </div>
+
     </div>
 
 
+
+<>
 <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
   <div class="modal-dialog modal-xl relative w-auto pointer-events-none">
     <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
@@ -46,10 +68,10 @@ const Post = (props) => {
     </div>
   </div>
 </div>
-
+</>
 
     </>
   );
 };
 
-export default Post;
+export default MyArtWork;

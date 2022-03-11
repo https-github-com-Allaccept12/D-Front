@@ -3,16 +3,16 @@ import { Button, Input } from "../elements";
 
 import { useHistory } from "react-router-dom";
 import { useInput } from "../hooks";
-import { PostList, SimpleSlider, SideBar, AdjBar } from "../components";
+import { ArtWorkList, AdjBar } from "../components";
 import { useTabs } from "../hooks";
 
 const array_sample = [{
   tab: "전체보기",
-  content: <PostList />,
+  content: <ArtWorkList />,
 },
 {
   tab: "UI / UX",
-  content: <PostList />,
+  content: <ArtWorkList />,
 },
 {
   tab: "건축 / 인테리어 / 환경디자인",
@@ -20,31 +20,31 @@ const array_sample = [{
 },
 {
   tab: "게임 / 캐릭터 디자인",
-  content: <PostList />,
+  content: <ArtWorkList />,
 },
 {
   tab: "그래픽디자인",
-  content: <PostList />,
+  content: <ArtWorkList />,
 },
 {
   tab: "브랜딩 / 편집디자인",
-  content: <PostList />,
+  content: <ArtWorkList />,
 },
 {
   tab: "영상 / 모션그래픽",
-  content: <PostList />,
+  content: <ArtWorkList />,
 },
 {
   tab: "제품 / 패키지 디자인",
-  content: <PostList />,
+  content: <ArtWorkList />,
 },
 {
   tab: "패션",
-  content: <PostList />,
+  content: <ArtWorkList />,
 },
 {
   tab: "기타",
-  content: <PostList />,
+  content: <ArtWorkList />,
 },
 
 
