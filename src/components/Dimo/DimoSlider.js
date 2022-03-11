@@ -173,10 +173,10 @@ const DimoSlider = ()=>{
             <ChildModal />
           
           </div>
-  <div class="container mx-auto flex flex-col px-5 py-5 justify-center items-center">
+  <div className="container mx-auto flex flex-col px-5 py-5 justify-center items-center">
   <Image shape="big_square" alt="" />
-    <div class="w-full md:w-2/3 flex flex-col mb-4 items-center text-center">
-      <Title class="sm:text-4xl text-3xl mb-4 font-medium text-gray-900"> 고민을 얘기해보세여</Title>
+    <div className="w-full md:w-2/3 flex flex-col mb-4 items-center text-center">
+      <Title className="sm:text-4xl text-3xl mb-4 font-medium text-gray-900"> 고민을 얘기해보세여</Title>
 
       <div className="flex justify-between items-center">
       <div className="flex flex-row justify-between">

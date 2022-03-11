@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import Slider from "react-slick";
 import tw from "tailwind-styled-components";
-import MainSlide from "./MainSlide";
+import ArtWork from "./ArtWork";
 import { Image, Text } from "../../elements";
 
 // 리액트 슬라이더 중에 제일 많이들쓰는거
@@ -23,7 +23,7 @@ const NextBtn = tw.button`
 text-white opacity-75 mx-auto md:mt-10 hidden md:contents
 `
 
-const MainSlider = ()=>{
+const ArtWorkSlider = ()=>{
     const slider = React.useRef(null);
 
     const settings = {
@@ -68,19 +68,19 @@ const MainSlider = ()=>{
     	<Slide {...settings} ref={slider}>
          
                 <SS> 
-                    <MainSlide />
+                    <ArtWork />
                 </SS>
                 <SS>
-                    <MainSlide />
+                    <ArtWork />
                 </SS>
                 <SS>
-                    <MainSlide />
+                    <ArtWork />
                 </SS>
                 <SS>
-                    <MainSlide />
+                    <ArtWork />
                 </SS>
                 <SS>
-                    <MainSlide />
+                    <ArtWork />
                 </SS>
                
             </Slide>
@@ -91,4 +91,4 @@ const MainSlider = ()=>{
 }
 
 
-export default MainSlider;
+export default ArtWorkSlider;

@@ -4,7 +4,7 @@ import { Button } from "../../elements";
 import { useHistory } from "react-router-dom";
 
 
-const CreateArtWork = (props) => {
+const NotFound = (props) => {
   let history = useHistory();
   return (
     <div className="flex flex-col p-3 justify-center items-center">
@@ -13,10 +13,10 @@ const CreateArtWork = (props) => {
           history.goBack();
         }}
       >
-        작품만들기
+        뒤로가기
       </Button>
     </div>
   );
 };
 
-export default CreateArtWork;
+export default NotFound;

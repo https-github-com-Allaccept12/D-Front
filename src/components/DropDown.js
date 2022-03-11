@@ -25,12 +25,12 @@ const DropDown = (props) => {
       <div className="relative inline-block">
             <Button
             onClick={()=> setIsOpen(!is_open)}>
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
                 </svg>
             </Button>
 
-         { is_open && <div class="absolute right-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800">
+         { is_open && <div className="absolute right-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl dark:bg-gray-800">
                 <Menu href="#">
                     {list01}
                 </Menu>
@@ -39,13 +39,13 @@ const DropDown = (props) => {
                     view profile
                 </Menu>
 
-                <hr class="border-gray-200 dark:border-gray-700 " />
+                <hr className="border-gray-200 dark:border-gray-700 " />
                 
                 <Menu href="#">
                     {list02}
                 </Menu>
 
-                <hr class="border-gray-200 dark:border-gray-700 "/>
+                <hr className="border-gray-200 dark:border-gray-700 "/>
                 
                 <Menu href="#">
                     {list03}
