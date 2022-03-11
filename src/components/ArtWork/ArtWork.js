@@ -9,15 +9,15 @@ const ArtWork = (props) => {
   let history = useHistory();
   return (
     <>
-    <div classNameName="m-1 my-10 w-full md:w-64 md:h-72 p-1 flex justify-center items-center flex-col">
+    <div className="m-1 my-10 w-full md:w-64 md:h-72 p-1 flex justify-center items-center flex-col">
       <div>
-      <button type="button" classNameName=" active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalXl">
-        <div classNameName="h-56 md:h-64 w-64 overflow-hidden">
+      <button type="button" className=" active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalXl">
+        <div className="h-56 md:h-64 w-64 overflow-hidden">
       <Image src="https://images.unsplash.com/photo-1609385509807-f191a8dc2bd2?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=4800" shape="art_work" />
       </div>
-      <div classNameName="justify-start items-center flex flex-row pt-1">
-        <Image size="x-small" /> <span classNameName="font-sanss2 text-yellow-900">작가이름</span>
-        <span classNameName="flex-row-reverse font-sanss2 text-yellow-900 ml-28">❤ 12</span>
+      <div className="justify-start items-center flex flex-row pt-1">
+        <Image size="x-small" /> <span className="font-sanss2 text-yellow-900">작가이름</span>
+        <span className="flex-row-reverse font-sanss2 text-yellow-900 ml-28">❤ 12</span>
       </div>
       </button>
         
