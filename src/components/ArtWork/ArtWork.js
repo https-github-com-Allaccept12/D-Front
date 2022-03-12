@@ -27,7 +27,7 @@ const ArtWork = (props) => {
 
 
 <>
-<div className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
+<div className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalXl" tabIndex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
   <div className="modal-dialog modal-xl relative w-auto pointer-events-none">
     <div className="modal-content border-none relative flex flex-col w-full pointer-events-auto bg-transparent bg-clip-padding rounded-md outline-none text-current">
       <div className="modal-header flex flex-shrink-0 items-center justify-between p-4 rounded-t-md">
