@@ -3,6 +3,8 @@ import { Button } from "../../elements";
 
 import { useHistory } from "react-router-dom";
 import { KAKAO_AUTH_URL } from "../../shared/OAuth";
+import { GOOGLE_AUTH_URL } from "../../shared/GoogleOAuth";
+import KakaoBtn from "./kakao_button.png";
 // import GoogleLogin from 'react-google-login';
 
 // const onLogin = e => {};
@@ -22,7 +24,10 @@ const SocialLogin = (props) => {
   return (
     <div className="flex flex-row p-3 gap-3 justify-center items-center shadow-lg">
         <a href={KAKAO_AUTH_URL}>
-            카카오 로그인하기
+          <img src={KakaoBtn}/>
+        </a>
+        <a href={GOOGLE_AUTH_URL}>
+          구글 로그인
         </a>
       {/* <Button>
           구글로 로그인
