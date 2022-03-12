@@ -3,6 +3,7 @@ import {Route, Switch} from "react-router-dom";
 import {Header, NotFound} from "./components";
 import {Main, ArtWork, Dimo, MySpace, MyPosts, CreateArtWork, CreateProfile, KakaoRedirectHandler} from "./page";
 
+
 function App() {
   return (
     <div className="App w-full md:w-5/6 m-auto container grid">
