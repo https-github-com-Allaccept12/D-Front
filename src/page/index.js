@@ -3,5 +3,7 @@ import ArtWork from "./ArtWork";
 import Dimo from "./Dimo";
 import MySpace from "./MySpace";
 import MyPosts from "./MyPosts";
+import CreateArtWork from "./CreateArtWork";
+import CreateProfile from "./CreateProfile"
 
-export {Main, ArtWork, Dimo, MySpace, MyPosts}
+export {Main, ArtWork, Dimo, MySpace, MyPosts, CreateArtWork, CreateProfile}

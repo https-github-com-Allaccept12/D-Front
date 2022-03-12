@@ -8,15 +8,10 @@ import { useHistory, Link } from "react-router-dom";
 const AdjBar = (props) => {
   let history = useHistory();
   return (
-    <div className="flex flex-col md:flex-row m-10 justify-around">
-        <div className="flex flex-col md:flex-row p-2 rounded-xl container text-xs md:text-base font-sanss2 bg-white mx-1">
-        🐧인기순
-        <hr />
-        🐧최신순
-        <hr />
-        🐧팔로우 디자이너
-        </div>
-        <div className="flex flex-col md:flex-row m-auto mt-1 md:mt-0">
+    <div className="grid grid-rows-2 p-4 gap-20">
+        <div>🐧인기순 /🐧최신순/🐧팔로우 디자이너</div>
+
+        <div className="col-start-2">
         <div className="relative text-gray-600">
   <input type="search" name="serch" placeholder="Search" className="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none" />
   <button type="submit" className="absolute right-0 top-0 mt-3 mr-4">

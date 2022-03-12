@@ -58,7 +58,7 @@ function ChildModal() {
 // 리액트 슬라이더 중에 제일 많이들쓰는거
 // 구글링해서 커스텀 css 만들기!
 export const Slide = tw(Slider)`
-    bg-transparent mx-auto mt-10 grid
+    bg-transparent mx-auto mt-10 col-start-2 col-end-7 row-start-1 col-
     opacity-90 text-white
     font-sanss2 text-lg w-full
 

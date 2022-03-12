@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../../elements";
+import { Button, Image } from "../elements";
 
 import { useHistory } from "react-router-dom";
 
@@ -7,15 +7,18 @@ import { useHistory } from "react-router-dom";
 const NotFound = (props) => {
   let history = useHistory();
   return (
-    <div className="flex flex-col p-3 justify-center items-center">
+    <>
+    <div className="flex flex-row">
+    <Image />
       <Button
-        _onClick={() => {
-          history.goBack();
+        onClick={() => {
+          
         }}
       >
-        뒤로가기
+        이미지 업로드
       </Button>
-    </div>
+      </div>
+    </>
   );
 };
 
