@@ -45,7 +45,7 @@ const CreateArtWork = (props) => {
 
 
 
-<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
+<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalCenter" tabIndex="-1" aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
   <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
     <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
       <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
@@ -84,7 +84,7 @@ const CreateArtWork = (props) => {
 <div className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none
   overflow-y-scroll max-h-max
 "
-  id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1"
   aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div className="modal-dialog min-w-full min-h-fit pointer-events-none bg-white">
     <div

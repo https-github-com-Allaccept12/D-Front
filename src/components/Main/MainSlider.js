@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import Slider from "react-slick";
 import tw from "tailwind-styled-components";
 import MainSlide from "./MainSlide";
+import ArtWorkSlide from "../ArtWork/ArtWorkSlide"
 import { Image, Text } from "../../elements";
 import DimoSlide from "../Dimo/DimoSlide"
 
@@ -9,8 +10,9 @@ import DimoSlide from "../Dimo/DimoSlide"
 // 구글링해서 커스텀 css 만들기!
 export const Slide = tw(Slider)`
     
-    ${(props) => (props.detail ? `bg-transparent mx-auto mt-10 col-start-2 col-end-6 row-start-1 col-
-    opacity-90 text-white
+    ${(props) => (props.dimo ? `
+    bg-transparent mx-auto mt-10 col-start-2 
+    col-end-6 row-start-1 col-opacity-90 text-white
     font-sanss2 text-lg w-full` : "")};
     ${(props) => (props.main ? `bg-transparent mx-auto mt-10
     opacity-90 text-white overflow-hidden
@@ -32,7 +34,7 @@ text-white opacity-75 mx-auto hidden
 
 const MainSlider = (props)=>{
     const slider = React.useRef(null);
-    const { main, detail, dimo } = props;
+    const { main, artwork, dimo } = props;
 
     const settings = {
         dots: false,  // 슬라이드 밑에 점 보이게
@@ -97,63 +99,87 @@ const MainSlider = (props)=>{
             
     );
 
-    if(detail) return (
-      <>
-       <PrevBtn onClick={() => slider?.current?.slickPrev()}>◀</PrevBtn>
-    	<Slide {...settings} ref={slider}>
-         
-                <SS> 
-                    <MainSlide />
-                </SS>
-                <SS>
-                    <MainSlide />
-                </SS>
-                <SS>
-                    <MainSlide />
-                </SS>
-                <SS>
-                    <MainSlide />
-                </SS>
-                <SS>
-                    <MainSlide />
-                </SS>
-               
-            </Slide>
-            <NextBtn onClick={() => slider?.current?.slickNext()}>▶</NextBtn>  
-            </>
-            
-    );
+   
     if(dimo) return (
       <>
        <PrevBtn onClick={() => slider?.current?.slickPrev()}>◀</PrevBtn>
     	<Slide {...settings} ref={slider}>
          
                 <SS> 
+                
                 <DimoSlide />
                 </SS>
                 <SS>
+               
                 <DimoSlide />
+                
                 </SS>
                 <SS>
+               
                 <DimoSlide />
+                
                 </SS>
                 <SS>
+               
                 <DimoSlide />
+              
                 </SS>
                 <SS>
+               
                 <DimoSlide />
+                
                 </SS>
                
             </Slide>
             <NextBtn onClick={() => slider?.current?.slickNext()}>▶</NextBtn> 
+            
             </>
-      );
+            
+    );
+   
+    if(artwork) return (
+      <>
+       <PrevBtn onClick={() => slider?.current?.slickPrev()}>◀</PrevBtn>
+    	<Slide {...settings} ref={slider}>
+         
+                <SS> 
+                
+                <ArtWorkSlide />
+                </SS>
+                <SS>
+               
+                <ArtWorkSlide />
+                
+                </SS>
+                <SS>
+               
+                <ArtWorkSlide />
+                
+                </SS>
+                <SS>
+               
+                <ArtWorkSlide />
+              
+                </SS>
+                <SS>
+               
+                <ArtWorkSlide />
+                
+                </SS>
+               
+            </Slide>
+            <NextBtn onClick={() => slider?.current?.slickNext()}>▶</NextBtn> 
+            
+            </>
+            
+    );
+
 }
 
 MainSlider.defaultProps = {
   main: false,
-  artwork: true,
   dimo: false,
+  artwork: true,
 };
 
 export default MainSlider;

@@ -26,7 +26,7 @@ const CreateProfile = (props) => {
 </div>
 
 
-<div className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalXl" tabIndex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
+<div className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden" id="exampleModalXl" tabIndex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
   <div className="modal-dialog modal-xl relative w-auto pointer-events-none">
     <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
       <div className="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
@@ -37,14 +37,14 @@ const CreateProfile = (props) => {
           className="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
           data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div className="modal-body relative p-4">
+      <div className="modal-body relative p-2">
       <div className="modal-body grid p-4 w-full h-screen bg-yellow-500
       grid-cols-4 overflow-y-scroll">
-          <div className="fixed">
+          <div className="absolute">
           <Image shape="big_square"/>
-            여기는 프로필
+          프로필
           </div>
-          <div className="col-start-2 bg-yellow-100 col-span-4
+          <div className="md:col-start-2 bg-yellow-100 col-span-4
            grid h-full grid-rows-3 grid-cols-5 justify-items-center items-center">
                <div className="col-start-2 row-start-1 col-span-3">
                <Image size="5xl" />
@@ -106,7 +106,7 @@ const CreateProfile = (props) => {
           <Image shape="big_square"/>
           펭귄님의 관심사를 알고 싶어여
           </div>
-          <div className="col-start-2 bg-yellow-100 col-span-4
+          <div className="md:col-start-2 bg-yellow-100 col-span-4
            grid h-full">
 
 <section className="text-gray-600 body-font">

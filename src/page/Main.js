@@ -20,7 +20,7 @@ const Main = (props) => {
           <p>현재 가장 많은 관심을 받은 디자이너님들을 소개합니다</p>
          </div>
         <div className="col-start-3 col-span-8 row-span-3">
-        <MainSlider />
+        <MainSlider main />
         </div>
           </div>
       

@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Image } from "../../elements";
 
 import { useHistory } from "react-router-dom";
-import ArtWorkDetail from "../ArtWork/ArtWorkDetail";
+import DimoDetail from "./DimoDetail";
 
 
 const DimoWork = (props) => {
@@ -11,14 +11,12 @@ const DimoWork = (props) => {
     <>
     <div className="w-full">
       <div>
-      <button type="button" className=" active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalXl">
-        <div className="">
-      <Image src="https://images.unsplash.com/photo-1609385509807-f191a8dc2bd2?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=4800" shape="art_work" />
+      <button type="button" className="w-full active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalXl">
+        <div className="bg-red-200 w-full h-24 m-1">
+     <p>Q. 고민고민고민 고민고민 고민고민고민고민고민고민고민고민 고민고민 고민고민고민고민 고민고민고민고민</p>
+     <p>답변하러 가기</p>
       </div>
-      <div className="justify-start items-center flex flex-row pt-1">
-        <Image size="x-small" /> <span className="font-sanss2 text-yellow-900">작가이름</span>
-        <span className="flex-row-reverse font-sanss2 text-yellow-900 ml-28">❤ 12</span>
-      </div>
+      
       </button>
         
     </div>
@@ -27,7 +25,7 @@ const DimoWork = (props) => {
 
 
 <>
-<div className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
+<div className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalXl" tabIndex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
   <div className="modal-dialog modal-xl relative w-auto pointer-events-none">
     <div className="modal-content border-none relative flex flex-col w-full pointer-events-auto bg-transparent bg-clip-padding rounded-md outline-none text-current">
       <div className="modal-header flex flex-shrink-0 items-center justify-between p-4 rounded-t-md">
@@ -43,7 +41,7 @@ const DimoWork = (props) => {
 
       <div className="modal-body relative">
         <div className="flex justify-center items-center">
-        <ArtWorkDetail />
+        <DimoDetail />
         
         </div>
       </div>

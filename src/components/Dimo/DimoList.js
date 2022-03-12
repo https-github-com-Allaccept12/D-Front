@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../../elements";
-import DimoSlider from "./DimoSlider";
+import MainSlider from "../Main/MainSlider"
 import AdjBar from "../AdjBar";
 
 import {ArtWorkList} from "..";
@@ -73,12 +73,13 @@ const DimoList = (props) => {
 
         ))}
       </div>
-      <div className="col-start-2 col-end-6">
+      <div className="col-start-2 col-end-7">
+      <MainSlider dimo />
         <div className="fixed top-12"><AdjBar /></div> </div>
 
-      <DimoSlider />
       
-      <div className="col-start-2 col-end-7">
+      
+      <div className="col-start-2 row-start-2 col-end-7 col-span-6">
         
         <div>{currentItem.content}</div>
         </div>
