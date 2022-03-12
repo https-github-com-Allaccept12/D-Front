@@ -56,19 +56,19 @@ const ArtWork = (props) => {
   const {currentItem, changeItem} = useTabs(0, array_sample);
 
   return (
-    <div className="flex flex-row w-full">
-      <div className="h-96 w-1/5 hidden md:flex md:flex-col p-4 bg-blue-400 rounded-md font-sanss2 mt-10 flex-shrink-0">
+    <div className="grid grid-cols-5">
+      <div className="fixed">
       {array_sample.map((arrays, index) => 
       (
-        <div className="flex-1 flex justify-start items-center">
+        <div className="gird">
         <div className=" bg-slate-300 rounded-md m-1 cursor-pointer text-xs md:text-sm" onClick={()=>changeItem(index)}>
 				{arrays.tab}</div>
         </div>
 
         ))}
       </div>
-      <div className="flex flex-col">
-        <AdjBar />
+      <div className="col-start-2 col-end-6">
+        <div className="fixed row-start-1"><AdjBar /></div>
         <div>{currentItem.content}</div>
         </div>
     </div>

@@ -13,11 +13,9 @@ const SideBar = (props) => {
   } = props;
 
   return (
-    <div className="w-2/5 p-4 mt-10 bg-gray-400 shadow-md rounded-md h-96">
-        <Text size="large">카테고리</Text>
-        {children}
-        
-    </div>
+    <>
+    
+    </>
     
   );
 };

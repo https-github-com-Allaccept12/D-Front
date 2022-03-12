@@ -7,20 +7,20 @@ import { Image, Text } from "../../elements";
 // 리액트 슬라이더 중에 제일 많이들쓰는거
 // 구글링해서 커스텀 css 만들기!
 export const Slide = tw(Slider)`
-    bg-transparent mx-auto mt-5 md:mt-10 grid
+    bg-transparent mx-auto mt-10
     opacity-90 text-white overflow-hidden
-    font-sanss2 text-lg w-64 md:w-3/4
+    font-sanss2 text-lg w-64 md:w-4/5
 
 `
 const SS = tw.div`
     box-border container
 `
 const PrevBtn = tw.button`
-  text-white opacity-75 mx-auto md:mt-10 hidden md:contents
+  text-white opacity-75 mx-auto hidden
 `
 
 const NextBtn = tw.button`
-text-white opacity-75 mx-auto md:mt-10 hidden md:contents
+text-white opacity-75 mx-auto hidden
 `
 
 const MainSlider = ()=>{
