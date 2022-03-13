@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "../elements";
 
 import { useHistory } from "react-router-dom";
-import { PostList , DimoSlider, AdjBar, DimoList, ArtWorkList } from "../components";
+import { PostList , DimoSlider, AdjBar, DimoList } from "../components";
 
 
 const Dimo = (props) => {

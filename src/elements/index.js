@@ -1,19 +1,19 @@
-import Title from "./Title";
-import Text from "./Text";
-import Input from "./Input";
-import Button from "./Button";
-import Image from "./Image";
-import Grid from "./Grid";
-import Intro from "./Intro";
-import Spinner from "./Spinner";
-import Permit from "./Permit";
-import Container from "./Container"
-import Modal from "./Modal";
-import CheckBox from "./CheckBox";
-import SelectBox from "./SelectBox";
-import DatePicker from "./DatePicker"
+import Title from "./Common/Title";
+import Text from "./Common/Text";
+import Input from "./Common/Input";
+import Button from "./Common/Button";
+import Image from "./Common/Image";
+import Intro from "./Common/Intro";
+import Spinner from "./Common/Spinner";
+import Permit from "./Common/Permit";
+import Modal from "./Tools/Modal";
+import CheckBox from "./Tools/CheckBox";
+import SelectBox from "./Tools/SelectBox";
+import DatePicker from "./Tools/DatePicker"
+import ImageBtn from "./Tools/ImageBtn";
+import DropDown from "./Tools/DropDown";
 
 
 // 저번 프젝에서 붙여넣은 거! 와이어프레임에 맞게 고칠예정
 
-export { Grid, Title, Text, Input, Button, Image, Intro, Spinner, Permit, Container, Modal, CheckBox, SelectBox, DatePicker };
+export { Title, Text, Input, Button, Image, Intro, Spinner, Permit,  Modal, CheckBox, SelectBox, DatePicker, ImageBtn, DropDown };

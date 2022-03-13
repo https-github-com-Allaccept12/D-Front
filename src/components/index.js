@@ -1,22 +1,22 @@
-import Header from "./Header";
-import NotFound from "./NotFound";
-import ArtWork from "./ArtWork/ArtWork";
-import DimoWork from "./Dimo/DimoWork";
-import ArtWorkList from "./ArtWork/ArtWorkList";
-import DimoList from "./Dimo/DimoList";
-import DropDown from "./DropDown";
-import MainSlider from "./Main/MainSlider";
-import SideBar from "./SideBar";
-import AdjBar from "./AdjBar";
-import MainSlide from "./Main/MainSlide";
+import Header from "./Sections/Header";
+import NotFound from "./Sections/NotFound";
+import ArtWork from "./Posts/ArtWork";
+import DimoWork from "./Posts/DimoWork";
+import AllList from "./Lists/AllList";
+import DimoList from "./Lists/DimoList";
+import MainSlider from "./Sliders/MainSlider";
+import SideBar from "./Sections/SideBar";
+import AdjBar from "./Sections/AdjBar";
 import MySpaceUser from "./MySpace/MySpaceUser";
-import MyTimeLine from "./MySpace/MyTimeLine";
-import CreateDimoPost from "./CreateForm/CreateDimoPost";
-import CreateProfile from "./CreateForm/CreateProfile";
+import MyExp from "./MySpace/MyExp";
+import MyPortfolio from "./MySpace/MyPortfolio"
+import MySkill from "./MySpace/MySkill"
+import MyTimeLine from "./MySpace/MyTimeLine"
 import SocialLogin from "./CreateForm/SocialLogin";
-import ArtWorkDetail from "./ArtWork/ArtWorkDetail";
-import DimoDetail from "./Dimo/DimoDetail";
-import ImageBtn from "./ImageBtn"
+import ArtWorkDetail from "./Details/ArtWorkDetail";
+import DimoDetail from "./Details/DimoDetail";
+import Tabs from "./Sections/Tabs"
+import MiniTabs from "./Sections/MiniTabs"
 
 
-export { Header, NotFound, ArtWork, ArtWorkList, DropDown, MainSlider, SideBar, AdjBar, MainSlide, MySpaceUser, MyTimeLine, CreateDimoPost, CreateProfile, SocialLogin, ArtWorkDetail, DimoList, DimoWork, ImageBtn};
+export { Header, NotFound, ArtWork, AllList, MainSlider, SideBar, AdjBar, MySpaceUser, MyExp, SocialLogin, ArtWorkDetail, DimoList, DimoWork, DimoDetail, Tabs, MiniTabs, MyPortfolio, MySkill, MyTimeLine};

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Grid, Image } from "../elements";
+import { Button, Grid, Image, Input } from "../elements";
 
 import { useHistory,  Link } from "react-router-dom";
 import { useToggle } from "../hooks";
@@ -9,7 +9,7 @@ import MyArtWork from "../components/Posts/MyArtWork";
 
 
 
-const MySpace = (props) => {
+const EditMySpace = (props) => {
 
   const [sideEdit, setSideEdit] = useToggle();
   let history = useHistory();
@@ -46,8 +46,8 @@ const MySpace = (props) => {
         id="tabs-home-tabVertical" data-bs-toggle="pill" data-bs-target="#tabs-homeVertical" role="tab"
         aria-controls="tabs-homeVertical" aria-selected="true">Profile🔽</a>
       { sideEdit ?  <>
-        <div className="bg-blue-500 m-1"><Link to="/editmyspace">프로필수정</Link> </div>
-        <div className="bg-blue-500 m-1"><Link to="/createprofile">아직안만듬</Link> </div>
+        <div className="bg-blue-500 m-1"><Link to="/createprofile">cre!</Link> </div>
+        <div className="bg-blue-500 m-1"><Link to="/createprofile">cre!</Link> </div>
         </> : ""}  
  
     </li>
@@ -119,12 +119,55 @@ const MySpace = (props) => {
   <div className="tab-content col-start-1 col-span-5" id="tabs-tabContentVertical">
     <div className="tab-pane fade show active" id="tabs-homeVertical" role="tabpanel"
       aria-labelledby="tabs-home-tabVertical">
-      <MySpaceUser />
-      <MyExp />
-      <MyPortfolio />
-      <MySkill />
-      <MyTimeLine />
       
+      <div className="fixed top-20 right-4 bg-green-400 w-40 h-64">
+          여기가 정보 수정 박스
+          <br/>
+          프로그래스 바
+          <br />
+          내정보
+          <br />
+          소개
+          <br />
+          업무경험
+          <br />
+          포트폴리오
+          <br />
+          대표스킬 및 작업기간
+          </div>
+          <div className="md:col-start-2 bg-yellow-100 col-span-4
+           grid h-full grid-rows-3 grid-cols-5 justify-items-center items-center">
+               <div className="col-start-2 row-start-1 col-span-3">
+               <Image size="5xl" />
+               </div>
+               
+                <div className="col-start-3 row-start-1 col-span-2">
+                <Input label="아이디" />
+                <Input label="이름"/>
+                <Input label="직업"/>
+                </div>
+
+                <div className="col-start-2 row-start-2 col-span-3 w-full">
+                연락처
+                <Input label="이메일" />
+                <Input label="링크드인"/>
+                <Input label="브런치"/>
+                <Input label="인스타"/>
+                </div>
+
+                <div className="col-start-2 row-start-3 col-span-3 w-full">
+                소개
+                <Input textarea />
+                </div>
+
+                <div className="col-start-5 row-start-4 col-span-2 w-full">
+                <Button>입력 완료!</Button>
+                </div>
+
+               </div>
+
+
+
     </div>
     <div className="tab-pane fade" id="tabs-profileVertical" role="tabpanel" aria-labelledby="tabs-profile-tabVertical">
         <MyArtWork />
@@ -195,4 +238,4 @@ tabname03="cc" tabnametag03="c-tab" tabnamelink03="#cc" />
   );
 };
 
-export default MySpace;
+export default EditMySpace;
