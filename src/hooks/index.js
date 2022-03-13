@@ -1,3 +1,4 @@
 import useInput from "./useInput";
 import useTabs from "./useTabs";
-export { useInput, useTabs }
+import useToggle from "./useToggle";
+export { useInput, useTabs, useToggle }

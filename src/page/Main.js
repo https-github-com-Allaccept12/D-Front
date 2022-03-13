@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Input, Container, Text, Title, Grid } from "../elements";
-import { ArtWorkList, MainSlider, SideBar } from "../components";
+import { AllList, MainSlider, SideBar } from "../components";
 import { useHistory } from "react-router-dom";
 import { useInput } from "../hooks";
 
@@ -26,7 +26,7 @@ const Main = (props) => {
       
       <div className="grid">
       <div className="grid md:grid-cols-6 col-start-1 text-2xl px-4 pt-4">추천 아트워크</div>
-      <ArtWorkList />
+      <AllList />
       </div>
     </div>
   );
