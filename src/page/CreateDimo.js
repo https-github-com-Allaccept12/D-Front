@@ -21,8 +21,8 @@ const CreateMySpaceUser = (props) => {
 
                 <Input textarea placeholder="내용을 입력해주세여" />
                 </div>
-                <div>
-                  파일추가
+                <div className="bg-white p-4">
+                  파일추가 파일은 복수로 첨부가능하며
                 </div>
                 <Button>입력 완료!</Button>
                 </div>

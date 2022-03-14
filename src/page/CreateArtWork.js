@@ -1,5 +1,5 @@
 import React from "react";
-import {  Image, Input, CheckBox, SelectBox, MultiSelect } from "../elements";
+import {  Image, Input, CheckBox, SelectBox, MultiSelect, SelectBoxFor12 } from "../elements";
 
 import { useHistory } from "react-router-dom";
 import { ImageBtn } from "../elements";
@@ -135,10 +135,41 @@ const CreateArtWork = (props) => {
 
 </div>
 
-<div className="col-start-1 row-start-5 col-span-4">
-날짜를 자체제작
+<div className="col-start-1 row-start-5 col-span-2">
+시작날짜
 <SelectBox title="연도" option01="2020" option02="2021" option03="2022" />
-<SelectBox title="월" option01="2020" option02="2021" option03="2022" />
+<SelectBoxFor12 title="월" 
+option01="01" 
+option02="02" 
+option03="03"
+option04="04"
+option05="05"
+option06="06"
+option07="07"
+option08="08"
+option09="09"
+option10="10"
+option11="11"
+option12="12"
+/>
+</div>
+<div className="col-start-3 row-start-5 col-span-2">
+종료날짜
+<SelectBox title="연도" option01="2020" option02="2021" option03="2022" />
+<SelectBoxFor12 title="월" 
+option01="01" 
+option02="02" 
+option03="03"
+option04="04"
+option05="05"
+option06="06"
+option07="07"
+option08="08"
+option09="09"
+option10="10"
+option11="11"
+option12="12"
+/>
 </div>
 <div className="col-start-1 row-start-6 col-span-4">
 작품 설명
