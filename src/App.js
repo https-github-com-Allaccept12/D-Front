@@ -1,7 +1,7 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
 import {Header, NotFound} from "./components";
-import {Main, ArtWork, Dimo, MySpace, MyPosts, CreateArtWork, CreateProfile, KakaoRedirectHandler, EditMySpace } from "./page";
+import {Main, ArtWork, Dimo, MySpace, MyPosts, CreateArtWork, CreateProfile, KakaoRedirectHandler, EditMySpace, CreateDimo } from "./page";
 
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
             <Route exact path="/myposts" component={MyPosts} />
             <Route exact path="/createart" component={CreateArtWork} />
             <Route exact path="/createprofile" component={CreateProfile} />
+            <Route exact path="/CreateDimo" component={CreateDimo} />
             {/* <Route exact path="/user/kakao/callback" component={KakaoRedirectHandler}/> */}
             <Route component={NotFound} />
         </Switch>

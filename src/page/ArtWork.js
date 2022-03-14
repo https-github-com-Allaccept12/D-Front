@@ -3,7 +3,7 @@ import { Button, Input } from "../elements";
 
 import { useHistory } from "react-router-dom";
 import { useInput } from "../hooks";
-import { AllList, AdjBar } from "../components";
+import { AllList, AdjBar, InlineDetail } from "../components";
 import { useTabs } from "../hooks";
 
 const array_sample = [{
@@ -12,7 +12,7 @@ const array_sample = [{
 },
 {
   tab: "UI / UX",
-  content: <AllList />,
+  content: <InlineDetail />,
 },
 {
   tab: "건축 / 인테리어 / 환경디자인",

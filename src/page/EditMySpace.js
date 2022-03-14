@@ -3,17 +3,39 @@ import { Button, Grid, Image, Input } from "../elements";
 
 import { useHistory,  Link } from "react-router-dom";
 import { useToggle } from "../hooks";
-import { MySpaceUser, AllList, MyExp, Tabs, MiniTabs, MyPortfolio, MySkill, MyTimeLine } from "../components";
+import { MySpaceUser, AllList, MyExp, Tabs, MiniTabs, MyPortfolio, MySkill, MyTimeLine, CreateMyIntro, CreateMySpaceUser, CreateMyExp } from "../components";
 import MyArtWork from "../components/Posts/MyArtWork";
+import { useTabs } from "../hooks";
 
-
+const array_sample = [
+{
+  tab: "내정보",
+  content: <CreateMySpaceUser />,
+},
+{
+  tab: "소개",
+  content: <CreateMyIntro />,
+},
+{
+  tab: "업무경험",
+  content: <CreateMyExp />,
+},
+{
+  tab: "포트폴리오",
+  content: <MyPortfolio />,
+},
+{
+  tab: "작업 및 직업스킬",
+  content: <MySkill />,
+},
+]
 
 
 const EditMySpace = (props) => {
 
   const [sideEdit, setSideEdit] = useToggle();
   let history = useHistory();
-
+  const {currentItem, changeItem} = useTabs(0, array_sample);
 
   return (
 <>
@@ -113,56 +135,31 @@ const EditMySpace = (props) => {
 
   </ul>
 
-  <div className="w-full grid grid-cols-5">
+  <div className="w-full grid">
     
 
-  <div className="tab-content col-start-1 col-span-5" id="tabs-tabContentVertical">
+  <div className="tab-content" id="tabs-tabContentVertical">
     <div className="tab-pane fade show active" id="tabs-homeVertical" role="tabpanel"
       aria-labelledby="tabs-home-tabVertical">
       
-      <div className="fixed top-20 right-4 bg-green-400 w-40 h-64">
-          여기가 정보 수정 박스
-          <br/>
-          프로그래스 바
-          <br />
-          내정보
-          <br />
-          소개
-          <br />
-          업무경험
-          <br />
-          포트폴리오
-          <br />
-          대표스킬 및 작업기간
+      <div className="fixed top-20 right-4 bg-green-400 w-40 h-64 z-50">
+        프로그래스바
+          {array_sample.map((arrays, index) => 
+      (
+        <div className="gird">
+
+        <div className=" bg-slate-300 rounded-md m-1 cursor-pointer text-xs md:text-sm" onClick={()=>changeItem(index)}>
+				{arrays.tab}</div>
+        </div>
+
+        ))}
+
           </div>
-          <div className="md:col-start-2 bg-yellow-100 col-span-4
-           grid h-full grid-rows-3 grid-cols-5 justify-items-center items-center">
-               <div className="col-start-2 row-start-1 col-span-3">
-               <Image size="5xl" />
-               </div>
-               
-                <div className="col-start-3 row-start-1 col-span-2">
-                <Input label="아이디" />
-                <Input label="이름"/>
-                <Input label="직업"/>
-                </div>
 
-                <div className="col-start-2 row-start-2 col-span-3 w-full">
-                연락처
-                <Input label="이메일" />
-                <Input label="링크드인"/>
-                <Input label="브런치"/>
-                <Input label="인스타"/>
-                </div>
 
-                <div className="col-start-2 row-start-3 col-span-3 w-full">
-                소개
-                <Input textarea />
-                </div>
-
-                <div className="col-start-5 row-start-4 col-span-2 w-full">
-                <Button>입력 완료!</Button>
-                </div>
+          <div className="bg-yellow-100 p-4 justify-items-center items-center">
+             <div>{currentItem.content}</div>
+              
 
                </div>
 

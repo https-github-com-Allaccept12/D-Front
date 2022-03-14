@@ -7705,6 +7705,11 @@ react-is@^17.0.1, react-is@^17.0.2:
   resolved "https://registry.npmjs.org/react-is/-/react-is-17.0.2.tgz"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-multi-select-component@^4.2.3:
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/react-multi-select-component/-/react-multi-select-component-4.2.3.tgz#ee8b5ee1bba6c67c38bb5bb6bbfefd2e8ef19d7d"
+  integrity sha512-NM8ZaSRXFxjWXSld41cg2k3AhEQhakTuPTQXpkkJHCfmgfwAkuKOxP7uAeMmBZcx6k12w8g3YsDVgz5mSXZvpA==
+
 react-redux@^7.2.6:
   version "7.2.6"
   resolved "https://registry.npmjs.org/react-redux/-/react-redux-7.2.6.tgz"

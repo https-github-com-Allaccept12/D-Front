@@ -32,8 +32,8 @@ hover:scale-105
 `;
 
 const MyArtWorkImage = tw.img`
-overflow-hidden object-cover object-center
-w-full rounded-md
+object-cover object-center
+w-full rounded-md absolute inset-0 h-full
 `;
 
 const Image = (props) => {

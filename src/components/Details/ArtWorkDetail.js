@@ -105,11 +105,11 @@ const ArtWorkDetail = (props) => {
     </div>
     <div className="fixed top-24 lg:right-12 xl:right-24 2xl:right-52">
       <div className="flex flex-row md:flex-col gap-1">
-            <button><Image /></button>
-            <button><Image /></button>
-            <button><Image /></button>
-            <button><Image /></button>
-            <button><Image /></button>
+      <button><Image />프로필</button>
+            <button><Image />팔로우</button>
+            <button><Image />좋아요</button>
+            <button><Image />스크랩</button>
+            <button><Image />구독하기</button>
             </div>
           </div>
 </>

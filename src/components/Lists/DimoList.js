@@ -4,7 +4,7 @@ import {MainSlider, AllList, AdjBar} from "../../components";
 
 
 
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import { useTabs } from "../../hooks";
 
@@ -61,6 +61,7 @@ const DimoList = (props) => {
 
       
     <div className="grid grid-cols-6">
+      
       <div className="fixed">
       {array_sample.map((arrays, index) => 
       (
@@ -71,10 +72,14 @@ const DimoList = (props) => {
         </div>
 
         ))}
+       
       </div>
       <div className="col-start-2 col-end-7">
       <MainSlider dimo />
-        <div className="fixed top-12"><AdjBar /></div> </div>
+        <div className="fixed top-12"><AdjBar /></div> 
+       
+       <Button><Link to="/createDimo">글쓰기</Link></Button>
+        </div>
 
       
       
