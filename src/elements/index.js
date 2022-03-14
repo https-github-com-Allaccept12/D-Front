@@ -9,12 +9,15 @@ import Permit from "./Common/Permit";
 import Modal from "./Tools/Modal";
 import CheckBox from "./Tools/CheckBox";
 import SelectBox from "./Tools/SelectBox";
+import SelectBoxFor12 from "./Tools/SelectBoxFor12"
 import DatePicker from "./Tools/DatePicker"
 import ImageBtn from "./Tools/ImageBtn";
 import DropDown from "./Tools/DropDown";
 import MultiSelect from "./Tools/MultiSelect";
 import Hashtag from "./Tools/Hashtag";
 
+
+
 // 저번 프젝에서 붙여넣은 거! 와이어프레임에 맞게 고칠예정
 
-export { Title, Text, Input, Button, Image, Intro, Spinner, Permit,  Modal, CheckBox, SelectBox, DatePicker, ImageBtn, DropDown, MultiSelect, Hashtag };
+export { Title, Text, Input, Button, Image, Intro, Spinner, Permit,  Modal, CheckBox, SelectBox, DatePicker, ImageBtn, DropDown, MultiSelect, Hashtag, SelectBoxFor12 };

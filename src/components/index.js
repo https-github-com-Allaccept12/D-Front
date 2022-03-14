@@ -22,6 +22,9 @@ import CreateMySpaceUser from "./CreateForm/CreateMySpaceUser";
 import CreateMyIntro from "./CreateForm/CreateMyIntro";
 import CreateMyExp from "./CreateForm/CreateMyExp";
 import InlineDetail from "./Details/InlineDetail";
+import Results from "./Tendency/Results";
+import TendencyTest from "./Tendency/TendencyTest";
+import MyInterests from "./Tendency/MyInterests";
+import DimoQNADetail from "./Details/DimoQNADetail"
 
-
-export { Header, NotFound, ArtWork, AllList, MainSlider, SideBar, AdjBar, MySpaceUser, MyExp, SocialLogin, ArtWorkDetail, DimoList, DimoWork, DimoDetail, Tabs, MiniTabs, MyPortfolio, MySkill, MyTimeLine, CreateMySpaceUser, CreateMyIntro, CreateMyExp, InlineDetail, MyArtWork};
+export { Header, NotFound, ArtWork, AllList, MainSlider, SideBar, AdjBar, MySpaceUser, MyExp, SocialLogin, ArtWorkDetail, DimoList, DimoWork, DimoDetail, Tabs, MiniTabs, MyPortfolio, MySkill, MyTimeLine, CreateMySpaceUser, CreateMyIntro, CreateMyExp, InlineDetail, MyArtWork, Results, TendencyTest, MyInterests, DimoQNADetail};

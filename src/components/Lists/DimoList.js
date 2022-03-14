@@ -65,7 +65,7 @@ const DimoList = (props) => {
       <div className="fixed">
       {array_sample.map((arrays, index) => 
       (
-        <div className="gird">
+        <div className="grid">
         <div className=" bg-slate-300 rounded-md m-1 cursor-pointer text-xs md:text-sm" onClick={()=>changeItem(index)}>
 				{arrays.tab}</div>
         
@@ -78,7 +78,7 @@ const DimoList = (props) => {
       <MainSlider dimo />
         <div className="fixed top-12"><AdjBar /></div> 
        
-       <Button><Link to="/createDimo">글쓰기</Link></Button>
+       <Button><Link to="/createdimo">글쓰기</Link></Button>
         </div>
 
       
