@@ -7,7 +7,8 @@ module.exports = {
     fontFamily: {
       'sanss': ['Festive', 'Noto Serif KR'],
       'sanss2': ['Poor Story', 'Noto Serif KR'],
-    }
+    },
+    
   },
   plugins: [
     require('tw-elements/dist/plugin')

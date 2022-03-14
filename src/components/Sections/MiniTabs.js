@@ -33,15 +33,20 @@ const MiniTabs = (props) => {
       text-xs
       leading-tight
       uppercase
-      border-x-0 border-t-0 border-b-2 border-transparent
+
+      active:bg-blue-200
+      focus-within:bg-blue-200
+      focus-visible:bg-blue-200
+
+      focus:bg-blue-200s
       px-6
       py-3
       my-2
-      hover:border-transparent hover:bg-gray-100
-      focus:border-transparent
+      mx-1
+      rounded-full
       active
     " id={tabnametag01} data-bs-toggle="pill" data-bs-target={tabnamelink01} role="tab" aria-controls={tabname01}
-      aria-selected="true">내 글</a>
+      aria-selected="true">Home</a>
   </li>
   <li className="nav-item" role="presentation">
     <a href={tabnamelink02} className="
@@ -51,14 +56,18 @@ const MiniTabs = (props) => {
       text-xs
       leading-tight
       uppercase
-      border-x-0 border-t-0 border-b-2 border-transparent
-      px-6
+      active:bg-blue-200
+      focus-within:bg-blue-200
+      focus-visible:bg-blue-200
+      target:bg-blue-200
+      default:bg-blue-200
+      px-3
       py-3
       my-2
-      hover:border-transparent hover:bg-gray-100
-      focus:border-transparent
+      mx-1
+      rounded-full
     " id={tabnametag02} data-bs-toggle="pill" data-bs-target={tabnamelink02} role="tab"
-      aria-controls={tabname02} aria-selected="false">내 댓글</a>
+      aria-controls={tabname02} aria-selected="false">Profile</a>
   </li>
   <li className="nav-item" role="presentation">
     <a href={tabnamelink03} className="
@@ -68,14 +77,17 @@ const MiniTabs = (props) => {
       text-xs
       leading-tight
       uppercase
-      border-x-0 border-t-0 border-b-2 border-transparent
-      px-6
+      active:bg-blue-200
+      focus-within:bg-blue-200
+      focus-visible:bg-blue-200
+
+      px-3
       py-3
       my-2
-      hover:border-transparent hover:bg-gray-100
-      focus:border-transparent
+      mx-1
+      rounded-full
     " id={tabnametag03} data-bs-toggle="pill" data-bs-target={tabnamelink03} role="tab"
-      aria-controls={tabname03} aria-selected="false">내가 스크랩한 글</a>
+      aria-controls={tabname03} aria-selected="false">Messages</a>
   </li>
 
 </ul>
