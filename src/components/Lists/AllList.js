@@ -41,6 +41,12 @@ const AllList = (props) => {
         {p.map(n => { return <DimoWork /> }) }
     </>
   );
+
+  if(b === "myspace") return (
+    <>
+        {p.map(n => { return <DimoWork /> }) }
+    </>
+  );
 };
 
 export default AllList;

@@ -43,7 +43,7 @@ id="tabs-tabJustify" role="tablist">
       focus:border-transparent
       active
     " id="tabs-home-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-homeJustify" role="tab"
-      aria-controls="tabs-homeJustify" aria-selected="true">Home</a>
+      aria-controls="tabs-homeJustify" aria-selected="true">QnA</a>
   </li>
   <li className="nav-item flex-grow text-center" role="presentation">
     <a href="#tabs-profileJustify" className="
@@ -63,7 +63,7 @@ id="tabs-tabJustify" role="tablist">
     " 
  
     id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-profileJustify" role="tab"
-      aria-controls="tabs-profileJustify" aria-selected="false">Very very very very long link</a>
+      aria-controls="tabs-profileJustify" aria-selected="false">정보 공유</a>
   </li>
 
 </ul>

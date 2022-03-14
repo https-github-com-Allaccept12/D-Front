@@ -145,13 +145,13 @@ tabname02="b" tabnametag02="b-tab" tabnamelink02="#b"
 tabname03="c" tabnametag03="c-tab" tabnamelink03="#c" />
 <div className="tab-content" id="tabs-tabContent">
   <div className="tab-pane fade show active" id="a" role="tabpanel" aria-labelledby="a-tab">
-    Tab 1 content
+    <AllList />
   </div>
   <div className="tab-pane fade" id="b" role="tabpanel" aria-labelledby="b-tab">
-    Tab 2 content
+    <AllList />
   </div>
   <div className="tab-pane fade" id="c" role="tabpanel" aria-labelledby="c-tab">
-    Tab 3 content
+    <AllList />
   </div>
 
 </div>
@@ -166,13 +166,13 @@ tabname02="bb" tabnametag02="bb-tab" tabnamelink02="#bb"
 tabname03="cc" tabnametag03="c-tab" tabnamelink03="#cc" />
 <div className="tab-content" id="tabs-tabContent">
   <div className="tab-pane fade show active" id="aa" role="tabpanel" aria-labelledby="aa-tab">
-    Tab 1 content
+    <AllList />
   </div>
   <div className="tab-pane fade" id="bb" role="tabpanel" aria-labelledby="bb-tab">
-    Tab 2 content
+    <AllList />
   </div>
   <div className="tab-pane fade" id="cc" role="tabpanel" aria-labelledby="cc-tab">
-    Tab 3 content
+    <AllList />
   </div>
    
   </div>
@@ -186,7 +186,7 @@ tabname03="cc" tabnametag03="c-tab" tabnamelink03="#cc" />
 
     <div className="tab-pane fade" id="tabs-forVertical" role="tabpanel"
       aria-labelledby="tabs-profile-tabVertical">
-      Tab 3 content vertical
+      <AllList />
     </div>
   </div>
 </div>

@@ -49,12 +49,15 @@ const Dimo = (props) => {
         
         정보공유
         </a>
+
+        
   </li>
  
 </ul>
 <div className="tab-content" id="tabs-tabContent">
   <div className="tab-pane fade show active" id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab">
    <DimoList />
+   
   </div>
   <div className="tab-pane fade" id="tabs-profile" role="tabpanel" aria-labelledby="tabs-profile-tab">
   <DimoList />

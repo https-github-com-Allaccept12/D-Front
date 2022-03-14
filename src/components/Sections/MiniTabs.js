@@ -41,7 +41,7 @@ const MiniTabs = (props) => {
       focus:border-transparent
       active
     " id={tabnametag01} data-bs-toggle="pill" data-bs-target={tabnamelink01} role="tab" aria-controls={tabname01}
-      aria-selected="true">Home</a>
+      aria-selected="true">내 글</a>
   </li>
   <li className="nav-item" role="presentation">
     <a href={tabnamelink02} className="
@@ -58,7 +58,7 @@ const MiniTabs = (props) => {
       hover:border-transparent hover:bg-gray-100
       focus:border-transparent
     " id={tabnametag02} data-bs-toggle="pill" data-bs-target={tabnamelink02} role="tab"
-      aria-controls={tabname02} aria-selected="false">Profile</a>
+      aria-controls={tabname02} aria-selected="false">내 댓글</a>
   </li>
   <li className="nav-item" role="presentation">
     <a href={tabnamelink03} className="
@@ -75,7 +75,7 @@ const MiniTabs = (props) => {
       hover:border-transparent hover:bg-gray-100
       focus:border-transparent
     " id={tabnametag03} data-bs-toggle="pill" data-bs-target={tabnamelink03} role="tab"
-      aria-controls={tabname03} aria-selected="false">Messages</a>
+      aria-controls={tabname03} aria-selected="false">내가 스크랩한 글</a>
   </li>
 
 </ul>
