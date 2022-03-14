@@ -4954,6 +4954,11 @@ globby@^11.0.1, globby@^11.0.4:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
+goober@^2.0.18:
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/goober/-/goober-2.1.8.tgz#e592c04d093cb38f77b38cfcb012b7811c85765e"
+  integrity sha512-S0C85gCzcfFCMSdjD/CxyQMt1rbf2qEg6hmDzxk2FfD7+7Ogk55m8ZFUMtqNaZM4VVX/qaU9AzSORG+Gf4ZpAQ==
+
 graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4, graceful-fs@^4.2.6, graceful-fs@^4.2.9:
   version "4.2.9"
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.9.tgz"
@@ -7821,6 +7826,13 @@ react-slick@^0.28.1:
     json2mq "^0.2.0"
     lodash.debounce "^4.0.8"
     resize-observer-polyfill "^1.5.0"
+
+react-tag-input-component@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/react-tag-input-component/-/react-tag-input-component-1.0.7.tgz#c6b5f922d68ba795e8c444bf87b546a5a4683626"
+  integrity sha512-V+RrdG2Kh/nmMqLqVjDIsl23OTSVksTViP1dzTvd0QlOQT7FUeTA9Pd5xFLR7hax0Dshj3wDt6Y3VRIKzH1j2A==
+  dependencies:
+    goober "^2.0.18"
 
 react-transition-group@^4.4.2:
   version "4.4.2"
