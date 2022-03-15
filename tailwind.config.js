@@ -20,6 +20,13 @@ module.exports = {
         'p06': '3.75rem',
         'p07': '2.5rem',
         'p08': '2rem',
+
+        'c01': '66.875rem',
+        'c02': '32.5rem',
+        'c03': '25rem',
+        'c04': '20rem',
+        'c05': '18.75rem',
+        'c06': '11.25rem',
       },
       height: {
         't01': '32.5rem',
@@ -36,6 +43,13 @@ module.exports = {
         'p06': '3.75rem',
         'p07': '2.5rem',
         'p08': '2rem',
+
+        'c01': '25rem',
+        'c02': '18.75rem',
+        'c03': '17.5rem',
+        'c04': '12.5rem',
+        'c05': '25rem',
+        'c06': '11.25rem',
       },
       colors: {
         dgray: {
@@ -73,8 +87,17 @@ module.exports = {
               boxShadow: undefined,
               borderColor: undefined,
             },
-          }
-        }
+            radio: {
+              'color': theme('colors.dpurple.200'),
+              '&:focus': {
+                outline: 'none',
+                '--ring-offset-shadow': undefined,
+                '--ring-shadow': undefined,
+              },
+            },
+          },
+        },
+          
       })
     },
     
@@ -112,7 +135,7 @@ module.exports = {
     container: false
   },
   plugins: [
-    // require('tw-elements/dist/plugin'),
+    require('tw-elements/dist/plugin'),
      require('@tailwindcss/custom-forms'),
   ],
 }

@@ -24,13 +24,14 @@ const RadioButton = (props) => {
       <label class="inline-flex items-center">
         <input type="radio" className="form-radio 
               text-dpurple-200 w-7 h-7
-              rounded-full border-2 hover:bg-dpurple-200
-              hover:border-0
-              active:border-0  
+              border-2
+              focus-visible:border-0
+              focus-within:border-0
+              rounded-full 
+              hover:bg-dpurple-200
               disabled:text-dgray-300 
-              disabled:bg-dgray-200 
-              disabled:border-0" name="radio" value="1" />
-        <span class="ml-2">Option 1</span>
+              disabled:bg-dgray-200" name="radio" value="1" />
+        <span class="ml-2">{inline}</span>
       </label>
     </div>
             </>
@@ -40,16 +41,19 @@ const RadioButton = (props) => {
     return (
         <>
 
-        <div>
               <label class="inline-flex items-center">
                 <input type="radio" className="form-radio 
                       text-dgray-600 w-7 h-7
-                      rounded-full border-2 hover:border-dgray-600 disabled:text-dgray-300 
+                      rounded-full border-2 hover:border-dgray-600 
+                      hover:bg-dgray-600
+                      focus-visible:border-0
+                      focus-within:border-0
+                      disabled:text-dgray-300 
                       disabled:bg-dgray-200 
                       disabled:border-0" name="radio" value="1" />
-                <span class="ml-2">Option 1</span>
+                <span class="ml-2">{inline}</span>
               </label>
-            </div>
+
                     </>
     )
     }
@@ -61,10 +65,13 @@ const RadioButton = (props) => {
               <label class="inline-flex items-center">
                 <input type="radio" className="form-radio 
                       text-dpurple-200 w-4 h-4
-                      rounded-full border-2 hover:border-dpurple-200 disabled:text-dgray-300 
+                      rounded-full border-2 hover:border-dpurple-200              
+                      focus-visible:border-0
+                      focus-within:border-0 
+                      disabled:text-dgray-300 
                       disabled:bg-dgray-200 
                       disabled:border-0" name="radio" value="1" />
-                <span class="ml-2">Option 1</span>
+                <span class="ml-2">{inline}</span>
               </label>
             </div>
                     </>
@@ -79,10 +86,13 @@ const RadioButton = (props) => {
               <label class="inline-flex items-center">
                 <input type="radio" className="form-radio 
                       text-dgray-600 w-4 h-4
-                      rounded-full border-2 hover:border-dgray-600 disabled:text-dgray-300 
+                      rounded-full border-2 hover:border-dgray-600     
+                      focus-visible:border-0
+                      focus-within:border-0
+                      disabled:text-dgray-300 
                       disabled:bg-dgray-200 
                       disabled:border-0" name="radio" value="1" />
-                <span class="ml-2">Option 1</span>
+                <span class="ml-2">{inline}</span>
               </label>
             </div>
                     </>
