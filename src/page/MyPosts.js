@@ -1,5 +1,5 @@
 import React from "react";
-import { Title, Subtitle, Text, Thumbnail, Profile, CheckBox, RadioButton } from "../elements";
+import { Title, Subtitle, Text, Thumbnail, Profile, CheckBox, RadioButton, Card } from "../elements";
 
 import { useHistory } from "react-router-dom";
 
@@ -14,6 +14,16 @@ const MyPosts = (props) => {
       <SocialLogin />
 
     </div>
+    <div className="flex flex-row flex-wrap w-5/6">
+        <Card size="1" src="https://press.ikidane-nippon.com/wordpress/wp-content/uploads/2019/03/key-1-1.jpg" />
+        <Card size="2" src="https://press.ikidane-nippon.com/wordpress/wp-content/uploads/2019/03/key-1-1.jpg" />
+        <Card size="3" src="https://press.ikidane-nippon.com/wordpress/wp-content/uploads/2019/03/key-1-1.jpg" />
+        <Card size="4" src="https://press.ikidane-nippon.com/wordpress/wp-content/uploads/2019/03/key-1-1.jpg" />
+        <Card size="5" src="https://press.ikidane-nippon.com/wordpress/wp-content/uploads/2019/03/key-1-1.jpg" />
+        <Card size="6" src="https://press.ikidane-nippon.com/wordpress/wp-content/uploads/2019/03/key-1-1.jpg" />
+        </div>
+
+    
     <CheckBox inline="저장" size="1" color="1"  />
     <CheckBox inline="저장dd" size="1" color="2"  />
     <CheckBox inline="저장" size="2" color="1" />
