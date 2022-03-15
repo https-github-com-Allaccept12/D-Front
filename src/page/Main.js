@@ -11,8 +11,8 @@ const Main = (props) => {
   const name = useInput("이름은최대10글자", maxLen);
   if (sessionStorage.getItem("access_token")) {
     setCookie("access_token", sessionStorage.getItem("access_token"), 7);
+    setCookie("refresh_token", sessionStorage.getItem("access_token"), 7);
   }
-  setCookie("refresh_token", sessionStorage.getItem("access_token"), 7);
   
 
   // dispatch(userActions.loginFB({...name}));
