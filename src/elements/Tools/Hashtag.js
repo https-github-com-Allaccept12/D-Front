@@ -1,24 +1,15 @@
 import React, { useState } from "react";
-import { TagsInput } from "react-tag-input-component";
+import ReactTagInput from "@pathofdev/react-tag-input";
+import "@pathofdev/react-tag-input/build/index.css";
 
 const Hashtag = (props) => {
-  const [selected, setSelected] = useState(["해시태그!"]);
-
+  const [tags, setTags] = React.useState(["example tag"])
   return (
-    <div className="bg-blue-300 p-1">
-      <h1>Add Fruits</h1>
-
-      <pre>{JSON.stringify(selected)}</pre>
-
-      <TagsInput
-        value={selected}
-        onChange={setSelected}
-        name="fruits"
-        placeHolder="enter fruits"
-      />
-      <em>press enter to add new tag</em>
-    </div>
-  );
+    <ReactTagInput 
+      tags={tags} 
+      onChange={(newTags) => setTags(newTags)}
+    />
+  )
 }
 
 export default Hashtag;
