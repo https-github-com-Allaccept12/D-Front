@@ -111,19 +111,19 @@ const CreateArtWork = (props) => {
                 <div className="col-start-1 row-start-3 col-span-5">
                 <p>카테고리</p>
 <div className="p-3 flex flex-row gap-5 flex-wrap justify-center items-center">
-    <CheckBox label="저장" checked />
-    <CheckBox label="디자인" checked />
-    <CheckBox label="디스플레이/디자인" checked />
-    <CheckBox label="저장" checked />
-    <CheckBox label="저장" checked />
-    <CheckBox label="저장" checked />
-    <CheckBox label="ux/ui 디자인" checked />
-    <CheckBox label="coffee디자인" checked />
-    <CheckBox label="저장" checked />
-    <CheckBox label="저장" checked />
-    <CheckBox label="저장" checked />
-    <CheckBox label="저장" checked />
-    <CheckBox label="저장" checked />
+    <CheckBox inline="저장" checked />
+    <CheckBox inline="디자인" checked />
+    <CheckBox inline="디스플레이/디자인" checked />
+    <CheckBox inline="저장" checked />
+    <CheckBox inline="저장" checked />
+    <CheckBox inline="저장" checked />
+    <CheckBox inline="ux/ui 디자인" checked />
+    <CheckBox inline="coffee디자인" checked />
+    <CheckBox inline="저장" checked />
+    <CheckBox inline="저장" checked />
+    <CheckBox inline="저장" checked />
+    <CheckBox inline="저장" checked />
+    <CheckBox inline="저장" checked />
 
 </div>
 
