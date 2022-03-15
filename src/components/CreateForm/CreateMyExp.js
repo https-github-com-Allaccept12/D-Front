@@ -2,7 +2,6 @@ import React from "react";
 import { Button, Image, Input, CheckBox } from "../../elements";
 
 import { useHistory } from "react-router-dom";
-import { Checkbox } from "@mui/material";
 
 
 const CreateMySpaceUser = (props) => {
@@ -24,7 +23,7 @@ const CreateMySpaceUser = (props) => {
 
                 <div className="row-start-4 col-start-1 col-end-3">
                 <Input label="기간"/>
-                <CheckBox label="현재 재직중" checked />
+                <CheckBox inline="현재 재직중" />
                 </div>
                 <div className="row-start-4 col-start-3 col-end-6">
                 <Input label="기간"/>

@@ -25,6 +25,7 @@ const Main = (props) => {
           </div>
       
       <div className="grid">
+
       <div className="grid md:grid-cols-6 col-start-1 text-2xl px-4 pt-4">추천 아트워크</div>
       <AllList />
       </div>

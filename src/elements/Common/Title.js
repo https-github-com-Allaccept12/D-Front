@@ -2,21 +2,27 @@ import React from "react";
 import tw from "tailwind-styled-components"
 
 const TitleText = tw.div`
-  font-sanss2 ml-2 text-xl font-bold tracking-wide text-gray-100
-  cursor-pointer underline decoration-gray-100
+${(props) => (props.size === "1" ? `font-minB text-5xl` : "")};
+${(props) => (props.size === "2" ? `font-minB text-4xl` : "")};
+${(props) => (props.size === "3" ? `font-minB text-3xl` : "")};
+${(props) => (props.size === "4" ? `font-minB text-2xl` : "")};
+${(props) => (props.size === "5" ? `font-minB text-xl` : "")};
+${(props) => (props.size === "6" ? `font-min1 text-xl` : "")};
+
 `;
 
 const Title = (props) => {
-  const { children, onClick } =
+  const { children, onClick, size } =
   props;
 
 
-  return <TitleText onClick={onClick} >{children}</TitleText>;
+  return <TitleText onClick={onClick} size={size} >{children}</TitleText>;
 };
 
 Title.defaultProps = {
   children: null,
   onClick: () => {},
+  size: 3,
 };
 
 
