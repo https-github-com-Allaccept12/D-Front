@@ -12,10 +12,12 @@ export default class userApi {
     };
     return axios(kakaoLoginConfig)
       .then(res => {
-        console.log(res.data.result)
+        console.log(res.data)
         if (res.data.result === 'success') {
-        //   navigate("/", {replace:true})
-          // history.push('/');
+          let access_token = res.data.data.access_token;
+          let refresh_token = res.data.data.refresh_token;
+          sessionStorage.setItem("access_token", access_token);
+          sessionStorage.setItem("refresh_token", refresh_token);
           window.location.replace("/")
           return (res.data);
         };

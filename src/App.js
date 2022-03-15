@@ -1,7 +1,7 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
 import {Header, NotFound, TendencyTest, Results, MyInterests, DimoDetail, DimoQNADetail } from "./components";
-import {Main, ArtWork, Dimo, MySpace, MyPosts, CreateArtWork, CreateProfile, KakaoRedirectHandler, EditMySpace, CreateDimo } from "./page";
+import {Main, ArtWork, Dimo, MySpace, MyPosts, CreateArtWork, CreateProfile, KakaoRedirectHandler, LogOut, EditMySpace, CreateDimo } from "./page";
 
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
             <Route exact path="/dimoqnadetail" component={DimoQNADetail} />
             <Route path="/user/kakao/callback" component={KakaoRedirectHandler}/>
             <Route exact path="/Main" component={Main} />
-            <Route component={NotFound} />
+            <Route exact path="/logout" component={LogOut} />
         </Switch>
     </div>
   );
