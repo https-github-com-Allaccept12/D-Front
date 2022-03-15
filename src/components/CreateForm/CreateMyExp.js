@@ -23,9 +23,6 @@ const CreateMySpaceUser = (props) => {
                 <Input label="인스타"/>
                 </div>
 
-                <div className="col-start-5 row-start-4 col-span-2 w-full">
-                <Button>입력 완료!</Button>
-                </div>
 
 
     </>

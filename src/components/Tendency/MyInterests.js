@@ -1,15 +1,20 @@
 import React from "react";
 import { Button, Image } from "../../elements";
 
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link,  useLocation } from "react-router-dom";
 
 
 const NotFound = (props) => {
   let history = useHistory();
+  const location = useLocation();
+  const a = location.pathname
   return (
 <div className="grid bg-yellow-400 w-full max-h-screen">
   
-<button className="col-start-5 row-start-1"><Link to="/createprofile">다음으로 넘어가기</Link></button>
+{!a === "/editmyspace" ?
+  <button className="col-start-5 row-start-1"><Link to="/createprofile">다음으로 넘어가기</Link>
+  </button>
+  : ""}
 <div className=" p-4 w-full h-screen bg-yellow-500 row-start-3 col-end-6
 grid">
     <div className="">
