@@ -1,32 +1,51 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import {axios} from 'axios';
+import userApi from './userApi';
 
+const UserApi = new userApi();
 
-export const kakaoLogin = createAsyncThunk(
-    'user/kakaoLogin',
-    async (data, thunkAPI) => {
-      await axios
-        .get(`http://13.125.123.134/oauth2/authorization/kakao/callback?code=${data}`)
-        .then(res => {
-          alert('로그인 완료');
-          console.log(res);
-          sessionStorage.setItem('userInfo', JSON.stringify(res.data));
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-  );
+const userState = {
+  user: {},
+  isLogin: false,
+};
+
+export const kakaoLoginAxios = createAsyncThunk(
+  "user/kakaoLoginAxios",
+  async ({code, navigate}, {dispatch}) => {
+    const user = await UserApi.kakaoLogin({code, navigate});
+    if (user) {
+      dispatch(user.data);
+      return user;
+    }
+  },
+);
+
+// export const kakaoLogin = createAsyncThunk(
+//     'user/kakaoLogin',
+//     async (data, thunkAPI) => {
+//       console.log(data);
+//       await axios
+//         .get(`http://keykim.shop/oauth2/authorization/kakao/callback?code=${data}`)
+//         .then(res => {
+//           alert('로그인 완료');
+//           console.log(res);
+//           sessionStorage.setItem('userInfo', JSON.stringify(res.data));
+//         })
+//         .catch(err => {
+//           console.log(err);
+//         });
+//     },
+//   );
 
 export const userSlice = createSlice({
-    
-    name: "user",
-    initialState: { value: {name: "", age: 0, email: ""}},
-    reducers: {
-        login: (state, action) => {
-            state.value = action.payload
-        },
-    },
+  name: 'user',
+  initialState: userState,
+  reducer: {},
+  extraReducers: builder => {
+    builder
+      .addCase(kakaoLoginAxios.fulfilled, (state, action) => {
+        state.isLogin = true;
+      })
+  },
 });
 
 export default userSlice.reducer;

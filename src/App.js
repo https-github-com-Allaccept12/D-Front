@@ -23,7 +23,8 @@ function App() {
             <Route exact path="/createdimo" component={CreateDimo} />
             <Route exact path="/dimodetail" component={DimoDetail} />
             <Route exact path="/dimoqnadetail" component={DimoQNADetail} />
-            {/* <Route exact path="/user/kakao/callback" component={KakaoRedirectHandler}/> */}
+            <Route path="/user/kakao/callback" component={KakaoRedirectHandler}/>
+            <Route exact path="/Main" component={Main} />
             <Route component={NotFound} />
         </Switch>
     </div>
