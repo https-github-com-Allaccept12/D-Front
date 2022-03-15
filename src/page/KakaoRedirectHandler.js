@@ -14,15 +14,10 @@ const KakaoRedirectHandler = props => {
   const code = new URL(window.location.href).searchParams.get('code');
   console.log('code:', code);
 
-  // useEffect(async () => {
-  //   await dispatch(kakaoLogin(code));
-  // }, 
-  // [dispatch]);
   useEffect(() => {
     dispatch(kakaoLoginAxios({code, history}))
   })
 
-  // return (<></>);
   return 'wait a minute';
 };
 

@@ -16,7 +16,6 @@
     "@testing-library/user-event": "^13.2.1",
     "axios": "^0.26.0",
     "dotenv": "^16.0.0",
-    "history": "^5.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-login": "^5.2.2",
@@ -56,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
     "autoprefixer": "^10.4.2",
     "postcss": "^8.4.8",
     "tailwind-styled-components": "^2.1.4",

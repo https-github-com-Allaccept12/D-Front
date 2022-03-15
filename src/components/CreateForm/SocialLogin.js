@@ -3,7 +3,7 @@ import { Button } from "../../elements";
 
 import { useHistory } from "react-router-dom";
 import { KAKAO_AUTH_URL } from "../../shared/OAuth";
-import { GOOGLE_AUTH_URL } from "../../shared/GoogleOAuth";
+// import { GOOGLE_AUTH_URL } from "../../shared/GoogleOAuth";
 import KakaoBtn from "./kakao_button.png";
 // import GoogleLogin from 'react-google-login';
 
@@ -26,22 +26,10 @@ const SocialLogin = (props) => {
         <a href={KAKAO_AUTH_URL}>
           <img src={KakaoBtn}/>
         </a>
-        <a href={GOOGLE_AUTH_URL}>
+        {/* <a href={GOOGLE_AUTH_URL}>
           구글 로그인
-        </a>
-      {/* <Button>
-          구글로 로그인
-      </Button> */}
-      {/* <GoogleLogin
-        clientId="519093450264-n3cm4m0h2d95gpipnigtt2erhotp7l58.apps.googleusercontent.com"
-        buttonText="Login"
-        onSuccess={successGoogle}
-        onFailure={failGoogle}
-        cookiePolicy={'single_host_origin'}
-        /> */}
-        {/* <button id="login-google-btn" 
-        onClick="location.href='https://accounts.google.com/o/oauth2/v2/auth?scope=email%20profile%20openid&response_type=code&state=security_token%3D138r5719ru3e1%26url%3Dhttps://oauth2.example.com/token&client_id=519093450264-n3cm4m0h2d95gpipnigtt2erhotp7l58.apps.googleusercontent.com&redirect_uri=http://localhost:8081/user/google/callback&access_type=offline'"> 구글로 로그인하기 </button> */}
-    </div>
+        </a> */}
+      </div>
   );
 };
 
