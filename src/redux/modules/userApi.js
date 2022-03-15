@@ -12,23 +12,24 @@ export default class userApi {
     };
     return axios(kakaoLoginConfig)
       .then(res => {
-        console.log(res.data)
-        if (res.data.data.login === true) {
+        console.log(res.data.result)
+        if (res.data.result === 'success') {
         //   navigate("/", {replace:true})
-          history.replace('/');
+          // history.push('/');
+          window.location.replace("/")
           return (res.data);
         };
-        if (res.data.data.login === false) {
-          history.replace(
-            "/", {
-              state : {
-                kakaoId: res.data.data.kakaoMemberInfo.kakaoId,
-                email: res.data.data.kakaoMemberInfo.email,
-                profileImage: res.data.data.kakaoMemberInfo.profileImage
-              }
-            }
-          )
-        };
+        // if (res.data.data.login === false) {
+        //   history.replace(
+        //     "/", {
+        //       state : {
+        //         kakaoId: res.data.data.kakaoMemberInfo.kakaoId,
+        //         email: res.data.data.kakaoMemberInfo.email,
+        //         profileImage: res.data.data.kakaoMemberInfo.profileImage
+        //       }
+        //     }
+        //   )
+        // };
       })
       .catch(err => console.log(err.response));
   }
