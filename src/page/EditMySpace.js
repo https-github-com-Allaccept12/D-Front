@@ -50,7 +50,7 @@ const EditMySpace = (props) => {
     
 
  
-      <div className="bg-green-400 w-full h-64 z-50 col-start-6">
+      <div className="bg-green-400 w-full h-64 z-50 col-start-6 sticky">
         프로그래스바
           {array_sample.map((arrays, index) => 
       (
@@ -67,9 +67,14 @@ const EditMySpace = (props) => {
 
           <div className="bg-yellow-100 p-4 justify-items-center items-center
           row-start-1 col-span-5 col-end-6">
+  <div className="row-start-1 col-start-1 col-end-5 col-span-5">
+    기본정보 수정
+    <hr className="border-4" />
+  </div>
              <div>{currentItem.content}</div>
-              
+             <hr className="border-4 my-5" />
             <div className="flex flex-row justify-end">
+
               <Button>버튼</Button>
               <Button>버튼</Button>
             </div>
