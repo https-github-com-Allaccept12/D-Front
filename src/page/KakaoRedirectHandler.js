@@ -1,7 +1,7 @@
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { kakaoLoginAxios } from '../redux/modules/user';
 import { setCookie } from "../shared/cookie";
 
