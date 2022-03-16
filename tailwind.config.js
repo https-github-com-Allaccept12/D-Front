@@ -54,6 +54,10 @@ module.exports = {
 
         'b01': '3.75rem',
         'b02': '2.625rem',
+
+        'I01': '3.5rem',
+        'I02': '7.5rem',
+        'I03': '13.75rem',
       },
       colors: {
         dgray: {

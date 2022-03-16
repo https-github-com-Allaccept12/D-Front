@@ -80,7 +80,15 @@ const Button = (props) => {
     size={size} color={color} styles={styles}
     onClick={onClick} disabled={disabled}  
     is_loading={is_loading}>
-     {icon && <IconColor iconColor={iconColor}><Icon name={name} iconSize={iconSize}/></IconColor>} {children}
+    
+     {icon && 
+     <IconColor iconColor={iconColor}>
+       <Icon name={name} iconSize={iconSize}/>
+       </IconColor>
+       } 
+       
+       {children}
+
     </Btn>
   );
 };
@@ -90,7 +98,7 @@ Button.defaultProps = {
   color: "1",
   children: null,
   onClick: () => {},
-
+  iconColor: ""
 };
 
 export default Button;
