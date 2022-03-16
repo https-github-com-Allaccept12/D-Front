@@ -27,6 +27,7 @@ module.exports = {
         'c04': '20rem',
         'c05': '18.75rem',
         'c06': '11.25rem',
+
       },
       height: {
         't01': '32.5rem',
@@ -50,6 +51,9 @@ module.exports = {
         'c04': '12.5rem',
         'c05': '25rem',
         'c06': '11.25rem',
+
+        'b01': '3.75rem',
+        'b02': '2.625rem',
       },
       colors: {
         dgray: {
