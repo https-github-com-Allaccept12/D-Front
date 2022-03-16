@@ -19,7 +19,7 @@ import DropDown from "./Tools/DropDown";
 import MultiSelect from "./Tools/MultiSelect";
 import Hashtag from "./Tools/Hashtag";
 import Card from "./Common/Card";
-import Icon from "./Common/Icon"
+import Icon from "./Common/Icon";
 
 
 export { Title, Subtitle, Text, Input, Button, Image, Intro, Spinner, Permit,  Modal, CheckBox, SelectBox, ImageBtn, DropDown, MultiSelect, Hashtag, SelectBoxFor12, Thumbnail, Profile, RadioButton, Card, Icon };

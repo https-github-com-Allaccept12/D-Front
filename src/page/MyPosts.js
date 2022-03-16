@@ -1,12 +1,16 @@
 import React from "react";
-import { Title, Subtitle, Text, Thumbnail, Profile, CheckBox, RadioButton, Card, Icon, Button } from "../elements";
+import { Title, Subtitle, Text, Thumbnail, Profile, CheckBox, RadioButton, Card, Icon, Button, Input } from "../elements";
 
 import { useHistory } from "react-router-dom";
-
+import {useInput} from "../hooks"
 import { SocialLogin } from "../components";
 
 const MyPosts = (props) => {
   let history = useHistory();
+
+  const validMaxLen = (value) => value.length <= 10;
+  const validNoInputString = (value) => !value.includes("#");
+  const name = useInput("", [validMaxLen]);
   return (
     <>
     <div className="flex flex-col p-3 justify-center items-center">
@@ -14,6 +18,13 @@ const MyPosts = (props) => {
       <SocialLogin />
 
     </div>
+
+    <div><Input title="인풋이다" value={name.value} onChange={name.onChange} is_error={name.errors} is_value={name.value.length} maxLen="10" />
+
+    <div><Input textarea size="2" title="인풋이다" value={name.value} onChange={name.onChange} is_error={name.errors} is_value={name.value.length} maxLen="10" /></div>
+    </div>
+
+
     <div className="flex flex-row w-3/4 flex-wrap gap-3">
     <Button size="1" color="1">버튼버튼</Button>
     <Button size="2" color="2">버튼버튼</Button>
@@ -30,7 +41,7 @@ const MyPosts = (props) => {
     <Button size="2" color="6" 
     icon name="HeartF" iconSize="16" iconColor="heart">버튼버튼</Button>
     </div>
-    <div className="flex flex-row w-3/4 flex-wrap">
+    <div className="flex flex-row w-3/4 flex-wrap ">
     <Icon name="ArrowL" iconSize="16" />
     <Icon name="ArrowR" iconSize="32" />
     <Icon name="BookmarkE" iconSize="16" />

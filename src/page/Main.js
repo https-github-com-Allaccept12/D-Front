@@ -1,14 +1,10 @@
 import React from "react";
-import { Button, Input, Container, Text, Title, Grid } from "../elements";
+import { Button, Input } from "../elements";
 import { AllList, MainSlider, SideBar } from "../components";
-import { useHistory } from "react-router-dom";
-import { useInput } from "../hooks";
 import { setCookie } from "../shared/cookie";
 
 const Main = (props) => {
-  const noEmail = v => !v.includes("@");
-  const maxLen = v => v.length < 10;
-  const name = useInput("이름은최대10글자", maxLen);
+
   if (sessionStorage.getItem("access_token")) {
     setCookie("access_token", sessionStorage.getItem("access_token"), 7);
     setCookie("refresh_token", sessionStorage.getItem("access_token"), 7);
