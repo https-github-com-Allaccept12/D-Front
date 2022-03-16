@@ -11,43 +11,25 @@ const Header = (props) => {
 
   React.useEffect(() => {
     let cookie = getCookie("access_token");
-    console.log(cookie);
     if(cookie){
       setIsLogin(true);
     }else{
       setIsLogin(false);
     }
   })
-  if (is_login) {
     return (
-      <div className="grid grid-cols-9 bg-slate-800 justify-items-center items-center">
+      <div className="grid items-center grid-cols-9 bg-slate-800 justify-items-center">
         <div className="flex-shrink-0"><Image /></div>
         <Title><Link to="/">홈</Link></Title>
         <Title><Link to="/artwork">Artwork</Link></Title>
         <Title><Link to="/dimo">Dimo</Link></Title>
         <Title><Link to="/myspace">MySpace</Link></Title>
-        <Title><Link to="/logout">로그아웃</Link></Title>
+        {is_login ? <Title><Link to="/logout">로그아웃</Link></Title> : <Title><Link to="/myposts">logins</Link></Title>}
         <Title><Link to="/createart">make</Link></Title>
         <Title><Link to="/tendencytest">cre!</Link></Title>
         <GoogleIcon />
         </div>
   );
-  }else{
-    return (
-      <div className="grid grid-cols-9 bg-slate-800 justify-items-center items-center">
-        <div className="flex-shrink-0"><Image /></div>
-        <Title><Link to="/">홈</Link></Title>
-        <Title><Link to="/artwork">Artwork</Link></Title>
-        <Title><Link to="/dimo">Dimo</Link></Title>
-        <Title><Link to="/myspace">MySpace</Link></Title>
-        <Title><Link to="/myposts">logins</Link></Title>
-        <Title><Link to="/createart">make</Link></Title>
-        <Title><Link to="/tendencytest">cre!</Link></Title>
-        <GoogleIcon />
-        </div>
-        
-  );
-  }
 
   
 };
