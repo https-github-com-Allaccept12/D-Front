@@ -1,20 +1,28 @@
-import React from "react";
+import React, {useState} from "react";
 import { Button } from "../../elements";
 
 import { useHistory, Link } from "react-router-dom";
 
-
 const NotFound = (props) => {
-  let history = useHistory();
+  const [TestNum, nextTestNum] = useState(0);
+  console.log(TestNum);
+
   return (
-<div className="grid grid-cols-7 grid-rows-4 bg-yellow-400 w-full max-h-screen">
-  <div className="row-start-2 col-start-4">질문 : 성향테스트</div>
-<div className="row-start-3 col-start-4">
-  <div>답 : 11</div>
-  <div>답 : 11</div>
-</div>
-<button className="col-start-5"><Link to="/results">다음으로 넘어가기</Link></button>
-</div>
+    <div className="grid w-full max-h-screen grid-cols-7 grid-rows-6 bg-yellow-400">
+      <div className="col-start-4 row-start-2">디자이너 성향테스트</div>
+      <div className="col-start-4 row-start-3">
+        <div>나의 디자인 성향은?</div>
+        <div>1분이면 성향 확인 가능!</div>
+      </div>
+      <div className="col-start-4 row-start-5">
+          <Button size="2" color="3" onClick={()=>{nextTestNum(TestNum + 1)}}>
+            시작하기
+          </Button>
+      </div>
+      <div className="col-start-7 row-start-6">
+        <Link to="/results">다음에 하기</Link>
+      </div>
+    </div>
   );
 };
 
