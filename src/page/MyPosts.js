@@ -3,7 +3,7 @@ import { Title, Subtitle, Text, Thumbnail, Profile, CheckBox, RadioButton, Card,
 
 import { useHistory } from "react-router-dom";
 import {useInput} from "../hooks"
-import { SocialLogin } from "../components";
+import SocialLogin from "../shared/SocialLogin";
 
 const MyPosts = (props) => {
   let history = useHistory();
