@@ -3,9 +3,9 @@ import { useHistory } from 'react-router-dom';
 
 export default class userApi {
   
-  constructor() {
-    this.base = process.env.REACT_APP_SERVER;
-  }
+  // constructor() {
+  //   this.base = process.env.REACT_APP_SERVER;
+  // }
 
   async kakaoLogin({code}) {
     const kakaoLoginConfig = {
@@ -20,6 +20,7 @@ export default class userApi {
           let refresh_token = res.data.data.refresh_token;
           sessionStorage.setItem("access_token", access_token);
           sessionStorage.setItem("refresh_token", refresh_token);
+          window.location.href = "/";
         };
         // if (res.data.data.login === false) {
         //   history.replace(
