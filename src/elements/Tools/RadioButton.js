@@ -23,7 +23,7 @@ const RadioButton = (props) => {
 <div>
       <label class="inline-flex items-center">
         <input type="radio" className="form-radio 
-              text-dpurple-200 w-7 h-7
+              text-dpurple-200 w-7 h-7 font-min2
               border-2
               focus-visible:border-0
               focus-within:border-0
@@ -43,7 +43,7 @@ const RadioButton = (props) => {
 
               <label class="inline-flex items-center">
                 <input type="radio" className="form-radio 
-                      text-dgray-600 w-7 h-7
+                      text-dgray-600 w-7 h-7 font-min2
                       rounded-full border-2 hover:border-dgray-600 
                       hover:bg-dgray-600
                       focus-visible:border-0
@@ -64,7 +64,7 @@ const RadioButton = (props) => {
         <div>
               <label class="inline-flex items-center">
                 <input type="radio" className="form-radio 
-                      text-dpurple-200 w-4 h-4
+                      text-dpurple-200 w-4 h-4 font-min2
                       rounded-full border-2 hover:border-dpurple-200              
                       focus-visible:border-0
                       focus-within:border-0 
@@ -85,7 +85,7 @@ const RadioButton = (props) => {
         <div>
               <label class="inline-flex items-center">
                 <input type="radio" className="form-radio 
-                      text-dgray-600 w-4 h-4
+                      text-dgray-600 w-4 h-4 font-min2
                       rounded-full border-2 hover:border-dgray-600     
                       focus-visible:border-0
                       focus-within:border-0

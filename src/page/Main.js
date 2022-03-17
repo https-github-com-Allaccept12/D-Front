@@ -13,8 +13,10 @@ const Main = (props) => {
 
   // dispatch(userActions.loginFB({...name}));
   return (
-    <div>
-        <div className="grid grid-rows-3 p-2 bg-red-200 md:grid-cols-10">
+    <div className="grid w-full">
+        <div className="grid grid-rows-3 p-2 bg-red-200 
+        grid-cols-4
+        md:grid-cols-10">
         <div className="col-span-2 col-start-1 row-start-2 p-2 font-sanss2 md:pl-10">
           <p>Hot 디자이너</p>
           <p>현재 가장 많은 관심을 받은 디자이너님들을 소개합니다</p>

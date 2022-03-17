@@ -3,11 +3,13 @@ import { Grid, Title, Image, Text, Input } from "../../elements";
 
 
 import { useHistory, Link } from "react-router-dom";
+import {ArtWork, DimoWork } from "..";
 
 
-const MainSlide = (props) => {
+const Slides = (props) => {
+  const { main, artwork, dimo } = props;
   let history = useHistory();
-  return (
+  if(main) return (
     <>
      <div className="flex flex-col items-center justify-center max-w-sm mx-auto">
         <div className="w-full h-64 bg-transparent bg-center bg-cover rounded-lg">
@@ -29,6 +31,20 @@ const MainSlide = (props) => {
     </div>
     </>
   );
+  if(artwork) return (
+      <>
+      <div className="max-w-sm py-2 mx-auto mt-4 bg-white rounded-lg shadow-lg dark:bg-gray-800 font-sanss2">
+          <Image shape="big_square" />
+      </div>
+      
+      </>
+  );
+
+  if(dimo) return (
+    <>
+    <DimoWork size="3" />
+    </>
+  );
 };
 
-export default MainSlide;
+export default Slides;

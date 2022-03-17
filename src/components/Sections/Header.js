@@ -22,10 +22,10 @@ const Header = (props) => {
         <div className="flex-shrink-0"><Image /></div>
         <Title><Link to="/">홈</Link></Title>
         <Title><Link to="/artwork">Artwork</Link></Title>
-        <Title><Link to="/dimo">Dimo</Link></Title>
+        <Title><Link to="/dimoqna">Dimo</Link></Title>
         <Title><Link to="/myspace">MySpace</Link></Title>
         {is_login ? <Title><Link to="/logout">로그아웃</Link></Title> : <Title><Link to="/myposts">logins</Link></Title>}
-        <Title><Link to="/createart">make</Link></Title>
+        
         <Title><Link to="/tendencytest">cre!</Link></Title>
         <GoogleIcon />
         </div>

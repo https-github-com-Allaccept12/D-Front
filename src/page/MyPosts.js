@@ -19,9 +19,10 @@ const MyPosts = (props) => {
 
     </div>
 
-    <div><Input title="인풋이다" value={name.value} onChange={name.onChange} is_error={name.errors} is_value={name.value.length} maxLen="10" />
+    <div className="">
+      <Input title="인풋이다" value={name.value} onChange={name.onChange} is_error={name.errors} is_value={name.value.length} maxLen="10" />
 
-    <div><Input textarea size="2" title="인풋이다" value={name.value} onChange={name.onChange} is_error={name.errors} is_value={name.value.length} maxLen="10" /></div>
+   <Input textarea cardSize="3" title="인풋이다" value={name.value} onChange={name.onChange} is_error={name.errors} is_value={name.value.length} maxLen="10" />
     </div>
 
 
@@ -68,8 +69,15 @@ const MyPosts = (props) => {
 
     
     <div className="flex flex-row flex-wrap w-5/6">
-        <Card size="1" src="https://press.ikidane-nippon.com/wordpress/wp-content/uploads/2019/03/key-1-1.jpg" />
-        <Card size="2" src="https://press.ikidane-nippon.com/wordpress/wp-content/uploads/2019/03/key-1-1.jpg" />
+        <Card size="1" types="text"><span className="font-min1 text-5xl ">1</span></Card>
+        <Card size="2" types="text"><span className="font-min1 text-5xl ">2</span></Card>
+        <Card size="3" types="text"><span className="font-min1 text-5xl ">3</span></Card>
+        <Card size="4" types="text"><span className="font-min1 text-5xl ">4</span></Card>
+        <Card size="5" types="text"><span className="font-min1 text-5xl ">5</span></Card>
+        <Card size="6" types="text"><span className="font-min1 text-5xl ">6</span></Card>
+  
+        <Card size="1" types="image" src="https://press.ikidane-nippon.com/wordpress/wp-content/uploads/2019/03/key-1-1.jpg" />
+        <Card size="2" types="image" src="https://press.ikidane-nippon.com/wordpress/wp-content/uploads/2019/03/key-1-1.jpg" />
         <Card size="3" src="https://press.ikidane-nippon.com/wordpress/wp-content/uploads/2019/03/key-1-1.jpg" />
         <Card size="4" src="https://press.ikidane-nippon.com/wordpress/wp-content/uploads/2019/03/key-1-1.jpg" />
         <Card size="5" src="https://press.ikidane-nippon.com/wordpress/wp-content/uploads/2019/03/key-1-1.jpg" />

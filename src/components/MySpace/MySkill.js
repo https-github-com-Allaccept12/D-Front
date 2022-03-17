@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image, Container, MultiSelect } from "../../elements";
+import { Button, Image, Container, MultiSelect, Thumbnail } from "../../elements";
 
 import { useHistory } from "react-router-dom";
 
@@ -13,22 +13,22 @@ const MySkill = (props) => {
         <div>MY SKILLS</div>
         <hr className="w-full border-4" /> 
         <MultiSelect title="대표스킬" />
-        <ol className="grid grid-cols-5 border-l border-gray-200 dark:border-gray-700 mb-10">         
+        <ol className="grid grid-cols-3 md:grid-cols-5 border-l border-gray-200 dark:border-gray-700 mb-10">         
 
     <li className="justify-items-center items-center">
-        <Image />
+    <Thumbnail size="5" />
     </li>
     <li className="">
-        <Image />
+    <Thumbnail size="5" />
     </li>   
     <li className="">
-    <Image />
+    <Thumbnail size="5" />
     </li>   
     <li className="">
-    <Image />
+    <Thumbnail size="5" />
     </li>
     <li className="">
-    <Image />
+    <Thumbnail size="5" />
     </li>
 </ol>
 

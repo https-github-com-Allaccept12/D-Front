@@ -1,8 +1,8 @@
 import React from "react";
-import {  Image, Input, CheckBox, SelectBox, MultiSelect, SelectBoxFor12 } from "../elements";
+import {  Image, Input, CheckBox, SelectBox, MultiSelect, SelectBoxFor12 } from "../../elements";
 
 import { useHistory } from "react-router-dom";
-import { ImageBtn } from "../elements";
+import { ImageBtn } from "../../elements";
 
 
 const CreateArtWork = (props) => {
@@ -98,17 +98,18 @@ const CreateArtWork = (props) => {
           className="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
           data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div className="modal-body grid p-4 w-full h-96 bg-yellow-500
+      <div className="modal-body grid p-4 w-full h-96 bg-yellow-500 grid-rows-6
       grid-cols-3 overflow-y-scroll">
-          <div className="fixed">
+          <div className="invisible md:visible md:fixed">
           <Image shape="big_square"/>
           </div>
-          <div className="start-col-2 col-end-4 bg-yellow-100 col-span-2
-           grid grid-cols-5 grid-rows-10 h-screen">
-            <div className="col-start-2 row-start-2 col-span-3">
-                <Input label="이미지제목"/>
+          <div className="col-start-1 row-start-1 md:col-start-2 col-end-4 bg-yellow-100 col-span-2
+           grid grid-cols-6 grid-rows-10 h-screen
+           items-center">
+            <div className="col-start-2 row-start-1 col-end-6 col-span-4">
+                <Input title="타이틀" label="이미지제목"/>
                 </div>
-                <div className="col-start-1 row-start-3 col-span-5">
+                <div className="col-start-2 row-start-2 col-span-4">
                 <p>카테고리</p>
 <div className="p-3 flex flex-row gap-5 flex-wrap justify-center items-center">
     <CheckBox inline="저장" checked />
@@ -129,13 +130,13 @@ const CreateArtWork = (props) => {
 
 </div>
 
-<div className="col-start-1 row-start-4 col-span-4">
+<div className="col-start-2 col-span-4">
 여기에 사용 툴
 <MultiSelect />
 
 </div>
 
-<div className="col-start-1 row-start-5 col-span-2">
+<div className="col-start-2 row-start-4 col-span-2">
 시작날짜
 <SelectBox title="연도" option01="2020" option02="2021" option03="2022" />
 <SelectBoxFor12 title="월" 
@@ -153,7 +154,7 @@ option11="11"
 option12="12"
 />
 </div>
-<div className="col-start-3 row-start-5 col-span-2">
+<div className="col-start-4 row-start-4 col-span-2">
 종료날짜
 <SelectBox title="연도" option01="2020" option02="2021" option03="2022" />
 <SelectBoxFor12 title="월" 
@@ -171,27 +172,25 @@ option11="11"
 option12="12"
 />
 </div>
-<div className="col-start-1 row-start-6 col-span-4">
+<div className="col-start-2 row-start-5 col-span-4">
 작품 설명
 <Input textarea size_textarea="3"/>
 </div>
 
-<div className="col-start-1 row-start-7 col-span-2">
+<div className="col-start-2 row-start-6 col-span-2">
 저작권
 <SelectBox title="저작권설정" option01="판권소유" option02="둘" option03="둘" />
 </div>
 
-<div className="col-start-3 row-start-7 col-span-2">
+<div className="col-start-4 row-start-6 col-span-2">
 공개여부
 <SelectBox title="공개여부 설정" option01="비공개" option02="둘" option03="둘" />
 </div>
 
                 </div>
 
-                
-           
           </div>
-          
+
             <div>
 
             </div>

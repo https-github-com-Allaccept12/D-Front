@@ -5,6 +5,7 @@ import tw from "tailwind-styled-components";
 
 const Btn = tw.button`
    rounded-full text-base shadow-sm flex flex-row justify-center items-center
+   font-min1
   ${(props) => (props.size === "1" ? `h-b01 px-12` : "")};
   ${(props) => (props.size === "2" ? `h-b02 px-8` : "")};
 

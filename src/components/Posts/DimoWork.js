@@ -1,43 +1,42 @@
 import React from "react";
-import { Button, Image } from "../../elements";
+import { Button, Image, Card, Title } from "../../elements";
 
 import { useHistory, Link } from "react-router-dom";
 import DimoDetail from "../Details/DimoDetail";
 
 
 const DimoWork = (props) => {
+  const { size } = props;
   let history = useHistory();
   return (
     <>
-    <div className="w-full">
-      <div>
-     
-        <div className="bg-red-200 w-full h-40 m-1">
-        <div className="bg-yellow-400 p-2 justify-between w-full">
-                <div className="flex items-center">
-                    <div className="flex items-center">
-                        <img className="object-cover h-10 rounded-full" src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60" alt="Avatar" />
-                        <p className="mx-2 font-semibold text-gray-700 dark:text-gray-200">Jone Doe</p>
-                        
-                    </div>
-                    <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">21 SEP 2015</span>
-                    <p className="mx-2 font-semibold text-gray-700 dark:text-gray-200">별?스크랩?</p>
-                </div>
-                
-            </div>
-     <p>Q. 고민고민고민 고민고민 고민고민고민고민고민고민고민고민 고민고민 고민고민고민고민 고민고민고민고민</p>
-     <Link to="/dimodetail"><p>답변하러 가기</p></Link>
-     <Link to="/dimoqnadetail"><p>dimoqna</p></Link>
-     
-      </div>
-    
-        
-    </div>
-    </div>
+    <Card types="text" size={size}>
+
+<div className="flex flex-row gap-1">
+<p className="bg-red-300 w-20 text-center rounded-xl min-w-fit max-w-xs px-2">UI 디자인</p>
+<p className="bg-yellow-300 w-20 text-center rounded-xl min-w-fit max-w-xs px-2">UX 디자인</p>
+<p className="bg-slate-300 w-20 text-center rounded-xl min-w-fit max-w-xs px-2">디자인툴</p>
+</div>
+
+<Title size="4">이런이런 고민이 있어여</Title>
+<time>2022.20</time><p>조회수 2222</p><p>컨텐츠</p>
 
 
-    </>
+    <Link to="dimodetail"><p className="text-xl font-medium text-blue-500 dark:text-blue-300">답변하기</p></Link>
+    <div className="">
+    <span className="text-blue-500">좋아요 1 </span>
+    <span className="text-blue-500">저장하기 1</span>
+    <span className="text-blue-500">공유하기</span>
+    </div>
+
+</Card>
+
+</>
   );
 };
+
+DimoWork.defaultProps = {
+  size : "2"
+}
 
 export default DimoWork;

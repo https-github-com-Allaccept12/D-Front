@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Image, Title, Text, Input } from "../../elements";
 
 import { useHistory } from "react-router-dom";
-import {MainSlider} from "../../components";
+import { MainSlider, Comment} from "../../components";
 
 
 
@@ -82,20 +82,10 @@ const DimoDetail = (props) => {
     공유하기
   </div>
 <div className="flex flex-row">  <Input />  등록하기</div>
-<div className="grid grid-rows-6 grid-cols-4 p-3">
+<div className="grid grid-rows-6 p-3">
+  <Comment />
+ 
 
-  <div className="flex ml-3">
-    <div className="mr-3">
-      <img src="http://picsum.photos/50" alt="" className="rounded-full" />
-    </div>
-    <div>
-      <h1 className="font-semibold">Itay Buyoy</h1>
-      <p className="text-xs text-gray-500">2 seconds ago</p>
-
-    </div>
-  </div>
-  
-  <div className="col-span-3 justify-items-center">답변이 큰 도움이 되었습니다!</div>
   </div>
 
 </div>
