@@ -1,10 +1,10 @@
 import React from "react";
-import { Button } from "../../elements";
+import { Button } from "../elements";
 
 import { useHistory } from "react-router-dom";
-import { KAKAO_AUTH_URL } from "../../shared/OAuth";
+import { KAKAO_AUTH_URL } from "./OAuth";
 // import { GOOGLE_AUTH_URL } from "../../shared/GoogleOAuth";
-import KakaoBtn from "./kakao_button.png";
+import KakaoBtn from "../static/images/kakao_button.png";
 // import GoogleLogin from 'react-google-login';
 
 // const onLogin = e => {};

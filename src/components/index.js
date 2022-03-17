@@ -16,7 +16,7 @@ import MyPortfolio from "./MySpace/MyPortfolio"
 import MySkill from "./MySpace/MySkill"
 import MyArtWork from "./Posts/MyArtWork"
 import MyTimeLine from "./MySpace/MyTimeLine"
-import SocialLogin from "./CreateForm/SocialLogin";
+
 import ArtWorkDetail from "./Details/ArtWorkDetail";
 import DimoDetail from "./Details/DimoDetail";
 import Tabs from "./Sections/Tabs"
@@ -33,4 +33,4 @@ import MyInterests from "./Tendency/MyInterests";
 import DimoQNADetail from "./Details/DimoQNADetail";
 import Comment from "./Details/Comment";
 
-export { Header, NotFound, ArtWork, AllList, MainSlider, AdjBar, MySpaceUser, MyExp, SocialLogin, ArtWorkDetail, DimoList, DimoWork, DimoDetail, Tabs, MiniTabs, MyPortfolio, MySkill, MyTimeLine, CreateMySpaceUser, CreateMyIntro, CreateMyExp, InlineDetail, MyArtWork, Results, TendencyTest, MyInterests, DimoQNADetail, Comment, DimoHeader, CreateArtWork, CreateDimo };
+export { Header, NotFound, ArtWork, AllList, MainSlider, AdjBar, MySpaceUser, MyExp,  ArtWorkDetail, DimoList, DimoWork, DimoDetail, Tabs, MiniTabs, MyPortfolio, MySkill, MyTimeLine, CreateMySpaceUser, CreateMyIntro, CreateMyExp, InlineDetail, MyArtWork, Results, TendencyTest, MyInterests, DimoQNADetail, Comment, DimoHeader, CreateArtWork, CreateDimo };
