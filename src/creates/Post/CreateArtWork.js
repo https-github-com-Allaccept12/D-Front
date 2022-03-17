@@ -2,7 +2,7 @@ import React from "react";
 import {  Image, Input, CheckBox, SelectBox, MultiSelect, SelectBoxFor12 } from "../../elements";
 
 import { useHistory } from "react-router-dom";
-import { ImageBtn } from "../../elements";
+import { Button } from "../../elements";
 
 
 const CreateArtWork = (props) => {
@@ -22,9 +22,15 @@ const CreateArtWork = (props) => {
     <div className="col-start-4 w-full bg-yellow-300">
         <div className="grid w-full h-screen grid-cols-3 grid-rows-6 justify-items-center">
             <div className="row-start-2 col-span-2 space-y-3">
-                <ImageBtn/>
-                <ImageBtn/>
-                <ImageBtn/>
+                <Button size="1" color="1" 
+    icon name="Private" iconSize="16" iconColor="">
+      이미지 추가</Button>
+                <Button size="1" color="1" 
+    icon name="Private" iconSize="16" iconColor="">
+      동영상 추가</Button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModalCenter"><Button size="1" color="1" 
+    icon name="Private" iconSize="16" iconColor="">
+      순서를 변경</Button></button>
             </div>
 
         </div>
@@ -36,9 +42,9 @@ const CreateArtWork = (props) => {
     <div className="flex justify-end gap-4">
         
     <button type="button"
-  className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-  data-bs-toggle="modal" data-bs-target="#staticBackdrop">다음</button>
-    <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">선택</button>
+  data-bs-toggle="modal" data-bs-target="#staticBackdrop"><Button>다음</Button></button>
+
+    <Button>임시저장</Button>
     </div>
 </div>
 
@@ -99,7 +105,7 @@ const CreateArtWork = (props) => {
           className="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
           data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div className="modal-body grid p-4 w-full h-96 bg-yellow-500 grid-rows-6
+      <div className="modal-body grid p-4 w-full h-t01 bg-yellow-500 grid-rows-6
       grid-cols-3 overflow-y-scroll">
           <div className="invisible md:visible md:fixed">
           <Image shape="big_square"/>
@@ -204,9 +210,9 @@ option12="12"
         className="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
         <button type="button"
           className="inline-block px-6 py-2.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-700 hover:shadow-lg focus:bg-purple-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-purple-800 active:shadow-lg transition duration-150 ease-in-out"
-          data-bs-dismiss="modal">닫기</button>
+          data-bs-dismiss="modal">임시저장</button>
         <button type="button"
-          className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">막아놨어여</button>
+          className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out ml-1">업로드</button>
       </div>
     </div>
   </div>

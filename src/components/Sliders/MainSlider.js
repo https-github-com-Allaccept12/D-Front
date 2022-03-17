@@ -12,11 +12,11 @@ export const Slide = tw(Slider)`
     bg-transparent mx-auto mt-10 col-start-2 
     col-end-6 row-start-1 col-opacity-90 text-white
     font-sanss2 text-md w-full` : "")};
-    ${(props) => (props.main ? `bg-transparent mx-auto mt-10
+    ${(props) => (props.main ? `bg-transparent mx-auto
     opacity-90 text-white overflow-hidden
     font-sanss2 text-lg w-64 md:w-4/5` : "")};
     ${(props) => (props.artwork ? `bg-transparent mx-auto mt-10
-    opacity-90 text-white overflow-hidden
+    opacity-90 text-white overflow-hidden -mb-10
     font-sanss2 text-lg w-64 md:w-4/5` : "")};
 `
 const SS = tw.div`
@@ -48,24 +48,25 @@ const MainSlider = (props)=>{
          
          // 0px 하면 슬라이드 끝쪽 이미지가 안잘림
          responsive: [ // 반응형 웹 구현 옵션
-         {
-             breakpoint: 1550, // 화면 사이즈 1200px
-             settings: {
-               slidesToShow: 3,
-             },
-         },
+
          {
            breakpoint: 1500,
            settings: {
-             slidesToShow: 2
+             slidesToShow: 3
            },
          },
          {
            breakpoint: 1023,
            settings: {
-             slidesToShow: 1
+             slidesToShow: 2
            },
-         }
+         },
+         {
+          breakpoint: 800, // 화면 사이즈 1200px
+          settings: {
+            slidesToShow: 1,
+          },
+      },
        ]
      }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Title, Image, Text, Input } from "../../elements";
+import { Grid, Title, Image, Text, Card } from "../../elements";
 
 
 import { useHistory, Link } from "react-router-dom";
@@ -12,8 +12,8 @@ const Slides = (props) => {
   if(main) return (
     <>
      <div className="flex flex-col items-center justify-center max-w-sm mx-auto">
-        <div className="w-full h-64 bg-transparent bg-center bg-cover rounded-lg">
-          <Image shape="big_square" src="https://user-images.githubusercontent.com/89088205/155067792-882e3507-e664-4b31-ad9a-4b7abf4af948.jpg" />
+        <div className="bg-transparent bg-center bg-cover rounded-lg">
+          <Card size="5" src="https://user-images.githubusercontent.com/89088205/155067792-882e3507-e664-4b31-ad9a-4b7abf4af948.jpg" />
           </div>
 
         <div className="w-56 -mt-10 overflow-hidden bg-white
@@ -30,6 +30,8 @@ const Slides = (props) => {
         </div>
     </div>
     </>
+
+
   );
   if(artwork) return (
       <>

@@ -5,9 +5,10 @@ import tw from "tailwind-styled-components";
 
 const Btn = tw.button`
    rounded-full text-base shadow-sm flex flex-row justify-center items-center
-   font-min1
+   font-min1 px-2
   ${(props) => (props.size === "1" ? `h-b01 px-12` : "")};
   ${(props) => (props.size === "2" ? `h-b02 px-8` : "")};
+  ${(props) => (props.size === "3" ? `h-b03 px-8` : "")};
 
   ${(props) => (props.color === "1" ? `
   text-white bg-dpurple-200 

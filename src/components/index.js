@@ -18,6 +18,7 @@ import MyExp from "./MySpace/MyExp";
 import MyPortfolio from "./MySpace/MyPortfolio"
 import MySkill from "./MySpace/MySkill"
 import MyTimeLine from "./MySpace/MyTimeLine"
+import Dpolio from "./MySpace/Dpolio";
 
 import Results from "./Tendency/Results";
 import TendencyTest from "./Tendency/TendencyTest";
@@ -28,4 +29,4 @@ export { ArtWorkDetail, DimoDetail, DimoQNADetail, InlineDetail, Comment,
     ArtWork, DimoWork, MyArtWork, 
     AllList, DimoList, 
     MainSlider, MySpaceUser, MyExp, MyPortfolio, MySkill, MyTimeLine, 
-    Results, TendencyTest, MyInterests, };
+    Results, TendencyTest, MyInterests, Dpolio };

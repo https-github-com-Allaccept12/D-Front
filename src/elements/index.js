@@ -14,7 +14,6 @@ import CheckBox from "./Tools/CheckBox";
 import RadioButton from "./Tools/RadioButton"
 import SelectBox from "./Tools/SelectBox";
 import SelectBoxFor12 from "./Tools/SelectBoxFor12"
-import ImageBtn from "./Tools/ImageBtn";
 import DropDown from "./Tools/DropDown";
 import MultiSelect from "./Tools/MultiSelect";
 import Hashtag from "./Tools/Hashtag";
@@ -22,4 +21,4 @@ import Card from "./Common/Card";
 import Icon from "./Common/Icon";
 
 
-export { Title, Subtitle, Text, Input, Button, Image, Intro, Spinner, Permit,  Modal, CheckBox, SelectBox, ImageBtn, DropDown, MultiSelect, Hashtag, SelectBoxFor12, Thumbnail, Profile, RadioButton, Card, Icon };
+export { Title, Subtitle, Text, Input, Button, Image, Intro, Spinner, Permit,  Modal, CheckBox, SelectBox, DropDown, MultiSelect, Hashtag, SelectBoxFor12, Thumbnail, Profile, RadioButton, Card, Icon };
