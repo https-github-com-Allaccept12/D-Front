@@ -1,7 +1,5 @@
 import React from "react";
-import { Grid, Title, Image, Button } from "../../elements";
-import { getCookie } from "../../shared/cookie";
-import { useDispatch } from "react-redux";
+import { Title, Image, Button } from "../elements";
 
 import { Link } from "react-router-dom";
 

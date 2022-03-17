@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../../elements";
+import { Button } from "../elements";
 
 import { useHistory } from "react-router-dom";
 

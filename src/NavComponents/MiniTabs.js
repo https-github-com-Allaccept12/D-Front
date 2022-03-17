@@ -1,12 +1,4 @@
 import React from "react";
-import { Button } from "../../elements";
-import {MainSlider, AllList, AdjBar} from "../../components";
-
-import { useHistory } from "react-router-dom";
-
-import { useToggle } from "../../hooks";
-import { Tab } from "@mui/material";
-
 
 const MiniTabs = (props) => {
   const {

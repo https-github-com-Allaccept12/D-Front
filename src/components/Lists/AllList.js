@@ -40,7 +40,7 @@ const AllList = (props) => {
     <>
     <div className="grid
       sm:grid-cols-2 xl:grid-cols-3 justify-items-center items-center">
-        {p.map(n => { return <DimoWork size="4" /> }) }
+        {p.map(n => { return <DimoWork list={b} size="4" /> }) }
         </div>
     </>
   );
@@ -48,7 +48,7 @@ const AllList = (props) => {
     <>
     <div className="grid
       sm:grid-cols-2 xl:grid-cols-3">
-        {p.map(n => { return <DimoWork size="4" /> }) }
+        {p.map(n => { return <DimoWork list={b} size="4" /> }) }
         </div>
     </>
   );
