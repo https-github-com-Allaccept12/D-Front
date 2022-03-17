@@ -1,6 +1,6 @@
 import React from "react";
-import { Grid, Title, Image, ColGrid } from "../../elements";
-import { getCookie } from "../../shared/cookie";
+import { Title, Image } from "../elements";
+import { getCookie } from "../shared/cookie";
 import { useDispatch } from "react-redux";
 
 import { Link } from "react-router-dom";
@@ -16,7 +16,7 @@ const Header = (props) => {
     }else{
       setIsLogin(false);
     }
-  })
+  }, [])
     return (
       <div className="grid items-center grid-cols-9 bg-slate-800 justify-items-center">
         <div className="flex-shrink-0"><Image /></div>

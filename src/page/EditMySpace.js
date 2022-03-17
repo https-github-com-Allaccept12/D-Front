@@ -1,10 +1,9 @@
 import React from "react";
-import { Button, Grid, Image, Input } from "../elements";
+import { Button } from "../elements";
 
-import { useHistory,  Link } from "react-router-dom";
-import { useToggle } from "../hooks";
-import { MySpaceUser, AllList, MyExp, Tabs, MiniTabs, MyPortfolio, MySkill, MyTimeLine, CreateMyIntro, CreateMySpaceUser, CreateMyExp, MyInterests } from "../components";
-import MyArtWork from "../components/Posts/MyArtWork";
+import { Link } from "react-router-dom";
+import { MyPortfolio, MySkill, MyInterests } from "../components";
+import { CreateMyIntro, CreateMySpaceUser, CreateMyExp } from "../creates";
 import { useTabs } from "../hooks";
 
 const array_sample = [

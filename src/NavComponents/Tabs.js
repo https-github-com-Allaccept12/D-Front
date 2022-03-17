@@ -1,16 +1,7 @@
 import React from "react";
-import { Button } from "../../elements";
-import {MainSlider, AllList, AdjBar} from "../../components";
-
-
-
-import { useHistory } from "react-router-dom";
-
-import { useToggle } from "../../hooks";
-
 
 const Tabs = (props) => {
-  let history = useHistory();
+
 
   return (
     <>

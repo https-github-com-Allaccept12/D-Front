@@ -1,8 +1,7 @@
 import React from "react";
-import { Button, Image, Input, CheckBox, SelectBox, DatePicker } from "../elements";
+import { Button, Image, Input } from "../elements";
 
 import { useHistory, Link } from "react-router-dom";
-import { PostList , DimoSlider, AdjBar, DimoList, ImageBtn } from "../components";
 
 
 const CreateProfile = (props) => {
