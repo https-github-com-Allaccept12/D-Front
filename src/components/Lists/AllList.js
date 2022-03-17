@@ -36,9 +36,20 @@ const AllList = (props) => {
       );
 
       
-  if(b === "dimo") return (
+  if(b === "dimoqna") return (
     <>
-        {p.map(n => { return <DimoWork /> }) }
+    <div className="grid
+      sm:grid-cols-2 xl:grid-cols-3 justify-items-center items-center">
+        {p.map(n => { return <DimoWork size="4" /> }) }
+        </div>
+    </>
+  );
+  if(b === "dimoshared") return (
+    <>
+    <div className="grid
+      sm:grid-cols-2 xl:grid-cols-3">
+        {p.map(n => { return <DimoWork size="4" /> }) }
+        </div>
     </>
   );
 

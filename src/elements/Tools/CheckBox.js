@@ -22,7 +22,7 @@ const CheckBox = (props) => {
 
       <label class="inline-flex items-center mr-1">
               <input type="checkbox" class="form-checkbox 
-              text-dpurple-200 w-7 h-7
+              text-dpurple-200 w-7 h-7 font-min2
               rounded-md border-2 hover:border-dpurple-200 disabled:text-dgray-300 
               disabled:bg-dgray-200 
               disabled:border-0
@@ -37,7 +37,7 @@ const CheckBox = (props) => {
       <>
       <label class="inline-flex items-center mr-1">
               <input type="checkbox" class="form-checkbox 
-              text-dgray-600 w-7 h-7
+              text-dgray-600 w-7 h-7 font-min2
               rounded-md border-2 hover:border-dgray-600 disabled:text-dgray-300 
               disabled:bg-dgray-200 
               disabled:border-0
@@ -53,7 +53,7 @@ const CheckBox = (props) => {
 
         <label class="inline-flex items-center mr-1">
                 <input type="checkbox" class="form-checkbox 
-                text-dpurple-200 w-4 h-4
+                text-dpurple-200 w-4 h-4 font-min2
                 rounded-md border-2 hover:border-dpurple-200 disabled:text-dgray-300 
                 disabled:bg-dgray-200 
                 disabled:border-0
@@ -69,7 +69,7 @@ const CheckBox = (props) => {
         <>
         <label class="inline-flex items-center mr-1">
                 <input type="checkbox" class="form-checkbox 
-                text-dgray-600 w-4 h-4
+                text-dgray-600 w-4 h-4 font-min2
                 rounded-md border-2 hover:border-dgray-600 disabled:text-dgray-300 
                 disabled:bg-dgray-200 
                 disabled:border-0

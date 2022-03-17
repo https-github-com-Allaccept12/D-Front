@@ -6,49 +6,52 @@ import { useInput } from "../hooks";
 import { AllList, AdjBar, InlineDetail } from "../components";
 import { useTabs } from "../hooks";
 
-const array_sample = [{
-  tab: "전체보기",
-  content: <AllList />,
-},
-{
-  tab: "UI / UX",
-  content: <InlineDetail />,
-},
-{
-  tab: "건축 / 인테리어 / 환경디자인",
-  content: "없음!",
-},
-{
-  tab: "게임 / 캐릭터 디자인",
-  content: <AllList />,
-},
-{
-  tab: "그래픽디자인",
-  content: <AllList />,
-},
-{
-  tab: "브랜딩 / 편집디자인",
-  content: <AllList />,
-},
-{
-  tab: "영상 / 모션그래픽",
-  content: <AllList />,
-},
-{
-  tab: "제품 / 패키지 디자인",
-  content: <AllList />,
-},
-{
-  tab: "패션",
-  content: <AllList />,
-},
-{
-  tab: "기타",
-  content: <AllList />,
-},
-
-
-]
+const array_sample = [
+  {
+    tab: "UI / UX",
+    content: <AllList />,
+  },
+  {
+    tab: "건축 / 인테리어 / 환경디자인",
+    content: "없음!",
+  },
+  {
+    tab: "게임 / 캐릭터 디자인",
+    content: <AllList />,
+  },
+  {
+    tab: "공예",
+    content: <AllList />,
+  },
+  {
+    tab: "그래픽디자인",
+    content: <AllList />,
+  },
+  {
+    tab: "브랜딩 / 편집디자인",
+    content: <AllList />,
+  },
+  {
+    tab: "영상 / 모션그래픽",
+    content: <AllList />,
+  },
+  {
+    tab: "제품 디자인",
+    content: <AllList />,
+  },
+  {
+    tab: "타이포그래피",
+    content: <AllList />,
+  },
+  {
+    tab: "패션",
+    content: <AllList />,
+  },
+  {
+    tab: "패키지 디자인",
+    content: <AllList />,
+  },  
+  ]
 
 
 const ArtWork = (props) => {
@@ -68,7 +71,8 @@ const ArtWork = (props) => {
         ))}
       </div>
       <div className="col-start-2 col-end-6">
-        <div className="fixed row-start-1"><AdjBar /></div>
+        <div className="fixed row-start-1">
+          <AdjBar write="artwork" /></div>
         <div>{currentItem.content}</div>
         </div>
     </div>

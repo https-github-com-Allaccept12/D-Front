@@ -1,13 +1,12 @@
 import Main from "./Main";
 import ArtWork from "./ArtWork";
-import Dimo from "./Dimo";
+import DimoQNA from "./DimoQNA";
+import DimoShared from "./DimoShared";
+import EditMySpace from "./EditMySpace";
 import MySpace from "./MySpace";
-import EditMySpace from "./EditMySpace"
 import MyPosts from "./MyPosts";
-import CreateArtWork from "./CreateArtWork";
 import CreateProfile from "./CreateProfile";
-import CreateDimo from "./CreateDimo"
 import KakaoRedirectHandler from "./KakaoRedirectHandler"
 import LogOut from "./LogOut"
 
-export {Main, ArtWork, Dimo, MySpace, MyPosts, CreateArtWork, CreateProfile, EditMySpace, CreateDimo, KakaoRedirectHandler, LogOut}
+export {Main, ArtWork, DimoQNA, DimoShared, EditMySpace, MySpace, MyPosts, CreateProfile, KakaoRedirectHandler, LogOut}

@@ -37,8 +37,6 @@ const array_sample = [
 
 const EditMySpace = (props) => {
 
-  const [sideEdit, setSideEdit] = useToggle();
-  let history = useHistory();
   const {currentItem, changeItem} = useTabs(0, array_sample);
 
   return (
@@ -50,7 +48,7 @@ const EditMySpace = (props) => {
     
 
  
-      <div className="bg-green-400 w-full h-64 z-50 col-start-6 sticky">
+      <div className="bg-green-400 m-1 rounded-md w-full h-64 z-50 col-start-6 sticky top-2">
         프로그래스바
           {array_sample.map((arrays, index) => 
       (
@@ -71,12 +69,12 @@ const EditMySpace = (props) => {
     기본정보 수정
     <hr className="border-4" />
   </div>
-             <div>{currentItem.content}</div>
+             <div>{currentItem.content}
+             </div>
              <hr className="border-4 my-5" />
-            <div className="flex flex-row justify-end">
-
-              <Button>버튼</Button>
-              <Button>버튼</Button>
+            <div className="flex flex-row justify-end space-x-2">
+              <Link to="/myspace"><Button size="2">돌아가기</Button></Link>
+              <Button size="2" color="3">저장하기</Button>
             </div>
                </div>
     </div>

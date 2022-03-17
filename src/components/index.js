@@ -1,11 +1,14 @@
 import Header from "./Sections/Header";
+import DimoHeader from "./Sections/DimoHeader";
 import NotFound from "./Sections/NotFound";
+
 import ArtWork from "./Posts/ArtWork";
 import DimoWork from "./Posts/DimoWork";
+
 import AllList from "./Lists/AllList";
 import DimoList from "./Lists/DimoList";
+
 import MainSlider from "./Sliders/MainSlider";
-import SideBar from "./Sections/SideBar";
 import AdjBar from "./Sections/AdjBar";
 import MySpaceUser from "./MySpace/MySpaceUser";
 import MyExp from "./MySpace/MyExp";
@@ -18,13 +21,16 @@ import ArtWorkDetail from "./Details/ArtWorkDetail";
 import DimoDetail from "./Details/DimoDetail";
 import Tabs from "./Sections/Tabs"
 import MiniTabs from "./Sections/MiniTabs"
-import CreateMySpaceUser from "./CreateForm/CreateMySpaceUser";
-import CreateMyIntro from "./CreateForm/CreateMyIntro";
-import CreateMyExp from "./CreateForm/CreateMyExp";
+import CreateArtWork from "./CreateForm/CreateArtWork"
+import CreateDimo from "./CreateForm/CreateDimo"
+import CreateMySpaceUser from "./MySpace/EditSpace/CreateMySpaceUser";
+import CreateMyIntro from "./MySpace/EditSpace/CreateMyIntro";
+import CreateMyExp from "./MySpace/EditSpace/CreateMyExp";
 import InlineDetail from "./Details/InlineDetail";
 import Results from "./Tendency/Results";
 import TendencyTest from "./Tendency/TendencyTest";
 import MyInterests from "./Tendency/MyInterests";
-import DimoQNADetail from "./Details/DimoQNADetail"
+import DimoQNADetail from "./Details/DimoQNADetail";
+import Comment from "./Details/Comment";
 
-export { Header, NotFound, ArtWork, AllList, MainSlider, SideBar, AdjBar, MySpaceUser, MyExp, SocialLogin, ArtWorkDetail, DimoList, DimoWork, DimoDetail, Tabs, MiniTabs, MyPortfolio, MySkill, MyTimeLine, CreateMySpaceUser, CreateMyIntro, CreateMyExp, InlineDetail, MyArtWork, Results, TendencyTest, MyInterests, DimoQNADetail};
+export { Header, NotFound, ArtWork, AllList, MainSlider, AdjBar, MySpaceUser, MyExp, SocialLogin, ArtWorkDetail, DimoList, DimoWork, DimoDetail, Tabs, MiniTabs, MyPortfolio, MySkill, MyTimeLine, CreateMySpaceUser, CreateMyIntro, CreateMyExp, InlineDetail, MyArtWork, Results, TendencyTest, MyInterests, DimoQNADetail, Comment, DimoHeader, CreateArtWork, CreateDimo };

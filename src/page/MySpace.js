@@ -47,7 +47,7 @@ const MySpace = (props) => {
         aria-controls="tabs-homeVertical" aria-selected="true">Profile🔽</a>
       { sideEdit ?  <>
         <div className="bg-blue-500 m-1"><Link to="/editmyspace">프로필수정</Link> </div>
-        <div className="bg-blue-500 m-1"><Link to="/createprofile">아직안만듬</Link> </div>
+
         </> : ""}  
  
     </li>

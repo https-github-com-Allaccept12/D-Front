@@ -9,49 +9,52 @@ import { useHistory, Link } from "react-router-dom";
 import { useTabs } from "../../hooks";
 
 
-const array_sample = [{
-  tab: "전체보기",
-  content: <AllList />,
-},
-{
-  tab: "UI / UX",
-  content: <AllList />,
-},
-{
-  tab: "건축 / 인테리어 / 환경디자인",
-  content: "없음!",
-},
-{
-  tab: "게임 / 캐릭터 디자인",
-  content:  <AllList />,
-},
-{
-  tab: "그래픽디자인",
-  content:  <AllList />,
-},
-{
-  tab: "브랜딩 / 편집디자인",
-  content:  <AllList />,
-},
-{
-  tab: "영상 / 모션그래픽",
-  content:  <AllList />,
-},
-{
-  tab: "제품 / 패키지 디자인",
-  content:  <AllList />,
-},
-{
-  tab: "패션",
-  content:  <AllList />,
-},
-{
-  tab: "기타",
-  content:  <AllList />,
-},
-
-
-]
+const array_sample = [
+  {
+    tab: "UI / UX",
+    content: <AllList />,
+  },
+  {
+    tab: "건축 / 인테리어 / 환경디자인",
+    content: "없음!",
+  },
+  {
+    tab: "게임 / 캐릭터 디자인",
+    content: <AllList />,
+  },
+  {
+    tab: "공예",
+    content: <AllList />,
+  },
+  {
+    tab: "그래픽디자인",
+    content: <AllList />,
+  },
+  {
+    tab: "브랜딩 / 편집디자인",
+    content: <AllList />,
+  },
+  {
+    tab: "영상 / 모션그래픽",
+    content: <AllList />,
+  },
+  {
+    tab: "제품 디자인",
+    content: <AllList />,
+  },
+  {
+    tab: "타이포그래피",
+    content: <AllList />,
+  },
+  {
+    tab: "패션",
+    content: <AllList />,
+  },
+  {
+    tab: "패키지 디자인",
+    content: <AllList />,
+  },  
+  ]
 
 const DimoList = (props) => {
   let history = useHistory();
@@ -76,14 +79,14 @@ const DimoList = (props) => {
       </div>
       <div className="col-start-2 col-end-7">
       <MainSlider dimo />
-        <div className="fixed top-12"><AdjBar /></div> 
+        
        
-       <Button><Link to="/createdimo">글쓰기</Link></Button>
+       
         </div>
 
       
       
-      <div className="col-start-2 row-start-2 col-end-7 col-span-6">
+      <div className="col-start-2 row-start-2 col-end-7">
         
         <div>{currentItem.content}</div>
         </div>

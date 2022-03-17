@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Image, Title, Text, Input } from "../../elements";
 
 import { useHistory } from "react-router-dom";
-import {MainSlider} from "../../components";
+import { MainSlider, Comment } from "../../components";
 
 
 
@@ -58,20 +58,10 @@ const DimoDetail = (props) => {
     <div><button className="px-4 py-1 bg-gray-800 text-white rounded font-light hover:bg-gray-700">Submit</button></div>
   </div>
 
-<div className="grid grid-rows-6 grid-cols-4 p-3">
+<div className="grid col-auto row-span-1 p-3">
 
-  <div className="flex ml-3">
-    <div className="mr-3">
-      <img src="http://picsum.photos/50" alt="" className="rounded-full" />
-    </div>
-    <div>
-      <h1 className="font-semibold">Itay Buyoy</h1>
-      <p className="text-xs text-gray-500">2 seconds ago</p>
-    </div>
+  <Comment />
 
-  </div>
-  <div className="col-span-3 justify-items-center"><Input /></div>
-  
   </div>
 
 </div>
