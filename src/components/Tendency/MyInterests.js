@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Image } from "../../elements";
-
+import react_icon from "../../static/images/React-icon.svg.png";
 import { Link,  useLocation } from "react-router-dom";
 
 
@@ -14,17 +14,17 @@ const MyInterests = (props) => {
   <button className="col-start-5 row-start-1"><Link to="/createprofile">다음으로 넘어가기</Link>
   </button>
   : ""} */}
-<div className="grid col-start-1 col-end-4 row-start-1 row-end-3 mx-1 my-1 bg-green-200"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/400px-React-icon.svg.png"/></div>
-<div className="grid col-start-4 col-end-6 row-start-1 row-end-3 mx-1 my-1 bg-green-400"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/400px-React-icon.svg.png"/></div>
-<div className="grid col-start-6 col-end-8 row-start-1 row-end-4 mx-1 my-1 bg-purple-400"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/400px-React-icon.svg.png"/></div>
-<div className="grid col-start-1 col-end-3 row-start-3 row-end-5 mx-1 my-1 bg-green-600"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/400px-React-icon.svg.png"/></div>
-<div className="grid col-start-3 col-end-6 row-start-3 row-end-6 mx-1 my-1 bg-blue-600"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/400px-React-icon.svg.png"/></div>
-<div className="grid col-start-6 col-end-8 row-start-4 row-end-6 mx-1 my-1 bg-red-200"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/400px-React-icon.svg.png"/></div>
-<div className="grid col-start-1 col-end-3 row-start-5 row-end-7 mx-1 my-1 bg-green-400"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/400px-React-icon.svg.png"/></div>
-<div className="grid col-start-3 col-end-5 row-start-6 row-end-7 mx-1 my-1 bg-red-400"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/400px-React-icon.svg.png"/></div>
-<div className="grid col-start-5 col-end-8 row-start-6 row-end-7 mx-1 my-1 bg-blue-400"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/400px-React-icon.svg.png"/></div>
-<div className="grid col-start-1 col-end-4 row-start-7 mx-1 my-1 bg-pink-400 row-end-8"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/400px-React-icon.svg.png"/></div>
-<div className="grid col-start-4 col-end-8 row-start-7 mx-1 my-1 bg-white row-end-8"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/400px-React-icon.svg.png"/></div>
+<div className="grid col-start-1 col-end-4 row-start-1 row-end-3 mx-1 my-1 bg-green-200"><img src={react_icon}/></div>
+<div className="grid col-start-4 col-end-6 row-start-1 row-end-3 mx-1 my-1 bg-green-400"><img src={react_icon}/></div>
+<div className="grid col-start-6 col-end-8 row-start-1 row-end-4 mx-1 my-1 bg-purple-400"><img src={react_icon}/></div>
+<div className="grid col-start-1 col-end-3 row-start-3 row-end-5 mx-1 my-1 bg-green-600"><img src={react_icon}/></div>
+<div className="grid col-start-3 col-end-6 row-start-3 row-end-6 mx-1 my-1 bg-blue-600"><img src={react_icon}/></div>
+<div className="grid col-start-6 col-end-8 row-start-4 row-end-6 mx-1 my-1 bg-red-200"><img src={react_icon}/></div>
+<div className="grid col-start-1 col-end-3 row-start-5 row-end-7 mx-1 my-1 bg-green-400"><img src={react_icon}/></div>
+<div className="grid col-start-3 col-end-5 row-start-6 row-end-7 mx-1 my-1 bg-red-400"><img src={react_icon}/></div>
+<div className="grid col-start-5 col-end-8 row-start-6 row-end-7 mx-1 my-1 bg-blue-400"><img src={react_icon}/></div>
+<div className="grid col-start-1 col-end-4 row-start-7 mx-1 my-1 bg-pink-400 row-end-8"><img src={react_icon}/></div>
+<div className="grid col-start-4 col-end-8 row-start-7 mx-1 my-1 bg-white row-end-8"><img src={react_icon}/></div>
 
     {/* <div className="">
         관심사를 정해주세여
