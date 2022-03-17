@@ -11,6 +11,9 @@ const MiniTabs = (props) => {
     tabname03,
     tabnametag03,
     tabnamelink03,
+    tabname04,
+    tabnametag04,
+    tabnamelink04,
   } = props;
 
   return (
@@ -38,7 +41,7 @@ const MiniTabs = (props) => {
       rounded-full
       active
     " id={tabnametag01} data-bs-toggle="pill" data-bs-target={tabnamelink01} role="tab" aria-controls={tabname01}
-      aria-selected="true">Home</a>
+      aria-selected="true">전체</a>
   </li>
   <li className="nav-item" role="presentation">
     <a href={tabnamelink02} className="
@@ -59,7 +62,7 @@ const MiniTabs = (props) => {
       mx-1
       rounded-full
     " id={tabnametag02} data-bs-toggle="pill" data-bs-target={tabnamelink02} role="tab"
-      aria-controls={tabname02} aria-selected="false">Profile</a>
+      aria-controls={tabname02} aria-selected="false">나의 글</a>
   </li>
   <li className="nav-item" role="presentation">
     <a href={tabnamelink03} className="
@@ -79,7 +82,28 @@ const MiniTabs = (props) => {
       mx-1
       rounded-full
     " id={tabnametag03} data-bs-toggle="pill" data-bs-target={tabnamelink03} role="tab"
-      aria-controls={tabname03} aria-selected="false">Messages</a>
+      aria-controls={tabname03} aria-selected="false">나의 댓글</a>
+  </li>
+
+  <li className="nav-item" role="presentation">
+    <a href={tabnamelink04} className="
+      nav-link
+      block
+      font-medium
+      text-xs
+      leading-tight
+      uppercase
+      active:bg-blue-200
+      focus-within:bg-blue-200
+      focus-visible:bg-blue-200
+
+      px-3
+      py-3
+      my-2
+      mx-1
+      rounded-full
+    " id={tabnametag04} data-bs-toggle="pill" data-bs-target={tabnamelink04} role="tab"
+      aria-controls={tabname04} aria-selected="false">스크랩 글</a>
   </li>
 
 </ul>

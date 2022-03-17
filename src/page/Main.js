@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Input } from "../elements";
+import { Button, Title } from "../elements";
 import { AllList, MainSlider, SideBar } from "../components";
 import { setCookie } from "../shared/cookie";
 
@@ -14,7 +14,8 @@ const Main = (props) => {
   // dispatch(userActions.loginFB({...name}));
   return (
     <div className="grid w-full">
-        <div className="grid grid-rows-3 p-2 bg-red-200 
+      <div className="bg-red-200 w-5/6 h-t02 -z-10 fixed">d</div>
+        <div className="grid grid-rows-3 p-2 
         grid-cols-4
         md:grid-cols-10">
         <div className="col-span-2 col-start-1 row-start-2 p-2 font-sanss2 md:pl-10">
@@ -28,7 +29,7 @@ const Main = (props) => {
       
       <div className="grid">
 
-      <div className="grid col-start-1 px-4 pt-4 text-2xl md:grid-cols-6">추천 아트워크</div>
+
       <AllList />
       </div>
     </div>
