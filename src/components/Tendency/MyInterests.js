@@ -1,144 +1,74 @@
-import React from "react";
+import React, {useState } from "react";
 import { Button, Image } from "../../elements";
 import react_icon from "../../static/images/React-icon.svg.png";
-import { Link,  useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import icon from "../../static/images/interests_icon.svg";
+import typography from "../../static/images/typography.svg";
+import crafts from "../../static/images/crafts.svg";
+import ui from "../../static/images/ui.svg";
+import pakage from "../../static/images/pakage.svg";
+import fashion from "../../static/images/fashion.svg";
+import video from "../../static/images/video.svg";
+import product from "../../static/images/product.svg";
+import game from "../../static/images/game.svg";
+import branding from "../../static/images/branding.svg";
+import interior from "../../static/images/interior.svg";
+import graphic from "../../static/images/graphic.svg";
 
+
+const interest = [];
 
 const MyInterests = (props) => {
-  const location = useLocation();
-  const a = location.pathname
-  return (
-<div className="grid col-start-1 col-end-8 bg-yellow-400">
   
-{/* {!a === "/editmyspace" ?
-  <button className="col-start-5 row-start-1"><Link to="/createprofile">다음으로 넘어가기</Link>
-  </button>
-  : ""} */}
-<div className="grid col-start-1 col-end-4 row-start-1 row-end-3 mx-1 my-1 bg-green-200"><img src={react_icon}/></div>
-<div className="grid col-start-4 col-end-6 row-start-1 row-end-3 mx-1 my-1 bg-green-400"><img src={react_icon}/></div>
-<div className="grid col-start-6 col-end-8 row-start-1 row-end-4 mx-1 my-1 bg-purple-400"><img src={react_icon}/></div>
-<div className="grid col-start-1 col-end-3 row-start-3 row-end-5 mx-1 my-1 bg-green-600"><img src={react_icon}/></div>
-<div className="grid col-start-3 col-end-6 row-start-3 row-end-6 mx-1 my-1 bg-blue-600"><img src={react_icon}/></div>
-<div className="grid col-start-6 col-end-8 row-start-4 row-end-6 mx-1 my-1 bg-red-200"><img src={react_icon}/></div>
-<div className="grid col-start-1 col-end-3 row-start-5 row-end-7 mx-1 my-1 bg-green-400"><img src={react_icon}/></div>
-<div className="grid col-start-3 col-end-5 row-start-6 row-end-7 mx-1 my-1 bg-red-400"><img src={react_icon}/></div>
-<div className="grid col-start-5 col-end-8 row-start-6 row-end-7 mx-1 my-1 bg-blue-400"><img src={react_icon}/></div>
-<div className="grid col-start-1 col-end-4 row-start-7 mx-1 my-1 bg-pink-400 row-end-8"><img src={react_icon}/></div>
-<div className="grid col-start-4 col-end-8 row-start-7 mx-1 my-1 bg-white row-end-8"><img src={react_icon}/></div>
-
-    {/* <div className="">
-        관심사를 정해주세여
+  const [isClicked, setIsClicked] = useState(false);
+  const handleClicked = e => {
+    if (interest.length < 1){
+      setIsClicked(!isClicked)
+      !isClicked ? e.currentTarget.style.border = "5px solid #A162F7" : e.currentTarget.style.border = "1px black";
+      interest.push(e.currentTarget.innerText)
+    } else{
+        if (e.currentTarget.innerText === interest[0]){
+          setIsClicked(!isClicked)
+          !isClicked ? e.currentTarget.style.border = "5px solid #A162F7" : e.currentTarget.style.border = "1px black"
+          interest.pop();
+        }
+    }
+  }
+  
+  return (
+    <div className="bg-[#A162F7] grid place-content-center">
+      <div><br/></div>
+      <div className="mt-4 bg-white w-fit">
+        <div className="flex my-10 place-content-center">
+          <div className="text-center bg-white">
+            <img src={icon}/>
+            <div>님의 관심사를 알고 싶어요!</div><br/>
+            <div>선택해주신 정보는<br/>아트워크 및 디자이너 추천에<br/>어쩌구 저쩌구 이용됩니다.</div>
+          </div> 
+          <div className="grid col-start-2 col-end-8 text-center bg-white">
+            <div className="grid items-end h-48 col-start-1 col-end-4 row-start-1 row-end-3 px-5 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start w-74" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={typography}/>타이포그래피</div></div>
+            <div className="grid items-end w-48 h-48 col-start-4 col-end-6 row-start-1 row-end-3 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={crafts}/>공예</div></div>
+            <div className="grid items-end w-48 col-start-6 col-end-8 row-start-1 row-end-4 px-6 py-4 mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start h-74" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={pakage}/>패키지</div></div>
+            <div className="grid items-end w-48 h-48 col-start-1 col-end-3 row-start-3 row-end-5 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={graphic}/>그래픽</div></div>
+            <div className="grid items-end col-start-3 col-end-6 row-start-3 row-end-6 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start w-74 h-74" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={ui}/>UI / UX</div></div>
+            <div className="grid items-end w-48 h-48 col-start-6 col-end-8 row-start-4 row-end-6 px-6 py-4 mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={fashion}/>패션</div></div>
+            <div className="grid items-end w-48 col-start-1 col-end-3 row-start-5 row-end-7 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start h-74" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={video}/>영상 / 모션</div></div>
+            <div className="grid items-end w-48 h-48 col-start-3 col-end-5 row-start-6 row-end-7 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={product}/>제품</div></div>
+            <div className="grid items-end h-48 col-start-5 col-end-8 row-start-6 row-end-7 px-6 py-4 mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start w-74" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={game}/>게임 / 캐릭터</div></div>
+            <div className="grid items-end h-48 col-start-1 col-end-4 row-start-7 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start row-end-8 w-74" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={branding}/>브랜딩 / 편집</div></div>
+            <div className="grid items-end h-48 col-start-4 col-end-8 row-start-7 px-6 py-4 mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start row-end-8 w-94" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={interior}/>건축 / 인테리어 / 환경</div></div>
+          </div>
+      </div>
+      <div className="flex my-10 place-content-center">
+          {interest.length === 1 ? <Link to="/">
+            <Button size="1" color="1">확인</Button>
+          </Link> : 
+            <Button size="1" color="2">관심사를 선택해주세요.</Button>
+          }
+        </div>
+      </div>
+      <div className="mb-5"> <br/> </div>
     </div>
-          <div className="">
-
-<section className="text-gray-600 body-font ">
-  <div className="container px-5 py-2 mx-auto">
-
-    <div className="flex flex-wrap -m-4">
-      <div className="p-4 lg:w-1/3 sm:w-1/2">
-        <div className="relative flex">
-          <img alt="gallery" className="absolute inset-0 object-cover object-center w-full h-full" src="https://dummyimage.com/600x360" />
-          <div className="relative z-10 w-full px-8 py-10 bg-white border-4 border-gray-200 opacity-0 hover:opacity-100">
-            <h2 className="mb-1 text-sm font-medium tracking-widest text-indigo-500 title-font">THE SUBTITLE</h2>
-            <h1 className="mb-3 text-lg font-medium text-gray-900 title-font">Shooting Stars</h1>
-            <p className="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-          </div>
-        </div>
-      </div>
-      <div className="p-4 lg:w-1/3 sm:w-1/2">
-        <div className="relative flex">
-          <img alt="gallery" className="absolute inset-0 object-cover object-center w-full h-full" src="https://dummyimage.com/601x361" />
-          <div className="relative z-10 w-full px-8 py-10 bg-white border-4 border-gray-200 opacity-0 hover:opacity-100">
-            <h2 className="mb-1 text-sm font-medium tracking-widest text-indigo-500 title-font">THE SUBTITLE</h2>
-            <h1 className="mb-3 text-lg font-medium text-gray-900 title-font">The Catalyzer</h1>
-            <p className="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-          </div>
-        </div>
-      </div>
-      <div className="p-4 lg:w-1/3 sm:w-1/2">
-        <div className="relative flex">
-          <img alt="gallery" className="absolute inset-0 object-cover object-center w-full h-full" src="https://dummyimage.com/603x363" />
-          <div className="relative z-10 w-full px-8 py-10 bg-white border-4 border-gray-200 opacity-0 hover:opacity-100">
-            <h2 className="mb-1 text-sm font-medium tracking-widest text-indigo-500 title-font">THE SUBTITLE</h2>
-            <h1 className="mb-3 text-lg font-medium text-gray-900 title-font">The 400 Blows</h1>
-            <p className="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-          </div>
-        </div>
-      </div>
-      <div className="p-4 lg:w-1/3 sm:w-1/2">
-        <div className="relative flex">
-          <img alt="gallery" className="absolute inset-0 object-cover object-center w-full h-full" src="https://dummyimage.com/602x362" />
-          <div className="relative z-10 w-full px-8 py-10 bg-white border-4 border-gray-200 opacity-0 hover:opacity-100">
-            <h2 className="mb-1 text-sm font-medium tracking-widest text-indigo-500 title-font">THE SUBTITLE</h2>
-            <h1 className="mb-3 text-lg font-medium text-gray-900 title-font">Neptune</h1>
-            <p className="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-          </div>
-        </div>
-      </div>
-      <div className="p-4 lg:w-1/3 sm:w-1/2">
-        <div className="relative flex">
-          <img alt="gallery" className="absolute inset-0 object-cover object-center w-full h-full" src="https://dummyimage.com/605x365" />
-          <div className="relative z-10 w-full px-8 py-10 bg-white border-4 border-gray-200 opacity-0 hover:opacity-100">
-            <h2 className="mb-1 text-sm font-medium tracking-widest text-indigo-500 title-font">THE SUBTITLE</h2>
-            <h1 className="mb-3 text-lg font-medium text-gray-900 title-font">Holden Caulfield</h1>
-            <p className="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-          </div>
-        </div>
-      </div>
-      <div className="p-4 lg:w-1/3 sm:w-1/2">
-        <div className="relative flex">
-          <img alt="gallery" className="absolute inset-0 object-cover object-center w-full h-full" src="https://dummyimage.com/606x366" />
-          <div className="relative z-10 w-full px-8 py-10 bg-white border-4 border-gray-200 opacity-0 hover:opacity-100">
-            <h2 className="mb-1 text-sm font-medium tracking-widest text-indigo-500 title-font">THE SUBTITLE</h2>
-            <h1 className="mb-3 text-lg font-medium text-gray-900 title-font">Alper Kamu</h1>
-            <p className="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-          </div>
-        </div>
-      </div>
-      <div className="p-4 lg:w-1/3 sm:w-1/2">
-        <div className="relative flex">
-          <img alt="gallery" className="absolute inset-0 object-cover object-center w-full h-full" src="https://dummyimage.com/606x366" />
-          <div className="relative z-10 w-full px-8 py-10 bg-white border-4 border-gray-200 opacity-0 hover:opacity-100">
-            <h2 className="mb-1 text-sm font-medium tracking-widest text-indigo-500 title-font">THE SUBTITLE</h2>
-            <h1 className="mb-3 text-lg font-medium text-gray-900 title-font">Alper Kamu</h1>
-            <p className="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-          </div>
-        </div>
-      </div>
-      <div className="p-4 lg:w-1/3 sm:w-1/2">
-        <div className="relative flex">
-          <img alt="gallery" className="absolute inset-0 object-cover object-center w-full h-full" src="https://dummyimage.com/606x366" />
-          <div className="relative z-10 w-full px-8 py-10 bg-white border-4 border-gray-200 opacity-0 hover:opacity-100">
-            <h2 className="mb-1 text-sm font-medium tracking-widest text-indigo-500 title-font">THE SUBTITLE</h2>
-            <h1 className="mb-3 text-lg font-medium text-gray-900 title-font">Alper Kamu</h1>
-            <p className="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-          </div>
-        </div>
-      </div>
-      <div className="p-4 lg:w-1/3 sm:w-1/2">
-        <div className="relative flex">
-          <img alt="gallery" className="absolute inset-0 object-cover object-center w-full h-full" src="https://dummyimage.com/606x366" />
-          <div className="relative z-10 w-full px-8 py-10 bg-white border-4 border-gray-200 opacity-0 hover:opacity-100">
-            <h2 className="mb-1 text-sm font-medium tracking-widest text-indigo-500 title-font">THE SUBTITLE</h2>
-            <h1 className="mb-3 text-lg font-medium text-gray-900 title-font">Alper Kamu</h1>
-            <p className="leading-relaxed">Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-                </div>
-
-                
-            */}
-
-
-
-</div>
   );
 };
 
