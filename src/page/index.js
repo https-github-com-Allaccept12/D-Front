@@ -6,6 +6,7 @@ import EditMySpace from "./EditMySpace";
 import MySpace from "./MySpace";
 import MyPosts from "./MyPosts";
 import CreateProfile from "./CreateProfile";
+import CompleteProfile from "./CompleteProfile";
 import KakaoRedirectHandler from "./KakaoRedirectHandler"
 import LogOut from "./LogOut"
 
@@ -14,5 +15,6 @@ export {
     EditMySpace, MySpace, 
     MyPosts, 
     CreateProfile, 
+    CompleteProfile,
     KakaoRedirectHandler, 
     LogOut}

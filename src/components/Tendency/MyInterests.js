@@ -1,6 +1,5 @@
 import React, {useState } from "react";
 import { Button, Image } from "../../elements";
-import react_icon from "../../static/images/React-icon.svg.png";
 import { Link } from "react-router-dom";
 import icon from "../../static/images/interests_icon.svg";
 import typography from "../../static/images/typography.svg";
@@ -34,12 +33,9 @@ const MyInterests = (props) => {
         }
     }
   }
-  const toHome = e => {
-    window.location.href = "/";
-  }
-  
+
   return (
-    <div className="bg-[#A162F7] grid place-content-center">
+    <div className="bg-gradient-to-r from-[#9262F7] to-[#7681FB] grid place-content-center">
       <div><br/></div>
       <div className="mt-4 bg-white w-fit">
         <div className="flex my-10 place-content-center">
@@ -64,7 +60,10 @@ const MyInterests = (props) => {
       </div>
       <div className="flex my-10 place-content-center">
           {interest.length === 1 ? 
-            <Button size="1" color="1" onClick={toHome}>확인</Button>: 
+            <Link to="/CreateProfile">
+              <Button size="1" color="1">확인</Button>
+            </Link>
+            : 
             <Button size="1" color="2">관심사를 선택해주세요.</Button>
           }
         </div>
