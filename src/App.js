@@ -3,11 +3,11 @@ import { Route, Switch } from "react-router-dom";
 import { Header, NotFound } from "./NavComponents";
 import { TendencyTest, MyInterests, Results, DimoDetail, DimoQNADetail } from "./components";
 import { CreateArtWork, CreateDimo } from "./creates"
-import { Main, ArtWork, DimoQNA, DimoShared, MySpace, MyPosts, CreateProfile, KakaoRedirectHandler, LogOut, EditMySpace } from "./page";
+import { Main, ArtWork, DimoQNA, DimoShared, MySpace, MyPosts, CreateProfile, CompleteProfile, KakaoRedirectHandler, LogOut, EditMySpace } from "./page";
 
 function App() {
   return (
-    <div className="App w-full md:w-5/6 m-auto container">
+    <div className="container w-full m-auto App md:w-5/6">
       <Header />
           <Switch>
             <Route exact path="/" component={Main} />
@@ -25,6 +25,7 @@ function App() {
 
             <Route exact path="/createart" component={CreateArtWork} />
             <Route exact path="/createprofile" component={CreateProfile} />
+            <Route exact path="/completeprofile" component={CompleteProfile} />
             <Route exact path="/createdimo/qna" component={CreateDimo} />
             <Route exact path="/createdimo/shared" component={CreateDimo} />
             <Route exact path="/dimodetail" component={DimoDetail} />

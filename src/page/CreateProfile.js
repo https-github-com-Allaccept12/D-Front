@@ -7,10 +7,6 @@ import { useHistory, Link } from "react-router-dom";
 
 const CreateProfile = (props) => {
   let history = useHistory();
-  const toHome = e => {
-    // window.location.href = "/";
-    history.push("/");
-  }
 
   return (
 
@@ -47,7 +43,9 @@ const CreateProfile = (props) => {
         </div>
       </div>
       <div className="grid w-full py-10 bg-white place-items-center">
-        <Button size="2" color="1" onClick={toHome}>작성 완료</Button>
+        <Link to="/CompleteProfile">
+          <Button size="2" color="1">작성 완료</Button>
+        </Link>
       </div>
 {/* <button className="col-start-5"><Link to="/">다음으로 넘어가기</Link></button>
 </div>
