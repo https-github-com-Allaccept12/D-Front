@@ -1,5 +1,5 @@
 import React from "react";
-import { Title, Subtitle, Text, Thumbnail, Profile, CheckBox, RadioButton, Card, Icon, Button, Input } from "../elements";
+import { Title, Subtitle, Text, Thumbnail, Profile, CheckBox, RadioButton, Card, Icon, Button, Input, SearchInput } from "../elements";
 
 import { useHistory } from "react-router-dom";
 import {useInput} from "../hooks"
@@ -19,7 +19,12 @@ const MyPosts = (props) => {
 
     </div>
 
-    <div className="">
+<div> 
+      <SearchInput value={name.value} onChange={name.onChange} maxLen="10" is_submit cardSize="1" />
+      <SearchInput value={name.value} onChange={name.onChange} maxLen="10" is_submit cardSize="2" />
+      </div>
+
+    <div className="mt-10">
       <Input title="인풋이다" value={name.value} onChange={name.onChange} is_error={name.errors} is_value={name.value.length} maxLen="10" />
 
    <Input textarea cardSize="3" title="인풋이다" value={name.value} onChange={name.onChange} is_error={name.errors} is_value={name.value.length} maxLen="10" />
@@ -32,7 +37,7 @@ const MyPosts = (props) => {
     <Button size="2" color="3">버튼버튼</Button>
     <Button size="1" color="4">버튼버튼</Button>
     <Button size="2" color="5" >버튼버튼</Button>
-    <Button size="2" color="6">버튼버튼</Button>
+    <Button size="2" color="6">버튼버튼</Button> 
 
     <Button size="1" color="1" 
     icon name="Private" iconSize="16" iconColor="">버튼버튼</Button>

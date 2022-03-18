@@ -4,7 +4,7 @@ import ArtWork from "../Posts/ArtWork";
 import DimoWork from "../Posts/DimoWork"
 import MyArtWork from "../Posts/MyArtWork";
 import tw from "tailwind-styled-components";
-
+import "./AllList.css"
 import { useHistory, useLocation } from "react-router-dom";
 
 const Grid = tw.div` 
@@ -23,8 +23,8 @@ const AllList = (props) => {
     <>
     
    
-    <div className="row-start-1 justify-items-center items-center mt-10"><Title size="4"> 추천 아트워크</Title></div>
-      <div className="flex flex-row flex-wrap gap-3 justify-center items-center">
+    <div className="md:row-start-1 flex justify-items-center items-center mt-10 Arts"><Title size="4"> 추천 아트워크</Title></div>
+      <div className="mt-16 mx-auto flex flex-row flex-wrap justify-center items-center gap-5 px-16">
         {p.map(n => { return <ArtWork /> }) }
         </div>
     </>

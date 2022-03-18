@@ -12,15 +12,16 @@ ${(props) => (props.size === "5" ? `w-p05 h-p05` : "")};
 ${(props) => (props.size === "6" ? `w-p06 h-p06` : "")};
 ${(props) => (props.size === "7" ? `w-p07 h-p07` : "")};
 ${(props) => (props.size === "8" ? `w-p08 h-p08` : "")};
+${(props) => (props.main ? `border-dpurple-200 border-8` : "")};
 `;
 
 
 
 const Profile = (props) => {
-  const { src, size } = props;
+  const { src, size, main } = props;
     return (
         <>
-    <ArtWorkImage src={src} size={size} />
+    <ArtWorkImage src={src} size={size} main={main} />
     </>
     )
 }
@@ -28,6 +29,7 @@ const Profile = (props) => {
 Profile.defaultProps = {
   src: "https://user-images.githubusercontent.com/89088205/155078987-592a07cd-a490-49fc-aabc-bc47cb508963.jpg",
   size: "3",
+  main: false
 };
  
 

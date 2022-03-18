@@ -7,7 +7,7 @@ import { Main, ArtWork, DimoQNA, DimoShared, MySpace, MyPosts, CreateProfile, Ka
 
 function App() {
   return (
-    <div className="App w-full md:w-5/6 m-auto container">
+    <div className="App w-full m-auto">
       <Header />
           <Switch>
             <Route exact path="/" component={Main} />

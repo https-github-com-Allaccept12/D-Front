@@ -94,7 +94,7 @@ const Icon = (props) => {
         }
 
     if (name === "Search") {
-        return <Search width={iconSize} height={iconSize} />;
+        return <div className="opacity-30 cursor-pointer"><Search width={iconSize} height={iconSize} /></div>;
         }
 
     if (name === "Success") {
