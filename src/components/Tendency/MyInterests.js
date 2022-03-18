@@ -34,6 +34,9 @@ const MyInterests = (props) => {
         }
     }
   }
+  const toHome = e => {
+    window.location.href = "/";
+  }
   
   return (
     <div className="bg-[#A162F7] grid place-content-center">
@@ -60,9 +63,8 @@ const MyInterests = (props) => {
           </div>
       </div>
       <div className="flex my-10 place-content-center">
-          {interest.length === 1 ? <Link to="/">
-            <Button size="1" color="1">확인</Button>
-          </Link> : 
+          {interest.length === 1 ? 
+            <Button size="1" color="1" onClick={toHome}>확인</Button>: 
             <Button size="1" color="2">관심사를 선택해주세요.</Button>
           }
         </div>

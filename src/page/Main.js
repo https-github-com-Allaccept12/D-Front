@@ -14,10 +14,8 @@ const Main = (props) => {
   // dispatch(userActions.loginFB({...name}));
   return (
     <div className="grid w-full">
-      <div className="bg-red-200 w-5/6 h-t02 -z-10 fixed">d</div>
-        <div className="grid grid-rows-3 p-2 
-        grid-cols-4
-        md:grid-cols-10">
+      <div className="fixed w-5/6 bg-red-200 h-t02 -z-10"></div>
+        <div className="grid grid-cols-4 grid-rows-3 p-2 md:grid-cols-10">
         <div className="col-span-2 col-start-1 row-start-2 p-2 font-sanss2 md:pl-10">
           <p>Hot 디자이너</p>
           <p>현재 가장 많은 관심을 받은 디자이너님들을 소개합니다</p>
