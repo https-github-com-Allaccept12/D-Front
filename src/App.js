@@ -7,7 +7,8 @@ import { Main, ArtWork, DimoQNA, DimoShared, MySpace, MyPosts, CreateProfile, Co
 
 function App() {
   return (
-    <div className="container w-full m-auto App md:w-5/6">
+
+    <div className="App w-full m-auto">
       <Header />
           <Switch>
             <Route exact path="/" component={Main} />

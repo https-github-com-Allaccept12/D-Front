@@ -3,7 +3,7 @@ import tw from "tailwind-styled-components";
 
 
 const ArtWorkImage = tw.img`
-overflow-hidden object-cover object-center 
+overflow-hidden object-cover object-center rounded-lg
 ${(props) => (props.size === "1" ? `w-t01 h-t01` : "")};
 ${(props) => (props.size === "2" ? `w-t02 h-t02` : "")};
 ${(props) => (props.size === "3" ? `w-t03 h-t03` : "")};

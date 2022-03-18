@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image } from "../../elements";
+import { HeartButton, Subtitle, Icon, Thumbnail, Profile } from "../../elements";
 
 import { useHistory } from "react-router-dom";
 import ArtWorkDetail from "../Details/ArtWorkDetail";
@@ -12,14 +12,22 @@ const ArtWork = (props) => {
     <div className="m-1 my-10 w-full md:w-64 md:h-72 p-1 flex justify-center items-center flex-col">
       <div>
       <button type="button" className=" active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalXl">
-        <div className="h-56 md:h-64 w-64 overflow-hidden">
-      <Image src="https://images.unsplash.com/photo-1609385509807-f191a8dc2bd2?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&w=4800" shape="art_work" />
-      </div>
-      <div className="justify-start items-center flex flex-row pt-1">
-        <Image size="x-small" /> <span className="font-sanss2 text-yellow-900">작가이름</span>
-        <span className="flex-row-reverse font-sanss2 text-yellow-900 ml-28">❤ 12</span>
-      </div>
+
+      <Thumbnail src="https://w.namu.la/s/ecd088782c4654b5bcc2223c3c7e135ede44f79588e80fb88c14c0b42e48cf37ad5a52176dbad7934c6802f1912be5a991cee8c95aa609df52f22b591dbd2319a7e818967bceef4984b2d395579587ab9d445306627c8082bbf200487a14097c" size="3" />
       </button>
+      <div className="justify-between items-center flex flex-row px-1 mt-1 w-[15rem] flex-shrink-0">
+        
+        <div className="flex flex-row items-center space-x-2">
+        <Profile size="8" /> 
+        <Subtitle size="1">펭귄</Subtitle>
+        </div>
+        <div className="flex flex-row items-center space-x-2">
+        <HeartButton like_cnt="1" like_ok />
+        </div>
+        </div>
+        
+      
+      
         
     </div>
     </div>

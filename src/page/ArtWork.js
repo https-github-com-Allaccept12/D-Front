@@ -1,7 +1,8 @@
 import React from "react";
 
 import { useHistory } from "react-router-dom";
-import { AllList, InlineDetail } from "../components";
+import { AllList } from "../components";
+import { Title } from "../elements"
 import { AdjBar } from "../NavComponents"
 import { useTabs } from "../hooks";
 
@@ -62,19 +63,26 @@ const ArtWork = (props) => {
 
   return (
     <div className="grid grid-cols-5">
-      <div className="fixed">
+      <div className="w-full">
+        <div className="sticky top-10">
+        <div className="flex flex-col justify-center mt-10 text-left ml-6 p-2 border-2 border-dpurple-100
+        rounded-lg">
+          <Title size="5">카테고리</Title>
       {array_sample.map((arrays, index) => 
       (
-        <div className="gird">
-        <div className=" bg-slate-300 rounded-md m-1 cursor-pointer text-xs md:text-sm" onClick={()=>changeItem(index)}>
-				{arrays.tab}</div>
+        <div className="gird font-min1">
+        <div className="rounded-md m-1 cursor-pointer text-xs md:text-sm" onClick={()=>changeItem(index)}>
+				✨{arrays.tab}</div>
         </div>
 
         ))}
       </div>
-      <div className="col-start-2 col-end-6">
-        <div className="fixed row-start-1">
+      </div>
+      </div>
+      <div className="fixed right-14">
           <AdjBar write="artwork" /></div>
+      <div className="col-start-2 col-end-6 border-2 m-10 mt-16 rounded-lg">
+
         <div>{currentItem.content}</div>
         </div>
     </div>

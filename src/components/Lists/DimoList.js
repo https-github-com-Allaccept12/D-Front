@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../../elements";
+import { Button, Title } from "../../elements";
 import {MainSlider, AllList, AdjBar} from "../../components";
 
 
@@ -64,19 +64,22 @@ const DimoList = (props) => {
     <>
 
       
-    <div className="grid grid-cols-6">
-      
-      <div className="fixed">
+<div className="grid grid-cols-5">
+      <div className="w-full">
+        <div className="sticky top-10">
+        <div className="flex flex-col justify-center mt-10 text-left ml-6 p-2 border-2 border-dpurple-100
+        rounded-lg">
+          <Title size="5">카테고리</Title>
       {array_sample.map((arrays, index) => 
       (
-        <div className="grid">
-        <div className=" bg-slate-300 rounded-md m-1 cursor-pointer text-xs md:text-sm" onClick={()=>changeItem(index)}>
-				{arrays.tab}</div>
-        
+        <div className="gird font-min1">
+        <div className="rounded-md m-1 cursor-pointer text-xs md:text-sm" onClick={()=>changeItem(index)}>
+				✨{arrays.tab}</div>
         </div>
 
         ))}
-       
+      </div>
+      </div>
       </div>
       <div className="col-start-2 col-end-7">
       <MainSlider dimo />
