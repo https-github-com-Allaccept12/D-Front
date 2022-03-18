@@ -1,9 +1,9 @@
 import React from "react";
-import { Grid, Title, Image, Text, Card } from "../../elements";
+import { Grid, Title, Image, Text, Card, Profile, Button } from "../../elements";
 
 
 import { useHistory, Link } from "react-router-dom";
-import {ArtWork, DimoWork } from "..";
+import {ArtWork, DimoWork } from "../../components";
 
 
 const Slides = (props) => {
@@ -16,16 +16,19 @@ const Slides = (props) => {
           <Card size="5" src="https://user-images.githubusercontent.com/89088205/155067792-882e3507-e664-4b31-ad9a-4b7abf4af948.jpg" />
           </div>
 
-        <div className="w-56 -mt-10 overflow-hidden bg-white
-        opacity-80 rounded-lg shadow-lg md:w-64 dark:bg-gray-800">
-            <div className="absolute bottom-8 pl-4 hover:scale-110 cursor-pointer">
-            <Image size="large" />
+        <div className="-mt-36 overflow-hidden bg-white
+        rounded-b-xl bg-dpurple-200 w-[18.75rem] h-[8.75rem]">
+            <div className="absolute bottom-[82px] pl-6 hover:scale-110 cursor-pointer">
+            <Profile size="4" main />
             </div>
-            <h2 className="py-2 font-bold tracking-wide text-right mr-4 text-gray-800 uppercase dark:text-white">펭귄 님</h2>
-            
-            <div className="flex items-center justify-between px-3 py-1 bg-gray-100 dark:bg-gray-700">
-                <span className="font-bold text-gray-800 dark:text-gray-200">UI / UX 디자인</span>
-                <button className="px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-blue-800 rounded hover:bg-blue-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none">FOLLOW</button>
+            <div className="pl-36 pt-4">
+            <Title size="5">펭귄 님</Title>
+            <div className="-mt-1">
+            <Text size="5">그래픽 디자인 UI/UX </Text>
+            </div>
+            </div>
+            <div className="flex justify-center mt-4">
+            <Button size="3" color="3">팔로우</Button>
             </div>
         </div>
     </div>
