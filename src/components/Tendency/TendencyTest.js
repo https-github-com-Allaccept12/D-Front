@@ -4,31 +4,33 @@ import dPlus from "../../static/images/dPlus_logo.svg";
 import { Link } from "react-router-dom";
 
 const mbti = {"I":0, "E":0, "N":0, "S":0, "T":0, "F":0, "P":0, "J":0 };
+let mbti_s = "";
+let designation = "";
 
 const TendencyTest = (props) => {
   const [TestNum, nextTestNum] = useState(0);
-  const mbti_s = Object.keys(mbti).filter(key => mbti[key] >= 2).join('')
+  mbti_s = Object.keys(mbti).filter(key => mbti[key] >= 2).join('');
   // console.log(mbti_s);
-  let designation = "";
-  if (mbti_s === "ISTJ" || "ESTJ" || "ISFJ") {
+  if (mbti_s === "ISTJ" || mbti_s === "ESTJ" || mbti_s === "ISFJ") {
     designation = "디테일 장인";
   }
-  else if (mbti_s === "ENTJ" || "ESTP") {
+  else if (mbti_s === "ENTJ" || mbti_s === "ESTP") {
     designation = "대담한 혁신가";
   }
-  else if (mbti_s === "INFP" || "INFJ") {
+  else if (mbti_s === "INFP" || mbti_s === "INFJ") {
     designation = "꿈꾸는 예술가";
   }
-  else if (mbti_s === "INTP" || "ISTP" || "INTJ") {
+  else if (mbti_s === "INTP" || mbti_s === "ISTP" || mbti_s === "INTJ") {
     designation = "창의적인 발명가";
   }
-  else if (mbti_s === "ENTP" || "ENFP" || "ESFP") {
+  else if (mbti_s === "ENTP" || mbti_s === "ENFP" || mbti_s === "ESFP") {
     designation = "명랑한 모험가";
   }
-  else if (mbti_s === "ISFP" || "ENFJ" || "ESFJ") {
+  else if (mbti_s === "ISFP" || mbti_s === "ENFJ" || mbti_s === "ESFJ") {
     designation = "부드러운 중재자";
   }
     
+  // console.log(designation);
   return (
     <div className="grid items-center w-full max-h-screen grid-cols-7 grid-rows-6 bg-white">
       {TestNum === 0 && 
@@ -242,7 +244,7 @@ const TendencyTest = (props) => {
           </Button>
           }
       </div>
-      <div className="grid col-start-4 row-start-5">
+      <div className="grid col-start-4 row-start-6">
         <img src={dPlus}/>
       </div>
       <div className="col-start-7 row-start-6">
