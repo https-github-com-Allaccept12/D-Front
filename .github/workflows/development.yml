@@ -23,9 +23,6 @@ jobs:
 
       - name: Build
         run: yarn build
-        artifacts:
-          paths:
-        - build/
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
