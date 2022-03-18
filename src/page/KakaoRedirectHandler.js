@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { kakaoLoginAxios } from '../redux/modules/user';
-// import { setCookie } from "../shared/cookie";
 
 
 const KakaoRedirectHandler = props => {
@@ -14,7 +13,7 @@ const KakaoRedirectHandler = props => {
   const code = new URL(window.location.href).searchParams.get('code');
 
   useEffect(() => {
-    dispatch(kakaoLoginAxios({code}))
+    dispatch(kakaoLoginAxios({code, history}))
   })
   // if (sessionStorage.getItem("access_token")) {
   //   setCookie("access_token", sessionStorage.getItem("access_token"), 7);

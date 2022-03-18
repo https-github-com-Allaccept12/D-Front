@@ -14,6 +14,7 @@ const Main = (props) => {
 
   // dispatch(userActions.loginFB({...name}));
   return (
+
     <div className="md:grid w-full">
       <div className="bg-red-200 w-full h-96 -z-10 absolute"></div>
         <div className="md:grid grid-rows-3 p-2 
@@ -25,6 +26,8 @@ const Main = (props) => {
           <Text size="4">현재 가장 핫한<br /> 
           디자이너님들을 소개합니다</Text>
           </div>
+
+
          </div>
         <div className="col-span-8 col-start-3 row-span-3">
         <MainSlider main />

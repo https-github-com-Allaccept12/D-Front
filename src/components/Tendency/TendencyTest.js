@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { Button } from "../../elements";
-
+import dPlus from "../../static/images/dPlus_logo.svg";
 import { Link } from "react-router-dom";
 
 const mbti = {"I":0, "E":0, "N":0, "S":0, "T":0, "F":0, "P":0, "J":0 };
@@ -227,7 +227,7 @@ const TendencyTest = (props) => {
             <path d="M16 21C16 18.2386 18.2386 16 21 16H531C533.761 16 536 18.2386 536 21V21C536 23.7614 533.761 26 531 26H21C18.2386 26 16 23.7614 16 21V21Z" fill="#EDF1F7"/>
             <rect x="16" y="16" width="520" height="10" rx="5" fill="#9262F7"/>
           </svg><br/><br/><br/>
-          <div className="text-center">"{designation}"<br/><br/> 칭호를 얻으셨습니다!</div><br/>
+          <div className="text-center">"{designation}"<br/><br/> 칭호를 얻으셨습니다!</div><br/><br/><br/><br/>
               <Link to="/MyInterests">
                 <div className="grid items-center col-start-4 col-end-5 row-start-3">
                 <Button size="1" color="1">
@@ -236,11 +236,14 @@ const TendencyTest = (props) => {
               </Link>
         </div>
         }          
-      <div className="grid items-center col-start-4 row-start-5">
+      <div className="grid items-center col-start-4 row-start-4">
           {TestNum === 0 && <Button size="2" color="3" onClick={()=>{nextTestNum(TestNum + 1)}}>
             시작하기
           </Button>
           }
+      </div>
+      <div className="grid col-start-4 row-start-5">
+        <img src={dPlus}/>
       </div>
       <div className="col-start-7 row-start-6">
       {TestNum <= 12 && <Link to="/MyInterests">다음에 하기</Link>}

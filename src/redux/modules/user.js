@@ -10,8 +10,8 @@ const userState = {
 
 export const kakaoLoginAxios = createAsyncThunk(
   "user/kakaoLoginAxios",
-  async ({code, navigate}, {dispatch}) => {
-    const user = await UserApi.kakaoLogin({code, navigate});
+  async ({code, history}, {dispatch}) => {
+    const user = await UserApi.kakaoLogin({code, history});
     if (user) {
       dispatch(user.data);
       return user;
