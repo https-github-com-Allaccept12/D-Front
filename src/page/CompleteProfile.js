@@ -12,7 +12,7 @@ const CompleteProfile = (props) => {
 
   return (
 
-    <div className="bg-gradient-to-r from-[#9262F7] to-[#7681FB] grid place-items-center w-full max-h-screen pb-20">
+    <div className="bg-gradient-to-r from-[#9262F7] to-[#7681FB] grid place-items-center w-full h-screen pb-20">
       <div className="grid row-start-1 py-10">
       </div>
       <div className="grid w-1/2 row-start-2 py-20 mt-10 text-center bg-white rounded-md">
