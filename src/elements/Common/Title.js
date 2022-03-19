@@ -8,21 +8,22 @@ ${(props) => (props.size === "3" ? `font-minB text-3xl` : "")};
 ${(props) => (props.size === "4" ? `font-minB text-2xl` : "")};
 ${(props) => (props.size === "5" ? `font-minB text-xl` : "")};
 ${(props) => (props.size === "6" ? `font-min1 text-xl` : "")};
-
+${(props) => (props.color === "W" ? `text-white` : "")};
 `;
 
 const Title = (props) => {
-  const { children, onClick, size } =
+  const { children, onClick, size, color } =
   props;
 
 
-  return <TitleText onClick={onClick} size={size} >{children}</TitleText>;
+  return <TitleText onClick={onClick} size={size} color={color} >{children}</TitleText>;
 };
 
 Title.defaultProps = {
   children: null,
   onClick: () => {},
   size: 3,
+  color: ""
 };
 
 

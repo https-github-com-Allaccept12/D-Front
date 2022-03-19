@@ -23,7 +23,7 @@ const AllList = (props) => {
     <>
     
    
-    <div className="md:row-start-1 flex justify-items-center items-center mt-10 Arts"><Title size="4"> 추천 아트워크</Title></div>
+    <div className="md:row-start-1 justify-items-center items-center mt-10 Arts hidden md:flex"><Title size="4"> 추천 아트워크</Title></div>
       <div className="mt-16 mx-auto flex flex-row flex-wrap justify-center items-center gap-5 px-16">
         {p.map(n => { return <ArtWork /> }) }
         </div>

@@ -8,13 +8,13 @@ import { Image, Text, Icon } from "../../elements";
 // 리액트 슬라이더 중에 제일 많이들쓰는거
 // 구글링해서 커스텀 css 만들기!
 export const Slide = tw(Slider)`
-    w-[62.5rem]
+    w-[30.25rem] lg:w-[30.25rem] xl:w-[50.25rem] 2xl:w-[62.5rem]
     ${(props) => (props.dimo ? `
     bg-transparent mx-auto mt-10 col-start-2 
     col-end-6 row-start-1 col-opacity-90 text-white
     font-sanss2 text-md w-full` : "")};
     ${(props) => (props.main ? `bg-transparent mx-auto
-    text-white overflow-hidden text-lg w-[56.25rem]` : "")};
+    text-white overflow-hidden text-lg` : "")};
     ${(props) => (props.artwork ? `bg-transparent mx-auto mt-10
     opacity-90 text-white overflow-hidden -mb-10
     font-sanss2 text-lg w-64 md:w-4/5` : "")};
@@ -23,11 +23,11 @@ const SS = tw.div`
     
 `
 const PrevBtn = tw.button`
-  z-10
+  z-10 text-white mt-36
 `
 
 const NextBtn = tw.button`
-  z-10
+  z-10 text-white mt-36
 `
 
 const MainSlider = (props)=>{
@@ -50,15 +50,15 @@ const MainSlider = (props)=>{
          responsive: [ // 반응형 웹 구현 옵션
 
          {
-           breakpoint: 1500,
+           breakpoint: 1550,
            settings: {
-             slidesToShow: 3
+             slidesToShow: 2
            },
          },
          {
-           breakpoint: 1023,
+           breakpoint: 1250,
            settings: {
-             slidesToShow: 2
+             slidesToShow: 1
            },
          },
          {
@@ -103,7 +103,7 @@ const MainSlider = (props)=>{
     
     if(main) return (
       <>
-      <div className="flex flex-row ml-20">
+      <div className="flex-row hidden md:flex">
        <PrevBtn onClick={() => slider?.current?.slickPrev()}><Icon name="ArrowL" iconSize="48" /> </PrevBtn>
     	<Slide {...settings} ref={slider}>
          
