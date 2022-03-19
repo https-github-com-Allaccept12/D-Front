@@ -13,7 +13,8 @@ const ArtWorkDetail = (props) => {
 
 
 
-    <div className="flex justify-center items-center flex-col w-full overflow-y-hidden">
+    <div className="flex justify-center items-center flex-col w-full">
+   
       
        <div className="bg-white p-10 justify-between w-full h-[9rem]">
                 <div className="flex items-center justify-start flex-row">
@@ -56,17 +57,14 @@ const ArtWorkDetail = (props) => {
                 </div>
             </div>
 
-            <div className=" p-2 justify-between w-full">
-
-
  {/* 슬라이더 자리 */}
 
- <div>
-   <DetailSlider />
- </div>
-</div>
 
-            <div className="w-full bg-white p-2 pt-4 rounded shadow-lg">
+   <DetailSlider />
+
+
+
+            <div className="w-full bg-white p-2 pt-4 shadow-lg">
   <div className="flex ml-3">
     <div className="mr-3">
       <img src="http://picsum.photos/50" alt="" className="rounded-full" />
@@ -88,7 +86,7 @@ const ArtWorkDetail = (props) => {
 
 
   </div>
-  <div className="grid grid-rows-6 grid-cols-4 p-3">
+  <div className="">
 
 <Comment />
 <Comment />
@@ -110,28 +108,9 @@ const ArtWorkDetail = (props) => {
     </div>
     
     </div>
-    <div className="sticky bottom-20 top-20">
-      <div className="hidden md:flex flex-row md:flex-col gap-7 shrink">
-        <div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
-        <Icon />프로필
-        </div>
-        <div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
-        <Icon />팔로우
-        </div>
-        <div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
-        <Icon name="HeartF" />좋아요
-        </div>
-        <div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
-        <Icon />스크랩
-        </div>
-        <div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
-        <Icon name="Link" />공유하기
-        </div>
 
+   
 
-
-            </div>
-          </div>
 </>
   );
 };

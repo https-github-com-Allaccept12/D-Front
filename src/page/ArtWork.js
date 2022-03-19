@@ -1,8 +1,8 @@
 import React from "react";
 
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { AllList } from "../components";
-import { Title } from "../elements"
+import { Title, Button } from "../elements"
 import { AdjBar } from "../NavComponents"
 import { useTabs } from "../hooks";
 
@@ -63,10 +63,16 @@ const ArtWork = (props) => {
 
   return (
     <div className="grid grid-cols-5 grid-auto bg-dgray-100 w-full">
+            <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+
+
+</div>
       <div className="w-full hidden md:contents">
         <div className="sticky top-10">
         <div className="flex flex-col justify-center mt-10 text-left ml-6 p-2 border-2 border-dpurple-100
         rounded-lg bg-white">
+          <Link to="/createart"><Button size="2">글쓰기</Button></Link>
+          <Link to="/detail"><Button size="2">인라인</Button></Link>
           <Title size="5">카테고리</Title>
       {array_sample.map((arrays, index) => 
       (
