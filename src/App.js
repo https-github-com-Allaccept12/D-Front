@@ -8,7 +8,7 @@ import { Main, ArtWork, DimoQNA, DimoShared, MySpace, MyPosts, CreateProfile, Co
 function App() {
   return (
 
-    <div className="App w-full m-auto">
+    <div className="App w-full m-auto overflow-y-hidden">
       <Header />
           <Switch>
             <Route exact path="/" component={Main} />

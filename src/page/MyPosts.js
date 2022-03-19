@@ -1,6 +1,5 @@
 import React from "react";
 import { Title, Subtitle, Text, Thumbnail, Profile, CheckBox, RadioButton, Card, Icon, Button, Input, SearchInput } from "../elements";
-
 import { useHistory } from "react-router-dom";
 import {useInput} from "../hooks"
 import SocialLogin from "../shared/SocialLogin";
@@ -47,7 +46,7 @@ const MyPosts = (props) => {
     <Button size="2" color="6" 
     icon name="HeartF" iconSize="16" iconColor="heart">버튼버튼</Button>
     </div>
-    <div className="flex flex-row w-3/4 flex-wrap ">
+    <div className="flex flex-row w-3/4 flex-wrap text-dgray-200">
     <Icon name="ArrowL" iconSize="16" />
     <Icon name="ArrowR" iconSize="32" />
     <Icon name="BookmarkE" iconSize="16" />

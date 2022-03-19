@@ -19,7 +19,8 @@ import MultiSelect from "./Tools/MultiSelect";
 import Hashtag from "./Tools/Hashtag";
 import Card from "./Common/Card";
 import Icon from "./Common/Icon";
+import Logo from "./Common/Logo"
 import SearchInput from "./Common/SearchInput"
 import HeartButton from "./Tools/HeartButton"
 
-export { Title, Subtitle, Text, Input, Button, Image, Intro, Spinner, Permit,  Modal, CheckBox, SelectBox, DropDown, MultiSelect, Hashtag, SelectBoxFor12, Thumbnail, Profile, RadioButton, Card, Icon, SearchInput, HeartButton };
+export { Title, Subtitle, Text, Input, Button, Image, Intro, Spinner, Permit,  Modal, CheckBox, SelectBox, DropDown, MultiSelect, Hashtag, SelectBoxFor12, Thumbnail, Profile, RadioButton, Card, Icon, Logo, SearchInput, HeartButton };

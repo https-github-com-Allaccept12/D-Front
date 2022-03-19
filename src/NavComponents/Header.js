@@ -1,10 +1,10 @@
 import React from "react";
-import { Title, Image } from "../elements";
+import { Title, Image, Logo } from "../elements";
 import { getCookie } from "../shared/cookie";
 import { useDispatch } from "react-redux";
-
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import GoogleIcon from '@mui/icons-material/Google';
+import "./Header.css"
 
 const Header = (props) => {
   const [is_login, setIsLogin] = React.useState(false);
@@ -17,20 +17,45 @@ const Header = (props) => {
       setIsLogin(false);
     }
   }, [])
-    return (
-      <div className="grid items-center grid-cols-9 bg-slate-800 justify-items-center">
-        <div className="flex-shrink-0"><Image /></div>
-        <Title><Link to="/">홈</Link></Title>
-        <Title><Link to="/artwork">Artwork</Link></Title>
-        <Title><Link to="/dimoqna">Dimo</Link></Title>
-        <Title><Link to="/myspace">MySpace</Link></Title>
-        {is_login ? <Title><Link to="/logout">로그아웃</Link></Title> : <Title><Link to="/myposts">logins</Link></Title>}
-        
-        <Title><Link to="/tendencytest">cre!</Link></Title>
-        <GoogleIcon />
-        </div>
-  );
+  const location = useLocation();
+  const a = location.pathname
 
+  if(a === "/") return (
+      <div className="bg-gradient-to-r from-[#A162F7] to-[#6F88FC] h-32 md:h-[30rem] relative w-full ">
+        <div className="head">
+        <Link to="/"><Logo name="DplusW" logoSizeW="200" logoSizeH="59" /></Link>
+        </div>
+<div className="header  flex-row justify-evenly gap-9 text-white hidden md:flex">
+<Title size="6"><Link to="/">홈</Link></Title>
+        <Title size="6"><Link to="/artwork">모아보기</Link></Title>
+        <Title size="6"><Link to="/dimoqna">디모</Link></Title>
+        <Title size="6"><Link to="/myspace">마이페이지</Link></Title>
+        {is_login ? <Title size="6"><Link to="/logout">로그아웃</Link></Title> : <Title size="6"><Link to="/myposts">logins</Link></Title>}
+        <Title size="6"><Link to="/tendencytest">cre!</Link></Title>
+        </div>
+
+        </div>
+
+
+  );
+else  {
+  return (
+  <div className="h-14 md:h-[7.8rem] relative w-full">
+        <div className="head">
+        <Link to="/"><Logo name="DplusC" logoSizeW="200" logoSizeH="59" /></Link>
+        </div>
+<div className="header flex-row justify-evenly gap-9 text-dpurple-200 hidden md:flex">
+<Title size="6"><Link to="/">홈</Link></Title>
+        <Title size="6"><Link to="/artwork">모아보기</Link></Title>
+        <Title size="6"><Link to="/dimoqna">디모</Link></Title>
+        <Title size="6"><Link to="/myspace">마이페이지</Link></Title>
+        {is_login ? <Title size="6"><Link to="/logout">로그아웃</Link></Title> : <Title size="6"><Link to="/myposts">logins</Link></Title>}
+        <Title size="6"><Link to="/tendencytest">cre!</Link></Title>
+        </div>
+
+        </div>
+)
+}
   
 };
 

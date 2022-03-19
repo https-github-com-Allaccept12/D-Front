@@ -62,11 +62,11 @@ const ArtWork = (props) => {
   const {currentItem, changeItem} = useTabs(0, array_sample);
 
   return (
-    <div className="grid grid-cols-5">
-      <div className="w-full">
+    <div className="grid grid-cols-5 grid-auto bg-dgray-100 w-full">
+      <div className="w-full hidden md:contents">
         <div className="sticky top-10">
         <div className="flex flex-col justify-center mt-10 text-left ml-6 p-2 border-2 border-dpurple-100
-        rounded-lg">
+        rounded-lg bg-white">
           <Title size="5">카테고리</Title>
       {array_sample.map((arrays, index) => 
       (
@@ -79,9 +79,8 @@ const ArtWork = (props) => {
       </div>
       </div>
       </div>
-      <div className="fixed right-14">
-          <AdjBar write="artwork" /></div>
-      <div className="col-start-2 col-end-6 border-2 m-10 mt-16 rounded-lg">
+
+      <div className="col-start-1 md:col-start-2 col-end-6 border-2 md:mx-5 mt-10 rounded-lg bg-white 2xl:w-5/6">
 
         <div>{currentItem.content}</div>
         </div>
