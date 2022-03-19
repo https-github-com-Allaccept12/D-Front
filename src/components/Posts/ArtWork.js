@@ -9,6 +9,7 @@ const ArtWork = (props) => {
   let history = useHistory();
   return (
     <>
+
     <div className="m-1 my-10 w-full md:w-64 md:h-72 p-1 flex justify-center items-center flex-col">
       <div>
       <button type="button" className=" active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalXl">
@@ -37,25 +38,50 @@ const ArtWork = (props) => {
 <>
 
 
-<div className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-autos" id="exampleModalXl" tabIndex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
-  <div className="modal-dialog modal-xl relative w-auto pointer-events-none">
-    <div className="modal-content border-none relative flex flex-col w-full pointer-events-auto bg-transparent bg-clip-padding rounded-md outline-none text-current">
-
-      <div className="modal-header flex flex-shrink-0 items-center justify-between p-4 rounded-t-md">
-      </div>
 
 
-      <div className="modal-body relative">
-        <div className="flex justify-center items-center">
+<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
+
+
+
+  <div class="modal-dialog modal-xl relative w-auto pointer-events-none">
+   
+
+    <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+
+
+
+      <div class="modal-body">
         <ArtWorkDetail />
+        <div className="fixed w-20 top-20 right-20 xl:right-60 space-y-2">
 
-        </div>
-      
+<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<Icon />프로필
+</div>
+<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<Icon />팔로우
+</div>
+<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<Icon name="HeartF" />좋아요
+</div>
+<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<Icon />스크랩
+</div>
+<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<Icon name="Link" />공유하기
+</div>
+</div>
+
+
+    </div>
+          </div>
 
       </div>
+     
     </div>
-  </div>
-</div>
+
+
+
 </>
 
     </>

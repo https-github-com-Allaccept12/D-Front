@@ -18,6 +18,8 @@ const MyPosts = (props) => {
 
     </div>
 
+
+
 <div> 
       <SearchInput value={name.value} onChange={name.onChange} maxLen="10" is_submit cardSize="1" />
       <SearchInput value={name.value} onChange={name.onChange} maxLen="10" is_submit cardSize="2" />

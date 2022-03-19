@@ -11,7 +11,7 @@ const Slides = (props) => {
   let history = useHistory();
   if(main) return (
     <>
-     <div className="flex flex-col items-center justify-center max-w-sm mx-auto">
+     <div className="flex flex-col items-center justify-center ">
         <div className="bg-white shadow-md bg-center bg-cover rounded-lg">
           
           <Card size="5" types="text" src="https://user-images.githubusercontent.com/89088205/155067792-882e3507-e664-4b31-ad9a-4b7abf4af948.jpg" />
