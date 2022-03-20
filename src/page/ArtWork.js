@@ -1,6 +1,6 @@
 import React from "react";
 
-import { AllList, InlineDetail, Categorys } from "../components";
+import { AllList, Categorys } from "../components";
 import { Title, Button } from "../elements"
 import { Link, Route, Switch } from 'react-router-dom';
 import { useTabs } from "../hooks";
@@ -17,7 +17,7 @@ const ArtWork = (props) => {
     <Switch>
         <Route exact path="/art/list/:name" component={AllList} />
         <Route exact path="/art/createart" component={CreateArtWork} />
-        <Route exact path="/art/detail" component={InlineDetail} />
+        {/* <Route exact path="/art/detail" component={InlineDetail} /> */}
         </Switch>
         </div>
     </>

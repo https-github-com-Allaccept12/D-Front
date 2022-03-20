@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { Header, NotFound } from "./NavComponents";
-import { TendencyTest, MyInterests, Results, DimoDetail, DimoQNADetail, InlineDetail } from "./components";
-import { Main, ArtWork, Dimo, MySpace, MyPosts, CreateProfile, CompleteProfile, KakaoRedirectHandler, LogOut, EditMySpace } from "./page";
+import { TendencyTest, MyInterests, Results } from "./components";
+import { Main, ArtWork, Dimo, MySpace, MyPosts, CreateProfile, CompleteProfile, KakaoRedirectHandler, LogOut } from "./page";
 
 function App() {
   return (
