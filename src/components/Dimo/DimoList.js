@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Title } from "../../elements";
-import {MainSlider, AllList, AdjBar} from "../../components";
+import { DimoSlider, AllList, AdjBar } from "../../components";
 
 
 
@@ -82,7 +82,7 @@ const DimoList = (props) => {
       </div>
       </div>
       <div className="col-start-2 col-end-7">
-      <MainSlider dimo />
+      <DimoSlider />
         
        
        

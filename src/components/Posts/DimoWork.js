@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image, Card, Title } from "../../elements";
+import { Button, Image, Profile, Title } from "../../elements";
 
 import { useHistory, Link, useLocation } from "react-router-dom";
 
@@ -12,15 +12,25 @@ const DimoWork = (props) => {
   let history = useHistory();
   return (
     <>
-    <Card types="text" size={size}>
+    <div className="w-[32.5rem] h-[18.75rem] bg-dpurple-100">
 
-<div className="flex flex-row gap-1">
-<p className="bg-red-300 w-20 text-center rounded-xl min-w-fit max-w-xs px-2">UI 디자인</p>
-<p className="bg-yellow-300 w-20 text-center rounded-xl min-w-fit max-w-xs px-2">UX 디자인</p>
-<p className="bg-slate-300 w-20 text-center rounded-xl min-w-fit max-w-xs px-2">디자인툴</p>
-</div>
+ <div className="absolute w-[32.5rem] h-[18.75rem]">
+    <div>
+    <div className="absolute top-12 pl-6 hover:scale-110 cursor-pointer">
+            <Profile size="6" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" main />
+            </div>
+      <div className="absolute top-12 left-24">
+        <div>취준생, 고민</div>
+        <Title size="6">이런이런 고민이 있어여</Title></div>
+    </div>
+        <div cla>
+          dkflsdjflskfdjlk
+        </div>
+ </div>
 
-<Title size="4">이런이런 고민이 있어여</Title>
+
+
+
 <time>2022.20</time><p>조회수 2222</p><p>컨텐츠</p>
 
 { b === "dimoqna" ? 
@@ -31,13 +41,12 @@ const DimoWork = (props) => {
       나도 댓글달기</p></Link> }
     
     <div className="">
-    <span className="text-blue-500">좋아요 1 </span>
-    <span className="text-blue-500">저장하기 1</span>
-    <span className="text-blue-500">공유하기</span>
+    <span className="text-blue-800">좋아요 1 </span>
+    <span className="text-blue-800">저장하기 1</span>
+    <span className="text-blue-800">공유하기</span>
     </div>
 
-</Card>
-
+</div>
 </>
   );
 };

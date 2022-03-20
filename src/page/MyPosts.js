@@ -18,6 +18,12 @@ const MyPosts = (props) => {
 
     </div>
 
+<div className="flex">
+ <div className="flex flex-col justify-center items-center w-full">
+   <div className="bg-red-400">dfkjlsfjslkdfjslkdfjslkfjlk</div>
+   <div className="bg-yellow-200">dfkjlsfjslkdfjslkdfjslkfjlk</div> <div className="bg-red-400">dfkjlsfjslkdfjslkdfjslkfjlk</div> <div className="bg-red-400">dfkjlsfjslkdfjslkdfjslkfjlk</div>
+   </div> 
+  </div>
 
 
 <div> 
