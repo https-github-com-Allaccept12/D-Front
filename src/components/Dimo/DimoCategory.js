@@ -3,10 +3,7 @@ import { Button, Title, Text } from "../../elements";
 
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
 
-import DimoQNADetail from "./DimoQNADetail";
-import DimoDetail from "./DimoDetail" 
-import CreateDimo from './CreateDimo';
-import { useTabs } from "../../hooks";
+import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "../Dimo"
 
 
 const DimoCategory = (props) => {
@@ -39,7 +36,7 @@ const DimoCategory = (props) => {
     </div>
     <Switch>
         <Route exact path="/dimo/qna/detail" component={DimoQNADetail} />
-        <Route exact path="/dimo/qna/create" component={CreateDimo} />
+        <Route exact path="/dimo/qna/create" component={DimoCreate} />
         </Switch>
     </>
   );
@@ -71,8 +68,8 @@ const DimoCategory = (props) => {
     </div>
     </div>
     <Switch>
-        <Route exact path="/dimo/shared/detail" component={DimoDetail} />
-        <Route exact path="/dimo/shared/create" component={CreateDimo} />
+        <Route exact path="/dimo/shared/detail" component={DimoSharedDetail} />
+        <Route exact path="/dimo/shared/create" component={DimoCreate} />
         </Switch>
     </>
   );

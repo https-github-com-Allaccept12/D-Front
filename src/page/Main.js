@@ -1,7 +1,7 @@
 import React from "react";
-import { Button, Title, Text, Subtitle } from "../elements";
-import { MainSlider, SideBar } from "../components";
-import { AllList } from "../components/ArtWorks"
+import { Title, Text, Subtitle } from "../elements";
+import { MainSlider } from "../components";
+import { ArtWorkAllList } from "../components/ArtWorks"
 import { setCookie } from "../shared/cookie";
 import "./Main.css"
 
@@ -33,7 +33,7 @@ const Main = (props) => {
           </div>
       
       <div className="mx-auto md:pt-28 max-w-screen-3xl">
-      <AllList />
+      <ArtWorkAllList />
       </div>
     </div>
   );

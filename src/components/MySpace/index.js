@@ -1,5 +1,6 @@
 import MySpaceUser from "./MySpaceUser";
 import MyExp from "./MyExp";
+import MyArtWork from "./MyArtWork";
 import MyPortfolio from "./MyPortfolio"
 import MySkill from "./MySkill"
 import MyTimeLine from "./MyTimeLine"
@@ -10,4 +11,9 @@ import CreateMyExp from "./Creates/CreateMyExp";
 import CreateMyIntro from "./Creates/CreateMyIntro";
 import CreateMySpaceUser from "./Creates/CreateMySpaceUser";
 
-export {MySpaceUser, MyExp, MyPortfolio, MySkill, MyTimeLine, Dpolio, MyPage, CreateMySpaceUser, CreateMyIntro, CreateMyExp }
+export {
+    MySpaceUser, MyExp, 
+    MyPortfolio, MySkill, MyTimeLine, 
+    Dpolio, MyPage, MyArtWork,
+    
+    CreateMySpaceUser, CreateMyIntro, CreateMyExp }

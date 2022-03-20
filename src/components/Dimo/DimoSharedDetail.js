@@ -2,11 +2,11 @@ import React from "react";
 import { Button, Image, Title, Text, Input } from "../../elements";
 
 import { useHistory } from "react-router-dom";
-import { MainSlider, Comment } from "../../components";
+import {Comment} from "../Comment";
 
 
 
-const DimoDetail = (props) => {
+const DimoSharedDetail = (props) => {
   let history = useHistory();
   return (
     <>
@@ -84,4 +84,4 @@ const DimoDetail = (props) => {
   );
 };
 
-export default DimoDetail;
+export default DimoSharedDetail;

@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Image, Container } from "../../elements";
-import { MyArtWork } from "../../components"
+import { MyArtWork } from "../../components/MySpace"
 import { useHistory } from "react-router-dom";
 
 const Port_cnt = 0

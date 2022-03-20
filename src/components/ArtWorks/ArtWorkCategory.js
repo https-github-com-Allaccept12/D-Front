@@ -1,6 +1,5 @@
 import React from "react";
 
-import { AllList, InlineDetail } from "..";
 import { Title, Button, Text } from "../../elements"
 import { Link, Route, Switch } from 'react-router-dom';
 import { useTabs } from "../../hooks";
@@ -8,7 +7,7 @@ import { useTabs } from "../../hooks";
 
 
 
-const Categorys = (props) => {
+const ArtWorkCategory = (props) => {
 
 
 
@@ -46,4 +45,4 @@ const Categorys = (props) => {
   );
 };
 
-export default Categorys;
+export default ArtWorkCategory;

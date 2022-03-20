@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { MyPortfolio, MySkill } from "../components/MySpace";
 import { CreateMyIntro, CreateMySpaceUser, CreateMyExp } from "../components/MySpace";
 import { useTabs } from "../hooks";
-import {MyInterests} from "../components"
+import { MyInterests } from "../components"
 
 const array_sample = [
 {

@@ -1,9 +1,9 @@
 import React from "react";
-import { Button, Image, Logo, Text, Input, Profile, HeartButton, Icon } from "../../elements";
+import { Profile, HeartButton, Icon } from "../../elements";
 
 import { useHistory } from "react-router-dom";
-import { DetailSlider, Comment } from "..";
-
+import DetailSlider from "../Sliders/DetailSlider";
+import {Comment} from "../Comment";
 
 
 const ArtWorkDetail = (props) => {
