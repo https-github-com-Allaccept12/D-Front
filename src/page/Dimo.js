@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
-import {DimoCategory,DimoQNADetail, DimoDetail, DimoAllList } from "../components";
-import CreateDimo from '../components/Dimo/CreateDimo';
+import {DimoCategory, DimoAllList } from "../components/Dimo";
+
 import { Title } from "../elements"
 
 

@@ -1,10 +1,9 @@
 
-import DimoDetail from "./Details/DimoDetail";
-import InlineDetail from "./ArtWork/InlineDetail";
-import DimoQNADetail from "./Details/DimoQNADetail";
-import DimoWork from "./Dimo/DimoWork";
-import DimoCategory from "./Dimo/DimoCategory";
-import DimoAllList from "./Dimo/DimoAllList"
+import DimoDetail from "./DimoDetail";
+import DimoQNADetail from "./DimoQNADetail";
+import DimoWork from "./DimoWork";
+import DimoCategory from "./DimoCategory";
+import DimoAllList from "./DimoAllList"
 
-export { DimoDetail, DimoQNADetail, InlineDetail, DimoAllList,
+export { DimoDetail, DimoQNADetail,  DimoAllList,
      DimoWork, DimoCategory };
