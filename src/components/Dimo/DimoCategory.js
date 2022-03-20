@@ -8,7 +8,7 @@ const DimoQNA = (props) => {
   let history = useHistory();
   const location = useLocation();
   const a = location.pathname
-  if(a === "/dimoqna") return (
+  if(a === "/dimo/qna") return (
     <>
 <div className="bg-dgray-200">
 
@@ -19,7 +19,7 @@ const DimoQNA = (props) => {
     </div>
     </>
   );
-  if(a === "/dimoshared") return (
+  if(a === "/dimo/shared") return (
     <>
 
     <div className="fixed top-16 md:right-32">

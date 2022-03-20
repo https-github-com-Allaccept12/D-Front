@@ -12,18 +12,19 @@ ${(props) => (props.color === "W" ? `text-white` : "")};
 `;
 
 const Title = (props) => {
-  const { children, onClick, size, color } =
+  const { children, onClick, size, color, className } =
   props;
 
 
-  return <TitleText onClick={onClick} size={size} color={color} >{children}</TitleText>;
+  return <TitleText onClick={onClick} size={size} color={color} className={className} >{children}</TitleText>;
 };
 
 Title.defaultProps = {
   children: null,
   onClick: () => {},
   size: 3,
-  color: ""
+  color: "",
+  className: ""
 };
 
 

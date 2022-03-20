@@ -10,7 +10,7 @@ const ArtWork = (props) => {
   return (
     <>
 
-    <div className="m-1 my-10 w-full md:w-64 md:h-72 p-1 flex justify-center items-center flex-col">
+    <div className="m-1 my-5 w-full md:w-64 md:h-72 p-1 flex justify-center items-center flex-col">
       <div>
       <button type="button" className=" active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalXl">
 

@@ -15,14 +15,13 @@ const MySpace = (props) => {
   return (
 <>
 <div className='flex flex-row'> 
-     <Title size="6"><Link to="/myspace">디모1</Link></Title>
-     <Title size="6"><Link to="/editmyspace">디모2</Link></Title>
+
      </div>
 
   <Switch>
         <Route exact path="/myspace" component={MyPage} />
-        <Route exact path="/editmyspace" component={EditMySpace} />
-        <Route exact path="/dpolio" component={Dpolio} />
+        <Route exact path="/myspace/editmyspace" component={EditMySpace} />
+        <Route exact path="/myspace/dpolio" component={Dpolio} />
         </Switch>
       </>
 

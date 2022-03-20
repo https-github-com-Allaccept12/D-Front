@@ -16,11 +16,11 @@ function App() {
             <Route exact path="/logout" component={LogOut} />
             <Route exact path="/myposts" component={MyPosts} />
             
-            <Route path={["/artwork", "/createart", "/detail"]} component={ArtWork} />
+            <Route path={["/art","/art/:name"]} component={ArtWork} />
 
-            <Route path={['/dimoqna', '/dimoshared', "/dimodetail", "/dimoqnadetail", "/createdimo/qna", "/createdimo/shared"]} component={Dimo} />
+            <Route path={["/dimo/:name"]} component={Dimo} />
 
-            <Route exact path={["/myspace", "/dpolio", "/mypage", "editmyspace"]} component={MySpace} />
+            <Route exact path={["/myspace", "/myspace/:name"]} component={MySpace} />
             
             
             <Route exact path="/tendencytest" component={TendencyTest} />
