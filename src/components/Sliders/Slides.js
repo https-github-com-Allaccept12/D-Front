@@ -3,7 +3,7 @@ import { Grid, Title, Image, Text, Card, Profile, Button, Thumbnail } from "../.
 
 
 import { useHistory, Link } from "react-router-dom";
-import {ArtWork, DimoWork } from "../../components";
+import { DimoWork } from "../../components/Dimo";
 
 
 const Slides = (props) => {
