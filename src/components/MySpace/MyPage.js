@@ -37,7 +37,7 @@ hover:border-transparent hover:bg-gray-100
         " 
         id="tabs-home-tabVertical" data-bs-toggle="pill" data-bs-target="#tabs-homeVertical" role="tab"
         aria-controls="tabs-homeVertical" aria-selected="true">Profile</a>
-        <li className="nav-item text-center hover:bg-gray-100 px-3 py-2 text-sm font-min2"><Link to="/editmyspace">프로필수정</Link> </li>
+        <li className="nav-item text-center hover:bg-gray-100 px-3 py-2 text-sm font-min2"><Link to="/myspace/editmyspace">프로필수정</Link> </li>
  
  
     </li>

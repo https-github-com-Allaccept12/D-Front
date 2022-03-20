@@ -12,12 +12,14 @@ const ArtWork = (props) => {
 
   return (
     <>
-
+    <div className="bg-dgray-200">
+      <Categorys />
     <Switch>
-        <Route exact path="/artwork" component={Categorys} />
-        <Route exact path="/createart" component={CreateArtWork} />
-        <Route exact path="/detail" component={InlineDetail} />
+        <Route exact path="/art/list/:name" component={AllList} />
+        <Route exact path="/art/createart" component={CreateArtWork} />
+        <Route exact path="/art/detail" component={InlineDetail} />
         </Switch>
+        </div>
     </>
   );
 };

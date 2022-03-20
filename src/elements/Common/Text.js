@@ -13,17 +13,18 @@ ${(props) => (props.size === "7" ? `font-min3 text-7xl` : "")};
 `;
 
 const Text = (props) => {
-  const { children, onClick, size } =
+  const { children, onClick, size, className } =
   props;
 
 
-  return <BodyText onClick={onClick} size={size} >{children}</BodyText>;
+  return <BodyText onClick={onClick} size={size} className={className} >{children}</BodyText>;
 };
 
 Text.defaultProps = {
   children: null,
   onClick: () => {},
   size: 3,
+  className: ""
 };
 
 

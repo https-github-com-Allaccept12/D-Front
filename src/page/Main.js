@@ -16,7 +16,7 @@ const Main = (props) => {
   return (
 
     <div className="w-full">
-      <div className="hot text-white hidden md:contents">
+      <div className="text-white absolute inset-56 ">
           <Title size="2">Hot 디자이너</Title>
         <div className="mt-4 ml-1">
           <Subtitle size="1">현재 가장 핫한<br /> 
