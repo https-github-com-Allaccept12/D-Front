@@ -1,25 +1,33 @@
 import React from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
-import {DimoCategory, DimoQNADetail, DimoDetail} from "../components";
+import { Link, Route, Switch, useLocation } from 'react-router-dom';
+import {DimoCategory, DimoList, DimoQNADetail, DimoDetail, DimoAllList } from "../components";
 import { CreateDimo } from '../creates';
 import { Title } from "../elements"
 
+
+
 const Dimo = () => {
+  const location = useLocation();
+const a = location.pathname
+const b = a.split("/")[2]
     return (
       <>
+      <div className='bg-dgray-200 min-h-screen'>
      <div className='flex flex-row'> 
-     <Title size="6"><Link to="/dimo/qna">디모1</Link></Title>
-     <Title size="6"><Link to="/dimo/shared">디모2</Link></Title>
-     </div>
+     <Title size="6"><Link to="/dimo/qna/all">디모1</Link></Title>
+     <Title size="6"><Link to="/dimo/shared/all">디모2</Link></Title>
 
+     <DimoList list={b} />
+     </div>
+    
   <Switch>
-        <Route exact path={['/dimo/qna', '/dimo/shared']} component={DimoCategory} />
-        <Route exact path="/dimo/shared" component={DimoCategory} />
-        <Route exact path="/dimo/detail" component={DimoDetail} />
-        <Route exact path="/dimo/qnadetail" component={DimoQNADetail} />
-        <Route exact path="/dimo/create/qna" component={CreateDimo} />
-        <Route exact path="/dimo/create/shared" component={CreateDimo} />
+
+        <Route exact path={['/dimo/qna/:name', '/dimo/shared/:name']} component={DimoAllList} />
+
+
+
         </Switch>
+        </div>
       </>
     );
   };

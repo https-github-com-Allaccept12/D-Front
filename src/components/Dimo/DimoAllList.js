@@ -4,7 +4,6 @@ import ArtWork from "../Posts/ArtWork";
 import DimoWork from "../Posts/DimoWork"
 import MyArtWork from "../Posts/MyArtWork";
 import tw from "tailwind-styled-components";
-import "./AllList.css"
 import { useHistory, useLocation } from "react-router-dom";
 
 const Grid = tw.div` 
@@ -20,17 +19,7 @@ const AllList = (props) => {
   const location = useLocation();
   const a = location.pathname
   const b = a.split("/")[3]
-  if(a === "/") return (
-    <>
-       
-      <div className="mt-36 mx-auto flex flex-row flex-wrap 
-      justify-center items-center gap-5 px-16">
-        {p.map(n => { return <ArtWork size="7" main /> }) }
-        </div>
-        
-    </>
-  );
-
+  
   if(b === "all") return (
     <>
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>

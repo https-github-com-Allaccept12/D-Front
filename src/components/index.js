@@ -10,6 +10,7 @@ import MyArtWork from "./Posts/MyArtWork";
 
 import AllList from "./Lists/AllList";
 import DimoList from "./Dimo/DimoList";
+import DimoAllList from "./Dimo/DimoAllList"
 
 import MainSlider from "./Sliders/MainSlider";
 import DetailSlider from "./Sliders/DetailSlider"
@@ -26,10 +27,9 @@ import Results from "./Tendency/Results";
 import TendencyTest from "./Tendency/TendencyTest";
 import MyInterests from "./Tendency/MyInterests";
 
-import DimoCategory from "./Dimo/DimoCategory";
 import Categorys from "./Artwork/Categorys"
 
-export { ArtWorkDetail, DimoDetail, DimoQNADetail, InlineDetail, Comment, DetailSlider, DimoSlider, DimoCategory,
+export { ArtWorkDetail, DimoDetail, DimoQNADetail, InlineDetail, Comment, DetailSlider, DimoSlider, DimoAllList,
     ArtWork, DimoWork, MyArtWork, 
     AllList, DimoList, Categorys,
     MainSlider, MySpaceUser, MyExp, MyPortfolio, MySkill, MyTimeLine, 

@@ -9,7 +9,8 @@ ${(props) => (props.size === "2" ? `w-t02 h-t02` : "")};
 ${(props) => (props.size === "3" ? `w-t03 h-t03` : "")};
 ${(props) => (props.size === "4" ? `w-t04 h-t04` : "")};
 ${(props) => (props.size === "5" ? `w-t05 h-t05` : "")};
-${(props) => (props.size === "6" ? `w-[8.375.rem] h-[12.5rem] ` : "")};
+${(props) => (props.size === "6" ? `w-[8.375rem] h-[12.5rem] ` : "")};
+${(props) => (props.size === "7" ? `w-[18.75rem] h-[18.75rem] ` : "")};
 `;
 
 

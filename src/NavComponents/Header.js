@@ -28,7 +28,7 @@ const Header = (props) => {
 <div className="header  flex-row justify-evenly gap-9 text-white hidden md:flex">
 <Title size="6"><Link to="/">홈</Link></Title>
         <Title size="6"><Link to="/art/list/all">모아보기</Link></Title>
-        <Title size="6"><Link to="/dimo/qna">디모</Link></Title>
+        <Title size="6"><Link to="/dimo/qna/all">디모</Link></Title>
         <Title size="6"><Link to="/myspace">마이페이지</Link></Title>
         {is_login ? <Title size="6"><Link to="/logout">로그아웃</Link></Title> : <Title size="6"><Link to="/myposts">logins</Link></Title>}
         <Title size="6"><Link to="/tendencytest">cre!</Link></Title>
@@ -47,7 +47,7 @@ else  {
 <div className="header flex-row justify-evenly gap-9 text-dpurple-200 hidden md:flex">
 <Title size="6"><Link to="/">홈</Link></Title>
         <Title size="6"><Link to="/art/list/all">모아보기</Link></Title>
-        <Title size="6"><Link to="/dimo/qna">디모</Link></Title>
+        <Title size="6"><Link to="/dimo/qna/all">디모</Link></Title>
         <Title size="6"><Link to="/myspace">마이페이지</Link></Title>
         {is_login ? <Title size="6"><Link to="/logout">로그아웃</Link></Title> : <Title size="6"><Link to="/myposts">logins</Link></Title>}
         <Title size="6"><Link to="/tendencytest">cre!</Link></Title>
