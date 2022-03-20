@@ -12,13 +12,14 @@ export const Slide = tw(Slider)`
     ${(props) => (props.dimo ? `
     bg-transparent mx-auto mt-10 col-start-2 
     col-end-6 row-start-1 col-opacity-90 text-white
-    font-sanss2 text-md w-full` : "")};
+    font-sanss2 text-md w-[30.25rem]` : "")};
     ${(props) => (props.main ? `bg-transparent mx-auto
     text-white overflow-hidden text-lg` : "")};
-    ${(props) => (props.artwork ? `bg-transparent mx-auto mt-10
-    opacity-90 text-white overflow-hidden -mb-10
-    font-sanss2 text-lg w-64 md:w-4/5` : "")};
+    ${(props) => (props.artwork ? `bg-transparent mx-auto
+    opacity-90 text-white overflow-hidden text-lg w-[50.25rem]` : "")};
 `
+
+
 const SS = tw.div`
     
 `
@@ -28,6 +29,14 @@ const PrevBtn = tw.button`
 
 const NextBtn = tw.button`
   z-10 text-white mt-36
+`
+
+const PrevBtnDetail = tw.button`
+  z-10 text-dgray-600
+`
+
+const NextBtnDetail = tw.button`
+  z-10 text-dgray-600
 `
 
 const MainSlider = (props)=>{
@@ -70,12 +79,10 @@ const MainSlider = (props)=>{
        ]
      }
 
-     const DimoSettings = {
+     const DetailSettings = {
       dots: false,  // 슬라이드 밑에 점 보이게
       infinite: true,  // 무한으로 반복
-      speed: 500,
-      autoplay: true,
-      autoplaySpeed: 2000,  // 넘어가는 속도
+      speed: 500,  // 넘어가는 속도
       slidesToShow: 3,  // 4장씩 보이게
       slidesToScroll: 1,  // 1장씩 뒤로 넘어가게
       centerMode: true,
@@ -84,12 +91,6 @@ const MainSlider = (props)=>{
        
        // 0px 하면 슬라이드 끝쪽 이미지가 안잘림
        responsive: [ // 반응형 웹 구현 옵션
-       {
-           breakpoint: 1450, // 화면 사이즈 1200px
-           settings: {
-             slidesToShow: 2,
-           },
-       },
 
        {
          breakpoint: 1023,
@@ -134,7 +135,7 @@ const MainSlider = (props)=>{
     if(dimo) return (
       <>
        <PrevBtn onClick={() => slider?.current?.slickPrev()}>◀</PrevBtn>
-    	<Slide {...DimoSettings} ref={slider}>
+    	<Slide {...settings} ref={slider}>
          
                 <SS> 
                 
@@ -170,8 +171,9 @@ const MainSlider = (props)=>{
    
     if(artwork) return (
       <>
-       <PrevBtn onClick={() => slider?.current?.slickPrev()}>◀</PrevBtn>
-    	<Slide {...settings} ref={slider}>
+           <div className="flex-row hidden md:flex -ml-2">
+       <PrevBtnDetail onClick={() => slider?.current?.slickPrev()}><Icon name="ArrowL" iconSize="48" /> </PrevBtnDetail>
+    	<Slide {...DetailSettings} ref={slider}>
          
                 <SS> 
                 
@@ -199,7 +201,8 @@ const MainSlider = (props)=>{
                 </SS>
                
             </Slide>
-            <NextBtn onClick={() => slider?.current?.slickNext()}>▶</NextBtn> 
+            <NextBtnDetail onClick={() => slider?.current?.slickNext()}><Icon name="ArrowR" iconSize="48" /></NextBtnDetail>
+            </div>  
             
             </>
             

@@ -11,7 +11,7 @@ const Slides = (props) => {
   let history = useHistory();
   if(main) return (
     <>
-     <div className="flex flex-col items-center justify-center max-w-sm mx-auto">
+     <div className="flex flex-col items-center justify-center ">
         <div className="bg-white shadow-md bg-center bg-cover rounded-lg">
           
           <Card size="5" types="text" src="https://user-images.githubusercontent.com/89088205/155067792-882e3507-e664-4b31-ad9a-4b7abf4af948.jpg" />
@@ -54,8 +54,17 @@ const Slides = (props) => {
   );
   if(artwork) return (
       <>
-      <div className="max-w-sm py-2 mx-auto mt-4 bg-white rounded-lg shadow-lg dark:bg-gray-800 font-sanss2">
-          <Image shape="big_square" />
+      <div className="rounded-lg">
+          <Card size="4" src="https://thumb.ac-illust.com/a5/a5b68711f17ff70ea9974c0a32a2fcb5_t.jpeg" />
+          <div className="absolute bottom-3 ">
+            <div className="rounded-b-lg ml-2 bg-dgray-500 opacity-80 w-c04 h-14"> 
+            <div className="flex justify-center items-center pt-3 font-min1">
+            프로젝트 이름
+            </div>
+
+            
+            </div>
+          </div>
       </div>
       
       </>

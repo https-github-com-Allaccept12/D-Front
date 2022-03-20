@@ -9,6 +9,7 @@ const ArtWork = (props) => {
   let history = useHistory();
   return (
     <>
+
     <div className="m-1 my-10 w-full md:w-64 md:h-72 p-1 flex justify-center items-center flex-col">
       <div>
       <button type="button" className=" active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalXl">
@@ -22,7 +23,7 @@ const ArtWork = (props) => {
         <Subtitle size="1">펭귄</Subtitle>
         </div>
         <div className="flex flex-row items-center space-x-2">
-        <HeartButton like_cnt="1" like_ok />
+        <HeartButton like_cnt="1" is_like />
         </div>
         </div>
         
@@ -35,29 +36,52 @@ const ArtWork = (props) => {
 
 
 <>
-<div className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalXl" tabIndex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
-  <div className="modal-dialog modal-xl relative w-auto pointer-events-none">
-    <div className="modal-content border-none relative flex flex-col w-full pointer-events-auto bg-transparent bg-clip-padding rounded-md outline-none text-current">
-      <div className="modal-header flex flex-shrink-0 items-center justify-between p-4 rounded-t-md">
-        <h5 className="text-xl font-medium leading-normal text-gray-800" id="exampleModalXlLabel">
-          펭귄님의 작품
-        </h5>
-
-        <button type="button"
-          className="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-          data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
 
 
-      <div className="modal-body relative">
-        <div className="flex justify-center items-center">
+
+
+<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
+
+
+
+  <div class="modal-dialog modal-xl relative w-auto pointer-events-none">
+   
+
+    <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+
+
+
+      <div class="modal-body">
         <ArtWorkDetail />
-        
-        </div>
-      </div>
-    </div>
-  </div>
+        <div className="fixed w-20 top-20 right-20 xl:right-60 space-y-2">
+
+<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<Icon />프로필
 </div>
+<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<Icon />팔로우
+</div>
+<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<Icon name="HeartF" />좋아요
+</div>
+<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<Icon />스크랩
+</div>
+<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<Icon name="Link" />공유하기
+</div>
+</div>
+
+
+    </div>
+          </div>
+
+      </div>
+     
+    </div>
+
+
+
 </>
 
     </>

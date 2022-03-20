@@ -12,6 +12,7 @@ import AllList from "./Lists/AllList";
 import DimoList from "./Lists/DimoList";
 
 import MainSlider from "./Sliders/MainSlider";
+import DetailSlider from "./Sliders/DetailSlider"
 
 import MySpaceUser from "./MySpace/MySpaceUser";
 import MyExp from "./MySpace/MyExp";
@@ -25,7 +26,7 @@ import TendencyTest from "./Tendency/TendencyTest";
 import MyInterests from "./Tendency/MyInterests";
 
 
-export { ArtWorkDetail, DimoDetail, DimoQNADetail, InlineDetail, Comment, 
+export { ArtWorkDetail, DimoDetail, DimoQNADetail, InlineDetail, Comment, DetailSlider,
     ArtWork, DimoWork, MyArtWork, 
     AllList, DimoList, 
     MainSlider, MySpaceUser, MyExp, MyPortfolio, MySkill, MyTimeLine, 
