@@ -4,7 +4,7 @@ import { Button, Image, Container } from "../../elements";
 import { useHistory } from "react-router-dom";
 
 
-const MyTimeLine = (props) => {
+const MyExp = (props) => {
   let history = useHistory();
   return (
     <>
@@ -59,4 +59,4 @@ const MyTimeLine = (props) => {
   );
 };
 
-export default MyTimeLine;
+export default MyExp;

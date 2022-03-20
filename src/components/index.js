@@ -1,36 +1,28 @@
-import ArtWorkDetail from "./Details/ArtWorkDetail";
-import DimoDetail from "./Details/DimoDetail";
-import InlineDetail from "./Details/InlineDetail";
-import DimoQNADetail from "./Details/DimoQNADetail";
-import Comment from "./Details/Comment";
 
-import ArtWork from "./Posts/ArtWork";
-import DimoWork from "./Posts/DimoWork";
-import MyArtWork from "./Posts/MyArtWork";
+import InlineDetail from "./ArtWork/InlineDetail";
+import Comment from "./Comment/Comment";
 
-import AllList from "./Lists/AllList";
-import DimoList from "./Dimo/DimoList";
+import ArtWork from "./ArtWork/ArtWork";
+import DimoWork from "./Dimo/DimoWork";
+import MyArtWork from "./MySpace/MyArtWork";
+
+import AllList from "./ArtWork/AllList";
+import DimoCategory from "./Dimo/DimoCategory";
 import DimoAllList from "./Dimo/DimoAllList"
 
 import MainSlider from "./Sliders/MainSlider";
 import DetailSlider from "./Sliders/DetailSlider"
 import DimoSlider from "./Sliders/DimoSlider"
-import MySpaceUser from "./MySpace/MySpaceUser";
-import MyExp from "./MySpace/MyExp";
-import MyPortfolio from "./MySpace/MyPortfolio"
-import MySkill from "./MySpace/MySkill"
-import MyTimeLine from "./MySpace/MyTimeLine"
-import Dpolio from "./MySpace/Dpolio";
-import MyPage from "./MySpace/MyPage";
+
 
 import Results from "./Tendency/Results";
 import TendencyTest from "./Tendency/TendencyTest";
 import MyInterests from "./Tendency/MyInterests";
 
-import Categorys from "./Artwork/Categorys"
+import Categorys from "./ArtWork/Categorys"
 
-export { ArtWorkDetail, DimoDetail, DimoQNADetail, InlineDetail, Comment, DetailSlider, DimoSlider, DimoAllList,
-    ArtWork, DimoWork, MyArtWork, 
-    AllList, DimoList, Categorys,
-    MainSlider, MySpaceUser, MyExp, MyPortfolio, MySkill, MyTimeLine, 
-    Results, TendencyTest, MyInterests, Dpolio, MyPage };
+export {   InlineDetail, Comment, DetailSlider, DimoSlider, DimoAllList,
+    ArtWork, DimoWork, MyArtWork, DimoCategory,
+    AllList, Categorys,
+    MainSlider, 
+    Results, TendencyTest, MyInterests };

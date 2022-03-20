@@ -4,7 +4,7 @@ import { AllList, InlineDetail, Categorys } from "../components";
 import { Title, Button } from "../elements"
 import { Link, Route, Switch } from 'react-router-dom';
 import { useTabs } from "../hooks";
-import { CreateArtWork } from "../creates";
+import CreateArtWork from "../components/ArtWork/CreateArtWork";
 
 
 

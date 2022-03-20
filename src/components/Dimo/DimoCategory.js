@@ -1,14 +1,15 @@
 import React from "react";
 import { Button, Title, Text } from "../../elements";
-import { DimoSlider, AllList, AdjBar } from "../../components";
+import { DimoSlider, AllList, AdjBar } from "..";
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
 
-import {DimoCategory, DimoQNADetail, DimoDetail, DimoAllList } from "../../components";
-import { CreateDimo } from '../../creates';
+import DimoQNADetail from "./DimoQNADetail";
+import DimoDetail from "./DimoDetail" 
+import CreateDimo from './CreateDimo';
 import { useTabs } from "../../hooks";
 
 
-const DimoList = (props) => {
+const DimoCategory = (props) => {
   const {list} = props
   if(list === "qna") return (
     <> 
@@ -77,4 +78,4 @@ const DimoList = (props) => {
   );
 };
 
-export default DimoList;
+export default DimoCategory;

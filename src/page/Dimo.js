@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
-import {DimoCategory, DimoList, DimoQNADetail, DimoDetail, DimoAllList } from "../components";
-import { CreateDimo } from '../creates';
+import {DimoCategory,DimoQNADetail, DimoDetail, DimoAllList } from "../components";
+import CreateDimo from '../components/Dimo/CreateDimo';
 import { Title } from "../elements"
 
 
@@ -17,7 +17,7 @@ const b = a.split("/")[2]
      <Title size="6"><Link to="/dimo/qna/all">디모1</Link></Title>
      <Title size="6"><Link to="/dimo/shared/all">디모2</Link></Title>
 
-     <DimoList list={b} />
+     <DimoCategory list={b} />
      </div>
     
   <Switch>

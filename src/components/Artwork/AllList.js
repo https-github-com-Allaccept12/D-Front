@@ -1,10 +1,9 @@
 import React from "react";
 import { Button, SearchInput, Title } from "../../elements";
-import ArtWork from "../Posts/ArtWork";
-import DimoWork from "../Posts/DimoWork"
-import MyArtWork from "../Posts/MyArtWork";
+import ArtWork from "./ArtWork";
+import DimoWork from "../Dimo/DimoWork"
+import MyArtWork from "../MySpace/MyArtWork";
 import tw from "tailwind-styled-components";
-import "./AllList.css"
 import { useHistory, useLocation } from "react-router-dom";
 
 const Grid = tw.div` 
