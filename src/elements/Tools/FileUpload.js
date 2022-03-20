@@ -10,7 +10,7 @@ function FileUpload() {
     const dispatch = useDispatch();
     const onDrop = useCallback((acceptedFile) => {
         const reader = new FileReader();
-        
+         
         reader.readAsDataURL(acceptedFile[0]);
         reader.onload = () => {
             dispatch(preview(reader.result))
