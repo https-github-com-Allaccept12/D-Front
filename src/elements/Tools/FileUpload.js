@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { preview } from '../../redux/modules/image';
 import Dropzone, {useDropzone} from 'react-dropzone';
-import { Profile, Button } from '../../elements';
+import { Profile } from '../../elements';
 import profile_upload from '../../static/images/profile_upload.svg';
 
 function FileUpload() {
