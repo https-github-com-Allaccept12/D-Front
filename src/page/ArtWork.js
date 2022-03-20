@@ -1,10 +1,10 @@
 import React from "react";
 
-import { AllList, Categorys } from "../components";
+import { AllList, Categorys, CreateArtWork } from "../components/ArtWork";
 import { Title, Button } from "../elements"
 import { Link, Route, Switch } from 'react-router-dom';
 import { useTabs } from "../hooks";
-import CreateArtWork from "../components/ArtWork/CreateArtWork";
+
 
 
 

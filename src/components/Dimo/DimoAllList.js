@@ -1,8 +1,6 @@
 import React from "react";
 import { Button, SearchInput, Title } from "../../elements";
-import ArtWork from "../ArtWork/ArtWorkPost";
-import DimoWork from "./DimoWork"
-import MyArtWork from "../MySpace/MyArtWork";
+import { ArtWorkPost } from "../../components/ArtWork";
 import tw from "tailwind-styled-components";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -32,7 +30,7 @@ const AllList = (props) => {
       <SearchInput />
       </div>
       <hr className="border w-full " />
-        {p.map(n => { return <ArtWork size="3" /> }) }
+        {p.map(n => { return <ArtWorkPost size="3" /> }) }
         </Grid>
         </>
       );
@@ -50,7 +48,7 @@ const AllList = (props) => {
       <SearchInput />
       </div>
       <hr className="border w-full " />
-        {p.map(n => { return <ArtWork /> }) }
+        {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
   );
@@ -66,7 +64,7 @@ const AllList = (props) => {
       <SearchInput />
       </div>
       <hr className="border w-full " />
-        {p.map(n => { return <ArtWork /> }) }
+        {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
   );
@@ -83,7 +81,7 @@ const AllList = (props) => {
       <SearchInput />
       </div>
       <hr className="border w-full " />
-        {p.map(n => { return <ArtWork /> }) }
+        {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
   );
@@ -100,7 +98,7 @@ const AllList = (props) => {
       <SearchInput />
       </div>
       <hr className="border w-full " />
-        {p.map(n => { return <ArtWork /> }) }
+        {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
   );
@@ -117,7 +115,7 @@ const AllList = (props) => {
       <SearchInput />
       </div>
       <hr className="border w-full " />
-        {p.map(n => { return <ArtWork /> }) }
+        {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
   );
@@ -134,7 +132,7 @@ const AllList = (props) => {
       <SearchInput />
       </div>
       <hr className="border w-full " />
-        {p.map(n => { return <ArtWork /> }) }
+        {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
   );
@@ -151,7 +149,7 @@ const AllList = (props) => {
       <SearchInput />
       </div>
       <hr className="border w-full " />
-        {p.map(n => { return <ArtWork /> }) }
+        {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
   );
@@ -168,7 +166,7 @@ const AllList = (props) => {
       <SearchInput />
       </div>
       <hr className="border w-full " />
-        {p.map(n => { return <ArtWork /> }) }
+        {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
   );
@@ -185,7 +183,7 @@ const AllList = (props) => {
       <SearchInput />
       </div>
       <hr className="border w-full " />
-        {p.map(n => { return <ArtWork /> }) }
+        {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
   );
@@ -202,7 +200,7 @@ const AllList = (props) => {
       <SearchInput />
       </div>
       <hr className="border w-full " />
-        {p.map(n => { return <ArtWork /> }) }
+        {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
   );
@@ -219,7 +217,7 @@ const AllList = (props) => {
       <SearchInput />
       </div>
       <hr className="border w-full " />
-        {p.map(n => { return <ArtWork /> }) }
+        {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
   );
@@ -236,7 +234,7 @@ const AllList = (props) => {
       <SearchInput />
       </div>
       <hr className="border w-full " />
-        {p.map(n => { return <ArtWork /> }) }
+        {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
   );
@@ -253,7 +251,7 @@ const AllList = (props) => {
       <SearchInput />
       </div>
       <hr className="border w-full " />
-        {p.map(n => { return <ArtWork /> }) }
+        {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
   );
