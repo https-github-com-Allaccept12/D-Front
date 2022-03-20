@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image, Input, CheckBox } from "../../elements";
+import { Button, Image, Input, CheckBox } from "../../../elements";
 
 import { useHistory } from "react-router-dom";
 

@@ -2,9 +2,10 @@ import React from "react";
 
 import { useHistory,  Link } from "react-router-dom";
 import { useToggle } from "../../hooks";
-import { MySpaceUser, AllList, MyExp, MyPortfolio, MySkill, MyTimeLine } from "../../components";
+import { MySpaceUser, MyExp, MyPortfolio, MySkill, MyTimeLine } from "../MySpace";
 import { Tabs, MiniTabs } from "../../NavComponents";
-import MyArtWork from "../../components/Posts/MyArtWork";
+import MyArtWork from "./MyArtWork";
+import AllList from "../ArtWork/AllList";
 
 
 

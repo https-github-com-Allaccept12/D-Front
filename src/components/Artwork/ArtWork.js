@@ -2,7 +2,7 @@ import React from "react";
 import { HeartButton, Subtitle, Icon, Thumbnail, Profile } from "../../elements";
 
 import { useHistory } from "react-router-dom";
-import ArtWorkDetail from "../Details/ArtWorkDetail";
+import ArtWorkDetail from "./ArtWorkDetail";
 import tw from "tailwind-styled-components";
 
 const Art = tw.div`

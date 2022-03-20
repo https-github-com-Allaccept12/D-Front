@@ -2,9 +2,9 @@ import React from "react";
 import { Link, Route, Switch } from 'react-router-dom';
 import {Title} from "../elements"
 import { useToggle } from "../hooks";
-import { MySpaceUser, AllList, MyExp, MyPortfolio, MySkill, MyTimeLine, MyPage, Dpolio } from "../components";
+import { MyPage, Dpolio } from "../components/MySpace"
 import { Tabs, MiniTabs } from "../NavComponents";
-import MyArtWork from "../components/Posts/MyArtWork";
+
 import EditMySpace from "./EditMySpace";
 
 

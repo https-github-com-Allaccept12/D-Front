@@ -2,9 +2,10 @@ import React from "react";
 import { Button } from "../elements";
 
 import { Link } from "react-router-dom";
-import { MyPortfolio, MySkill, MyInterests } from "../components";
-import { CreateMyIntro, CreateMySpaceUser, CreateMyExp } from "../creates";
+import { MyPortfolio, MySkill } from "../components/MySpace";
+import { CreateMyIntro, CreateMySpaceUser, CreateMyExp } from "../components/MySpace";
 import { useTabs } from "../hooks";
+import {MyInterests} from "../components"
 
 const array_sample = [
 {

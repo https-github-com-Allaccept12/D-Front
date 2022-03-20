@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { Header, NotFound } from "./NavComponents";
 import { TendencyTest, MyInterests, Results, DimoDetail, DimoQNADetail, InlineDetail } from "./components";
-import { CreateArtWork, CreateDimo } from "./creates"
 import { Main, ArtWork, Dimo, MySpace, MyPosts, CreateProfile, CompleteProfile, KakaoRedirectHandler, LogOut, EditMySpace } from "./page";
 
 function App() {

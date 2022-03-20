@@ -1,10 +1,10 @@
 import React from "react";
-import { MySpaceUser, MyExp, MyPortfolio, MySkill, MyTimeLine } from ".."
+import { MySpaceUser, MyExp, MyPortfolio, MySkill, MyTimeLine } from "../MySpace"
 
 import { useHistory } from "react-router-dom";
 
 
-const NotFound = (props) => {
+const Dpolio = (props) => {
   let history = useHistory();
   return (
     <>
@@ -18,4 +18,4 @@ const NotFound = (props) => {
   );
 };
 
-export default NotFound;
+export default Dpolio;

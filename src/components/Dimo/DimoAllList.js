@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, SearchInput, Title } from "../../elements";
-import ArtWork from "../Posts/ArtWork";
-import DimoWork from "../Posts/DimoWork"
-import MyArtWork from "../Posts/MyArtWork";
+import ArtWork from "../ArtWork/ArtWork";
+import DimoWork from "./DimoWork"
+import MyArtWork from "../MySpace/MyArtWork";
 import tw from "tailwind-styled-components";
 import { useHistory, useLocation } from "react-router-dom";
 
