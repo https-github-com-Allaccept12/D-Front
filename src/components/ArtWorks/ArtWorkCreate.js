@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Button } from "../../elements";
 
 
-const CreateArtWork = (props) => {
+const ArtWorkCreate = (props) => {
   let history = useHistory();
 
   return (
@@ -223,4 +223,4 @@ option12="12"
   );
 };
 
-export default CreateArtWork;
+export default ArtWorkCreate;

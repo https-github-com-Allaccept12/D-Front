@@ -1,8 +1,8 @@
-import AllList from "./AllList";
+import ArtWorkAllList from "./ArtWorkAllList";
 import ArtWorkDetail from "./ArtWorkDetail";
 import ArtWorkPost from "./ArtWorkPost";
-import Categorys from "./Categorys";
-import CreateArtWork from "./CreateArtWork";
-import InlineDetail from "./InlineDetail";
+import ArtWorkCategory from "./ArtWorkCategory";
+import ArtWorkCreate from "./ArtWorkCreate";
+import ArtWorkInlineDetail from "./ArtWorkInlineDetail";
 
-export {AllList, ArtWorkDetail, ArtWorkPost, Categorys, CreateArtWork, InlineDetail}
+export {ArtWorkAllList, ArtWorkDetail, ArtWorkPost, ArtWorkCategory, ArtWorkCreate, ArtWorkInlineDetail}

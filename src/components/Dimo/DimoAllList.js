@@ -12,7 +12,7 @@ rounded-lg bg-white pt-6 px-24 ml
 
 const p = [{"1": "1"}, {"2":"2"}, {"3":"3"}, {"4":"4"}, {"5":"5"}, {"6":"6"}, {"7":"7"},  {"8":"8"}, {"9":"9"}, {"10":"10"}]
 
-const AllList = (props) => {
+const DimoAllList = (props) => {
   let history = useHistory();
   const location = useLocation();
   const a = location.pathname
@@ -262,4 +262,4 @@ const AllList = (props) => {
   }
 };
 
-export default AllList;
+export default DimoAllList;

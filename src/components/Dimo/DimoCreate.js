@@ -5,7 +5,7 @@ import { useHistory, useLocation } from "react-router-dom";
 
 
 
-const CreateDimo = () => {
+const DimoCreate = () => {
   const location = useLocation();
   const a = location.pathname
 
@@ -65,4 +65,4 @@ const CreateDimo = () => {
   </>)
 };
 
-export default CreateDimo;
+export default DimoCreate;

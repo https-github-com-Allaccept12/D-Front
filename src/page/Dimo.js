@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
-import {DimoCategory, DimoAllList } from "../components/Dimo";
+import { DimoCategory, DimoAllList } from "../components/Dimo";
 
 import { Title } from "../elements"
 

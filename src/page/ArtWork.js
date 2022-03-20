@@ -1,9 +1,9 @@
 import React from "react";
 
-import { AllList, Categorys, CreateArtWork } from "../components/ArtWorks";
+import { ArtWorkAllList, ArtWorkCategory, ArtWorkCreate } from "../components/ArtWorks";
 import { Title, Button } from "../elements"
 import { Link, Route, Switch } from 'react-router-dom';
-import { useTabs } from "../hooks";
+
 
 
 
@@ -13,10 +13,10 @@ const ArtWork = (props) => {
   return (
     <>
     <div className="bg-dgray-200">
-      <Categorys />
+      <ArtWorkCategory />
     <Switch>
-        <Route exact path="/art/list/:name" component={AllList} />
-        <Route exact path="/art/createart" component={CreateArtWork} />
+        <Route exact path="/art/list/:name" component={ArtWorkAllList} />
+        <Route exact path="/art/createart" component={ArtWorkCreate} />
         {/* <Route exact path="/art/detail" component={InlineDetail} /> */}
         </Switch>
         </div>

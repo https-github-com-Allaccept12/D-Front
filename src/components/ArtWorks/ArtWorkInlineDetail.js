@@ -1,12 +1,13 @@
 import React from "react";
-import { HeartButton, Profile, Button, Image, Title, Icon, Input } from "../../elements";
+import { HeartButton, Profile, Icon, Input } from "../../elements";
 
 import { useHistory } from "react-router-dom";
-import { DetailSlider, Comment } from "..";
+import DetailSlider from "../Sliders/DetailSlider";
+import {Comment} from "../Comment";
 
 
 
-const InlineDetail = (props) => {
+const ArtWorkInlineDetail = (props) => {
   let history = useHistory();
   return (
     <>
@@ -133,4 +134,4 @@ const InlineDetail = (props) => {
   );
 };
 
-export default InlineDetail;
+export default ArtWorkInlineDetail;

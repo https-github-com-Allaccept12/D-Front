@@ -3,7 +3,7 @@ import { Grid, Title, Image, Text, Card, Profile, Button, Thumbnail } from "../.
 
 
 import { useHistory, Link } from "react-router-dom";
-import { DimoWork } from "../../components/Dimo";
+import { DimoWorkPost } from "../Dimo";
 
 
 const Slides = (props) => {
@@ -72,7 +72,7 @@ const Slides = (props) => {
 
   if(dimo) return (
     <>
-    <DimoWork size="3" />
+    <DimoWorkPost size="3" />
     </>
   );
 };

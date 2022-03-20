@@ -5,7 +5,7 @@ import { useToggle } from "../../hooks";
 import { MySpaceUser, MyExp, MyPortfolio, MySkill, MyTimeLine } from "../MySpace";
 import { Tabs, MiniTabs } from "../../NavComponents";
 import MyArtWork from "./MyArtWork";
-import {AllList} from "../ArtWorks";
+import { ArtWorkAllList } from "../ArtWorks";
 
 
 
@@ -148,17 +148,17 @@ hover:border-transparent hover:bg-gray-100
     tabname04="c" tabnametag04="c-tab" tabnamelink04="#c" />
     <div className="tab-content" id="tabs-tabContent">
       <div className="tab-pane fade show active" id="a" role="tabpanel" aria-labelledby="a-tab">
-        <div className="flex flex-row flex-wrap p-5"><AllList /></div>
+        <div className="flex flex-row flex-wrap p-5"><ArtWorkAllList /></div>
         
       </div>
       <div className="tab-pane fade" id="b" role="tabpanel" aria-labelledby="b-tab">
-      <div className="flex flex-row flex-wrap p-5"><AllList /></div>
+      <div className="flex flex-row flex-wrap p-5"><ArtWorkAllList /></div>
       </div>
       <div className="tab-pane fade" id="c" role="tabpanel" aria-labelledby="c-tab">
-      <div className="flex flex-row flex-wrap p-5"><AllList /></div>
+      <div className="flex flex-row flex-wrap p-5"><ArtWorkAllList /></div>
       </div>
       <div className="tab-pane fade" id="c" role="tabpanel" aria-labelledby="c-tab">
-      <div className="flex flex-row flex-wrap p-5"><AllList /></div>
+      <div className="flex flex-row flex-wrap p-5"><ArtWorkAllList /></div>
       </div>
 
     </div>
@@ -180,16 +180,16 @@ hover:border-transparent hover:bg-gray-100
         tabname04="cc" tabnametag04="c-tab" tabnamelink04="#cc" />
         <div className="tab-content" id="tabs-tabContent">
           <div className="tab-pane fade show active" id="aa" role="tabpanel" aria-labelledby="aa-tab">
-          <div className="flex flex-row flex-wrap p-5"><AllList /></div>
+          <div className="flex flex-row flex-wrap p-5"><ArtWorkAllList /></div>
           </div>
           <div className="tab-pane fade" id="bb" role="tabpanel" aria-labelledby="bb-tab">
-          <div className="flex flex-row flex-wrap p-5"><AllList /></div>
+          <div className="flex flex-row flex-wrap p-5"><ArtWorkAllList /></div>
           </div>
           <div className="tab-pane fade" id="cc" role="tabpanel" aria-labelledby="cc-tab">
-          <div className="flex flex-row flex-wrap p-5"><AllList /></div>
+          <div className="flex flex-row flex-wrap p-5"><ArtWorkAllList /></div>
           </div>
           <div className="tab-pane fade" id="cc" role="tabpanel" aria-labelledby="cc-tab">
-          <div className="flex flex-row flex-wrap p-5"><AllList /></div>
+          <div className="flex flex-row flex-wrap p-5"><ArtWorkAllList /></div>
           </div>
    
   </div>

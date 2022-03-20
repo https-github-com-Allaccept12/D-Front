@@ -4,7 +4,7 @@ import { Button, Image, Profile, Title } from "../../elements";
 import { useHistory, Link, useLocation } from "react-router-dom";
 
 
-const DimoWork = (props) => {
+const DimoWorkPost = (props) => {
   const location = useLocation();
   const a = location.pathname
   const b = a.split("/")[1]
@@ -51,8 +51,8 @@ const DimoWork = (props) => {
   );
 };
 
-DimoWork.defaultProps = {
+DimoWorkPost.defaultProps = {
   size : "2"
 }
 
-export default DimoWork;
+export default DimoWorkPost;
