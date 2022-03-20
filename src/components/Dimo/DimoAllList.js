@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, SearchInput, Title } from "../../elements";
-import { ArtWorkPost } from "../../components/ArtWork";
+import { ArtWorkPost } from "../ArtWorks";
 import tw from "tailwind-styled-components";
 import { useHistory, useLocation } from "react-router-dom";
 
