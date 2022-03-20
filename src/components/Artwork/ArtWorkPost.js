@@ -10,7 +10,7 @@ p-1 m-1 flex justify-center items-center flex-col shrink-0
 ${(props) => (props.main ? `p-0 m-0` : "")};
 `
 
-const ArtWork = (props) => {
+const ArtWorkPost = (props) => {
   const { size, main } = props;
   let history = useHistory();
   return (
@@ -90,4 +90,4 @@ const ArtWork = (props) => {
   );
 };
 
-export default ArtWork;
+export default ArtWorkPost;
