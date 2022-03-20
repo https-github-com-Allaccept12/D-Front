@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, SearchInput, Title } from "../../elements";
-import ArtWork from "../ArtWork/ArtWork";
+import ArtWork from "../ArtWork/ArtWorkPost";
 import DimoWork from "./DimoWork"
 import MyArtWork from "../MySpace/MyArtWork";
 import tw from "tailwind-styled-components";
