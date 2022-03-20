@@ -1,7 +1,6 @@
 
 import Comment from "./Comment/Comment";
 
-import ArtWorkPost from "./ArtWork/ArtWorkPost";
 import DimoWork from "./Dimo/DimoWork";
 import MyArtWork from "./MySpace/MyArtWork";
 
@@ -21,7 +20,7 @@ import MyInterests from "./Tendency/MyInterests";
 import Categorys from "./ArtWork/Categorys"
 
 export { Comment, DetailSlider, DimoSlider, DimoAllList,
-    ArtWorkPost, DimoWork, MyArtWork, DimoCategory,
+    DimoWork, MyArtWork, DimoCategory,
     AllList, Categorys,
     MainSlider, 
     Results, TendencyTest, MyInterests };
