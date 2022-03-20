@@ -31,7 +31,7 @@ const Main = (props) => {
 
           </div>
       
-      <div className="mx-auto md:pt-28 max-w-screen-2xl">
+      <div className="mx-auto md:pt-28 max-w-screen-3xl">
       <AllList />
       </div>
     </div>

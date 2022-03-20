@@ -31,7 +31,7 @@ const HeartButton = (props) => {
           ) : (
             <Icon name={nameE} iconSize={iconSize} onClick={addLike} />
           )}
-        <Text size="1">{like_cnt}</Text>
+        <Text size="1" className="pl-2">{like_cnt}</Text>
     </div>
     );
   };

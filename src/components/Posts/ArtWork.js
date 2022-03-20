@@ -3,35 +3,37 @@ import { HeartButton, Subtitle, Icon, Thumbnail, Profile } from "../../elements"
 
 import { useHistory } from "react-router-dom";
 import ArtWorkDetail from "../Details/ArtWorkDetail";
+import tw from "tailwind-styled-components";
 
+const Art = tw.div`
+p-1 m-1 flex justify-center items-center flex-col shrink-0
+${(props) => (props.main ? `p-0 m-0` : "")};
+`
 
 const ArtWork = (props) => {
+  const { size, main } = props;
   let history = useHistory();
   return (
     <>
 
-    <div className="m-1 my-5 w-full md:w-64 md:h-72 p-1 flex justify-center items-center flex-col">
-      <div>
+    <Art main={main}>
+
       <button type="button" className=" active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalXl">
 
-      <Thumbnail src="https://w.namu.la/s/ecd088782c4654b5bcc2223c3c7e135ede44f79588e80fb88c14c0b42e48cf37ad5a52176dbad7934c6802f1912be5a991cee8c95aa609df52f22b591dbd2319a7e818967bceef4984b2d395579587ab9d445306627c8082bbf200487a14097c" size="3" />
+      <Thumbnail src="https://w.namu.la/s/ecd088782c4654b5bcc2223c3c7e135ede44f79588e80fb88c14c0b42e48cf37ad5a52176dbad7934c6802f1912be5a991cee8c95aa609df52f22b591dbd2319a7e818967bceef4984b2d395579587ab9d445306627c8082bbf200487a14097c" size={size} />
       </button>
-      <div className="justify-between items-center flex flex-row px-1 mt-1 w-[15rem] flex-shrink-0">
+      <div className="justify-between items-center flex flex-row mt-1  w-full px-2 flex-shrink-0">
         
-        <div className="flex flex-row items-center space-x-2">
-        <Profile size="8" /> 
+        <div className="flex flex-row items-center gap-2">
+        <Profile size="7" /> 
         <Subtitle size="1">펭귄</Subtitle>
         </div>
-        <div className="flex flex-row items-center space-x-2">
+        <div className="flex flex-row items-center mt-1 mr-1">
         <HeartButton like_cnt="1" is_like />
         </div>
         </div>
         
-      
-      
-        
-    </div>
-    </div>
+    </Art>
 
 
 

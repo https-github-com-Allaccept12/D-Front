@@ -18,7 +18,7 @@ function App() {
             
             <Route path={["/art","/art/:name"]} component={ArtWork} />
 
-            <Route path={["/dimo/:name"]} component={Dimo} />
+            <Route path={["/dimo/qna/:name", "/dimo/shared/:name"]} component={Dimo} />
 
             <Route exact path={["/myspace", "/myspace/:name"]} component={MySpace} />
             
