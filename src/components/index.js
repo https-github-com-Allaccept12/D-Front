@@ -1,5 +1,4 @@
 
-import InlineDetail from "./ArtWork/InlineDetail";
 import Comment from "./Comment/Comment";
 
 import ArtWork from "./ArtWork/ArtWork";
@@ -21,7 +20,7 @@ import MyInterests from "./Tendency/MyInterests";
 
 import Categorys from "./ArtWork/Categorys"
 
-export {   InlineDetail, Comment, DetailSlider, DimoSlider, DimoAllList,
+export { Comment, DetailSlider, DimoSlider, DimoAllList,
     ArtWork, DimoWork, MyArtWork, DimoCategory,
     AllList, Categorys,
     MainSlider, 
