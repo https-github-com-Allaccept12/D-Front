@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Title, Text } from "../../elements";
-import { DimoSlider, AllList, AdjBar } from "..";
+
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
 
 import DimoQNADetail from "./DimoQNADetail";

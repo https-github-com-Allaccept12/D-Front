@@ -1,6 +1,6 @@
 import React from "react";
 
-import { AllList, Categorys, CreateArtWork } from "../components/ArtWork";
+import { AllList, Categorys, CreateArtWork } from "../components/ArtWorks";
 import { Title, Button } from "../elements"
 import { Link, Route, Switch } from 'react-router-dom';
 import { useTabs } from "../hooks";

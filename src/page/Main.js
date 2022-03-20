@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Title, Text, Subtitle } from "../elements";
 import { MainSlider, SideBar } from "../components";
-import {AllList } from "../components/ArtWork"
+import { AllList } from "../components/ArtWorks"
 import { setCookie } from "../shared/cookie";
 import "./Main.css"
 

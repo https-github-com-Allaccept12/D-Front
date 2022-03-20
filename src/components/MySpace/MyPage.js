@@ -5,7 +5,7 @@ import { useToggle } from "../../hooks";
 import { MySpaceUser, MyExp, MyPortfolio, MySkill, MyTimeLine } from "../MySpace";
 import { Tabs, MiniTabs } from "../../NavComponents";
 import MyArtWork from "./MyArtWork";
-import AllList from "../ArtWork/AllList";
+import {AllList} from "../ArtWorks";
 
 
 
