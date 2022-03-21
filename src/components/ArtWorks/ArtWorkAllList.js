@@ -3,6 +3,7 @@ import { Button, SearchInput, Title } from "../../elements";
 import ArtWorkPost from "./ArtWorkPost";
 import tw from "tailwind-styled-components";
 import { useHistory, useLocation } from "react-router-dom";
+import { ArtWorkCategory, ArtWorkWrite } from "../../components/ArtWorks";
 
 const Grid = tw.div` 
 w-4/6 flex flex-row flex-wrap items-start justify-start ml-auto mr-52
@@ -20,8 +21,7 @@ const ArtWorkAllList = (props) => {
   if(a === "/") return (
     <>
   
-      <div className="mt-36 mx-auto md:grid md:grid-cols-4 md:grid-rows-2 md:grid-flow-col
-      justify-center items-center gap-5 max-w-screen-2xl">
+      <div className="items-center justify-center gap-5 mx-auto mt-36 md:grid md:grid-cols-4 md:grid-rows-2 md:grid-flow-col max-w-screen-2xl">
 
         {p.map(n => { return <ArtWorkPost size="7" main /> }) }
         </div>
@@ -31,50 +31,54 @@ const ArtWorkAllList = (props) => {
 
   if(b === "all") return (
     <>
+    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
+      {/* <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
-      </div>
-      <hr className="border w-full " />
+    </div> */}
+      <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost size="3" /> }) }
-        </Grid>
-        </>
-      );
+    </Grid>
+    <ArtWorkWrite/>
+    </>
+  );
 
       
   if(b === "uiux") return (
     <>
+    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
+      <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
+      <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
   );
   if(b === "eco") return (
     <>
+    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
+      <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
+      <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
@@ -82,16 +86,17 @@ const ArtWorkAllList = (props) => {
 
   if(b === "game") return (
     <>
+    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
+      <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
+      <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
@@ -99,16 +104,17 @@ const ArtWorkAllList = (props) => {
 
   if(b === "craft") return (
     <>
+    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
+      <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
+      <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
@@ -116,16 +122,17 @@ const ArtWorkAllList = (props) => {
 
   if(b === "graphic") return (
     <>
+    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
+      <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
+      <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
@@ -133,16 +140,17 @@ const ArtWorkAllList = (props) => {
 
   if(b === "edit") return (
     <>
+    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
+      <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
+      <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
@@ -150,16 +158,17 @@ const ArtWorkAllList = (props) => {
 
   if(b === "video") return (
     <>
+    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
+      <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
+      <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
@@ -167,16 +176,17 @@ const ArtWorkAllList = (props) => {
 
   if(b === "video") return (
     <>
+    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
+      <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
+      <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
@@ -184,16 +194,17 @@ const ArtWorkAllList = (props) => {
 
   if(b === "product") return (
     <>
+    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
+      <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
+      <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
@@ -201,16 +212,17 @@ const ArtWorkAllList = (props) => {
 
   if(b === "typo") return (
     <>
+    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
+      <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
+      <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
@@ -218,16 +230,17 @@ const ArtWorkAllList = (props) => {
 
   if(b === "fashion") return (
     <>
+    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
+      <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
+      <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
@@ -235,16 +248,17 @@ const ArtWorkAllList = (props) => {
 
   if(b === "package") return (
     <>
+    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
+      <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
+      <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
@@ -252,16 +266,17 @@ const ArtWorkAllList = (props) => {
 
   if(b === "else") return (
     <>
+    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
+      <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
+      <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost /> }) }
         </Grid>
         </>
