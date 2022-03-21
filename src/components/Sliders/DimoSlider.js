@@ -18,11 +18,11 @@ const SS = tw.div`
     
 `
 const PrevBtn = tw.button`
-  z-10 text-black 
+  z-10 text-dgray-400 
 `
 
 const NextBtn = tw.button`
-  z-10 text-black 
+  z-10 text-dgray-400 
 `
 
 const DimoSlider = (props)=>{
