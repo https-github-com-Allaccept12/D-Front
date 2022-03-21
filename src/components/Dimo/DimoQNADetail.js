@@ -1,8 +1,9 @@
 import React from "react";
-import { Button, Image, Title, Text, Input } from "../../elements";
+import { Button, Image, Title, Text, Input, Profile, HeartButton } from "../../elements";
 
 import { useHistory } from "react-router-dom";
 import {Comment} from "../Comment";
+import DimoWorkPost from "./DimoWorkPost";
 
 
 
@@ -10,156 +11,247 @@ const DimoDetail = (props) => {
   let history = useHistory();
   return (
     <>
-    <div className="grid grid-cols-4">
-      <div className="col-start-4 col-span-2 grid grid-rows-6 "><div className="row-start-1 bg-red-300">유사한 질문</div>
-      <div className="row-start-2 bg-slate-400">이건 아직 카드도 안나왔어!</div>
-      <div>djlf</div>
+    <div className="grid grid-cols-4 bg-dgray-200">
+
+      <div className="col-start-4 col-span-2 grid grid-rows-6 ">
+        
+        <div className="row-start-1">
+          <Title size="4" className="mt-10 mb-3">유사한 질문</Title>
+          <div className="bg-white w-11/12 h-64 space-y-12">
+            <DimoWorkPost />
+            <DimoWorkPost />
+            <DimoWorkPost />
+            <DimoWorkPost />
+          </div>
+          </div>
+     
       </div>
       <div className="col-start-1 col-end-4 row-start-1">
-       <div className="bg-yellow-400 p-2 justify-between w-full">
-                타이틀
-            </div>
+        <div className="w-11/12 mx-auto mt-8">
 
-      <div className="w-full mx-auto overflow-hidden bg-transparent rounded-lg shadow-md dark:bg-gray-800">
+        <div className="p-6 flex justify-center items-center">
 
-        <div className="p-6 bg-yellow-200">
-            <div className="bg-yellow-200 p-2 justify-between w-full">
-                <div className="flex items-center justify-center flex-col">
-                    <Image shape="detail_square" />
-                여기에 고민 여기에 고민여기에 고민여기에 고민여기에 고민 여기에 고민여기에 고민 여기에 고민여기에 고민여기에 고민
+    <div className="w-[66.875rem] h-[38.375rem] rounded-lg">
 
-                <p>여기에 고민여기에 고민여기에 고민여기에 고민
-                여기에 고민여기에 고민여기에 고민여기에 고민
-                </p>
-            </div>
-
-            <div className="bg-red-200">답변남기기 좋아요 저장하기 공유하기</div>
-            <div className="flex items-center">
-              
-                    <div className="flex items-center">
-                        <img className="object-cover h-10 rounded-full" src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60" alt="Avatar" />
-                        <p className="mx-2 font-semibold text-gray-700 dark:text-gray-200">Jone Doe</p>
-                    </div>
-                    <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">21 SEP 2015</span>
-                    <span className="mx-1 text-xs text-gray-600 dark:text-gray-300">팔로우</span>
-                </div>
-               
-</div>
-<hr className="border-4 m-3" />
-<p>답변 0개</p>
- <div className="w-full bg-white p-2 pt-4 rounded shadow-lg">
-  <div className="flex ml-3">
-    <div className="mr-3">
-      <img src="http://picsum.photos/50" alt="" className="rounded-full" />
-    </div>
+ <div className="absolute w-[66.875rem] h-[38.375rem] bg-white rounded-lg">
     <div>
-      <h1 className="font-semibold">Itay Buyoy</h1>
-      <p className="text-xs text-gray-500">2 seconds ago</p>
-    </div>
-
-  </div>
-
-  <div className="mt-3 p-3 w-full">
-  <p>채택받은 답변 수</p> 
-  <p>관심분야</p>
-  <Button>팔로우</Button>
-  <hr className="border-4 m-3" />
-  <div className="bg-yellow-200 p-2 justify-between w-full">
-                <div className="flex items-center justify-center flex-col">
-                    {/* <Image shape="detail_square" /> */}
-                    
-                여기에 고민 여기에 고민여기에 고민여기에 고민여기에 고민 여기에 고민여기에 고민 여기에 고민여기에 고민여기에 고민
-
-                <p>여기에 고민여기에 고민여기에 고민여기에 고민
-                여기에 고민여기에 고민여기에 고민여기에 고민
-                </p>
+    <div className="absolute top-7 pl-8 hover:scale-110 cursor-pointer">
+            <Profile size="6" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" main />
             </div>
-</div>
-  </div>
+      <div className="absolute top-7 left-28">
+        <div>취준생, 고민</div>
+        <Title size="6">이런이런 고민이 있어여</Title></div>
+    </div>
+    <div className="absolute top-28 px-10">
+    <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
+    안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다. 제 전공은 산업디자인입니다. 때문에 구체적인 시각디자인과 UIUX 관련 수업을 수강한 적은 없습니다. 
+      </Text> <Text size="2">(더보기)</Text>
+     
+      </div>
+    <div className="absolute bottom-36 px-10 w-full">
+      <div className="flex flex-row justify-between">
+        <HeartButton like_cnt="1" is_like />
+        <div className="flex flex-row space-x-4">
+        <HeartButton like_cnt="0" is_like />
+        <HeartButton like_cnt="1" is_like />
+        </div>
+      </div>
+      <hr className="border-2 m-3" />
+    </div>
+ 
+    <div className="absolute bottom-8 pl-16">
+     <Profile size="4" />
+     </div>
+     <div className="absolute bottom-14 left-48">
+    <Title size="5">이름</Title>
+    <Text size="4">채택률 100% / 마감률 100%</Text>
+     </div>
 
-  <div className="flex justify-between mx-3">
-    <div><button className="px-4 py-1 bg-gray-800 text-white rounded font-light hover:bg-gray-700">채택하기</button></div>
-    공유하기
-  </div>
-<div className="flex flex-row">  <Input />  등록하기</div>
-<div className="grid grid-rows-6 p-3">
-  <Comment />
+     <div className="absolute bottom-14 right-24">
+    <Button size="2">팔로우</Button>
+     </div>
+
+ </div>
+
  
 
-  </div>
+
 
 </div>
-</div>
-        </div>
 
-        <div className="w-full bg-white p-2 pt-4 rounded shadow-lg">
-  <div className="flex ml-3">
-    <div className="mr-3">
-      <img src="http://picsum.photos/50" alt="" className="rounded-full" />
-    </div>
-    <div>
-      <h1 className="font-semibold">Itay Buyoy</h1>
-      <p className="text-xs text-gray-500">2 seconds ago</p>
-    </div>
-
-  </div>
-
-  <div className="mt-3 p-3 w-full">
-  <p>채택받은 답변 수</p> 
-  <p>관심분야</p>
-  <Button>팔로우</Button>
-  <hr className="border-4 m-3" />
-  <div className="bg-yellow-200 p-2 justify-between w-full">
-                <div className="flex items-center justify-center flex-col">
-                    {/* <Image shape="detail_square" /> */}
-                    
-                여기에 고민 여기에 고민여기에 고민여기에 고민여기에 고민 여기에 고민여기에 고민 여기에 고민여기에 고민여기에 고민
-
-                <p>여기에 고민여기에 고민여기에 고민여기에 고민
-                여기에 고민여기에 고민여기에 고민여기에 고민
-                </p>
-            </div>
-</div>
-  </div>
-
-  <div className="flex justify-between mx-3">
-    <div><button className="px-4 py-1 bg-gray-800 text-white rounded font-light hover:bg-gray-700">채택하기</button></div>
-    공유하기
-  </div>
-<div className="flex flex-row">  <Input />  등록하기</div>
-<div className="grid grid-rows-6 grid-cols-4 p-3">
-
-  <div className="flex ml-3">
-    <div className="mr-3">
-      <img src="http://picsum.photos/50" alt="" className="rounded-full" />
-    </div>
-    <div>
-      <h1 className="font-semibold">Itay Buyoy</h1>
-      <p className="text-xs text-gray-500">2 seconds ago</p>
-
-    </div>
-  </div>
-  
-  <div className="col-span-3 justify-items-center">답변이 큰 도움이 되었습니다!</div>
-  </div>
 
 </div>
 </div>
    
+<hr className="border-2 m-3 border-dgray-400 w-[66.875rem] mx-auto" />
+<div className=" w-[66.875rem] mx-auto">
+<Title size="3" >답변 2개</Title>
+<div className="flex w-[66.875rem] h-[38.375rem] ">
+<div className="absolute w-[66.875rem] h-[38.375rem] bg-white border-dpurple-300 border-4">
 
+<div className="absolute top-10 pl-16 ">
+     <Profile size="4" />
+     </div>
+     <div className="absolute top-12 left-48">
+    <Title size="5">이름</Title>
+    <Text size="4">채택받은 답변수</Text>
+    <Text size="4">관심분야</Text>
+     </div>
+
+     <div className="absolute top-12 right-24">
+    <Button size="2">팔로우</Button>
+     </div>
+    <div className="absolute top-36 w-full">
+
+    <hr className="border-2 m-3 top-40 " />
+    </div>
+
+
+
+    <div className="absolute top-48 pl-20">
+        <div>2022 조회수 2천</div>
+        </div>
+        <div className="absolute top-56 px-10">
+    <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
+    안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다. 제 전공은 산업디자인입니다. 때문에 구체적인 시각디자인과 UIUX 관련 수업을 수강한 적은 없습니다.  제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다. 제 전공은 산업디자인입니다. 때문에 구체적인 시각디자인과 UIUX 관련 수업을 수강한 적은 없습니다. 
+      </Text> 
+    
+</div>
+
+<div className="absolute bottom-36 px-10 w-full">
+      <div className="flex flex-row justify-between">
+        <HeartButton like_cnt="1" is_like />
+        <div className="flex flex-row space-x-4">
+        <HeartButton like_cnt="0" is_like />
+        <HeartButton like_cnt="1" is_like />
+        </div>
+      </div>
+      <hr className="border-2 m-3 w-full " />
+      <Input />
+      <Comment />
+      </div>
+     
+    </div>
+
+
+</div>
+
+<div className="mt-20">
+<div className="flex w-[66.875rem] h-[38.375rem]">
+<div className="absolute w-[66.875rem] h-[38.375rem] bg-white">
+
+<div className="absolute top-10 pl-16 ">
+     <Profile size="4" />
+     </div>
+     <div className="absolute top-12 left-48">
+    <Title size="5">이름</Title>
+    <Text size="4">채택받은 답변수</Text>
+    <Text size="4">관심분야</Text>
+     </div>
+
+     <div className="absolute top-12 right-24">
+    <Button size="2">팔로우</Button>
+     </div>
+    <div className="absolute top-36 w-full">
+
+    <hr className="border-2 m-3 top-40 " />
+    </div>
+
+
+
+    <div className="absolute top-48 pl-20">
+        <div>2022 조회수 2천</div>
+        </div>
+        <div className="absolute top-56 px-10">
+    <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
+    안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다. 제 전공은 산업디자인입니다. 때문에 구체적인 시각디자인과 UIUX 관련 수업을 수강한 적은 없습니다.  제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다. 제 전공은 산업디자인입니다. 때문에 구체적인 시각디자인과 UIUX 관련 수업을 수강한 적은 없습니다. 
+      </Text> 
+    
+</div>
+
+<div className="absolute bottom-36 px-10 w-full">
+      <div className="flex flex-row justify-between">
+        <HeartButton like_cnt="1" is_like />
+        <div className="flex flex-row space-x-4">
+        <HeartButton like_cnt="0" is_like />
+        <HeartButton like_cnt="1" is_like />
+        </div>
+      </div>
+      <hr className="border-2 m-3 w-full " />
+      <Input />
+      <Comment />
+      </div>
+     
+    </div>
+
+
+</div>
+</div>
+
+<div className="mt-20">
+<div className="flex w-[66.875rem] h-[38.375rem]">
+<div className="absolute w-[66.875rem] h-[38.375rem] bg-white">
+
+<div className="absolute top-10 pl-16 ">
+     <Profile size="4" />
+     </div>
+     <div className="absolute top-12 left-48">
+    <Title size="5">이름</Title>
+    <Text size="4">채택받은 답변수</Text>
+    <Text size="4">관심분야</Text>
+     </div>
+
+     <div className="absolute top-12 right-24">
+    <Button size="2">팔로우</Button>
+     </div>
+    <div className="absolute top-36 w-full">
+
+    <hr className="border-2 m-3 top-40 " />
+    </div>
+
+
+
+    <div className="absolute top-48 pl-20">
+        <div>2022 조회수 2천</div>
+        </div>
+        <div className="absolute top-56 px-10">
+    <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
+    안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다. 제 전공은 산업디자인입니다. 때문에 구체적인 시각디자인과 UIUX 관련 수업을 수강한 적은 없습니다.  제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다. 제 전공은 산업디자인입니다. 때문에 구체적인 시각디자인과 UIUX 관련 수업을 수강한 적은 없습니다. 
+      </Text> 
+    
+</div>
+
+<div className="absolute bottom-36 px-10 w-full">
+      <div className="flex flex-row justify-between">
+        <HeartButton like_cnt="1" is_like />
+        <div className="flex flex-row space-x-4">
+        <HeartButton like_cnt="0" is_like />
+        <HeartButton like_cnt="1" is_like />
+        </div>
+      </div>
+      <hr className="border-2 m-3 w-full " />
+      <Input />
+      <Comment />
+      </div>
+     
+    </div>
+
+
+</div>
+</div>
 
         </div>
 
+        </div>
+      
 
-    <div className="fixed top-24 lg:right-12 xl:right-24 2xl:right-52">
-      <div className="flex flex-row md:flex-col gap-1">
-            <button><Image />프로필</button>
-            <button><Image />팔로우</button>
-            <button><Image />좋아요</button>
-            <button><Image />스크랩</button>
-            <button><Image />구독하기</button>
-            </div>
-          </div>
+
+    </div>
+
+
+      
+
+
 </>
   );
 };

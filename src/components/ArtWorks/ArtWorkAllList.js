@@ -37,7 +37,7 @@ const ArtWorkAllList = (props) => {
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
-      >인기순 최신순 팔로우디자이너</div> 
+      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
       </div>
       <hr className="border w-full " />
@@ -55,7 +55,7 @@ const ArtWorkAllList = (props) => {
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
-      >인기순 최신순 팔로우디자이너</div> 
+      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
       </div>
       <hr className="border w-full " />
@@ -71,7 +71,7 @@ const ArtWorkAllList = (props) => {
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
-      >인기순 최신순 팔로우디자이너</div> 
+      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
       </div>
       <hr className="border w-full " />
@@ -88,7 +88,7 @@ const ArtWorkAllList = (props) => {
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
-      >인기순 최신순 팔로우디자이너</div> 
+      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
       </div>
       <hr className="border w-full " />
@@ -105,7 +105,7 @@ const ArtWorkAllList = (props) => {
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
-      >인기순 최신순 팔로우디자이너</div> 
+      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
       </div>
       <hr className="border w-full " />
@@ -122,7 +122,7 @@ const ArtWorkAllList = (props) => {
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
-      >인기순 최신순 팔로우디자이너</div> 
+      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
       </div>
       <hr className="border w-full " />
@@ -139,7 +139,7 @@ const ArtWorkAllList = (props) => {
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
-      >인기순 최신순 팔로우디자이너</div> 
+      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
       </div>
       <hr className="border w-full " />
@@ -156,7 +156,7 @@ const ArtWorkAllList = (props) => {
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
-      >인기순 최신순 팔로우디자이너</div> 
+      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
       </div>
       <hr className="border w-full " />
@@ -173,7 +173,7 @@ const ArtWorkAllList = (props) => {
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
-      >인기순 최신순 팔로우디자이너</div> 
+      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
       </div>
       <hr className="border w-full " />
@@ -190,7 +190,7 @@ const ArtWorkAllList = (props) => {
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
-      >인기순 최신순 팔로우디자이너</div> 
+      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
       </div>
       <hr className="border w-full " />
@@ -207,7 +207,7 @@ const ArtWorkAllList = (props) => {
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
-      >인기순 최신순 팔로우디자이너</div> 
+      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
       </div>
       <hr className="border w-full " />
@@ -224,7 +224,7 @@ const ArtWorkAllList = (props) => {
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
-      >인기순 최신순 팔로우디자이너</div> 
+      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
       </div>
       <hr className="border w-full " />
@@ -241,7 +241,7 @@ const ArtWorkAllList = (props) => {
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
-      >인기순 최신순 팔로우디자이너</div> 
+      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
       </div>
       <hr className="border w-full " />
@@ -258,7 +258,7 @@ const ArtWorkAllList = (props) => {
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
-      >인기순 최신순 팔로우디자이너</div> 
+      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
       </div>
       <hr className="border w-full " />
