@@ -1,12 +1,12 @@
 import React from "react";
 import { Button, SearchInput, Title } from "../../elements";
-import { ArtWorkPost } from "../ArtWorks";
+import { DimoWorkPost } from "../Dimo";
 import tw from "tailwind-styled-components";
 import { useHistory, useLocation } from "react-router-dom";
 
 const Grid = tw.div` 
-w-4/6 flex flex-row flex-wrap items-start justify-start ml-auto mr-52
-rounded-lg bg-white pt-6 px-24 ml
+w-4/6 flex flex-row flex-wrap items-start justify-start ml-auto mr-48
+rounded-lg bg-white pt-6 px-12 gap-3 
 ` 
 
 
@@ -29,8 +29,8 @@ const DimoAllList = (props) => {
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
-        {p.map(n => { return <ArtWorkPost size="3" /> }) }
+      <hr className="border w-full mb-10" />
+        {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>
         </>
       );
@@ -47,8 +47,8 @@ const DimoAllList = (props) => {
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
-        {p.map(n => { return <ArtWorkPost /> }) }
+      <hr className="border w-full mb-10" />
+        {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>
         </>
   );
@@ -63,8 +63,8 @@ const DimoAllList = (props) => {
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
-        {p.map(n => { return <ArtWorkPost /> }) }
+      <hr className="border w-full mb-10" />
+        {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>
         </>
   );
@@ -80,8 +80,8 @@ const DimoAllList = (props) => {
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
-        {p.map(n => { return <ArtWorkPost /> }) }
+      <hr className="border w-full mb-10" />
+        {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>
         </>
   );
@@ -97,8 +97,8 @@ const DimoAllList = (props) => {
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
-        {p.map(n => { return <ArtWorkPost /> }) }
+      <hr className="border w-full mb-10 " />
+        {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>
         </>
   );
@@ -114,8 +114,8 @@ const DimoAllList = (props) => {
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
-        {p.map(n => { return <ArtWorkPost /> }) }
+      <hr className="border w-full mb-10" />
+        {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>
         </>
   );
@@ -131,8 +131,8 @@ const DimoAllList = (props) => {
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
-        {p.map(n => { return <ArtWorkPost /> }) }
+      <hr className="border w-full mb-10" />
+        {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>
         </>
   );
@@ -148,8 +148,8 @@ const DimoAllList = (props) => {
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
-        {p.map(n => { return <ArtWorkPost /> }) }
+      <hr className="border w-full mb-10" />
+        {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>
         </>
   );
@@ -165,8 +165,8 @@ const DimoAllList = (props) => {
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
-        {p.map(n => { return <ArtWorkPost /> }) }
+      <hr className="border w-full mb-10" />
+        {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>
         </>
   );
@@ -182,8 +182,8 @@ const DimoAllList = (props) => {
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
-        {p.map(n => { return <ArtWorkPost /> }) }
+      <hr className="border w-full mb-10" />
+        {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>
         </>
   );
@@ -199,8 +199,8 @@ const DimoAllList = (props) => {
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
-        {p.map(n => { return <ArtWorkPost /> }) }
+      <hr className="border w-full mb-10" />
+        {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>
         </>
   );
@@ -216,8 +216,8 @@ const DimoAllList = (props) => {
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
-        {p.map(n => { return <ArtWorkPost /> }) }
+      <hr className="border w-full mb-10" />
+        {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>
         </>
   );
@@ -233,8 +233,8 @@ const DimoAllList = (props) => {
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
-        {p.map(n => { return <ArtWorkPost /> }) }
+      <hr className="border w-full mb-10" />
+        {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>
         </>
   );
@@ -250,8 +250,8 @@ const DimoAllList = (props) => {
       >인기순 최신순 팔로우디자이너</div> 
       <SearchInput />
       </div>
-      <hr className="border w-full " />
-        {p.map(n => { return <ArtWorkPost /> }) }
+      <hr className="border w-full mb-10" />
+        {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>
         </>
   );

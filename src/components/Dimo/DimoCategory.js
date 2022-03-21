@@ -3,7 +3,6 @@ import { Button, Title, Text } from "../../elements";
 
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
 
-import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "../Dimo"
 
 import { DimoSlider } from "../../components"
 
@@ -14,8 +13,8 @@ const DimoCategory = (props) => {
     <> 
     <div className="fixed right-10 top-32">
       <div className="flex flex-row p-4 gap-3">
-     <Link to="/dimo/qna/create"><Button size="3">글쓰기</Button></Link>
-          <Link to="/dimo/qna/detail"><Button size="3">인라인</Button></Link>
+     <Link to="/dimo/create/qna"><Button size="3">글쓰기</Button></Link>
+    <Link to="/dimo/qnadetail"><Button size="3">인라인</Button></Link>
           </div>
           </div>
 
@@ -23,7 +22,7 @@ const DimoCategory = (props) => {
         <DimoSlider />
       </div>
 
-<div className="absolute top-[32rem] left-[5.6rem]">
+<div className="absolute top-[32.4rem] left-[5.6rem]">
         <div className="flex flex-col justify-start pl-[2.5rem] mt-10 text-left ml-6 p-2 w-[17.75rem] h-[40.5rem]
         rounded-lg bg-white">
 
@@ -45,21 +44,27 @@ const DimoCategory = (props) => {
           <Text size="2" className="leading-loose"><Link to="/dimo/qna/else">□ 기타</Link></Text>
     </div>
     </div>
-    <Switch>
-        <Route exact path="/dimo/qna/detail" component={DimoQNADetail} />
-        <Route exact path="/dimo/qna/create" component={DimoCreate} />
-        </Switch>
+
     </>
   );
 
   if(list === "shared") return (
     <> 
-<div className="fixed top-36 left-20">
-        <div className="flex flex-col justify-start pl-[2.5rem] mt-10 text-left ml-6 p-2 w-[17.75rem] h-[52.5rem]
+      <div className="fixed right-10 top-32">
+      <div className="flex flex-row p-4 gap-3">
+     <Link to="/dimo/shared/qna"><Button size="3">글쓰기</Button></Link>
+    <Link to="/dimo/shareddetail"><Button size="3">인라인</Button></Link>
+          </div>
+          </div>
+
+          <div className="ml-16">
+        <DimoSlider />
+      </div>
+
+<div className="absolute top-[32.4rem] left-[5.6rem]">
+        <div className="flex flex-col justify-start pl-[2.5rem] mt-10 text-left ml-6 p-2 w-[17.75rem] h-[40.5rem]
         rounded-lg bg-white">
 
-          <Link to="/dimo/shared/create"><Button size="3">글쓰기</Button></Link>
-          <Link to="/dimo/shared/detail"><Button size="3">인라인</Button></Link>
 
           <Title size="5" className="py-3">카테고리</Title>
 
@@ -78,10 +83,7 @@ const DimoCategory = (props) => {
           <Text size="2" className="leading-loose"><Link to="/dimo/shared/else">□ 기타</Link></Text>
     </div>
     </div>
-    <Switch>
-        <Route exact path="/dimo/shared/detail" component={DimoSharedDetail} />
-        <Route exact path="/dimo/shared/create" component={DimoCreate} />
-        </Switch>
+
     </>
   );
 };

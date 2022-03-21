@@ -3,6 +3,8 @@ import { Route, Switch } from "react-router-dom";
 import { Header, NotFound } from "./NavComponents";
 import { TendencyTest, MyInterests, Results } from "./components";
 import { Main, ArtWork, Dimo, MySpace, MyPosts, CreateProfile, CompleteProfile, KakaoRedirectHandler, LogOut } from "./page";
+import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "./components/Dimo"
+
 
 function App() {
   return (
@@ -18,6 +20,10 @@ function App() {
             <Route path={["/art","/art/:name"]} component={ArtWork} />
 
             <Route path={["/dimo/qna/:name", "/dimo/shared/:name"]} component={Dimo} />
+
+            <Route exact path="/dimo/qnadetail" component={DimoSharedDetail} />
+            <Route exact path="/dimo/shareddetail" component={DimoQNADetail} />
+            <Route exact path="/dimo/create/:name" component={DimoCreate} />
 
             <Route exact path={["/myspace", "/myspace/:name"]} component={MySpace} />
             

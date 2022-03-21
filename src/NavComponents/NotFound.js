@@ -9,7 +9,7 @@ const NotFound = (props) => {
   return (
     <div className="flex flex-col p-3 justify-center items-center">
       <Button
-        _onClick={() => {
+        onClick={() => {
           history.goBack();
         }}
       >

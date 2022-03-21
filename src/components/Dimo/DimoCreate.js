@@ -7,15 +7,18 @@ import { useHistory, useLocation } from "react-router-dom";
 
 const DimoCreate = () => {
   const location = useLocation();
+  const history = useHistory();
   const a = location.pathname
 
-  const status = a.split("/")[2]
- 
+  const status = a.split("/")[3]
+ console.log(status)
   if(status === "qna") return (
     <>
 
-               <div className="p-4 bg-slate-200">
-               <div className="col-start-2 row-start-2 col-span-3 w-full">
+               <div className="
+               ">
+                 <div className="bg-white">
+               <div className="w-full bg-white">
                 크리에이트 디모 QnA
                 <Hashtag />
                 제목<Input placeholder="제목을 입력해주세여" />
@@ -29,8 +32,11 @@ const DimoCreate = () => {
                   파일추가 파일은 복수로 첨부가능하며
                 </div>
                 <Button>입력 완료!</Button>
+                <Button         onClick={() => {
+          history.goBack();
+        }}>돌아가기!</Button>
                 </div>
-
+                </div>
 
     </>
 

@@ -21,6 +21,7 @@ ${(props) => (props.size === "3" ? `w-c03 h-c03 bg-dpurple-200 shadow-md` : "")}
 ${(props) => (props.size === "4" ? `w-c04 h-c04` : "")};
 ${(props) => (props.size === "5" ? `w-c05 h-c05` : "")};
 ${(props) => (props.size === "6" ? `w-c06 h-c06` : "")};
+${(props) => (props.size === "7" ? `w-[32.5rem] h-[18.75rem]` : "")};
 `;
 
 

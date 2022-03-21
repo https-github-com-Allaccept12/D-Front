@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image, Profile, Title } from "../../elements";
+import { Button, Image, Profile, Title, Text, HeartButton } from "../../elements";
 
 import { useHistory, Link, useLocation } from "react-router-dom";
 
@@ -12,39 +12,38 @@ const DimoWorkPost = (props) => {
   let history = useHistory();
   return (
     <>
-    <div className="w-[32.5rem] h-[18.75rem] bg-dpurple-100">
+    <div className="w-[23.75rem] h-[17.5rem] rounded-lg">
 
- <div className="absolute w-[32.5rem] h-[18.75rem]">
+ <div className="absolute w-[23.75rem] h-[17.5rem] bg-white shadow-lg rounded-lg">
     <div>
-    <div className="absolute top-12 pl-6 hover:scale-110 cursor-pointer">
+    <div className="absolute top-7 pl-8 hover:scale-110 cursor-pointer">
             <Profile size="6" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" main />
             </div>
-      <div className="absolute top-12 left-24">
+      <div className="absolute top-7 left-28">
         <div>취준생, 고민</div>
         <Title size="6">이런이런 고민이 있어여</Title></div>
     </div>
-        <div cla>
-          dkflsdjflskfdjlk
+    <div className="absolute top-28 px-10">
+    <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
+    안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다. 제 전공은 산업디자인입니다. 때문에 구체적인 시각디자인과 UIUX 관련 수업을 수강한 적은 없습니다. 
+      </Text> <Text size="2">(더보기)</Text>
+     
+      </div>
+    <div className="absolute bottom-7 px-10 w-full">
+      <div className="flex flex-row justify-between">
+        <HeartButton like_cnt="1" is_like />
+        <div className="flex flex-row space-x-4">
+        <HeartButton like_cnt="0" is_like />
+        <HeartButton like_cnt="1" is_like />
         </div>
+      </div>
+    </div>
  </div>
 
 
 
 
-<time>2022.20</time><p>조회수 2222</p><p>컨텐츠</p>
 
-{ b === "dimoqna" ? 
-<Link to="dimoqnadetail">
-  <p className="text-xl font-medium text-blue-500 dark:text-blue-300">
-    답변하기</p></Link> :  <Link to="dimodetail">
-    <p className="text-xl font-medium text-blue-500 dark:text-blue-300">
-      나도 댓글달기</p></Link> }
-    
-    <div className="">
-    <span className="text-blue-800">좋아요 1 </span>
-    <span className="text-blue-800">저장하기 1</span>
-    <span className="text-blue-800">공유하기</span>
-    </div>
 
 </div>
 </>
