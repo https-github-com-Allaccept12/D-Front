@@ -1,25 +1,26 @@
 import React from "react";
 
 import { Title, Button, Text } from "../../elements"
+import { ArtWorkWrite } from "../../components/ArtWorks";
 import { Link, Route, Switch } from 'react-router-dom';
 import { useTabs } from "../../hooks";
 
 
-
-
 const ArtWorkCategory = (props) => {
-
 
 
   return (
     <>
       
         <div className="fixed top-36 left-20">
-        <div className="flex flex-col justify-start pl-[2.5rem] mt-10 text-left ml-6 p-2 w-[17.75rem] h-[52.5rem]
+        <div className="flex flex-col justify-start pl-[0.7rem] mt-10 text-left ml-1 p-2 w-[17.75rem] h-[52.5rem]
         rounded-lg bg-white">
 
-          <Link to="/art/createart"><Button size="3">글쓰기</Button></Link>
-          <Link to="/art/detail"><Button size="3">인라인</Button></Link>
+          {/* <Link to="/art/createart"><Button size="3">글쓰기</Button></Link>
+          <Link to="/art/detail"><Button size="3">인라인</Button></Link> */}
+          <Link to="/art/createart">
+          <ArtWorkWrite/>
+          </Link>
 
           <Title size="5" className="py-3">카테고리</Title>
 
