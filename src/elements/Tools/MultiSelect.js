@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { MultiSelect } from "react-multi-select-component";
 
 const options = [
-  { label: "Grapes 🍇", value: "grapes" },
-  { label: "Mango 🥭", value: "mango" },
-  { label: "Strawberry 🍓", value: "strawberry" },
+  { label: "일러스트레이터", value: "illustrator" },
+  { label: "포토샵", value: "photoshop" },
+  { label: "피그마", value: "figma" },
 ];
 
 const Example = (props) => {
@@ -20,6 +20,7 @@ const Example = (props) => {
         value={selected}
         onChange={setSelected}
         labelledBy="Select"
+        hasSelectAll="false"
       />
     </div>
   );

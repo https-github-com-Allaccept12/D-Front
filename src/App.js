@@ -8,8 +8,10 @@ import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "./components/Dimo"
 
 function App() {
   return (
-
-    <div className="App w-full m-auto overflow-y-hidden">
+    <>
+    <div id="modal"></div>
+    <div id="root"></div>
+    <div className="w-full m-auto overflow-y-hidden App">
       <Header />
           <Switch>
             <Route exact path="/" component={Main} />
@@ -40,6 +42,7 @@ function App() {
             <Route component={NotFound} />
         </Switch>
     </div>
+    </>
   );
 }
 

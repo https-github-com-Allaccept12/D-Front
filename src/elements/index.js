@@ -22,5 +22,6 @@ import Icon from "./Common/Icon";
 import Logo from "./Common/Logo"
 import SearchInput from "./Common/SearchInput"
 import HeartButton from "./Tools/HeartButton"
+import Portal from "./Tools/Portal"
 
-export { Title, Subtitle, Text, Input, Button, Image, Intro, Spinner, Permit,  Modal, CheckBox, SelectBox, DropDown, MultiSelect, Hashtag, SelectBoxFor12, Thumbnail, Profile, RadioButton, Card, Icon, Logo, SearchInput, HeartButton };
+export { Title, Subtitle, Text, Input, Portal ,Button, Image, Intro, Spinner, Permit,  Modal, CheckBox, SelectBox, DropDown, MultiSelect, Hashtag, SelectBoxFor12, Thumbnail, Profile, RadioButton, Card, Icon, Logo, SearchInput, HeartButton };
