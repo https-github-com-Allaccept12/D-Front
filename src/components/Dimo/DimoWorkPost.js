@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image, Profile, Title, Text, HeartButton } from "../../elements";
+import { Button, Label, Profile, Title, Text, HeartButton } from "../../elements";
 
 import { useHistory, Link, useLocation } from "react-router-dom";
 
@@ -20,7 +20,10 @@ const DimoWorkPost = (props) => {
             <Profile size="6" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" main />
             </div>
       <div className="absolute top-7 left-28">
-        <div>취준생, 고민</div>
+      <div className="flex flex-row gap-1">
+          <Label size="1" color="4">취준생</Label>
+          <Label size="1" color="5">진로고민</Label>
+        </div>
         <Title size="6">이런이런 고민이 있어여</Title></div>
     </div>
     <div className="absolute top-28 px-10">

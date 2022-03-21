@@ -4,11 +4,11 @@ import tw from "tailwind-styled-components";
 
 
 const Btn = tw.button`
-   rounded-full text-base shadow-sm flex flex-row justify-center items-center 
+   rounded-full shadow-sm flex flex-row justify-center items-center
    font-min1
-  ${(props) => (props.size === "1" ? `h-b01 px-12` : "")};
-  ${(props) => (props.size === "2" ? `h-b02 px-8 py-4` : "")};
-  ${(props) => (props.size === "3" ? `h-b03 px-8 py-5` : "")};
+  ${(props) => (props.size === "1" ? `h-5 px-3 text-sm` : "")};
+  ${(props) => (props.size === "2" ? `h-7 px-5 py-1 text-base ` : "")};
+
 
   ${(props) => (props.color === "1" ? `
   text-white bg-dpurple-200 
@@ -61,7 +61,7 @@ mr-2
 ${(props) => (props.iconColor === "heart" ? `text-dred-300` : "")};
 `
 
-const Button = (props) => {
+const Label = (props) => {
   const {
     size,
     color,
@@ -95,7 +95,7 @@ const Button = (props) => {
   );
 };
 
-Button.defaultProps = {
+Label.defaultProps = {
   size: "1",
   color: "1",
   children: null,
@@ -103,4 +103,4 @@ Button.defaultProps = {
   iconColor: ""
 };
 
-export default Button;
+export default Label;

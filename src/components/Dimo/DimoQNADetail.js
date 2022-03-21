@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image, Title, Text, Input, Profile, HeartButton } from "../../elements";
+import { Button, Label, Title, Text, Input, Profile, HeartButton } from "../../elements";
 
 import { useHistory } from "react-router-dom";
 import {Comment} from "../Comment";
@@ -39,7 +39,10 @@ const DimoDetail = (props) => {
             <Profile size="6" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" main />
             </div>
       <div className="absolute top-7 left-28">
-        <div>취준생, 고민</div>
+        <div className="flex flex-row gap-1">
+          <Label size="1" color="4">취준생</Label>
+          <Label size="1" color="5">진로고민</Label>
+        </div>
         <Title size="6">이런이런 고민이 있어여</Title></div>
     </div>
     <div className="absolute top-28 px-10">
@@ -50,10 +53,14 @@ const DimoDetail = (props) => {
       </div>
     <div className="absolute bottom-36 px-10 w-full">
       <div className="flex flex-row justify-between">
-        <HeartButton like_cnt="1" is_like />
+        <Button size="3" color="1">답변남기기</Button>
         <div className="flex flex-row space-x-4">
-        <HeartButton like_cnt="0" is_like />
-        <HeartButton like_cnt="1" is_like />
+        <Button size="3" color="4" 
+    icon name="Private" iconSize="16" iconColor="">좋아요 <span class="ml-12">12</span></Button>
+        <Button size="3" color="4" 
+    icon name="Private" iconSize="16" iconColor="">스크랩 12</Button>
+    <Button size="3" color="4" 
+    icon name="Private" iconSize="16" iconColor="">공유하기</Button>
         </div>
       </div>
       <hr className="border-2 m-3" />
@@ -118,13 +125,18 @@ const DimoDetail = (props) => {
     
 </div>
 
-<div className="absolute bottom-36 px-10 w-full">
-      <div className="flex flex-row justify-between">
-        <HeartButton like_cnt="1" is_like />
+<div className="absolute bottom-36 px-10 mt-10 w-full">
+<div className="flex flex-row justify-between">
+        <Button size="3" color="1">답변남기기</Button>
         <div className="flex flex-row space-x-4">
-        <HeartButton like_cnt="0" is_like />
-        <HeartButton like_cnt="1" is_like />
+        <Button size="3" color="4" 
+    icon name="Private" iconSize="16" iconColor="">좋아요</Button>
+        <Button size="3" color="4" 
+    icon name="Private" iconSize="16" iconColor="">스크랩</Button>
+    <Button size="3" color="4" 
+    icon name="Private" iconSize="16" iconColor="">공유하기</Button>
         </div>
+
       </div>
       <hr className="border-2 m-3 w-full " />
       <Input />
@@ -170,12 +182,17 @@ const DimoDetail = (props) => {
 </div>
 
 <div className="absolute bottom-36 px-10 w-full">
-      <div className="flex flex-row justify-between">
-        <HeartButton like_cnt="1" is_like />
+<div className="flex flex-row justify-between">
+        <Button size="3" color="1">답변남기기</Button>
         <div className="flex flex-row space-x-4">
-        <HeartButton like_cnt="0" is_like />
-        <HeartButton like_cnt="1" is_like />
+        <Button size="3" color="4" 
+    icon name="Private" iconSize="16" iconColor="">좋아요</Button>
+        <Button size="3" color="4" 
+    icon name="Private" iconSize="16" iconColor="">스크랩</Button>
+    <Button size="3" color="4" 
+    icon name="Private" iconSize="16" iconColor="">공유하기</Button>
         </div>
+
       </div>
       <hr className="border-2 m-3 w-full " />
       <Input />
@@ -222,12 +239,17 @@ const DimoDetail = (props) => {
 </div>
 
 <div className="absolute bottom-36 px-10 w-full">
-      <div className="flex flex-row justify-between">
-        <HeartButton like_cnt="1" is_like />
+<div className="flex flex-row justify-between">
+        <Button size="3" color="1">답변남기기</Button>
         <div className="flex flex-row space-x-4">
-        <HeartButton like_cnt="0" is_like />
-        <HeartButton like_cnt="1" is_like />
+        <Button size="3" color="4" 
+    icon name="Private" iconSize="16" iconColor="">좋아요</Button>
+        <Button size="3" color="4" 
+    icon name="Private" iconSize="16" iconColor="">스크랩</Button>
+    <Button size="3" color="4" 
+    icon name="Private" iconSize="16" iconColor="">공유하기</Button>
         </div>
+
       </div>
       <hr className="border-2 m-3 w-full " />
       <Input />
