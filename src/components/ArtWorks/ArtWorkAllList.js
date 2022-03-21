@@ -19,9 +19,10 @@ const ArtWorkAllList = (props) => {
   const b = a.split("/")[3]
   if(a === "/") return (
     <>
-       
-      <div className="mt-36 mx-auto flex flex-row flex-wrap 
-      justify-center items-center gap-5 px-16">
+  
+      <div className="mt-36 mx-auto md:grid md:grid-cols-4 md:grid-rows-2 md:grid-flow-col
+      justify-center items-center gap-5 max-w-screen-2xl">
+
         {p.map(n => { return <ArtWorkPost size="7" main /> }) }
         </div>
         

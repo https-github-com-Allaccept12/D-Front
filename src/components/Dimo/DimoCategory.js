@@ -5,18 +5,29 @@ import { Link, Route, Switch, useLocation } from 'react-router-dom';
 
 import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "../Dimo"
 
+import { DimoSlider } from "../../components"
+
 
 const DimoCategory = (props) => {
   const {list} = props
   if(list === "qna") return (
     <> 
-<div className="fixed top-36 left-20">
-        <div className="flex flex-col justify-start pl-[2.5rem] mt-10 text-left ml-6 p-2 w-[17.75rem] h-[52.5rem]
+    <div className="fixed right-10 top-32">
+      <div className="flex flex-row p-4 gap-3">
+     <Link to="/dimo/qna/create"><Button size="3">글쓰기</Button></Link>
+          <Link to="/dimo/qna/detail"><Button size="3">인라인</Button></Link>
+          </div>
+          </div>
+
+          <div className="ml-16">
+        <DimoSlider />
+      </div>
+
+<div className="absolute top-[32rem] left-[5.6rem]">
+        <div className="flex flex-col justify-start pl-[2.5rem] mt-10 text-left ml-6 p-2 w-[17.75rem] h-[40.5rem]
         rounded-lg bg-white">
 
-          <Link to="/dimo/qna/create"><Button size="3">글쓰기</Button></Link>
-          <Link to="/dimo/qna/detail"><Button size="3">인라인</Button></Link>
-
+         
           <Title size="5" className="py-3">카테고리</Title>
 
           <Text size="2" className="leading-loose"><Link to="/dimo/qna/all">□ 전체보기</Link></Text>
