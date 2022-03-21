@@ -8,9 +8,8 @@ import { Image, Text, Icon } from "../../elements";
 // 리액트 슬라이더 중에 제일 많이들쓰는거
 // 구글링해서 커스텀 css 만들기!
 export const Slide = tw(Slider)`
-    w-[30.25rem] lg:w-[30.25rem] xl:w-[50.25rem] 2xl:w-[78.5rem]
-    mx-auto mt-10 col-start-2 
-    col-end-6 row-start-1 col-opacity-90 text-white
+    w-[50.25rem] xl:w-[70.25rem] 2xl:w-[99.75rem]
+    mx-auto text-white 
     overflow-hidden text-lg
 `
 

@@ -32,7 +32,8 @@ const Main = (props) => {
 
           </div>
       
-      <div className="mx-auto md:pt-28 max-w-screen-3xl">
+      <div className="mx-auto md:pt-28 container">
+
       <ArtWorkAllList />
       </div>
     </div>

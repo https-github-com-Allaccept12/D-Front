@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ArtWorkAllList, ArtWorkCategory, ArtWorkCreate } from "../components/ArtWorks";
+import { ArtWorkAllList, ArtWorkCategory, ArtWorkCreate, ArtWorkInlineDetail } from "../components/ArtWorks";
 import { Title, Button } from "../elements"
 import { Link, Route, Switch } from 'react-router-dom';
 
@@ -17,7 +17,7 @@ const ArtWork = (props) => {
     <Switch>
         <Route exact path="/art/list/:name" component={ArtWorkAllList} />
         <Route exact path="/art/createart" component={ArtWorkCreate} />
-        {/* <Route exact path="/art/detail" component={InlineDetail} /> */}
+        <Route exact path="/art/detail" component={ArtWorkInlineDetail} />
         </Switch>
         </div>
     </>
