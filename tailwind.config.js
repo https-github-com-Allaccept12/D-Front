@@ -142,6 +142,7 @@ module.exports = {
   },
   variants: {
     gridAutoFlow: ['responsive', 'hover', 'focus'],
+    display: ['responsive', 'group-hover', 'group-focus'],
   },
   corePlugins: {
     container: false

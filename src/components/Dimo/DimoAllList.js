@@ -5,8 +5,7 @@ import tw from "tailwind-styled-components";
 import { useHistory, useLocation } from "react-router-dom";
 
 const Grid = tw.div` 
-w-4/6 flex flex-row flex-wrap items-start justify-start ml-auto mr-48
-rounded-lg bg-white pt-6 px-12 gap-3 
+flex flex-row flex-wrap items-center gap-4
 ` 
 
 
@@ -20,15 +19,9 @@ const DimoAllList = (props) => {
   
   if(b === "all") return (
     <>
-    <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
+
     <Grid>
-      <div className="flex items-center w-full justify-around space-x-36">
-      <div className="box-border rounded-full 
-      bg-white border border-black h-[2.5rem]
-      flex justify-center items-center px-10 my-5"
-      ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
-      <SearchInput />
-      </div>
+
       <hr className="border w-full mb-10" />
         {p.map(n => { return <DimoWorkPost /> }) }
         </Grid>

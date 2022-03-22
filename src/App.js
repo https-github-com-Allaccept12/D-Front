@@ -11,7 +11,7 @@ function App() {
     <>
     <div id="modal"></div>
     <div id="root"></div>
-    <div className="w-full m-auto overflow-y-hidden App">
+    <div className="w-full m-auto App">
       <Header />
           <Switch>
             <Route exact path="/" component={Main} />

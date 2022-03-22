@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Route, Switch, useLocation } from 'react-router-dom';
-import { DimoCategory, DimoAllList } from "../components/Dimo";
+import { DimoCategory, DimoAllList, DimoPage } from "../components/Dimo";
 
 import { Title, Button } from "../elements"
 
@@ -10,6 +10,7 @@ const Dimo = () => {
   const location = useLocation();
 const a = location.pathname
 const b = a.split("/")[2]
+const c = a.split("/")[3]
 
     return (
       <>
@@ -23,17 +24,22 @@ const b = a.split("/")[2]
 
     
      </div>
+
      <div className='flex flex-row'> 
-
-
      <DimoCategory list={b} />
      </div>
-    
-  <Switch>
+<div className='grid grid-cols-4'>
+     <div className='bg-gray-300 w-40 h-[112.5rem] '>
+    <DimoPage list={b}/> 
+     </div>
+<div className="col-start-2 col-end-5">
+     <DimoAllList list={c} />
+     </div>
+     </div>
 
-        <Route exact path={['/dimo/qna/:name', '/dimo/shared/:name']} component={DimoAllList} />
 
-        </Switch>
+      
+
         </div>
       </>
     );
