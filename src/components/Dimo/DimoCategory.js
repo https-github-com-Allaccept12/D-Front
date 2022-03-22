@@ -24,11 +24,8 @@ const DimoCategory = (props) => {
 
   if(list === "shared") return (
     <> 
-      <div className="fixed right-10 top-32">
-      <div className="flex flex-row p-4 gap-3">
-     <Link to="/dimo/create/shared"><Button size="3">글쓰기</Button></Link>
-    <Link to="/dimo/shareddetail"><Button size="3">인라인</Button></Link>
-          </div>
+    <div className="fixed right-10 top-32">
+
           </div>
 
           <div className="ml-16">
