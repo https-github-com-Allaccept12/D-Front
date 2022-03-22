@@ -15,9 +15,9 @@ const DimoAllList = (props) => {
   let history = useHistory();
   const location = useLocation();
   const a = location.pathname
-  const b = a.split("/")[3]
+  const b = a.split("/")[2]
   
-  if(b === "all") return (
+  if(b === "mywork") return (
     <>
 
     <Grid>
@@ -29,7 +29,7 @@ const DimoAllList = (props) => {
       );
 
       
-  if(b === "uiux") return (
+  if(b === "community") return (
     <>
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
