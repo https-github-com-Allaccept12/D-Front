@@ -1,13 +1,17 @@
 import React, {useState} from "react";
+import { useDispatch } from 'react-redux';
+import { tendency } from "../../redux/modules/tendency.js";
 import { Button } from "../../elements";
 import dPlus from "../../static/images/dPlus_logo.svg";
 import { Link } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 const mbti = {"I":0, "E":0, "N":0, "S":0, "T":0, "F":0, "P":0, "J":0 };
 let mbti_s = "";
 let designation = "";
 
 const TendencyTest = (props) => {
+  const history = useHistory();
   const [TestNum, nextTestNum] = useState(0);
   mbti_s = Object.keys(mbti).filter(key => mbti[key] >= 2).join('');
   // console.log(mbti_s);
@@ -30,8 +34,10 @@ const TendencyTest = (props) => {
     designation = "부드러운 중재자";
   }
 
+const dispatch = useDispatch();
 const SendTendency = () => {
-  
+  dispatch(tendency(designation))
+  history.replace('/MyInterests');
 }
     
   // console.log(designation);
@@ -234,12 +240,12 @@ const SendTendency = () => {
             <rect x="16" y="16" width="520" height="10" rx="5" fill="#9262F7"/>
           </svg><br/><br/><br/>
           <div className="text-center">"{designation}"<br/><br/> 칭호를 얻으셨습니다!</div><br/><br/><br/><br/>
-              <Link to="/MyInterests">
+              {/* <Link to="/MyInterests" action="replace"> */}
                 <div className="grid items-center col-start-4 col-end-5 row-start-3">
                 <Button size="1" color="1" onClick={SendTendency}>
                     확인
                 </Button></div>
-              </Link>
+              {/* </Link> */}
         </div>
         }          
       <div className="grid items-center col-start-4 row-start-4">

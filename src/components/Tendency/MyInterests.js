@@ -1,6 +1,8 @@
 import React, {useState } from "react";
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { interests } from "../../redux/modules/interests.js";
 import { Button, Image } from "../../elements";
-import { Link } from "react-router-dom";
 import icon from "../../static/images/interests_icon.svg";
 import typography from "../../static/images/typography.svg";
 import crafts from "../../static/images/crafts.svg";
@@ -15,16 +17,23 @@ import interior from "../../static/images/interior.svg";
 import graphic from "../../static/images/graphic.svg";
 
 
-const interest = [];
-
+let interest = [];
 const MyInterests = (props) => {
-  
+  const dispatch = useDispatch();
+  const history = useHistory();
+  let result = '';
+
+  const SendInterests = () => {
+    dispatch(interests(result))
+    history.replace('/CreateProfile');
+}
   const [isClicked, setIsClicked] = useState(false);
   const handleClicked = e => {
     if (interest.length < 1){
       setIsClicked(!isClicked)
       !isClicked ? e.currentTarget.style.border = "5px solid #A162F7" : e.currentTarget.style.border = "1px black";
-      interest.push(e.currentTarget.innerText)
+      result = e.currentTarget.innerText;
+      interest.push(result)
     } else{
         if (e.currentTarget.innerText === interest[0]){
           setIsClicked(!isClicked)
@@ -60,9 +69,9 @@ const MyInterests = (props) => {
       </div>
       <div className="flex my-10 place-content-center">
           {interest.length === 1 ? 
-            <Link to="/CreateProfile">
-              <Button size="1" color="1">확인</Button>
-            </Link>
+            // <Link to="/CreateProfile">
+              <Button size="1" color="1" onClick={SendInterests}>확인</Button>
+            // </Link>
             : 
             <Button size="1" color="2">관심사를 선택해주세요.</Button>
           }

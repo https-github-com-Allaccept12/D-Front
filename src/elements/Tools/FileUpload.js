@@ -16,7 +16,6 @@ function FileUpload() {
             dispatch(preview(reader.result))
         }
         
-        
     }, [])
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 

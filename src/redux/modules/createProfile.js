@@ -4,10 +4,10 @@ import { URL, token } from "../UrlForAxios";
 const initialState = {
 }
 
-export const CreateNewArtWork = createAsyncThunk(
-    'post/CreateNewArtWork',
+export const createProfile = createAsyncThunk(
+    'post/createProfile',
     async (formData, thunkAPI) => {
-      await URL.post('/api/artwork', formData, {
+      await URL.post('/api/profile', formData, {
         headers: {
             "content-type": "multipart/form-data",
             "Authorization": "Bearer " + token,
@@ -22,8 +22,8 @@ export const CreateNewArtWork = createAsyncThunk(
   );
 
 
-export const postSlice = createSlice({
-    name: 'post',
+export const profileSlice = createSlice({
+    name: 'createProfile',
     initialState,
     reducer: {
         // setThumbnail: (state, action) => {
@@ -32,13 +32,13 @@ export const postSlice = createSlice({
     },
     extraReducers: builder => {
         builder
-        .addCase(CreateNewArtWork.pending, (state, action) => {
+        .addCase(createProfile.pending, (state, action) => {
             console.log('pending');
         })
-        .addCase(CreateNewArtWork.fulfilled, (state, action) => {
+        .addCase(createProfile.fulfilled, (state, action) => {
             console.log('create fulfiled');
         })
-        .addCase(CreateNewArtWork.rejected, (state, action) => {
+        .addCase(createProfile.rejected, (state, action) => {
             console.log(action.error.message);
             console.log('create rejected');
         })
@@ -46,4 +46,4 @@ export const postSlice = createSlice({
     },
 });
 
-export default postSlice.reducer;
+export default profileSlice.reducer;

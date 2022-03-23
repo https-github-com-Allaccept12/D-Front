@@ -40,6 +40,7 @@ const Input = (props) => {
     value,
     onChange,
     onSubmit,
+    onBlur,
     is_submit,
     is_error,
     textarea,
@@ -114,6 +115,7 @@ const Input = (props) => {
           cardSize={cardSize}
           placeholder={placeholder}
           onChange={onChange}
+          onBlur={onBlur}
           maxLen={maxLen}
         />
         { is_error && <Sp>글자수를 초과하였습니다.</Sp> }

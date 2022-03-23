@@ -8,7 +8,7 @@ const useInput = (initialValue, validators) => {
     if(validators) { // 밸리데이션 필요한 경우
       try {
         if(!Array.isArray(validators) || typeof validators[0] !== "function"){
-          throw new Error("second parameter must be array includes function");
+          // throw new Error("second parameter must be array includes function");
         } 
       } catch (error) {
         console.log(error)
