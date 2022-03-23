@@ -4,7 +4,6 @@ import { preview } from '../../redux/modules/image';
 import Dropzone, {useDropzone} from 'react-dropzone';
 import { Profile } from '../../elements';
 import profile_upload from '../../static/images/profile_upload.svg';
-import { Test } from "../../redux/modules/artWork";
 
 function FileUpload() {
     const profile = useSelector((state) => state.image.url);
@@ -16,11 +15,6 @@ function FileUpload() {
         reader.onload = () => {
             dispatch(preview(reader.result))
         }
-        const data = new FormData();
-        data.append(acceptedFile[0]);
-        console.log(data);
-        dispatch(Test({data}));
-        
         
     }, [])
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})

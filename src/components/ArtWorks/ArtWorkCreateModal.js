@@ -25,17 +25,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
         const file = e.target.files
         const reader = new FileReader();
         setImage(file[0]);
-        // reader.readAsDataURL(file[0]);
-        // reader.onload = () => {
-        //   setImage(reader.result)
-    // }
     }
-    // const handleFile = (e) => {
-    //     const file = e.target.files
-    //     const reader = new FileReader();
-    //     reader.readAsDataURL(file[0]);
-    //     reader.on
-    // }
     const [toolSelected, setToolSelected] = useState([]);
     console.log(toolSelected);
     const [inputs, setInputs] = useState({

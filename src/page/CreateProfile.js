@@ -1,32 +1,71 @@
-import React, {ChangeEvent} from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { preview } from '../redux/modules/image';
+import { checknickname } from '../redux/modules/checkNickname';
+import { createProfile } from '../redux/modules/createProfile';
 import { Button, Title, Image, Input, Text, Image as CircleImage } from "../elements";
 import set_profile from "../static/images/set_profile.svg";
 import { useHistory, Link } from "react-router-dom";
 import FileUpload from "../elements/Tools/FileUpload";
-// import profile_upload from "../static/images/profile_upload.svg";
+import { useInput } from "../hooks";
 
 
 const CreateProfile = (props) => {
-  let profile = useSelector((state) => state.image.url);
   const dispatch = useDispatch();
+  let profile = useSelector((state) => state.image.url);
+  const nicknameValidMaxLen = (value) => value.length <= 10;
+  const nickname = useInput("", [nicknameValidMaxLen]);
+  const name = useInput("", []);
+  const email = useInput("", []);
+  const linkedIn = useInput("", []);
+  const brunch = useInput("", []);
+  const instagram = useInput("", []);
+  const introduce = useInput("", []);
+  const JobOptions = [
+    { value: "UIUX", label: "UI & UX"},
+    { value: "fashion", label: "패션"},
+    { value: "typography", label: "타이포그래피"},
+    { value: "crafts", label: "공예"},
+    { value: "pakage", label: "패키지"},
+    { value: "graphic", label: "그래픽"},
+    { value: "video", label: "영상/모션"},
+    { value: "product", label: "제품"},
+    { value: "game", label: "게임/캐릭터"},
+    { value: "branding", label: "브랜딩/편집"},
+    { value: "interior", label: "건축/인테리어/환경"},
+    { value: "student", label: "학생"},
+  ]
+  // console.log(nickname.value);
+  
+  const [selected, setSelected] = useState("");
+  const handleChangeSelect = (e) => {
+    setSelected(e.target.value);
+  }
+  // console.log(selected);
+
+  const checkNickname = () => {
+    dispatch(checknickname(nickname));
+  }
+
   const deleteProfile = () => {
     dispatch(preview(""));
   }
-  const JobOptions = [
-    { value: 0, label: "UI & UX"},
-    { value: 1, label: "패션"},
-    { value: 2, label: "타이포그래피"},
-    { value: 3, label: "공예"},
-    { value: 4, label: "패키지"},
-    { value: 5, label: "그래픽"},
-    { value: 6, label: "영상/모션"},
-    { value: 7, label: "제품"},
-    { value: 8, label: "게임/캐릭터"},
-    { value: 9, label: "브랜딩/편집"},
-    { value: 10, label: "건축/인테리어/환경"}
-  ]
+
+  const SendProfile = () => {
+    const formData = new FormData()
+    let data = {
+      nickname: nickname,
+      intro_content: introduce,
+      work_email: email,
+      linked_in: linkedIn,
+      brunch: brunch,
+      insta: instagram,
+      job: selected,
+    }
+    formData.append("data", new Blob([JSON.stringify(data)], {type: "application/json"}));
+    formData.append("profile_img", profile);
+    dispatch(createProfile(formData));
+  }
 
   return (
 
@@ -45,11 +84,11 @@ const CreateProfile = (props) => {
             {profile !== "" && <p onClick={deleteProfile} className='cursor-pointer text-center text-gray-300 hover:text-[#9262F7]'>삭제</p>}
             </div>
             <div className="grid col-start-2 col-end-3">
-              <Input cardSize="2" title="아이디"></Input>
-              <Input cardSize="2" title="이름"></Input>
+              <Input cardSize="2" title="닉네임" onBlur={checkNickname} value={nickname.value} onChange={nickname.onChange} is_value={nickname.value.length} maxLen="10"></Input>
+              <Input cardSize="2" title="이름" value={name.value} onChange={name.onChange} is_value={name.value.length}></Input>
               <div className="grid items-center justify-start">
                 <p className= "w-1/2 row-start-1 mr-10 font-min1">직업</p>
-                <select className="row-start-1" onChange>
+                <select className="row-start-1" onChange={handleChangeSelect} vlaue={selected}>
                   {JobOptions.map((item, index) => (
                     <option key={index} value={item.value}>{item.label}</option>
                   ))}
@@ -59,20 +98,20 @@ const CreateProfile = (props) => {
           </div>
           <div className="grid row-start-2 row-end-3">
             <p className="text-2xl font-bold">연락처</p>
-            <Input cardSize="2" title="이메일"></Input>
-            <Input cardSize="2" title="링크드인"></Input>
-            <Input cardSize="2" title="브런치"></Input>
-            <Input cardSize="2" title="인스타그램"></Input>
+            <Input cardSize="2" title="이메일" value={email.value} onChange={email.onChange} is_value={email.value.length}></Input>
+            <Input cardSize="2" title="링크드인" value={linkedIn.value} onChange={linkedIn.onChange} is_value={linkedIn.value.length}></Input>
+            <Input cardSize="2" title="브런치" value={brunch.value} onChange={brunch.onChange} is_value={brunch.value.length}></Input>
+            <Input cardSize="2" title="인스타그램" value={instagram.value} onChange={instagram.onChange} is_value={instagram.value.length}></Input>
           </div>
           <div className="grid row-start-3 row-end-4">
             <p className="text-2xl font-bold">소개</p>
-            <Input cardSize="1" title="한 줄 소개"></Input>
+            <Input cardSize="1" title="한 줄 소개" value={introduce.value} onChange={introduce.onChange} is_value={introduce.value.length}></Input>
           </div>
         </div>
       </div>
       <div className="grid w-full py-10 bg-white place-items-center">
         <Link to="/CompleteProfile">
-          <Button size="2" color="1">작성 완료</Button>
+          <Button size="2" color="1" onClick={SendProfile}>작성 완료</Button>
         </Link>
       </div>
 {/* <button className="col-start-5"><Link to="/">다음으로 넘어가기</Link></button>

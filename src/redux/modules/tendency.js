@@ -7,9 +7,6 @@ export const tendencySlice = createSlice({
         tendency: (state, action) => {
             state.tendency = action.payload
         },
-        // preview(state, action) {
-        //     state.value = action.payload
-        // }
     },
   });
 
