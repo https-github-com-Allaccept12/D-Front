@@ -4,6 +4,7 @@ import { CreateNewArtWork } from "../../redux/modules/artWork";
 import Portal from "../../elements/Tools/Portal";
 import { MultiSelect } from "react-multi-select-component";
 import axios from "axios";
+import { URL, token } from "../../redux/UrlForAxios";
 import {
     Image,
     Input,
@@ -22,12 +23,12 @@ const ArtWorkCreateModal = ({ onClose }) => {
     const [image, setImage] = useState("");
     const handleFile = (e)=>{
         const file = e.target.files
-            const reader = new FileReader();
-
-        reader.readAsDataURL(file[0]);
-        reader.onload = () => {
-            setImage(reader.result)
-    }
+        const reader = new FileReader();
+        setImage(file[0]);
+        // reader.readAsDataURL(file[0]);
+        // reader.onload = () => {
+        //   setImage(reader.result)
+    // }
     }
     // const handleFile = (e) => {
     //     const file = e.target.files
@@ -54,13 +55,15 @@ const ArtWorkCreateModal = ({ onClose }) => {
           ...inputs,
           [name]: value
         });
-        console.log(inputs);
+        // console.log(inputs);
       }
     
-    const submitHandler = (e) => {
-        console.log('sdf');
-        e.preventDefault();
-        let body = {
+
+    
+    const formData = new FormData();
+
+    const createArtWork = () => {
+      let data = {
         title: inputs.title,
         category: inputs.category,
         tool: toolSelected,
@@ -69,30 +72,15 @@ const ArtWorkCreateModal = ({ onClose }) => {
         content: inputs.description,
         copyright: inputs.copyright,
         is_master: false,
-        image: image,
         thumnail: true,
         }
+      formData.append("data", new Blob([JSON.stringify(data)], {type: "application/json"}))
+      formData.append("imgFile", image);
 
-        axios
-        .post("http://api/artwork", body)
-        .then((res) => console.log(res));
-        console.log(body);
+      dispatch(CreateNewArtWork(formData));
     }
 
-    const sendingData = {
-        title: inputs.title,
-        category: inputs.category,
-        tool: toolSelected,
-        work_start: inputs.startDate,
-        work_end: inputs.endDate,
-        content: inputs.description,
-        copyright: inputs.copyright,
-        is_master: false,
-        image: image,
-        thumnail: true,
-    }
-
-    // dispatch(CreateNewArtWork({ sendingData }));
+    
 
     return (
         <Portal>
@@ -113,7 +101,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                 aria-label="Close"
               ></button>
             </div>
-            <form>
+            {/* <form> */}
             <div
               className="grid w-full h-full grid-cols-3 grid-rows-6 p-4 overflow-y-scroll bg-yellow-500 modal-body"
             >
@@ -197,8 +185,8 @@ const ArtWorkCreateModal = ({ onClose }) => {
                 </div>
               </div>
             </div>
-            <button type="submit">완료</button>
-            </form>
+            <button onClick={createArtWork}>완료</button>
+            {/* </form> */}
           </div>
           </div>
         </Portal>
