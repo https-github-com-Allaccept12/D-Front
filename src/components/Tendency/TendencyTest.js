@@ -29,6 +29,10 @@ const TendencyTest = (props) => {
   else if (mbti_s === "ISFP" || mbti_s === "ENFJ" || mbti_s === "ESFJ") {
     designation = "부드러운 중재자";
   }
+
+const SendTendency = () => {
+  
+}
     
   // console.log(designation);
   return (
@@ -232,7 +236,7 @@ const TendencyTest = (props) => {
           <div className="text-center">"{designation}"<br/><br/> 칭호를 얻으셨습니다!</div><br/><br/><br/><br/>
               <Link to="/MyInterests">
                 <div className="grid items-center col-start-4 col-end-5 row-start-3">
-                <Button size="1" color="1">
+                <Button size="1" color="1" onClick={SendTendency}>
                     확인
                 </Button></div>
               </Link>

@@ -1,18 +1,49 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { CreateNewArtWork } from "../../redux/modules/artWork";
 import Portal from "../../elements/Tools/Portal";
+import { MultiSelect } from "react-multi-select-component";
+import axios from "axios";
 import {
     Image,
     Input,
     CheckBox,
     SelectBox,
-    MultiSelect,
     SelectBoxFor12,
   } from "../../elements";
 
 const ArtWorkCreateModal = ({ onClose }) => {
+    const dispatch = useDispatch();
+
+    const options = [
+        {label: "일러스트레이터", value: "iller"},
+        {label: "피그마", value: "figma"},
+    ]
+    const [image, setImage] = useState("");
+    const handleFile = (e)=>{
+        const file = e.target.files
+            const reader = new FileReader();
+
+        reader.readAsDataURL(file[0]);
+        reader.onload = () => {
+            setImage(reader.result)
+    }
+    }
+    // const handleFile = (e) => {
+    //     const file = e.target.files
+    //     const reader = new FileReader();
+    //     reader.readAsDataURL(file[0]);
+    //     reader.on
+    // }
+    const [toolSelected, setToolSelected] = useState([]);
+    console.log(toolSelected);
     const [inputs, setInputs] = useState({
         title: "",
+        category: "",
+        start_date: "",
+        end_date: "",
         description: "",
+        copyright: "",
       });
       
     const {title, description} = inputs;
@@ -23,7 +54,46 @@ const ArtWorkCreateModal = ({ onClose }) => {
           ...inputs,
           [name]: value
         });
+        console.log(inputs);
       }
+    
+    const submitHandler = (e) => {
+        console.log('sdf');
+        e.preventDefault();
+        let body = {
+        title: inputs.title,
+        category: inputs.category,
+        tool: toolSelected,
+        work_start: inputs.startDate,
+        work_end: inputs.endDate,
+        content: inputs.description,
+        copyright: inputs.copyright,
+        is_master: false,
+        image: image,
+        thumnail: true,
+        }
+
+        axios
+        .post("http://api/artwork", body)
+        .then((res) => console.log(res));
+        console.log(body);
+    }
+
+    const sendingData = {
+        title: inputs.title,
+        category: inputs.category,
+        tool: toolSelected,
+        work_start: inputs.startDate,
+        work_end: inputs.endDate,
+        content: inputs.description,
+        copyright: inputs.copyright,
+        is_master: false,
+        image: image,
+        thumnail: true,
+    }
+
+    // dispatch(CreateNewArtWork({ sendingData }));
+
     return (
         <Portal>
             <div className="absolute z-10 w-full h-full bg-gray-500 bg-opacity-80">
@@ -37,29 +107,43 @@ const ArtWorkCreateModal = ({ onClose }) => {
               </h5>
               <button
                 type="button"
+                onClick={onClose}
                 className="box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 btn-close focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
+            <form>
             <div
               className="grid w-full h-full grid-cols-3 grid-rows-6 p-4 overflow-y-scroll bg-yellow-500 modal-body"
             >
               <div className="invisible md:visible md:fixed">
-                <Image shape="big_square" />
+                {/* <Image shape="big_square" /> */}
+                <input type="file" onChange={handleFile} />
               </div>
               <div
                 className="grid items-center h-screen grid-cols-6 col-span-2 col-start-1 col-end-4 row-start-1 bg-yellow-100 md:col-start-2 grid-rows-10"
               >
                 <div className="col-span-4 col-start-2 col-end-6 row-start-1">
-                  {/* <Input title="타이틀" value={name.value} onChange={name.onChange} /> */}
                   <p>타이틀</p>
                   <input type="text" name = "title" onChange={handleChange}/>
                 </div>
                 <div className="col-span-4 col-start-2 row-start-2">
                   <p>카테고리</p>
-                  <div className="flex flex-row flex-wrap items-center justify-center gap-5 p-3">
-                    <CheckBox inline="저장" checked />
+                  <div onChange={handleChange} className="flex flex-row flex-wrap items-center justify-center gap-5 p-3">
+                      <input type="radio" name="category" value="ui"/>ui/ux
+                      <input type="radio" name="category" value="typo"/>타이포그래피
+                      <input type="radio" name="category" value="crafts"/>공예
+                      <input type="radio" name="category" value="pakage"/>패키지
+                      <input type="radio" name="category" value="graphic"/>그래픽
+                      <input type="radio" name="category" value="fashion"/>패션
+                      <input type="radio" name="category" value="video"/>영상
+                      <input type="radio" name="category" value="product"/>제품
+                      <input type="radio" name="category" value="game"/>게임/캐릭터
+                      <input type="radio" name="category" value="branding"/>브랜딩/편집
+                      <input type="radio" name="category" value="interior"/>건축/인테리어/환경
+                      
+                    {/* <CheckBox inline="저장" name="category" value="ui" checked />
                     <CheckBox inline="디자인" checked />
                     <CheckBox inline="디스플레이/디자인" checked />
                     <CheckBox inline="저장" checked />
@@ -71,67 +155,22 @@ const ArtWorkCreateModal = ({ onClose }) => {
                     <CheckBox inline="저장" checked />
                     <CheckBox inline="저장" checked />
                     <CheckBox inline="저장" checked />
-                    <CheckBox inline="저장" checked />
+                    <CheckBox inline="저장" checked /> */}
                   </div>
                 </div>
 
                 <div className="col-span-4 col-start-2">
                   {/* 사용 툴 */}
-                  <MultiSelect/>
+                  <MultiSelect options={options} value={toolSelected} labelledBy="Select" onChange={setToolSelected}/>
                 </div>
 
                 <div className="col-span-2 col-start-2 row-start-4">
                   시작 날짜
-                  <input type="text" name="startDate"/>
+                  <input type="text" name="startDate" onChange={handleChange}/>
                   <br/><br/><br/>
                   종료 날짜
-                  <input type="text" name="endDate"/>
-                  {/* <SelectBox
-                    title="연도"
-                    option01="2020"
-                    option02="2021"
-                    option03="2022"
-                  />
-                  <SelectBoxFor12
-                    title="월"
-                    option01="01"
-                    option02="02"
-                    option03="03"
-                    option04="04"
-                    option05="05"
-                    option06="06"
-                    option07="07"
-                    option08="08"
-                    option09="09"
-                    option10="10"
-                    option11="11"
-                    option12="12"
-                  /> */}
+                  <input type="text" name="endDate" onChange={handleChange}/>
                 </div>
-                {/* <div className="col-span-2 col-start-4 row-start-4">
-                  종료날짜
-                  <SelectBox
-                    title="연도"
-                    option01="2020"
-                    option02="2021"
-                    option03="2022"
-                  />
-                  <SelectBoxFor12
-                    title="월"
-                    option01="01"
-                    option02="02"
-                    option03="03"
-                    option04="04"
-                    option05="05"
-                    option06="06"
-                    option07="07"
-                    option08="08"
-                    option09="09"
-                    option10="10"
-                    option11="11"
-                    option12="12"
-                  />
-                </div> */}
                 <div className="col-span-4 col-start-2 row-start-5">
                   작품 설명
                   <input type="textarea" name="description" onChange={handleChange}/>
@@ -158,8 +197,8 @@ const ArtWorkCreateModal = ({ onClose }) => {
                 </div>
               </div>
             </div>
-
-            <div></div>
+            <button type="submit">완료</button>
+            </form>
           </div>
           </div>
         </Portal>

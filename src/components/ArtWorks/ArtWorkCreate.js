@@ -66,8 +66,9 @@ const ArtWorkCreate = (props) => {
       <div className="z-0 bs-gray-200">
         <div className="">작업 업로드</div>
         <div className="flex flex-row">
-          <div className="">
-            업로드
+          <div className="grid w-4/5 border-2 border-indigo-400 border-dashed place-content-center h-3/5">
+            <button>추가하기</button>
+            <p>파일은 복수로 첨부 가능하며, 최대 100MB까지 업로드 됩니다.</p>
           </div>
           <div className="">
             이미지 추가
