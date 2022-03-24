@@ -12,6 +12,10 @@ export const kakaoLoginAxios = createAsyncThunk(
   "user/kakaoLoginAxios",
   async ({code, history}, {dispatch}) => {
     const user = await UserApi.kakaoLogin({code, history});
+    // console.log(user);
+    // console.log(sessionStorage.getItem("access_token"))
+
+
     if (user) {
       dispatch(user.data);
       return user;

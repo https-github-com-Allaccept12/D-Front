@@ -4,6 +4,9 @@ import { configureStore } from '@reduxjs/toolkit';
 import userSlice from './modules/user';
 import imageSlice from './modules/image';
 import postSlice from "./modules/artWork";
+import checkNicknameSlice from "./modules/checkNickname";
+import profileSlice from "./modules/createProfile";
+import kakaoSlice from "./modules/temp";
 
 
 export default configureStore({
@@ -11,6 +14,9 @@ export default configureStore({
     user: userSlice,
     image: imageSlice,
     post: postSlice,
+    checknickname: checkNicknameSlice,
+    profile: profileSlice,
+    kakao: kakaoSlice,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

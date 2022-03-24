@@ -6,10 +6,12 @@ const initialState = {
 
 export const createProfile = createAsyncThunk(
     'post/createProfile',
-    async (formData, thunkAPI) => {
-      await URL.post('/api/profile', formData, {
+    // async (formData, thunkAPI) => {
+    async (data, thunkAPI) => {
+    //   await URL.post('/api/profile', formData, {
+    await URL.post('/api/profile', data, {
         headers: {
-            "content-type": "multipart/form-data",
+            "content-type": "application/json",
             "Authorization": "Bearer " + token,
         },
         withCredentials: true,

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useHistory } from 'react-router-dom';
 import { setCookie } from "../../shared/cookie";
+import { URL, token } from "../UrlForAxios";
 
 export default class userApi {
   
@@ -24,25 +25,16 @@ export default class userApi {
           sessionStorage.setItem("refresh_token", refresh_token);
           if (have_to_signup) {
             history.push("/TendencyTest");
-          } else{
-            window.location.href = "/";
-            // history.push("/");
           }
+          // } else{
+          //   window.location.href = "/";
+          // }
+          return;
           // history.replace("/");
           // return "wait";
         };
-        // if (res.data.data.login === false) {
-        //   history.replace(
-        //     "/", {
-        //       state : {
-        //         kakaoId: res.data.data.kakaoMemberInfo.kakaoId,
-        //         email: res.data.data.kakaoMemberInfo.email,
-        //         profileImage: res.data.data.kakaoMemberInfo.profileImage
-        //       }
-        //     }
-        //   )
-        // };
       })
       .catch(err => console.log(err.response));
   }
+
 }
