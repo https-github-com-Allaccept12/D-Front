@@ -1,7 +1,26 @@
 import React from "react";
-import { Button, Image, Container, MultiSelect, Thumbnail } from "../../../elements";
+import { Thumbnail, Title, Button } from "../../../elements";
 
 import { useHistory } from "react-router-dom";
+import tw from "tailwind-styled-components";
+
+const Line = tw.hr`
+border border-gray-600 my-6 w-5/6 mx-auto
+`
+const Box = tw.div`
+row-start-1 col-start-2 col-span-full justify-center items-center mx-auto
+`
+const InnerBox = tw.div`
+flex flex-wrap justify-center items-center mx-auto gap-8
+`
+
+const Box02 = tw.div`
+row-start-2 col-start-2 col-span-full justify-start items-start
+`
+
+const InnerBox02 = tw.div`
+flex flex-wrap justify-start items-start mx-auto gap-8 mt-20
+`
 
 
 const MySkill = (props) => {
@@ -9,34 +28,39 @@ const MySkill = (props) => {
   return (
     <>
 
-        <div className="grid">
-        <div>MY SKILLS</div>
-        <hr className="w-full border-4" /> 
-        
-        <ol className="grid grid-cols-3 md:grid-cols-5 border-l border-gray-200 dark:border-gray-700 mb-10">         
+<div className="flex w-5/6 mx-auto flex-row flex-wrap justify-start items-center">
+    <Title size="3" className="mt-32">SKILLS</Title>
+   
+    </div>
+    <Line /> 
+    <div className="grid w-5/6 mx-auto grid-cols-5">
+      <Title size="4" className="col-start-1">
+        main skill
+      </Title>
+      <Title size="4" className="col-start-1 mt-20">
+        other
+      </Title>
 
-    <li className="justify-items-center items-center">
-    <Thumbnail size="5" />
-    </li>
-    <li className="">
-    <Thumbnail size="5" />
-    </li>   
-    <li className="">
-    <Thumbnail size="5" />
-    </li>   
-    <li className="">
-    <Thumbnail size="5" />
-    </li>
-    <li className="">
-    <Thumbnail size="5" />
-    </li>
-</ol>
+      <Box>
+        <InnerBox>
+        <Thumbnail src="https://ichi.pro/assets/images/max/724/1*0PFtndZAX2w0ZRIp93sv4A.png" size="8" />
+        <Thumbnail src="https://ichi.pro/assets/images/max/724/1*0PFtndZAX2w0ZRIp93sv4A.png" size="8" />
+        <Thumbnail src="https://ichi.pro/assets/images/max/724/1*0PFtndZAX2w0ZRIp93sv4A.png" size="8" />
+        <Thumbnail src="https://ichi.pro/assets/images/max/724/1*0PFtndZAX2w0ZRIp93sv4A.png" size="8" />
+        </InnerBox>
+      </Box>
 
+      <Box02>
+<InnerBox02>
+  <Button size="3" color="4">premiere Pro</Button>
+  <Button size="3" color="4">premiere Pro</Button>
+  <Button size="3" color="4">premiere Pro</Button>
+  <Button size="3" color="4">premiere Pro</Button>
 
-</div>
+</InnerBox02>
+      </Box02>
 
-
-
+    </div>
     </>
 
   );

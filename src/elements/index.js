@@ -3,7 +3,6 @@ import Subtitle from "./Common/Subtitle"
 import Text from "./Common/Text";
 import Input from "./Common/Input";
 import Button from "./Common/Button";
-import Image from "./Common/Image";
 import Thumbnail from "./Common/Thumbnail";
 import Profile from "./Common/Profile"
 import Intro from "./Common/Intro";
@@ -26,4 +25,4 @@ import Label from "./Common/Label"
 import Portal from "./Tools/Portal"
 
 
-export { Title, Subtitle, Text, Input, Portal ,Button, Image, Intro, Spinner, Permit,  Modal, CheckBox, SelectBox, DropDown, MultiSelect, Hashtag, SelectBoxFor12, Thumbnail, Profile, RadioButton, Card, Icon, Logo, SearchInput, HeartButton, Label };
+export { Title, Subtitle, Text, Input, Portal ,Button, Intro, Spinner, Permit,  Modal, CheckBox, SelectBox, DropDown, MultiSelect, Hashtag, SelectBoxFor12, Thumbnail, Profile, RadioButton, Card, Icon, Logo, SearchInput, HeartButton, Label };

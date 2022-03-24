@@ -1,15 +1,24 @@
-import React from "react";
-import { Button, Image } from "../../../elements";
+import React, {useState} from "react";
+import { Image } from "../../../elements";
 
 import { useHistory } from "react-router-dom";
 import { useTabs } from "../../../hooks";
 
-import { MyAnswer, MyBookmark, MyComment, MyPost } from "../../MySpace"
+import { MyBookmark, MyComment, MyPost } from "../../MySpace"
+import tw from "tailwind-styled-components";
 
+const TabBtn = tw.button`
+   rounded-full text-base flex flex-row justify-center items-center 
+   font-min1
+`
+
+const Table = tw.div`
+flex flex-row justify-start items-center
+`
 
 const MyPosts = (props) => {
   let history = useHistory();
-  
+
     const array_sample = [
     {
       tab: "내글",
@@ -25,21 +34,37 @@ const MyPosts = (props) => {
     }
     ]
     const {currentItem, changeItem} = useTabs(0, array_sample);
+    const [active, setActive] = useState("0");
+
   return (
     <>
-    <div className="flex flex-row bg-blue-400">
-        탭탭
-          {array_sample.map((arrays, index) => 
-      (
-        <div className="">
 
-        <div className=" bg-slate-300 rounded-md m-1 cursor-pointer text-xs md:text-sm" onClick={()=>changeItem(index)}>
-				{arrays.tab}</div>
-        </div>
+				<Table>
+  
+        <TabBtn active={active} onClick={()=> {
+          changeItem([0])
+          setActive("0")
+        }}
+        className={active === "0" ? 'bg-yellow-400' : ''}
+        >
+          {array_sample[0].tab}</TabBtn>
 
-        ))}
+        <TabBtn active={active} onClick={()=> {
+                  changeItem([1])
+                  setActive("1")
+                }}
+                className={active === "1" ? 'bg-yellow-400' : ''}
+                >{array_sample[1].tab}</TabBtn>
 
-          </div>
+        <TabBtn active={active} onClick={()=> {
+          changeItem([2])
+          setActive("2")
+        }}
+        className={active === "2" ? 'bg-yellow-400' : ''}
+        >{array_sample[2].tab}</TabBtn>
+
+</Table>
+
           <div>{currentItem.content}
              </div>
 

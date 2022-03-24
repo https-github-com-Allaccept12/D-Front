@@ -24,7 +24,7 @@ const b = a.split("/")[2]
         {/* 내정보일땐 마이프로필 다른사람정보일땐 디폴리오 각 메뉴를 클릭하면 메뉴 */}
     <div className="col-start-2 col-end-6">
 
-    <div className=" bg-blue-400 h-52 w-[78.75rem]"> 여기에 배경이미지
+    <div className=" bg-blue-400 h-52 w-[80.625rem]"> 여기에 배경이미지
 
 <div className="justify-items-center items-center">
         <div className="flex justify-end">팔로잉 팔로워</div>

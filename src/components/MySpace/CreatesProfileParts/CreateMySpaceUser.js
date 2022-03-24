@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Image, Input } from "../../../elements";
+import { Button, Input, Thumbnail } from "../../../elements";
 
 import { useHistory } from "react-router-dom";
 
@@ -11,7 +11,7 @@ const CreateMySpaceUser = (props) => {
 <div className="grid grid-cols-4 gap-6">
 
         <div className="row-start-2 col-span-2">
-               <Image shape="big_square" />
+               <Thumbnail size="4" />
                </div>
                
                 <div className="col-start-3 row-start-2 col-span-2">
