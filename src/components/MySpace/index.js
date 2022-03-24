@@ -12,7 +12,7 @@ import MyQNA from "./TabParts/MyQNA";
 
 import MyIntro from "./ProfileParts/MyIntro"
 import MyExp from "./ProfileParts/MyExp";
-import MyPortfolio from "./CreatesProfileParts/CreateMyPortfolio"
+import MyPortfolio from "./ProfileParts/MyPortfolio"
 import MyTimeLine from "./ProfileParts/MyTimeLine"
 import MySkill from "./ProfileParts/MySkill"
 

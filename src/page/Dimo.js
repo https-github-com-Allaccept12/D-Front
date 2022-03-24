@@ -30,7 +30,7 @@ const c = a.split("/")[3]
      </div>
     <div className='grid grid-cols-4'>
         <div className='md:ml-28 mt-4 w-40 h-[112.5rem] '>
-        <DimoPage list={b}/> 
+        <DimoPage list={b} /> 
         </div>
     <div className="col-start-2 col-end-5">
         <DimoAllList list={c} />

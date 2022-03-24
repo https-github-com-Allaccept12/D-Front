@@ -15,7 +15,7 @@ const MyPage = (props) => {
 const a = location.pathname
 const b = a.split("/")[2]
 
-console.log(b)
+
   if(b === "myprofile") return(<MyProfile />)
   if(b === "mywork")return (<MyArtWork />);
   if(b === "mypic")return (<MyPic />);

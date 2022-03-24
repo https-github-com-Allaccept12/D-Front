@@ -1,13 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 
 import { Title, Button, Text } from "../../elements"
-import { ArtWorkWrite } from "../../components/ArtWorks";
-import { Link, Route, Switch } from 'react-router-dom';
-import { useTabs } from "../../hooks";
-
+import { Link } from 'react-router-dom';
+import tw from "tailwind-styled-components";
 
 const ArtWorkCategory = (props) => {
-
+  const [active, setActive] = useState("0");
 
   return (
     <>
@@ -22,19 +20,86 @@ rounded-lg bg-white">
 <Button><Link to="/createart">작품등록</Link></Button>
           <Title size="5" className="py-3">카테고리</Title>
 
-          <Text size="2" className="leading-loose"><Link to="/art/list/all">□ 전체보기</Link></Text>
-          <Text size="2" className="leading-loose"><Link to="/art/list/uiux">□ UI / UX</Link></Text>
-          <Text size="2" className="leading-loose"><Link to="/art/list/eco">□ 건축 / 인테리어 / 환경디자인</Link></Text>
-          <Text size="2" className="leading-loose"><Link to="/art/list/game">□ 게임 / 캐릭터 디자인</Link></Text>
-          <Text size="2" className="leading-loose"><Link to="/art/list/craft">□ 공예</Link></Text>
-          <Text size="2" className="leading-loose"><Link to="/art/list/graphic">□ 그래픽디자인</Link></Text>
-          <Text size="2" className="leading-loose"><Link to="/art/list/edit">□ 브랜딩 / 편집디자인</Link></Text>
-          <Text size="2" className="leading-loose"><Link to="/art/list/video">□ 영상 / 모션그래픽</Link></Text>
-          <Text size="2" className="leading-loose"><Link to="/art/list/product">□ 제품 디자인</Link></Text>
-          <Text size="2" className="leading-loose"><Link to="/art/list/typo">□ 타이포그래피</Link></Text>
-          <Text size="2" className="leading-loose"><Link to="/art/list/fashion">□ 패션</Link></Text>
-          <Text size="2" className="leading-loose"><Link to="/art/list/package">□ 패키지 디자인</Link></Text>
-          <Text size="2" className="leading-loose"><Link to="/art/list/else">□ 기타</Link></Text>
+          <Link to="/art/list/all">
+          <Text size="2"
+          onClick={()=> {setActive("0")}}
+          className={active === "0" ? 'bg-yellow-400' : ''}
+          >
+            □ 전체보기</Text></Link>
+
+            <Link to="/art/list/uiux">
+          <Text size="2"
+          onClick={()=> {setActive("1")}}
+          className={active === "1" ? 'bg-yellow-400' : ''}
+          > □ UI / UX</Text></Link>
+
+            <Link to="/art/list/eco">
+            <Text size="2"
+          onClick={()=> {setActive("2")}}
+          className={active === "2" ? 'bg-yellow-400' : ''}>
+            □ 건축 / 인테리어 / 환경디자인</Text></Link>
+
+            <Link to="/art/list/game">
+            <Text size="2"
+          onClick={()=> {setActive("3")}}
+          className={active === "3" ? 'bg-yellow-400' : ''}
+          >□ 게임 / 캐릭터 디자인</Text></Link>
+
+<Link to="/art/list/craft">
+          <Text size="2"
+          onClick={()=> {setActive("4")}}
+          className={active === "4" ? 'bg-yellow-400' : ''}
+          >
+            □ 공예</Text></Link>
+
+            <Link to="/art/list/graphic">
+            <Text size="2"
+          onClick={()=> {setActive("5")}}
+          className={active === "5" ? 'bg-yellow-400' : ''}
+          >
+            □ 그래픽디자인</Text></Link>
+
+            <Link to="/art/list/edit">
+            <Text size="2"
+          onClick={()=> {setActive("6")}}
+          className={active === "6" ? 'bg-yellow-400' : ''}
+          >
+            □ 브랜딩 / 편집디자인</Text></Link>
+
+            <Link to="/art/list/video">
+            <Text size="2"
+          onClick={()=> {setActive("7")}}
+          className={active === "7" ? 'bg-yellow-400' : ''}
+          >
+            □ 영상 / 모션그래픽</Text></Link>
+
+            <Link to="/art/list/product">
+            <Text size="2"
+          onClick={()=> {setActive("8")}}
+          className={active === "8" ? 'bg-yellow-400' : ''}
+          >
+            □ 제품 디자인</Text></Link>
+
+            <Link to="/art/list/fashion">
+                    <Text size="2"
+          onClick={()=> {setActive("9")}}
+          className={active === "9" ? 'bg-yellow-400' : ''}
+          >
+          □ 패션</Text></Link>
+
+          <Link to="/art/list/package">
+          <Text size="2"
+          onClick={()=> {setActive("10")}}
+          className={active === "10" ? 'bg-yellow-400' : ''}
+          >
+          □ 패키지 디자인</Text></Link>
+
+          <Link to="/art/list/else">
+          <Text size="2"
+          onClick={()=> {setActive("11")}}
+          className={active === "11" ? 'bg-yellow-400' : ''}
+          >
+          □ 기타</Text></Link>
     </div>
     </div>
 

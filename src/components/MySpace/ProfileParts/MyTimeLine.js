@@ -1,46 +1,26 @@
 import React from "react";
-import { Button, Image, Container } from "../../../elements";
+import { SelectBox, Title } from "../../../elements";
 
 import { useHistory } from "react-router-dom";
+import tw from "tailwind-styled-components";
 
+const Line = tw.hr`
+border border-gray-600 my-5
+`
 
 const MyTimeLine = (props) => {
   let history = useHistory();
   return (
     <>
-
-<div>작업기간</div>
-        <hr className="w-full border-4" /> 
-<div className="bg-white w-full">
-<div className="border-yellow-300 w-full border-4
-grid grid-cols-12 items-center justify-items-center">
+        <div className="flex flex-col w-5/6 mx-auto">
+<div className="flex flex-row justify-between mt-24">
     
-<p>1</p>
-<p>2</p>
-<p>3</p>
-<p>4</p>
-<p>5</p>
-<p>6</p>
-<p>7</p>
-<p>8</p>
-<p>9</p>
-<p>10</p>
-<p>11</p>
-<p>12</p>
-</div>
-<hr className="w-full border-2 col-span-full" /> 
-<div className="p-2 m-2 bg-red-300 w-32 h-5 rounded-2xl
-"></div>
-<div className="p-2 m-2 bg-blue-300 w-2/3 h-5 rounded-2xl "></div>
-<div className="p-2 m-2 bg-yellow-300 w-1/3 h-5 rounded-2xl"></div>
-<div className="p-2 m-2 bg-red-300 w-16 h-5 rounded-2xl "></div>
-
-<hr className="w-full border-4 col-span-full" /> 
+        <Title size="3">WORK TIMELINE</Title> <SelectBox option01="2020" option02="2021" option03="2022" /></div>
+        <Line /> 
+<div className="w-full h-96 bg-yellow-300 mb-14">
 
 </div>
-
-
-
+        </div>
     </>
 
   );
