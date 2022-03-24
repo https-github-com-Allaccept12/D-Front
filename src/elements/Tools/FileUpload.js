@@ -11,7 +11,7 @@ function FileUpload() {
     const onDrop = useCallback((acceptedFile) => {
         const reader = new FileReader();
         dispatch(forSend(acceptedFile[0]));
-         
+        
         reader.readAsDataURL(acceptedFile[0]);
         reader.onload = () => {
             dispatch(preview(reader.result));

@@ -1,42 +1,55 @@
-import React, { useState } from "react";
-import {
-  Image,
-  Input,
-  CheckBox,
-  SelectBox,
-  MultiSelect,
-  SelectBoxFor12,
-} from "../../elements";
-
-import { useInput } from "../../hooks";
+import React, { useState, useCallback } from "react";
+import { artworkFiles } from '../../redux/modules/image';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
-import { Button } from "../../elements";
+import Dropzone, {useDropzone} from 'react-dropzone';
+import { Button, Card } from "../../elements";
 import ArtWorkCreateModal from "./ArtWorkCreateModal";
 import { Portal } from "@mui/material";
 
 const ArtWorkCreate = (props) => {
   let history = useHistory();
+  const dispatch = useDispatch();
+  const [images, setImages] = useState([]);
+  const [previews, SetPreviews] = useState([]);
   const [modalOn, setModalOn] = useState(false);
 
   const handleModal = () => {
     setModalOn(!modalOn);
+    dispatch(artworkFiles(images));
   };
+
+  const onDrop = useCallback((acceptedFile) => {
+    for (let file of acceptedFile){
+      setImages((zz) => [...zz, file]);
+      // images.push(file);
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        SetPreviews((temp) => [...temp, reader.result])
+        console.log(previews);
+      }
+    }
+    
+}, [])
+  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+
   // const validMaxLen = (value) => value.length <= 300;
   // const description = useInput("", [validMaxLen]);
-  const [inputs, setInputs] = useState({
-    title: "",
-    description: "",
-  });
+  // const [inputs, setInputs] = useState({
+  //   title: "",
+  //   description: "",
+  // });
   
-  const {title, description} = inputs;
+  // const {title, description} = inputs;
 
-  const handleChange = (e) => {
-    const { value, name } = e.target;
-    setInputs({
-      ...inputs,
-      [name]: value
-    });
-  }
+  // const handleChange = (e) => {
+  //   const { value, name } = e.target;
+  //   setInputs({
+  //     ...inputs,
+  //     [name]: value
+  //   });
+  // }
 
   // console.log(inputs.title);
   // console.log(inputs.description);
@@ -51,32 +64,55 @@ const ArtWorkCreate = (props) => {
   //   SetDescription(e.target.value);
   // }
 
-  const submitHandler = (e) => {
-    console.log('sdf');
-    e.preventDefault();
-    let body = {
-      title: inputs.title,
-      description: inputs.description,
-    }
-    console.log(body);
-  }
+  // const submitHandler = (e) => {
+  //   console.log('sdf');
+  //   e.preventDefault();
+  //   let body = {
+  //     title: inputs.title,
+  //     description: inputs.description,
+  //   }
+  //   console.log(body);
+  // }
 
   return (
     <>
-      <div className="z-0 bs-gray-200">
-        <div className="">작업 업로드</div>
-        <div className="flex flex-row">
-          <div className="grid w-4/5 border-2 border-indigo-400 border-dashed place-content-center h-3/5">
-            <button>추가하기</button>
-            <p>파일은 복수로 첨부 가능하며, 최대 100MB까지 업로드 됩니다.</p>
+      <div className="z-0 grid w-full h-screen grid-cols-12 grid-rows-6 bs-gray-200">
+        <div className="grid col-span-1"></div>
+        <div className="grid col-span-10 col-start-3 row-span-1 row-start-1 mt-20 h-fit">작업 업로드</div>
+        <div className="grid col-span-10 col-start-2 row-span-6 row-start-2 h-5/6">
+          <div className="grid w-4/5 col-span-7 col-start-2 row-start-1 row-end-7 border-2 border-indigo-400 border-dashed place-content-center h-3/5">
+          <Dropzone maxFiles={10} accept={"image/gif, image/jpg, image/jpeg, image/png"} onDrop={onDrop}>
+            {({getRootProps, getInputProps}) => (
+              <section>
+                <div className="flex flex-row" {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  {previews.length > 0 ? previews.map(function (a) {
+                    return (<Card size="6" types="image" src={a}/>)
+                  })
+                  :
+                  <>
+                  <p className="text-[#A1ADC0] text-center">Click or Drag&Drop</p>
+                  <p>파일은 복수로 첨부 가능하며, 최대 20MB까지 업로드 됩니다.</p>
+                  </>
+                  }
+                </div>
+              </section>
+            )}
+          </Dropzone>
           </div>
-          <div className="">
+          <div className="grid col-span-1 col-start-8 row-start-1">
             이미지 추가
+          </div>
+          <div className="grid col-span-1 col-start-8 row-start-2">
+            동영상 추가
+          </div>
+          <div className="grid col-span-1 col-start-8 row-start-3">
+            파일 순서 변경
           </div>
         </div>
         <div className=""></div>
-        <div className="">
-          <Button size="2" onClick={handleModal}>다음</Button>
+        <div className="col-start-10 row-start-5">
+          <Button color="4" size="2" onClick={handleModal}>다음</Button>
             <Portal>
               {modalOn && <ArtWorkCreateModal onClose={handleModal}/>}
             </Portal>
