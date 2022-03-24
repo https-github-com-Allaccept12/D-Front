@@ -14,7 +14,8 @@ const KakaoRedirectHandler = props => {
   const code = new URL(window.location.href).searchParams.get('code');
 
   useEffect(() => {
-    dispatch(kakaoLoginAxios({code, history}))
+    // dispatch(kakaoLoginAxios({code, history}))
+    dispatch(kakaoSlice({code, history}));
   })
   // if (sessionStorage.getItem("access_token")) {
   //   setCookie("access_token", sessionStorage.getItem("access_token"), 7);

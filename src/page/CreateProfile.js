@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { preview } from '../redux/modules/image';
+// import { NicknameisOk } from '../redux/modules/checkNickname';
 import { checknickname } from '../redux/modules/checkNickname';
 import { createProfile } from '../redux/modules/createProfile';
 import { Button, Title, Image, Input, Text, Image as CircleImage } from "../elements";
@@ -13,6 +14,8 @@ import { useInput } from "../hooks";
 const CreateProfile = (props) => {
   const dispatch = useDispatch();
   let profile = useSelector((state) => state.image.url);
+  let isOk = useSelector((state) => state.checknickname.nickname);
+  console.log(isOk);
   const nicknameValidMaxLen = (value) => value.length <= 10;
   const nickname = useInput("", [nicknameValidMaxLen]);
   const name = useInput("", []);
@@ -44,7 +47,7 @@ const CreateProfile = (props) => {
   // console.log(selected);
 
   const checkNickname = () => {
-    dispatch(checknickname(nickname));
+    dispatch(checknickname(nickname.vlaue));
   }
 
   const deleteProfile = () => {
@@ -54,17 +57,20 @@ const CreateProfile = (props) => {
   const SendProfile = () => {
     const formData = new FormData()
     let data = {
-      nickname: nickname,
-      intro_content: introduce,
-      work_email: email,
-      linked_in: linkedIn,
-      brunch: brunch,
-      insta: instagram,
+      nickname: nickname.value,
+      intro_content: introduce.value,
+      work_email: email.value,
+      linked_in: linkedIn.value,
+      brunch: brunch.value,
+      insta: instagram.value,
       job: selected,
+      phone_number: "010",
+      work_time: "1",
     }
-    formData.append("data", new Blob([JSON.stringify(data)], {type: "application/json"}));
-    formData.append("profile_img", profile);
-    dispatch(createProfile(formData));
+    // formData.append("data", new Blob([JSON.stringify(data)], {type: "application/json"}));
+    // formData.append("profile_img", profile);
+    dispatch(createProfile(data));
+    // dispatch(createProfile(new Blob([JSON.stringify(data)], {type: "application/json"})));
   }
 
   return (
