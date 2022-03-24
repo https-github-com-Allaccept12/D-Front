@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Thumbnail, Title } from "../../../elements";
+import { Button, EditMyArtWork, Title } from "../../../elements";
 
 import { useHistory } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -19,10 +19,10 @@ const MyPortfolio = (props) => {
     <Line /> 
    <div className="flex flex-row flex-wrap justify-center items-center gap-6">
      
-<Thumbnail src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
-<Thumbnail src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
-<Thumbnail src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
-<Thumbnail src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
+<EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
+<EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
+<EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
+<EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
    </div>
     </>
   );
