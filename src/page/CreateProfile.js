@@ -5,7 +5,7 @@ import { preview } from '../redux/modules/image';
 import { checknickname } from '../redux/modules/checkNickname';
 import { createProfile } from '../redux/modules/createProfile';
 import { Button, Title, Image, Input, Text, Image as CircleImage } from "../elements";
-import set_profile from "../../static/images/set_profile.svg";
+import set_profile from "../static/images/set_profile.svg";
 import { useHistory, Link } from "react-router-dom";
 import FileUpload from "../elements/Tools/FileUpload";
 import { useInput } from "../hooks";

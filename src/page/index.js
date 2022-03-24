@@ -9,8 +9,11 @@ import MyPosts from "./MyPosts";
 
 import LogOut from "./LogOut"
 
+import CreateProfile from "./CreateProfile";
+import KakaoRedirectHandler from "./KakaoRedirectHandler";
+
 export {
     Main, ArtWork, MyPage,
-    EditMySpace, 
+    EditMySpace, CreateProfile, KakaoRedirectHandler,
     MyPosts, Dimo,
     LogOut}
