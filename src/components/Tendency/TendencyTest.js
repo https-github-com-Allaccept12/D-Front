@@ -8,9 +8,9 @@ import { useHistory } from 'react-router-dom';
 
 const mbti = {"I":0, "E":0, "N":0, "S":0, "T":0, "F":0, "P":0, "J":0 };
 let mbti_s = "";
-let designation = "";
 
 const TendencyTest = (props) => {
+  let designation = "";
   const history = useHistory();
   const [TestNum, nextTestNum] = useState(0);
   mbti_s = Object.keys(mbti).filter(key => mbti[key] >= 2).join('');
@@ -37,6 +37,7 @@ const TendencyTest = (props) => {
 const dispatch = useDispatch();
 const SendTendency = () => {
   dispatch(tendency(designation))
+  console.log(designation);
   history.replace('/MyInterests');
 }
     

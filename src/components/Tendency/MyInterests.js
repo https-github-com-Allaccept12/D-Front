@@ -24,7 +24,8 @@ const MyInterests = (props) => {
   let result = '';
 
   const SendInterests = () => {
-    dispatch(interests(result))
+    const forSend = interest[0];
+    dispatch(interests(forSend))
     history.replace('/CreateProfile');
 }
   const [isClicked, setIsClicked] = useState(false);

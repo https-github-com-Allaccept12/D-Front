@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { preview } from '../redux/modules/image';
-// import { NicknameisOk } from '../redux/modules/checkNickname';
 import { checknickname } from '../redux/modules/checkNickname';
 import { createProfile } from '../redux/modules/createProfile';
 import { Button, Title, Image, Input, Text, Image as CircleImage } from "../elements";
@@ -14,8 +13,10 @@ import { useInput } from "../hooks";
 const CreateProfile = (props) => {
   const dispatch = useDispatch();
   let profile = useSelector((state) => state.image.url);
-  let isOk = useSelector((state) => state.checknickname.nickname);
-  console.log(isOk);
+  let image = useSelector((state) => state.image.file);
+  let tendencyResult = useSelector((state) => state.tendency.tendency);
+  let interestResult = useSelector((state) => state.interests.interests);
+  const [nicknameState, setNicknameState] = useState("");
   const nicknameValidMaxLen = (value) => value.length <= 10;
   const nickname = useInput("", [nicknameValidMaxLen]);
   const name = useInput("", []);
@@ -38,16 +39,17 @@ const CreateProfile = (props) => {
     { value: "interior", label: "건축/인테리어/환경"},
     { value: "student", label: "학생"},
   ]
-  // console.log(nickname.value);
   
   const [selected, setSelected] = useState("");
   const handleChangeSelect = (e) => {
     setSelected(e.target.value);
   }
-  // console.log(selected);
 
   const checkNickname = () => {
-    dispatch(checknickname(nickname.vlaue));
+    const map = {
+      nickname: nickname.value
+    }
+    dispatch(checknickname({map, setNicknameState}));
   }
 
   const deleteProfile = () => {
@@ -55,7 +57,7 @@ const CreateProfile = (props) => {
   }
 
   const SendProfile = () => {
-    const formData = new FormData()
+    const formData = new FormData();
     let data = {
       nickname: nickname.value,
       intro_content: introduce.value,
@@ -67,10 +69,10 @@ const CreateProfile = (props) => {
       phone_number: "010",
       work_time: "1",
     }
-    // formData.append("data", new Blob([JSON.stringify(data)], {type: "application/json"}));
-    // formData.append("profile_img", profile);
-    dispatch(createProfile(data));
-    // dispatch(createProfile(new Blob([JSON.stringify(data)], {type: "application/json"})));
+    formData.append("data", new Blob([JSON.stringify(data)], {type: "application/json"}));
+    formData.append("profile_img", image);
+    // dispatch(createProfile(data));
+    dispatch(createProfile(formData));
   }
 
   return (
@@ -91,6 +93,8 @@ const CreateProfile = (props) => {
             </div>
             <div className="grid col-start-2 col-end-3">
               <Input cardSize="2" title="닉네임" onBlur={checkNickname} value={nickname.value} onChange={nickname.onChange} is_value={nickname.value.length} maxLen="10"></Input>
+              {nicknameState == "available" && <p className="pr-16 text-xs text-right">✔️</p>}
+              {nicknameState == "fail" && <p className="pr-16 text-xs text-right text-red-600">이미 사용 중인 닉네임 입니다.</p>}
               <Input cardSize="2" title="이름" value={name.value} onChange={name.onChange} is_value={name.value.length}></Input>
               <div className="grid items-center justify-start">
                 <p className= "w-1/2 row-start-1 mr-10 font-min1">직업</p>

@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { preview } from '../../redux/modules/image';
+import { preview, forSend } from '../../redux/modules/image';
 import Dropzone, {useDropzone} from 'react-dropzone';
 import { Profile } from '../../elements';
 import profile_upload from '../../static/images/profile_upload.svg';
@@ -10,10 +10,11 @@ function FileUpload() {
     const dispatch = useDispatch();
     const onDrop = useCallback((acceptedFile) => {
         const reader = new FileReader();
+        dispatch(forSend(acceptedFile[0]));
          
         reader.readAsDataURL(acceptedFile[0]);
         reader.onload = () => {
-            dispatch(preview(reader.result))
+            dispatch(preview(reader.result));
         }
         
     }, [])
