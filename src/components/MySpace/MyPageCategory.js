@@ -14,7 +14,7 @@ const MyPageCategory = (props) => {
     <> 
 
 
-<div className="sticky top-20">
+<div className="fixed top-20">
 
 
         <div className="flex flex-col justify-center pl-[2.5rem] mt-10 ml-6 p-2 w-[13.75rem] h-[32.5rem]

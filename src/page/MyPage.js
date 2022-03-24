@@ -18,7 +18,7 @@ const b = a.split("/")[2]
 
 
     <div className='grid grid-cols-5'>
-        <div className='md:ml-28 mt-4 w-40 h-[152.5rem] '>
+        <div className='md:ml-28 mt-4 w-40 h-full '>
         <MyPageCategory /> 
         </div>
         {/* 내정보일땐 마이프로필 다른사람정보일땐 디폴리오 각 메뉴를 클릭하면 메뉴 */}
