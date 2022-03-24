@@ -1,36 +1,13 @@
 import React from "react";
-import { Button, Image, Container, MultiSelect, Thumbnail } from "../../elements";
+import { Button, Image, Container } from "../../../elements";
 
 import { useHistory } from "react-router-dom";
 
 
-const MySkill = (props) => {
+const MyTimeLine = (props) => {
   let history = useHistory();
   return (
     <>
-
-        <div className="grid">
-        <div>MY SKILLS</div>
-        <hr className="w-full border-4" /> 
-        <MultiSelect title="대표스킬" />
-        <ol className="grid grid-cols-3 md:grid-cols-5 border-l border-gray-200 dark:border-gray-700 mb-10">         
-
-    <li className="justify-items-center items-center">
-    <Thumbnail size="5" />
-    </li>
-    <li className="">
-    <Thumbnail size="5" />
-    </li>   
-    <li className="">
-    <Thumbnail size="5" />
-    </li>   
-    <li className="">
-    <Thumbnail size="5" />
-    </li>
-    <li className="">
-    <Thumbnail size="5" />
-    </li>
-</ol>
 
 <div>작업기간</div>
         <hr className="w-full border-4" /> 
@@ -61,7 +38,6 @@ grid grid-cols-12 items-center justify-items-center">
 <hr className="w-full border-4 col-span-full" /> 
 
 </div>
-</div>
 
 
 
@@ -70,4 +46,4 @@ grid grid-cols-12 items-center justify-items-center">
   );
 };
 
-export default MySkill;
+export default MyTimeLine;

@@ -1,13 +1,12 @@
 import React from "react";
-import { Button, Image, Container } from "../../elements";
-import { MyArtWork } from "../../components/MySpace"
+import { Button, Image, Container } from "../../../elements";
 import { useHistory } from "react-router-dom";
 
 const Port_cnt = 0
 
 const MyPortfolio = (props) => {
   let history = useHistory();
-  if(Port_cnt === 0) return (
+  return (
     <>
 
         <div className="grid">
@@ -27,17 +26,7 @@ const MyPortfolio = (props) => {
     </>
 
   );
-  return (
-    <>
 
-        <div className="grid">
-        <div>PORTFOLIO</div>
-        <hr className="w-full border-4" /> 
-       <MyArtWork />
-</div>
-    </>
-
-  );
 };
 
 export default MyPortfolio;

@@ -2,8 +2,7 @@ import React from "react";
 import { Button } from "../elements";
 
 import { Link } from "react-router-dom";
-import { MyPortfolio, MySkill } from "../components/MySpace";
-import { CreateMyIntro, CreateMySpaceUser, CreateMyExp } from "../components/MySpace";
+import { CreateMyIntro, CreateMySpaceUser, CreateMyExp, CreateMyPortfolio, CreateMySkill } from "../components/MySpace";
 import { useTabs } from "../hooks";
 import { MyInterests } from "../components"
 
@@ -22,11 +21,11 @@ const array_sample = [
 },
 {
   tab: "포트폴리오",
-  content: <MyPortfolio />,
+  content: <CreateMyPortfolio />,
 },
 {
   tab: "작업 및 직업스킬",
-  content: <MySkill />,
+  content: <CreateMySkill />,
 },
 {
   tab: "관심사",
