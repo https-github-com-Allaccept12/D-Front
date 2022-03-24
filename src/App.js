@@ -2,8 +2,8 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { Header, NotFound } from "./NavComponents";
 import { TendencyTest, MyInterests, Results } from "./components";
-import { Main, ArtWork, Dimo, MyPosts, LogOut, EditMySpace, MyPage } from "./page";
-import { CompleteProfile, CreateProfile, KakaoRedirectHandler } from "./components"
+import { Main, ArtWork, Dimo, MyPosts, LogOut, EditMySpace, MyPage, CreateProfile, KakaoRedirectHandler } from "./page";
+import { CompleteProfile } from "./components"
 import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "./components/Dimo"
 import { ArtWorkWrite, ArtWorkCreate } from "./components/ArtWorks"
 
