@@ -4,7 +4,7 @@ import { Header, NotFound } from "./NavComponents";
 import { TendencyTest, MyInterests, Results } from "./components";
 import { Main, ArtWork, Dimo, MySpace, MyPosts, CreateProfile, CompleteProfile, KakaoRedirectHandler, LogOut, EditMySpace } from "./page";
 import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "./components/Dimo"
-
+import { ArtWorkWrite, ArtWorkCreate } from "./components/ArtWorks"
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
             <Route exact path="/myposts" component={MyPosts} />
             
             <Route path={["/art","/art/:name"]} component={ArtWork} />
-
+            <Route exact path="/createart" component={ArtWorkCreate} />
             <Route path={["/dimo/qna/:name", "/dimo/shared/:name"]} component={Dimo} />
             
             <Route exact path="/dimo/qnadetail" component={DimoQNADetail} />

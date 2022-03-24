@@ -6,8 +6,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { ArtWorkCategory, ArtWorkWrite } from "../../components/ArtWorks";
 
 const Grid = tw.div` 
-w-4/6 flex flex-row flex-wrap items-start justify-start ml-auto mr-52
-rounded-lg bg-white pt-6 px-24 ml
+flex flex-row flex-wrap items-center gap-4
 ` 
 
 
@@ -31,27 +30,27 @@ const ArtWorkAllList = (props) => {
 
   if(b === "all") return (
     <>
-    <ArtWorkCategory />
+   
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
-      {/* <div className="flex items-center justify-around w-full space-x-36">
+      <div className="flex items-center justify-around w-full space-x-36">
       <div className="box-border rounded-full 
       bg-white border border-black h-[2.5rem]
       flex justify-center items-center px-10 my-5"
       ><button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button></div> 
       <SearchInput />
-    </div> */}
+    </div>
       <hr className="w-full border " />
         {p.map(n => { return <ArtWorkPost size="3" /> }) }
     </Grid>
-    <ArtWorkWrite/>
+    
     </>
   );
 
       
   if(b === "uiux") return (
     <>
-    <ArtWorkCategory />
+ 
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
       <div className="flex items-center justify-around w-full space-x-36">
@@ -68,7 +67,6 @@ const ArtWorkAllList = (props) => {
   );
   if(b === "eco") return (
     <>
-    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
       <div className="flex items-center justify-around w-full space-x-36">
@@ -86,7 +84,6 @@ const ArtWorkAllList = (props) => {
 
   if(b === "game") return (
     <>
-    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
       <div className="flex items-center justify-around w-full space-x-36">
@@ -104,7 +101,6 @@ const ArtWorkAllList = (props) => {
 
   if(b === "craft") return (
     <>
-    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
       <div className="flex items-center justify-around w-full space-x-36">
@@ -122,7 +118,6 @@ const ArtWorkAllList = (props) => {
 
   if(b === "graphic") return (
     <>
-    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
       <div className="flex items-center justify-around w-full space-x-36">
@@ -140,7 +135,6 @@ const ArtWorkAllList = (props) => {
 
   if(b === "edit") return (
     <>
-    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
       <div className="flex items-center justify-around w-full space-x-36">
@@ -158,7 +152,6 @@ const ArtWorkAllList = (props) => {
 
   if(b === "video") return (
     <>
-    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
       <div className="flex items-center justify-around w-full space-x-36">
@@ -176,7 +169,6 @@ const ArtWorkAllList = (props) => {
 
   if(b === "video") return (
     <>
-    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
       <div className="flex items-center justify-around w-full space-x-36">
@@ -194,7 +186,6 @@ const ArtWorkAllList = (props) => {
 
   if(b === "product") return (
     <>
-    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
       <div className="flex items-center justify-around w-full space-x-36">
@@ -212,7 +203,7 @@ const ArtWorkAllList = (props) => {
 
   if(b === "typo") return (
     <>
-    <ArtWorkCategory />
+  
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
       <div className="flex items-center justify-around w-full space-x-36">
@@ -230,7 +221,6 @@ const ArtWorkAllList = (props) => {
 
   if(b === "fashion") return (
     <>
-    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
       <div className="flex items-center justify-around w-full space-x-36">
@@ -248,7 +238,6 @@ const ArtWorkAllList = (props) => {
 
   if(b === "package") return (
     <>
-    <ArtWorkCategory />
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
       <div className="flex items-center justify-around w-full space-x-36">
@@ -266,7 +255,7 @@ const ArtWorkAllList = (props) => {
 
   if(b === "else") return (
     <>
-    <ArtWorkCategory />
+    
     <div className="bg-dgray-200 h-[3.7rem] w-full"></div>
     <Grid>
       <div className="flex items-center justify-around w-full space-x-36">

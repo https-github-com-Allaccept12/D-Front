@@ -12,16 +12,14 @@ const ArtWorkCategory = (props) => {
   return (
     <>
       
-        <div className="fixed top-36 left-20">
-        <div className="flex flex-col justify-start pl-[0.7rem] mt-10 text-left ml-1 p-2 w-[17.75rem] h-[52.5rem]
-        rounded-lg bg-white">
+     
+<div className="sticky top-20">
 
-          {/* <Link to="/art/createart"><Button size="3">글쓰기</Button></Link>
-          <Link to="/art/detail"><Button size="3">인라인</Button></Link> */}
-          <Link to="/art/createart">
-          <ArtWorkWrite/>
-          </Link>
+<div className="flex flex-col justify-center pl-[2.5rem] mt-10 text-left ml-6 p-2 w-[17.75rem] h-[32.5rem]
+rounded-lg bg-white">
 
+
+<Button><Link to="/createart">작품등록</Link></Button>
           <Title size="5" className="py-3">카테고리</Title>
 
           <Text size="2" className="leading-loose"><Link to="/art/list/all">□ 전체보기</Link></Text>
@@ -39,8 +37,6 @@ const ArtWorkCategory = (props) => {
           <Text size="2" className="leading-loose"><Link to="/art/list/else">□ 기타</Link></Text>
     </div>
     </div>
-
-
 
     </>
   );
