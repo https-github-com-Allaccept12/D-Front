@@ -6,7 +6,8 @@ import imageSlice from './modules/image';
 import postSlice from "./modules/artWork";
 import checkNicknameSlice from "./modules/checkNickname";
 import profileSlice from "./modules/createProfile";
-import kakaoSlice from "./modules/temp";
+import tendencySlice from './modules/tendency';
+import interestsSlice from './modules/interests';
 
 
 export default configureStore({
@@ -16,7 +17,8 @@ export default configureStore({
     post: postSlice,
     checknickname: checkNicknameSlice,
     profile: profileSlice,
-    kakao: kakaoSlice,
+    tendency: tendencySlice,
+    interests: interestsSlice,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

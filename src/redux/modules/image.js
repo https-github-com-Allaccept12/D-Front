@@ -7,11 +7,14 @@ export const imageSlice = createSlice({
         preview: (state, action) => {
             state.url = action.payload
         },
+        forSend: (state, action) => {
+            state.file = action.payload
+        }
         // preview(state, action) {
         //     state.value = action.payload
         // }
     },
   });
 
-export const { preview } = imageSlice.actions;
+export const { preview, forSend } = imageSlice.actions;
 export default imageSlice.reducer;
