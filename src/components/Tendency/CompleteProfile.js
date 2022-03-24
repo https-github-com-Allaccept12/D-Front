@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "../elements";
+import { Button } from "../../elements";
 import { useHistory, Link } from "react-router-dom";
-import celebration from "../static/images/celebration.svg";
+import celebration from "../../static/images/celebration.svg";
 
 
 const CompleteProfile = (props) => {

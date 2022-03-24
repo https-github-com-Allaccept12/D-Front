@@ -26,8 +26,7 @@ const ArtWork = (props) => {
         </div>
         </div>
     <Switch>
-        <Route exact path="/art/list/:name" component={ArtWorkAllList} />
-       
+        {/* <Route exact path="/art/list/:name" component={ArtWorkAllList} /> */}
         <Route exact path="/art/detail" component={ArtWorkInlineDetail} />
         </Switch>
         </div>

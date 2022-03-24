@@ -2,7 +2,8 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { Header, NotFound } from "./NavComponents";
 import { TendencyTest, MyInterests, Results } from "./components";
-import { Main, ArtWork, Dimo, MySpace, MyPosts, CreateProfile, CompleteProfile, KakaoRedirectHandler, LogOut, EditMySpace } from "./page";
+import { Main, ArtWork, Dimo, MyPosts, LogOut, EditMySpace, MyPage } from "./page";
+import { CompleteProfile, CreateProfile, KakaoRedirectHandler } from "./components"
 import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "./components/Dimo"
 import { ArtWorkWrite, ArtWorkCreate } from "./components/ArtWorks"
 
@@ -27,16 +28,15 @@ function App() {
             <Route exact path="/dimo/shareddetail" component={DimoSharedDetail} />
             <Route exact path="/dimo/create/:name" component={DimoCreate} />
 
-            <Route exact path={["/myspace", "/myspace/:name" ]} component={MySpace} />
+            <Route exact path={["/myspace", "/myspace/:name" ]} component={MyPage} />
+
             <Route exact path="/editmyspace" component={EditMySpace} />
             
             <Route exact path="/tendencytest" component={TendencyTest} />
             <Route exact path="/results" component={Results} />
             <Route exact path="/myinterests" component={MyInterests} />
-
             <Route exact path="/createprofile" component={CreateProfile} />
             <Route exact path="/completeprofile" component={CompleteProfile} />
-
             <Route path="/user/kakao/callback" component={KakaoRedirectHandler}/>
 
             <Route component={NotFound} />

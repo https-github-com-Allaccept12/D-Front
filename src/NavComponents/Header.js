@@ -29,7 +29,7 @@ const Header = (props) => {
 <Title size="6"><Link to="/">홈</Link></Title>
         <Title size="6"><Link to="/art/list/all">모아보기</Link></Title>
         <Title size="6"><Link to="/dimo/qna/all">디모</Link></Title>
-        <Title size="6"><Link to="/myspace">마이페이지</Link></Title>
+        <Title size="6"><Link to="/myspace/myprofile">마이페이지</Link></Title>
         {is_login ? <Title size="6"><Link to="/logout">로그아웃</Link></Title> : <Title size="6"><Link to="/myposts">logins</Link></Title>}
         <Title size="6"><Link to="/tendencytest">cre!</Link></Title>
         </div>
@@ -48,7 +48,7 @@ else  {
 <Title size="6"><Link to="/">홈</Link></Title>
         <Title size="6"><Link to="/art/list/all">모아보기</Link></Title>
         <Title size="6"><Link to="/dimo/qna/all">디모</Link></Title>
-        <Title size="6"><Link to="/myspace">마이페이지</Link></Title>
+        <Title size="6"><Link to="/myspace/myprofile">마이페이지</Link></Title>
         {is_login ? <Title size="6"><Link to="/logout">로그아웃</Link></Title> : <Title size="6"><Link to="/myposts">logins</Link></Title>}
         <Title size="6"><Link to="/tendencytest">cre!</Link></Title>
         </div>

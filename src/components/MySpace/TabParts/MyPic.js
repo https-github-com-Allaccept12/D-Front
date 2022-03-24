@@ -1,15 +1,15 @@
 import React from "react";
-import { Button, Image } from "../../elements";
+import { Button, Image } from "../../../elements";
 
 import { useHistory } from "react-router-dom";
 
 
-const MyArtWork = (props) => {
+const MyPic = (props) => {
   let history = useHistory();
   return (
     <>
     <div className="bg-yellow-300 py-2">
-      <div className="col-start-2 col-span-4">내 포트폴리오</div>
+      <div className="col-start-2 col-span-4">내가 스크랩한 작품</div>
       <section className="text-gray-600 body-font">
   <div className="container px-5 py-2 mx-auto">
 
@@ -72,4 +72,4 @@ const MyArtWork = (props) => {
   );
 };
 
-export default MyArtWork;
+export default MyPic;
