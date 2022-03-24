@@ -17,29 +17,27 @@ import interior from "../../static/images/interior.svg";
 import graphic from "../../static/images/graphic.svg";
 
 
-let interest = [];
 const MyInterests = (props) => {
+  const [selectInterest, SetSelectInterest] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
-  let result = '';
 
   const SendInterests = () => {
-    const forSend = interest[0];
-    dispatch(interests(forSend))
+    console.log(selectInterest);
+    dispatch(interests(selectInterest))
     history.replace('/CreateProfile');
 }
   const [isClicked, setIsClicked] = useState(false);
   const handleClicked = e => {
-    if (interest.length < 1){
+    if (selectInterest === ""){
       setIsClicked(!isClicked)
       !isClicked ? e.currentTarget.style.border = "5px solid #A162F7" : e.currentTarget.style.border = "1px black";
-      result = e.currentTarget.innerText;
-      interest.push(result)
+      SetSelectInterest(e.currentTarget.innerText);
     } else{
-        if (e.currentTarget.innerText === interest[0]){
+        if (e.currentTarget.innerText === selectInterest){
           setIsClicked(!isClicked)
           !isClicked ? e.currentTarget.style.border = "5px solid #A162F7" : e.currentTarget.style.border = "1px black"
-          interest.pop();
+          SetSelectInterest("");
         }
     }
   }
@@ -69,7 +67,7 @@ const MyInterests = (props) => {
           </div>
       </div>
       <div className="flex my-10 place-content-center">
-          {interest.length === 1 ? 
+          {selectInterest !== "" ? 
             // <Link to="/CreateProfile">
               <Button size="1" color="1" onClick={SendInterests}>확인</Button>
             // </Link>

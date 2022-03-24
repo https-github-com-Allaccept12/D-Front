@@ -9,6 +9,9 @@ export const imageSlice = createSlice({
         },
         forSend: (state, action) => {
             state.file = action.payload
+        },
+        artworkFiles: (state, action) => {
+            state.artworkFiles = action.payload
         }
         // preview(state, action) {
         //     state.value = action.payload
@@ -16,5 +19,5 @@ export const imageSlice = createSlice({
     },
   });
 
-export const { preview, forSend } = imageSlice.actions;
+export const { preview, forSend, artworkFiles } = imageSlice.actions;
 export default imageSlice.reducer;
