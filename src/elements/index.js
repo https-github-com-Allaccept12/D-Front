@@ -23,6 +23,7 @@ import SearchInput from "./Common/SearchInput"
 import HeartButton from "./Tools/HeartButton"
 import Label from "./Common/Label"
 import Portal from "./Tools/Portal"
+import EditMyArtWork from "./Tools/EditMyArtWork"
 
 
-export { Title, Subtitle, Text, Input, Portal ,Button, Intro, Spinner, Permit,  Modal, CheckBox, SelectBox, DropDown, MultiSelect, Hashtag, SelectBoxFor12, Thumbnail, Profile, RadioButton, Card, Icon, Logo, SearchInput, HeartButton, Label };
+export { Title, Subtitle, Text, Input, Portal ,Button, Intro, Spinner, Permit,  Modal, CheckBox, SelectBox, DropDown, MultiSelect, Hashtag, SelectBoxFor12, Thumbnail, Profile, RadioButton, Card, Icon, Logo, SearchInput, HeartButton, Label, EditMyArtWork };

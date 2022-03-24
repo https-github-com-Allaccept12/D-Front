@@ -1,11 +1,15 @@
 import React, {useState} from "react";
-import { Image } from "../../../elements";
+import { Image, Title } from "../../../elements";
 
 import { useHistory } from "react-router-dom";
 import { useTabs } from "../../../hooks";
-
-import { MyBookmark, MyComment, MyPost } from "../../MySpace"
 import tw from "tailwind-styled-components";
+import { MyBookmark, MyComment, MyPost } from "../../MySpace";
+
+
+const Line = tw.hr`
+border border-gray-600 my-5 w-full
+`
 
 const TabBtn = tw.button`
    rounded-full text-base flex flex-row justify-center items-center 
@@ -13,7 +17,12 @@ const TabBtn = tw.button`
 `
 
 const Table = tw.div`
-flex flex-row justify-start items-center
+flex flex-row justify-start items-center w-5/6 mx-auto gap-3
+mb-7
+`
+
+const Items = tw.div`
+flex flex-row justify-start items-center w-5/6 mx-auto
 `
 
 const MyPosts = (props) => {
@@ -21,7 +30,7 @@ const MyPosts = (props) => {
 
     const array_sample = [
     {
-      tab: "내글",
+      tab: "나의 글",
       content: <MyPost />,
     },
     {
@@ -39,13 +48,23 @@ const MyPosts = (props) => {
   return (
     <>
 
+<>
+    <div className="flex w-5/6 mx-auto flex-col justify-start items-start mt-3">
+
+         <Title size="4">게시글 관리</Title> 
+    
+        <Line /> 
+
+        </div>
+    </>
+
 				<Table>
   
         <TabBtn active={active} onClick={()=> {
           changeItem([0])
           setActive("0")
         }}
-        className={active === "0" ? 'bg-yellow-400' : ''}
+        className={active === "0" ? `text-dpurple-300 bg-dpurple-100 px-8 py-2` : `px-8 py-2`}
         >
           {array_sample[0].tab}</TabBtn>
 
@@ -53,20 +72,21 @@ const MyPosts = (props) => {
                   changeItem([1])
                   setActive("1")
                 }}
-                className={active === "1" ? 'bg-yellow-400' : ''}
+                className={active === "1" ? `text-dpurple-300 bg-dpurple-100 px-8 py-2` : `px-8 py-2`}
                 >{array_sample[1].tab}</TabBtn>
 
         <TabBtn active={active} onClick={()=> {
           changeItem([2])
           setActive("2")
         }}
-        className={active === "2" ? 'bg-yellow-400' : ''}
+        className={active === "2" ? `text-dpurple-300 bg-dpurple-100 px-8 py-2` : `px-8 py-2`}
         >{array_sample[2].tab}</TabBtn>
 
 </Table>
 
-          <div>{currentItem.content}
-             </div>
+          <Items>
+            {currentItem.content}
+             </Items>
 
     </>
   );

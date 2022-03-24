@@ -1,22 +1,22 @@
 import React from "react";
-import { Button } from "../../../elements";
+import { DimoCard } from "../../Dimo"
+import tw from "tailwind-styled-components";
 
-import { useHistory } from "react-router-dom";
+const Box = tw.div`
+min-h-screen flex flex-col gap-3
+`
 
+const MyBookmark = (props) => {
 
-const NotFound = (props) => {
-  let history = useHistory();
   return (
-    <div className="flex flex-col p-3 justify-center items-center">
-      <Button
-        onClick={() => {
-          history.goBack();
-        }}
-      >
-        뒤로가기
-      </Button>
-    </div>
+    <>
+    <Box>
+<DimoCard />
+<DimoCard />
+<DimoCard />
+</Box>
+    </>
   );
 };
 
-export default NotFound;
+export default MyBookmark;
