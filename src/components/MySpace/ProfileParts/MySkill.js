@@ -1,5 +1,5 @@
 import React from "react";
-import { Thumbnail, Title, Button } from "../../../elements";
+import { SkillThumbnail, Title, Button } from "../../../elements";
 
 import { useHistory } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -23,6 +23,7 @@ flex flex-wrap justify-start items-start mx-auto gap-8 mt-20
 `
 
 
+
 const MySkill = (props) => {
   let history = useHistory();
   return (
@@ -43,10 +44,10 @@ const MySkill = (props) => {
 
       <Box>
         <InnerBox>
-        <Thumbnail src="https://ichi.pro/assets/images/max/724/1*0PFtndZAX2w0ZRIp93sv4A.png" size="8" />
-        <Thumbnail src="https://ichi.pro/assets/images/max/724/1*0PFtndZAX2w0ZRIp93sv4A.png" size="8" />
-        <Thumbnail src="https://ichi.pro/assets/images/max/724/1*0PFtndZAX2w0ZRIp93sv4A.png" size="8" />
-        <Thumbnail src="https://ichi.pro/assets/images/max/724/1*0PFtndZAX2w0ZRIp93sv4A.png" size="8" />
+        <SkillThumbnail skill="I2" />
+        <SkillThumbnail skill="P3" />
+        <SkillThumbnail skill="A3" />
+        <SkillThumbnail skill="Z1" />
         </InnerBox>
       </Box>
 

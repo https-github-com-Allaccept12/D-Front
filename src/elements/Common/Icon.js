@@ -24,7 +24,7 @@ import { ReactComponent as Warning } from '../../static/icons/warning.svg';
 
 
 const Icon = (props) => {
-  const { name, iconSize, onClick} = props;
+  const { name, iconSize, onClick, className } = props;
     
     if (name === "ArrowL") {
         return <ArrowL width={iconSize} height={iconSize} onClick={onClick} />;
@@ -58,8 +58,11 @@ const Icon = (props) => {
     }
 
     if (name === "Cancel") {
-        return <Cancel width={iconSize} height={iconSize} onClick={onClick} />;
-        }
+        return (
+            <div className={className}>
+            <Cancel width={iconSize} height={iconSize} onClick={onClick} />
+            </div>);
+            }
 
     if (name === "Delete") {
         return <Delete width={iconSize} height={iconSize} onClick={onClick} />;
@@ -98,7 +101,10 @@ const Icon = (props) => {
         }
 
     if (name === "Success") {
-        return <Success width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+        <div className={className}>
+        <Success width={iconSize} height={iconSize} onClick={onClick} />
+        </div>);
         }
         
     if (name === "Talk") {
@@ -118,6 +124,7 @@ Icon.defaultProps = {
     name: "ArrowL", 
     iconSize: "24",
     onClick: () => {},
+    className: ""
 };
  
 
