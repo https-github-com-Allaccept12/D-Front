@@ -3,6 +3,7 @@ import { Title, Subtitle, Text, Thumbnail, Profile, CheckBox, RadioButton, Card,
 import { useHistory } from "react-router-dom";
 import { useInput } from "../hooks"
 import SocialLogin from "../shared/SocialLogin";
+import Ds from "./Ds"
 
 const MyPosts = (props) => {
   let history = useHistory();
@@ -17,7 +18,7 @@ const MyPosts = (props) => {
       <SocialLogin />
 
     </div>
-
+<Ds />
 <div className="flex">
  <div className="flex flex-col justify-center items-center w-full">
    <div className="bg-red-400">dfkjlsfjslkdfjslkdfjslkfjlk</div>

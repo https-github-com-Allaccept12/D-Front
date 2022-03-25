@@ -3,29 +3,43 @@ import tw from "tailwind-styled-components";
 import Title from "./Title"
 
 import A1 from "../../static/skillLogo/Adobe.png";
-import A2 from "../../static/skillLogo/Aftereffect.png";
-import A3 from "../../static/skillLogo/Autocad.png";
-import A4 from "../../static/skillLogo/Axure.png";
+import A2 from "../../static/skillLogo/Animate.png";
+import A3 from "../../static/skillLogo/fireworks.png";
+import A4 from "../../static/skillLogo/xd.svg";
+import A5 from "../../static/skillLogo/premiere.png";
+import A6 from "../../static/skillLogo/indesign.png";
+import A7 from "../../static/skillLogo/photoshop.png";
+import A8 from "../../static/skillLogo/illustrator.png";
+import A9 from "../../static/skillLogo/Aftereffect.png";
+import A10 from "../../static/skillLogo/dreamweaver.svg"
+import A11 from "../../static/skillLogo/lightroom.png";
+
+
+import Au1 from "../../static/skillLogo/Autocad.png";
+import Au2 from "../../static/skillLogo/Axure.png";
+
+
 import B1 from "../../static/skillLogo/Balsamiq.png";
 import B2 from "../../static/skillLogo/blender.png";
+
 import C1 from "../../static/skillLogo/cinema4D.png";
-import F1 from "../../static/skillLogo/fireworks.png";
+import F1 from "../../static/skillLogo/figma.png";
 import F2 from "../../static/skillLogo/framer.png";
-import I1 from "../../static/skillLogo/illustrator.png";
-import I2 from "../../static/skillLogo/indesign.png";
-import I3 from "../../static/skillLogo/invision.png";
-import L1 from "../../static/skillLogo/lightroom.png";
+import I1 from "../../static/skillLogo/invision.png";
+
 import M1 from "../../static/skillLogo/marvelapp.png";
 import M2 from "../../static/skillLogo/miro.png";
-import P1 from "../../static/skillLogo/photoshop.png";
-import P2 from "../../static/skillLogo/premiere.png";
-import P3 from "../../static/skillLogo/protopie.png";
+import P1 from "../../static/skillLogo/protoio.png";
+
 import R1 from "../../static/skillLogo/rhino.png";
 import S1 from "../../static/skillLogo/sketch.png";
 import S2 from "../../static/skillLogo/sketchup.png";
+
+import P2 from "../../static/skillLogo/protopie.png";
+
 import W1 from "../../static/skillLogo/whimsical.png";
 import Z1 from "../../static/skillLogo/zepline.png";
-import DMAX from "../../static/skillLogo/3DMAX.png";
+import D1 from "../../static/skillLogo/3DMAX.png";
 
 
 
@@ -57,7 +71,7 @@ const SkillThumbnail = (props) => {
         <>
         <Box>
         <ArtWorkImage src={A2} />
-        <Title size="6">Aftereffect</Title>
+        <Title size="6">Animate</Title>
         </Box>
         </>
         );
@@ -65,7 +79,7 @@ const SkillThumbnail = (props) => {
         <>
         <Box>
         <ArtWorkImage src={A3} />
-        <Title size="6">Autocad</Title>
+        <Title size="6">Fireworks</Title>
         </Box>
         </>
         );
@@ -73,6 +87,78 @@ const SkillThumbnail = (props) => {
         <>
         <Box>
         <ArtWorkImage src={A4} />
+        <Title size="6">XD</Title>
+        </Box>
+        </>
+        );
+    if(skill === "A5") return (
+        <>
+        <Box>
+        <ArtWorkImage src={A5} />
+        <Title size="6">Premiere</Title>
+        </Box>
+        </>
+        );
+    if(skill === "A6") return (
+        <>
+        <Box>
+        <ArtWorkImage src={A6} />
+        <Title size="6">Indesign</Title>
+        </Box>
+        </>
+        );
+    if(skill === "A7") return (
+        <>
+        <Box>
+        <ArtWorkImage src={A7} />
+        <Title size="6">Photoshop</Title>
+        </Box>
+        </>
+        );
+    if(skill === "A8") return (
+        <>
+        <Box>
+        <ArtWorkImage src={A8} />
+        <Title size="6">Illustrator</Title>
+        </Box>
+        </>
+        );
+    if(skill === "A9") return (
+        <>
+        <Box>
+        <ArtWorkImage src={A9} />
+        <Title size="6">After Effect</Title>
+        </Box>
+        </>
+        );
+    if(skill === "A10") return (
+        <>
+        <Box>
+        <ArtWorkImage src={A10} />
+        <Title size="6">Dreamweaver</Title>
+        </Box>
+        </>
+        );
+    if(skill === "A11") return (
+        <>
+        <Box>
+        <ArtWorkImage src={A11} />
+        <Title size="6">Lightroom</Title>
+        </Box>
+        </>
+        );
+    if(skill === "Au1") return (
+        <>
+        <Box>
+        <ArtWorkImage src={Au1} />
+        <Title size="6">Auto CAD</Title>
+        </Box>
+        </>
+        );
+    if(skill === "Au2") return (
+        <>
+        <Box>
+        <ArtWorkImage src={Au2} />
         <Title size="6">Axure</Title>
         </Box>
         </>
@@ -89,7 +175,7 @@ const SkillThumbnail = (props) => {
         <>
         <Box>
         <ArtWorkImage src={B2} />
-        <Title size="6">blender</Title>
+        <Title size="6">Blender</Title>
         </Box>
         </>
         );
@@ -97,7 +183,7 @@ const SkillThumbnail = (props) => {
         <>
         <Box>
         <ArtWorkImage src={C1} />
-        <Title size="6">cinema4D</Title>
+        <Title size="6">Cinema4D</Title>
         </Box>
         </>
         );
@@ -105,7 +191,7 @@ const SkillThumbnail = (props) => {
         <>
         <Box>
         <ArtWorkImage src={F1} />
-        <Title size="6">fireworks</Title>
+        <Title size="6">Figma</Title>
         </Box>
         </>
         );
@@ -113,7 +199,7 @@ const SkillThumbnail = (props) => {
         <>
         <Box>
         <ArtWorkImage src={F2} />
-        <Title size="6">framer</Title>
+        <Title size="6">Framer</Title>
         </Box>
         </>
         );
@@ -121,31 +207,7 @@ const SkillThumbnail = (props) => {
         <>
         <Box>
         <ArtWorkImage src={I1} />
-        <Title size="6">illustrator</Title>
-        </Box>
-        </>
-        );
-    if(skill === "I2") return (
-        <>
-        <Box>
-        <ArtWorkImage src={I2} />
-        <Title size="6">indesign</Title>
-        </Box>
-        </>
-        );
-    if(skill === "I3") return (
-        <>
-        <Box>
-        <ArtWorkImage src={I3} />
-        <Title size="6">invision</Title>
-        </Box>
-        </>
-        );
-    if(skill === "L1") return (
-        <>
-        <Box>
-        <ArtWorkImage src={L1} />
-        <Title size="6">lightroom</Title>
+        <Title size="6">Invision</Title>
         </Box>
         </>
         );
@@ -153,7 +215,7 @@ const SkillThumbnail = (props) => {
         <>
         <Box>
         <ArtWorkImage src={M1} />
-        <Title size="6">marvelap</Title>
+        <Title size="6">Marvel App</Title>
         </Box>
         </>
         );
@@ -161,7 +223,7 @@ const SkillThumbnail = (props) => {
         <>
         <Box>
         <ArtWorkImage src={M2} />
-        <Title size="6">miro</Title>
+        <Title size="6">Miro</Title>
         </Box>
         </>
         );
@@ -169,23 +231,7 @@ const SkillThumbnail = (props) => {
         <>
         <Box>
         <ArtWorkImage src={P1} />
-        <Title size="6">photoshop</Title>
-        </Box>
-        </>
-        );
-    if(skill === "P2") return (
-        <>
-        <Box>
-        <ArtWorkImage src={P2} />
-        <Title size="6">premiere</Title>
-        </Box>
-        </>
-        );
-    if(skill === "P3") return (
-        <>
-        <Box>
-        <ArtWorkImage src={P3} />
-        <Title size="6">protopie</Title>
+        <Title size="6">Proto.io</Title>
         </Box>
         </>
         );
@@ -193,23 +239,31 @@ const SkillThumbnail = (props) => {
         <>
         <Box>
         <ArtWorkImage src={R1} />
-        <Title size="6">rhino</Title>
+        <Title size="6">Rhino</Title>
         </Box>
         </>
         );
     if(skill === "S1") return (
-        <>
-        <Box>
-        <ArtWorkImage src={S1} />
-        <Title size="6">sketch</Title>
-        </Box>
-        </>
-        );
+    <>
+    <Box>
+    <ArtWorkImage src={S1} />
+    <Title size="6">Sketch</Title>
+    </Box>
+    </>
+    );
     if(skill === "S2") return (
+    <>
+    <Box>
+    <ArtWorkImage src={S2} />
+    <Title size="6">Sketch Up</Title>
+    </Box>
+    </>
+    );
+    if(skill === "P2") return (
         <>
         <Box>
-        <ArtWorkImage src={S2} />
-        <Title size="6">sketchup</Title>
+        <ArtWorkImage src={P2} />
+        <Title size="6">Protopie</Title>
         </Box>
         </>
         );
@@ -217,23 +271,24 @@ const SkillThumbnail = (props) => {
         <>
         <Box>
         <ArtWorkImage src={W1} />
-        <Title size="6">whimsical</Title>
+        <Title size="6">Whimsical</Title>
         </Box>
         </>
         );
+
     if(skill === "Z1") return (
         <>
         <Box>
         <ArtWorkImage src={Z1} />
-        <Title size="6">zepline</Title>
+        <Title size="6">Zepline</Title>
         </Box>
         </>
         );
-    if(skill === "DMAX") return (
+    if(skill === "D1") return (
         <>
         <Box>
-        <ArtWorkImage src={DMAX} />
-        <Title size="6">3DMAX</Title>
+        <ArtWorkImage src={D1} />
+        <Title size="6">3D Max</Title>
         </Box>
         </>
         );

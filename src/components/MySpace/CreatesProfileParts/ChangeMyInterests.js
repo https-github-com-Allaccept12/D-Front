@@ -1,8 +1,8 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { interests } from "../../../redux/modules/interests.js";
-import { Button, Image } from "../../../elements";
+import { Text } from "../../../elements"
 import icon from "../../../static/images/interests_icon.svg";
 import typography from "../../../static/images/typography.svg";
 import crafts from "../../../static/images/crafts.svg";
@@ -23,9 +23,9 @@ const MyInterests = (props) => {
   const history = useHistory();
 
   const SendInterests = () => {
-    console.log(selectInterest);
+    // console.log(selectInterest);
     dispatch(interests(selectInterest))
-    history.replace('/CreateProfile');
+    // history.replace('/CreateProfile');
 }
   const [isClicked, setIsClicked] = useState(false);
   const handleClicked = e => {
@@ -48,18 +48,52 @@ const MyInterests = (props) => {
         <div className="flex my-10 place-content-center">
           
           <div className="grid col-start-2 col-end-8 text-center bg-white">
-            <div className="grid items-end h-48 col-start-1 col-end-4 row-start-1 row-end-3 px-5 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start w-74" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={typography} alt="" />타이포그래피</div></div>
-            <div className="grid items-end w-48 h-48 col-start-4 col-end-6 row-start-1 row-end-3 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={crafts} alt="" />공예</div></div>
-            <div className="grid items-end w-48 col-start-6 col-end-8 row-start-1 row-end-4 px-6 py-4 mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start h-74" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={pakage} alt="" />패키지</div></div>
-            <div className="grid items-end w-48 h-48 col-start-1 col-end-3 row-start-3 row-end-5 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={graphic} alt="" />그래픽</div></div>
-            <div className="grid items-end col-start-3 col-end-6 row-start-3 row-end-6 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start w-74 h-74" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={ui} alt="" />UI / UX</div></div>
-            <div className="grid items-end w-48 h-48 col-start-6 col-end-8 row-start-4 row-end-6 px-6 py-4 mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={fashion} alt="" />패션</div></div>
-            <div className="grid items-end w-48 col-start-1 col-end-3 row-start-5 row-end-7 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start h-74" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={video} alt="" />영상 / 모션</div></div>
-            <div className="grid items-end w-48 h-48 col-start-3 col-end-5 row-start-6 row-end-7 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={product} alt="" />제품</div></div>
-            <div className="grid items-end h-48 col-start-5 col-end-8 row-start-6 row-end-7 px-6 py-4 mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start w-74" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={game} alt="" />게임 / 캐릭터</div></div>
-            <div className="grid items-end h-48 col-start-1 col-end-4 row-start-7 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start row-end-8 w-74" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={branding} alt="" />브랜딩 / 편집</div></div>
-            <div className="grid items-end h-48 col-start-4 col-end-8 row-start-7 px-6 py-4 mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start row-end-8 w-94" onClick={handleClicked}><div className="flex-col my-3"><img className="my-3" src={interior} alt="" />건축 / 인테리어 / 환경</div></div>
+
+            <div className="grid items-end h-48 col-start-1 col-end-4 row-start-1 row-end-3 px-5 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start w-74" onClick={handleClicked}>
+              <div className="flex-col my-3"><img className="my-3" src={typography} alt="" />
+              <Text size="1">타이포그래피</Text></div></div>
+
+            <div className="grid items-end w-48 h-48 col-start-4 col-end-6 row-start-1 row-end-3 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start" onClick={handleClicked}>
+              <div className="flex-col my-3"><img className="my-3" src={crafts} alt="" />
+              <Text size="1">공예</Text></div></div>
+
+            <div className="grid items-end w-48 col-start-6 col-end-8 row-start-1 row-end-4 px-6 py-4 mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start h-74" onClick={handleClicked}>
+              <div className="flex-col my-3"><img className="my-3" src={pakage} alt="" />
+              <Text size="1">패키지</Text></div></div>
+
+            <div className="grid items-end w-48 h-48 col-start-1 col-end-3 row-start-3 row-end-5 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start" onClick={handleClicked}>
+              <div className="flex-col my-3"><img className="my-3" src={graphic} alt="" />
+              <Text size="1">그래픽</Text></div></div>
+
+            <div className="grid items-end col-start-3 col-end-6 row-start-3 row-end-6 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start w-74 h-74" onClick={handleClicked}>
+              <div className="flex-col my-3"><img className="my-3" src={ui} alt="" />
+              <Text size="1">UI / UX</Text></div></div>
+
+            <div className="grid items-end w-48 h-48 col-start-6 col-end-8 row-start-4 row-end-6 px-6 py-4 mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start" onClick={handleClicked}>
+              <div className="flex-col my-3"><img className="my-3" src={fashion} alt="" />
+              <Text size="1">패션</Text></div></div>
+
+            <div className="grid items-end w-48 col-start-1 col-end-3 row-start-5 row-end-7 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start h-74" onClick={handleClicked}>
+              <div className="flex-col my-3"><img className="my-3" src={video} alt="" />
+              <Text size="1">영상 / 모션</Text></div></div>
+
+            <div className="grid items-end w-48 h-48 col-start-3 col-end-5 row-start-6 row-end-7 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start" onClick={handleClicked}>
+              <div className="flex-col my-3"><img className="my-3" src={product} alt="" />
+              <Text size="1">제품</Text></div></div>
+
+            <div className="grid items-end h-48 col-start-5 col-end-8 row-start-6 row-end-7 px-6 py-4 mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start w-74" onClick={handleClicked}>
+              <div className="flex-col my-3"><img className="my-3" src={game} alt="" />
+              <Text size="1">게임 / 캐릭터</Text></div></div>
+
+            <div className="grid items-end h-48 col-start-1 col-end-4 row-start-7 px-6 py-4 mx-1 my-1 text-center rounded-md shadow-lg justify-items-start row-end-8 w-74" onClick={handleClicked}>
+              <div className="flex-col my-3"><img className="my-3" src={branding} alt="" />
+              <Text size="1">브랜딩 / 편집</Text></div></div>
+
+            <div className="grid items-end h-48 col-start-4 col-end-8 row-start-7 px-6 py-4 mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start row-end-8 w-94" onClick={handleClicked}>
+              <div className="flex-col my-3"><img className="my-3" src={interior} alt="" />
+              <Text size="1">건축 / 인테리어 / 환경</Text></div></div>
           </div>
+          
       </div>
       {/* <div className="flex my-10 place-content-center">
           {selectInterest !== "" ? 

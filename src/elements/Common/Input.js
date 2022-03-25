@@ -9,7 +9,6 @@ focus:border-dpurple-300 font-min1
 outline-none
 ${(props) => (props.is_error ? `ring-1 ring-dred-400` : "")};
 ${(props) => (props.cardSize === "1" ? `h-I01 px-4` : "")};
-
 `
 
 const TextAreaField = tw.textarea`

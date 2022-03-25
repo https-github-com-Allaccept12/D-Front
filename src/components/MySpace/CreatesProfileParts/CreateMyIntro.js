@@ -10,6 +10,16 @@ const CreateMyIntro = (props) => {
   const validMaxLen1000 = (value) => value.length <= 1000;
   const intro = useInput("", [validMaxLen]);
   const sub = useInput("", [validMaxLen1000]);
+
+  const SendIntro = () => {
+    const formData = new FormData();
+    let data = {
+      intro_content: intro.value,
+      sub_content: sub.value
+    }
+    formData.append("data")
+  }
+
   return (
     <>
 
