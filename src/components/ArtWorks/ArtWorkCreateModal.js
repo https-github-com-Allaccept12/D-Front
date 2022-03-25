@@ -76,7 +76,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
       setCopyRight(value);
     }
 
-    // 공개 여부
+    // 공개 여부 ------------------------------------------------------------------------
     // useState
     const [Public, setPublic] = useState("");
     // options
@@ -100,7 +100,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
       setPublic(value);
     }
     // 타이틀, 카테고리, 시작 및 종료 날짜, 설명  ----------------------------------------
-    // 타이틀, 카테고리, 시작 및 종료 날짜, 설명
+    // useState
     const [inputs, setInputs] = useState({
         title: "",
         category: "",
@@ -120,8 +120,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
       }
   
 
-
-    // 서버에 보내기 전 data에 json형식으로 모아주기
+    // 서버에 보내기 전 data에 json형식으로 모아주기 --------------------------------------------
     let data = {
       title: inputs.title,
       category: inputs.category,
@@ -137,7 +136,6 @@ const ArtWorkCreateModal = ({ onClose }) => {
     
     // 멀티 폼데이터 생성
     const formData = new FormData();
-
 
     // 다음 버튼 클릭 시 실행 함수
     const createArtWork = () => {
