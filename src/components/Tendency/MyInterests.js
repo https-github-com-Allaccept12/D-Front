@@ -1,7 +1,7 @@
 import React, {useState } from "react";
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { interests } from "../../redux/modules/interests.js";
+import { interests, CreateInterests } from "../../redux/modules/interests.js";
 import { Button, Image } from "../../elements";
 import icon from "../../static/images/interests_icon.svg";
 import typography from "../../static/images/typography.svg";
@@ -18,16 +18,13 @@ import graphic from "../../static/images/graphic.svg";
 
 
 const MyInterests = (props) => {
+  // 초기 세팅
   const [selectInterest, SetSelectInterest] = useState("");
+  const [isClicked, setIsClicked] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
-
-  const SendInterests = () => {
-    console.log(selectInterest);
-    dispatch(interests(selectInterest))
-    history.replace('/CreateProfile');
-}
-  const [isClicked, setIsClicked] = useState(false);
+  
+  // 선택 시 실행 function
   const handleClicked = e => {
     if (selectInterest === ""){
       setIsClicked(!isClicked)
@@ -40,6 +37,14 @@ const MyInterests = (props) => {
           SetSelectInterest("");
         }
     }
+  }
+
+  // 다음 버튼 function
+  const SendInterests = () => {
+    console.log(selectInterest);
+    const interest = {"interest": selectInterest};
+    dispatch(CreateInterests(interest));
+    history.replace('/CreateProfile');
   }
 
   return (

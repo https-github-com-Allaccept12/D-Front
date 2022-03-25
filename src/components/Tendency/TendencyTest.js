@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import { useDispatch } from 'react-redux';
-import { tendency } from "../../redux/modules/tendency.js";
+import { tendency, CreateTendency } from "../../redux/modules/tendency.js";
 import { Button } from "../../elements";
-import dPlus from "../../static/images/dPlus_logo.svg";
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
+import dPlus from "../../static/images/dPlus_logo.svg";
 
 const mbti = {"I":0, "E":0, "N":0, "S":0, "T":0, "F":0, "P":0, "J":0 };
 let mbti_s = "";
@@ -36,8 +36,10 @@ const TendencyTest = (props) => {
 
 const dispatch = useDispatch();
 const SendTendency = () => {
-  dispatch(tendency(designation))
-  console.log(designation);
+  // dispatch(tendency(designation))
+  const tendency = {"tendency": designation};
+  dispatch(CreateTendency(tendency));
+  console.log(tendency);
   history.replace('/MyInterests');
 }
     

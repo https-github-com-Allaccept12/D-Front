@@ -1,23 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Title, Text, Subtitle } from "../elements";
 import { MainSlider } from "../components";
 import { ArtWorkAllList } from "../components/ArtWorks"
-import { setCookie } from "../shared/cookie";
+import { mainPageLoad } from '../redux/modules/mainPageLoad';
+import { setCookie, getCookie } from "../shared/cookie";
 import "./Main.css"
 
 const Main = (props) => {
-
+  const dispatch = useDispatch();
   if (sessionStorage.getItem("access_token")) {
     setCookie("access_token", sessionStorage.getItem("access_token"), 7);
-    setCookie("refresh_token", sessionStorage.getItem("access_token"), 7);
+    setCookie("refresh_token", sessionStorage.getItem("refresh_token"), 7);
+    setCookie("account_id", sessionStorage.getItem("account_id"), 7);
   }
+  useEffect(() => {
+    let account_id = 0;
+    let id_cookie = getCookie("account_id");
+    if(id_cookie) {
+      account_id = id_cookie;
+      console.log(account_id);
+    };
+    dispatch(mainPageLoad({account_id, dispatch}));
+  })
   
 
-  // dispatch(userActions.loginFB({...name}));
   return (
-
     <div className="w-full">
-      <div className="text-white absolute inset-56 ">
+      <div className="absolute text-white inset-56 ">
           <Title size="2">Hot 디자이너</Title>
         <div className="mt-4 ml-1">
           <Subtitle size="1">현재 가장 핫한<br /> 
@@ -25,14 +35,14 @@ const Main = (props) => {
           </div>
           </div>
 
-        <div className="Main hidden sm:flex">
-        <div className="justify-self-end max-w-fit hidden sm:flex">
-        <MainSlider main />
+        <div className="hidden Main sm:flex">
+        <div className="hidden justify-self-end max-w-fit sm:flex">
+        <MainSlider main/>
         </div>
 
           </div>
       
-      <div className="mx-auto md:pt-28 container">
+      <div className="container mx-auto md:pt-28">
 
       <ArtWorkAllList />
       </div>

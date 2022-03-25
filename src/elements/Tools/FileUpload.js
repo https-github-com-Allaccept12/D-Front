@@ -7,6 +7,7 @@ import profile_upload from '../../static/images/profile_upload.svg';
 
 function FileUpload() {
     const profile = useSelector((state) => state.image.url);
+    // console.log(profile);
     const dispatch = useDispatch();
     const onDrop = useCallback((acceptedFile) => {
         const reader = new FileReader();
