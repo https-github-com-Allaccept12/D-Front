@@ -8,6 +8,7 @@ import checkNicknameSlice from "./modules/checkNickname";
 import profileSlice from "./modules/createProfile";
 import tendencySlice from './modules/tendency';
 import interestsSlice from './modules/interests';
+import mainPageSlice from './modules/mainPageLoad';
 
 
 export default configureStore({
@@ -19,6 +20,7 @@ export default configureStore({
     profile: profileSlice,
     tendency: tendencySlice,
     interests: interestsSlice,
+    mainPageLoad: mainPageSlice,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

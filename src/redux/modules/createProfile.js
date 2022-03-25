@@ -11,7 +11,7 @@ export const createProfile = createAsyncThunk(
     //   await URL.post('/api/profile', formData, {
     await URL.post('/api/profile', data, {
         headers: {
-            "content-type": "application/json",
+            "content-type": "multipart/form-data",
             "Authorization": "Bearer " + token,
         },
         withCredentials: true,
