@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateNewArtWork } from "../../redux/modules/artWork";
-import { preview, artworkFiles } from '../../redux/modules/image';
+import { preview } from '../../redux/modules/image';
 import Portal from "../../elements/Tools/Portal";
 import { MultiSelect } from "react-multi-select-component";
 import Dropzone, {useDropzone} from 'react-dropzone';

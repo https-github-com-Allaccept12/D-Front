@@ -12,7 +12,7 @@ export const imageSlice = createSlice({
         },
         artworkFiles: (state, action) => {
             state.artworkFiles = action.payload
-        }
+        },
         // preview(state, action) {
         //     state.value = action.payload
         // }

@@ -14,8 +14,8 @@ const CreateProfile = (props) => {
   const dispatch = useDispatch();
   let profile = useSelector((state) => state.image.url);
   let image = useSelector((state) => state.image.file);
-  let tendencyResult = useSelector((state) => state.tendency.tendency);
-  let interestResult = useSelector((state) => state.interests.interests);
+  // let tendencyResult = useSelector((state) => state.tendency.tendency);
+  // let interestResult = useSelector((state) => state.interests.interests);
   const [nicknameState, setNicknameState] = useState("");
   const nicknameValidMaxLen = (value) => value.length <= 10;
   const nickname = useInput("", [nicknameValidMaxLen]);
@@ -26,18 +26,18 @@ const CreateProfile = (props) => {
   const instagram = useInput("", []);
   const introduce = useInput("", []);
   const JobOptions = [
-    { value: "UIUX", label: "UI & UX"},
-    { value: "fashion", label: "패션"},
-    { value: "typography", label: "타이포그래피"},
-    { value: "crafts", label: "공예"},
-    { value: "pakage", label: "패키지"},
-    { value: "graphic", label: "그래픽"},
-    { value: "video", label: "영상/모션"},
-    { value: "product", label: "제품"},
-    { value: "game", label: "게임/캐릭터"},
-    { value: "branding", label: "브랜딩/편집"},
-    { value: "interior", label: "건축/인테리어/환경"},
-    { value: "student", label: "학생"},
+    { value: "UI/UX", label: "UI & UX"},
+    { value: "패션", label: "패션"},
+    { value: "타이포그래피", label: "타이포그래피"},
+    { value: "공예", label: "공예"},
+    { value: "패키지", label: "패키지"},
+    { value: "그래픽", label: "그래픽"},
+    { value: "영상/모션", label: "영상/모션"},
+    { value: "제품", label: "제품"},
+    { value: "게임/캐릭터", label: "게임/캐릭터"},
+    { value: "브랜딩/편집", label: "브랜딩/편집"},
+    { value: "건축/인테리어/환경", label: "건축/인테리어/환경"},
+    { value: "학생", label: "학생"},
   ]
   
   const [selected, setSelected] = useState("");
@@ -99,6 +99,7 @@ const CreateProfile = (props) => {
               <div className="grid items-center justify-start">
                 <p className= "w-1/2 row-start-1 mr-10 font-min1">직업</p>
                 <select className="row-start-1" onChange={handleChangeSelect} vlaue={selected}>
+                  <option value="" selected disabled hidden>선택해주세요</option>
                   {JobOptions.map((item, index) => (
                     <option key={index} value={item.value}>{item.label}</option>
                   ))}

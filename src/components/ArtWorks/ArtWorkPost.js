@@ -18,11 +18,11 @@ const ArtWorkPost = (props) => {
 
     <Art main={main}>
 
-      <button type="button" className=" active:shadow-lg transition duration-150 ease-in-out" data-bs-toggle="modal" data-bs-target="#exampleModalXl">
+      <button type="button" className="transition duration-150 ease-in-out active:shadow-lg" data-bs-toggle="modal" data-bs-target="#exampleModalXl">
 
       <Thumbnail src="https://w.namu.la/s/ecd088782c4654b5bcc2223c3c7e135ede44f79588e80fb88c14c0b42e48cf37ad5a52176dbad7934c6802f1912be5a991cee8c95aa609df52f22b591dbd2319a7e818967bceef4984b2d395579587ab9d445306627c8082bbf200487a14097c" size={size} />
       </button>
-      <div className="justify-between items-center flex flex-row mt-1  w-full px-2 flex-shrink-0">
+      <div className="flex flex-row items-center justify-between flex-shrink-0 w-full px-2 mt-1">
         
         <div className="flex flex-row items-center gap-2">
         <Profile size="7" /> 
@@ -42,34 +42,34 @@ const ArtWorkPost = (props) => {
 
 
 
-<div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="exampleModalXl" tabindex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
+<div className="fixed top-0 left-0 hidden w-full h-full overflow-x-hidden overflow-y-auto outline-none modal fade" id="exampleModalXl" tabIndex="-1" aria-labelledby="exampleModalXlLabel" aria-modal="true" role="dialog">
 
 
 
-  <div class="modal-dialog modal-xl relative w-auto pointer-events-none">
+  <div className="relative w-auto pointer-events-none modal-dialog modal-xl">
    
 
-    <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+    <div className="relative flex flex-col w-full text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto modal-content bg-clip-padding">
 
 
 
-      <div class="modal-body">
+      <div className="modal-body">
         <ArtWorkDetail />
-        <div className="fixed w-20 top-20 right-20 xl:right-60 space-y-2">
+        <div className="fixed w-20 space-y-2 top-20 right-20 xl:right-60">
 
-<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
 <Icon />프로필
 </div>
-<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
 <Icon />팔로우
 </div>
-<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
 <Icon name="HeartF" />좋아요
 </div>
-<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
 <Icon />스크랩
 </div>
-<div className="flex flex-col justify-center items-center bg-white rounded-full p-2 py-3 font-min2">
+<div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
 <Icon name="Link" />공유하기
 </div>
 </div>

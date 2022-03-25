@@ -13,11 +13,11 @@ const ArtWorkCategory = (props) => {
      
 <div className="sticky top-20">
 
-<div className="flex flex-col justify-center pl-[2.5rem] mt-10 text-left ml-6 p-2 w-[17.75rem] h-[32.5rem]
-rounded-lg bg-white">
+  <div className="flex flex-col justify-center pl-[2.5rem] mt-10 text-left ml-6 p-2 w-[17.75rem] h-[32.5rem]
+  rounded-lg bg-white">
 
-
-<Button><Link to="/createart">작품등록</Link></Button>
+    <Link to="/createart">
+      <Button>작품등록</Button></Link>
           <Title size="5" className="py-3">카테고리</Title>
 
           <Link to="/art/list/all">

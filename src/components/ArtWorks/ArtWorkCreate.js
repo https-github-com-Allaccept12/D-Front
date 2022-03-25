@@ -22,7 +22,6 @@ const ArtWorkCreate = (props) => {
   const onDrop = useCallback((acceptedFile) => {
     for (let file of acceptedFile){
       setImages((zz) => [...zz, file]);
-      // images.push(file);
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = () => {

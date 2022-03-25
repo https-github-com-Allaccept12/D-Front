@@ -1,26 +1,30 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { artists } from './mainPageReducer';
+import { preview } from './image';
 import { URL, token, account_id } from "../UrlForAxios";
-
 
 
 export const mainPageLoad = createAsyncThunk(
     '/mainPageLoad',
-    async () => {
-        console.log(account_id);
-      await URL.get('/',account_id)
+    async ({account_id, dispatch}) => {
+        await axios.get(process.env.REACT_APP_URL, {
+            params: {
+                account_id: account_id
+            }
+        })
         .then(res => {
-            console.log(res.data);
+            // console.log(res.data.data.top_artist);
+            const top_artist = res.data.data.top_artist
+            dispatch(artists(top_artist));
         })
         .catch(err => console.log(err));
     },
   );
 
-
-export const mainPageSlice = createSlice({
+  export const mainPageSlice = createSlice({
     name: 'mainPageLoad',
     initialState: {},
-    reducer: {
-    },
     extraReducers: builder => {
         builder
         .addCase(mainPageLoad.pending, (state, action) => {
@@ -38,5 +42,4 @@ export const mainPageSlice = createSlice({
 });
 
 
-export const { Load } = mainPageSlice.actions;
 export default mainPageSlice.reducer;

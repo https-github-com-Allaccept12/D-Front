@@ -1,4 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { useDispatch } from 'react-redux';
+import { preview } from './image';
 import { URL, token } from "../UrlForAxios";
 
 const initialState = {
@@ -6,20 +8,22 @@ const initialState = {
 
 export const kakaoSlice = createAsyncThunk(
     'post/kakao',
-    async ({code, history}) => {
+    async ({code, history, dispatch}) => {
       await URL.get(`/user/kakao/callback?code=${code}`)
         .then(res => {
             console.log(res);
             if (res.data.result === 'success') {
                 let access_token = res.data.data.access_token;
                 let refresh_token = res.data.data.refresh_token;
-                let id = res.data.data.id;
+                let account_id = res.data.data.account_id;
                 let have_to_signup = res.data.data.isSignUp;
+                let profile_img = res.data.data.profile_img;
                 sessionStorage.setItem("access_token", access_token);
                 sessionStorage.setItem("refresh_token", refresh_token);
-                sessionStorage.setItem("acount_id", id);
+                sessionStorage.setItem("account_id", account_id);
+                dispatch(preview(profile_img));
                 if (have_to_signup) {
-                    history.push("/TendencyTest");
+                    history.replace("/TendencyTest");
                 } else{
                     refreshSlice({access_token, refresh_token});
                     window.location.href = "/";

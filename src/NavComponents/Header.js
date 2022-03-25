@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Title, Image, Logo } from "../elements";
 import { getCookie } from "../shared/cookie";
 import { useDispatch } from "react-redux";
@@ -9,7 +9,7 @@ import "./Header.css"
 const Header = (props) => {
   const [is_login, setIsLogin] = React.useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     let cookie = getCookie("access_token");
     if(cookie){
       setIsLogin(true);
@@ -25,7 +25,7 @@ const Header = (props) => {
         <div className="head">
         <Link to="/"><Logo name="DplusW" logoSizeW="200" logoSizeH="59" /></Link>
         </div>
-<div className="header  flex-row justify-evenly gap-9 text-white hidden md:flex">
+<div className="flex-row hidden text-white header justify-evenly gap-9 md:flex">
 <Title size="6"><Link to="/">홈</Link></Title>
         <Title size="6"><Link to="/art/list/all">모아보기</Link></Title>
         <Title size="6"><Link to="/dimo/qna/all">디모</Link></Title>
@@ -44,7 +44,7 @@ else  {
         <div className="head">
         <Link to="/"><Logo name="DplusC" logoSizeW="200" logoSizeH="59" /></Link>
         </div>
-<div className="header flex-row justify-evenly gap-9 text-dpurple-200 hidden md:flex">
+<div className="flex-row hidden header justify-evenly gap-9 text-dpurple-200 md:flex">
 <Title size="6"><Link to="/">홈</Link></Title>
         <Title size="6"><Link to="/art/list/all">모아보기</Link></Title>
         <Title size="6"><Link to="/dimo/qna/all">디모</Link></Title>

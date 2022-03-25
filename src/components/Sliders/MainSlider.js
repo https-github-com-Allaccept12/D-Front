@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useSelector } from "react-redux";
 import Slider from "react-slick";
 import tw from "tailwind-styled-components";
 import Slides from "./Slides";
@@ -30,8 +31,33 @@ const NextBtn = tw.button`
 `
 
 const MainSlider = (props)=>{
-    const slider = React.useRef(null);
+    const slider = useRef(null);
     const { main, dimo } = props;
+    
+    let hotists = useSelector((state) => state.hotArtists.artist);
+    let makeSlides = () => {}
+    if (hotists){
+      makeSlides = () => {
+        const arr = [];
+        for (let i = 0; i < hotists.length; i++){
+          arr.push(<SS>
+            <Slides 
+            main 
+            image={hotists[i].account_profile} 
+            nickname={hotists[i].account_nickname}
+            thumnail1={hotists[i].img_url_fir}
+            thumnail2={hotists[i].img_url_sec}
+            job={hotists[i].account_job}
+            follow={hotists[i].is_follow}
+            />
+            </SS>)
+        }
+        return arr;
+      }
+    }
+    
+    
+
 
     const settings = {
         dots: false,  // 슬라이드 밑에 점 보이게
@@ -39,7 +65,7 @@ const MainSlider = (props)=>{
         speed: 500,
         autoplay: true,
         autoplaySpeed: 2000,  // 넘어가는 속도
-        slidesToShow: 3,  // 4장씩 보이게
+        slidesToShow: 3,  // 3장씩 보이게
         slidesToScroll: 1,  // 1장씩 뒤로 넘어가게
         centerMode: true,
         centerPadding: '0px',
@@ -75,8 +101,9 @@ const MainSlider = (props)=>{
       <div className="flex-row hidden md:flex">
        <PrevBtn onClick={() => slider?.current?.slickPrev()}><Icon name="ArrowL" iconSize="48" /> </PrevBtn>
     	<Slide {...settings} ref={slider}>
-         
-                <SS> 
+        {/* {hotists.map((item, index) => (<SS><Slides main key={index} info={item}/></SS>))} */}
+        {makeSlides()}
+                {/* <SS> 
                     <Slides main />
                 </SS>
                 <SS>
@@ -90,7 +117,7 @@ const MainSlider = (props)=>{
                 </SS>
                 <SS>
                     <Slides main />
-                </SS>
+                </SS> */}
                
             </Slide>
             <NextBtn onClick={() => slider?.current?.slickNext()}><Icon name="ArrowR" iconSize="48" /></NextBtn>
