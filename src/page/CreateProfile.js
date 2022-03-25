@@ -70,7 +70,7 @@ const CreateProfile = (props) => {
       work_time: "1",
     }
     formData.append("data", new Blob([JSON.stringify(data)], {type: "application/json"}));
-    formData.append("profile_img", image);
+    formData.append("imgFile", image);
     // dispatch(createProfile(data));
     dispatch(createProfile(formData));
   }

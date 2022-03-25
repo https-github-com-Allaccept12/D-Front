@@ -14,10 +14,10 @@ export const kakaoSlice = createAsyncThunk(
                 let access_token = res.data.data.access_token;
                 let refresh_token = res.data.data.refresh_token;
                 let id = res.data.data.id;
-                let have_to_signup = res.data.data.signUp;
+                let have_to_signup = res.data.data.isSignUp;
                 sessionStorage.setItem("access_token", access_token);
                 sessionStorage.setItem("refresh_token", refresh_token);
-                sessionStorage.setItem("id", id);
+                sessionStorage.setItem("acount_id", id);
                 if (have_to_signup) {
                     history.push("/TendencyTest");
                 } else{

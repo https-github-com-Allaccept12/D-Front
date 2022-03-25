@@ -17,26 +17,50 @@ import {
   } from "../../elements";
 
 const ArtWorkCreateModal = ({ onClose }) => {
+    // 기본 세팅
     const dispatch = useDispatch();
-    const cover = useSelector((state) => state.image.url);
+    // 작품 이미지들 리덕스에서 불러옴
     const artworkfiles = useSelector((state) => state.image.artworkFiles);
-    const [forSendCover, setForSendCover] = useState();
-    const options = skillList;
-    const [image, setImage] = useState("");
-    // const handleFile = (e)=>{
-    //     const file = e.target.files
-    //     const reader = new FileReader();
-    //     setImage(file[0]);
-    // }
-    const [toolSelected, setToolSelected] = useState([]);
-    console.log(toolSelected);
 
+    // 표지 ------------------------------------------------------------------------
+    // 리덕스에서 불러옴
+    const cover = useSelector((state) => state.image.url);
+    // useState
+    const [forSendCover, setForSendCover] = useState();
+    // 이미지 처리 함수
+    const onDrop = useCallback((acceptedFile) => {
+      const reader = new FileReader();
+      setForSendCover(acceptedFile[0]);
+      reader.readAsDataURL(acceptedFile[0]);
+      reader.onload = () => {
+          dispatch(preview(reader.result));
+      }
+      
+    }, [])
+    const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+    
+    // 사용툴-------------------------------------------------------------------------
+    // options
+    const options = skillList;
+    // useState
+    const [toolSelected, setToolSelected] = useState([]);
+    // string으로 변환 
+    let specialty = "";
+    for(var value of toolSelected){
+      specialty += value.value;
+    }
+    console.log(specialty);
+    
+    // 저작권-------------------------------------------------------------------------
+    // useState
     const [CopyRight, setCopyRight] = useState("");
+    // options
     const copyrightOptions = [
       {value: "1", name: "판권 소유"},
       {value: "2", name: "zz"},
       {value: "3", name: "cc"},
     ]
+    // selectbox 컴포넌트
     const CopyRightSelectBox = (props) => {
       return (
         <select onChange={selectCopyRight}>
@@ -46,18 +70,21 @@ const ArtWorkCreateModal = ({ onClose }) => {
         </select>
       )
     }
+    // select 실행 함수
     const selectCopyRight = (e) => {
       const { value, name } = e.target;
       setCopyRight(value);
     }
-    // console.log(CopyRight);
 
-
+    // 공개 여부 ------------------------------------------------------------------------
+    // useState
     const [Public, setPublic] = useState("");
+    // options
     const PublicOptions = [
-      {value: "public", name: "공개"},
-      {value: "private", name: "비공개"},
+      {value: true, name: "공개"},
+      {value: false, name: "비공개"},
     ]
+    // selectBox 컴포넌트
     const PublicSelectBox = (props) => {
       return (
         <select onChange={selectPublic}>
@@ -67,24 +94,22 @@ const ArtWorkCreateModal = ({ onClose }) => {
         </select>
       )
     }
+    // select 실행함수
     const selectPublic = (e) => {
       const { value, name } = e.target;
       setPublic(value);
     }
-    console.log(Public);
-
+    // 타이틀, 카테고리, 시작 및 종료 날짜, 설명  ----------------------------------------
+    // useState
     const [inputs, setInputs] = useState({
         title: "",
         category: "",
-        start_date: "",
-        end_date: "",
+        startDate: "",
+        endDate: "",
         description: "",
-        copyright: "",
       });
-    
-    const {title, description} = inputs;
-    
-
+    const {title, description, startDate, endDate, category} = inputs;
+    // onChange 실행 함수
     const handleChange = (e) => {
         const { value, name } = e.target;
         setInputs({
@@ -93,33 +118,29 @@ const ArtWorkCreateModal = ({ onClose }) => {
         });
         console.log(inputs);
       }
-
-    const onDrop = useCallback((acceptedFile) => {
-        const reader = new FileReader();
-        setForSendCover(acceptedFile[0]);
-        reader.readAsDataURL(acceptedFile[0]);
-        reader.onload = () => {
-            dispatch(preview(reader.result));
-        }
-        
-    }, [])
-    const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
   
+
+    // 서버에 보내기 전 data에 json형식으로 모아주기 --------------------------------------------
+    let data = {
+      title: inputs.title,
+      category: inputs.category,
+      specialty: specialty,
+      work_start: inputs.startDate,
+      work_end: inputs.endDate,
+      content: inputs.description,
+      copyright: CopyRight,
+      is_master: false,
+      scope: Public,
+      }
+    console.log(data);
     
+    // 멀티 폼데이터 생성
     const formData = new FormData();
 
+    // 다음 버튼 클릭 시 실행 함수
     const createArtWork = () => {
-      let data = {
-        title: inputs.title,
-        category: inputs.category,
-        tool: toolSelected,
-        work_start: inputs.startDate,
-        work_end: inputs.endDate,
-        content: inputs.description,
-        copyright: CopyRight,
-        is_master: false,
-        scope: Public,
-        }
+      
+      // console.log(data);
       formData.append("data", new Blob([JSON.stringify(data)], {type: "application/json"}))
       formData.append("imgFile", forSendCover);
       artworkfiles.forEach(element => formData.append("imgFile", element));

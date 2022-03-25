@@ -27,7 +27,6 @@ const ArtWorkCreate = (props) => {
       reader.readAsDataURL(file);
       reader.onloadend = () => {
         SetPreviews((temp) => [...temp, reader.result])
-        console.log(previews);
       }
     }
     
