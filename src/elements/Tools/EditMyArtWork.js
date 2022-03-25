@@ -1,4 +1,5 @@
 import React from "react";
+import CircleBtn from "./CircleBtn"
 import tw from "tailwind-styled-components";
 
 
@@ -14,31 +15,23 @@ ${(props) => (props.size === "1" ? `` : "")};
 `;
 
 const Actives = tw.div`
-absolute w-t01 h-t01 z-10 bg-yellow-200 top-0 rounded-md
+absolute w-t01 h-t01 z-10 bg-dgray-600 top-0 rounded-md
 opacity-0 hover:opacity-80
 `
 const Constan = tw.div`
-absolute w-t01 h-t01 z-10 top-0 rounded-md
+absolute w-t01 h-20 z-10 top-0 rounded-md
 
 `
 
 const Edit = tw.div`
-absolute top-40 left-20
+absolute top-44 left-28
 `
 const FlexBox = tw.div`
  flex flex-row w-full gap-4
 `
-const Icons = tw.div`
-rounded-full bg-white w-20 h-20 justify-center flex flex-row items-center
-hover:scale-110 opacity-100 cursor-pointer
-`
 
 const BadgeBox = tw.div`
-w-full flex flex-row justify-end items-end
-`
-const Badge = tw.div`
-w-14 h-14 rounded-full bg-white flex justify-center items-center
-opacity-100 hover:scale-110 cursor-pointer
+w-full flex flex-row justify-end items-end gap-3 p-5
 `
 
 
@@ -51,10 +44,10 @@ const EditMyArtWork = (props) => {
            <Actives>
 <Edit>
 <FlexBox>
-<Icons>수정</Icons>
-<Icons>삭제</Icons>
-<Icons>대표작품</Icons>
-<Icons>비공개</Icons>
+<CircleBtn name="Edit"></CircleBtn>
+<CircleBtn name="Delete"></CircleBtn>
+<CircleBtn name="MyStar"></CircleBtn>
+<CircleBtn name="Private"></CircleBtn>
 </FlexBox>
 </Edit>
 
@@ -62,9 +55,8 @@ const EditMyArtWork = (props) => {
            </Actives>
 <Constan>
 <BadgeBox>
-   <Badge>dd</Badge>
-   <Badge>dd</Badge>
-   <Badge>dd</Badge>
+<CircleBtn name="MyStarMini">dd</CircleBtn>
+<CircleBtn name="PrivateMini">dd</CircleBtn>
 </BadgeBox>
 </Constan>
     </Hover>

@@ -24,10 +24,12 @@ import MyQuestion from "./DimoMinitabs/MyQuestion"
 
 
 import CreateMyExp from "./CreatesProfileParts/CreateMyExp";
+import CreateMyExpBox from "./CreatesProfileParts/CreateMyExp";
 import CreateMyIntro from "./CreatesProfileParts/CreateMyIntro";
 import CreateMyPortfolio from "./CreatesProfileParts/CreateMyPortfolio"
 import CreateMySpaceUser from "./CreatesProfileParts/CreateMySpaceUser";
-import CreateMySkill from "./CreatesProfileParts/CreateMySkill"
+import CreateMySkill from "./CreatesProfileParts/CreateMySkill";
+import ChangeMyInterests from "./CreatesProfileParts/ChangeMyInterests";
 
 
 export {
@@ -37,4 +39,4 @@ export {
 
     MyAnswer, MyBookmark, MyComment, MyPost, MyQuestion,
     
-    CreateMySpaceUser, CreateMyIntro, CreateMyExp, CreateMyPortfolio, CreateMySkill }
+    CreateMySpaceUser, CreateMyIntro, CreateMyExp, CreateMyPortfolio, CreateMySkill, ChangeMyInterests, CreateMyExpBox }
