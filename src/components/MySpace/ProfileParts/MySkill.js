@@ -44,10 +44,10 @@ const MySkill = (props) => {
 
       <Box>
         <InnerBox>
-        <SkillThumbnail skill="I2" />
-        <SkillThumbnail skill="P3" />
+        <SkillThumbnail skill="I1" />
+        <SkillThumbnail skill="P1" />
         <SkillThumbnail skill="A3" />
-        <SkillThumbnail skill="Z1" />
+        <SkillThumbnail skill="A10" />
         </InnerBox>
       </Box>
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Title, Icon, ProgressBar } from "../elements";
 import { Link } from "react-router-dom";
-import { CreateMyIntro, CreateMySpaceUser, CreateMyExp, CreateMyPortfolio, CreateMySkill, ChangeMyInterests } from "../components/MySpace";
+import { CreateMyIntro, CreateMySpaceUser, CreateMyExp, ChangeMyPortfolio, CreateMySkill, ChangeMyInterests } from "../components/MySpace";
 import { useTabs } from "../hooks";
 import { MyInterests } from "../components"
 import tw from "tailwind-styled-components";
@@ -49,7 +49,7 @@ const EditMySpace = (props) => {
     },
     {
       tab: "포트폴리오",
-      content: <CreateMyPortfolio />,
+      content: <ChangeMyPortfolio />,
     },
     {
       tab: "작업 및 직업스킬",

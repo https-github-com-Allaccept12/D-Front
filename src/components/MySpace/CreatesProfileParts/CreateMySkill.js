@@ -16,7 +16,30 @@ border border-dgray-300 w-full col-span-full mt-10
 const MySkill = (props) => {
   let history = useHistory();
   const options = skillList;
-  const [toolSelected, setToolSelected] = useState([]);
+  const [toolSelectedMain, setToolSelectedMain] = useState([]);
+  const [toolSelectedSub, setToolSelectedSub] = useState([]);
+
+  let mainSpecialty = "";
+  for(var value of toolSelectedMain){
+    mainSpecialty += value.value;
+  }
+
+  let subSpecialty = "";
+  for(var value of toolSelectedSub){
+    subSpecialty += value.value;
+  }
+
+  // console.log(specialty);
+
+  const SendSkill = () => {
+    const formData = new FormData();
+    let data = {
+      specialty: mainSpecialty,
+      other_specialty: subSpecialty
+    }
+    formData.append("data")
+  }
+
   return (
     <>
 
@@ -24,19 +47,19 @@ const MySkill = (props) => {
         <Title size="4">MY SKILLS</Title>
 
         <Title size="6" className="col-start-1">대표스킬</Title>    
-        <Box> <MultiSelect options={options} value={toolSelected} labelledBy="Select" onChange={setToolSelected}/>
+        <Box> <MultiSelect options={options} value={toolSelectedMain} labelledBy="Select1" onChange={setToolSelectedMain}/>
         </Box>
        
 
 <Title size="6" className="col-start-1">보유스킬</Title>
-<Box><MultiSelect options={options} value={toolSelected} labelledBy="Select" onChange={setToolSelected}/>
+<Box><MultiSelect options={options} value={toolSelectedSub} labelledBy="Select2" onChange={setToolSelectedSub}/>
 </Box>
 
 <InnerLine />
 
 <Title size="4">작업기간</Title>
 
-<div className="bg-yellow-300 w-full h-[23rem] col-start-1 col-span-full"> jdlsf</div>
+<div className="bg-yellow-300 w-full h-[23rem] col-start-1 col-span-full"> 타임테이블</div>
 
 </div>
 
