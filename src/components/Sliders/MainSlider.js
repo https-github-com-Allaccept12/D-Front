@@ -34,7 +34,7 @@ const MainSlider = (props)=>{
     const slider = useRef(null);
     const { main, dimo } = props;
     
-    let hotists = useSelector((state) => state.hotArtists.artist);
+    let hotists = useSelector((state) => state.mainPage.artist);
     let makeSlides = () => {}
     if (hotists){
       makeSlides = () => {

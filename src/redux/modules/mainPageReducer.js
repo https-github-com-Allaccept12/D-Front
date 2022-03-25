@@ -7,9 +7,12 @@ export const mainPageArtistsSlice = createSlice({
         artists: (state, action) => {
             state.artist = action.payload
         },
+        artworks: (state, action) => {
+            state.artworks = action.payload
+        },
     },
   });
 
 
-export const { artists } = mainPageArtistsSlice.actions;
+export const { artists, artworks } = mainPageArtistsSlice.actions;
 export default mainPageArtistsSlice.reducer;

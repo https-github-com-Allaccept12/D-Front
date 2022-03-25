@@ -10,6 +10,7 @@ import tendencySlice from './modules/tendency';
 import interestsSlice from './modules/interests';
 import mainPageSlice from './modules/mainPageLoad';
 import mainPageArtistsSlice from './modules/mainPageReducer';
+import artworkSlice from './modules/artWork';
 
 export default configureStore({
   reducer: {
@@ -21,7 +22,8 @@ export default configureStore({
     tendency: tendencySlice,
     interests: interestsSlice,
     mainPageLoad: mainPageSlice,
-    hotArtists: mainPageArtistsSlice,
+    mainPage: mainPageArtistsSlice,
+    artwork: artworkSlice,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

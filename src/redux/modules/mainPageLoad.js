@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { artists } from './mainPageReducer';
+import { artists, artworks } from './mainPageReducer';
 import { preview } from './image';
 import { URL, token, account_id } from "../UrlForAxios";
 
@@ -14,9 +14,11 @@ export const mainPageLoad = createAsyncThunk(
             }
         })
         .then(res => {
-            // console.log(res.data.data.top_artist);
+            console.log(res.data.data);
             const top_artist = res.data.data.top_artist
+            const artwork = res.data.data.artwork
             dispatch(artists(top_artist));
+            dispatch(artworks(artwork));
         })
         .catch(err => console.log(err));
     },

@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { URL, token } from "../UrlForAxios";
 
-const initialState = {
-}
 
 export const CreateNewArtWork = createAsyncThunk(
     'post/CreateNewArtWork',
@@ -22,13 +20,13 @@ export const CreateNewArtWork = createAsyncThunk(
   );
 
 
-export const postSlice = createSlice({
-    name: 'post',
-    initialState,
-    reducer: {
-        // setThumbnail: (state, action) => {
-        // state.project.thumbNailNum = action.payload;
-        // },
+export const artworkSlice = createSlice({
+    name: 'artwork',
+    initialState: {},
+    reducers: {
+        artworks: (state, action) => {
+            state.artworks = action.payload
+        },
     },
     extraReducers: builder => {
         builder
@@ -46,4 +44,5 @@ export const postSlice = createSlice({
     },
 });
 
-export default postSlice.reducer;
+export const { artworks } = artworkSlice.actions;
+export default artworkSlice.reducer;

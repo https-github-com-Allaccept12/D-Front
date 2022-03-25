@@ -26,7 +26,7 @@ const Header = (props) => {
         <Link to="/"><Logo name="DplusW" logoSizeW="200" logoSizeH="59" /></Link>
         </div>
 <div className="flex-row hidden text-white header justify-evenly gap-9 md:flex">
-<Title size="6"><Link to="/">홈</Link></Title>
+{/* <Title size="6"><Link to="/">홈</Link></Title> */}
         <Title size="6"><Link to="/art/list/all">모아보기</Link></Title>
         <Title size="6"><Link to="/dimo/qna/all">디모</Link></Title>
         <Title size="6"><Link to="/myspace/myprofile">마이페이지</Link></Title>
@@ -45,7 +45,7 @@ else  {
         <Link to="/"><Logo name="DplusC" logoSizeW="200" logoSizeH="59" /></Link>
         </div>
 <div className="flex-row hidden header justify-evenly gap-9 text-dpurple-200 md:flex">
-<Title size="6"><Link to="/">홈</Link></Title>
+{/* <Title size="6"><Link to="/">홈</Link></Title> */}
         <Title size="6"><Link to="/art/list/all">모아보기</Link></Title>
         <Title size="6"><Link to="/dimo/qna/all">디모</Link></Title>
         <Title size="6"><Link to="/myspace/myprofile">마이페이지</Link></Title>

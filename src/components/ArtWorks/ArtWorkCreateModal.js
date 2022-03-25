@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from 'react-router-dom';
 import { CreateNewArtWork } from "../../redux/modules/artWork";
 import { preview } from '../../redux/modules/image';
 import Portal from "../../elements/Tools/Portal";
@@ -18,6 +19,7 @@ import {
 
 const ArtWorkCreateModal = ({ onClose }) => {
     // 기본 세팅
+    const history = useHistory();
     const dispatch = useDispatch();
     // 작품 이미지들 리덕스에서 불러옴
     const artworkfiles = useSelector((state) => state.image.artworkFiles);
@@ -56,48 +58,40 @@ const ArtWorkCreateModal = ({ onClose }) => {
     const [CopyRight, setCopyRight] = useState("");
     // options
     const copyrightOptions = [
-      {value: "1", name: "판권 소유"},
-      {value: "2", name: "zz"},
-      {value: "3", name: "cc"},
+      {value: "판권 소유", label: "판권 소유"},
+      {value: "저작자 표시", label: "저작자 표시"},
+      {value: "저작자 표시 - 비영리", label: "저작자 표시 - 비영리"},
+      {value: "저작자 표시 - 변경 금지", label: "저작자 표시 - 변경 금지"},
+      {value: "저작자 표시 - 동일 조건 변경 허락", label: "저작자 표시 - 동일 조건 변경 허락"},
+      {value: "저작자 표시 - 비영리 - 동일 조건 변경 허락", label: "저작자 표시 - 비영리 - 동일 조건 변경 허락"},
+      {value: "저작자 표시 - 비영리 - 변경 금지", label: "저작자 표시 - 비영리 - 변경 금지"},
     ]
-    // selectbox 컴포넌트
-    const CopyRightSelectBox = (props) => {
-      return (
-        <select onChange={selectCopyRight}>
-          {props.options.map((option) => (
-            <option key={option.value} value={option.value}>{option.name}</option>
-          ))}
-        </select>
-      )
-    }
-    // select 실행 함수
+    // 선택 변경 실행 함수
     const selectCopyRight = (e) => {
-      const { value, name } = e.target;
-      setCopyRight(value);
+      setCopyRight(e.target.value);
     }
 
     // 공개 여부 ------------------------------------------------------------------------
     // useState
     const [Public, setPublic] = useState("");
     // options
-    const PublicOptions = [
-      {value: true, name: "공개"},
-      {value: false, name: "비공개"},
+    const publicOptions = [
+      {value: true, label: "공개"},
+      {value: false, label: "비공개"},
     ]
     // selectBox 컴포넌트
-    const PublicSelectBox = (props) => {
-      return (
-        <select onChange={selectPublic}>
-          {props.options.map((option) => (
-            <option key={option.value} value={option.value}>{option.name}</option>
-          ))}
-        </select>
-      )
-    }
+    // const PublicSelectBox = (props) => {
+    //   return (
+    //     <select onChange={selectPublic}>
+    //       {props.options.map((option) => (
+    //         <option key={option.value} value={option.value}>{option.name}</option>
+    //       ))}
+    //     </select>
+    //   )
+    // }
     // select 실행함수
     const selectPublic = (e) => {
-      const { value, name } = e.target;
-      setPublic(value);
+      setPublic(e.target.value);
     }
     // 타이틀, 카테고리, 시작 및 종료 날짜, 설명  ----------------------------------------
     // useState
@@ -116,7 +110,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
           ...inputs,
           [name]: value
         });
-        console.log(inputs);
+        // console.log(inputs);
       }
   
 
@@ -144,8 +138,9 @@ const ArtWorkCreateModal = ({ onClose }) => {
       formData.append("data", new Blob([JSON.stringify(data)], {type: "application/json"}))
       formData.append("imgFile", forSendCover);
       artworkfiles.forEach(element => formData.append("imgFile", element));
-      console.log(formData);
+      // console.log(formData);
       dispatch(CreateNewArtWork(formData));
+      history.replace('/art/list/all');
     }
 
     
@@ -207,19 +202,6 @@ const ArtWorkCreateModal = ({ onClose }) => {
                       <input type="radio" name="category" value="branding"/>브랜딩/편집
                       <input type="radio" name="category" value="interior"/>건축/인테리어/환경
                       
-                    {/* <CheckBox inline="저장" name="category" value="ui" checked />
-                    <CheckBox inline="디자인" checked />
-                    <CheckBox inline="디스플레이/디자인" checked />
-                    <CheckBox inline="저장" checked />
-                    <CheckBox inline="저장" checked />
-                    <CheckBox inline="저장" checked />
-                    <CheckBox inline="ux/ui 디자인" checked />
-                    <CheckBox inline="coffee디자인" checked />
-                    <CheckBox inline="저장" checked />
-                    <CheckBox inline="저장" checked />
-                    <CheckBox inline="저장" checked />
-                    <CheckBox inline="저장" checked />
-                    <CheckBox inline="저장" checked /> */}
                   </div>
                 </div>
 
@@ -241,18 +223,22 @@ const ArtWorkCreateModal = ({ onClose }) => {
 
                 <div className="col-span-2 col-start-2 row-start-6">
                 <p className="text-2xl">저작권<span className="font-bold text-purple-600"> *</span></p>
-                  <CopyRightSelectBox options={copyrightOptions}></CopyRightSelectBox>
-                  {/* <SelectBox onChange={selectCopyRight}
-                    title="선택해주세요"
-                    option01="판권소유"
-                    option02="둘"
-                    option03="둘"
-                  /> */}
+                  <select onChange={selectCopyRight} vlaue={CopyRight}>
+                    <option value="" selected disabled hidden>선택해주세요</option>
+                    {copyrightOptions.map((item, index) => (
+                      <option key={index} value={item.value}>{item.label}</option>
+                    ))}
+                  </select>
                 </div>
                   
                 <div className="col-span-2 col-start-2 row-start-7">
                 <p className="text-2xl">공개 여부<span className="font-bold text-purple-600"> *</span></p>
-                  <PublicSelectBox options={PublicOptions}/>
+                  <select onChange={selectPublic} vlaue={Public}>
+                    <option value="true" selected hidden>공개</option>
+                    {publicOptions.map((item, index) => (
+                      <option key={index} value={item.value}>{item.label}</option>
+                    ))}
+                  </select>
                 </div>
                 <div className="grid place-content-end">
                 <Button size="2" color="1"onClick={createArtWork}>완료</Button>
