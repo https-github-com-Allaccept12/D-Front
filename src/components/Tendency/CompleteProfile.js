@@ -6,7 +6,7 @@ import celebration from "../../static/images/celebration.svg";
 const CompleteProfile = (props) => {
   let history = useHistory();
   const toHome = (e) => {
-    history.push("/");
+    window.location.href="/";
   };
 
   return (

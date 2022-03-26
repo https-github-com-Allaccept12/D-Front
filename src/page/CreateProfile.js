@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { preview } from "../redux/modules/image";
 import { checknickname } from "../redux/modules/checkNickname";
 import { createProfile } from "../redux/modules/createProfile";
+import { setCookie } from "../shared/cookie";
 import {
   Button,
   Title,
@@ -82,6 +83,7 @@ const CreateProfile = (props) => {
     formData.append("imgFile", image);
     // dispatch(createProfile(data));
     dispatch(createProfile(formData));
+    setCookie("nickname", nickname.value);
   };
 
   return (

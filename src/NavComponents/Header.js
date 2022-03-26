@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Title, Image, Logo } from "../elements";
 import { getCookie } from "../shared/cookie";
 import { useDispatch } from "react-redux";
@@ -7,12 +7,20 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 
 const Header = (props) => {
-  const [is_login, setIsLogin] = React.useState(false);
-
+  const [is_login, setIsLogin] = useState(false);
+  const [nickname, setNickname] = useState("");
+  const [ownerId, setOwnerId] = useState("");
+  const [accountId, setAccountId] = useState("");
   useEffect(() => {
-    let cookie = getCookie("access_token");
+    const cookie = getCookie("access_token");
+    const nickname = getCookie("nickname");
+    const account_id = getCookie("account_id");
+    console.log(nickname);
     if (cookie) {
       setIsLogin(true);
+      setNickname(nickname);
+      setOwnerId(account_id);
+      setAccountId(account_id);
     } else {
       setIsLogin(false);
     }
@@ -36,9 +44,17 @@ const Header = (props) => {
           <Title size="6">
             <Link to="/dimo/qna/all">디모</Link>
           </Title>
-          <Title size="6">
-            <Link to="/myspace/myprofile">마이페이지</Link>
+          {is_login && (
+            <Title size="6">
+            <Link to={{
+              pathname: `/myspace/myprofile`,
+              state: {
+                nickname: {nickname},
+                owner_id: {ownerId},
+              }}}>
+              마이페이지</Link>
           </Title>
+          )}
           {is_login ? (
             <Title size="6">
               <Link to="/logout">로그아웃</Link>
@@ -70,9 +86,17 @@ const Header = (props) => {
           <Title size="6">
             <Link to="/dimo/qna/all">디모</Link>
           </Title>
-          <Title size="6">
-            <Link to="/myspace/myprofile">마이페이지</Link>
+          {is_login && (
+            <Title size="6">
+            <Link to={{
+              pathname: `/myspace/myprofile`,
+              state: {
+                nickname: {nickname},
+                owner_id: {ownerId},
+              }}}>
+              마이페이지</Link>
           </Title>
+          )}
           {is_login ? (
             <Title size="6">
               <Link to="/logout">로그아웃</Link>

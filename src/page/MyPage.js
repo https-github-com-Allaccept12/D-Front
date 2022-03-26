@@ -1,12 +1,22 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getCookie } from "../shared/cookie";
+import { myPageLoad } from "../redux/modules/myPage";
 import { useHistory, Link, useLocation } from "react-router-dom";
-import { MyPageCategory, MyProfile, MySpaceTab } from "../components/MySpace";
-
-import { Profile, Button, Icon } from "../elements";
+import { MyPageCategory, MyProfile, MySpaceTab, TopOfProfile } from "../components/MySpace";
 
 const MyPage = (props) => {
-  let history = useHistory();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    let account_id = 0;
+    const id_cookie = getCookie("account_id");
+    if (id_cookie) {
+        account_id = id_cookie;
+        console.log("account_id: ", account_id);
+    }
+    const owner_account_id = account_id;
+    dispatch(myPageLoad({ account_id, owner_account_id, dispatch }));
+  });
   const location = useLocation();
   const a = location.pathname;
   const b = a.split("/")[2];
@@ -14,32 +24,33 @@ const MyPage = (props) => {
   return (
     <>
       <div className="grid grid-cols-5">
-        <div className="md:ml-28 mt-4 w-40 h-full ">
+        <div className="w-40 h-full mt-4 md:ml-28 ">
           <MyPageCategory />
         </div>
         {/* 내정보일땐 마이프로필 다른사람정보일땐 디폴리오 각 메뉴를 클릭하면 메뉴 */}
-        <div className="col-start-2 col-end-6">
+        <TopOfProfile/>
+        {/* <div className="col-start-2 col-end-6">
           <div className=" bg-blue-400 h-52 w-[80.625rem]">
             {" "}
             여기에 배경이미지
-            <div className="justify-items-center items-center">
+            <div className="items-center justify-items-center">
               <div className="flex justify-end">팔로잉 팔로워</div>
 
               <div className="flex flex-col items-center mt-20">
                 <Profile size="1" />
                 <div className="ml-2">
-                  <div className="grid justify-items-center rounded-lg p-1">
-                    <h3 className="text-xl font-minB text-gray-800 font-medium">
+                  <div className="grid p-1 rounded-lg justify-items-center">
+                    <h3 className="text-xl font-medium text-gray-800 font-minB">
                       펭귄 님
                     </h3>
-                    <span className="text-gray-600 text-sm font-minB">
+                    <span className="text-sm text-gray-600 font-minB">
                       UX/UI Designer
                     </span>
                     <Button size="3">
                       <span className="text-xs font-min-2"> INTP </span>
                     </Button>
 
-                    <div className="text-2xl p-1 flex flex-row">
+                    <div className="flex flex-row p-1 text-2xl">
                       <Icon name="Time" iconSize="32" />
                       <Icon name="Talk" iconSize="32" />
                       <Icon name="Link" iconSize="32" />
@@ -52,7 +63,7 @@ const MyPage = (props) => {
               <MySpaceTab />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
