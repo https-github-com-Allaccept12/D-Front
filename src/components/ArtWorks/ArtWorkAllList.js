@@ -25,24 +25,28 @@ const p = [
 
 const ArtWorkAllList = (props) => {
     const artworks = useSelector((state) => state.mainPage.artworks);
-    console.log(artworks);
-    const arrayArtworks = () => {
-      const arr = [];
-      for (let i = 0; i < artworks.length; i++) {
-          arr.push(
-            <ArtWorkPost 
-              size="7" 
-              main 
-              profile={artworks[i].account_profile}
-              nickname={artworks[i].account_nickname}
-              thumnail={artworks[i].img}
-              is_like={artworks[i].is_like}
-              like_count={artworks[i].like_count}
-            />,
-          );
-      }
-      return arr;
-  };
+    console.log(artworks); 
+    let arrayArtworks = () => {};
+    if (artworks){
+        arrayArtworks = () => {
+            const arr = [];
+            for (let i = 0; i < artworks.length; i++) {
+                arr.push(
+                  <ArtWorkPost 
+                    size="7" 
+                    main 
+                    profile={artworks[i].account_profile}
+                    nickname={artworks[i].account_nickname}
+                    thumnail={artworks[i].img}
+                    is_like={artworks[i].is_like}
+                    like_count={artworks[i].like_count}
+                  />,
+                );
+            }
+            return arr;
+        };
+    }
+    
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[3];

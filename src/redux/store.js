@@ -9,6 +9,7 @@ import profileSlice from "./modules/createProfile";
 import tendencySlice from "./modules/tendency";
 import interestsSlice from "./modules/interests";
 import mainPageSlice from "./modules/mainPageLoad";
+import myPageSlice from "./modules/myPage";
 import mainPageArtistsSlice from "./modules/mainPageReducer";
 import artworkSlice from "./modules/artWork";
 
@@ -24,6 +25,7 @@ export default configureStore({
     mainPageLoad: mainPageSlice,
     mainPage: mainPageArtistsSlice,
     artwork: artworkSlice,
+    myPage: myPageSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

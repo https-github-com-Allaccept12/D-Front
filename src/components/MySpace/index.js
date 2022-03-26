@@ -10,6 +10,7 @@ import MyProfile from "./TabParts/MyProfile"
 import MyQNA from "./TabParts/MyQNA";
 
 
+import TopOfProfile from "./ProfileParts/TopOfProfile"
 import MyIntro from "./ProfileParts/MyIntro"
 import MyExp from "./ProfileParts/MyExp";
 import MyPortfolio from "./ProfileParts/MyPortfolio"
@@ -32,7 +33,7 @@ import ChangeMyInterests from "./CreatesProfileParts/ChangeMyInterests";
 
 
 export {
-    MyExp, MyIntro, MyPosts, MyQNA,
+    TopOfProfile, MyExp, MyIntro, MyPosts, MyQNA,
     MyPortfolio, MySkill, MyTimeLine, MyProfile, MyPic,
     MyPage, MyArtWork, MyPageCategory, MySpaceTab,
 

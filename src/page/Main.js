@@ -18,15 +18,15 @@ const Main = (props) => {
         let id_cookie = getCookie("account_id");
         if (id_cookie) {
             account_id = id_cookie;
-            console.log(account_id);
         }
+        console.log(account_id);
         dispatch(mainPageLoad({ account_id, dispatch }));
     });
 
     return (
         <>
             <div className="w-full">
-                <div className="invisible lg:visible lg:absolute text-white inset-44 ">
+                <div className="invisible text-white lg:visible lg:absolute inset-44 ">
                     <Title size="2">Hot 디자이너</Title>
                     <div className="mt-4 ml-1">
                         <Subtitle size="1">
@@ -37,7 +37,7 @@ const Main = (props) => {
                     </div>
                 </div>
 
-                <div className="invisible fixed lg:visible lg:absolute top-36 right-28">
+                <div className="fixed invisible lg:visible lg:absolute top-36 right-28">
                     <MainSlider main />
                 </div>
             </div>
@@ -45,11 +45,11 @@ const Main = (props) => {
             <div className="-mt-32 lg:mt-24 mx-auto md:pl-12 md:max-w-[75%] xl:max-w-[90%]">
                 <Title
                     size="2"
-                    className=" col-start-2 row-start-1 flex justify-center md:justify-start items-end my-3"
+                    className="flex items-end justify-center col-start-2 row-start-1 my-3  md:justify-start"
                 >
                     추천 아트워크
                 </Title>
-                <div className="flex justify-center md:justify-start items-center flex-wrap gap-5">
+                <div className="flex flex-wrap items-center justify-center gap-5 md:justify-start">
                     <ArtWorkAllList main />
                 </div>
             </div>
