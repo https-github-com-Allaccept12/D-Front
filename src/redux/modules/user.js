@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import userApi from './userApi';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import userApi from "./userApi";
 
 const UserApi = new userApi();
 
@@ -10,17 +10,16 @@ const userState = {
 
 export const kakaoLoginAxios = createAsyncThunk(
   "user/kakaoLoginAxios",
-  async ({code, history}, {dispatch}) => {
-    const user = await UserApi.kakaoLogin({code, history});
+  async ({ code, history }, { dispatch }) => {
+    const user = await UserApi.kakaoLogin({ code, history });
     // console.log(user);
     // console.log(sessionStorage.getItem("access_token"))
-
 
     if (user) {
       dispatch(user.data);
       return user;
     }
-  },
+  }
 );
 
 // export const kakaoLogin = createAsyncThunk(
@@ -41,14 +40,13 @@ export const kakaoLoginAxios = createAsyncThunk(
 //   );
 
 export const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState: userState,
   reducer: {},
-  extraReducers: builder => {
-    builder
-      .addCase(kakaoLoginAxios.fulfilled, (state, action) => {
-        state.isLogin = true;
-      })
+  extraReducers: (builder) => {
+    builder.addCase(kakaoLoginAxios.fulfilled, (state, action) => {
+      state.isLogin = true;
+    });
   },
 });
 

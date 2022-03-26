@@ -1,16 +1,16 @@
-import React from 'react';
-import { configureStore } from '@reduxjs/toolkit';
+import React from "react";
+import { configureStore } from "@reduxjs/toolkit";
 
-import userSlice from './modules/user';
-import imageSlice from './modules/image';
+import userSlice from "./modules/user";
+import imageSlice from "./modules/image";
 import postSlice from "./modules/artWork";
 import checkNicknameSlice from "./modules/checkNickname";
 import profileSlice from "./modules/createProfile";
-import tendencySlice from './modules/tendency';
-import interestsSlice from './modules/interests';
-import mainPageSlice from './modules/mainPageLoad';
-import mainPageArtistsSlice from './modules/mainPageReducer';
-import artworkSlice from './modules/artWork';
+import tendencySlice from "./modules/tendency";
+import interestsSlice from "./modules/interests";
+import mainPageSlice from "./modules/mainPageLoad";
+import mainPageArtistsSlice from "./modules/mainPageReducer";
+import artworkSlice from "./modules/artWork";
 
 export default configureStore({
   reducer: {
@@ -25,7 +25,7 @@ export default configureStore({
     mainPage: mainPageArtistsSlice,
     artwork: artworkSlice,
   },
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,
     }),

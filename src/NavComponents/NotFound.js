@@ -3,7 +3,6 @@ import { Button } from "../elements";
 
 import { useHistory } from "react-router-dom";
 
-
 const NotFound = (props) => {
   let history = useHistory();
   return (

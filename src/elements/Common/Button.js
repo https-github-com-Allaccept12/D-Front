@@ -1,7 +1,6 @@
 import React from "react";
-import Icon from "./Icon"
+import Icon from "./Icon";
 import tw from "tailwind-styled-components";
-
 
 const Btn = tw.button`
    rounded-full text-base shadow-sm flex flex-row justify-center items-center 
@@ -10,23 +9,34 @@ const Btn = tw.button`
   ${(props) => (props.size === "2" ? `h-b02 px-8 py-4` : "")};
   ${(props) => (props.size === "3" ? `h-b03 px-8 py-5` : "")};
 
-  ${(props) => (props.color === "1" ? `
+  ${(props) =>
+    props.color === "1"
+      ? `
   text-white bg-dpurple-200 
   hover:bg-dpurple-300 
   active:bg-dpurple-400
-  disabled:bg-dpurple-100` : "")};
-  ${(props) => (props.color === "2" ? `
+  disabled:bg-dpurple-100`
+      : ""};
+  ${(props) =>
+    props.color === "2"
+      ? `
   text-white bg-dgray-300 
   hover:bg-dgray-400 
   active:bg-dgray-500
-  disabled:bg-dgray-100` : "")};
-  ${(props) => (props.color === "3" ? `
+  disabled:bg-dgray-100`
+      : ""};
+  ${(props) =>
+    props.color === "3"
+      ? `
   text-white bg-dred-300 
   hover:bg-dred-400 
   active:bg-dred-500
-  disabled:bg-dred-100` : "")};
+  disabled:bg-dred-100`
+      : ""};
 
-  ${(props) => (props.color === "4" ? `
+  ${(props) =>
+    props.color === "4"
+      ? `
   text-dpurple-200 bg-white
   border border-dpurple-200
   hover:bg-dpurple-100 
@@ -34,8 +44,11 @@ const Btn = tw.button`
   disabled:border-dpurple-100
   disabled:bg-white
   disabled:text-dpurple-100
-  ` : "")};
-  ${(props) => (props.color === "5" ? `
+  `
+      : ""};
+  ${(props) =>
+    props.color === "5"
+      ? `
   text-dgray-400 bg-white
   border border-dgray-400
   hover:bg-dgray-200 
@@ -44,8 +57,11 @@ const Btn = tw.button`
   disabled:bg-white
   disabled:text-dgray-200
   
-  ` : "")};
-  ${(props) => (props.color === "6" ? `
+  `
+      : ""};
+  ${(props) =>
+    props.color === "6"
+      ? `
   text-dred-300 
   border border-dred-300
   hover:bg-dred-100 
@@ -54,12 +70,13 @@ const Btn = tw.button`
   disabled:bg-white
   disabled:text-dred-100
   
-  ` : "")};
-`
+  `
+      : ""};
+`;
 const IconColor = tw.span` 
 mr-2
 ${(props) => (props.iconColor === "heart" ? `text-dred-300` : "")};
-`
+`;
 
 const Button = (props) => {
   const {
@@ -73,24 +90,25 @@ const Button = (props) => {
     icon,
     name,
     iconSize,
-    iconColor
+    iconColor,
   } = props;
 
-
   return (
-    <Btn 
-    size={size} color={color} styles={styles}
-    onClick={onClick} disabled={disabled}  
-    is_loading={is_loading}>
-    
-     {icon && 
-     <IconColor iconColor={iconColor}>
-       <Icon name={name} iconSize={iconSize}/>
-       </IconColor>
-       } 
-       
-       {children}
+    <Btn
+      size={size}
+      color={color}
+      styles={styles}
+      onClick={onClick}
+      disabled={disabled}
+      is_loading={is_loading}
+    >
+      {icon && (
+        <IconColor iconColor={iconColor}>
+          <Icon name={name} iconSize={iconSize} />
+        </IconColor>
+      )}
 
+      {children}
     </Btn>
   );
 };
@@ -100,7 +118,7 @@ Button.defaultProps = {
   color: "1",
   children: null,
   onClick: () => {},
-  iconColor: ""
+  iconColor: "",
 };
 
 export default Button;

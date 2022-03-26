@@ -1,11 +1,10 @@
 import React from "react";
 
 const Tabs = (props) => {
-
-
   return (
     <>
-<ul className="
+      <ul
+        className="
   nav nav-tabs nav-justified
   flex flex-col
   md:flex-row
@@ -15,10 +14,13 @@ const Tabs = (props) => {
   pl-0
   mb-4
 "
-
-id="tabs-tabJustify" role="tablist">
-  <li className="nav-item flex-grow text-center" role="presentation">
-    <a href="#tabs-homeJustify" className="
+        id="tabs-tabJustify"
+        role="tablist"
+      >
+        <li className="nav-item flex-grow text-center" role="presentation">
+          <a
+            href="#tabs-homeJustify"
+            className="
       nav-link
       w-full
       block
@@ -33,11 +35,21 @@ id="tabs-tabJustify" role="tablist">
       hover:border-transparent hover:bg-gray-100
       focus:border-transparent
       active
-    " id="tabs-home-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-homeJustify" role="tab"
-      aria-controls="tabs-homeJustify" aria-selected="true">QnA</a>
-  </li>
-  <li className="nav-item flex-grow text-center" role="presentation">
-    <a href="#tabs-profileJustify" className="
+    "
+            id="tabs-home-tabJustify"
+            data-bs-toggle="pill"
+            data-bs-target="#tabs-homeJustify"
+            role="tab"
+            aria-controls="tabs-homeJustify"
+            aria-selected="true"
+          >
+            QnA
+          </a>
+        </li>
+        <li className="nav-item flex-grow text-center" role="presentation">
+          <a
+            href="#tabs-profileJustify"
+            className="
       nav-link
       w-full
       block
@@ -51,14 +63,18 @@ id="tabs-tabJustify" role="tablist">
       my-2
       hover:border-transparent hover:bg-gray-100
       focus:border-transparent
-    " 
- 
-    id="tabs-profile-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-profileJustify" role="tab"
-      aria-controls="tabs-profileJustify" aria-selected="false">정보 공유</a>
-  </li>
-
-</ul>
-
+    "
+            id="tabs-profile-tabJustify"
+            data-bs-toggle="pill"
+            data-bs-target="#tabs-profileJustify"
+            role="tab"
+            aria-controls="tabs-profileJustify"
+            aria-selected="false"
+          >
+            정보 공유
+          </a>
+        </li>
+      </ul>
     </>
   );
 };

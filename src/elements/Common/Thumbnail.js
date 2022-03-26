@@ -1,7 +1,6 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 
-
 const ArtWorkImage = tw.img`
 overflow-hidden object-cover object-center rounded-md
 ${(props) => (props.size === "1" ? `w-t01 h-t01` : "")};
@@ -15,25 +14,18 @@ ${(props) => (props.size === "8" ? `w-[11.875rem] h-[11.875rem] ` : "")};
 
 `;
 
-
-
 const Thumbnail = (props) => {
   const { src, size } = props;
-    return (
-        <>
-    <ArtWorkImage src={src} size={size} />
+  return (
+    <>
+      <ArtWorkImage src={src} size={size} />
     </>
-    )
-}
+  );
+};
 
 Thumbnail.defaultProps = {
   src: "https://user-images.githubusercontent.com/89088205/155078987-592a07cd-a490-49fc-aabc-bc47cb508963.jpg",
   size: "3",
 };
- 
-
-
-
-
 
 export default Thumbnail;

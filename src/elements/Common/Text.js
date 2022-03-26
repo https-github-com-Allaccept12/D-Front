@@ -1,5 +1,5 @@
 import React from "react";
-import tw from "tailwind-styled-components"
+import tw from "tailwind-styled-components";
 
 const BodyText = tw.div`
 ${(props) => (props.size === "1" ? `font-min1 text-tiny` : "")};
@@ -13,20 +13,20 @@ ${(props) => (props.size === "7" ? `font-min3 text-7xl` : "")};
 `;
 
 const Text = (props) => {
-  const { children, onClick, size, className } =
-  props;
+  const { children, onClick, size, className } = props;
 
-
-  return <BodyText onClick={onClick} size={size} className={className} >{children}</BodyText>;
+  return (
+    <BodyText onClick={onClick} size={size} className={className}>
+      {children}
+    </BodyText>
+  );
 };
 
 Text.defaultProps = {
   children: null,
   onClick: () => {},
   size: 3,
-  className: ""
+  className: "",
 };
-
-
 
 export default Text;

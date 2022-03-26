@@ -1,7 +1,6 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 
-
 const Btn = tw.button`
   font-sanss2 shadow-md box-border
   rounded-md p-2 py-2 text-white
@@ -30,10 +29,10 @@ const SelectBox = (props) => {
     option12,
   } = props;
 
-
   return (
-      <>
-    <select class="form-select appearance-none
+    <>
+      <select
+        class="form-select appearance-none
       block
       w-full
       px-3
@@ -47,7 +46,9 @@ const SelectBox = (props) => {
       transition
       ease-in-out
       m-0
-      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        aria-label="Default select example"
+      >
         <option selected>{title}</option>
         <option value="1">{option01}</option>
         <option value="2">{option02}</option>
@@ -61,27 +62,25 @@ const SelectBox = (props) => {
         <option value="10">{option10}</option>
         <option value="11">{option11}</option>
         <option value="12">{option12}</option>
-
-    </select>
-      </>
+      </select>
+    </>
   );
 };
 
 SelectBox.defaultProps = {
-    title: "옵션을 선택하세여",
-    option01: "옵션1",
-    option02: "옵션2",
-    option03: "옵션3",
-    option04: "옵션4",
-    option05: "옵션5",
-    option06: "옵션6",
-    option07: "옵션7",
-    option08: "옵션8",
-    option09: "옵션9",
-    option10: "옵션10",
-    option11: "옵션11",
-    option12: "옵션12",
+  title: "옵션을 선택하세여",
+  option01: "옵션1",
+  option02: "옵션2",
+  option03: "옵션3",
+  option04: "옵션4",
+  option05: "옵션5",
+  option06: "옵션6",
+  option07: "옵션7",
+  option08: "옵션8",
+  option09: "옵션9",
+  option10: "옵션10",
+  option11: "옵션11",
+  option12: "옵션12",
 };
-
 
 export default SelectBox;

@@ -13,7 +13,7 @@ const Example = (props) => {
 
   return (
     <div>
-      <h1>{ title }</h1>
+      <h1>{title}</h1>
       {/* <pre>{JSON.stringify(selected)}</pre> */}
       <MultiSelect
         options={options}
@@ -27,7 +27,7 @@ const Example = (props) => {
 };
 
 Example.defaultProps = {
-  title: "사용 툴"
-}
+  title: "사용 툴",
+};
 
 export default Example;

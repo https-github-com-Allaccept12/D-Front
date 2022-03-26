@@ -1,5 +1,5 @@
 import React from "react";
-import tw from "tailwind-styled-components"
+import tw from "tailwind-styled-components";
 
 const TitleText = tw.div`
 ${(props) => (props.size === "1" ? `font-minB text-5xl` : "")};
@@ -12,11 +12,18 @@ ${(props) => (props.color === "W" ? `text-white` : "")};
 `;
 
 const Title = (props) => {
-  const { children, onClick, size, color, className } =
-  props;
+  const { children, onClick, size, color, className } = props;
 
-
-  return <TitleText onClick={onClick} size={size} color={color} className={className} >{children}</TitleText>;
+  return (
+    <TitleText
+      onClick={onClick}
+      size={size}
+      color={color}
+      className={className}
+    >
+      {children}
+    </TitleText>
+  );
 };
 
 Title.defaultProps = {
@@ -24,9 +31,7 @@ Title.defaultProps = {
   onClick: () => {},
   size: 3,
   color: "",
-  className: ""
+  className: "",
 };
-
-
 
 export default Title;
