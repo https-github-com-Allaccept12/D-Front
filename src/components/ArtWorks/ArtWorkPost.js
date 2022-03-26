@@ -17,8 +17,7 @@ ${(props) => (props.main ? `p-0 m-0` : "")};
 `;
 
 const ArtWorkPost = (props) => {
-  const { size, main } = props;
-  let history = useHistory();
+  const { size, main, profile, nickname, thumnail, is_like, like_count } = props;
   return (
     <>
       <Art main={main}>
@@ -29,17 +28,17 @@ const ArtWorkPost = (props) => {
           data-bs-target="#exampleModalXl"
         >
           <Thumbnail
-            src="https://w.namu.la/s/ecd088782c4654b5bcc2223c3c7e135ede44f79588e80fb88c14c0b42e48cf37ad5a52176dbad7934c6802f1912be5a991cee8c95aa609df52f22b591dbd2319a7e818967bceef4984b2d395579587ab9d445306627c8082bbf200487a14097c"
+            src={thumnail}
             size={size}
           />
         </button>
         <div className="flex flex-row items-center justify-between flex-shrink-0 w-full px-2 mt-1">
           <div className="flex flex-row items-center gap-2">
-            <Profile size="7" />
-            <Subtitle size="1">펭귄</Subtitle>
+            <Profile size="7" src={profile} />
+            <Subtitle size="1">{nickname}</Subtitle>
           </div>
           <div className="flex flex-row items-center mt-1 mr-1">
-            <HeartButton like_cnt="1" is_like />
+            <HeartButton like_cnt={like_count} is_like={is_like} />
           </div>
         </div>
       </Art>
