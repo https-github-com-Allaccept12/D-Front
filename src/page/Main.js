@@ -1,53 +1,60 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Title, Text, Subtitle } from "../elements";
+import { Title, Text, Subtitle, Thumbnail } from "../elements";
 import { MainSlider } from "../components";
-import { ArtWorkAllList } from "../components/ArtWorks";
+import { ArtWorkAllList, ArtWorkPost } from "../components/ArtWorks";
 import { mainPageLoad } from "../redux/modules/mainPageLoad";
 import { setCookie, getCookie } from "../shared/cookie";
-import "./Main.css";
 
 const Main = (props) => {
-  const dispatch = useDispatch();
-  if (sessionStorage.getItem("access_token")) {
-    setCookie("access_token", sessionStorage.getItem("access_token"), 7);
-    setCookie("refresh_token", sessionStorage.getItem("refresh_token"), 7);
-    setCookie("account_id", sessionStorage.getItem("account_id"), 7);
-  }
-  useEffect(() => {
-    let account_id = 0;
-    let id_cookie = getCookie("account_id");
-    if (id_cookie) {
-      account_id = id_cookie;
-      console.log(account_id);
+    const dispatch = useDispatch();
+    if (sessionStorage.getItem("access_token")) {
+        setCookie("access_token", sessionStorage.getItem("access_token"), 7);
+        setCookie("refresh_token", sessionStorage.getItem("refresh_token"), 7);
+        setCookie("account_id", sessionStorage.getItem("account_id"), 7);
     }
-    dispatch(mainPageLoad({ account_id, dispatch }));
-  });
+    useEffect(() => {
+        let account_id = 0;
+        let id_cookie = getCookie("account_id");
+        if (id_cookie) {
+            account_id = id_cookie;
+            console.log(account_id);
+        }
+        dispatch(mainPageLoad({ account_id, dispatch }));
+    });
 
-  return (
-    <div className="w-full">
-      <div className="absolute text-white inset-56 ">
-        <Title size="2">Hot 디자이너</Title>
-        <div className="mt-4 ml-1">
-          <Subtitle size="1">
-            현재 가장 핫한
-            <br />
-            디자이너님들을 소개합니다
-          </Subtitle>
-        </div>
-      </div>
+    return (
+        <>
+            <div className="w-full">
+                <div className="invisible lg:visible lg:absolute text-white inset-44 ">
+                    <Title size="2">Hot 디자이너</Title>
+                    <div className="mt-4 ml-1">
+                        <Subtitle size="1">
+                            현재 가장 핫한
+                            <br />
+                            디자이너님들을 소개합니다
+                        </Subtitle>
+                    </div>
+                </div>
 
-      <div className="hidden Main sm:flex">
-        <div className="hidden justify-self-end max-w-fit sm:flex">
-          <MainSlider main />
-        </div>
-      </div>
+                <div className="invisible fixed lg:visible lg:absolute top-36 right-28">
+                    <MainSlider main />
+                </div>
+            </div>
 
-      <div className="container mx-auto md:pt-28">
-        <ArtWorkAllList />
-      </div>
-    </div>
-  );
+            <div className="-mt-32 lg:mt-24 mx-auto md:pl-12 md:max-w-[75%] xl:max-w-[90%]">
+                <Title
+                    size="2"
+                    className=" col-start-2 row-start-1 flex justify-center md:justify-start items-end my-3"
+                >
+                    추천 아트워크
+                </Title>
+                <div className="flex justify-center md:justify-start items-center flex-wrap gap-5">
+                    <ArtWorkAllList main />
+                </div>
+            </div>
+        </>
+    );
 };
 
 export default Main;
