@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Title, Image, Logo } from "../elements";
 import { getCookie } from "../shared/cookie";
 import { useDispatch } from "react-redux";
