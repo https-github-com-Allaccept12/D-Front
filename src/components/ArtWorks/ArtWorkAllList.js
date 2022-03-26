@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Button, SearchInput, Title } from "../../elements";
 import ArtWorkPost from "./ArtWorkPost";
 import tw from "tailwind-styled-components";
@@ -23,16 +24,41 @@ const p = [
 ];
 
 const ArtWorkAllList = (props) => {
-    let history = useHistory();
+    const artworks = useSelector((state) => state.mainPage.artworks);
+    console.log(artworks); 
+    let arrayArtworks = () => {};
+    if (artworks){
+        arrayArtworks = () => {
+            const arr = [];
+            for (let i = 0; i < artworks.length; i++) {
+                arr.push(
+                  <ArtWorkPost 
+                    size="7" 
+                    main 
+                    profile={artworks[i].account_profile}
+                    nickname={artworks[i].account_nickname}
+                    thumnail={artworks[i].img}
+                    is_like={artworks[i].is_like}
+                    like_count={artworks[i].like_count}
+                  />,
+                );
+            }
+            return arr;
+        };
+    }
+    
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[3];
     if (a === "/")
         return (
+            // <>
+            //     {p.map((n) => {
+            //         return <ArtWorkPost size="7" main />;
+            //     })}
+            // </>
             <>
-                {p.map((n) => {
-                    return <ArtWorkPost size="7" main />;
-                })}
+            {arrayArtworks()}
             </>
         );
 
@@ -44,8 +70,8 @@ const ArtWorkAllList = (props) => {
                     <div className="flex items-center justify-around w-full space-x-36">
                         <div
                             className="box-border rounded-full 
-      bg-white border border-black h-[2.5rem]
-      flex justify-center items-center px-10 my-5"
+                                     bg-white border border-black h-[2.5rem]
+                                       flex justify-center items-center px-10 my-5"
                         >
                             <button>인기순</button> <button>최신순</button> <button>팔로우디자이너</button>
                         </div>
@@ -76,7 +102,8 @@ const ArtWorkAllList = (props) => {
                     </div>
                     <hr className="w-full border " />
                     {p.map((n) => {
-                        return <ArtWorkPost />;
+                      console.log(n);
+                      return <ArtWorkPost />;
                     })}
                 </Grid>
             </>

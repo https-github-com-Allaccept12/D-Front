@@ -18,15 +18,15 @@ const Main = (props) => {
         let id_cookie = getCookie("account_id");
         if (id_cookie) {
             account_id = id_cookie;
-            console.log(account_id);
         }
+        console.log(account_id);
         dispatch(mainPageLoad({ account_id, dispatch }));
     });
 
     return (
         <>
             <div className="w-full">
-                <div className="invisible lg:visible lg:absolute text-white inset-44 ">
+                <div className="invisible text-white lg:visible lg:absolute inset-44 ">
                     <Title size="2">Hot 디자이너</Title>
                     <div className="mt-4 ml-1">
                         <Subtitle size="1">
@@ -37,7 +37,7 @@ const Main = (props) => {
                     </div>
                 </div>
 
-                <div className="invisible fixed lg:visible lg:absolute top-36 right-28">
+                <div className="fixed invisible lg:visible lg:absolute top-36 right-28">
                     <MainSlider main />
                 </div>
             </div>

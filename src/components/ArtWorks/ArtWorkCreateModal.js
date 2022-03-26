@@ -30,13 +30,21 @@ const ArtWorkCreateModal = ({ onClose }) => {
   // useState
   const [forSendCover, setForSendCover] = useState();
   // 이미지 처리 함수
+  const [thumbnail, setThumbnail] = useState();
   const onDrop = useCallback((acceptedFile) => {
+    setThumbnail(acceptedFile[0].name);
     const reader = new FileReader();
     setForSendCover(acceptedFile[0]);
     reader.readAsDataURL(acceptedFile[0]);
     reader.onload = () => {
       dispatch(preview(reader.result));
+      // console.log(reader.result.fileName);
     };
+    console.log(thumbnail)
+    // reader.fileName(acceptedFile[0])
+    // reader.onload = (e) => {
+    //   console.log(e.target.fileName);
+    // }
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
@@ -48,7 +56,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
   // string으로 변환
   let specialty = "";
   for (var value of toolSelected) {
-    specialty += value.value;
+    specialty += value.value + " ";
   }
   console.log(specialty);
 
@@ -132,6 +140,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
     copyright: CopyRight,
     is_master: false,
     scope: Public,
+    thumbnail: thumbnail,
   };
   console.log(data);
 
