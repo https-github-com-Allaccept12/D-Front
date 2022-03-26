@@ -15,17 +15,17 @@ ${(props) => (props.size === "8" ? `w-[11.875rem] h-[11.875rem] ` : "")};
 `;
 
 const Thumbnail = (props) => {
-  const { src, size } = props;
-  return (
-    <>
-      <ArtWorkImage src={src} size={size} />
-    </>
-  );
+    const { src, size } = props;
+    return (
+        <>
+            <ArtWorkImage src={src} size={size} />
+        </>
+    );
 };
 
 Thumbnail.defaultProps = {
-  src: "https://user-images.githubusercontent.com/89088205/155078987-592a07cd-a490-49fc-aabc-bc47cb508963.jpg",
-  size: "3",
+    src: "https://user-images.githubusercontent.com/89088205/155078987-592a07cd-a490-49fc-aabc-bc47cb508963.jpg",
+    size: "3",
 };
 
 export default Thumbnail;

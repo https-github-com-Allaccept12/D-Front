@@ -1,6 +1,6 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { Header, NotFound } from "./NavComponents";
+import { Route, Switch, useLocation } from "react-router-dom";
+import { Header, OHeader, NotFound } from "./NavComponents";
 import { TendencyTest, MyInterests, Results } from "./components";
 import { Main, ArtWork, Dimo, MyPosts, LogOut, EditMySpace, MyPage, CreateProfile, KakaoRedirectHandler } from "./page";
 import { CompleteProfile } from "./components";
@@ -8,12 +8,15 @@ import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "./components/Dimo";
 import { ArtWorkWrite, ArtWorkCreate } from "./components/ArtWorks";
 
 function App() {
+    const location = useLocation();
+    const a = location.pathname;
+    const b = a.split("/")[3];
     return (
         <>
             <div id="modal"></div>
             <div id="root"></div>
             <div className="w-full m-auto App">
-                <Header />
+                {b === undefined ? <Header /> : <OHeader />}
                 <Switch>
                     <Route exact path="/" component={Main} />
                     <Route exact path="/Main" component={Main} />
