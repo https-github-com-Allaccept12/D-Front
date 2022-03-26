@@ -2,19 +2,17 @@ module.exports = {
     root: true,
     env: {
         browser: true,
+        es2021: true,
+        node: true,
         es6: true,
     },
-    extends: [
-        "prettier",
-        "javascriptreact",
-        // prettier 관련 규칙 모음
-    ],
-
-    rules: {
-        // 추가하고 싶은 rule을 더 추가해줍니다.
-    },
+    extends: ["prettier"],
     parserOptions: {
-        ecmaVersion: 6,
+        ecmaFeatures: {
+            jsx: true,
+        },
+        ecmaVersion: "latest",
         sourceType: "module",
     },
+    rules: {},
 };
