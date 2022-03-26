@@ -6,7 +6,6 @@ const HeartButton = (props) => {
 
   const [like_cnt, setLikeCnt] = useState(props.like_cnt);
   const [like_ok, setLikeOk] = useState(props.is_like);
-
   const cancelLike = () => {
     setLikeOk(false);
     setLikeCnt(like_cnt - 1);
@@ -18,7 +17,7 @@ const HeartButton = (props) => {
   };
 
   return (
-    <div className="cursor-pointer flex flex-row items-center justify-center -mt-1">
+    <div className="flex flex-row items-center justify-center -mt-1 cursor-pointer">
       {like_ok ? (
         <Icon name={nameF} iconSize={iconSize} onClick={cancelLike} />
       ) : (
