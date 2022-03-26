@@ -1,4 +1,4 @@
-import Comment from "./Comment"
-import CommentList from "./CommentList"
+import Comment from "./Comment";
+import CommentList from "./CommentList";
 
-export { Comment, CommentList }
+export { Comment, CommentList };

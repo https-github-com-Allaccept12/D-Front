@@ -1,7 +1,6 @@
 import React from "react";
 import tw from "tailwind-styled-components";
 
-
 const ArtWorkImage = tw.img`
 overflow-hidden object-cover object-center rounded-full
 bg-white p-1
@@ -16,26 +15,19 @@ ${(props) => (props.size === "8" ? `w-p08 h-p08` : "")};
 ${(props) => (props.main ? `border-white border-2` : "")};
 `;
 
-
-
 const Profile = (props) => {
   const { src, size, main } = props;
-    return (
-        <>
-    <ArtWorkImage src={src} size={size} main={main} />
+  return (
+    <>
+      <ArtWorkImage src={src} size={size} main={main} />
     </>
-    )
-}
+  );
+};
 
 Profile.defaultProps = {
   src: "https://user-images.githubusercontent.com/89088205/155078987-592a07cd-a490-49fc-aabc-bc47cb508963.jpg",
   size: "3",
-  main: false
+  main: false,
 };
- 
-
-
-
-
 
 export default Profile;

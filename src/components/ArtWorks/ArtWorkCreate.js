@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from "react";
-import { artworkFiles } from '../../redux/modules/image';
-import { useDispatch, useSelector } from 'react-redux';
+import { artworkFiles } from "../../redux/modules/image";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Dropzone, {useDropzone} from 'react-dropzone';
+import Dropzone, { useDropzone } from "react-dropzone";
 import { Button, Card } from "../../elements";
 import ArtWorkCreateModal from "./ArtWorkCreateModal";
 import { Portal } from "@mui/material";
@@ -20,17 +20,16 @@ const ArtWorkCreate = (props) => {
   };
 
   const onDrop = useCallback((acceptedFile) => {
-    for (let file of acceptedFile){
+    for (let file of acceptedFile) {
       setImages((zz) => [...zz, file]);
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onloadend = () => {
-        SetPreviews((temp) => [...temp, reader.result])
-      }
+        SetPreviews((temp) => [...temp, reader.result]);
+      };
     }
-    
-}, [])
-  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+  }, []);
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   // const validMaxLen = (value) => value.length <= 300;
   // const description = useInput("", [validMaxLen]);
@@ -38,7 +37,7 @@ const ArtWorkCreate = (props) => {
   //   title: "",
   //   description: "",
   // });
-  
+
   // const {title, description} = inputs;
 
   // const handleChange = (e) => {
@@ -76,27 +75,39 @@ const ArtWorkCreate = (props) => {
     <>
       <div className="z-0 grid w-full h-screen grid-cols-12 grid-rows-6 bs-gray-200">
         <div className="grid col-span-1"></div>
-        <div className="grid col-span-10 col-start-3 row-span-1 row-start-1 mt-20 h-fit">작업 업로드</div>
+        <div className="grid col-span-10 col-start-3 row-span-1 row-start-1 mt-20 h-fit">
+          작업 업로드
+        </div>
         <div className="grid col-span-10 col-start-2 row-span-6 row-start-2 h-5/6">
           <div className="grid w-4/5 col-span-7 col-start-2 row-start-1 row-end-7 border-2 border-indigo-400 border-dashed place-content-center h-3/5">
-          <Dropzone maxFiles={10} accept={"image/gif, image/jpg, image/jpeg, image/png"} onDrop={onDrop}>
-            {({getRootProps, getInputProps}) => (
-              <section>
-                <div className="flex flex-row" {...getRootProps()}>
-                  <input {...getInputProps()} />
-                  {previews.length > 0 ? previews.map(function (a) {
-                    return (<Card size="6" types="image" src={a}/>)
-                  })
-                  :
-                  <>
-                  <p className="text-[#A1ADC0] text-center">Click or Drag&Drop</p>
-                  <p>파일은 복수로 첨부 가능하며, 최대 20MB까지 업로드 됩니다.</p>
-                  </>
-                  }
-                </div>
-              </section>
-            )}
-          </Dropzone>
+            <Dropzone
+              maxFiles={10}
+              accept={"image/gif, image/jpg, image/jpeg, image/png"}
+              onDrop={onDrop}
+            >
+              {({ getRootProps, getInputProps }) => (
+                <section>
+                  <div className="flex flex-row" {...getRootProps()}>
+                    <input {...getInputProps()} />
+                    {previews.length > 0 ? (
+                      previews.map(function (a) {
+                        return <Card size="6" types="image" src={a} />;
+                      })
+                    ) : (
+                      <>
+                        <p className="text-[#A1ADC0] text-center">
+                          Click or Drag&Drop
+                        </p>
+                        <p>
+                          파일은 복수로 첨부 가능하며, 최대 20MB까지 업로드
+                          됩니다.
+                        </p>
+                      </>
+                    )}
+                  </div>
+                </section>
+              )}
+            </Dropzone>
           </div>
           <div className="grid col-span-1 col-start-8 row-start-1">
             이미지 추가
@@ -110,10 +121,12 @@ const ArtWorkCreate = (props) => {
         </div>
         <div className=""></div>
         <div className="col-start-10 row-start-5">
-          <Button color="4" size="2" onClick={handleModal}>다음</Button>
-            <Portal>
-              {modalOn && <ArtWorkCreateModal onClose={handleModal}/>}
-            </Portal>
+          <Button color="4" size="2" onClick={handleModal}>
+            다음
+          </Button>
+          <Portal>
+            {modalOn && <ArtWorkCreateModal onClose={handleModal} />}
+          </Portal>
         </div>
         {/* <div className="grid items-center w-full grid-cols-3 col-start-1 col-end-4 grid-rows-4 justify-items-center">
           작업업로드
@@ -178,7 +191,7 @@ const ArtWorkCreate = (props) => {
           <Button>임시저장</Button>
         </div>
       </div> */}
-      
+
       {/* <div
         class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
         id="exampleModalCenter"
@@ -226,7 +239,6 @@ const ArtWorkCreate = (props) => {
           </div>
         </div>
       </div> */}
-    
     </>
   );
 };

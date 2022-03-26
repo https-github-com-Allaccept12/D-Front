@@ -7,4 +7,13 @@ import ArtWorkInlineDetail from "./ArtWorkInlineDetail";
 import ArtWorkCreateModal from "./ArtWorkCreateModal";
 import ArtWorkWrite from "./ArtWorkWrite";
 
-export {ArtWorkAllList, ArtWorkDetail, ArtWorkWrite, ArtWorkCreateModal, ArtWorkPost, ArtWorkCategory, ArtWorkCreate, ArtWorkInlineDetail}
+export {
+  ArtWorkAllList,
+  ArtWorkDetail,
+  ArtWorkWrite,
+  ArtWorkCreateModal,
+  ArtWorkPost,
+  ArtWorkCategory,
+  ArtWorkCreate,
+  ArtWorkInlineDetail,
+};

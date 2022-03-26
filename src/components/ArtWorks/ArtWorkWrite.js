@@ -6,7 +6,9 @@ import writeButton from "../../static/icons/writeButton.svg";
 const ArtWorkWrite = () => {
   return (
     <div>
-        <button><img src={writeButton}/></button>
+      <button>
+        <img src={writeButton} />
+      </button>
     </div>
   );
 };

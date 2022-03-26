@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Title, Text, Subtitle } from "../elements";
 import { MainSlider } from "../components";
-import { ArtWorkAllList } from "../components/ArtWorks"
-import { mainPageLoad } from '../redux/modules/mainPageLoad';
+import { ArtWorkAllList } from "../components/ArtWorks";
+import { mainPageLoad } from "../redux/modules/mainPageLoad";
 import { setCookie, getCookie } from "../shared/cookie";
-import "./Main.css"
+import "./Main.css";
 
 const Main = (props) => {
   const dispatch = useDispatch();
@@ -17,34 +17,34 @@ const Main = (props) => {
   useEffect(() => {
     let account_id = 0;
     let id_cookie = getCookie("account_id");
-    if(id_cookie) {
+    if (id_cookie) {
       account_id = id_cookie;
       console.log(account_id);
-    };
-    dispatch(mainPageLoad({account_id, dispatch}));
-  })
-  
+    }
+    dispatch(mainPageLoad({ account_id, dispatch }));
+  });
 
   return (
     <div className="w-full">
       <div className="absolute text-white inset-56 ">
-          <Title size="2">Hot 디자이너</Title>
+        <Title size="2">Hot 디자이너</Title>
         <div className="mt-4 ml-1">
-          <Subtitle size="1">현재 가장 핫한<br /> 
-          디자이너님들을 소개합니다</Subtitle>
-          </div>
-          </div>
-
-        <div className="hidden Main sm:flex">
-        <div className="hidden justify-self-end max-w-fit sm:flex">
-        <MainSlider main/>
+          <Subtitle size="1">
+            현재 가장 핫한
+            <br />
+            디자이너님들을 소개합니다
+          </Subtitle>
         </div>
+      </div>
 
-          </div>
-      
+      <div className="hidden Main sm:flex">
+        <div className="hidden justify-self-end max-w-fit sm:flex">
+          <MainSlider main />
+        </div>
+      </div>
+
       <div className="container mx-auto md:pt-28">
-
-      <ArtWorkAllList />
+        <ArtWorkAllList />
       </div>
     </div>
   );
