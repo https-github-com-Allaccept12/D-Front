@@ -103,7 +103,7 @@ const MainSlider = (props)=>{
     	<Slide {...settings} ref={slider}>
         {/* {hotists.map((item, index) => (<SS><Slides main key={index} info={item}/></SS>))} */}
         {makeSlides()}
-                {/* <SS> 
+                <SS> 
                     <Slides main />
                 </SS>
                 <SS>
@@ -117,7 +117,7 @@ const MainSlider = (props)=>{
                 </SS>
                 <SS>
                     <Slides main />
-                </SS> */}
+                </SS>
                
             </Slide>
             <NextBtn onClick={() => slider?.current?.slickNext()}><Icon name="ArrowR" iconSize="48" /></NextBtn>

@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useDispatch } from 'react-redux';
-import { tendency, CreateTendency } from "../../redux/modules/tendency.js";
+import { CreateTendency } from "../../redux/modules/tendency.js";
 import { Button } from "../../elements";
 import { Link } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
@@ -36,7 +36,6 @@ const TendencyTest = (props) => {
 
 const dispatch = useDispatch();
 const SendTendency = () => {
-  // dispatch(tendency(designation))
   const tendency = {"tendency": designation};
   dispatch(CreateTendency(tendency));
   console.log(tendency);
