@@ -42,14 +42,14 @@ const Main = (props) => {
                 </div>
             </div>
 
-            <div className="-mt-32 lg:mt-24 mx-auto md:pl-12 md:max-w-[75%] xl:max-w-[90%]">
+            <div className="-mt-32 lg:mt-24 mx-auto lg:pl-12 w-full xl:max-w-[90%]">
                 <Title
                     size="2"
-                    className="flex items-end justify-center col-start-2 row-start-1 my-3  md:justify-start"
+                    className=" col-start-2 row-start-1 flex justify-center lg:justify-start items-end my-3"
                 >
                     추천 아트워크
                 </Title>
-                <div className="flex flex-wrap items-center justify-center gap-5 md:justify-start">
+                <div className="flex justify-center lg:justify-start items-center flex-wrap gap-5">
                     <ArtWorkAllList main />
                 </div>
             </div>

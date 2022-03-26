@@ -27,15 +27,17 @@ const Header = (props) => {
     }, []);
 
     return (
-        <div className="bg-gradient-to-r from-[#A162F7] to-[#6F88FC] h-32 md:h-[30rem] relative w-full">
+        <div className="md:h-[7.8rem] w-full">
             <div className="flex justify-center items-center mx-auto md:absolute md:top-[2.25rem] md:left-[9.375rem]">
                 <Link to="/">
-                    <Logo name="DplusW" logoSizeW="200" logoSizeH="59" />
+                    <Logo name="DplusC" logoSizeW="200" logoSizeH="59" />
                 </Link>
             </div>
-            <div className="hidden lg:flex lg:flex-row md:h-[7.8rem] w-full lg:w-3/6 xl:w-3/4 ml-auto text-white">
+
+            <div className="bg-red-400 flex flex-row md:h-[7.8rem] w-full md:w-3/6 xl:w-3/4 ml-auto">
                 {/* <Title size="6"><Link to="/">홈</Link></Title> */}
-                <div className="flex items-center gap-8">
+
+                <div className="flex items-center gap-10 bg-yellow-300">
                     <Title size="6">
                         <Link to="/art/list/all">모아보기</Link>
                     </Title>
@@ -76,4 +78,3 @@ const Header = (props) => {
 };
 
 export default Header;
-

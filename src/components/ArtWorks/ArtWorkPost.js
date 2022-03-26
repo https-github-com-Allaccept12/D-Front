@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  HeartButton,
-  Subtitle,
-  Icon,
-  Thumbnail,
-  Profile,
-} from "../../elements";
+import { HeartButton, Subtitle, Icon, Thumbnail, Profile } from "../../elements";
 
 import { useHistory } from "react-router-dom";
 import ArtWorkDetail from "./ArtWorkDetail";
@@ -43,48 +37,48 @@ const ArtWorkPost = (props) => {
         </div>
       </Art>
 
-      <>
-        <div
-          className="fixed top-0 left-0 hidden w-full h-full overflow-x-hidden overflow-y-auto outline-none modal fade"
-          id="exampleModalXl"
-          tabIndex="-1"
-          aria-labelledby="exampleModalXlLabel"
-          aria-modal="true"
-          role="dialog"
-        >
-          <div className="relative w-auto pointer-events-none modal-dialog modal-xl">
-            <div className="relative flex flex-col w-full text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto modal-content bg-clip-padding">
-              <div className="modal-body">
-                <ArtWorkDetail />
-                <div className="fixed w-20 space-y-2 top-20 right-20 xl:right-60">
-                  <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                    <Icon />
-                    프로필
-                  </div>
-                  <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                    <Icon />
-                    팔로우
-                  </div>
-                  <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                    <Icon name="HeartF" />
-                    좋아요
-                  </div>
-                  <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                    <Icon />
-                    스크랩
-                  </div>
-                  <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                    <Icon name="Link" />
-                    공유하기
-                  </div>
+            <>
+                <div
+                    className="fixed top-0 left-0 hidden w-full h-full overflow-x-hidden overflow-y-auto outline-none modal fade"
+                    id="exampleModalXl"
+                    tabIndex="-1"
+                    aria-labelledby="exampleModalXlLabel"
+                    aria-modal="true"
+                    role="dialog"
+                >
+                    <div className="relative w-auto pointer-events-none modal-dialog modal-xl">
+                        <div className="relative flex flex-col w-full text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto modal-content bg-clip-padding">
+                            <div className="modal-body">
+                                <ArtWorkDetail />
+                                <div className="fixed w-20 space-y-2 top-20 right-20 xl:right-60">
+                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
+                                        <Icon />
+                                        프로필
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
+                                        <Icon />
+                                        팔로우
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
+                                        <Icon name="HeartF" />
+                                        좋아요
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
+                                        <Icon />
+                                        스크랩
+                                    </div>
+                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
+                                        <Icon name="Link" />
+                                        공유하기
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </>
-    </>
-  );
+            </>
+        </>
+    );
 };
 
 export default ArtWorkPost;
