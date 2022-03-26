@@ -5,8 +5,7 @@ module.exports = {
         es6: true,
     },
     extends: [
-        "plugin:prettier/recommended",
-        "prettier/react",
+        "prettier",
         // prettier 관련 규칙 모음
     ],
 
