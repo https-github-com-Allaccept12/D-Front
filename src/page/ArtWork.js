@@ -4,7 +4,9 @@ import {
     ArtWorkAllList,
     ArtWorkCategory,
     ArtWorkCreate,
+    ArtWorkFilter,
     ArtWorkInlineDetail,
+    ArtWorkList,
     ArtWorkWrite,
 } from "../components/ArtWorks";
 import { Title, Button } from "../elements";
@@ -20,17 +22,15 @@ const ArtWork = (props) => {
                     </div> */}
                     <div className="top-0 h-[44rem] invisible fixed xl:visible xl:sticky">
                         <div className=" flex flex-col h-[44rem]">
-                            <div className="bg-gray-300 flex flex-row justify-end items-end self-end w-[18.75rem] h-[44rem]">
-                                여기에 카테고리
+                            <div className="flex flex-row justify-end items-end self-end w-[18.75rem] h-[44rem]">
+                                <ArtWorkFilter />
                             </div>
                         </div>
                     </div>
 
                     <div className="w-full xl:col-start-2 xl:col-end-5 xl:row-start-1">
-                        <div className="bg-yellow-400 w-full h-[200rem]">
-                            여기에 필터버튼 디자인
-                            <div>버튼1</div> <div>버튼1</div> <div>버튼1</div>
-                            <div>list</div>
+                        <div className="w-full h-[200rem]">
+                            <ArtWorkList />
                         </div>
                     </div>
                 </div>
