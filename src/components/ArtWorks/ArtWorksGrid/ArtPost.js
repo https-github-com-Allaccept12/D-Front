@@ -1,8 +1,8 @@
 import React from "react";
-import { HeartButton, Subtitle, Icon, Thumbnail, Profile } from "../../../elements";
+import { HeartButton, Subtitle, Icon, Thumbnail, Profile, Text } from "../../../elements";
 
 import { useHistory } from "react-router-dom";
-import ArtWorkDetail from "../ArtWorkDetail";
+import ArtWorkDetail from "./ArtWorkDetail";
 import tw from "tailwind-styled-components";
 
 const Art = tw.div`
@@ -47,29 +47,50 @@ const ArtPost = (props) => {
                         <div className="relative flex flex-col w-full text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto modal-content bg-clip-padding">
                             <div className="modal-body">
                                 <ArtWorkDetail />
-                                <div
-                                    className="lg:fixed w-20 space-y-2 top-20 right-20 xl:right-60
-                                flex flex-row lg:flex-col"
-                                >
-                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                                        <Icon />
-                                        <span className="hidden lg:contents">프로필</span>
-                                    </div>
-                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                                        <Icon />
-                                        <span className="hidden lg:contents">팔로우</span>
-                                    </div>
-                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                                        <Icon name="HeartF" />
-                                        <span className="hidden lg:contents">좋아요</span>
-                                    </div>
-                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                                        <Icon />
-                                        <span className="hidden lg:contents">스크랩</span>
-                                    </div>
-                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                                        <Icon name="Link" />
-                                        <span className="hidden lg:contents">공유하기</span>
+
+                                <div className="hidden md:contents">
+                                    <div
+                                        className="lg:fixed w-20 top-20 right-10 2xl:right-48
+                                flex flex-row justify-start
+                                mx-auto
+                                lg:flex-col gap-3"
+                                    >
+                                        <div className="flex justify-center items-center flex-col gap-1 cursor-pointer hover:scale-110">
+                                            <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
+                                                <Profile size="5" />
+                                            </div>
+                                            <Text size="1">프로필</Text>
+                                        </div>
+                                        <div className="flex justify-center items-center flex-col gap-1 cursor-pointer hover:scale-110">
+                                            <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
+                                                <Icon name="StarE" iconSize="48" className="absolute" />
+                                                <Profile size="5" className="invisible" />
+                                            </div>
+                                            <Text size="1">팔로우</Text>
+                                        </div>
+                                        <div className="flex justify-center items-center flex-col gap-1  cursor-pointer hover:scale-110">
+                                            <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
+                                                <Icon name="StarE" iconSize="48" className="absolute" />
+                                                <Profile size="5" className="invisible" />
+                                            </div>
+                                            <Text size="1">좋아요</Text>
+                                        </div>
+                                        <div className="flex justify-center items-center flex-col gap-1  cursor-pointer hover:scale-110">
+                                            <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
+                                                <Icon name="StarE" iconSize="48" className="absolute" />
+                                                <Profile size="5" className="invisible" />
+                                            </div>
+                                            <Text size="1">스크랩</Text>
+                                        </div>
+                                        <div className="flex justify-center items-center flex-col gap-1  cursor-pointer hover:scale-110">
+                                            <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
+                                                <Icon name="StarE" iconSize="48" className="absolute" />
+                                                <Profile size="5" className="invisible" />
+                                            </div>
+                                            <Text className="hidden lg:contents" size="1">
+                                                공유하기
+                                            </Text>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -16,18 +16,19 @@ ${(props) => (props.main ? `border-white border-2` : "")};
 `;
 
 const Profile = (props) => {
-  const { src, size, main } = props;
-  return (
-    <>
-      <ArtWorkImage src={src} size={size} main={main} />
-    </>
-  );
+    const { src, size, main, className } = props;
+    return (
+        <>
+            <ArtWorkImage src={src} size={size} main={main} className={className} />
+        </>
+    );
 };
 
 Profile.defaultProps = {
-  src: "https://user-images.githubusercontent.com/89088205/155078987-592a07cd-a490-49fc-aabc-bc47cb508963.jpg",
-  size: "3",
-  main: false,
+    src: "https://user-images.githubusercontent.com/89088205/155078987-592a07cd-a490-49fc-aabc-bc47cb508963.jpg",
+    size: "3",
+    main: false,
+    className: "",
 };
 
 export default Profile;

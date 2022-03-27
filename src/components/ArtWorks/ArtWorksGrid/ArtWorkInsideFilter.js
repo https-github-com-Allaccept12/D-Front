@@ -22,29 +22,39 @@ border-2 border-dgray-200 rounded-full max-w-[24.375rem] h-[3rem]
 box-border px-12 relative w-full md:w-fit
 `;
 
+const TextCSS = tw.p`
+flex flex-row justify-center items-center gap-1 font-min1 Text-tiny
+text-dgray-300 hover:text-dgray-400
+hover:border-dgray-400 active:text-dpurple-300
+`;
+
+const ColorSpan = tw.span`
+hover:text-dgray-500 active:text-dpurple-300
+`;
+
 const ArtWorkInsideFilter = (props) => {
     let history = useHistory();
     return (
         <>
             <Grid>
                 <FilterBtn>
-                    <Text size="1" className="flex flex-row justify-center items-center gap-1">
+                    <TextCSS>
                         <Icon name="StarE" iconSize="14" />
-                        인기순
-                    </Text>
+                        <ColorSpan>인기순</ColorSpan>
+                    </TextCSS>
                     <InnerLine />
-                    <Text size="1" className="flex flex-row justify-center items-center gap-1">
+                    <TextCSS>
                         <Icon name="StarE" iconSize="14" />
-                        최신순
-                    </Text>
+                        <ColorSpan>최신순</ColorSpan>
+                    </TextCSS>
                     <InnerLine />
-                    <Text size="1" className="flex flex-row justify-center items-center gap-1">
+                    <TextCSS>
                         <Icon name="StarE" iconSize="14" />
-                        팔로우 디자이너
-                    </Text>
+                        <ColorSpan>팔로우 디자이너</ColorSpan>
+                    </TextCSS>
                 </FilterBtn>
                 <div className="relative">
-                    <SInput placeholder="Search" />
+                    <SInput placeholder="Search" type="text" />
                     <Icon name="Search" className="absolute inset-3 text-dgray-500" />
                 </div>
             </Grid>
