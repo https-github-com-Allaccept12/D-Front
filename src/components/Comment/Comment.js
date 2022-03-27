@@ -1,24 +1,30 @@
 import React from "react";
-import { Button } from "../../elements";
+import { Button, Profile, Text, Subtitle } from "../../elements";
 
 import { useHistory } from "react-router-dom";
 
-const NotFound = (props) => {
-  let history = useHistory();
-  return (
-    <>
-      <div className="flex ml-3">
-        <div className="mr-3">
-          <img src="http://picsum.photos/50" alt="" className="rounded-full" />
-        </div>
-        <div>
-          <h1 className="font-semibold">Itay Buyoy</h1>
-          <p className="text-xs text-gray-500">2 seconds ago</p>
-        </div>
-      </div>
-      <div className="col-span-3 justify-items-center">djklsdfjslkf</div>
-    </>
-  );
+const Comment = (props) => {
+    let history = useHistory();
+    return (
+        <>
+            <div className="flex justify-start items-center gap-2">
+                <Profile size="5" />
+                <div className="flex flex-col">
+                    <div className="flex flex-row items-center gap-3 mt-1">
+                        <Subtitle size="1" className="">
+                            닉네임
+                        </Subtitle>
+
+                        <Text size="4">2022.03.22</Text>
+                    </div>
+
+                    <Text size="2" className="m-1">
+                        댓글 댓글 댓글
+                    </Text>
+                </div>
+            </div>
+        </>
+    );
 };
 
-export default NotFound;
+export default Comment;

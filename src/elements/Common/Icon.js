@@ -50,10 +50,18 @@ const Icon = (props) => {
     }
 
     if (name === "StarE") {
-        return <StarE width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <StarE width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
     if (name === "StarF") {
-        return <StarF width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <StarF width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Cancel") {

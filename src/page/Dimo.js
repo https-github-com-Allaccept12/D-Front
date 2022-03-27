@@ -21,7 +21,7 @@ const Dimo = () => {
     return (
         <>
             <div className="bg-dgray-200 min-h-screen h-[200rem]">
-                <div className="xl:grid xl:grid-cols-4 bg-red-100">
+                <div className="xl:grid xl:grid-cols-4 ">
                     <div className="flex flex-row p-4 pl-10 gap-3 h-[7rem] justify-start items-center">
                         {b === "qna" ? (
                             <Title size="6" className="text-dpurple-200">

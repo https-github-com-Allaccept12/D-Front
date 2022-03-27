@@ -5,12 +5,12 @@ import { TendencyTest, MyInterests, Results } from "./components";
 import { Main, ArtWork, Dimo, MyPosts, LogOut, EditMySpace, MyPage, CreateProfile, KakaoRedirectHandler } from "./page";
 import { CompleteProfile } from "./components";
 import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "./components/Dimo";
-import { ArtWorkWrite, ArtWorkCreate } from "./components/ArtWorks";
+import { ArtWorkWrite, ArtWorkCreate, ArtWorkInlineDetail } from "./components/ArtWorks";
 
 function App() {
     const location = useLocation();
     const a = location.pathname;
-    const b = a.split("/")[3];
+    const b = a.split("/")[1];
     return (
         <>
             <div id="modal"></div>
@@ -25,6 +25,7 @@ function App() {
 
                     <Route path={["/art", "/art/:name"]} component={ArtWork} />
                     <Route exact path="/createart" component={ArtWorkCreate} />
+                    <Route exact path="/detailart" component={ArtWorkInlineDetail} />
                     <Route path={["/dimo/qna/:name", "/dimo/shared/:name"]} component={Dimo} />
 
                     <Route exact path="/dimo/qnadetail" component={DimoQNADetail} />

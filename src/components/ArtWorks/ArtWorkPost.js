@@ -2,7 +2,7 @@ import React from "react";
 import { HeartButton, Subtitle, Icon, Thumbnail, Profile } from "../../elements";
 
 import { useHistory } from "react-router-dom";
-import ArtWorkDetail from "./ArtWorkDetail";
+import ArtWorkDetail from "./ArtWorksGrid/ArtWorkDetail";
 import tw from "tailwind-styled-components";
 
 const Art = tw.div`
@@ -11,31 +11,28 @@ ${(props) => (props.main ? `p-0 m-0` : "")};
 `;
 
 const ArtWorkPost = (props) => {
-  const { size, main, profile, nickname, thumnail, is_like, like_count } = props;
-  return (
-    <>
-      <Art main={main}>
-        <button
-          type="button"
-          className="transition duration-150 ease-in-out active:shadow-lg"
-          data-bs-toggle="modal"
-          data-bs-target="#exampleModalXl"
-        >
-          <Thumbnail
-            src={thumnail}
-            size={size}
-          />
-        </button>
-        <div className="flex flex-row items-center justify-between flex-shrink-0 w-full px-2 mt-1">
-          <div className="flex flex-row items-center gap-2">
-            <Profile size="7" src={profile} />
-            <Subtitle size="1">{nickname}</Subtitle>
-          </div>
-          <div className="flex flex-row items-center mt-1 mr-1">
-            <HeartButton like_cnt={like_count} is_like={is_like} />
-          </div>
-        </div>
-      </Art>
+    const { size, main, profile, nickname, thumnail, is_like, like_count } = props;
+    return (
+        <>
+            <Art main={main}>
+                <button
+                    type="button"
+                    className="transition duration-150 ease-in-out active:shadow-lg"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModalXl"
+                >
+                    <Thumbnail src={thumnail} size={size} />
+                </button>
+                <div className="flex flex-row items-center justify-between flex-shrink-0 w-full px-2 mt-1">
+                    <div className="flex flex-row items-center gap-2">
+                        <Profile size="7" src={profile} />
+                        <Subtitle size="1">{nickname}</Subtitle>
+                    </div>
+                    <div className="flex flex-row items-center mt-1 mr-1">
+                        <HeartButton like_cnt={like_count} is_like={is_like} />
+                    </div>
+                </div>
+            </Art>
 
             <>
                 <div

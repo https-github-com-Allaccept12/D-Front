@@ -31,118 +31,122 @@ peer-invalid:visible
 `;
 
 const Input = (props) => {
-  const {
-    title,
-    label,
-    type,
-    placeholder,
-    value,
-    onChange,
-    onSubmit,
-    onBlur,
-    is_submit,
-    is_error,
-    textarea,
-    cardSize,
-    is_value,
-    maxLen,
-  } = props;
-  if (is_submit) {
-    return (
-      <>
-        <div className="grid grid-cols-8">
-          {title && <Title>{title} </Title>}
-          <div className="col-start-2 col-end-8">
-            <label id={label}>
-              <InputStyles
-                type={type}
-                value={value}
-                is_error={is_error}
-                cardSize={cardSize}
-                placeholder={placeholder}
-                onChange={onChange}
-                maxLen={maxLen}
-                onKeyPress={(e) => {
-                  if (e.key === "Enter") {
-                    onSubmit(e);
-                  }
-                }}
-              />
-              {is_error && <Sp>글자수를 초과하였습니다.</Sp>}
-              <Sp>
-                {is_value}/{maxLen}
-              </Sp>
-            </label>
-          </div>
-        </div>
-      </>
-    );
-  } else if (textarea) {
-    return (
-      <>
-        <div className="grid grid-cols-8">
-          {title && <Title>{title}</Title>}
-          <div className="col-start-2 col-end-8">
-            <label id={label}>
-              <TextAreaField
-                type={type}
-                value={value}
-                is_error={is_error}
-                placeholder={placeholder}
-                onChange={onChange}
-                cardSize={cardSize}
-                maxLen={maxLen}
-              />
-              {is_error && <Sp>글자수를 초과하였습니다.</Sp>}
-              <Sp>
-                {is_value}/{maxLen}
-              </Sp>
-            </label>
-          </div>
-        </div>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <div className="grid grid-cols-8">
-          {title && <Title>{title} </Title>}
-          <div className="col-start-2 col-end-8">
-            <label id={label}>
-              <InputStyles
-                type={type}
-                value={value}
-                is_error={is_error}
-                cardSize={cardSize}
-                placeholder={placeholder}
-                onChange={onChange}
-                onBlur={onBlur}
-                maxLen={maxLen}
-              />
-              {is_error && <Sp>글자수를 초과하였습니다.</Sp>}
-              {maxLen && (
-                <Sp>
-                  {is_value}/{maxLen}
-                </Sp>
-              )}
-            </label>
-          </div>
-        </div>
-      </>
-    );
-  }
+    const {
+        title,
+        label,
+        type,
+        placeholder,
+        value,
+        onChange,
+        onSubmit,
+        onBlur,
+        is_submit,
+        is_error,
+        textarea,
+        cardSize,
+        is_value,
+        maxLen,
+        className,
+    } = props;
+    if (is_submit) {
+        return (
+            <>
+                <div className="grid grid-cols-8">
+                    {title && <Title>{title} </Title>}
+                    <div className="col-start-2 col-end-8">
+                        <label id={label}>
+                            <InputStyles
+                                type={type}
+                                value={value}
+                                is_error={is_error}
+                                cardSize={cardSize}
+                                placeholder={placeholder}
+                                onChange={onChange}
+                                maxLen={maxLen}
+                                onKeyPress={(e) => {
+                                    if (e.key === "Enter") {
+                                        onSubmit(e);
+                                    }
+                                }}
+                            />
+                            {is_error && <Sp>글자수를 초과하였습니다.</Sp>}
+                            <Sp>
+                                {is_value}/{maxLen}
+                            </Sp>
+                        </label>
+                    </div>
+                </div>
+            </>
+        );
+    } else if (textarea) {
+        return (
+            <>
+                <div className="grid grid-cols-8">
+                    {title && <Title>{title}</Title>}
+                    <div className="col-start-2 col-end-8">
+                        <label id={label}>
+                            <TextAreaField
+                                type={type}
+                                value={value}
+                                is_error={is_error}
+                                placeholder={placeholder}
+                                onChange={onChange}
+                                cardSize={cardSize}
+                                maxLen={maxLen}
+                                className={className}
+                            />
+                            {is_error && <Sp>글자수를 초과하였습니다.</Sp>}
+                            <Sp>
+                                {is_value}/{maxLen}
+                            </Sp>
+                        </label>
+                    </div>
+                </div>
+            </>
+        );
+    } else {
+        return (
+            <>
+                <div className="grid grid-cols-8">
+                    {title && <Title>{title} </Title>}
+                    <div className="col-start-2 col-end-8">
+                        <label id={label}>
+                            <InputStyles
+                                type={type}
+                                value={value}
+                                is_error={is_error}
+                                cardSize={cardSize}
+                                placeholder={placeholder}
+                                onChange={onChange}
+                                onBlur={onBlur}
+                                maxLen={maxLen}
+                                className={className}
+                            />
+                            {is_error && <Sp>글자수를 초과하였습니다.</Sp>}
+                            {maxLen && (
+                                <Sp>
+                                    {is_value}/{maxLen}
+                                </Sp>
+                            )}
+                        </label>
+                    </div>
+                </div>
+            </>
+        );
+    }
 };
 
 Input.defaultProps = {
-  title: "",
-  label: "",
-  type: "text",
-  placeholder: "입력해주세요!",
-  value: "",
-  onChange: () => {},
-  onSubmit: () => {},
-  is_submit: false,
-  is_value: 0,
+    title: "",
+    label: "",
+    type: "text",
+    placeholder: "입력해주세요!",
+    value: "",
+    onChange: () => {},
+    onSubmit: () => {},
+    is_submit: false,
+    is_value: 0,
+    className: "",
 };
 
 export default Input;

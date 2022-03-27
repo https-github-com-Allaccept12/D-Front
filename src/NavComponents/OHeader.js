@@ -34,10 +34,10 @@ const Header = (props) => {
                 </Link>
             </div>
 
-            <div className="bg-red-400 flex flex-row md:h-[7.8rem] w-full md:w-3/6 xl:w-3/4 ml-auto">
+            <div className="flex flex-row md:h-[7.8rem] w-full md:w-3/6 xl:w-3/4 ml-auto">
                 {/* <Title size="6"><Link to="/">홈</Link></Title> */}
 
-                <div className="flex items-center gap-10 bg-yellow-300">
+                <div className="flex items-center gap-10 text-dpurple-300">
                     <Title size="6">
                         <Link to="/art/list/all">모아보기</Link>
                     </Title>
