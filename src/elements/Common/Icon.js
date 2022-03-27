@@ -23,113 +23,113 @@ import { ReactComponent as Time } from "../../static/icons/time.svg";
 import { ReactComponent as Warning } from "../../static/icons/warning.svg";
 
 const Icon = (props) => {
-  const { name, iconSize, onClick, className } = props;
+    const { name, iconSize, onClick, className } = props;
 
-  if (name === "ArrowL") {
-    return <ArrowL width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "ArrowL") {
+        return <ArrowL width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "ArrowR") {
-    return <ArrowR width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "ArrowR") {
+        return <ArrowR width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "BookmarkE") {
-    return <BookmarkE width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "BookmarkE") {
+        return <BookmarkE width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "BookmarkF") {
-    return <BookmarkF width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "BookmarkF") {
+        return <BookmarkF width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "HeartE") {
-    return <HeartE width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "HeartE") {
+        return <HeartE width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "HeartF") {
-    return <HeartF width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "HeartF") {
+        return <HeartF width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "StarE") {
-    return <StarE width={iconSize} height={iconSize} onClick={onClick} />;
-  }
-  if (name === "StarF") {
-    return <StarF width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "StarE") {
+        return <StarE width={iconSize} height={iconSize} onClick={onClick} />;
+    }
+    if (name === "StarF") {
+        return <StarF width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "Cancel") {
-    return (
-      <div className={className}>
-        <Cancel width={iconSize} height={iconSize} onClick={onClick} />
-      </div>
-    );
-  }
+    if (name === "Cancel") {
+        return (
+            <div className={className}>
+                <Cancel width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
+    }
 
-  if (name === "Delete") {
-    return <Delete width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "Delete") {
+        return <Delete width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "Download") {
-    return <Download width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "Download") {
+        return <Download width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "Edit") {
-    return <Edit width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "Edit") {
+        return <Edit width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "Link") {
-    return <Link width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "Link") {
+        return <Link width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "Loading") {
-    return <Loading width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "Loading") {
+        return <Loading width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "Plus") {
-    return <Plus width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "Plus") {
+        return <Plus width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "Private") {
-    return <Private width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "Private") {
+        return <Private width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "Replace") {
-    return <Replace width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "Replace") {
+        return <Replace width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "Search") {
-    return (
-      <div className="opacity-30 cursor-pointer">
-        <Search width={iconSize} height={iconSize} onClick={onClick} />
-      </div>
-    );
-  }
+    if (name === "Search") {
+        return (
+            <div className={className}>
+                <Search width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
+    }
 
-  if (name === "Success") {
-    return (
-      <div className={className}>
-        <Success width={iconSize} height={iconSize} onClick={onClick} />
-      </div>
-    );
-  }
+    if (name === "Success") {
+        return (
+            <div className={className}>
+                <Success width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
+    }
 
-  if (name === "Talk") {
-    return <Talk width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "Talk") {
+        return <Talk width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "Time") {
-    return <Time width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "Time") {
+        return <Time width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 
-  if (name === "Warning") {
-    return <Warning width={iconSize} height={iconSize} onClick={onClick} />;
-  }
+    if (name === "Warning") {
+        return <Warning width={iconSize} height={iconSize} onClick={onClick} />;
+    }
 };
 
 Icon.defaultProps = {
-  name: "ArrowL",
-  iconSize: "24",
-  onClick: () => {},
-  className: "",
+    name: "ArrowL",
+    iconSize: "24",
+    onClick: () => {},
+    className: "",
 };
 
 export default Icon;

@@ -38,7 +38,7 @@ const Main = (props) => {
                 </div>
 
                 <div className="fixed invisible lg:visible lg:absolute top-36 right-28">
-                    <MainSlider main />
+                    <MainSlider main="true" />
                 </div>
             </div>
 
@@ -50,7 +50,7 @@ const Main = (props) => {
                     추천 아트워크
                 </Title>
                 <div className="flex justify-center lg:justify-start items-center flex-wrap gap-5">
-                    <ArtWorkAllList main />
+                    <ArtWorkAllList />
                 </div>
             </div>
         </>
