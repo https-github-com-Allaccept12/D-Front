@@ -36,7 +36,6 @@ const NextBtn = tw.button`
 
 const MainSlider = (props) => {
     const slider = useRef(null);
-    const { main, dimo } = props;
 
     let hotists = useSelector((state) => state.mainPage.artist);
     let makeSlides = () => {};
@@ -47,7 +46,7 @@ const MainSlider = (props) => {
                 arr.push(
                     <SS>
                         <Slides
-                            main
+                            type="main"
                             image={hotists[i].account_profile}
                             nickname={hotists[i].account_nickname}
                             thumnail1={hotists[i].img_url_fir}
@@ -99,69 +98,37 @@ const MainSlider = (props) => {
         ],
     };
 
-    if (main)
-        return (
-            <>
-                <div className="flex-row hidden md:flex">
-                    <PrevBtn onClick={() => slider?.current?.slickPrev()}>
-                        <Icon name="ArrowL" iconSize="48" />{" "}
-                    </PrevBtn>
-                    <Slide {...settings} ref={slider}>
-                        {/* {hotists.map((item, index) => (<SS><Slides main key={index} info={item}/></SS>))} */}
-                        {makeSlides()}
-                        <SS>
-                            <Slides main />
-                        </SS>
-                        <SS>
-                            <Slides main />
-                        </SS>
-                        <SS>
-                            <Slides main />
-                        </SS>
-                        <SS>
-                            <Slides main />
-                        </SS>
-                        <SS>
-                            <Slides main />
-                        </SS>
-                    </Slide>
-                    <NextBtn onClick={() => slider?.current?.slickNext()}>
-                        <Icon name="ArrowR" iconSize="48" />
-                    </NextBtn>
-                </div>
-            </>
-        );
-
-    if (dimo)
-        return (
-            <>
-                <PrevBtn onClick={() => slider?.current?.slickPrev()}>◀</PrevBtn>
+    return (
+        <>
+            <div className="flex-row hidden md:flex">
+                <PrevBtn onClick={() => slider?.current?.slickPrev()}>
+                    <Icon name="ArrowL" iconSize="48" />{" "}
+                </PrevBtn>
                 <Slide {...settings} ref={slider}>
+                    {/* {hotists.map((item, index) => (<SS><Slides main key={index} info={item}/></SS>))} */}
+                    {makeSlides()}
                     <SS>
-                        <Slides dimo />
+                        <Slides type="main" />
                     </SS>
                     <SS>
-                        <Slides dimo />
+                        <Slides type="main" />
                     </SS>
                     <SS>
-                        <Slides dimo />
+                        <Slides type="main" />
                     </SS>
                     <SS>
-                        <Slides dimo />
+                        <Slides type="main" />
                     </SS>
                     <SS>
-                        <Slides dimo />
+                        <Slides type="main" />
                     </SS>
                 </Slide>
-                <NextBtn onClick={() => slider?.current?.slickNext()}>▶</NextBtn>
-            </>
-        );
-};
-
-MainSlider.defaultProps = {
-    main: false,
-    dimo: false,
-    artwork: true,
+                <NextBtn onClick={() => slider?.current?.slickNext()}>
+                    <Icon name="ArrowR" iconSize="48" />
+                </NextBtn>
+            </div>
+        </>
+    );
 };
 
 export default MainSlider;

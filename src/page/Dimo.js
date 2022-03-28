@@ -17,68 +17,134 @@ const Dimo = () => {
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[2];
+    console.log(b);
+    if (b === "qna")
+        return (
+            <>
+                <div className="bg-dgray-200 min-h-screen h-[200rem]">
+                    <div className="xl:grid xl:grid-cols-4 ">
+                        <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
+                            {b === "qna" ? (
+                                <Title size="6" className="text-dpurple-200">
+                                    <Link to="/dimo/qna/all">QNA</Link>
+                                </Title>
+                            ) : (
+                                <Title size="6">
+                                    <Link to="/dimo/qna/all">QNA</Link>
+                                </Title>
+                            )}
 
-    return (
-        <>
-            <div className="bg-dgray-200 min-h-screen h-[200rem]">
-                <div className="xl:grid xl:grid-cols-4 ">
-                    <div className="flex flex-row p-4 pl-10 gap-3 h-[7rem] justify-start items-center">
-                        {b === "qna" ? (
-                            <Title size="6" className="text-dpurple-200">
-                                <Link to="/dimo/qna/all">QNA</Link>
-                            </Title>
-                        ) : (
-                            <Title size="6">
-                                <Link to="/dimo/qna/all">QNA</Link>
-                            </Title>
-                        )}
+                            {b === "shared" ? (
+                                <Title size="6" className="text-dpurple-200">
+                                    <Link to="/dimo/shared/all">정보공유</Link>
+                                </Title>
+                            ) : (
+                                <Title size="6">
+                                    <Link to="/dimo/shared/all">정보공유</Link>
+                                </Title>
+                            )}
+                        </div>
+                        <div className="hidden xl:contents">
+                            <Button size="2" className="col-start-4 w-36 xl:mt-6 2xl:ml-40 ">
+                                <Link
+                                    to={{
+                                        pathname: `/dimo/create/${b}`,
+                                        state: {
+                                            title: { b },
+                                        },
+                                    }}
+                                >
+                                    글쓰기
+                                </Link>
+                            </Button>
+                        </div>
+                        <SlideBox>
+                            <DimoSlider list={b} />
+                        </SlideBox>
 
-                        {b === "shared" ? (
-                            <Title size="6" className="text-dpurple-200">
-                                <Link to="/dimo/shared/all">정보공유</Link>
-                            </Title>
-                        ) : (
-                            <Title size="6">
-                                <Link to="/dimo/shared/all">정보공유</Link>
-                            </Title>
-                        )}
-                    </div>
-
-                    <SlideBox>
-                        <DimoSlider />
-                    </SlideBox>
-
-                    <Box>
-                        <div className="top-0 h-[44rem] invisible fixed xl:visible xl:sticky">
-                            <div className=" flex flex-col h-[44rem]">
-                                <div className="flex flex-row justify-end items-end self-end w-[18.75rem] h-[44rem]">
-                                    <DimoFilter />
+                        <Box>
+                            <div className="top-0 h-[44rem] invisible fixed xl:visible xl:sticky">
+                                <div className=" flex flex-col h-[44rem]">
+                                    <div className="flex flex-row justify-end items-end self-end w-[18.75rem] h-[44rem]">
+                                        <DimoFilter list={b} />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </Box>
+                        </Box>
 
-                    <div className="w-full xl:row-start-3 xl:col-start-2 xl:col-end-5">
-                        <div className="w-full h-[200rem]">
-                            <DimoList />
+                        <div className="w-full xl:row-start-3 xl:col-start-2 xl:col-end-5">
+                            <div className="w-full h-[200rem]">
+                                <DimoList list={b} />
+                            </div>
                         </div>
                     </div>
                 </div>
+            </>
+        );
 
-                <div className="flex flex-row">
-                    {/* <DimoCategory list={b} />
-        </div>
-        <div className="grid grid-cols-4">
-          <div className="md:ml-28 mt-4 w-40 h-[112.5rem] ">
-            <DimoPage list={b} />
-          </div>
-          <div className="col-start-2 col-end-5">
-            <DimoAllList list={c} />
-          </div> */}
+    if (b === "shared")
+        return (
+            <>
+                <div className="bg-dgray-200 min-h-screen h-[200rem]">
+                    <div className="xl:grid xl:grid-cols-4 ">
+                        <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
+                            {b === "qna" ? (
+                                <Title size="6" className="text-dpurple-200">
+                                    <Link to="/dimo/qna/all">QNA</Link>
+                                </Title>
+                            ) : (
+                                <Title size="6">
+                                    <Link to="/dimo/qna/all">QNA</Link>
+                                </Title>
+                            )}
+
+                            {b === "shared" ? (
+                                <Title size="6" className="text-dpurple-200">
+                                    <Link to="/dimo/shared/all">정보공유</Link>
+                                </Title>
+                            ) : (
+                                <Title size="6">
+                                    <Link to="/dimo/shared/all">정보공유</Link>
+                                </Title>
+                            )}
+                        </div>
+                        <div className="hidden xl:contents">
+                            <Button size="2" className="col-start-4 w-36 xl:mt-6 2xl:ml-40 ">
+                                <Link
+                                    to={{
+                                        pathname: `/dimo/create/${b}`,
+                                        state: {
+                                            title: { b },
+                                        },
+                                    }}
+                                >
+                                    글쓰기
+                                </Link>
+                            </Button>
+                        </div>
+                        <SlideBox>
+                            <DimoSlider list={b} />
+                        </SlideBox>
+
+                        <Box>
+                            <div className="top-0 h-[44rem] invisible fixed xl:visible xl:sticky">
+                                <div className=" flex flex-col h-[44rem]">
+                                    <div className="flex flex-row justify-end items-end self-end w-[18.75rem] h-[44rem]">
+                                        <DimoFilter list={b} />
+                                    </div>
+                                </div>
+                            </div>
+                        </Box>
+
+                        <div className="w-full xl:row-start-3 xl:col-start-2 xl:col-end-5">
+                            <div className="w-full h-[200rem]">
+                                <DimoList list={b} />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </>
-    );
+            </>
+        );
 };
 
 export default Dimo;

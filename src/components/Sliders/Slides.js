@@ -5,10 +5,10 @@ import { useHistory, Link } from "react-router-dom";
 import { DimoWorkPost } from "../Dimo";
 
 const Slides = (props) => {
-    const { main, artwork, dimo } = props;
+    const { type, list } = props;
 
     let history = useHistory();
-    if (main)
+    if (type === "main")
         return (
             <>
                 <div className="flex flex-col items-center justify-center">
@@ -76,7 +76,7 @@ const Slides = (props) => {
                 </div>
             </>
         );
-    if (artwork)
+    if (type === "artwork")
         return (
             <>
                 <div className="rounded-lg">
@@ -90,7 +90,7 @@ const Slides = (props) => {
             </>
         );
 
-    if (dimo)
+    if (type === "dimo" && list === "qna")
         return (
             <>
                 <>
@@ -113,7 +113,7 @@ const Slides = (props) => {
                                             진로고민
                                         </Label>
                                     </div>
-                                    <Title size="6">이런이런 고민이 있어여</Title>
+                                    <Title size="6">이런이런 질문들이 있어여</Title>
                                 </div>
                             </div>
                             <div className="absolute px-10 top-28">
@@ -122,6 +122,52 @@ const Slides = (props) => {
                                     고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을
                                     올리게 되었습니다. 제 전공은 산업디자인입니다. 때문에 구체적인 시각디자인과 UIUX
                                     관련 수업을 수강한 적은 없습니다.
+                                </Text>{" "}
+                                <Text size="2">(더보기)</Text>
+                            </div>
+                            <div className="absolute w-full px-10 bottom-7">
+                                <div className="flex flex-row justify-between">
+                                    <HeartButton like_cnt="1" is_like />
+                                    <div className="flex flex-row space-x-4">
+                                        <HeartButton like_cnt="0" is_like />
+                                        <HeartButton like_cnt="1" is_like />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            </>
+        );
+    if (type === "dimo" && list === "shared")
+        return (
+            <>
+                <>
+                    <div className="w-[32.5rem] h-[18.75rem] rounded-lg">
+                        <div className="absolute w-[32.5rem] h-[18.75rem] bg-dpurple-200 rounded-lg">
+                            <div>
+                                <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
+                                    <Profile
+                                        size="6"
+                                        src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
+                                        main
+                                    />
+                                </div>
+                                <div className="absolute top-7 left-28">
+                                    <div className="flex flex-row gap-1">
+                                        <Label size="1" color="4">
+                                            취준생
+                                        </Label>
+                                        <Label size="1" color="5">
+                                            진로고민
+                                        </Label>
+                                    </div>
+                                    <Title size="6">꿀팁 공유 공유 </Title>
+                                </div>
+                            </div>
+                            <div className="absolute px-10 top-28">
+                                <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
+                                    공유하기 공유하기 나는 꿀팁
                                 </Text>{" "}
                                 <Text size="2">(더보기)</Text>
                             </div>

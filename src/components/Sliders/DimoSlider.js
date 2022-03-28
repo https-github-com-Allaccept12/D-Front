@@ -6,7 +6,7 @@ import { Image, Text, Icon } from "../../elements";
 
 export const Slide = tw(Slider)`
 w-full md:w-[32.5rem] lg:w-[40rem] xl:w-[70rem] 2xl:w-[99rem]
-    mx-auto text-white
+    mx-auto text-white pl-5
     overflow-hidden text-lg
 `;
 
@@ -23,6 +23,7 @@ z-10 text-white mr-10
 
 const DimoSlider = (props) => {
     const slider = React.useRef(null);
+    const { list } = props;
 
     const settings = {
         dots: false, // 슬라이드 밑에 점 보이게
@@ -69,19 +70,19 @@ const DimoSlider = (props) => {
                 </PrevBtn>
                 <Slide {...settings} ref={slider}>
                     <SS>
-                        <Slides dimo />
+                        <Slides type="dimo" list={list} />
                     </SS>
                     <SS>
-                        <Slides dimo />
+                        <Slides type="dimo" list={list} />
                     </SS>
                     <SS>
-                        <Slides dimo />
+                        <Slides type="dimo" list={list} />
                     </SS>
                     <SS>
-                        <Slides dimo />
+                        <Slides type="dimo" list={list} />
                     </SS>
                     <SS>
-                        <Slides dimo />
+                        <Slides type="dimo" list={list} />
                     </SS>
                 </Slide>
                 <NextBtn onClick={() => slider?.current?.slickNext()}>

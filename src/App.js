@@ -25,7 +25,7 @@ function App() {
 
                     <Route path={["/art", "/art/:name"]} component={ArtWork} />
                     <Route exact path="/createart" component={ArtWorkCreate} />
-                    <Route exact path="/detailart" component={ArtWorkInlineDetail} />
+                    <Route exact path="/detailart/:name" component={ArtWorkInlineDetail} />
                     <Route path={["/dimo/qna/:name", "/dimo/shared/:name"]} component={Dimo} />
 
                     <Route exact path="/dimo/qnadetail" component={DimoQNADetail} />

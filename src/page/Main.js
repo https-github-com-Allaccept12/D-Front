@@ -40,7 +40,7 @@ const Main = (props) => {
                 </div>
 
                 <div className="fixed invisible lg:visible lg:absolute top-36 right-28">
-                    <MainSlider main="true" />
+                    <MainSlider />
                 </div>
             </div>
 
