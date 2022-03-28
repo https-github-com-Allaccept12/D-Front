@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useHistory } from "react-router-dom";
-import { Icon, Text } from "../../../elements";
+import { Icon, Text } from "../../elements";
 import tw from "tailwind-styled-components";
 
 const Grid = tw.div` 

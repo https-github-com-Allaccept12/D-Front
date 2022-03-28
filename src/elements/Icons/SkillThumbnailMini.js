@@ -1,17 +1,17 @@
 import React from "react";
 import tw from "tailwind-styled-components";
-import Title from "./Title";
+import Title from "../Common/Title";
 
 import A1 from "../../static/skillLogo/Adobe.png";
 import A2 from "../../static/skillLogo/Animate.png";
 import A3 from "../../static/skillLogo/fireworks.png";
-import A4 from "../../static/skillLogo/xd.svg";
+import A4 from "../../static/skillLogo/xd.png";
 import A5 from "../../static/skillLogo/premiere.png";
 import A6 from "../../static/skillLogo/indesign.png";
 import A7 from "../../static/skillLogo/photoshop.png";
 import A8 from "../../static/skillLogo/illustrator.png";
 import A9 from "../../static/skillLogo/Aftereffect.png";
-import A10 from "../../static/skillLogo/dreamweaver.svg";
+import A10 from "../../static/skillLogo/dreamweaver.png";
 import A11 from "../../static/skillLogo/lightroom.png";
 
 import Au1 from "../../static/skillLogo/Autocad.png";

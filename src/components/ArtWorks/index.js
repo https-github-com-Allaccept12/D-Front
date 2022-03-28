@@ -1,28 +1,22 @@
-import ArtWorkAllList from "./ArtWorkAllList";
-import ArtWorkDetail from "./ArtWorksGrid/ArtWorkDetail";
-import ArtWorkPost from "./ArtWorkPost";
-import ArtWorkCategory from "./ArtWorkCategory";
+import ArtWorkDetail from "./ArtWorkDetail";
 import ArtWorkCreate from "./ArtWorkCreate";
-import ArtWorkInlineDetail from "./ArtWorksGrid/ArtWorkInlineDetail";
+import ArtWorkInlineDetail from "./ArtWorkInlineDetail";
 import ArtWorkCreateModal from "./ArtWorkCreateModal";
-import ArtWorkWrite from "./ArtWorkWrite";
 
-import ArtWorkFilter from "./ArtWorksGrid/ArtWorkFilter";
-import ArtWorkList from "./ArtWorksGrid/ArtWorkList";
-import ArtWorkInsideFilter from "./ArtWorksGrid/ArtWorkInsideFilter";
-import ArtPost from "./ArtWorksGrid/ArtPost";
+import ArtWorkFilter from "./ArtWorkFilter";
+import ArtWorkList from "./ArtWorkList";
+import ArtWorkInsideFilter from "./ArtWorkInsideFilter";
+import ArtPost from "./ArtPost";
+import ArtWorkAllList from "./ArtWorkAllList";
 
 export {
-    ArtWorkAllList,
     ArtWorkDetail,
-    ArtWorkWrite,
     ArtWorkCreateModal,
-    ArtWorkPost,
-    ArtWorkCategory,
     ArtWorkCreate,
     ArtWorkInlineDetail,
     ArtWorkFilter,
     ArtWorkList,
     ArtWorkInsideFilter,
     ArtPost,
+    ArtWorkAllList,
 };

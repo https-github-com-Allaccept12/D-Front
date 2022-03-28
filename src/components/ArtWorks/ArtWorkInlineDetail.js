@@ -1,9 +1,9 @@
 import React from "react";
-import { Profile, HeartButton, Icon, SkillThumbnailMini, Title, Input, TypeBtn, Text } from "../../../elements";
+import { Profile, HeartButton, Icon, SkillThumbnailMini, Title, Input, TypeBtn, Text } from "../../elements";
 
-import DetailSlider from "../../Sliders/DetailSlider";
-import { Comment } from "../../Comment";
-import { useInput } from "../../../hooks";
+import DetailSlider from "../Sliders/DetailSlider";
+import { Comment } from "../Comment";
+import { useInput } from "../../hooks";
 import tw from "tailwind-styled-components";
 
 const Paddings = tw.div`

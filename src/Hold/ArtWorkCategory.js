@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Title, Button, Text } from "../../elements";
+import { Title, Button, Text } from "../elements";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 

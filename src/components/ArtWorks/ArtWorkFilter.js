@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Title, Text, Icon } from "../../../elements";
+import { Title, Text, Icon } from "../../elements";
 import { useHistory } from "react-router-dom";
 import tw from "tailwind-styled-components";
 

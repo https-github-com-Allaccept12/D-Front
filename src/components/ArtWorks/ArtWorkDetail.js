@@ -1,9 +1,9 @@
 import React from "react";
-import { Profile, HeartButton, Icon, SkillThumbnailMini, Title, Input, TypeBtn } from "../../../elements";
+import { Profile, HeartButton, Icon, SkillThumbnailMini, Title, Input, TypeBtn, SnsIcons } from "../../elements";
 
-import DetailSlider from "../../Sliders/DetailSlider";
-import { Comment } from "../../Comment";
-import { useInput } from "../../../hooks";
+import DetailSlider from "../Sliders/DetailSlider";
+import { Comment } from "../Comment";
+import { useInput } from "../../hooks";
 import tw from "tailwind-styled-components";
 
 const Grid = tw.div`
@@ -93,8 +93,11 @@ const ArtWorkDetail = (props) => {
 
                                 <div className="flex flex-col gap-1 text-left ml-2">
                                     <p className="font-semibold text-dgray-600">이름 이름</p>
-                                    <div className="flex flex-row">
+                                    <div className="flex flex-row justify-start gap-x-1">
                                         <TypeBtn types="art" />
+
+                                        <SnsIcons sns="Behance" />
+                                        <SnsIcons sns="Kakao" />
                                     </div>
                                 </div>
                             </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import CircleBtn from "./CircleBtn";
+import CircleBtn from "../Icons/CircleBtn";
 import tw from "tailwind-styled-components";
 
 const ArtWorkImage = tw.img`
@@ -34,35 +34,35 @@ w-full flex flex-row justify-end items-end gap-3 p-5
 `;
 
 const EditMyArtWork = (props) => {
-  const { src, size } = props;
-  return (
-    <>
-      <Hover>
-        <ArtWorkImage src={src} size={size} />
-        <Actives>
-          <Edit>
-            <FlexBox>
-              <CircleBtn name="Edit"></CircleBtn>
-              <CircleBtn name="Delete"></CircleBtn>
-              <CircleBtn name="MyStar"></CircleBtn>
-              <CircleBtn name="Private"></CircleBtn>
-            </FlexBox>
-          </Edit>
-        </Actives>
-        <Constan>
-          <BadgeBox>
-            <CircleBtn name="MyStarMini">dd</CircleBtn>
-            <CircleBtn name="PrivateMini">dd</CircleBtn>
-          </BadgeBox>
-        </Constan>
-      </Hover>
-    </>
-  );
+    const { src, size } = props;
+    return (
+        <>
+            <Hover>
+                <ArtWorkImage src={src} size={size} />
+                <Actives>
+                    <Edit>
+                        <FlexBox>
+                            <CircleBtn name="Edit"></CircleBtn>
+                            <CircleBtn name="Delete"></CircleBtn>
+                            <CircleBtn name="MyStar"></CircleBtn>
+                            <CircleBtn name="Private"></CircleBtn>
+                        </FlexBox>
+                    </Edit>
+                </Actives>
+                <Constan>
+                    <BadgeBox>
+                        <CircleBtn name="MyStarMini">dd</CircleBtn>
+                        <CircleBtn name="PrivateMini">dd</CircleBtn>
+                    </BadgeBox>
+                </Constan>
+            </Hover>
+        </>
+    );
 };
 
 EditMyArtWork.defaultProps = {
-  src: "https://user-images.githubusercontent.com/89088205/155078987-592a07cd-a490-49fc-aabc-bc47cb508963.jpg",
-  size: "1",
+    src: "https://user-images.githubusercontent.com/89088205/155078987-592a07cd-a490-49fc-aabc-bc47cb508963.jpg",
+    size: "1",
 };
 
 export default EditMyArtWork;
