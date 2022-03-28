@@ -10,8 +10,10 @@ border border-gray-200 my-20
 
 const MyIntro = (props) => {
   const {info} = props
-  const titleContent = info.title_content
-  const subContent = info.sub_content
+  // const titleContent = info.title_content
+  // const subContent = info.sub_content
+  const titleContent = ""
+  const subContent = ""
   return (
     <>
       <Line />

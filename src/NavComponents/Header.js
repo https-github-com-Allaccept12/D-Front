@@ -7,17 +7,14 @@ import { Link } from "react-router-dom";
 
 const Header = (props) => {
     const [is_login, setIsLogin] = useState(false);
-    const [nickname, setNickname] = useState("");
     const [ownerId, setOwnerId] = useState("");
     const [accountId, setAccountId] = useState("");
     useEffect(() => {
-        const cookie = getCookie("access_token");
-        const nickname = getCookie("nickname");
+        // const cookie = getCookie("access_token");
+        const session = sessionStorage.getItem("access_token");
         const account_id = getCookie("account_id");
-        // console.log(nickname);
-        if (cookie) {
+        if (session) {
             setIsLogin(true);
-            setNickname(nickname);
             setOwnerId(account_id);
             setAccountId(account_id);
         } else {
@@ -46,10 +43,6 @@ const Header = (props) => {
                             <Link
                                 to={{
                                     pathname: `/myspace/myprofile`,
-                                    state: {
-                                        nickname: { nickname },
-                                        owner_id: { ownerId },
-                                    },
                                 }}
                             >
                                 마이페이지

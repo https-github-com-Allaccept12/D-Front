@@ -20,6 +20,7 @@ const MyInterests = (props) => {
   // 초기 세팅
   const [selectInterest, SetSelectInterest] = useState("");
   const token = useSelector((state) => state.user.user);
+  // const token = sessionStorage.getItem("access_token");
   const [isClicked, setIsClicked] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();

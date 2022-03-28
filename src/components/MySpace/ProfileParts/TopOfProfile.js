@@ -38,7 +38,7 @@ const TopOfProfile = (props) => {
     
     return (
         <div className="col-start-2 col-end-6">
-            <div clssName="w-[80.625rem]">
+            <div className="w-full">
             {tendency == "창의적인 발명가" && <div className="grid items-center justify-items-center relative bg-[#E9EDFF] h-[22.5rem] w-full">
             <img src={back_inventor}/></div>}
             {tendency == "명랑한 모험가" && <div className="grid items-center justify-items-center relative bg-[#FFF7E1] h-[22.5rem] w-full">

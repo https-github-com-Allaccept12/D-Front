@@ -25,7 +25,7 @@ const SelectBox = (props) => {
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
           aria-label="Default select example"
         >
-          <option selected>{title}</option>
+          <option value="0">{title}</option>
           <option value="1">{option01}</option>
           <option value="2">{option02}</option>
           <option value="3">{option03}</option>
