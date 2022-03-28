@@ -13,13 +13,13 @@ import {
 } from "../MySpace";
 import { MyArtWork, MyPic, MyPosts, MyQNA } from "../MySpace";
 
-const MyPage = (props) => {
-  let history = useHistory();
+const MySpaceTab = (props) => {
+  const {info} = props
   const location = useLocation();
   const a = location.pathname;
   const b = a.split("/")[2];
 
-  if (b === "myprofile") return <MyProfile />;
+  if (b === "myprofile") return <MyProfile info={info} />;
   if (b === "mywork") return <MyArtWork />;
   if (b === "mypic") return <MyPic />;
   if (b === "share") return <MyPosts />;
@@ -29,4 +29,4 @@ const MyPage = (props) => {
   }
 };
 
-export default MyPage;
+export default MySpaceTab;

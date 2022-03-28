@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCookie } from "../shared/cookie";
-import axios from "axios";
 import { myPageLoad } from "../redux/modules/myPage";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import { MyPageCategory, MyProfile, MySpaceTab, TopOfProfile } from "../components/MySpace";
@@ -15,10 +14,12 @@ const MyPage = (props) => {
       console.log("account_id: ", account_id);
   }
   const owner_account_id = account_id;
-  useEffect(() => {
-    dispatch(myPageLoad({ account_id, owner_account_id, dispatch }))
-  }, [dispatch, account_id, owner_account_id]);
+  console.log('오냐');
+  dispatch(myPageLoad({ account_id, owner_account_id, dispatch }))
   
+  
+  const information = useSelector(state => state.myPage.myPage);
+  console.log(information);
   const location = useLocation();
   const a = location.pathname;
   const b = a.split("/")[2];
@@ -30,7 +31,7 @@ const MyPage = (props) => {
           <MyPageCategory />
         </div>
         {/* 내정보일땐 마이프로필 다른사람정보일땐 디폴리오 각 메뉴를 클릭하면 메뉴 */}
-        <TopOfProfile/>
+        <TopOfProfile info={information}/>
         {/* <div className="col-start-2 col-end-6">
           <div className=" bg-blue-400 h-52 w-[80.625rem]">
             {" "}
