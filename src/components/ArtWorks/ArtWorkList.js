@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Button, SearchInput, Title } from "../../elements";
 import ArtPost from "./ArtPost";
 import tw from "tailwind-styled-components";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation, Link } from "react-router-dom";
 import ArtWorkInsideFilter from "./ArtWorkInsideFilter";
 
 const Grid = tw.div` 
@@ -54,6 +54,9 @@ const ArtWorkList = (props) => {
                         })}
                     </Grid>
                 </InnerBox>
+                <Link to="/createart">
+                <div className="relative flex flex-row-reverse right-52 "><Button>작품등록</Button></div>
+                </Link>
             </Box>
         </>
     );
