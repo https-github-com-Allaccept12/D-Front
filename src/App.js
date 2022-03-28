@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
-import { Header, OHeader, NotFound } from "./NavComponents";
+import { Header, OHeader, NotFound, HeaderMini } from "./NavComponents";
 import { TendencyTest, MyInterests, Results } from "./components";
 import { Main, ArtWork, Dimo, MyPosts, LogOut, EditMySpace, MyPage, CreateProfile, KakaoRedirectHandler } from "./page";
 import { CompleteProfile } from "./components";
@@ -16,7 +16,15 @@ function App() {
             <div id="modal"></div>
             <div id="root"></div>
             <div className="w-full m-auto App">
-                {b === undefined ? <Header /> : <OHeader />}
+                {b === undefined ? (
+                    <>
+                        <Header />
+                        <HeaderMini />
+                    </>
+                ) : (
+                    <OHeader />
+                )}
+
                 <Switch>
                     <Route exact path="/" component={Main} />
                     <Route exact path="/Main" component={Main} />

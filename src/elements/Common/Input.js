@@ -142,6 +142,7 @@ Input.defaultProps = {
     type: "text",
     placeholder: "입력해주세요!",
     value: "",
+    cardSize: "1",
     onChange: () => {},
     onSubmit: () => {},
     is_submit: false,

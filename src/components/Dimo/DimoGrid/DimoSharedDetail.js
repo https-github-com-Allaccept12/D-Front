@@ -1,175 +1,118 @@
 import React from "react";
-import { Profile, HeartButton, Icon, SkillThumbnailMini, Title, Input, TypeBtn, Text } from "../../../elements";
+import { Button, Label, Profile, Title, Text, HeartButton, Input } from "../../../elements";
 
-import { Comment } from "../../Comment";
-import { useInput } from "../../../hooks";
+import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
+import { useToggle, useInput } from "../../../hooks";
 
-const Paddings = tw.div`
-w-full bg-dgray-300 h-full
-`;
-
-const Grid = tw.div`
-flex justify-center items-center flex-col lg:w-4/5
-`;
-
-const Box = tw.div`
-bg-white p-10 justify-between w-full h-[9rem]
-`;
-
-const Header = tw.div`
-flex items-center justify-start flex-row 
+const UnderLine = tw.hr`
+border border-dgray-300 w-full col-span-full mt-10 mb-5
 `;
 
 const InnerLine = tw.hr`
 border h-4 mx-3 mt-1 text-dgray-300
 `;
 
-const ModalBody = tw.div`
-w-full mx-auto overflow-hidden bg-transparent rounded-lg shadow-md
+const Card = tw.div`
+w-full mt-10 rounded-lg border border-dgray-200 bg-white sm:px-28 p-3
 `;
 
-const Images = tw.img`
-object-cover w-full h-fit
+const Header = tw.div`
+
 `;
 
-const ViewBox = tw.div`
-bg-dgray-100 h-[7rem] flex flex-row justify-center space-x-20 items-center
+const Body = tw.div`
+
 `;
 
-const ProfileBox = tw.div`
-bg-white p-10 justify-between w-full h-[9rem]
+const Btns = tw.div`
+
 `;
 
-const Line = tw.hr`
-w-[95%] border mx-auto border-gray-300 my-6
+const Footer = tw.div`
+py-10 flex flex-row justify-between
 `;
 
-const CommentBox = tw.div` 
-flex flex-col grow md:px-5
-`;
-
-const CommentInput = tw.section`
-flex mt-5 
-`;
 const DimoSharedDetail = (props) => {
+    const [showAnswer, setShowAnswer] = useToggle();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
     return (
         <>
-            <Paddings>
-                <div className="fixed right-12 invisible lg:visible">
-                    <div className="flex flex-col">
-                        <div className="flex justify-center items-center flex-col gap-1 cursor-pointer hover:scale-110">
-                            <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                <Profile size="5" />
-                            </div>
-                            <Text size="1">프로필</Text>
-                        </div>
-                        <div className="flex justify-center items-center flex-col gap-1 cursor-pointer hover:scale-110">
-                            <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                <Icon name="StarE" iconSize="48" className="absolute" />
-                                <Profile size="5" className="invisible" />
-                            </div>
-                            <Text size="1">팔로우</Text>
-                        </div>
-                        <div className="flex justify-center items-center flex-col gap-1  cursor-pointer hover:scale-110">
-                            <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                <Icon name="StarE" iconSize="48" className="absolute" />
-                                <Profile size="5" className="invisible" />
-                            </div>
-                            <Text size="1">좋아요</Text>
-                        </div>
-                        <div className="flex justify-center items-center flex-col gap-1  cursor-pointer hover:scale-110">
-                            <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                <Icon name="StarE" iconSize="48" className="absolute" />
-                                <Profile size="5" className="invisible" />
-                            </div>
-                            <Text size="1">스크랩</Text>
-                        </div>
-                        <div className="flex justify-center items-center flex-col gap-1  cursor-pointer hover:scale-110">
-                            <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                <Icon name="StarE" iconSize="48" className="absolute" />
-                                <Profile size="5" className="invisible" />
-                            </div>
-                            <Text className="" size="1">
-                                공유하기
-                            </Text>
+            <Card>
+                <Header>
+                    <div className="flex flex-row gap-1 md:pt-10 pb-4">
+                        <Label size="2" color="4">
+                            UI/UX
+                        </Label>
+                        <Label size="2" color="5">
+                            진로고민
+                        </Label>
+                    </div>
+                    <Title size="5">UI/UX 취업 관련 질문입니다</Title>
+                    <div className="flex flex-row py-3">
+                        <Text size="1">2022.07.17</Text>
+                        <InnerLine />
+                        <Text size="1">조회수 2천</Text>
+                        <InnerLine />
+                        <Text size="1">채택완료</Text>
+                    </div>
+                </Header>
+                <Body>
+                    <Text size="2" className="flex flex-wrap w-full pt-4 pb-16">
+                        안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며
+                        제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다.
+                        안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며
+                        제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다.
+                        안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며
+                        제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다.
+                        안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며
+                        제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다.
+                    </Text>
+                </Body>
+                <Btns>
+                    <div className="flex flex-row justify-between">
+                        <Button size="3" onClick={setShowAnswer}>
+                            답변남기기
+                        </Button>
+                        <div className="flex flex-row space-x-4">
+                            <HeartButton like_cnt="0" is_like />
+                            <HeartButton like_cnt="1" is_like />
                         </div>
                     </div>
-                </div>
-                <Grid>
-                    <Box>
-                        <Header>
-                            <div className="flex items-center">
-                                <Profile size="6" className="hidden sm:contents" />
-                            </div>
-                            <div className="flex flex-col gap-2 text-left ml-2">
-                                <Title size="6">은행 어플리케이션 디자인</Title>
-                                <p className="text-md text-dgray-500 flex flex-row font-min2">
-                                    2022.03.10
-                                    <InnerLine /> UX / UI
-                                </p>
-                            </div>
-                            <div className="flex ml-auto flex-row gap-2">
-                                <SkillThumbnailMini skill="A1" />
-                                <SkillThumbnailMini skill="A5" />
-                            </div>
-                        </Header>
-                    </Box>
+                </Btns>
 
-                    <ModalBody>
-                        <Images
-                            src="https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/cnoC/image/d8fBsA26Y_-zWzEHHYNUgV51oWU.JPG"
-                            alt=""
-                        />
-
-                        <ViewBox>
-                            <HeartButton like_cnt="1" is_like nameF="StarF" nameE="StarE" />
-                            <HeartButton like_cnt="1" is_like nameF="HeartF" nameE="HeartE" />
-                            <HeartButton like_cnt="1" is_like nameF="BookmarkF" nameE="BookmarkE" />
-                        </ViewBox>
-
-                        <div className="p-6 bg-white">
-                            <ProfileBox>
-                                <div className="flex items-center justify-start flex-row">
-                                    <Profile size="5" className="mb-3" />
-
-                                    <div className="flex flex-col gap-1 text-left ml-2">
-                                        <p className="font-semibold text-dgray-600">이름 이름</p>
-                                        <div className="flex flex-row">
-                                            <TypeBtn types="art" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </ProfileBox>
-
-                            <Line />
-
-                            <Title size="6" className="pl-7 pb-5 hidden md:contents">
-                                댓글 0개
-                            </Title>
-
-                            <CommentBox>
-                                <Profile size="5" className="absolute invisible md:visible" />
-                                <Input
-                                    value={name.value}
-                                    onChange={name.onChange}
-                                    is_error={name.errors}
-                                    is_value={name.value.length}
-                                    textarea
-                                    maxLen="30"
-                                />
-
-                                <div className="">
-                                    <Comment />
-                                    <Comment />
-                                </div>
-                            </CommentBox>
+                <UnderLine />
+                <Footer>
+                    <div className="justify-start flex flex-row">
+                        <Profile size="5" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
+                        <div>
+                            <Title>이름</Title>
+                            <Title>채택률 마감률</Title>
                         </div>
-                    </ModalBody>
-                </Grid>
-            </Paddings>
+                    </div>
+                    <Button>팔로우</Button>
+                </Footer>
+            </Card>
+            {showAnswer && (
+                <>
+                    <div className=" bg-dgray-300 relative">
+                        <div className="pt-10 absolute">
+                            <Title>답변 남기기</Title>
+                            <Profile size="5" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
+                        </div>
+                        <Input
+                            value={name.value}
+                            onChange={name.onChange}
+                            is_error={name.errors}
+                            is_value={name.value.length}
+                            textarea
+                            cardSize="3"
+                            maxLen="30"
+                        />
+                    </div>
+                </>
+            )}
         </>
     );
 };

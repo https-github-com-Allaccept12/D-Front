@@ -63,28 +63,28 @@ const ArtPost = (props) => {
                                         </div>
                                         <div className="flex justify-center items-center flex-col gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                                <Icon name="StarE" iconSize="48" className="absolute" />
+                                                <Icon name="Plus" iconSize="48" className="absolute" />
                                                 <Profile size="5" className="invisible" />
                                             </div>
                                             <Text size="1">팔로우</Text>
                                         </div>
                                         <div className="flex justify-center items-center flex-col gap-1  cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                                <Icon name="StarE" iconSize="48" className="absolute" />
+                                                <Icon name="HeartE" iconSize="48" className="absolute" />
                                                 <Profile size="5" className="invisible" />
                                             </div>
                                             <Text size="1">좋아요</Text>
                                         </div>
                                         <div className="flex justify-center items-center flex-col gap-1  cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                                <Icon name="StarE" iconSize="48" className="absolute" />
+                                                <Icon name="BookmarkE" iconSize="48" className="absolute" />
                                                 <Profile size="5" className="invisible" />
                                             </div>
                                             <Text size="1">스크랩</Text>
                                         </div>
                                         <div className="flex justify-center items-center flex-col gap-1  cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                                <Icon name="StarE" iconSize="48" className="absolute" />
+                                                <Icon name="Link" iconSize="48" className="absolute" />
                                                 <Profile size="5" className="invisible" />
                                             </div>
                                             <Text className="hidden lg:contents" size="1">

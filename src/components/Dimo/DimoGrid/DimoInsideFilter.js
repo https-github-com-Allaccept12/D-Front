@@ -39,12 +39,12 @@ const DimoInsideFilter = (props) => {
             <Grid>
                 <FilterBtn>
                     <TextCSS>
-                        <Icon name="StarE" iconSize="14" />
+                        <Icon name="HeartE" iconSize="14" />
                         <ColorSpan>인기순</ColorSpan>
                     </TextCSS>
                     <InnerLine />
                     <TextCSS>
-                        <Icon name="StarE" iconSize="14" />
+                        <Icon name="Time" iconSize="14" />
                         <ColorSpan>최신순</ColorSpan>
                     </TextCSS>
                 </FilterBtn>

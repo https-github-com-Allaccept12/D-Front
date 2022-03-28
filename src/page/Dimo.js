@@ -2,7 +2,7 @@ import React from "react";
 import { Link, Route, Switch, useLocation } from "react-router-dom";
 import { DimoCategory, DimoAllList, DimoPage, DimoFilter, DimoList } from "../components/Dimo";
 import tw from "tailwind-styled-components";
-import { Title, Button } from "../elements";
+import { Title, Button, CategoryMini } from "../elements";
 import { DimoSlider } from "../components";
 
 const SlideBox = tw.div`
@@ -11,6 +11,10 @@ row-start-2 col-span-full
 
 const Box = tw.div`
 row-start-3
+`;
+
+const MobileBtn = tw.button`
+bg-yellow-400 rounded-full w-14 xl:hidden fixed bottom-10 right-0
 `;
 
 const Dimo = () => {
@@ -45,7 +49,7 @@ const Dimo = () => {
                             )}
                         </div>
                         <div className="hidden xl:contents">
-                            <Button size="2" className="col-start-4 w-36 xl:mt-6 2xl:ml-40 ">
+                            <div className="col-start-4 w-36 xl:mt-10 2xl:ml-32 ">
                                 <Link
                                     to={{
                                         pathname: `/dimo/create/${b}`,
@@ -54,9 +58,9 @@ const Dimo = () => {
                                         },
                                     }}
                                 >
-                                    글쓰기
+                                    <Button size="3">글쓰기</Button>
                                 </Link>
-                            </Button>
+                            </div>
                         </div>
                         <SlideBox>
                             <DimoSlider list={b} />
@@ -75,6 +79,17 @@ const Dimo = () => {
                         <div className="w-full xl:row-start-3 xl:col-start-2 xl:col-end-5">
                             <div className="w-full h-[200rem]">
                                 <DimoList list={b} />
+                                <CategoryMini list={b} />
+                                <Link
+                                    to={{
+                                        pathname: `/dimo/create/${b}`,
+                                        state: {
+                                            title: { b },
+                                        },
+                                    }}
+                                >
+                                    <MobileBtn>연필</MobileBtn>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -109,7 +124,7 @@ const Dimo = () => {
                             )}
                         </div>
                         <div className="hidden xl:contents">
-                            <Button size="2" className="col-start-4 w-36 xl:mt-6 2xl:ml-40 ">
+                            <div className="col-start-4 w-36 xl:mt-10 2xl:ml-32 ">
                                 <Link
                                     to={{
                                         pathname: `/dimo/create/${b}`,
@@ -118,9 +133,9 @@ const Dimo = () => {
                                         },
                                     }}
                                 >
-                                    글쓰기
+                                    <Button size="3">글쓰기</Button>
                                 </Link>
-                            </Button>
+                            </div>
                         </div>
                         <SlideBox>
                             <DimoSlider list={b} />
@@ -139,6 +154,17 @@ const Dimo = () => {
                         <div className="w-full xl:row-start-3 xl:col-start-2 xl:col-end-5">
                             <div className="w-full h-[200rem]">
                                 <DimoList list={b} />
+                                <CategoryMini list={b} />
+                                <Link
+                                    to={{
+                                        pathname: `/dimo/create/${b}`,
+                                        state: {
+                                            title: { b },
+                                        },
+                                    }}
+                                >
+                                    <MobileBtn>연필</MobileBtn>
+                                </Link>
                             </div>
                         </div>
                     </div>

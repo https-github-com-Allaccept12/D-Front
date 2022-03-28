@@ -12,11 +12,11 @@ import {
     Button,
     Input,
     SnsIcons,
+    IconBtn,
 } from "../elements";
 import { useHistory } from "react-router-dom";
 import { useInput } from "../hooks";
 import SocialLogin from "../shared/SocialLogin";
-import Ds from "./Ds";
 
 const MyPosts = (props) => {
     let history = useHistory();
@@ -30,9 +30,10 @@ const MyPosts = (props) => {
                 크리에이트 폼 모아놓기
                 <SocialLogin />
             </div>
-            <Ds />
+
             <div className="flex">
                 <div className="flex flex-row justify-center items-center w-full">
+                    <IconBtn name="ArrowL" count="2" iconSize="16" />
                     <SnsIcons sns="Behance" />
                     <SnsIcons sns="Facebook" />
                     <SnsIcons sns="Instagram" />
