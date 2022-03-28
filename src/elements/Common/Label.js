@@ -79,10 +79,11 @@ ${(props) => (props.iconColor === "heart" ? `text-dred-300` : "")};
 `;
 
 const Label = (props) => {
-    const { size, color, styles, children, onClick, disabled, is_loading, icon, name, iconSize, iconColor } = props;
+    const { size, color, styles, children, onClick, disabled, is_loading, icon, name, iconSize, iconColor, className } =
+        props;
 
     return (
-        <Btn size={size} color={color} styles={styles} onClick={onClick} disabled={disabled} is_loading={is_loading}>
+        <Btn size={size} color={color} styles={styles} onClick={onClick} disabled={disabled} className={className}>
             {icon && (
                 <IconColor iconColor={iconColor}>
                     <Icon name={name} iconSize={iconSize} />
@@ -100,6 +101,7 @@ Label.defaultProps = {
     children: null,
     onClick: () => {},
     iconColor: "",
+    className: "",
 };
 
 export default Label;

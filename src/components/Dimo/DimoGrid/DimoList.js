@@ -6,17 +6,17 @@ import { useHistory, useLocation } from "react-router-dom";
 import DimoInsideFilter from "./DimoInsideFilter";
 import DimoPost from "./DimoPost";
 const Grid = tw.div` 
-flex flex-row flex-wrap items-center justify-center 
-sm:justify-start gap-6 sm:px-3 md:px-4 xl:px-8 2xl:px-20
+flex flex-row flex-wrap items-center justify-center
+sm:justify-start lg:gap-2 px-0 sm:px-0 lg:px-4 xl:px-8 2xl:px-10
 
 `;
 
 const Box = tw.div`
-flex flex-col gap-6 py-6 rounded-xl mt-2
+flex flex-col lg:gap-3 py-6 rounded-xl mt-2
 `;
 
 const InnerBox = tw.div`
-bg-white flex flex-col gap-3 py-6 xl:px-4 rounded-xl w-full xl:max-w-[95%] 2xl:max-w-[90%]
+bg-white flex flex-col gap-0 py-6 xl:px-2 rounded-xl w-full xl:max-w-[95%] 2xl:max-w-[90%]
 `;
 
 const Line = tw.hr`
@@ -37,6 +37,7 @@ const p = [
 ];
 
 const DimoList = (props) => {
+    const { list } = props;
     return (
         <>
             <Box>
@@ -47,7 +48,7 @@ const DimoList = (props) => {
                         {p.map((n) => {
                             return (
                                 <>
-                                    <DimoPost key={n.id.toString()} size="3" />
+                                    <DimoPost key={n.id.toString()} size="3" list={list} />
                                 </>
                             );
                         })}

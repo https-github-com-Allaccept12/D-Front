@@ -1,9 +1,8 @@
 import React from "react";
-import { Profile, HeartButton, Icon, SkillThumbnailMini, Title, Input, TypeBtn, Text } from "../../elements";
+import { Profile, HeartButton, Icon, SkillThumbnailMini, Title, Input, TypeBtn, Text } from "../../../elements";
 
-import DetailSlider from "../Sliders/DetailSlider";
-import { Comment } from "../Comment";
-import { useInput } from "../../hooks";
+import { Comment } from "../../Comment";
+import { useInput } from "../../../hooks";
 import tw from "tailwind-styled-components";
 
 const Paddings = tw.div`
@@ -53,7 +52,7 @@ flex flex-col grow md:px-5
 const CommentInput = tw.section`
 flex mt-5 
 `;
-const ArtWorkInlineDetail = (props) => {
+const DimoSharedDetail = (props) => {
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
     return (
@@ -145,7 +144,6 @@ const ArtWorkInlineDetail = (props) => {
                                 </div>
                             </ProfileBox>
 
-                            <DetailSlider />
                             <Line />
 
                             <Title size="6" className="pl-7 pb-5 hidden md:contents">
@@ -176,4 +174,4 @@ const ArtWorkInlineDetail = (props) => {
     );
 };
 
-export default ArtWorkInlineDetail;
+export default DimoSharedDetail;

@@ -1,83 +1,149 @@
 import React from "react";
-import { HeartButton, Subtitle, Icon, Thumbnail, Profile } from "../../../elements";
+import { HeartButton, Text, Icon, Title, Profile, Label } from "../../../elements";
 
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
 const Art = tw.div`
 flex justify-center items-center flex-col shrink-0
+`;
+
+const Box = tw.div`
+flex flex-row items-center justify-between w-full lg:px-2 mt-1 mx-auto
 
 `;
 
-const DimoPost = (props) => {
-    const { profile, nickname, thumnail, is_like, like_count } = props;
-    return (
-        <>
-            <Art>
-                <button
-                    type="button"
-                    className="transition duration-150 ease-in-out active:shadow-lg"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModalXl"
-                >
-                    <Thumbnail src={thumnail} size="3" />
-                </button>
-                <div className="flex flex-row items-center justify-between flex-shrink-0 w-full px-2 mt-1">
-                    <div className="flex flex-row items-center gap-2">
-                        <Profile size="7" src={profile} />
-                        <Subtitle size="1">{nickname}</Subtitle>
-                    </div>
-                    <div className="flex flex-row items-center mt-1 mr-1">
-                        <HeartButton like_cnt={like_count} is_like={is_like} />
-                    </div>
-                </div>
-            </Art>
+const Grid = tw.div`
+w-[23.238rem] h-[16rem] border border-dgray-200 rounded-lg bg-white
+shadow-md
+`;
+const Card = tw.div`
+w-[23.238rem] h-[16rem] absolute
+`;
 
+const Header = tw.div`
+w-[23.238rem] h-[6.5rem]
+`;
+
+const LabelBox = tw.div`
+absolute top-9 left-[7rem]
+`;
+
+const TextBox = tw.div`
+ px-5 text-ellipsis w-[22.25rem] h-22 absolute left-4 top-28
+`;
+
+const IconBox = tw.div`
+absolute bottom-6 px-9 w-[23.238rem] 
+`;
+
+const DimoPost = (props) => {
+    const { profile, nickname, thumnail, is_like, like_count, list } = props;
+    if (list === "qna")
+        return (
             <>
-                <div
-                    className="fixed top-0 left-0 hidden w-full h-full overflow-x-hidden overflow-y-auto outline-none modal fade"
-                    id="exampleModalXl"
-                    tabIndex="-1"
-                    aria-labelledby="exampleModalXlLabel"
-                    aria-modal="true"
-                    role="dialog"
-                >
-                    <div className="relative w-auto pointer-events-none modal-dialog modal-xl">
-                        <div className="relative flex flex-col w-full text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto modal-content bg-clip-padding">
-                            <div className="modal-body">
-                                {/* <ArtWorkDetail /> */}
-                                <div
-                                    className="lg:fixed w-20 space-y-2 top-20 right-20 xl:right-60
-                                flex flex-row lg:flex-col"
-                                >
-                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                                        <Icon />
-                                        <span className="hidden lg:contents">프로필</span>
-                                    </div>
-                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                                        <Icon />
-                                        <span className="hidden lg:contents">팔로우</span>
-                                    </div>
-                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                                        <Icon name="HeartF" />
-                                        <span className="hidden lg:contents">좋아요</span>
-                                    </div>
-                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                                        <Icon />
-                                        <span className="hidden lg:contents">스크랩</span>
-                                    </div>
-                                    <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
-                                        <Icon name="Link" />
-                                        <span className="hidden lg:contents">공유하기</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Art>
+                    <Box>
+                        <Grid>
+                            <Link to="/dimo/qnadetail">
+                                <Card>
+                                    <Header>
+                                        <Profile size="5" src={profile} className="absolute inset-6" />
+                                        <LabelBox>
+                                            {/* 여기에 라벨맵돌리거나 첫번째두번째 수동 */}
+                                            <div className="flex flex-row gap-1">
+                                                <Label className="">ui/ux</Label>
+                                                <Label className="">취업하는태그가태그</Label>
+                                            </div>
+                                        </LabelBox>
+
+                                        <div className="absolute top-[3.5rem] left-[7rem] w-[13rem] overflow-hidden">
+                                            <Title size="5" className="text-left truncate">
+                                                여기는 큐엔에이
+                                            </Title>
+                                        </div>
+                                    </Header>
+                                    <TextBox>
+                                        <p className="w-[20.25rem] h-24 text-ellipsis overflow-hidden">
+                                            고민내용 고민내용고민내용 고민내용 고민내용고민내용고민내용 고민내용
+                                            고민내용고민내용고민내용고민내용고민내용 고민내용 고민내용고민내용 고민내용
+                                            고민내용고민내용고민내용 고민내용
+                                            고민내용고민내용고민내용고민내용고민내용고민내용 고민내용고민내용 고민내용
+                                            고민내용고민내용고민내용 고민내용
+                                            고민내용고민내용고민내용고민내용고민내용고민내용 고민내용고민내용 고민내용
+                                            고민내용고민내용고민내용 고민내용 고민내용고민내용고민내용고민내용고민내용
+                                        </p>
+                                    </TextBox>
+
+                                    <IconBox>
+                                        <div className="flex flex-row justify-between">
+                                            <HeartButton />
+                                            <div className="flex flex-row gap-5">
+                                                <HeartButton />
+                                                <HeartButton />
+                                            </div>
+                                        </div>
+                                    </IconBox>
+                                </Card>
+                            </Link>
+                        </Grid>
+                    </Box>
+                </Art>
             </>
-        </>
-    );
+        );
+    if (list === "shared")
+        return (
+            <>
+                <Art>
+                    <Box>
+                        <Grid>
+                            <Link to="/dimo/shareddetail">
+                                <Card>
+                                    <Header>
+                                        <Profile size="5" src={profile} className="absolute inset-6" />
+                                        <LabelBox>
+                                            {/* 여기에 라벨맵돌리거나 첫번째두번째 수동 */}
+                                            <div className="flex flex-row gap-1">
+                                                <Label className="">ui/ux</Label>
+                                                <Label className="">취업하는태그가태그</Label>
+                                            </div>
+                                        </LabelBox>
+
+                                        <div className="absolute top-[3.5rem] left-[7rem] w-[13rem] overflow-hidden">
+                                            <Title size="5" className="text-left truncate">
+                                                여기는 정보공유타이틀이 15자이상일 경우보이는 모양dfdsfdsf
+                                            </Title>
+                                        </div>
+                                    </Header>
+                                    <TextBox>
+                                        <p className="w-[20.25rem] h-24 text-ellipsis overflow-hidden">
+                                            고민내용 고민내용고민내용 고민내용 고민내용고민내용고민내용 고민내용
+                                            고민내용고민내용고민내용고민내용고민내용 고민내용 고민내용고민내용 고민내용
+                                            고민내용고민내용고민내용 고민내용
+                                            고민내용고민내용고민내용고민내용고민내용고민내용 고민내용고민내용 고민내용
+                                            고민내용고민내용고민내용 고민내용
+                                            고민내용고민내용고민내용고민내용고민내용고민내용 고민내용고민내용 고민내용
+                                            고민내용고민내용고민내용 고민내용 고민내용고민내용고민내용고민내용고민내용
+                                        </p>
+                                    </TextBox>
+
+                                    <IconBox>
+                                        <div className="flex flex-row justify-between">
+                                            <HeartButton />
+                                            <div className="flex flex-row gap-5">
+                                                <HeartButton />
+                                                <HeartButton />
+                                            </div>
+                                        </div>
+                                    </IconBox>
+                                </Card>
+                            </Link>
+                        </Grid>
+                    </Box>
+                </Art>
+            </>
+        );
+    else return null;
 };
 
 export default DimoPost;
