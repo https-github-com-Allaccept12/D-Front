@@ -4,7 +4,6 @@ import { getCookie } from "../shared/cookie";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "./Header.css";
 
 const Header = (props) => {
     const [is_login, setIsLogin] = useState(false);

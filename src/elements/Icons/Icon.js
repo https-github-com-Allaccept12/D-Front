@@ -7,6 +7,10 @@ import { ReactComponent as HeartE } from "../../static/icons/heart/heart_Empty.s
 import { ReactComponent as HeartF } from "../../static/icons/heart/heart_Filled.svg";
 import { ReactComponent as StarE } from "../../static/icons/star/star_Empty.svg";
 import { ReactComponent as StarF } from "../../static/icons/star/star_Filled.svg";
+
+import { ReactComponent as Success } from "../../static/icons/success/success.svg";
+import { ReactComponent as SuccessC } from "../../static/icons/success/SuccessCircle.svg";
+
 import { ReactComponent as Cancel } from "../../static/icons/cancel.svg";
 import { ReactComponent as Delete } from "../../static/icons/delete.svg";
 import { ReactComponent as Download } from "../../static/icons/download.svg";
@@ -17,10 +21,20 @@ import { ReactComponent as Plus } from "../../static/icons/plus.svg";
 import { ReactComponent as Private } from "../../static/icons/private.svg";
 import { ReactComponent as Replace } from "../../static/icons/replace.svg";
 import { ReactComponent as Search } from "../../static/icons/search.svg";
-import { ReactComponent as Success } from "../../static/icons/success.svg";
+
 import { ReactComponent as Talk } from "../../static/icons/talk.svg";
 import { ReactComponent as Time } from "../../static/icons/time.svg";
 import { ReactComponent as Warning } from "../../static/icons/warning.svg";
+//2차 추가 아이콘
+import { ReactComponent as Chat } from "../../static/icons/Chat.svg";
+import { ReactComponent as Eye } from "../../static/icons/Eye.svg";
+import { ReactComponent as Image } from "../../static/icons/Image.svg";
+import { ReactComponent as Inarray } from "../../static/icons/Inarray.svg";
+import { ReactComponent as Mail } from "../../static/icons/Mail.svg";
+import { ReactComponent as Sand } from "../../static/icons/Sand.svg";
+import { ReactComponent as Upload } from "../../static/icons/Upload.svg";
+import { ReactComponent as User } from "../../static/icons/User.svg";
+import { ReactComponent as Video } from "../../static/icons/Video.svg";
 
 const Icon = (props) => {
     const { name, iconSize, onClick, className } = props;
@@ -60,6 +74,22 @@ const Icon = (props) => {
         return (
             <div className={className}>
                 <StarF width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
+    }
+
+    if (name === "Success") {
+        return (
+            <div className={className}>
+                <Success width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
+    }
+
+    if (name === "SuccessC") {
+        return (
+            <div className={className}>
+                <SuccessC width={iconSize} height={iconSize} onClick={onClick} />
             </div>
         );
     }
@@ -112,14 +142,6 @@ const Icon = (props) => {
         );
     }
 
-    if (name === "Success") {
-        return (
-            <div className={className}>
-                <Success width={iconSize} height={iconSize} onClick={onClick} />
-            </div>
-        );
-    }
-
     if (name === "Talk") {
         return <Talk width={iconSize} height={iconSize} onClick={onClick} />;
     }
@@ -128,9 +150,41 @@ const Icon = (props) => {
         return <Time width={iconSize} height={iconSize} onClick={onClick} />;
     }
 
-    if (name === "Warning") {
-        return <Warning width={iconSize} height={iconSize} onClick={onClick} />;
+    if (name === "Chat") {
+        return <Chat width={iconSize} height={iconSize} onClick={onClick} />;
     }
+
+    if (name === "Eye") {
+        return <Eye width={iconSize} height={iconSize} onClick={onClick} />;
+    }
+
+    if (name === "Image") {
+        return <Image width={iconSize} height={iconSize} onClick={onClick} />;
+    }
+
+    if (name === "Inarray") {
+        return <Inarray width={iconSize} height={iconSize} onClick={onClick} />;
+    }
+
+    if (name === "Mail") {
+        return <Mail width={iconSize} height={iconSize} onClick={onClick} />;
+    }
+
+    if (name === "Sand") {
+        return <Sand width={iconSize} height={iconSize} onClick={onClick} />;
+    }
+
+    if (name === "Upload") {
+        return <Upload width={iconSize} height={iconSize} onClick={onClick} />;
+    }
+
+    if (name === "User") {
+        return <User width={iconSize} height={iconSize} onClick={onClick} />;
+    }
+
+    if (name === "Video") {
+        return <Video width={iconSize} height={iconSize} onClick={onClick} />;
+    } else return null;
 };
 
 Icon.defaultProps = {

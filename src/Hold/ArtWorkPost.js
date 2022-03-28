@@ -1,8 +1,7 @@
 import React from "react";
-import { HeartButton, Subtitle, Icon, Thumbnail, Profile } from "../../elements";
+import { HeartButton, Subtitle, Icon, Thumbnail, Profile } from "../elements";
 
 import { useHistory } from "react-router-dom";
-import ArtWorkDetail from "./ArtWorksGrid/ArtWorkDetail";
 import tw from "tailwind-styled-components";
 
 const Art = tw.div`
@@ -46,7 +45,7 @@ const ArtWorkPost = (props) => {
                     <div className="relative w-auto pointer-events-none modal-dialog modal-xl">
                         <div className="relative flex flex-col w-full text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto modal-content bg-clip-padding">
                             <div className="modal-body">
-                                <ArtWorkDetail />
+                                {/* <ArtWorkDetail /> */}
                                 <div className="fixed w-20 space-y-2 top-20 right-20 xl:right-60">
                                     <div className="flex flex-col items-center justify-center p-2 py-3 bg-white rounded-full font-min2">
                                         <Icon />

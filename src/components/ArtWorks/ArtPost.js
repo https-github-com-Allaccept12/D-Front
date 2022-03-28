@@ -1,5 +1,5 @@
 import React from "react";
-import { HeartButton, Subtitle, Icon, Thumbnail, Profile, Text } from "../../../elements";
+import { HeartButton, Subtitle, Icon, Thumbnail, Profile, Text } from "../../elements";
 
 import { useHistory } from "react-router-dom";
 import ArtWorkDetail from "./ArtWorkDetail";

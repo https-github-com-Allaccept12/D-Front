@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Button, SearchInput, Title } from "../../../elements";
+import { Button, SearchInput, Title } from "../../elements";
 import ArtPost from "./ArtPost";
 import tw from "tailwind-styled-components";
 import { useHistory, useLocation } from "react-router-dom";

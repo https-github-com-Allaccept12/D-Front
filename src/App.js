@@ -10,7 +10,7 @@ import { ArtWorkWrite, ArtWorkCreate, ArtWorkInlineDetail } from "./components/A
 function App() {
     const location = useLocation();
     const a = location.pathname;
-    const b = a.split("/")[1];
+    const b = a.split("/")[2];
     return (
         <>
             <div id="modal"></div>
