@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { editProfile } from "../../../redux/modules/editProfile";
+import { editExp } from "../../../redux/modules/editProfile";
 import { Button, Title, Input, CheckBox, Text } from "../../../elements";
-import { useHistory } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
 const InputBox = tw.div`
@@ -81,8 +80,9 @@ const CreateMyExp = (props) => {
   };
 
   const SendExps = () => {
-    const data = inputList;
-    dispatch(editProfile(data));
+    const data = inputList[0];
+    console.log(data);
+    dispatch(editExp(data));
   };
 
   return (
@@ -229,6 +229,9 @@ const CreateMyExp = (props) => {
           );
         })}
         {/* <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div> */}
+        <Button onClick={SendExps}>
+        다음
+      </Button>
       </div>
     </>
   );

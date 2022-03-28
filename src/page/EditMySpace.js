@@ -12,7 +12,6 @@ import {
   ChangeMyInterests,
 } from "../components/MySpace";
 import { useTabs } from "../hooks";
-import { MyInterests } from "../components";
 import tw from "tailwind-styled-components";
 import back_inventor from "../static/images/MyPageImages/back_inventor.svg"
 import back_adventure from "../static/images/MyPageImages/back_adventure.svg"
@@ -53,10 +52,9 @@ const EditMySpace = (props) => {
   const id_cookie = sessionStorage.getItem("account_id")
   if (id_cookie) {
       account_id = id_cookie;
-      console.log("account_id: ", account_id);
+      // console.log("account_id: ", account_id);
   }
   const owner_account_id = account_id;
-  console.log(account_id, owner_account_id);
   useEffect(() => {
     dispatch(myPageLoad({ account_id, owner_account_id, dispatch }))
   }, [dispatch, account_id, owner_account_id]);
@@ -66,7 +64,6 @@ const EditMySpace = (props) => {
   const location = useLocation();
   const a = location.pathname;
   const b = a.split("/")[2];
-  console.log(a, b);
   
   const array_sample = [
     {
@@ -78,7 +75,7 @@ const EditMySpace = (props) => {
       content: <CreateMyIntro info={info} />,
     },
     {
-      tab: "업무경험",
+      tab: "업무 경험",
       content: <CreateMyExp />,
     },
     {
@@ -86,7 +83,7 @@ const EditMySpace = (props) => {
       content: <ChangeMyPortfolio />,
     },
     {
-      tab: "작업 및 직업스킬",
+      tab: "보유 스킬",
       content: <CreateMySkill />,
     },
     {

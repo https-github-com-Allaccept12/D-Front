@@ -69,6 +69,7 @@ const CreateProfile = (props) => {
     let data = {
       nickname: nickname.value,
       // intro_content: introduce.value,
+      name: name.value,
       work_email: email.value,
       linked_in: linkedIn.value,
       brunch: brunch.value,
@@ -187,8 +188,10 @@ const CreateProfile = (props) => {
           ></Input>
         </div>
       </div>
-
-      <div className="grid w-full py-10 bg-white place-items-center"></div>
+      <div className="grid w-full py-10 bg-white place-items-center">
+      <Button onClick={SendProfile}>
+        다음
+      </Button></div>
     </>
   );
 };
