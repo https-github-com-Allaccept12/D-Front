@@ -8,21 +8,25 @@ import { MyPageCategory, MyProfile, MySpaceTab, TopOfProfile } from "../componen
 const MyPage = (props) => {
   const dispatch = useDispatch();
   let account_id = 0;
-  const id_cookie = getCookie("account_id");
+  // const id_cookie = getCookie("account_id");
+  const id_cookie = sessionStorage.getItem("account_id")
   if (id_cookie) {
       account_id = id_cookie;
       console.log("account_id: ", account_id);
   }
   const owner_account_id = account_id;
-  console.log('오냐');
-  dispatch(myPageLoad({ account_id, owner_account_id, dispatch }))
+  console.log(account_id, owner_account_id);
+  useEffect(() => {
+    dispatch(myPageLoad({ account_id, owner_account_id, dispatch }))
+  }, [dispatch, account_id, owner_account_id]);
   
   
   const information = useSelector(state => state.myPage.myPage);
-  console.log(information);
+  console.log(information)
   const location = useLocation();
   const a = location.pathname;
   const b = a.split("/")[2];
+  console.log(b);
 
   return (
     <>

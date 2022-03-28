@@ -15,7 +15,7 @@ export const myPageLoad = createAsyncThunk(
         },
       })
       .then((res) => {
-        // console.log(res.data.data);
+        console.log(res);
         const mypage_data = res.data.data;
         dispatch(myPage(mypage_data));
       })

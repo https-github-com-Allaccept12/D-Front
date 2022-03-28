@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { editProfile } from "../../../redux/modules/editProfile";
 import { Button, Title, Input, CheckBox, Text } from "../../../elements";
 import { useHistory } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -36,6 +38,7 @@ w-full py-4 border border-dgray-400 border-box h-I02 px-4
 
 // 인풋리스트에 모아서 전달하기... 화면을 이동하면 내용이 사라진다..!
 const CreateMyExp = (props) => {
+  const dispatch = useDispatch();
   const [inputList, setInputList] = useState([
     {
       company_name: "",
@@ -78,14 +81,13 @@ const CreateMyExp = (props) => {
   };
 
   const SendExps = () => {
-    const formData = new FormData();
-    let data = inputList;
-    formData.append("data");
+    const data = inputList;
+    dispatch(editProfile(data));
   };
 
   return (
     <>
-      <div className="grid grid-cols-4 w-full col-span-full gap-3">
+      <div className="grid w-full grid-cols-4 gap-3 col-span-full">
         <TitleBox>
           <Title size="4" className="my-6">
             업무경험
@@ -97,9 +99,9 @@ const CreateMyExp = (props) => {
             <>
               <div
                 key={i}
-                className="grid grid-cols-4 w-full col-span-full gap-6"
+                className="grid w-full grid-cols-4 gap-6 col-span-full"
               >
-                <div className="col-start-1 row-start-2 col-span-3">
+                <div className="col-span-3 col-start-1 row-start-2">
                   <InputBox>
                     <InputTitle>회사</InputTitle>
                     <div className="col-start-2 col-end-6">
@@ -115,7 +117,7 @@ const CreateMyExp = (props) => {
                   </InputBox>
                 </div>
 
-                <div className="row-start-3 col-start-1 col-end-3">
+                <div className="col-start-1 col-end-3 row-start-3">
                   <InputBox>
                     <InputTitle>부서</InputTitle>
                     <div className="col-start-2 col-end-8">
@@ -132,7 +134,7 @@ const CreateMyExp = (props) => {
                   </InputBox>
                 </div>
 
-                <div className="row-start-3 col-start-3 col-end-6">
+                <div className="col-start-3 col-end-6 row-start-3">
                   <InputBox>
                     <InputTitle>직책</InputTitle>
                     <div className="col-start-2 col-end-8">
@@ -149,7 +151,7 @@ const CreateMyExp = (props) => {
                   </InputBox>
                 </div>
 
-                <div className="row-start-4 col-start-1 col-end-3">
+                <div className="col-start-1 col-end-3 row-start-4">
                   <InputBox>
                     <InputTitle>시작날짜</InputTitle>
                     <div className="col-start-2 col-end-8">
@@ -166,7 +168,7 @@ const CreateMyExp = (props) => {
                   </InputBox>
                 </div>
 
-                <div className="row-start-4 col-start-3 col-end-6">
+                <div className="col-start-3 col-end-6 row-start-4">
                   <InputBox>
                     <InputTitle>종료날짜</InputTitle>
                     <div className="col-start-2 col-end-8">
@@ -183,7 +185,7 @@ const CreateMyExp = (props) => {
                   </InputBox>
                 </div>
 
-                <div className="w-full row-start-5 col-span-8">
+                <div className="w-full col-span-8 row-start-5">
                   <InputBox>
                     <InputTitle>업무 내용</InputTitle>
                     <div className="col-start-2 col-end-8">
@@ -215,7 +217,7 @@ const CreateMyExp = (props) => {
                     <Text
                       size="1"
                       onClick={() => handleRemoveClick(i)}
-                      className="text-dpurple-300 cursor-pointer rounded-full"
+                      className="rounded-full cursor-pointer text-dpurple-300"
                     >
                       지우기
                     </Text>

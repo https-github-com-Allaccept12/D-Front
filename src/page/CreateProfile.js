@@ -31,7 +31,7 @@ const CreateProfile = (props) => {
   const linkedIn = useInput("", []);
   const brunch = useInput("", []);
   const instagram = useInput("", []);
-  const introduce = useInput("", []);
+  // const introduce = useInput("", []);
   const JobOptions = [
     { value: "UI/UX", label: "UI & UX" },
     { value: "패션", label: "패션" },
@@ -44,7 +44,6 @@ const CreateProfile = (props) => {
     { value: "게임/캐릭터", label: "게임/캐릭터" },
     { value: "브랜딩/편집", label: "브랜딩/편집" },
     { value: "건축/인테리어/환경", label: "건축/인테리어/환경" },
-    { value: "학생", label: "학생" },
   ];
 
   const [selected, setSelected] = useState("");
@@ -67,7 +66,7 @@ const CreateProfile = (props) => {
     const formData = new FormData();
     let data = {
       nickname: nickname.value,
-      intro_content: introduce.value,
+      // intro_content: introduce.value,
       work_email: email.value,
       linked_in: linkedIn.value,
       brunch: brunch.value,
@@ -138,7 +137,7 @@ const CreateProfile = (props) => {
                 is_value={name.value.length}
               ></Input>
               <div className="grid items-center justify-start">
-                <p className="w-1/2 row-start-1 mr-10 font-min1">직업</p>
+                <p className="w-1/2 row-start-1 mr-10 font-min1">분야</p>
                 <select
                   className="row-start-1"
                   onChange={handleChangeSelect}
@@ -157,7 +156,7 @@ const CreateProfile = (props) => {
             </div>
           </div>
           <div className="grid row-start-2 row-end-3">
-            <p className="text-2xl font-bold">연락처</p>
+            <p className="text-2xl font-bold">Contact</p>
             <Input
               cardSize="2"
               title="이메일"
@@ -187,7 +186,7 @@ const CreateProfile = (props) => {
               is_value={instagram.value.length}
             ></Input>
           </div>
-          <div className="grid row-start-3 row-end-4">
+          {/* <div className="grid row-start-3 row-end-4">
             <p className="text-2xl font-bold">소개</p>
             <Input
               cardSize="1"
@@ -196,7 +195,7 @@ const CreateProfile = (props) => {
               onChange={introduce.onChange}
               is_value={introduce.value.length}
             ></Input>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="grid w-full py-10 bg-white place-items-center">

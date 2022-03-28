@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { myPageLoad } from "../redux/modules/myPage";
 import { Button, Title, Icon, ProgressBar } from "../elements";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -46,6 +47,20 @@ flex flex-col justify-center items-center w-full mx-auto
 `;
 
 const EditMySpace = (props) => {
+  const dispatch = useDispatch();
+  let account_id = 0;
+  // const id_cookie = getCookie("account_id");
+  const id_cookie = sessionStorage.getItem("account_id")
+  if (id_cookie) {
+      account_id = id_cookie;
+      console.log("account_id: ", account_id);
+  }
+  const owner_account_id = account_id;
+  console.log(account_id, owner_account_id);
+  useEffect(() => {
+    dispatch(myPageLoad({ account_id, owner_account_id, dispatch }))
+  }, [dispatch, account_id, owner_account_id]);
+  
   const info = useSelector(state => state.myPage.myPage);
   const tendency = info.tendency
   const location = useLocation();
@@ -56,11 +71,11 @@ const EditMySpace = (props) => {
   const array_sample = [
     {
       tab: "내정보",
-      content: <CreateMySpaceUser />,
+      content: <CreateMySpaceUser info={info} />,
     },
     {
       tab: "소개",
-      content: <CreateMyIntro />,
+      content: <CreateMyIntro info={info} />,
     },
     {
       tab: "업무경험",
@@ -118,11 +133,11 @@ const EditMySpace = (props) => {
 
             <GrayLine />
             <div className="flex flex-row justify-end w-full gap-10">
-              <Link to="/myspace">
-                <Button size="2">돌아가기</Button>
+              <Link to="/myspace/myprofile">
+                <Button size="2" color="2">마이페이지로</Button>
               </Link>
-              <Button size="2" color="3">
-                저장하기
+              <Button size="2" color="1">
+                수정하기
               </Button>
             </div>
           </div>

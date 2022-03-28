@@ -12,6 +12,7 @@ let mbti_s = "";
 const TendencyTest = (props) => {
   let designation = "";
   const token = useSelector((state) => state.user.user);
+  // const token = sessionStorage.getItem("access_token");
   const history = useHistory();
   const [TestNum, nextTestNum] = useState(0);
   mbti_s = Object.keys(mbti)

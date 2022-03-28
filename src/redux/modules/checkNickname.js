@@ -15,7 +15,7 @@ export const checknickname = createAsyncThunk(
       withCredentials: true,
     })
       .then((res) => {
-        // console.log(res.data);
+        console.log(res.data);
         if (res.data.result === "success") {
           setNicknameState("available");
         } else {
