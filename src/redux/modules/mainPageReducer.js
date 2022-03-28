@@ -2,7 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const mainPageArtistsSlice = createSlice({
   name: "hotist",
-  initialState: {},
+  initialState: {
+    artist: [],
+    artworks: [],
+  },
   reducers: {
     artists: (state, action) => {
       state.artist = action.payload;

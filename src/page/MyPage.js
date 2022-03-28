@@ -1,22 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCookie } from "../shared/cookie";
+import axios from "axios";
 import { myPageLoad } from "../redux/modules/myPage";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import { MyPageCategory, MyProfile, MySpaceTab, TopOfProfile } from "../components/MySpace";
 
 const MyPage = (props) => {
   const dispatch = useDispatch();
+  let account_id = 0;
+  const id_cookie = getCookie("account_id");
+  if (id_cookie) {
+      account_id = id_cookie;
+      console.log("account_id: ", account_id);
+  }
+  const owner_account_id = account_id;
   useEffect(() => {
-    let account_id = 0;
-    const id_cookie = getCookie("account_id");
-    if (id_cookie) {
-        account_id = id_cookie;
-        console.log("account_id: ", account_id);
-    }
-    const owner_account_id = account_id;
-    dispatch(myPageLoad({ account_id, owner_account_id, dispatch }));
-  });
+    dispatch(myPageLoad({ account_id, owner_account_id, dispatch }))
+  }, [dispatch, account_id, owner_account_id]);
+  
   const location = useLocation();
   const a = location.pathname;
   const b = a.split("/")[2];

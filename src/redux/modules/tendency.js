@@ -1,10 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { URL, token } from "../UrlForAxios";
+// import { useSelector } from "react-redux";
+import { URL } from "../UrlForAxios";
+
 
 export const CreateTendency = createAsyncThunk(
   "post/tendency",
-  async (tendency, thunkAPI) => {
-    await URL.post("/api/tendency", tendency, {
+  ({tendency, token},thunkAPI) => {
+    URL.post("/api/tendency", tendency, {
       headers: {
         Authorization: "Bearer " + token,
       },

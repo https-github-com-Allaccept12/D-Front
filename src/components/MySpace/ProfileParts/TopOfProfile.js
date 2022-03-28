@@ -4,19 +4,16 @@ import { useSelector } from "react-redux";
 import { MySpaceTab } from "../../../components/MySpace";
 import { Profile, Button, Icon } from "../../../elements";
 
-
+ 
 const TopOfProfile = (props) => {
-    
-  const information = useSelector((state) => state.myPage.myPage);
-  const nickname = information.nickname;
-  const following = information.following_count;
-  const follower = information.follower_count;
-  const tendency = information.tendency;
-  const profile = information.profile_img;
-  const job = information.job;
-  console.log(information);
-
-
+    const information = useSelector(state => state.myPage.myPage);
+    const nickname = information.nickname;
+    const following = information.following_count;
+    const follower = information.follower_count;
+    const tendency = information.tendency;
+    const profile = information.profile_img;
+    const job = information.job;
+    console.log(information);
     return (
         <div className="col-start-2 col-end-6">
             <div className=" bg-blue-400 h-52 w-[80.625rem]">
