@@ -3,6 +3,10 @@ import { useSelector } from "react-redux";
 
 import { MySpaceTab } from "../../../components/MySpace";
 import { Profile, Button, Icon, Title, Subtitle } from "../../../elements";
+import brunch from "../../../static/icons/sns/brunch.svg"
+import Email from "../../../static/icons/sns/E-mail.svg"
+import instagram from "../../../static/icons/sns/instagram.svg"
+import linkedin from "../../../static/icons/sns/linkedin.svg"
 import adventure from "../../../static/images/MyPageImages/adventure.svg"
 import artist from "../../../static/images/MyPageImages/artist.svg"
 import detail from "../../../static/images/MyPageImages/detail.svg"
@@ -33,7 +37,6 @@ const TopOfProfile = (props) => {
         tendency = info.tendency;
         profile = info.profile_img;
         job = info.job;
-
     }
     
     return (
@@ -70,10 +73,10 @@ const TopOfProfile = (props) => {
                     <div className="my-4">팔로잉 {following} ㅣ 팔로워 {follower}</div>
     
                     <div className="flex flex-row p-1 text-2xl">
-                        <Icon name="Time" iconSize="32" />
-                        <Icon name="Talk" iconSize="32" />
-                        <Icon name="Link" iconSize="32" />
-                        <Icon name="Edit" iconSize="32" />
+                        {(info.work_email) && <Icon name="Time" src={Email} iconSize="32" /> }
+                        {(info.insta) && <Icon name="Time" src={instagram} iconSize="32" /> }
+                        {(info.linked_in) && <Icon name="Time" src={linkedin} iconSize="32" /> }
+                        {(info.brunch) && <Icon name="Time" src={brunch} iconSize="32" /> }
                     </div>
                     </div>
                 </div>

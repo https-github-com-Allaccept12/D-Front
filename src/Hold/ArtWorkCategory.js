@@ -9,14 +9,14 @@ const ArtWorkCategory = (props) => {
 
     return (
         <>
-            <div className="top-32 invisible fixed xl:visible xl:sticky">
+            <div className="fixed invisible top-32 xl:visible xl:sticky">
                 <div
                     className="flex flex-col justify-center mt-10 text-left w-[18.75rem] h-[44rem]
   rounded-lg bg-white"
                 >
-                    <Link to="/createart">
-                        <Button>작품등록</Button>
-                    </Link>
+                <Link to="/createart">
+                    <Button>작품등록</Button>
+                </Link>
                     <Title size="5" className="py-3">
                         카테고리
                     </Title>
