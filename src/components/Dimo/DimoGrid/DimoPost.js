@@ -1,5 +1,5 @@
 import React from "react";
-import { HeartButton, Text, Icon, Title, Profile, Label } from "../../../elements";
+import { HeartButton, Text, Icon, Title, Profile, Label, IconBtn } from "../../../elements";
 
 import { useHistory, Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -34,7 +34,7 @@ const TextBox = tw.div`
 `;
 
 const IconBox = tw.div`
-absolute bottom-6 px-9 w-[23.238rem] 
+absolute bottom-4 px-9 w-[23.238rem]
 `;
 
 const DimoPost = (props) => {
@@ -45,47 +45,48 @@ const DimoPost = (props) => {
                 <Art>
                     <Box>
                         <Grid>
-                            <Link to="/dimo/qnadetail">
-                                <Card>
-                                    <Header>
-                                        <Profile size="5" src={profile} className="absolute inset-6" />
-                                        <LabelBox>
-                                            {/* 여기에 라벨맵돌리거나 첫번째두번째 수동 */}
-                                            <div className="flex flex-row gap-1">
-                                                <Label className="">ui/ux</Label>
-                                                <Label className="">취업하는태그가태그</Label>
-                                            </div>
-                                        </LabelBox>
-
-                                        <div className="absolute top-[3.5rem] left-[7rem] w-[13rem] overflow-hidden">
-                                            <Title size="5" className="text-left truncate">
-                                                여기는 큐엔에이
-                                            </Title>
+                            <Card>
+                                <Header>
+                                    <Profile size="5" src={profile} className="absolute inset-6" />
+                                    <LabelBox>
+                                        {/* 여기에 라벨맵돌리거나 첫번째두번째 수동 */}
+                                        <div className="flex flex-row gap-1">
+                                            <Label className="">ui/ux</Label>
+                                            <Label className="">취업하는태그가태그</Label>
                                         </div>
-                                    </Header>
-                                    <TextBox>
-                                        <p className="w-[20.25rem] h-24 text-ellipsis overflow-hidden">
-                                            고민내용 고민내용고민내용 고민내용 고민내용고민내용고민내용 고민내용
-                                            고민내용고민내용고민내용고민내용고민내용 고민내용 고민내용고민내용 고민내용
-                                            고민내용고민내용고민내용 고민내용
-                                            고민내용고민내용고민내용고민내용고민내용고민내용 고민내용고민내용 고민내용
-                                            고민내용고민내용고민내용 고민내용
-                                            고민내용고민내용고민내용고민내용고민내용고민내용 고민내용고민내용 고민내용
-                                            고민내용고민내용고민내용 고민내용 고민내용고민내용고민내용고민내용고민내용
-                                        </p>
-                                    </TextBox>
+                                    </LabelBox>
 
-                                    <IconBox>
-                                        <div className="flex flex-row justify-between">
-                                            <HeartButton />
-                                            <div className="flex flex-row gap-5">
-                                                <HeartButton />
-                                                <HeartButton />
-                                            </div>
+                                    <div className="absolute top-[3.5rem] left-[7rem] w-[13rem] overflow-hidden">
+                                        <Title size="5" className="text-left truncate">
+                                            여기는 큐엔에이
+                                        </Title>
+                                    </div>
+                                </Header>
+                                <TextBox>
+                                    <p className="w-[20.25rem] h-24 text-ellipsis overflow-hidden">
+                                        고민내용 고민내용고민내용 고민내용 고민내용고민내용고민내용 고민내용
+                                        고민내용고민내용고민내용고민내용고민내용 고민내용 고민내용고민내용 고민내용
+                                        고민내용고민내용고민내용 고민내용
+                                        고민내용고민내용고민내용고민내용고민내용고민내용 고민내용고민내용 고민내용
+                                        고민내용고민내용고민내용 고민내용
+                                        고민내용고민내용고민내용고민내용고민내용고민내용 고민내용고민내용 고민내용
+                                        고민내용고민내용고민내용 고민내용 고민내용고민내용고민내용고민내용고민내용
+                                    </p>
+                                </TextBox>
+
+                                <IconBox>
+                                    <div className="flex flex-row justify-between">
+                                        {/* 여기가 디테일링크 */}
+                                        <Link to="/dimo/qnadetail">
+                                            <IconBtn name="Talk" iconSize="14" count="4" />
+                                        </Link>
+                                        <div className="flex flex-row gap-5">
+                                            <IconBtn name="Download" iconSize="14" count="4" />
+                                            <IconBtn name="HeartE" iconSize="14" count="4" />
                                         </div>
-                                    </IconBox>
-                                </Card>
-                            </Link>
+                                    </div>
+                                </IconBox>
+                            </Card>
                         </Grid>
                     </Box>
                 </Art>
@@ -97,47 +98,48 @@ const DimoPost = (props) => {
                 <Art>
                     <Box>
                         <Grid>
-                            <Link to="/dimo/shareddetail">
-                                <Card>
-                                    <Header>
-                                        <Profile size="5" src={profile} className="absolute inset-6" />
-                                        <LabelBox>
-                                            {/* 여기에 라벨맵돌리거나 첫번째두번째 수동 */}
-                                            <div className="flex flex-row gap-1">
-                                                <Label className="">ui/ux</Label>
-                                                <Label className="">취업하는태그가태그</Label>
-                                            </div>
-                                        </LabelBox>
-
-                                        <div className="absolute top-[3.5rem] left-[7rem] w-[13rem] overflow-hidden">
-                                            <Title size="5" className="text-left truncate">
-                                                여기는 정보공유타이틀이 15자이상일 경우보이는 모양dfdsfdsf
-                                            </Title>
+                            <Card>
+                                <Header>
+                                    <Profile size="5" src={profile} className="absolute inset-6" />
+                                    <LabelBox>
+                                        {/* 여기에 라벨맵돌리거나 첫번째두번째 수동 */}
+                                        <div className="flex flex-row gap-1">
+                                            <Label className="">ui/ux</Label>
+                                            <Label className="">취업하는태그가태그</Label>
                                         </div>
-                                    </Header>
-                                    <TextBox>
-                                        <p className="w-[20.25rem] h-24 text-ellipsis overflow-hidden">
-                                            고민내용 고민내용고민내용 고민내용 고민내용고민내용고민내용 고민내용
-                                            고민내용고민내용고민내용고민내용고민내용 고민내용 고민내용고민내용 고민내용
-                                            고민내용고민내용고민내용 고민내용
-                                            고민내용고민내용고민내용고민내용고민내용고민내용 고민내용고민내용 고민내용
-                                            고민내용고민내용고민내용 고민내용
-                                            고민내용고민내용고민내용고민내용고민내용고민내용 고민내용고민내용 고민내용
-                                            고민내용고민내용고민내용 고민내용 고민내용고민내용고민내용고민내용고민내용
-                                        </p>
-                                    </TextBox>
+                                    </LabelBox>
 
-                                    <IconBox>
-                                        <div className="flex flex-row justify-between">
+                                    <div className="absolute top-[3.5rem] left-[7rem] w-[13rem] overflow-hidden">
+                                        <Title size="5" className="text-left truncate">
+                                            여기는 정보공유타이틀이 15자이상일 경우보이는 모양dfdsfdsf
+                                        </Title>
+                                    </div>
+                                </Header>
+                                <TextBox>
+                                    <p className="w-[20.25rem] h-24 text-ellipsis overflow-hidden">
+                                        고민내용 고민내용고민내용 고민내용 고민내용고민내용고민내용 고민내용
+                                        고민내용고민내용고민내용고민내용고민내용 고민내용 고민내용고민내용 고민내용
+                                        고민내용고민내용고민내용 고민내용
+                                        고민내용고민내용고민내용고민내용고민내용고민내용 고민내용고민내용 고민내용
+                                        고민내용고민내용고민내용 고민내용
+                                        고민내용고민내용고민내용고민내용고민내용고민내용 고민내용고민내용 고민내용
+                                        고민내용고민내용고민내용 고민내용 고민내용고민내용고민내용고민내용고민내용
+                                    </p>
+                                </TextBox>
+
+                                <IconBox>
+                                    <div className="flex flex-row justify-between">
+                                        {/* 여기가 디테일링크 */}
+                                        <Link to="/dimo/shareddetail">
                                             <HeartButton />
-                                            <div className="flex flex-row gap-5">
-                                                <HeartButton />
-                                                <HeartButton />
-                                            </div>
+                                        </Link>
+                                        <div className="flex flex-row gap-5">
+                                            <HeartButton />
+                                            <HeartButton />
                                         </div>
-                                    </IconBox>
-                                </Card>
-                            </Link>
+                                    </div>
+                                </IconBox>
+                            </Card>
                         </Grid>
                     </Box>
                 </Art>

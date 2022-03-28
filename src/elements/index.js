@@ -27,6 +27,9 @@ import SkillThumbnail from "./Icons/SkillThumbnail";
 import SkillThumbnailMini from "./Icons/SkillThumbnailMini";
 import TypeBtn from "./Icons/TypeBtn";
 import SnsIcons from "./Icons/SnsIcons";
+import CategoryMini from "./Tools/CategoryMini";
+import IconBtn from "./Icons/IconBtn";
+
 export {
     Title,
     Subtitle,
@@ -56,4 +59,6 @@ export {
     SkillThumbnailMini,
     TypeBtn,
     SnsIcons,
+    CategoryMini,
+    IconBtn,
 };

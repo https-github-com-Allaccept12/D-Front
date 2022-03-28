@@ -1,10 +1,7 @@
 import React from "react";
 import { Button, Profile, Text, Subtitle } from "../../elements";
 
-import { useHistory } from "react-router-dom";
-
 const Comment = (props) => {
-    let history = useHistory();
     return (
         <>
             <div className="flex justify-start items-center gap-2">

@@ -9,7 +9,7 @@ import {
     ArtWorkList,
     ArtWorkWrite,
 } from "../components/ArtWorks";
-import { Title, Button } from "../elements";
+import { Title, Button, CategoryMini } from "../elements";
 import { Link, Route, Switch } from "react-router-dom";
 
 const ArtWork = (props) => {
@@ -31,6 +31,7 @@ const ArtWork = (props) => {
                     <div className="w-full xl:col-start-2 xl:col-end-5 xl:row-start-1">
                         <div className="w-full h-[200rem]">
                             <ArtWorkList />
+                            <CategoryMini />
                         </div>
                     </div>
                 </div>

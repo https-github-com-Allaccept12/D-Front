@@ -1,8 +1,12 @@
 import React from "react";
-import { Label, Title, HeartButton, Text, Card, Profile, Button, Thumbnail } from "../../elements";
+import { Label, Title, HeartButton, Text, Card, Profile, Button, Thumbnail, IconBtn } from "../../elements";
+import tw from "tailwind-styled-components";
 
 import { useHistory, Link } from "react-router-dom";
 import { DimoWorkPost } from "../Dimo";
+const IconBox = tw.div`
+absolute bottom-6 px-9 w-full
+`;
 
 const Slides = (props) => {
     const { type, list } = props;
@@ -122,18 +126,21 @@ const Slides = (props) => {
                                     고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을
                                     올리게 되었습니다. 제 전공은 산업디자인입니다. 때문에 구체적인 시각디자인과 UIUX
                                     관련 수업을 수강한 적은 없습니다.
-                                </Text>{" "}
+                                </Text>
                                 <Text size="2">(더보기)</Text>
                             </div>
-                            <div className="absolute w-full px-10 bottom-7">
+                            <IconBox>
                                 <div className="flex flex-row justify-between">
-                                    <HeartButton like_cnt="1" is_like />
-                                    <div className="flex flex-row space-x-4">
-                                        <HeartButton like_cnt="0" is_like />
-                                        <HeartButton like_cnt="1" is_like />
+                                    {/* 여기가 디테일링크 */}
+                                    <Link to="/dimo/qnadetail">
+                                        <IconBtn name="Talk" iconSize="14" count="4" />
+                                    </Link>
+                                    <div className="flex flex-row gap-5">
+                                        <IconBtn name="Download" iconSize="14" count="4" />
+                                        <IconBtn name="HeartE" iconSize="14" count="4" />
                                     </div>
                                 </div>
-                            </div>
+                            </IconBox>
                         </div>
                     </div>
                 </>
@@ -168,18 +175,21 @@ const Slides = (props) => {
                             <div className="absolute px-10 top-28">
                                 <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
                                     공유하기 공유하기 나는 꿀팁
-                                </Text>{" "}
+                                </Text>
                                 <Text size="2">(더보기)</Text>
                             </div>
-                            <div className="absolute w-full px-10 bottom-7">
+                            <IconBox>
                                 <div className="flex flex-row justify-between">
-                                    <HeartButton like_cnt="1" is_like />
-                                    <div className="flex flex-row space-x-4">
-                                        <HeartButton like_cnt="0" is_like />
-                                        <HeartButton like_cnt="1" is_like />
+                                    {/* 여기가 디테일링크 */}
+                                    <Link to="/dimo/shareddetail">
+                                        <IconBtn name="Talk" iconSize="14" count="4" />
+                                    </Link>
+                                    <div className="flex flex-row gap-5">
+                                        <IconBtn name="Download" iconSize="14" count="4" />
+                                        <IconBtn name="HeartE" iconSize="14" count="4" />
                                     </div>
                                 </div>
-                            </div>
+                            </IconBox>
                         </div>
                     </div>
                 </>

@@ -40,29 +40,51 @@ const Icon = (props) => {
     const { name, iconSize, onClick, className } = props;
 
     if (name === "ArrowL") {
-        return <ArrowL width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <ArrowL width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "ArrowR") {
-        return <ArrowR width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <ArrowR width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "BookmarkE") {
-        return <BookmarkE width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <BookmarkE width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "BookmarkF") {
-        return <BookmarkF width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <BookmarkF width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "HeartE") {
-        return <HeartE width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <HeartE width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
-
     if (name === "HeartF") {
-        return <HeartF width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <HeartF width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
-
     if (name === "StarE") {
         return (
             <div className={className}>
@@ -103,35 +125,67 @@ const Icon = (props) => {
     }
 
     if (name === "Delete") {
-        return <Delete width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Delete width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Download") {
-        return <Download width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Download width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Edit") {
-        return <Edit width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Edit width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Link") {
-        return <Link width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Link width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Loading") {
-        return <Loading width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Loading width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Plus") {
-        return <Plus width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Plus width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Private") {
-        return <Private width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Private width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Replace") {
-        return <Replace width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Replace width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Search") {
@@ -143,47 +197,90 @@ const Icon = (props) => {
     }
 
     if (name === "Talk") {
-        return <Talk width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Talk width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Time") {
-        return <Time width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Time width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Chat") {
-        return <Chat width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Chat width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Eye") {
-        return <Eye width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Eye width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Image") {
-        return <Image width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Image width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Inarray") {
-        return <Inarray width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Inarray width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Mail") {
-        return <Mail width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Mail width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
-
     if (name === "Sand") {
-        return <Sand width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Sand width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Upload") {
-        return <Upload width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Upload width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "User") {
-        return <User width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <User width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     }
 
     if (name === "Video") {
-        return <Video width={iconSize} height={iconSize} onClick={onClick} />;
+        return (
+            <div className={className}>
+                <Video width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
     } else return null;
 };
 

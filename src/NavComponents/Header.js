@@ -14,7 +14,7 @@ const Header = (props) => {
         const cookie = getCookie("access_token");
         const nickname = getCookie("nickname");
         const account_id = getCookie("account_id");
-        console.log(nickname);
+        // console.log(nickname);
         if (cookie) {
             setIsLogin(true);
             setNickname(nickname);

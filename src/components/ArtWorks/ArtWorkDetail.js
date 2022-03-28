@@ -1,5 +1,5 @@
 import React from "react";
-import { Profile, HeartButton, Icon, SkillThumbnailMini, Title, Input, TypeBtn, SnsIcons } from "../../elements";
+import { Profile, HeartButton, IconBtn, SkillThumbnailMini, Title, Input, TypeBtn, SnsIcons } from "../../elements";
 
 import DetailSlider from "../Sliders/DetailSlider";
 import { Comment } from "../Comment";
@@ -46,9 +46,6 @@ const CommentBox = tw.div`
 flex flex-col grow md:px-5
 `;
 
-const CommentInput = tw.section`
-flex mt-5 
-`;
 const ArtWorkDetail = (props) => {
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
@@ -81,9 +78,9 @@ const ArtWorkDetail = (props) => {
                     />
 
                     <ViewBox>
-                        <HeartButton like_cnt="1" is_like nameF="StarF" nameE="StarE" />
-                        <HeartButton like_cnt="1" is_like nameF="HeartF" nameE="HeartE" />
-                        <HeartButton like_cnt="1" is_like nameF="BookmarkF" nameE="BookmarkE" />
+                        <IconBtn name="HeartE" iconSize="24" count="40" />
+                        <IconBtn name="Eye" iconSize="28" count="40" />
+                        <IconBtn name="Talk" iconSize="24" count="40" />
                     </ViewBox>
 
                     <div className="p-6 bg-white">
