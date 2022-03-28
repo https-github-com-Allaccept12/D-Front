@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CreateTendency } from "../../redux/modules/tendency.js";
 import { Button } from "../../elements";
 import { Link } from "react-router-dom";
@@ -11,6 +11,7 @@ let mbti_s = "";
 
 const TendencyTest = (props) => {
   let designation = "";
+  const token = useSelector((state) => state.user.user);
   const history = useHistory();
   const [TestNum, nextTestNum] = useState(0);
   mbti_s = Object.keys(mbti)
@@ -34,7 +35,7 @@ const TendencyTest = (props) => {
   const dispatch = useDispatch();
   const SendTendency = () => {
     const tendency = { tendency: designation };
-    dispatch(CreateTendency(tendency));
+    dispatch(CreateTendency({tendency, token}));
     console.log(tendency);
     history.replace("/MyInterests");
   };

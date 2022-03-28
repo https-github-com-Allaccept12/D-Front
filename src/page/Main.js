@@ -18,6 +18,8 @@ const Main = (props) => {
         let id_cookie = getCookie("account_id");
         if (id_cookie) {
             account_id = id_cookie;
+            sessionStorage.setItem("access_token", getCookie("access_token"))
+            sessionStorage.setItem("account_id", getCookie("account_id"))
         }
         console.log(account_id);
         dispatch(mainPageLoad({ account_id, dispatch }));
@@ -45,11 +47,11 @@ const Main = (props) => {
             <div className="-mt-32 lg:mt-24 mx-auto lg:pl-12 w-full xl:max-w-[90%]">
                 <Title
                     size="2"
-                    className=" col-start-2 row-start-1 flex justify-center lg:justify-start items-end my-3"
+                    className="flex items-end justify-center col-start-2 row-start-1 my-3  lg:justify-start"
                 >
                     추천 아트워크
                 </Title>
-                <div className="flex justify-center lg:justify-start items-center flex-wrap gap-5">
+                <div className="flex flex-wrap items-center justify-center gap-5 lg:justify-start">
                     <ArtWorkAllList />
                 </div>
             </div>

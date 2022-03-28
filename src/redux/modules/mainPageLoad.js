@@ -15,10 +15,12 @@ export const mainPageLoad = createAsyncThunk(
       })
       .then((res) => {
         console.log(res.data.data);
-        const top_artist = res.data.data.top_artist;
-        const artwork = res.data.data.artwork;
-        dispatch(artists(top_artist));
-        dispatch(artworks(artwork));
+        if (res.data.data){
+          const top_artist = res.data.data.top_artist;
+          const artwork = res.data.data.artwork;
+          dispatch(artists(top_artist));
+          dispatch(artworks(artwork));
+        }
       })
       .catch((err) => console.log(err));
   }

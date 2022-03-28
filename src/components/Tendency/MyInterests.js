@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { interests, CreateInterests } from "../../redux/modules/interests.js";
-import { Button, Image } from "../../elements";
+import { CreateInterests } from "../../redux/modules/interests.js";
+import { Button } from "../../elements";
 import icon from "../../static/images/interests_icon.svg";
 import typography from "../../static/images/typography.svg";
 import crafts from "../../static/images/crafts.svg";
@@ -19,6 +19,7 @@ import graphic from "../../static/images/graphic.svg";
 const MyInterests = (props) => {
   // 초기 세팅
   const [selectInterest, SetSelectInterest] = useState("");
+  const token = useSelector((state) => state.user.user);
   const [isClicked, setIsClicked] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -46,7 +47,7 @@ const MyInterests = (props) => {
   const SendInterests = () => {
     console.log(selectInterest);
     const interest = { interest: selectInterest };
-    dispatch(CreateInterests(interest));
+    dispatch(CreateInterests({interest, token}));
     history.replace("/CreateProfile");
   };
 
