@@ -42,7 +42,7 @@ function App() {
 
                     <Route exact path={["/myspace", "/myspace/:name"]} component={MyPage} />
 
-                    <Route exact path="/editmyspace" component={EditMySpace} />
+                    <Route exact path={["/editmyspace","/editmyspace/:name"]} component={EditMySpace} />
 
                     <Route exact path="/tendencytest" component={TendencyTest} />
                     <Route exact path="/results" component={Results} />

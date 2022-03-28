@@ -20,7 +20,7 @@ const MyPageCategory = (props) => {
           <div className="">
             <Title size="4">MyProfile</Title>
 
-            <Link to="/myspace/myprofile">
+            <Link to="/mypage">
               <TabBtn
                 size="2"
                 onClick={() => {
@@ -32,7 +32,7 @@ const MyPageCategory = (props) => {
               </TabBtn>
             </Link>
 
-            <Link to="/editmyspace">
+            <Link to="/editmyspace/z">
               <TabBtn size="2">□ 프로필 수정</TabBtn>
             </Link>
 

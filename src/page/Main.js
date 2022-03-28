@@ -23,6 +23,7 @@ const Main = (props) => {
         }
         console.log(account_id);
         dispatch(mainPageLoad({ account_id, dispatch }));
+        
     });
 
     return (
@@ -47,7 +48,7 @@ const Main = (props) => {
             <div className="-mt-32 lg:mt-24 mx-auto lg:pl-12 w-full xl:max-w-[90%]">
                 <Title
                     size="2"
-                    className="flex items-end justify-center col-start-2 row-start-1 my-3  lg:justify-start"
+                    className="flex items-end justify-center col-start-2 row-start-1 my-3 lg:justify-start"
                 >
                     추천 아트워크
                 </Title>
