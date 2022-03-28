@@ -64,17 +64,19 @@ const CreateProfile = (props) => {
 
   const SendProfile = () => {
     const formData = new FormData();
-    let data = {
+    const data = {
       nickname: nickname.value,
-      // intro_content: introduce.value,
+      intro_content: "ㅋ",
       work_email: email.value,
       linked_in: linkedIn.value,
       brunch: brunch.value,
       insta: instagram.value,
       job: selected,
+      // work_time: 0,
       phone_number: "010",
       work_time: "1",
     };
+    console.log(data);
     formData.append(
       "data",
       new Blob([JSON.stringify(data)], { type: "application/json" })
@@ -82,7 +84,7 @@ const CreateProfile = (props) => {
     formData.append("imgFile", image);
     // dispatch(createProfile(data));
     dispatch(createProfile(formData));
-    setCookie("nickname", nickname.value);
+    // setCookie("nickname", nickname.value);
   };
 
   return (
