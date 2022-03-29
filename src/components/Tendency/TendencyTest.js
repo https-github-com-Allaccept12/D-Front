@@ -5,6 +5,7 @@ import { Title, Text } from "../../elements";
 import Button from "./TendencyButton";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
+import { useToggle } from "../../hooks";
 import { useHistory } from "react-router-dom";
 import dPlus from "../../static/logo/Dplus/DplusC.png";
 import AdventureIcon from "../../static/images/ResultIcon/Adventure.svg";
@@ -62,20 +63,19 @@ const TendencyTest = (props) => {
         designation = "부드러운 중재자";
     }
 
-    const dispatch = useDispatch();
-    const SendTendency = () => {
-        const tendency = { tendency: designation };
-        dispatch(CreateTendency({ tendency, token }));
-        console.log(tendency);
-        history.replace("/MyInterests");
-    };
+    // const dispatch = useDispatch();
+    // const SendTendency = () => {
+    //     const tendency = { tendency: designation };
+    //     dispatch(CreateTendency({ tendency, token }));
+    //     console.log(tendency);
+    //     history.replace("/MyInterests");
+    // };
 
     // console.log(designation);
     return (
         <div className="flex flex-col justify-center items-center h-screen gap-4">
             {TestNum === 0 && (
                 <div className="text-center">
-                    <br />
                     <Flexs>
                         <Inner src={InventorIcon} alt="" />
                         <Inner src={HarmoniousIcon} alt="" />
@@ -750,52 +750,66 @@ const TendencyTest = (props) => {
                 </Flex>
             )}
             {TestNum >= 13 && (
-                <div className="grid items-center justify-center col-start-4 col-end-5 row-start-3">
-                    <svg width="552" height="50" viewBox="0 0 552 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M16 21C16 18.2386 18.2386 16 21 16H531C533.761 16 536 18.2386 536 21V21C536 23.7614 533.761 26 531 26H21C18.2386 26 16 23.7614 16 21V21Z"
-                            fill="#EDF1F7"
-                        />
-                        <rect x="16" y="16" width="520" height="10" rx="5" fill="#9262F7" />
-                    </svg>
-                    <br />
-                    <br />
-                    <br />
-                    <div className="text-center">
-                        "{designation}"<br />
-                        <br /> 칭호를 얻으셨습니다!
-                    </div>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    {/* <Link to="/MyInterests" action="replace"> */}
-                    <div className="grid items-center col-start-4 col-end-5 row-start-3">
-                        <Button size="1" color="1" onClick={SendTendency}>
-                            확인
-                        </Button>
-                    </div>
-                    {/* </Link> */}
-                </div>
-            )}
-            <div className="grid items-center col-start-4 row-start-4">
-                {TestNum === 0 && (
-                    <Button
-                        size="2"
-                        color="3"
-                        onClick={() => {
-                            nextTestNum(TestNum + 1);
+                <Flex>
+                    <Hidden>
+                        <svg
+                            width="552"
+                            height="50"
+                            viewBox="0 0 552 50"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M16 21C16 18.2386 18.2386 16 21 16H531C533.761 16 536 18.2386 536 21V21C536 23.7614 533.761 26 531 26H21C18.2386 26 16 23.7614 16 21V21Z"
+                                fill="#EDF1F7"
+                            />
+                            <rect x="16" y="16" width="520" height="10" rx="5" fill="#9262F7" />
+                        </svg>
+                        <br />
+                        <br />
+                        <br />
+                    </Hidden>
+
+                    <Title size="4">과연 당신의 타입은!</Title>
+
+                    <Link
+                        to={{
+                            pathname: `/Result/${designation}`,
+                            state: {
+                                title: { designation },
+                            },
                         }}
                     >
-                        시작하기
-                    </Button>
+                        <div className="flex justify-center items-center mt-10">
+                            <Button size="2" color="1">
+                                보러가기
+                            </Button>
+                        </div>
+                    </Link>
+                </Flex>
+            )}
+            <div className="grid items-center col-start-4 row-start-4">
+                {TestNum === 0 ? (
+                    <>
+                        <Button
+                            color="1"
+                            onClick={() => {
+                                nextTestNum(TestNum + 1);
+                            }}
+                        >
+                            시작하기
+                        </Button>{" "}
+                    </>
+                ) : (
+                    <>
+                        <div className="flex justify-center items-center mr-5 mt-4">
+                            <img src={dPlus} />
+                        </div>
+                    </>
                 )}
             </div>
 
             {/* <div className="col-start-7 row-start-6">{TestNum <= 12 && <Link to="/MyInterests">다음에 하기</Link>}</div> */}
-            <div className="flex justify-center items-center mr-5 mt-4">
-                <img src={dPlus} />
-            </div>
         </div>
     );
 };

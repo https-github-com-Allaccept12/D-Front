@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { Header, OHeader, NotFound, HeaderMini } from "./NavComponents";
-import { TendencyTest, MyInterests, Results, CreateProfile } from "./components";
+import { TendencyTest, MyInterests, Result, CreateProfile } from "./components";
 import { Main, ArtWork, Dimo, Login, LogOut, EditMySpace, MyPage } from "./page";
 import { CompleteProfile } from "./components";
 import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "./components/Dimo";
@@ -16,14 +16,14 @@ function App() {
             <div id="modal"></div>
             <div id="root"></div>
             <div className="w-full m-auto App">
-                {a === "/" ? (
+                {a === "/" && (
                     <>
                         <Header />
                         <HeaderMini />
                     </>
-                ) : (
-                    <OHeader />
                 )}
+
+                {(a === "/tendencytest") | (a === "/") ? "" : <OHeader />}
 
                 <Switch>
                     <Route exact path="/" component={Main} />
@@ -45,7 +45,8 @@ function App() {
                     <Route exact path={["/editmyspace", "/editmyspace/:name"]} component={EditMySpace} />
 
                     <Route exact path="/tendencytest" component={TendencyTest} />
-                    <Route exact path="/results" component={Results} />
+
+                    <Route exact path="/Result/:name" component={Result} />
                     <Route exact path="/myinterests" component={MyInterests} />
                     <Route exact path="/createprofile" component={CreateProfile} />
                     <Route exact path="/completeprofile" component={CompleteProfile} />

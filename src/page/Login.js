@@ -5,6 +5,7 @@ import { useInput } from "../hooks";
 import CreateProfile from "../components/Tendency/CreateProfile";
 import SocialLogin from "../shared/SocialLogin";
 import tw from "tailwind-styled-components";
+import MyInterests from "../components/Tendency/MyInterests";
 
 const LoginBox = tw.div`
 flex flex-col p-3 justify-center items-center
@@ -20,7 +21,8 @@ const Login = (props) => {
         <>
             <LoginBox>
                 {/* <SocialLogin /> */}
-                <CreateProfile />
+                <MyInterests />
+                {/* <CreateProfile /> */}
             </LoginBox>
         </>
     );
