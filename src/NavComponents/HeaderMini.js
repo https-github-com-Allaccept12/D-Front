@@ -63,7 +63,7 @@ const HeaderMini = (props) => {
                     </>
                 ) : (
                     <Title size="6">
-                        <Link to="/myposts">로그인하기</Link>
+                        <Link to="/login">로그인하기</Link>
                     </Title>
                 )}
 
@@ -74,9 +74,9 @@ const HeaderMini = (props) => {
                     <Title size="6">
                         <Link to="/dimo/qna/all">디모</Link>
                     </Title>
-                    <Title size="6">
+                    {/* <Title size="6">
                         <Link to="/tendencytest">cre!</Link>
-                    </Title>
+                    </Title> */}
                 </div>
             </ProfileBox>
             {/* <MiniBtn onClick={setShowCategory}>{showCategory ? <>close</> : <>open!</>}</MiniBtn>

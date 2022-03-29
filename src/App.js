@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { Header, OHeader, NotFound, HeaderMini } from "./NavComponents";
 import { TendencyTest, MyInterests, Results } from "./components";
-import { Main, ArtWork, Dimo, MyPosts, LogOut, EditMySpace, MyPage, CreateProfile, KakaoRedirectHandler } from "./page";
+import { Main, ArtWork, Dimo, Login, LogOut, EditMySpace, MyPage, CreateProfile, KakaoRedirectHandler } from "./page";
 import { CompleteProfile } from "./components";
 import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "./components/Dimo";
 import { ArtWorkWrite, ArtWorkCreate, ArtWorkInlineDetail } from "./components/ArtWorks";
@@ -10,13 +10,12 @@ import { ArtWorkWrite, ArtWorkCreate, ArtWorkInlineDetail } from "./components/A
 function App() {
     const location = useLocation();
     const a = location.pathname;
-    const b = a.split("/")[2];
     return (
         <>
             <div id="modal"></div>
             <div id="root"></div>
             <div className="w-full m-auto App">
-                {b === undefined ? (
+                {a === "/" ? (
                     <>
                         <Header />
                         <HeaderMini />
@@ -29,7 +28,7 @@ function App() {
                     <Route exact path="/" component={Main} />
                     <Route exact path="/Main" component={Main} />
                     <Route exact path="/logout" component={LogOut} />
-                    <Route exact path="/myposts" component={MyPosts} />
+                    <Route exact path="/Login" component={Login} />
 
                     <Route path={["/art", "/art/:name"]} component={ArtWork} />
                     <Route exact path="/createart" component={ArtWorkCreate} />
@@ -42,7 +41,7 @@ function App() {
 
                     <Route exact path={["/myspace", "/myspace/:name"]} component={MyPage} />
 
-                    <Route exact path={["/editmyspace","/editmyspace/:name"]} component={EditMySpace} />
+                    <Route exact path={["/editmyspace", "/editmyspace/:name"]} component={EditMySpace} />
 
                     <Route exact path="/tendencytest" component={TendencyTest} />
                     <Route exact path="/results" component={Results} />

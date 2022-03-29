@@ -1,5 +1,5 @@
 import React from "react";
-import { Subtitle, Text, Title } from "../../elements";
+import { Subtitle, Text, Title } from "../../../../elements";
 
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";

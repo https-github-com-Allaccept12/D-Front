@@ -7,7 +7,7 @@ import DimoInsideFilter from "./DimoInsideFilter";
 import DimoPost from "./DimoPost";
 const Grid = tw.div` 
 flex flex-row flex-wrap items-center justify-center
-sm:justify-start lg:gap-2 px-0 sm:px-0 lg:px-4 xl:px-8 2xl:px-10
+lg:justify-start lg:gap-2 px-0 sm:px-0 lg:px-4 xl:px-8 2xl:px-10
 
 `;
 

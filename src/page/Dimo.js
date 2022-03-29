@@ -21,7 +21,7 @@ const Dimo = () => {
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[2];
-    console.log(b);
+    // console.log(b);
     if (b === "qna")
         return (
             <>

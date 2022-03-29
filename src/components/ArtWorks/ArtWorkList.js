@@ -8,7 +8,7 @@ import ArtWorkInsideFilter from "./ArtWorkInsideFilter";
 
 const Grid = tw.div` 
 flex flex-row flex-wrap items-center justify-center 
-sm:justify-start gap-6 sm:px-3 md:px-4 xl:px-8 2xl:px-20
+lg:justify-start gap-6 sm:px-3 md:px-4 xl:px-8 2xl:px-20
 
 `;
 
@@ -55,7 +55,9 @@ const ArtWorkList = (props) => {
                     </Grid>
                 </InnerBox>
                 <Link to="/createart">
-                <div className="relative flex flex-row-reverse right-52 "><Button>작품등록</Button></div>
+                    <div className="relative flex flex-row-reverse right-52 ">
+                        <Button>작품등록</Button>
+                    </div>
                 </Link>
             </Box>
         </>
