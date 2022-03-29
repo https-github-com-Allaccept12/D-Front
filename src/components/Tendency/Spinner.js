@@ -32,9 +32,9 @@ const Spinner = (props) => {
                 <Inner src={DetailIcon} alt="" />
                 <Inner src={ArtistIcon} alt="" />
             </Flex>
-            <div className="flex flex-col justify-center items-center">
-                <div className="font-min1 mt-10 md:mt-16 text-lg animate-bounce">
-                    김민지님의 디자인성향을 분석중입니다
+            <div className="flex flex-col items-center justify-center">
+                <div className="mt-10 text-lg font-min1 md:mt-16 animate-bounce">
+                    디자인성향을 분석중입니다
                 </div>
             </div>
         </Outter>
