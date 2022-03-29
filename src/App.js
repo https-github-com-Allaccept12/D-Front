@@ -1,11 +1,12 @@
 import React from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { Header, OHeader, NotFound, HeaderMini } from "./NavComponents";
-import { TendencyTest, MyInterests, Results } from "./components";
-import { Main, ArtWork, Dimo, Login, LogOut, EditMySpace, MyPage, CreateProfile, KakaoRedirectHandler } from "./page";
+import { TendencyTest, MyInterests, Results, CreateProfile } from "./components";
+import { Main, ArtWork, Dimo, Login, LogOut, EditMySpace, MyPage } from "./page";
 import { CompleteProfile } from "./components";
 import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "./components/Dimo";
 import { ArtWorkWrite, ArtWorkCreate, ArtWorkInlineDetail } from "./components/ArtWorks";
+import KakaoRedirectHandler from "./shared/KakaoRedirectHandler";
 
 function App() {
     const location = useLocation();

@@ -23,17 +23,15 @@ const Header = (props) => {
     }, []);
 
     return (
-        <div className="md:h-[7.8rem] w-full">
-            <div className="flex justify-center items-center mx-auto md:absolute md:top-[2.25rem] md:left-[7.375rem] ">
+        <div className="w-full z-50 absolute top-0">
+            <div className="flex justify-center items-center mx-auto md:absolute md:top-[2.25rem] md:left-[7.375rem] text-white">
                 <Link to="/">
-                    <Logo name="DplusCFF" />
+                    <Logo name="DplusCF" />
                 </Link>
             </div>
-
-            <div className="flex flex-row md:h-[7.8rem] w-full md:w-3/6 xl:w-3/4 ml-auto">
+            <div className="hidden lg:flex lg:flex-row md:h-[7.8rem] w-full lg:w-3/6 xl:w-3/4 ml-auto text-white md:pl-10 xl:pl-10 2xl:pl-1">
                 {/* <Title size="6"><Link to="/">홈</Link></Title> */}
-
-                <div className="flex items-center gap-10 text-dpurple-300 md:pl-10 xl:pl-10 2xl:pl-1">
+                <div className="flex items-center gap-8">
                     <Title size="6">
                         <Link to="/art/list/all">모아보기</Link>
                     </Title>

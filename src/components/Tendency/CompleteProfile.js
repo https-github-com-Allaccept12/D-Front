@@ -1,35 +1,46 @@
 import React from "react";
-import { Button } from "../../elements";
+import { Button, Title, Text } from "../../elements";
 import { useHistory, Link } from "react-router-dom";
 import celebration from "../../static/images/celebration.svg";
+import { FakeHeader } from "../../NavComponents";
+import tw from "tailwind-styled-components";
+
+const Profile = tw.div`
+bg-gradient-to-r from-[#9262F7] to-[#7681FB] absolute top-0 w-full h-[100rem]
+`;
+
+const Cong = tw.div`
+md:w-full lg:2/3 xl:w-1/2 py-28 mt-44 text-center bg-white rounded-md xl:mx-auto
+`;
 
 const CompleteProfile = (props) => {
-  let history = useHistory();
-  const toHome = (e) => {
-    window.location.href="/";
-  };
+    let history = useHistory();
+    const toHome = (e) => {
+        window.location.href = "/";
+    };
 
-  return (
-    <div className="bg-gradient-to-r from-[#9262F7] to-[#7681FB] grid place-items-center w-full h-screen pb-20">
-      <div className="grid row-start-1 py-10"></div>
-      <div className="grid w-1/2 row-start-2 py-20 mt-10 text-center bg-white rounded-md">
-        <div className="grid place-content-center">
-          <img src={celebration} />
-        </div>
-        <br />
-        <p className="text-2xl font-bold">기본 설정이 완료되었어요.</p>
-        <br />
-        <p>앞으로 디플러스와 함께 어쩌구 저쩌구</p>
-        <p>어쩌구 저쩌구 어쩌구 저쩌구♥</p>
-        <div className="grid mt-10 place-items-center">
-          <Button size="2" color="1" onClick={toHome}>
-            홈으로 가기
-          </Button>
-        </div>
-      </div>
-      <div className="grid row-start-3 py-10"></div>
-    </div>
-  );
+    return (
+        <>
+            <FakeHeader />
+            <Profile>
+                <Cong>
+                    <div className="grid place-content-center">
+                        <img src={celebration} />
+                    </div>
+                    <br />
+                    <Title size="3">프로필 설정이 완료되었어요.</Title>
+                    <br />
+                    <Text size="1">디플러스와 함께 디자이너로서의</Text>
+                    <Text size="1">여정에 특별함을 더해보아요♥</Text>
+                    <div className="grid mt-10 place-items-center">
+                        <Button size="2" color="1" onClick={toHome}>
+                            홈으로 가기
+                        </Button>
+                    </div>
+                </Cong>
+            </Profile>
+        </>
+    );
 };
 
 export default CompleteProfile;
