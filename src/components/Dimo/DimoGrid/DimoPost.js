@@ -78,11 +78,11 @@ const DimoPost = (props) => {
                                     <div className="flex flex-row justify-between">
                                         {/* 여기가 디테일링크 */}
                                         <Link to="/dimo/qnadetail">
-                                            <IconBtn name="Talk" iconSize="14" count="4" />
+                                            <IconBtn name="Talk" iconSize="16" count="4" />
                                         </Link>
                                         <div className="flex flex-row gap-5">
-                                            <IconBtn name="Download" iconSize="14" count="4" />
-                                            <IconBtn name="HeartE" iconSize="14" count="4" />
+                                            <IconBtn name="Download" iconSize="16" count="4" />
+                                            <IconBtn name="HeartE" iconSize="16" count="4" />
                                         </div>
                                     </div>
                                 </IconBox>
@@ -130,12 +130,12 @@ const DimoPost = (props) => {
                                 <IconBox>
                                     <div className="flex flex-row justify-between">
                                         {/* 여기가 디테일링크 */}
-                                        <Link to="/dimo/shareddetail">
-                                            <HeartButton />
+                                        <Link to="/dimo/qnadetail">
+                                            <IconBtn name="Talk" iconSize="16" count="4" />
                                         </Link>
                                         <div className="flex flex-row gap-5">
-                                            <HeartButton />
-                                            <HeartButton />
+                                            <IconBtn name="Download" iconSize="16" count="4" />
+                                            <IconBtn name="HeartE" iconSize="16" count="4" />
                                         </div>
                                     </div>
                                 </IconBox>
