@@ -29,6 +29,8 @@ import TypeBtn from "./Icons/TypeBtn";
 import SnsIcons from "./Icons/SnsIcons";
 import CategoryMini from "./Tools/CategoryMini";
 import IconBtn from "./Icons/IconBtn";
+import InputNoTitle from "./Common/InputNoTitle";
+import SelectBoxCategory from "./Tools/SelectBoxCategory";
 
 export {
     Title,
@@ -61,4 +63,6 @@ export {
     SnsIcons,
     CategoryMini,
     IconBtn,
+    InputNoTitle,
+    SelectBoxCategory,
 };

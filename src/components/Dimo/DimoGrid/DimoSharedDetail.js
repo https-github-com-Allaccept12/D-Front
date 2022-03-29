@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Label, Profile, Title, Text, HeartButton, Input } from "../../../elements";
-
+import { Button, Label, Profile, Title, Text, Subtitle, InputNoTitle, Icon } from "../../../elements";
+import { Comment } from "../../Comment";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useToggle, useInput } from "../../../hooks";
@@ -33,86 +33,102 @@ const Footer = tw.div`
 py-10 flex flex-row justify-between
 `;
 
+const Bg = tw.div`
+bg-dgray-200 md:p-10 xl:px-20
+`;
+
 const DimoSharedDetail = (props) => {
     const [showAnswer, setShowAnswer] = useToggle();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
     return (
         <>
-            <Card>
-                <Header>
-                    <div className="flex flex-row gap-1 md:pt-10 pb-4">
-                        <Label size="2" color="4">
-                            UI/UX
-                        </Label>
-                        <Label size="2" color="5">
-                            진로고민
-                        </Label>
-                    </div>
-                    <Title size="5">UI/UX 취업 관련 질문입니다</Title>
-                    <div className="flex flex-row py-3">
-                        <Text size="1">2022.07.17</Text>
-                        <InnerLine />
-                        <Text size="1">조회수 2천</Text>
-                        <InnerLine />
-                        <Text size="1">채택완료</Text>
-                    </div>
-                </Header>
-                <Body>
-                    <Text size="2" className="flex flex-wrap w-full pt-4 pb-16">
-                        안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며
-                        제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다.
-                        안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며
-                        제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다.
-                        안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며
-                        제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다.
-                        안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며
-                        제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다.
-                    </Text>
-                </Body>
-                <Btns>
-                    <div className="flex flex-row justify-between">
-                        <Button size="3" onClick={setShowAnswer}>
-                            답변남기기
-                        </Button>
-                        <div className="flex flex-row space-x-4">
-                            <HeartButton like_cnt="0" is_like />
-                            <HeartButton like_cnt="1" is_like />
+            <Bg>
+                <Card>
+                    <Header>
+                        <div className="flex flex-row gap-1 md:pt-10 pb-4">
+                            <Label size="2" color="4">
+                                UI/UX
+                            </Label>
+                            <Label size="2" color="5">
+                                진로고민
+                            </Label>
                         </div>
-                    </div>
-                </Btns>
-
+                        <Title size="5">UI/UX 취업 관련 질문입니다</Title>
+                        <div className="flex flex-row py-3">
+                            <Text size="1">2022.07.17</Text>
+                            <InnerLine />
+                            <Text size="1">조회수 2천</Text>
+                            <InnerLine />
+                            <Text size="1">채택완료</Text>
+                        </div>
+                    </Header>
+                    <Body>
+                        <Text size="2" className="flex flex-wrap w-full pt-4 pb-16">
+                            안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이
+                            되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게
+                            되었습니다. 안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이
+                            아니라 고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을
+                            올리게 되었습니다. 안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다.
+                            다름이 아니라 고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을
+                            얻고자 글을 올리게 되었습니다. 안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년
+                            학생입니다. 다름이 아니라 고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의
+                            의견을 얻고자 글을 올리게 되었습니다.
+                        </Text>
+                    </Body>
+                    <Btns>
+                        <div className="flex flex-row justify-between">
+                            <Button size="3" onClick={setShowAnswer} className="invisible">
+                                답변남기기
+                            </Button>
+                            <div className="flex flex-col md:flex-row gap-3">
+                                <Button icon name="HeartE" color="5" size="3" count="8">
+                                    <span className="hidden 2xl:contents">좋아요</span>
+                                </Button>
+                                <Button icon name="BookmarkE" color="5" size="3" count="8">
+                                    <span className="hidden 2xl:contents">스크랩</span>
+                                </Button>
+                                <Button icon name="Link" color="5" size="3">
+                                    공유<span className="hidden xl:contents">하기</span>
+                                </Button>
+                            </div>
+                        </div>
+                    </Btns>
+                </Card>
                 <UnderLine />
-                <Footer>
-                    <div className="justify-start flex flex-row">
-                        <Profile size="5" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
+
+                <div className="flex flex-row font-min1">
+                    <Icon name="Talk" iconSize="32" /> <span className="text-xl mb-1 pl-2">댓글 7개</span>
+                </div>
+
+                <Card>
+                    <div className="bg-dgray-200 rounded-md flex p-5 xl:px-10 2xl:px-20 mt-20">
                         <div>
-                            <Title>이름</Title>
-                            <Title>채택률 마감률</Title>
-                        </div>
-                    </div>
-                    <Button>팔로우</Button>
-                </Footer>
-            </Card>
-            {showAnswer && (
-                <>
-                    <div className=" bg-dgray-300 relative">
-                        <div className="pt-10 absolute">
-                            <Title>답변 남기기</Title>
+                            <Title size="5">댓글 남기기</Title>
                             <Profile size="5" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
                         </div>
-                        <Input
-                            value={name.value}
-                            onChange={name.onChange}
-                            is_error={name.errors}
-                            is_value={name.value.length}
-                            textarea
-                            cardSize="3"
-                            maxLen="30"
-                        />
+                        <div className="w-4/5 ml-auto mt-12">
+                            <InputNoTitle
+                                value={name.value}
+                                onChange={name.onChange}
+                                is_error={name.errors}
+                                is_value={name.value.length}
+                                textarea
+                                cardSize="1"
+                                maxLen="30"
+                                width="2"
+                            />
+                            <Button size="3">제출</Button>
+                        </div>
                     </div>
-                </>
-            )}
+                    <div className="p-4">
+                        <Comment />
+                        <Comment />
+                        <Comment />
+                        <Comment />
+                    </div>
+                </Card>
+            </Bg>
         </>
     );
 };
