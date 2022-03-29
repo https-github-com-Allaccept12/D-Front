@@ -26,7 +26,7 @@ const MyPortfolio = (props) => {
         <div className="w-full h-screen">
           <Title size="4">대표작품</Title>
 
-          <div className="bg-white h-96 flex justify-center items-center w-full">
+          <div className="flex items-center justify-center w-full bg-white h-96">
             <Box>
               <Title size="3">아직 대표작품으로 설정한 작품이 없습니다.</Title>
               <InnerBox>
@@ -45,24 +45,24 @@ const MyPortfolio = (props) => {
         </div>
 
         <div
-          className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+          className="fixed top-0 left-0 hidden w-full h-full overflow-x-hidden overflow-y-auto outline-none modal fade"
           id="exampleModalXl"
-          tabindex="-1"
+          tabIndex="-1"
           aria-labelledby="exampleModalXlLabel"
           aria-modal="true"
           role="dialog"
         >
-          <div className="modal-dialog modal-xl relative w-auto pointer-events-none">
-            <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-              <div className="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+          <div className="relative w-auto pointer-events-none modal-dialog modal-xl">
+            <div className="relative flex flex-col w-full text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto modal-content bg-clip-padding">
+              <div className="flex items-center justify-between flex-shrink-0 p-4 border-b border-gray-200 modal-header rounded-t-md">
                 <button
                   type="button"
-                  className="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+                  className="box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 btn-close focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
-              <div className="modal-body relative p-4">
+              <div className="relative p-4 modal-body">
                 <MyArtWork />
               </div>
             </div>
@@ -86,24 +86,24 @@ const MyPortfolio = (props) => {
         </div>
 
         <div
-          className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+          className="fixed top-0 left-0 hidden w-full h-full overflow-x-hidden overflow-y-auto outline-none modal fade"
           id="exampleModalXl"
-          tabindex="-1"
+          tabIndex="-1"
           aria-labelledby="exampleModalXlLabel"
           aria-modal="true"
           role="dialog"
         >
-          <div className="modal-dialog modal-xl relative w-auto pointer-events-none">
-            <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-              <div className="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+          <div className="relative w-auto pointer-events-none modal-dialog modal-xl">
+            <div className="relative flex flex-col w-full text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto modal-content bg-clip-padding">
+              <div className="flex items-center justify-between flex-shrink-0 p-4 border-b border-gray-200 modal-header rounded-t-md">
                 <button
                   type="button"
-                  className="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+                  className="box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 btn-close focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
-              <div className="modal-body relative p-4">
+              <div className="relative p-4 modal-body">
                 <MyArtWork />
               </div>
             </div>

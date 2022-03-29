@@ -30,6 +30,10 @@ const TopOfProfile = (props) => {
     let tendency = "";
     let profile = "";
     let job = "";
+    let Email = "";
+    let instagram = "";
+    let linkedin = "";
+    let brunch = "";
     if (info) {
         nickname = info.nickname;
         following = info.following_count;
@@ -37,6 +41,10 @@ const TopOfProfile = (props) => {
         tendency = info.tendency;
         profile = info.profile_img;
         job = info.job;
+        Email = info.work_email;
+        instagram = info.insta;
+        linkedin = info.linked_in;
+        brunch = info.brunch;
     }
     
     return (
@@ -73,10 +81,10 @@ const TopOfProfile = (props) => {
                     <div className="my-4">팔로잉 {following} ㅣ 팔로워 {follower}</div>
     
                     <div className="flex flex-row p-1 text-2xl">
-                        {(info.work_email) && <Icon name="Time" src={Email} iconSize="32" /> }
-                        {(info.insta) && <Icon name="Time" src={instagram} iconSize="32" /> }
-                        {(info.linked_in) && <Icon name="Time" src={linkedin} iconSize="32" /> }
-                        {(info.brunch) && <Icon name="Time" src={brunch} iconSize="32" /> }
+                        {(Email) && <Icon name="Time" src={Email} iconSize="32" /> }
+                        {(instagram) && <Icon name="Time" src={instagram} iconSize="32" /> }
+                        {(linkedin) && <Icon name="Time" src={linkedin} iconSize="32" /> }
+                        {(brunch) && <Icon name="Time" src={brunch} iconSize="32" /> }
                     </div>
                     </div>
                 </div>

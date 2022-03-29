@@ -40,7 +40,7 @@ export const editIntroduce = createAsyncThunk(
   );
 
   export const editExp = createAsyncThunk(
-    "editExp",
+    "editHistory",
     // async (formData, thunkAPI) => {
     async (data, thunkAPI) => {
       //   await URL.post('/api/profile', formData, {
@@ -58,7 +58,7 @@ export const editIntroduce = createAsyncThunk(
   );
 
   export const editSkills = createAsyncThunk(
-    "editExp",
+    "editSkills",
     // async (formData, thunkAPI) => {
     async (data, thunkAPI) => {
       //   await URL.post('/api/profile', formData, {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Input } from "../../../elements";
 import { useDispatch } from "react-redux";
 import { editIntroduce } from "../../../redux/modules/editProfile";
@@ -7,7 +7,14 @@ import { useInput } from "../../../hooks";
 const CreateMyIntro = (props) => {
   const {info} = props;
   const dispatch = useDispatch();
-  const title_content = info.title_content;
+  const [title_content, setTitleContent] = useState("")
+  const [sub_content, setSubContent] = useState("")
+  useEffect(() => {
+    if (info){
+      setTitleContent(info.title_content);
+      setSubContent(info.sub_content);
+    }
+  })
   const validMaxLen = (value) => value.length <= 200;
   const validMaxLen1000 = (value) => value.length <= 1000;
   let sub = useInput("", [validMaxLen1000]);
@@ -15,7 +22,7 @@ const CreateMyIntro = (props) => {
     sub = useInput(sub_content, [validMaxLen1000]);
   }
   let intro = useInput("", [validMaxLen]);
-  if (title_content){
+  if (info.title_content){
     intro = useInput(title_content, [validMaxLen]);
   }
   // const intro = useInput(title_content, [validMaxLen]);
