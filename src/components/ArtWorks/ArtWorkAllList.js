@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Button, Title } from "../../elements";
-import ArtWorkPost from "../../Hold/ArtWorkPost";
+import ArtPost from "./ArtPost";
 import tw from "tailwind-styled-components";
 import { useHistory, useLocation } from "react-router-dom";
 import { ArtWorkCategory, ArtWorkWrite } from "../../components/ArtWorks";
@@ -32,7 +32,7 @@ const ArtWorkAllList = (props) => {
             const arr = [];
             for (let i = 0; i < artworks.length; i++) {
                 arr.push(
-                    <ArtWorkPost
+                    <ArtPost
                         size="7"
                         main
                         profile={artworks[i].account_profile}
@@ -49,12 +49,11 @@ const ArtWorkAllList = (props) => {
 
     const location = useLocation();
     const a = location.pathname;
-    const b = a.split("/")[3];
     if (a === "/")
         return (
             // <>
             //     {p.map((n) => {
-            //         return <ArtWorkPost size="7" main />;
+            //         return <ArtPost size="7" main />;
             //     })}
             // </>
             <>{arrayArtworks()}</>

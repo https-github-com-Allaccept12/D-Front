@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Label, Profile, Title, Text, HeartButton } from "../../elements";
+import { Button, Label, Profile, Title, Text, HeartButton } from "../../../../elements";
 
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -8,7 +8,7 @@ const InnerLine = tw.hr`
 border border-dgray-300 w-full col-span-full mt-10 mb-5
 `;
 
-const DimoCard = (props) => {
+const DimoQNACard = (props) => {
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[1];
@@ -42,26 +42,26 @@ const DimoCard = (props) => {
                             적은 없습니다.
                         </Text>{" "}
                         <Text size="2">(더보기)</Text>
-                    </div>
-                    <div className="absolute bottom-7 px-10 w-full">
-                        <div className="flex flex-row justify-between">
-                            <HeartButton like_cnt="1" is_like />
-                            <div className="flex flex-row space-x-4">
-                                <HeartButton like_cnt="0" is_like />
+                        <div className="absolute bottom-7 px-10 w-full">
+                            <div className="flex flex-row justify-between">
                                 <HeartButton like_cnt="1" is_like />
+                                <div className="flex flex-row space-x-4">
+                                    <HeartButton like_cnt="0" is_like />
+                                    <HeartButton like_cnt="1" is_like />
+                                </div>
                             </div>
                         </div>
+                        <InnerLine />
+                        <div>djflksjflk 답변 더ㅏ더ㅏㅣㄴ이ㅏ허</div>
                     </div>
                 </div>
             </div>
-
-            <InnerLine />
         </>
     );
 };
 
-DimoCard.defaultProps = {
+DimoQNACard.defaultProps = {
     size: "2",
 };
 
-export default DimoCard;
+export default DimoQNACard;

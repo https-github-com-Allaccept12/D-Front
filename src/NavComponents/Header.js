@@ -29,7 +29,7 @@ const Header = (props) => {
                     <Logo name="DplusW" logoSizeW="200" logoSizeH="59" />
                 </Link>
             </div>
-            <div className="hidden lg:flex lg:flex-row md:h-[7.8rem] w-full lg:w-3/6 xl:w-3/4 ml-auto text-white">
+            <div className="hidden lg:flex lg:flex-row md:h-[7.8rem] w-full lg:w-3/6 xl:w-3/4 ml-auto text-white md:pl-10 xl:pl-10 2xl:pl-1">
                 {/* <Title size="6"><Link to="/">홈</Link></Title> */}
                 <div className="flex items-center gap-8">
                     <Title size="6">
@@ -55,12 +55,12 @@ const Header = (props) => {
                         </Title>
                     ) : (
                         <Title size="6">
-                            <Link to="/myposts">logins</Link>
+                            <Link to="/login">login</Link>
                         </Title>
                     )}
-                    <Title size="6">
+                    {/* <Title size="6">
                         <Link to="/tendencytest">cre!</Link>
-                    </Title>
+                    </Title> */}
                 </div>
             </div>
         </div>
