@@ -19,27 +19,26 @@ const CreateMySkill = (props) => {
   const {info} = props;
   const dispatch = useDispatch();
   const options = skillList;
-  const [main, setMain] = useState("");
-  const [sub, setSub] = useState("");
+  let main = "";
+  let sub = "";
   const [toolSelectedMain, setToolSelectedMain] = useState([]);
   const [toolSelectedSub, setToolSelectedSub] = useState([]);
   useEffect(() => {
     if(info){
-      setMain(info.specialty);
+      main = info.specialty;
       if (main.length > 2){
         var mainTemp = main.split('/');
         for (var i in mainTemp){
           var dic = {}
           dic['label'] = mainTemp[i];
           dic['value'] = mainTemp[i];
-          console.log(dic);
           if (i == 0) {
             toolSelectedMain.pop();  
           }
           toolSelectedMain.push(dic);
         }
       } 
-      setSub(info.other_specialty);
+      sub = info.other_specialty;
       if (main.length > 2){
         var subTemp = sub.split('/');
         for (var i in subTemp){
