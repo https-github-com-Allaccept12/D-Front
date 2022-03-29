@@ -60,7 +60,11 @@ const EditMySpace = (props) => {
   }, [dispatch, account_id, owner_account_id]);
   
   const info = useSelector(state => state.myPage.myPage);
-  const tendency = info.tendency
+  let tendency = ""
+  if (info) {
+    tendency = info.tendency;
+  }
+  // const tendency = info.tendency
   const location = useLocation();
   const a = location.pathname;
   const b = a.split("/")[2];
@@ -76,7 +80,7 @@ const EditMySpace = (props) => {
     },
     {
       tab: "업무 경험",
-      content: <CreateMyExp />,
+      content: <CreateMyExp info={info} />,
     },
     {
       tab: "포트폴리오",
@@ -84,7 +88,7 @@ const EditMySpace = (props) => {
     },
     {
       tab: "보유 스킬",
-      content: <CreateMySkill />,
+      content: <CreateMySkill info={info} />,
     },
     {
       tab: "관심사",

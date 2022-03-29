@@ -37,6 +37,7 @@ w-full py-4 border border-dgray-400 border-box h-I02 px-4
 
 // 인풋리스트에 모아서 전달하기... 화면을 이동하면 내용이 사라진다..!
 const CreateMyExp = (props) => {
+  const {info} = props;
   const dispatch = useDispatch();
   const [inputList, setInputList] = useState([
     {
@@ -80,8 +81,12 @@ const CreateMyExp = (props) => {
   };
 
   const SendExps = () => {
-    const data = inputList[0];
-    console.log(data);
+    const arr = []
+    const data = {}
+    for (var i in inputList){
+      arr.push(inputList[i]);
+    }
+    data["history"] = arr;
     dispatch(editExp(data));
   };
 

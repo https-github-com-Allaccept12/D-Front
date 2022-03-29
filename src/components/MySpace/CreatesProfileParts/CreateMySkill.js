@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { editSkills } from "../../../redux/modules/editProfile";
 import { Button, Title, SkillThumbnail } from "../../../elements";
 import skillList from "../../ArtWorks/skillList";
 import { MultiSelect } from "react-multi-select-component";
 import tw from "tailwind-styled-components";
+import { formControlUnstyledClasses } from "@mui/base";
 
 const Box = tw.div`
 col-start-2 col-span-full justify-center items-center
@@ -15,11 +16,45 @@ border border-dgray-300 w-full col-span-full mt-10
 
 // 메인스킬과 보조스킬 분리
 const CreateMySkill = (props) => {
+  const {info} = props;
   const dispatch = useDispatch();
   const options = skillList;
+  const [main, setMain] = useState("");
+  const [sub, setSub] = useState("");
   const [toolSelectedMain, setToolSelectedMain] = useState([]);
   const [toolSelectedSub, setToolSelectedSub] = useState([]);
-
+  useEffect(() => {
+    if(info){
+      setMain(info.specialty);
+      if (main.length > 2){
+        var mainTemp = main.split('/');
+        for (var i in mainTemp){
+          var dic = {}
+          dic['label'] = mainTemp[i];
+          dic['value'] = mainTemp[i];
+          console.log(dic);
+          if (i == 0) {
+            toolSelectedMain.pop();  
+          }
+          toolSelectedMain.push(dic);
+        }
+      } 
+      setSub(info.other_specialty);
+      if (main.length > 2){
+        var subTemp = sub.split('/');
+        for (var i in subTemp){
+          var dic = {}
+          dic['label'] = subTemp[i];
+          dic['value'] = subTemp[i];
+          if (i == 0) {
+            toolSelectedSub.pop();
+          }
+          toolSelectedSub.push(dic);
+        }
+      }
+    }
+  }, [])
+  // console.log(toolSelectedMain);
   const mainSpecialty = [];
   for (var value of toolSelectedMain) {
     mainSpecialty.push(value.value);
@@ -30,7 +65,6 @@ const CreateMySkill = (props) => {
     subSpecialty.push(value.value);
   }
 
-  console.log(mainSpecialty);
 
   const SendSkill = () => {
     if (mainSpecialty.length > 4){
