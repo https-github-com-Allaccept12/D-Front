@@ -36,6 +36,10 @@ const Robot = tw.div`
 flex flex-col mx-auto justify-center max-w-xl items-center xl:mb-32
 `;
 
+const Ptext = tw.p`
+font-min1 text-sm lg:text-lg
+`;
+
 const MyInterests = (props) => {
     // 초기 세팅
     const [selectInterest, SetSelectInterest] = useState("");
@@ -95,7 +99,7 @@ const MyInterests = (props) => {
                         >
                             <div className="flex-col my-3">
                                 <img className="my-3" src={typography} />
-                                타이포그래피
+                                <Ptext>타이포그래피</Ptext>
                             </div>
                         </div>
                         <div
@@ -104,7 +108,7 @@ const MyInterests = (props) => {
                         >
                             <div className="flex-col my-3">
                                 <img className="my-3" src={crafts} />
-                                공예
+                                <Ptext>공예</Ptext>
                             </div>
                         </div>
                         <div
@@ -113,7 +117,7 @@ const MyInterests = (props) => {
                         >
                             <div className="flex-col my-3">
                                 <img className="my-3" src={pakage} />
-                                패키지
+                                <Ptext>패키지</Ptext>
                             </div>
                         </div>
                         <div
@@ -122,7 +126,7 @@ const MyInterests = (props) => {
                         >
                             <div className="flex-col my-3">
                                 <img className="my-3" src={graphic} />
-                                그래픽
+                                <Ptext>그래픽</Ptext>
                             </div>
                         </div>
                         <div
@@ -131,7 +135,7 @@ const MyInterests = (props) => {
                         >
                             <div className="flex-col my-3">
                                 <img className="my-3" src={ui} />
-                                UI / UX
+                                <Ptext>UI / UX</Ptext>
                             </div>
                         </div>
                         <div
@@ -140,7 +144,7 @@ const MyInterests = (props) => {
                         >
                             <div className="flex-col my-3">
                                 <img className="my-3" src={fashion} />
-                                패션
+                                <Ptext>패션</Ptext>
                             </div>
                         </div>
                         <div
@@ -149,7 +153,7 @@ const MyInterests = (props) => {
                         >
                             <div className="flex-col my-3">
                                 <img className="my-3" src={video} />
-                                영상 / 모션
+                                <Ptext>영상 / 모션</Ptext>
                             </div>
                         </div>
                         <div
@@ -158,7 +162,7 @@ const MyInterests = (props) => {
                         >
                             <div className="flex-col my-3">
                                 <img className="my-3" src={product} />
-                                제품
+                                <Ptext>제품</Ptext>
                             </div>
                         </div>
                         <div
@@ -167,7 +171,7 @@ const MyInterests = (props) => {
                         >
                             <div className="flex-col my-3">
                                 <img className="my-3" src={game} />
-                                게임 / 캐릭터
+                                <Ptext>게임 / 캐릭터</Ptext>
                             </div>
                         </div>
                         <div
@@ -176,7 +180,7 @@ const MyInterests = (props) => {
                         >
                             <div className="flex-col my-3">
                                 <img className="my-3" src={branding} />
-                                브랜딩 / 편집
+                                <Ptext>브랜딩 / 편집</Ptext>
                             </div>
                         </div>
                         <div
@@ -185,7 +189,7 @@ const MyInterests = (props) => {
                         >
                             <div className="flex-col my-3">
                                 <img className="my-3" src={interior} />
-                                건축 / 인테리어 / 환경
+                                <Ptext>건축 / 인테리어 / 환경</Ptext>
                             </div>
                         </div>
                     </Body>

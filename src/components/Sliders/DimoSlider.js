@@ -5,7 +5,7 @@ import Slides from "./Slides";
 import { Image, Text, Icon } from "../../elements";
 
 export const Slide = tw(Slider)`
-w-full md:w-[32.5rem] lg:w-[40rem] xl:w-[78rem] 2xl:w-[99rem]
+w-full md:w-[32.5rem] lg:w-[40rem] xl:w-[78rem] 2xl:w-[106rem]
     mx-auto text-white pl-5
     overflow-hidden text-lg
 `;

@@ -9,11 +9,11 @@ import DimoQNAAnswer from "./DimoQNAAnswer";
 import tw from "tailwind-styled-components";
 
 const Box = tw.div`
-w-full bg-yellow-300 h-[200rem]
+w-full 
 `;
 
 const Grid = tw.div`
-w-full xl:w-5/6 bg-yellow-100 h-[200rem] p-3 sm:p-10 ml-auto
+w-full xl:w-5/6  p-3 sm:p-10 ml-auto
 `;
 
 const InnerLine = tw.hr`
@@ -25,16 +25,16 @@ const DimoQNADetail = (props) => {
     let history = useHistory();
     return (
         <>
-            <div className="xl:grid xl:grid-cols-4 bg-dgray-200">
+            <div className="xl:grid xl:grid-cols-4 bg-dgray-200 h-full">
                 <div className="col-start-4 col-span-2 xl:grid grid-rows-6 ">
                     <div className="top-28 h-full invisible fixed 2xl:visible 2xl:absolute">
                         <div className=" flex flex-col">
                             <div className="flex flex-row justify-end items-end self-end">
-                                <div className="row-start-1 bg-white">
-                                    <Title size="4" className="mt-10 md:mt-28 mb-3">
+                                <div className="row-start-1 ">
+                                    <Title size="4" className="mt-10 md:mt-28 mb-3 ml-1">
                                         유사한 질문
                                     </Title>
-                                    <div className=" h-fit">
+                                    <div className="flex flex-col gap-5 h-fit">
                                         <DimoPost list="qna" />
                                         <DimoPost list="qna" />
                                         <DimoPost list="qna" />
@@ -51,6 +51,7 @@ const DimoQNADetail = (props) => {
                             <DimoQNAQuestion />
                             <InnerLine />
                             <Title size="3">답변 2개</Title>
+                            <DimoQNAAnswer selected="true" />
                             <DimoQNAAnswer />
                         </Grid>
                     </Box>

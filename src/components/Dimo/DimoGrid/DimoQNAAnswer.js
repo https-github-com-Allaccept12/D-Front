@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Label, Profile, Title, Text, HeartButton, Input } from "../../../elements";
+import { Button, Subtitle, Profile, Title, Text, HeartButton, InputNoTitle } from "../../../elements";
 import { Comment } from "../../Comment";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -14,7 +14,8 @@ border h-4 mx-3 mt-1 text-dgray-300
 `;
 
 const Card = tw.div`
-w-full mt-10 rounded-lg border border-dgray-200 bg-white sm:px-28 p-3
+w-full mt-10 rounded-lg border border-dgray-200 bg-white sm:px-28 p-3 pb-10
+${(props) => (props.selected == "true" ? `border-2 border-dpurple-300` : "")};
 `;
 
 const Header = tw.div`
@@ -34,21 +35,33 @@ py-10 flex flex-row justify-between
 `;
 
 const DimoQNAAnswer = (props) => {
+    const { selected } = props;
     const [showAnswer, setShowAnswer] = useToggle();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
     return (
         <>
-            <Card>
+            <Card selected={selected}>
                 <Footer>
                     <div className="justify-start flex flex-row">
                         <Profile size="5" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
-                        <div>
-                            <Title>이름</Title>
-                            <Title>채택률 마감률</Title>
+                        <div className="-mt-2 ml-3">
+                            <Title size="5" className="my-3">
+                                이름dfsfsdfsfsfsf
+                            </Title>
+                            <div className="flex flex-col">
+                                <Subtitle size="2">
+                                    채택받은 답변 수 <span className="text-blue-300"> 100</span>
+                                </Subtitle>
+                                <Subtitle size="2">
+                                    관심 분야<span className="text-blue-300"> UI/UX</span>
+                                </Subtitle>
+                            </div>
                         </div>
                     </div>
-                    <Button>팔로우</Button>
+                    <Button size="2" color="2">
+                        팔로우
+                    </Button>
                 </Footer>
                 <UnderLine />
                 <Header>
@@ -57,7 +70,7 @@ const DimoQNAAnswer = (props) => {
                         <InnerLine />
                         <Text size="1">조회수 2천</Text>
                         <InnerLine />
-                        <Text size="1">채택완료</Text>
+                        {selected && <Text size="1">채택완료</Text>}
                     </div>
                 </Header>
                 <Body>
@@ -75,35 +88,44 @@ const DimoQNAAnswer = (props) => {
                 <Btns>
                     <div className="flex flex-row justify-between">
                         <Button size="3" onClick={setShowAnswer}>
-                            답글남기기
+                            답글 달기
                         </Button>
                         <div className="flex flex-row space-x-4">
-                            <HeartButton like_cnt="0" is_like />
-                            <HeartButton like_cnt="1" is_like />
+                            <Button icon name="HeartE" color="5" size="3" count="8">
+                                <span className="hidden 2xl:contents">좋아요</span>
+                            </Button>
                         </div>
                     </div>
                 </Btns>
-            </Card>
-            {showAnswer && (
-                <>
-                    <div className=" bg-white relative">
-                        <div className="pt-10 absolute">
-                            <Title>답변 남기기</Title>
-                            <Profile size="5" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
+
+                {showAnswer && (
+                    <>
+                        <UnderLine />
+                        <div className="bg-white flex p-5 xl:px-10 2xl:px-20 gap-3">
+                            <div>
+                                <Profile size="6" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
+                            </div>
+                            <div className="w-full ml-auto">
+                                <InputNoTitle
+                                    value={name.value}
+                                    onChange={name.onChange}
+                                    is_error={name.errors}
+                                    is_value={name.value.length}
+                                    cardSize="1"
+                                    maxLen="30"
+                                    width="2"
+                                />
+                                <Button size="3">제출</Button>
+                            </div>
                         </div>
-                        <Input
-                            value={name.value}
-                            onChange={name.onChange}
-                            is_error={name.errors}
-                            is_value={name.value.length}
-                            textarea
-                            cardSize="2"
-                            maxLen="30"
-                        />
-                    </div>
-                    <Comment />
-                </>
-            )}
+                        <Comment />
+                        <Comment />
+                        <Comment />
+                        <Comment />
+                        <Comment />
+                    </>
+                )}
+            </Card>
         </>
     );
 };

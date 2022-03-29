@@ -3,7 +3,7 @@ import Icon from "../Icons/Icon";
 import tw from "tailwind-styled-components";
 
 const Btn = tw.button`
-   rounded-full text-sm md:text-base shadow-sm flex flex-row justify-center items-center 
+   rounded-full text-sm lg:text-base shadow-sm flex flex-row justify-center items-center 
    font-min1
   ${(props) => (props.size === "1" ? `h-b01 px-12` : "")};
   ${(props) => (props.size === "2" ? `h-b02 px-8 py-4` : "")};
@@ -78,22 +78,9 @@ mr-2
 ${(props) => (props.iconColor === "heart" ? `text-dred-300` : "")};
 `;
 
-const Button = (props) => {
-    const {
-        size,
-        color,
-        styles,
-        children,
-        onClick,
-        disabled,
-        is_loading,
-        icon,
-        name,
-        iconSize,
-        iconColor,
-        className,
-        count,
-    } = props;
+const ButtonWithCount = (props) => {
+    const { size, color, styles, children, onClick, disabled, is_loading, icon, name, iconSize, iconColor, className } =
+        props;
 
     return (
         <Btn
@@ -110,20 +97,13 @@ const Button = (props) => {
                     <Icon name={name} iconSize={iconSize} />
                 </IconColor>
             )}
-
             {children}
-            {count ? (
-                <>
-                    <div className="pl-6">{count}</div>
-                </>
-            ) : (
-                ""
-            )}
+            {count}
         </Btn>
     );
 };
 
-Button.defaultProps = {
+ButtonWithCount.defaultProps = {
     size: "1",
     color: "1",
     children: null,
@@ -132,4 +112,4 @@ Button.defaultProps = {
     className: "",
 };
 
-export default Button;
+export default ButtonWithCount;

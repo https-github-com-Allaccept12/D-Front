@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Label, Profile, Title, Text, HeartButton, Input } from "../../../elements";
+import { Button, Label, Profile, Title, Text, Subtitle, InputNoTitle } from "../../../elements";
 
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -75,41 +75,60 @@ const DimoQNAQuestion = (props) => {
                         <Button size="3" onClick={setShowAnswer}>
                             답변남기기
                         </Button>
-                        <div className="flex flex-row space-x-4">
-                            <HeartButton like_cnt="0" is_like />
-                            <HeartButton like_cnt="1" is_like />
+                        <div className="flex flex-col md:flex-row gap-3">
+                            <Button icon name="HeartE" color="5" size="3" count="8">
+                                <span className="hidden 2xl:contents">좋아요</span>
+                            </Button>
+                            <Button icon name="BookmarkE" color="5" size="3" count="8">
+                                <span className="hidden 2xl:contents">스크랩</span>
+                            </Button>
+                            <Button icon name="Link" color="5" size="3">
+                                공유<span className="hidden xl:contents">하기</span>
+                            </Button>
                         </div>
                     </div>
                 </Btns>
 
                 <UnderLine />
+
                 <Footer>
                     <div className="justify-start flex flex-row">
                         <Profile size="5" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
-                        <div>
-                            <Title>이름</Title>
-                            <Title>채택률 마감률</Title>
+                        <div className="-mt-2 ml-3">
+                            <Title size="5" className="my-3">
+                                이름dfsfsdfsfsfsf
+                            </Title>
+                            <Subtitle size="1">
+                                채택률<span className="text-blue-300">100 %</span> / 마감률{" "}
+                                <span className="text-blue-300">100 %</span>
+                            </Subtitle>
                         </div>
                     </div>
-                    <Button>팔로우</Button>
+                    <Button size="2" color="2">
+                        팔로우
+                    </Button>
                 </Footer>
             </Card>
             {showAnswer && (
                 <>
-                    <div className=" bg-dgray-300 relative">
-                        <div className="pt-10 absolute">
-                            <Title>답변 남기기</Title>
+                    <div className="bg-dgray-300 flex p-5 xl:px-10 2xl:px-20 mt-20">
+                        <div>
+                            <Title size="5">답변 남기기</Title>
                             <Profile size="5" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
                         </div>
-                        <Input
-                            value={name.value}
-                            onChange={name.onChange}
-                            is_error={name.errors}
-                            is_value={name.value.length}
-                            textarea
-                            cardSize="3"
-                            maxLen="30"
-                        />
+                        <div className="w-4/5 ml-auto mt-12">
+                            <InputNoTitle
+                                value={name.value}
+                                onChange={name.onChange}
+                                is_error={name.errors}
+                                is_value={name.value.length}
+                                textarea
+                                cardSize="3"
+                                maxLen="30"
+                                width="2"
+                            />
+                            <Button size="3">제출</Button>
+                        </div>
                     </div>
                 </>
             )}
