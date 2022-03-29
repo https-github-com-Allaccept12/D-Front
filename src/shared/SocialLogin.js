@@ -11,26 +11,26 @@ import KakaoBtn from "../static/images/kakao_button.png";
 
 //로그인 성공했을 떄 처리 함수
 const successGoogle = (response) => {
-  console.log(response);
+    console.log(response);
 };
 
 //로그인 실패했을 때 처리 함수
 const failGoogle = (response) => {
-  console.log(response);
+    console.log(response);
 };
 
 const SocialLogin = (props) => {
-  // let history = useHistory();
-  return (
-    <div className="flex flex-row p-3 gap-3 justify-center items-center shadow-lg">
-      <a href={KAKAO_AUTH_URL}>
-        <img src={KakaoBtn} />
-      </a>
-      {/* <a href={GOOGLE_AUTH_URL}>
+    // let history = useHistory();
+    return (
+        <div className="">
+            <a href={KAKAO_AUTH_URL}>
+                <img src={KakaoBtn} />
+            </a>
+            {/* <a href={GOOGLE_AUTH_URL}>
           구글 로그인
         </a> */}
-    </div>
-  );
+        </div>
+    );
 };
 
 export default SocialLogin;

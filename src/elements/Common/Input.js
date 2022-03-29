@@ -21,8 +21,8 @@ ${(props) => (props.is_error ? `border-2 border-dred-500` : "")};
 `;
 
 const Title = tw.h2`
-  mr-2 flex-row justify-center items-center mt-1 font-min1
-  shrink-0
+  mr-2 inline-flex mt-1 font-min1 col-span-2
+  shrink-0 text-sm md:text-base w-24 row-start-1 col-start-1
 `;
 
 const Sp = tw.h2`
@@ -51,9 +51,9 @@ const Input = (props) => {
     if (is_submit) {
         return (
             <>
-                <div className="grid grid-cols-8">
+                <div className="grid grid-cols-8 row-start-1">
                     {title && <Title>{title} </Title>}
-                    <div className="col-start-2 col-end-8">
+                    <div className="col-start-3 col-end-8 row-start-1">
                         <label id={label}>
                             <InputStyles
                                 type={type}
@@ -81,9 +81,9 @@ const Input = (props) => {
     } else if (textarea) {
         return (
             <>
-                <div className="grid grid-cols-8">
+                <div className="grid grid-cols-8 row-start-1">
                     {title && <Title>{title}</Title>}
-                    <div className="col-start-2 col-end-8">
+                    <div className="col-start-3 col-end-8 row-start-1">
                         <label id={label}>
                             <TextAreaField
                                 type={type}
@@ -107,9 +107,9 @@ const Input = (props) => {
     } else {
         return (
             <>
-                <div className="grid grid-cols-8">
+                <div className="grid grid-cols-8 row-start-1">
                     {title && <Title>{title} </Title>}
-                    <div className="col-start-2 col-end-8">
+                    <div className="col-start-3 col-end-8 row-start-1">
                         <label id={label}>
                             <InputStyles
                                 type={type}

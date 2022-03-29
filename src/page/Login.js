@@ -2,7 +2,13 @@ import React from "react";
 import { Title } from "../elements";
 import { useHistory } from "react-router-dom";
 import { useInput } from "../hooks";
+import CreateProfile from "../components/Tendency/CreateProfile";
 import SocialLogin from "../shared/SocialLogin";
+import tw from "tailwind-styled-components";
+
+const LoginBox = tw.div`
+flex flex-col p-3 justify-center items-center
+`;
 
 const Login = (props) => {
     let history = useHistory();
@@ -12,9 +18,10 @@ const Login = (props) => {
     const name = useInput("", [validMaxLen]);
     return (
         <>
-            <div className="flex flex-col p-3 justify-center items-center">
-                <SocialLogin />
-            </div>
+            <LoginBox>
+                {/* <SocialLogin /> */}
+                <CreateProfile />
+            </LoginBox>
         </>
     );
 };

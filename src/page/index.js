@@ -9,7 +9,4 @@ import Login from "./Login";
 
 import LogOut from "./LogOut";
 
-import CreateProfile from "./CreateProfile";
-import KakaoRedirectHandler from "./KakaoRedirectHandler";
-
-export { Main, ArtWork, MyPage, EditMySpace, CreateProfile, KakaoRedirectHandler, Login, Dimo, LogOut };
+export { Main, ArtWork, MyPage, EditMySpace, Login, Dimo, LogOut };
