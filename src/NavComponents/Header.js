@@ -4,11 +4,20 @@ import { getCookie } from "../shared/cookie";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Modal } from "../elements/Tools/Modal";
 
 const Header = (props) => {
     const [is_login, setIsLogin] = useState(false);
     const [ownerId, setOwnerId] = useState("");
     const [accountId, setAccountId] = useState("");
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+      setModalOpen(true);
+    };
+    const closeModal = () => {
+      setModalOpen(false);
+    };
     useEffect(() => {
         // const cookie = getCookie("access_token");
         const session = sessionStorage.getItem("access_token");
@@ -53,10 +62,15 @@ const Header = (props) => {
                         <Title size="6">
                             <Link to="/logout">로그아웃</Link>
                         </Title>
-                    ) : (
-                        <Title size="6">
-                            <Link to="/login">login</Link>
+                    ) : (<>
+                        <Title size="6" onClick={openModal}>
+                            Login
+                            {/* <Link to="/login">login</Link> */}
                         </Title>
+                        <Modal open={modalOpen} close={closeModal} header="디플러스 환영">
+                         <main> {props.children} </main>
+                      </Modal>
+                      </>
                     )}
                     {/* <Title size="6">
                         <Link to="/tendencytest">cre!</Link>
