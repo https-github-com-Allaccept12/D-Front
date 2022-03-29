@@ -1,8 +1,9 @@
 # D+
 
-https://d3c1kyhw1fsmay.cloudfront.net/
 
-자동배포 적용중!
+https://dplusday.com/
+
+자동배포 적용중! 도메인 구매완료
 
 1. 작품을 올리고 공유하는 기능(crud)
 2. 사용자를 팔로우/팔로잉하고 정보를 공유하는 커뮤니티 기능(질문/답변, 스크랩, 북마크)
