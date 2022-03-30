@@ -18,12 +18,11 @@ const Main = (props) => {
         let id_cookie = getCookie("account_id");
         if (id_cookie) {
             account_id = id_cookie;
-            sessionStorage.setItem("access_token", getCookie("access_token"))
-            sessionStorage.setItem("account_id", getCookie("account_id"))
+            sessionStorage.setItem("access_token", getCookie("access_token"));
+            sessionStorage.setItem("account_id", getCookie("account_id"));
         }
         console.log(account_id);
         dispatch(mainPageLoad({ account_id, dispatch }));
-        
     });
 
     return (
@@ -48,7 +47,7 @@ const Main = (props) => {
             <div className="-mt-32 lg:mt-24 mx-auto lg:pl-12 w-full xl:max-w-[90%]">
                 <Title
                     size="2"
-                    className="flex items-end justify-center col-start-2 row-start-1 my-3 lg:justify-start"
+                    className="flex items-end justify-center col-start-2 row-start-1 my-3 lg:justify-start text-dgray-600"
                 >
                     추천 아트워크
                 </Title>

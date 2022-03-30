@@ -29,7 +29,10 @@ const Header = (props) => {
                     <Logo name="DplusCF" />
                 </Link>
             </div>
-            <div className="hidden lg:flex lg:flex-row md:h-[7.8rem] w-full lg:w-3/6 xl:w-3/4 ml-auto text-white md:pl-10 xl:pl-10 2xl:pl-1">
+            <div
+                className="hidden lg:flex lg:flex-row md:h-[7.8rem] w-full lg:w-3/6 xl:w-3/4 ml-auto text-white md:pl-10 xl:pl-10 2xl:pl-1"
+                onClick={() => alert("이 페이지에서 나가시겠어요?")}
+            >
                 {/* <Title size="6"><Link to="/">홈</Link></Title> */}
                 <div className="flex items-center gap-8">
                     <Title size="6">

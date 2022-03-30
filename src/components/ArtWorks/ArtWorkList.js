@@ -54,11 +54,6 @@ const ArtWorkList = (props) => {
                         })}
                     </Grid>
                 </InnerBox>
-                <Link to="/createart">
-                    <div className="relative flex flex-row-reverse right-52 ">
-                        <Button>작품등록</Button>
-                    </div>
-                </Link>
             </Box>
         </>
     );

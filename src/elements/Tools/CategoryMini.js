@@ -6,11 +6,11 @@ import tw from "tailwind-styled-components";
 import { useToggle } from "../../hooks";
 
 const Grid = tw.div` 
-fixed top-10 w-full h-full rounded-xl
+fixed top-4 left-16 w-3/4 h-full rounded-xl
 `;
 
 const Box = tw.div`
-flex flex-col gap-2 py-4 bg-white px-5 rounded-xl mt-1
+flex flex-wrap gap-2 py-4 bg-white px-5 rounded-xl mt-1 shadow-md
 `;
 
 const TabBtn = tw.button`
@@ -18,7 +18,7 @@ flex flex-row py-2 px-2 font-min1 text-tiny hover:bg-dpurple-100 rounded-lg gap-
 `;
 
 const MiniBtn = tw.button`
-xl:hidden bg-yellow-300 rounded-full fixed top-0
+xl:hidden bg-dpurple-200 rounded-md fixed top-5 left-5 p-2 shadow-md text-white
 `;
 
 // 미니카테고리(토글형) qna/정보공유 그리고 else면 artwork
@@ -28,13 +28,20 @@ const CategoryMini = (props) => {
     if (list === "qna")
         return (
             <>
-                <MiniBtn onClick={setShowCategory}>{showCategory ? <>close</> : <>open!</>}</MiniBtn>
+                <MiniBtn onClick={setShowCategory}>
+                    {showCategory ? (
+                        <>
+                            <Icon name="Cancel" iconSize="24" />
+                        </>
+                    ) : (
+                        <>
+                            <Icon name="Inarray" />
+                        </>
+                    )}
+                </MiniBtn>
                 {showCategory && (
                     <Grid>
                         <Box>
-                            <Title size="5" className="ml-1">
-                                카테고리
-                            </Title>
                             <TabBtn>
                                 <Icon name="StarE" iconSize="20" />
                                 전체보기
@@ -91,13 +98,20 @@ const CategoryMini = (props) => {
     if (list === "shared")
         return (
             <>
-                <MiniBtn onClick={setShowCategory}>{showCategory ? <>close</> : <>open!</>}</MiniBtn>
+                <MiniBtn onClick={setShowCategory}>
+                    {showCategory ? (
+                        <>
+                            <Icon name="Cancel" iconSize="24" />
+                        </>
+                    ) : (
+                        <>
+                            <Icon name="Inarray" />
+                        </>
+                    )}
+                </MiniBtn>
                 {showCategory && (
                     <Grid>
                         <Box>
-                            <Title size="5" className="ml-1">
-                                카테고리
-                            </Title>
                             <TabBtn>
                                 <Icon name="StarE" iconSize="20" />
                                 전체보기
@@ -154,13 +168,20 @@ const CategoryMini = (props) => {
     else
         return (
             <>
-                <MiniBtn onClick={setShowCategory}>{showCategory ? <>close</> : <>open!</>}</MiniBtn>
+                <MiniBtn onClick={setShowCategory}>
+                    {showCategory ? (
+                        <>
+                            <Icon name="Cancel" iconSize="24" />
+                        </>
+                    ) : (
+                        <>
+                            <Icon name="Inarray" />
+                        </>
+                    )}
+                </MiniBtn>
                 {showCategory && (
                     <Grid>
                         <Box>
-                            <Title size="5" className="ml-1">
-                                카테고리
-                            </Title>
                             <TabBtn>
                                 <Icon name="StarE" iconSize="20" />
                                 전체보기
