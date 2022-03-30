@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Title, Text } from "../../../elements";
 
 import { useHistory } from "react-router-dom";
@@ -10,8 +10,16 @@ border border-gray-200 my-20
 
 const MyIntro = (props) => {
   const {info} = props
-  const titleContent = info.title_content
-  const subContent = info.sub_content
+  const [titleContent, setTitleContent] = useState(null);
+  const [subContent, setSubContent] = useState(null);
+  // let titleContent = ""
+  // let subContent = ""
+  useEffect(() => {
+    if(info){
+      setTitleContent(info.title_content)
+      setSubContent(info.sub_content)
+    }
+  },)
   // const titleContent = ""
   // const subContent = ""
   return (

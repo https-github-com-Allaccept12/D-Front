@@ -40,6 +40,7 @@ const ArtWorkAllList = (props) => {
                         thumnail={artworks[i].img}
                         is_like={artworks[i].is_like}
                         like_count={artworks[i].like_count}
+                        id={artworks[i].artwork_id}
                     />,
                 );
             }

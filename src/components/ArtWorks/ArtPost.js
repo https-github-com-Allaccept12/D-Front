@@ -1,7 +1,8 @@
 import React from "react";
 import { HeartButton, Subtitle, Icon, Thumbnail, Profile, Text } from "../../elements";
 
-import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { artworkDetailLoad } from "../../redux/modules/artWork"
 import ArtWorkDetail from "./ArtWorkDetail";
 import tw from "tailwind-styled-components";
 
@@ -11,7 +12,13 @@ flex justify-center items-center flex-col shrink-0
 `;
 
 const ArtPost = (props) => {
-    const { profile, nickname, thumnail, is_like, like_count } = props;
+    const dispatch = useDispatch();
+    dispatch(artworkDetailLoad);
+    const { profile, nickname, thumnail, is_like, like_count, id } = props;
+    const handleClickArtWork = id => {
+        console.log(id.id);
+        dispatch(artworkDetailLoad(id.id));
+    }
     return (
         <>
             <Art>
@@ -20,6 +27,7 @@ const ArtPost = (props) => {
                     className="transition duration-150 ease-in-out active:shadow-lg"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModalXl"
+                    onClick={() => {handleClickArtWork({id})}}
                 >
                     <Thumbnail src={thumnail} size="3" />
                 </button>
@@ -46,43 +54,40 @@ const ArtPost = (props) => {
                     <div className="relative w-auto pointer-events-none modal-dialog modal-xl">
                         <div className="relative flex flex-col w-full text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto modal-content bg-clip-padding">
                             <div className="modal-body">
-                                <ArtWorkDetail />
+                                <ArtWorkDetail id={id} />
 
                                 <div className="hidden md:contents">
                                     <div
-                                        className="lg:fixed w-20 top-20 right-10 2xl:right-48
-                                flex flex-row justify-start
-                                mx-auto
-                                lg:flex-col gap-3"
+                                        className="flex flex-row justify-start w-20 gap-3 mx-auto lg:fixed top-20 right-10 2xl:right-48 lg:flex-col"
                                     >
-                                        <div className="flex justify-center items-center flex-col gap-1 cursor-pointer hover:scale-110">
+                                        <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
                                                 <Profile size="5" />
                                             </div>
                                             <Text size="1">프로필</Text>
                                         </div>
-                                        <div className="flex justify-center items-center flex-col gap-1 cursor-pointer hover:scale-110">
+                                        <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
                                                 <Icon name="Plus" iconSize="48" className="absolute" />
                                                 <Profile size="5" className="invisible" />
                                             </div>
                                             <Text size="1">팔로우</Text>
                                         </div>
-                                        <div className="flex justify-center items-center flex-col gap-1  cursor-pointer hover:scale-110">
+                                        <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
                                                 <Icon name="HeartE" iconSize="48" className="absolute" />
                                                 <Profile size="5" className="invisible" />
                                             </div>
                                             <Text size="1">좋아요</Text>
                                         </div>
-                                        <div className="flex justify-center items-center flex-col gap-1  cursor-pointer hover:scale-110">
+                                        <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
                                                 <Icon name="BookmarkE" iconSize="48" className="absolute" />
                                                 <Profile size="5" className="invisible" />
                                             </div>
                                             <Text size="1">스크랩</Text>
                                         </div>
-                                        <div className="flex justify-center items-center flex-col gap-1  cursor-pointer hover:scale-110">
+                                        <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
                                                 <Icon name="Link" iconSize="48" className="absolute" />
                                                 <Profile size="5" className="invisible" />

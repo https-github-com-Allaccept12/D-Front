@@ -47,6 +47,7 @@ flex flex-col grow md:px-5
 `;
 
 const ArtWorkDetail = (props) => {
+    const { id } = props;
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
     return (
@@ -57,14 +58,14 @@ const ArtWorkDetail = (props) => {
                         <div className="flex items-center">
                             <Profile size="6" className="hidden sm:contents" />
                         </div>
-                        <div className="flex flex-col gap-2 text-left ml-2">
+                        <div className="flex flex-col gap-2 ml-2 text-left">
                             <Title size="6">은행 어플리케이션 디자인</Title>
-                            <p className="text-md text-dgray-500 flex flex-row font-min2">
+                            <p className="flex flex-row text-md text-dgray-500 font-min2">
                                 2022.03.10
                                 <InnerLine /> UX / UI
                             </p>
                         </div>
-                        <div className="flex ml-auto flex-row gap-2">
+                        <div className="flex flex-row gap-2 ml-auto">
                             <SkillThumbnailMini skill="A1" />
                             <SkillThumbnailMini skill="A5" />
                         </div>
@@ -85,10 +86,10 @@ const ArtWorkDetail = (props) => {
 
                     <div className="p-6 bg-white">
                         <ProfileBox>
-                            <div className="flex items-center justify-start flex-row">
+                            <div className="flex flex-row items-center justify-start">
                                 <Profile size="5" className="mb-3" />
 
-                                <div className="flex flex-col gap-1 text-left ml-2">
+                                <div className="flex flex-col gap-1 ml-2 text-left">
                                     <p className="font-semibold text-dgray-600">이름 이름</p>
                                     <div className="flex flex-row justify-start gap-x-1">
                                         <TypeBtn types="art" />
@@ -105,7 +106,7 @@ const ArtWorkDetail = (props) => {
                         <DetailSlider />
                         <Line />
 
-                        <Title size="6" className="pl-7 pb-5 hidden md:contents">
+                        <Title size="6" className="hidden pb-5 pl-7 md:contents">
                             댓글 0개
                         </Title>
 
@@ -128,7 +129,7 @@ const ArtWorkDetail = (props) => {
                     </div>
                     <button
                         type="button"
-                        className="btn-close box-content w-4 h-4 p-1 text-white border-none rounded-none opacity-80 focus:shadow-none focus:outline-none focus:opacity-100 md:hidden"
+                        className="box-content w-4 h-4 p-1 text-white border-none rounded-none btn-close opacity-80 focus:shadow-none focus:outline-none focus:opacity-100 md:hidden"
                         data-bs-dismiss="modal"
                         aria-label="Close"
                     ></button>
