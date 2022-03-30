@@ -18,6 +18,28 @@ export const CreateNewArtWork = createAsyncThunk(
   }
 );
 
+export const artworkPageLoad = createAsyncThunk(
+  "/artworkPageLoad",
+  (artworkID) => {
+    URL.get(`/api/artwork/${artworkID}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  }
+);
+
+export const artworkDetailLoad = createAsyncThunk(
+  "/artworkPageLoad",
+  (artworkID) => {
+    URL.get(`/api/artwork/detail/${artworkID}`)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => console.log(err));
+  }
+)
+
 export const artworkSlice = createSlice({
   name: "artwork",
   initialState: {},

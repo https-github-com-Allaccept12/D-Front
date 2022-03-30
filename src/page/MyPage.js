@@ -19,7 +19,7 @@ const MyPage = (props) => {
 
   useEffect(() => {
     dispatch(myPageLoad({ account_id, owner_account_id, dispatch }))
-  }, [])
+  }, [account_id, owner_account_id, dispatch])
   
   
   // let info = null

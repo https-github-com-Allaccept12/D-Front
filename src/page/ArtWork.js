@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { ArtWorkFilter, ArtWorkInlineDetail, ArtWorkList, ArtWorkWrite } from "../components/ArtWorks";
 import { Title, Button, CategoryMini, Icon } from "../elements";
+import { artworkPageLoad } from "../redux/modules/artWork"
 import { Link, Route, Switch } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
@@ -16,7 +17,11 @@ opacity-60 hover:opacity-100
 `;
 
 const ArtWork = (props) => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(artworkPageLoad);
+    // useEffect(() => {
+    dispatch(artworkPageLoad(27));
+    // }, [])
+    
     
     return (
         <>

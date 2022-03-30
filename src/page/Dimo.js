@@ -78,7 +78,7 @@ const Dimo = () => {
 
                         <div className="w-full xl:row-start-3 xl:col-start-2 xl:col-end-5">
                             <div className="w-full h-[200rem]">
-                                <DimoList list={b} />
+                                <DimoList list={b} key="key"/>
                                 <CategoryMini list={b} />
                                 <Link
                                     to={{

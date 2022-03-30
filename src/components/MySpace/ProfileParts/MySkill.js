@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import AtProfile from "./AtProfile";
 import { SkillThumbnail, Title, Button } from "../../../elements";
 import skillList from "../../ArtWorks/skillList_code";
 
