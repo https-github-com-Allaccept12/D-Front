@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Label, Profile, Title, Text, Subtitle, InputNoTitle } from "../../../elements";
+import { Button, Label, Profile, Title, Text, Subtitle, InputNoTitle, FollowBtn } from "../../../elements";
 
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -34,6 +34,7 @@ py-10 flex flex-row justify-between
 `;
 
 const DimoQNAQuestion = (props) => {
+    const { followed } = props;
     const [showAnswer, setShowAnswer] = useToggle();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
@@ -104,9 +105,7 @@ const DimoQNAQuestion = (props) => {
                             </Subtitle>
                         </div>
                     </div>
-                    <Button size="2" color="2">
-                        팔로우
-                    </Button>
+                    <FollowBtn size="2" color="1" followed={followed} />
                 </Footer>
             </Card>
             {showAnswer && (
