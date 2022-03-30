@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Subtitle, Profile, Title, Text, HeartButton, InputNoTitle } from "../../../elements";
+import { Button, Subtitle, Profile, Title, Text, FollowBtn, InputNoTitle } from "../../../elements";
 import { Comment } from "../../Comment";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -35,7 +35,7 @@ py-10 flex flex-row justify-between
 `;
 
 const DimoQNAAnswer = (props) => {
-    const { selected } = props;
+    const { selected, followed } = props;
     const [showAnswer, setShowAnswer] = useToggle();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
@@ -59,9 +59,7 @@ const DimoQNAAnswer = (props) => {
                             </div>
                         </div>
                     </div>
-                    <Button size="2" color="2">
-                        팔로우
-                    </Button>
+                    <FollowBtn size="2" color="1" followed={followed} />
                 </Footer>
                 <UnderLine />
                 <Header>

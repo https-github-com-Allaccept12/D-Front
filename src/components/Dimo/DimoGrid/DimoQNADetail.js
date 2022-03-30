@@ -48,11 +48,11 @@ const DimoQNADetail = (props) => {
                 <div className="col-start-1 col-end-4 row-start-1 col-span-full">
                     <Box>
                         <Grid>
-                            <DimoQNAQuestion />
+                            <DimoQNAQuestion followed="true" />
                             <InnerLine />
                             <Title size="3">답변 2개</Title>
-                            <DimoQNAAnswer selected="true" />
-                            <DimoQNAAnswer />
+                            <DimoQNAAnswer selected="true" followed="false" />
+                            <DimoQNAAnswer selected="false" followed="true" />
                         </Grid>
                     </Box>
                 </div>

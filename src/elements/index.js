@@ -31,6 +31,7 @@ import CategoryMini from "./Tools/CategoryMini";
 import IconBtn from "./Icons/IconBtn";
 import InputNoTitle from "./Common/InputNoTitle";
 import SelectBoxCategory from "./Tools/SelectBoxCategory";
+import FollowBtn from "./Tools/FollowBtn";
 
 export {
     Title,
@@ -65,4 +66,5 @@ export {
     IconBtn,
     InputNoTitle,
     SelectBoxCategory,
+    FollowBtn,
 };

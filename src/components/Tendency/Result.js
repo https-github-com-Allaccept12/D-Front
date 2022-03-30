@@ -84,14 +84,14 @@ const MyInterests = ({ history, location, match }) => {
                             <Types className="border-[#F5C3AF] text-[#F5C3AF]">
                                 TYPE <img src={DetailIcon} alt="" />
                             </Types>
-                            <Subtitle size="3" className="text-gray-400">
+                            <Subtitle size="4" className="text-gray-400">
                                 1px의 여백도 놓치지 않는 섬세함
                             </Subtitle>
                             <Title size="2" className="text-[#F5C3AF]">
                                 {match.params.name}
                             </Title>
                             <Result src={Detail} alt="" />
-                            <Subtitle size="2" className=" text-[#F5C3AF] ">
+                            <Subtitle size="3" className="text-[#F5C3AF]">
                                 #책임감 #완벽주의 #안정추구 #개인지향
                             </Subtitle>
 
@@ -156,14 +156,14 @@ const MyInterests = ({ history, location, match }) => {
                             <Types className="border-[#DB4A60] text-[#DB4A60]">
                                 TYPE <img src={InnovatorIcon} alt="" />
                             </Types>
-                            <Subtitle size="3" className="text-gray-400">
+                            <Subtitle size="4" className="text-gray-400">
                                 한계를 뛰어넘는 문제 해결력
                             </Subtitle>
                             <Title size="2" className="text-[#DB4A60]">
                                 {match.params.name}
                             </Title>
                             <Result src={Innovator} alt="" />
-                            <Subtitle size="2" className=" text-[#DB4A60]">
+                            <Subtitle size="3" className=" text-[#DB4A60]">
                                 #추진력 #해결사 #도전추구 #팀지향
                             </Subtitle>
 
@@ -228,14 +228,14 @@ const MyInterests = ({ history, location, match }) => {
                             <Types className="border-[#9262F7] text-[#9262F7]">
                                 TYPE <img src={ArtistIcon} alt="" />
                             </Types>
-                            <Subtitle size="3" className="text-gray-400">
+                            <Subtitle size="4" className="text-gray-400">
                                 저너머를 바라보는 남다른 시각
                             </Subtitle>
                             <Title size="2" className="text-[#9262F7]">
                                 {match.params.name}
                             </Title>
                             <Result src={Artist} alt="" />
-                            <Subtitle size="2" className=" text-[#9262F7]">
+                            <Subtitle size="3" className=" text-[#9262F7]">
                                 #이상주의 #통찰력 #안정추구 #개인지향
                             </Subtitle>
 
@@ -300,14 +300,14 @@ const MyInterests = ({ history, location, match }) => {
                             <Types className="border-[#5876FF] text-[#5876FF]">
                                 TYPE <img src={InventorIcon} alt="" />
                             </Types>
-                            <Subtitle size="3" className="text-gray-400">
+                            <Subtitle size="4" className="text-gray-400">
                                 넘치는 호기심의 타오르는 열정
                             </Subtitle>
                             <Title size="2" className="text-[#5876FF]">
                                 {match.params.name}
                             </Title>
                             <Result src={Inventor} alt="" />
-                            <Subtitle size="2" className="text-[#5876FF]">
+                            <Subtitle size="3" className="text-[#5876FF]">
                                 #현실주의 #논리력 #도전주의 #개인지향
                             </Subtitle>
 
@@ -372,14 +372,14 @@ const MyInterests = ({ history, location, match }) => {
                             <Types className="border-[#FED263] text-[#FED263]">
                                 TYPE <img src={AdventureIcon} alt="" />
                             </Types>
-                            <Subtitle size="3" className="text-gray-400">
+                            <Subtitle size="4" className="text-gray-400">
                                 톡톡 튀는 아이디어와 에너지
                             </Subtitle>
                             <Title size="2" className="text-[#FED263]">
                                 {match.params.name}
                             </Title>
                             <Result src={Adventure} alt="" />
-                            <Subtitle size="2" className="text-[#FED263]">
+                            <Subtitle size="3" className="text-[#FED263]">
                                 #아이디어 #에너지 #도전추구 #팀지향
                             </Subtitle>
 
@@ -444,33 +444,35 @@ const MyInterests = ({ history, location, match }) => {
                             <Types className="border-[#1ABC9C] text-[#1ABC9C]">
                                 TYPE <img src={HarmoniousIcon} alt="" />
                             </Types>
-                            <Subtitle size="5" className="text-gray-400">
-                                1px의 여백도 놓치지 않는 섬세함
+                            <Subtitle size="4" className="text-gray-400">
+                                모든 것을 조화롭게 만드는 이해력
                             </Subtitle>
                             <Title size="2" className="text-[#1ABC9C]">
                                 {match.params.name}
                             </Title>
                             <Result src={Harmonious} alt="" />
-                            <Subtitle size="2" className=" text-[#1ABC9C]">
-                                #책임감 #완벽주의 #안정추구 #개인지향
+                            <Subtitle size="3" className=" text-[#1ABC9C]">
+                                #열정적 #공감능력 #도전추구 #팀지향
                             </Subtitle>
 
                             <ul className="list-disc marker:text-[#1ABC9C] space-y-12 mb-12">
                                 <LaLa>
-                                    어떤일이든 계획적으로
-                                    <La>세세하고 체계적으로 일정을짜고 계획을 세워서 일하는걸 좋아해요</La>
+                                    타고난 커뮤니케이터! 긍정의 힘
+                                    <La>뛰어난 의사소통능력으로 사람들로부터 협력을 이끌어 내는 에너지가 있어요</La>
                                 </LaLa>
                                 <LaLa>
-                                    1px의 차이를 기가막히게 찾아내요
-                                    <La>세세하고 체계적으로 일정을짜고 계획을 세워서 일하는걸 좋아해요</La>
+                                    같이의 가치! 중요한건 함께 성장하는 것
+                                    <La>사람들에게 직접적으로 도움이 되고, 선한 영향력을 가지고 싶어해요</La>
                                 </LaLa>
                                 <LaLa>
-                                    모든상황을 다 고려해야해
-                                    <La>세세하고 체계적으로 일정을짜고 계획을 세워서 일하는걸 좋아해요</La>
+                                    새로운 가능성을 찾는 대범한 열정러
+                                    <La>
+                                        새로운 일에 강한 추진력으로 도전하기를 좋아하고 목표를 달성하려는 욕구가 강해요
+                                    </La>
                                 </LaLa>
                                 <LaLa>
-                                    한번맡은 일은 끝까지
-                                    <La>세세하고 체계적으로 일정을짜고 계획을 세워서 일하는걸 좋아해요</La>
+                                    숲속에 숨겨진 보물을 찾는 자
+                                    <La>행위와 아이디어로부터 큰 그림을 보고 숨은 뜻을 파악하는 능력이 있어요 </La>
                                 </LaLa>
                             </ul>
 

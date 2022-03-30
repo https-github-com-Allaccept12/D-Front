@@ -781,7 +781,7 @@ const TendencyTest = (props) => {
                         }}
                     >
                         <div className="flex justify-center items-center mt-10">
-                            <Button size="2" color="1">
+                            <Button size="1" color="1">
                                 보러가기
                             </Button>
                         </div>
@@ -792,6 +792,7 @@ const TendencyTest = (props) => {
                 {TestNum === 0 ? (
                     <>
                         <Button
+                            size="1"
                             color="1"
                             onClick={() => {
                                 nextTestNum(TestNum + 1);

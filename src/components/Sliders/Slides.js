@@ -98,51 +98,51 @@ const Slides = (props) => {
         return (
             <>
                 <>
-                    <div className="w-[32.5rem] h-[18.75rem] rounded-lg">
-                        <div className="absolute w-[32.5rem] h-[18.75rem] bg-dpurple-200 rounded-lg">
-                            <div>
-                                <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
-                                    <Profile
-                                        size="6"
-                                        src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
-                                        main
-                                    />
-                                </div>
-                                <div className="absolute top-7 left-28">
-                                    <div className="flex flex-row gap-1">
-                                        <Label size="1" color="4">
-                                            취준생
-                                        </Label>
-                                        <Label size="1" color="5">
-                                            진로고민
-                                        </Label>
+                    <Link to="/dimo/qnadetail">
+                        <div className="w-[32.5rem] h-[18.75rem] rounded-lg">
+                            <div className="absolute w-[32.5rem] h-[18.75rem] bg-dpurple-200 rounded-lg">
+                                <div>
+                                    <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
+                                        <Profile
+                                            size="6"
+                                            src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
+                                            main
+                                        />
                                     </div>
-                                    <Title size="6">이런이런 질문들이 있어여</Title>
-                                </div>
-                            </div>
-                            <div className="absolute px-10 top-28">
-                                <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
-                                    안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라
-                                    고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을
-                                    올리게 되었습니다. 제 전공은 산업디자인입니다. 때문에 구체적인 시각디자인과 UIUX
-                                    관련 수업을 수강한 적은 없습니다.
-                                </Text>
-                                <Text size="2">(더보기)</Text>
-                            </div>
-                            <IconBox>
-                                <div className="flex flex-row justify-between">
-                                    {/* 여기가 디테일링크 */}
-                                    <Link to="/dimo/qnadetail">
-                                        <IconBtn name="Talk" iconSize="14" count="4" />
-                                    </Link>
-                                    <div className="flex flex-row gap-5">
-                                        <IconBtn name="Download" iconSize="14" count="4" />
-                                        <IconBtn name="HeartE" iconSize="14" count="4" />
+                                    <div className="absolute top-7 left-28">
+                                        <div className="flex flex-row gap-1">
+                                            <Label size="1" color="4">
+                                                취준생
+                                            </Label>
+                                            <Label size="1" color="5">
+                                                진로고민
+                                            </Label>
+                                        </div>
+                                        <Title size="6">이런이런 질문들이 있어여</Title>
                                     </div>
                                 </div>
-                            </IconBox>
+                                <div className="absolute px-10 top-28">
+                                    <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
+                                        안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이
+                                        아니라 고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을
+                                        얻고자 글을 올리게 되었습니다. 제 전공은 산업디자인입니다. 때문에 구체적인
+                                        시각디자인과 UIUX 관련 수업을 수강한 적은 없습니다.
+                                    </Text>
+                                    <Text size="2">(더보기)</Text>
+                                </div>
+                                <IconBox>
+                                    <div className="flex flex-row justify-end">
+                                        {/* 여기가 디테일링크 */}
+
+                                        <div className="flex flex-row gap-5">
+                                            <IconBtn name="Talk" iconSize="20" count="4" />
+                                            <IconBtn name="HeartE" iconSize="20" count="4" />
+                                        </div>
+                                    </div>
+                                </IconBox>
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                 </>
             </>
         );
@@ -150,48 +150,46 @@ const Slides = (props) => {
         return (
             <>
                 <>
-                    <div className="w-[32.5rem] h-[18.75rem] rounded-lg">
-                        <div className="absolute w-[32.5rem] h-[18.75rem] bg-dpurple-200 rounded-lg">
-                            <div>
-                                <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
-                                    <Profile
-                                        size="6"
-                                        src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
-                                        main
-                                    />
-                                </div>
-                                <div className="absolute top-7 left-28">
-                                    <div className="flex flex-row gap-1">
-                                        <Label size="1" color="4">
-                                            취준생
-                                        </Label>
-                                        <Label size="1" color="5">
-                                            진로고민
-                                        </Label>
+                    <Link to="/dimo/shareddetail">
+                        <div className="w-[32.5rem] h-[18.75rem] rounded-lg">
+                            <div className="absolute w-[32.5rem] h-[18.75rem] bg-dpurple-200 rounded-lg">
+                                <div>
+                                    <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
+                                        <Profile
+                                            size="6"
+                                            src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
+                                            main
+                                        />
                                     </div>
-                                    <Title size="6">꿀팁 공유 공유 </Title>
-                                </div>
-                            </div>
-                            <div className="absolute px-10 top-28">
-                                <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
-                                    공유하기 공유하기 나는 꿀팁
-                                </Text>
-                                <Text size="2">(더보기)</Text>
-                            </div>
-                            <IconBox>
-                                <div className="flex flex-row justify-between">
-                                    {/* 여기가 디테일링크 */}
-                                    <Link to="/dimo/shareddetail">
-                                        <IconBtn name="Talk" iconSize="14" count="4" />
-                                    </Link>
-                                    <div className="flex flex-row gap-5">
-                                        <IconBtn name="Download" iconSize="14" count="4" />
-                                        <IconBtn name="HeartE" iconSize="14" count="4" />
+                                    <div className="absolute top-7 left-28">
+                                        <div className="flex flex-row gap-1">
+                                            <Label size="1" color="4">
+                                                취준생
+                                            </Label>
+                                            <Label size="1" color="5">
+                                                진로고민
+                                            </Label>
+                                        </div>
+                                        <Title size="6">꿀팁 공유 공유 </Title>
                                     </div>
                                 </div>
-                            </IconBox>
+                                <div className="absolute px-10 top-28">
+                                    <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
+                                        공유하기 공유하기 나는 꿀팁
+                                    </Text>
+                                    <Text size="2">(더보기)</Text>
+                                </div>
+                                <IconBox>
+                                    <div className="flex flex-row justify-end">
+                                        <div className="flex flex-row gap-5">
+                                            <IconBtn name="Talk" iconSize="20" count="4" />
+                                            <IconBtn name="HeartE" iconSize="20" count="4" />
+                                        </div>
+                                    </div>
+                                </IconBox>
+                            </div>
                         </div>
-                    </div>
+                    </Link>
                 </>
             </>
         );
