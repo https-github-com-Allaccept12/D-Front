@@ -13,10 +13,10 @@ const Header = (props) => {
     const [modalOpen, setModalOpen] = useState(false);
 
     const openModal = () => {
-      setModalOpen(true);
+        setModalOpen(true);
     };
     const closeModal = () => {
-      setModalOpen(false);
+        setModalOpen(false);
     };
     useEffect(() => {
         // const cookie = getCookie("access_token");
@@ -32,8 +32,8 @@ const Header = (props) => {
     }, []);
 
     return (
-        <div className="bg-gradient-to-r from-[#A162F7] to-[#6F88FC] h-32 md:h-[30rem] relative w-full">
-            <div className="flex justify-center items-center mx-auto md:absolute md:top-[2.25rem] md:left-[7.375rem]">
+        <div className="bg-gradient-to-r from-[#A162F7] to-[#6F88FC] h-32 md:h-[30rem] relative w-full ">
+            <div className="flex justify-center items-center mx-auto md:absolute md:top-[2.25rem] md:left-[7.375rem] py-5 md:py-0 ">
                 <Link to="/">
                     <Logo name="DplusCF" logoSizeW="200" logoSizeH="59" />
                 </Link>
@@ -62,15 +62,16 @@ const Header = (props) => {
                         <Title size="6">
                             <Link to="/logout">로그아웃</Link>
                         </Title>
-                    ) : (<>
-                        <Title size="6" onClick={openModal}>
-                            Login
-                            {/* <Link to="/login">login</Link> */}
-                        </Title>
-                        <Modal open={modalOpen} close={closeModal} header="디플러스 환영">
-                         <main> {props.children} </main>
-                      </Modal>
-                      </>
+                    ) : (
+                        <>
+                            <Title size="6" className="cursor-pointer" onClick={openModal}>
+                                Login
+                                {/* <Link to="/login">login</Link> */}
+                            </Title>
+                            <Modal open={modalOpen} close={closeModal} header="">
+                                <main> {props.children} </main>
+                            </Modal>
+                        </>
                     )}
                     {/* <Title size="6">
                         <Link to="/tendencytest">cre!</Link>

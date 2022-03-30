@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Title, Image, Logo, Profile } from "../elements";
+import { Title, Image, Logo, Profile, Icon } from "../elements";
 import { getCookie } from "../shared/cookie";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useToggle } from "../hooks";
+import { Modal } from "../elements/Tools/Modal";
 import tw from "tailwind-styled-components";
 
 // const MiniBtn = tw.button`
@@ -12,7 +13,12 @@ import tw from "tailwind-styled-components";
 // `;
 
 const ProfileBox = tw.div`
-lg:hidden  fixed top-0 w-full z-50 h-20
+lg:hidden  fixed top-0 w-full z-50 h-20 
+`;
+
+const MobileBtn = tw.button`
+bg-dpurple-200  rounded-full p-2 xl:hidden fixed top-10 left-5 text-white shadow-md
+animate-bounce
 `;
 
 const HeaderMini = (props) => {
@@ -21,6 +27,14 @@ const HeaderMini = (props) => {
     const [ownerId, setOwnerId] = useState("");
     const [accountId, setAccountId] = useState("");
     const [showCategory, setShowCategory] = useToggle();
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+        setModalOpen(true);
+    };
+    const closeModal = () => {
+        setModalOpen(false);
+    };
     useEffect(() => {
         const cookie = getCookie("access_token");
         const nickname = getCookie("nickname");
@@ -62,21 +76,24 @@ const HeaderMini = (props) => {
                         </Title>
                     </>
                 ) : (
-                    <Title size="6">
-                        <Link to="/login">로그인하기</Link>
-                    </Title>
+                    <>
+                        <MobileBtn onClick={openModal}>
+                            <Icon name="User" />
+                        </MobileBtn>
+
+                        <Modal open={modalOpen} close={closeModal} header="">
+                            <main> {props.children} </main>
+                        </Modal>
+                    </>
                 )}
 
-                <div className="flex flex-row justify-center items-center">
+                <div className="flex flex-row justify-center items-center gap-5 text-white mt-16 py-5 sm:py-0  md:mt-24">
                     <Title size="6">
                         <Link to="/art/list/all">모아보기</Link>
                     </Title>
                     <Title size="6">
                         <Link to="/dimo/qna/all">디모</Link>
                     </Title>
-                    {/* <Title size="6">
-                        <Link to="/tendencytest">cre!</Link>
-                    </Title> */}
                 </div>
             </ProfileBox>
             {/* <MiniBtn onClick={setShowCategory}>{showCategory ? <>close</> : <>open!</>}</MiniBtn>

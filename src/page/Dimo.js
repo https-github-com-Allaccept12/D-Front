@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, Route, Switch, useLocation } from "react-router-dom";
-import { DimoCategory, DimoAllList, DimoPage, DimoFilter, DimoList } from "../components/Dimo";
+import { DimoFilter, DimoList } from "../components/Dimo";
 import tw from "tailwind-styled-components";
-import { Title, Button, CategoryMini } from "../elements";
+import { Title, Button, CategoryMini, Icon } from "../elements";
 import { DimoSlider } from "../components";
 
 const SlideBox = tw.div`
@@ -14,7 +14,7 @@ row-start-3
 `;
 
 const MobileBtn = tw.button`
-bg-yellow-400 rounded-full w-14 xl:hidden fixed bottom-10 right-0
+bg-dpurple-200  rounded-full p-2 xl:hidden fixed bottom-10 right-5 text-white shadow-md
 `;
 
 const Dimo = () => {
@@ -88,7 +88,9 @@ const Dimo = () => {
                                         },
                                     }}
                                 >
-                                    <MobileBtn>연필</MobileBtn>
+                                    <MobileBtn>
+                                        <Icon name="Edit" />
+                                    </MobileBtn>
                                 </Link>
                             </div>
                         </div>
@@ -163,7 +165,9 @@ const Dimo = () => {
                                         },
                                     }}
                                 >
-                                    <MobileBtn>연필</MobileBtn>
+                                    <MobileBtn>
+                                        <Icon name="Edit" />
+                                    </MobileBtn>
                                 </Link>
                             </div>
                         </div>
