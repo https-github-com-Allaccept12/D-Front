@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCookie } from "../shared/cookie";
 import { myPageLoad } from "../redux/modules/myPage";
@@ -12,21 +12,25 @@ const MyPage = (props) => {
   const id_cookie = sessionStorage.getItem("account_id")
   if (id_cookie) {
       account_id = id_cookie;
-      console.log("account_id: ", account_id);
+      // console.log("account_id: ", account_id);
   }
   const owner_account_id = account_id;
-  console.log(account_id, owner_account_id);
+  // console.log(account_id, owner_account_id);
+
   useEffect(() => {
     dispatch(myPageLoad({ account_id, owner_account_id, dispatch }))
-  }, [dispatch, account_id, owner_account_id]);
+  }, [])
   
   
-  const information = useSelector(state => state.myPage.myPage);
-  console.log(information)
+  // let info = null
+  // useEffect(() => {
+  //   info = useSelector(state => state.myPage.myPage);
+  // })
+  
+  const info = useSelector(state => state.myPage.myPage);
   const location = useLocation();
   const a = location.pathname;
   const b = a.split("/")[2];
-  console.log(b);
 
   return (
     <>
@@ -35,7 +39,9 @@ const MyPage = (props) => {
           <MyPageCategory />
         </div>
         {/* 내정보일땐 마이프로필 다른사람정보일땐 디폴리오 각 메뉴를 클릭하면 메뉴 */}
-        <TopOfProfile info={information}/>
+        <Suspense fallback={<h1>Loading..</h1>}>
+          <TopOfProfile info={info}/>
+        </Suspense>
         {/* <div className="col-start-2 col-end-6">
           <div className=" bg-blue-400 h-52 w-[80.625rem]">
             {" "}

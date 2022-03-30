@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import { ArtWorkFilter, ArtWorkInlineDetail, ArtWorkList, ArtWorkWrite } from "../components/ArtWorks";
 import { Title, Button, CategoryMini, Icon } from "../elements";
@@ -15,6 +16,8 @@ opacity-60 hover:opacity-100
 `;
 
 const ArtWork = (props) => {
+    const dispatch = useDispatch();
+    
     return (
         <>
             <div className="bg-dgray-200">

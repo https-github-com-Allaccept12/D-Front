@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import AtProfile from "./AtProfile";
 import { SkillThumbnail, Title, Button } from "../../../elements";
 import skillList from "../../ArtWorks/skillList_code";
 
@@ -20,21 +22,30 @@ row-start-2 col-start-2 col-span-full justify-start items-start
 `;
 
 const InnerBox02 = tw.div`
-flex flex-wrap justify-start items-start mx-auto gap-8 mt-20
+flex flex-wrap justify-center items-center mx-auto gap-8 mt-20
 `;
+
 
 const MySkill = (props) => {
   const {info} = props
-  const mainSkill = info.specialty.split('/');
-  const subSkill = info.other_specialty.split('/');
-  const mainSkillCode = []
-  for (var item of mainSkill){
-    for (var label of skillList){
-      if (item === label.label) {
-        mainSkillCode.push(label.value);
+  const [mainSkill, setMainSkill] = useState([]);
+  const [subSkill, setSubSkill] = useState([]);
+  const [mainSkillCode, setMainSkillCode] = useState([])
+  useEffect(() => {
+    if (info){ 
+      setMainSkill(info.specialty.split('/'));
+      setSubSkill(info.other_specialty.split('/'));
+    }
+    for (var i = 0; mainSkill.length; i++){
+      var x = mainSkill.pop()
+      for (var skill of skillList){
+        if (x == skill.label){
+          mainSkillCode.push(skill.value);
+        }
       }
     }
-  }
+    
+  }, [info])
   return (
     <>
       <div className="flex flex-row flex-wrap items-center justify-start w-5/6 mx-auto">
@@ -62,7 +73,7 @@ const MySkill = (props) => {
         <Box02>
           <InnerBox02>
             {subSkill.map((item) => (
-              <Button size="3" color="4">
+              <Button size="3" color="4" value={item}>
               {item}
             </Button>
             ))}
