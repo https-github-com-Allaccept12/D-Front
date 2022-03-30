@@ -1,7 +1,8 @@
 import React from "react";
 import { SkillThumbnail, Title, Button } from "../../../elements";
+import skillList from "../../ArtWorks/skillList_code";
 
-import { useHistory } from "react-router-dom";
+
 import tw from "tailwind-styled-components";
 
 const Line = tw.hr`
@@ -23,16 +24,26 @@ flex flex-wrap justify-start items-start mx-auto gap-8 mt-20
 `;
 
 const MySkill = (props) => {
-  let history = useHistory();
+  const {info} = props
+  const mainSkill = info.specialty.split('/');
+  const subSkill = info.other_specialty.split('/');
+  const mainSkillCode = []
+  for (var item of mainSkill){
+    for (var label of skillList){
+      if (item === label.label) {
+        mainSkillCode.push(label.value);
+      }
+    }
+  }
   return (
     <>
-      <div className="flex w-5/6 mx-auto flex-row flex-wrap justify-start items-center">
+      <div className="flex flex-row flex-wrap items-center justify-start w-5/6 mx-auto">
         <Title size="3" className="mt-32">
           SKILLS
         </Title>
       </div>
       <Line />
-      <div className="grid w-5/6 mx-auto grid-cols-5">
+      <div className="grid w-5/6 grid-cols-5 mx-auto">
         <Title size="4" className="col-start-1">
           main skill
         </Title>
@@ -42,27 +53,19 @@ const MySkill = (props) => {
 
         <Box>
           <InnerBox>
-            <SkillThumbnail skill="I1" />
-            <SkillThumbnail skill="P1" />
-            <SkillThumbnail skill="A3" />
-            <SkillThumbnail skill="A10" />
+            {mainSkillCode.map((item) => (
+              <SkillThumbnail skill={item}/>
+            ))}
           </InnerBox>
         </Box>
 
         <Box02>
           <InnerBox02>
-            <Button size="3" color="4">
-              premiere Pro
+            {subSkill.map((item) => (
+              <Button size="3" color="4">
+              {item}
             </Button>
-            <Button size="3" color="4">
-              premiere Pro
-            </Button>
-            <Button size="3" color="4">
-              premiere Pro
-            </Button>
-            <Button size="3" color="4">
-              premiere Pro
-            </Button>
+            ))}
           </InnerBox02>
         </Box02>
       </div>

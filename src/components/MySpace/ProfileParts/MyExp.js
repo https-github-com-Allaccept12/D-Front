@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Title, Text } from "../../../elements";
 
-import { useHistory } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
 const Line = tw.hr`
@@ -17,11 +16,12 @@ text-dgray-400 font-min2 ml-4 mt-4
 `;
 
 const MyExp = (props) => {
-  let history = useHistory();
+  const {info} = props
+  
   return (
     <>
       <div className="flex flex-col w-5/6 mx-auto">
-        <div className="gap-14 flex flex-row my-7">
+        <div className="flex flex-row gap-14 my-7">
           <Title size="6">EXPERIENCE</Title>{" "}
           <Title size="6" className="text-gray-300 font-extralight">
             총 1년
@@ -30,13 +30,13 @@ const MyExp = (props) => {
         <Line />
 
         <ol className="grid grid-cols-3 mb-10">
-          <li className="mb-10 ml-4 row-start-1">
+          <li className="row-start-1 mb-10 ml-4">
             <Title size="5">Toss</Title>
             <Text size="3" className="mt-1 leading-none text-gray-400">
               2022~03 재직중
             </Text>
           </li>
-          <ul className="mb-10 ml-4 row-start-1 col-start-2 col-span-full list-disc">
+          <ul className="col-start-2 row-start-1 mb-10 ml-4 list-disc col-span-full">
             <Title size="6">Product Designer / Design</Title>
             <La>
               {" "}
@@ -59,13 +59,13 @@ const MyExp = (props) => {
 
         <InnerLine />
         <ol className="grid grid-cols-3 mb-10">
-          <li className="mb-10 ml-4 row-start-1">
+          <li className="row-start-1 mb-10 ml-4">
             <Title size="5">Toss</Title>
             <Text size="3" className="mt-1 leading-none text-gray-400">
               2022~03 재직중
             </Text>
           </li>
-          <ul className="mb-10 ml-4 row-start-1 col-start-2 col-span-full list-disc">
+          <ul className="col-start-2 row-start-1 mb-10 ml-4 list-disc col-span-full">
             <Title size="6">Product Designer / Design</Title>
             <La>
               {" "}

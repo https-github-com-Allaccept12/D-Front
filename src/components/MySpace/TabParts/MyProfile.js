@@ -31,10 +31,10 @@ const MyProfile = (props) => {
 
 
 <MyIntro info={info} />
-<MyExp />
-<MyPortfolio />
-<MySkill />
-<MyTimeLine />
+<MyExp info={info} />
+<MyPortfolio info={info} />
+<MySkill info={info} />
+<MyTimeLine info={info} />
 
 
 
