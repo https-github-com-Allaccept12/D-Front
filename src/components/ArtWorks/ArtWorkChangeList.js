@@ -27,7 +27,7 @@ const getListStyle = (isDraggingOver) => ({
 });
 
 function ArtWorkChangeList(props) {
-    const { list } = props;
+    const { list, setPreviews } = props;
     const getItems = (count) =>
         Array.from({ length: count }, (v, k) => k).map((k) => ({
             id: `item-${k}`,
@@ -40,12 +40,17 @@ function ArtWorkChangeList(props) {
         setItems(getItems(list.length));
     }, [list]);
     // id를 가진 array centent만 보내기!!
-    // console.log(items);
 
     const trashOnClick = (idx) => {
         var tempItems = items;
         tempItems.splice(idx, 1);
         setItems(tempItems);
+        const forParent = []
+        for(var item of items){
+            forParent.push(item.content);
+        }
+        // dispatch()
+        setPreviews(forParent)
         // 여기쯤 디스패치
         setForceRerender(!forceRerender);
     };
@@ -79,14 +84,14 @@ function ArtWorkChangeList(props) {
                                         {...provided.draggableProps}
                                         {...provided.dragHandleProps}
                                         style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
-                                        className="flex justify-center items-center"
+                                        className="flex items-center justify-center"
                                     >
                                         <img
                                             src={item.content}
-                                            className="overflow-hidden object-cover object-center"
+                                            className="object-cover object-center overflow-hidden"
                                         />
 
-                                        <div className="mt-auto -ml-12 p-4 text-dpurple-200">
+                                        <div className="p-4 mt-auto -ml-12 text-dpurple-200">
                                             <Icon
                                                 onClick={(event) => {
                                                     trashOnClick(idx);
