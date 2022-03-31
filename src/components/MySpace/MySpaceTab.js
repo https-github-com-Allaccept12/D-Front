@@ -20,8 +20,8 @@ const MySpaceTab = (props) => {
   const b = a.split("/")[2];
 
   if (b === "myprofile") return <MyProfile info={info} />;
-  if (b === "mywork") return <MyArtWork />;
-  if (b === "mypic") return <MyPic />;
+  if (b === "mywork") return <MyArtWork info={info.account_id} />;
+  if (b === "mypic") return <MyPic info={info} />;
   if (b === "share") return <MyPosts />;
   if (b === "qna") return <MyQNA />;
   else {
