@@ -12,7 +12,7 @@ const RadioButton = (props) => {
         return (
             <>
                 <div>
-                    <label class="inline-flex items-center">
+                    <label className="inline-flex items-center">
                         <input
                             type="radio"
                             className="form-radio 
@@ -28,7 +28,7 @@ const RadioButton = (props) => {
                             value={value}
                             onChange={onChange}
                         />
-                        <span class="ml-2 font-min1">{inline}</span>
+                        <span className="ml-2 font-min1">{inline}</span>
                     </label>
                 </div>
             </>
@@ -37,7 +37,7 @@ const RadioButton = (props) => {
     if (size === "1" && color === "2") {
         return (
             <>
-                <label class="inline-flex items-center">
+                <label className="inline-flex items-center">
                     <input
                         type="radio"
                         className="form-radio 
@@ -52,7 +52,7 @@ const RadioButton = (props) => {
                         name="radio"
                         value="1"
                     />
-                    <span class="ml-2">{inline}</span>
+                    <span className="ml-2">{inline}</span>
                 </label>
             </>
         );
@@ -61,7 +61,7 @@ const RadioButton = (props) => {
         return (
             <>
                 <div>
-                    <label class="inline-flex items-center">
+                    <label className="inline-flex items-center">
                         <input
                             type="radio"
                             className="form-radio 
@@ -75,7 +75,7 @@ const RadioButton = (props) => {
                             name="radio"
                             value="1"
                         />
-                        <span class="ml-2">{inline}</span>
+                        <span className="ml-2">{inline}</span>
                     </label>
                 </div>
             </>
@@ -86,7 +86,7 @@ const RadioButton = (props) => {
         return (
             <>
                 <div>
-                    <label class="inline-flex items-center">
+                    <label className="inline-flex items-center">
                         <input
                             type="radio"
                             className="form-radio 
@@ -100,7 +100,7 @@ const RadioButton = (props) => {
                             name="radio"
                             value="1"
                         />
-                        <span class="ml-2">{inline}</span>
+                        <span className="ml-2">{inline}</span>
                     </label>
                 </div>
             </>

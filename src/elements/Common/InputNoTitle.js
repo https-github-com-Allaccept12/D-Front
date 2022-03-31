@@ -8,15 +8,15 @@ active:border-dpurple-300 invalid:text-pink-600
 focus:border-dpurple-300 font-min1
 outline-none
 ${(props) => (props.is_error ? `ring-1 ring-dred-400` : "")};
-${(props) => (props.cardSize === "1" ? `h-I01 px-4` : "")};
+${(props) => (props.cardsize === "1" ? `h-I01 px-4` : "")};
 `;
 
 const TextAreaField = tw.textarea`
 w-full px-4 py-4 border border-dgray-400 border-box
   rounded-md shadow-md outline-none resize-none font-min1
   hover:border-dpurple-200 active:border-dpurple-300
-${(props) => (props.cardSize === "2" ? `h-I02 px-4` : "")};
-${(props) => (props.cardSize === "3" ? `h-I03 px-4` : "")};
+${(props) => (props.cardsize === "2" ? `h-I02 px-4` : "")};
+${(props) => (props.cardsize === "3" ? `h-I03 px-4` : "")};
 ${(props) => (props.is_error ? `border-2 border-dred-500` : "")};
 `;
 
@@ -42,9 +42,9 @@ const InputNoTitle = (props) => {
         is_submit,
         is_error,
         textarea,
-        cardSize,
+        cardsize,
         is_value,
-        maxLen,
+        maxlen,
         className,
     } = props;
     if (is_submit) {
@@ -56,10 +56,10 @@ const InputNoTitle = (props) => {
                             type={type}
                             value={value}
                             is_error={is_error}
-                            cardSize={cardSize}
+                            cardsize={cardsize}
                             placeholder={placeholder}
                             onChange={onChange}
-                            maxLen={maxLen}
+                            maxlen={maxlen}
                             onKeyPress={(e) => {
                                 if (e.key === "Enter") {
                                     onSubmit(e);
@@ -68,7 +68,7 @@ const InputNoTitle = (props) => {
                         />
                         {is_error && <Sp>글자수를 초과하였습니다.</Sp>}
                         <Sp>
-                            {is_value}/{maxLen}
+                            {is_value}/{maxlen}
                         </Sp>
                     </label>
                 </div>
@@ -85,13 +85,13 @@ const InputNoTitle = (props) => {
                             is_error={is_error}
                             placeholder={placeholder}
                             onChange={onChange}
-                            cardSize={cardSize}
-                            maxLen={maxLen}
+                            cardsize={cardsize}
+                            maxlen={maxlen}
                             className={className}
                         />
                         {is_error && <Sp>글자수를 초과하였습니다.</Sp>}
                         <Sp>
-                            {is_value}/{maxLen}
+                            {is_value}/{maxlen}
                         </Sp>
                     </label>
                 </div>
@@ -106,17 +106,17 @@ const InputNoTitle = (props) => {
                             type={type}
                             value={value}
                             is_error={is_error}
-                            cardSize={cardSize}
+                            cardsize={cardsize}
                             placeholder={placeholder}
                             onChange={onChange}
                             onBlur={onBlur}
-                            maxLen={maxLen}
+                            maxlen={maxlen}
                             className={className}
                         />
                         {is_error && <Sp>글자수를 초과하였습니다.</Sp>}
-                        {maxLen && (
+                        {maxlen && (
                             <Sp>
-                                {is_value}/{maxLen}
+                                {is_value}/{maxlen}
                             </Sp>
                         )}
                     </label>
@@ -131,7 +131,7 @@ InputNoTitle.defaultProps = {
     type: "text",
     placeholder: "입력해주세요!",
     value: "",
-    cardSize: "1",
+    cardsize: "1",
     onChange: () => {},
     onSubmit: () => {},
     is_submit: false,

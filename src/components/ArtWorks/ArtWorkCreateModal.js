@@ -170,7 +170,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                     </div>
                     <div className="xl:grid w-full h-full xl:col-start-2 p-4 overflow-y-scroll overflow-x-hidden bg-white modal-body">
                         <div className="flex justify-center items-center flex-col md:justify-start xl:ml-24">
-                            <p className="text-2xl">프로젝트 표지</p>
+                            <Title size="4">프로젝트 표지</Title>
                             <Dropzone
                                 multiple={false}
                                 accept={"image/gif, image/jpg, image/jpeg, image/png"}
@@ -362,9 +362,10 @@ outline-none"
                             </div>
 
                             <div className="col-span-2 col-start-2 row-start-6">
-                                <p className="text-2xl">
+                                <Title size="3">
                                     저작권<span className="font-bold text-purple-600"> *</span>
-                                </p>
+                                </Title>
+
                                 <select
                                     onChange={selectCopyRight}
                                     value={CopyRight}
@@ -384,7 +385,7 @@ outline-none"
       m-0
       focus:text-gray-700 focus:bg-white focus:border-dpurple-300 focus:outline-none"
                                 >
-                                    <option value="" selected disabled hidden>
+                                    <option value="" defaultValue disabled hidden>
                                         선택해주세요
                                     </option>
                                     {copyrightOptions.map((item, index) => (
@@ -396,9 +397,9 @@ outline-none"
                             </div>
 
                             <div className="col-span-2 col-start-2 row-start-7">
-                                <p className="text-2xl">
-                                    공개 여부<span className="font-bold text-purple-600"> *</span>
-                                </p>
+                                <Title size="3">
+                                    공개여부<span className="font-bold text-purple-600"> *</span>
+                                </Title>
                                 <select
                                     onChange={selectPublic}
                                     value={Public}
@@ -418,7 +419,7 @@ outline-none"
       m-0
       focus:text-gray-700 focus:bg-white focus:border-dpurple-300 focus:outline-none"
                                 >
-                                    <option value="true" selected hidden>
+                                    <option value="true" defaultValue hidden>
                                         공개
                                     </option>
                                     {publicOptions.map((item, index) => (

@@ -38,7 +38,7 @@ const DimoCreate = () => {
                             </div>
                             <div className="px-8 flex flex-col gap-7">
                                 <InputNoTitle placeholder="제목" />
-                                <InputNoTitle cardSize="3" textarea maxLen="80" placeholder="내용" />
+                                <InputNoTitle cardsize="3" textarea maxlen="80" placeholder="내용" />
                             </div>
                             <div className="p-8">
                                 <div className="bg-white p-10 border border-dpurple-200 border-dashed mx-auto">
@@ -78,7 +78,7 @@ const DimoCreate = () => {
                             </div>
                             <div className="px-8 flex flex-col gap-7">
                                 <InputNoTitle placeholder="제목" />
-                                <InputNoTitle cardSize="3" textarea maxLen="80" placeholder="내용" />
+                                <InputNoTitle cardsize="3" textarea maxlen="80" placeholder="내용" />
                             </div>
                             <div className="p-8">
                                 <div className="bg-white p-10 border border-dpurple-200 border-dashed mx-auto">

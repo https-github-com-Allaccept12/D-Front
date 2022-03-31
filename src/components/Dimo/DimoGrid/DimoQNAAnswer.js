@@ -113,8 +113,8 @@ const DimoQNAAnswer = (props) => {
                                     onChange={name.onChange}
                                     is_error={name.errors}
                                     is_value={name.value.length}
-                                    cardSize="1"
-                                    maxLen="30"
+                                    cardsize="1"
+                                    maxlen="30"
                                     width="2"
                                 />
                                 <Button size="3">제출</Button>

@@ -13,12 +13,12 @@ import tw from "tailwind-styled-components";
 // `;
 
 const ProfileBox = tw.div`
-lg:hidden  fixed top-0 w-full z-50 h-20 
+lg:hidden absolute top-0 w-full z-50 h-20
 `;
 
 const MobileBtn = tw.button`
-bg-dpurple-200  rounded-full p-2 xl:hidden fixed top-10 left-5 text-white shadow-md
-animate-bounce
+bg-dpurple-200  rounded-full p-2 xl:hidden absolute  top-10 left-5 text-white shadow-md
+animate-bounce 
 `;
 
 const HeaderMini = (props) => {
@@ -53,47 +53,52 @@ const HeaderMini = (props) => {
     return (
         <>
             <ProfileBox>
-                {is_login && (
-                    <Title size="6">
-                        <Link
-                            to={{
-                                pathname: `/myspace/myprofile`,
-                                state: {
-                                    nickname: { nickname },
-                                    owner_id: { ownerId },
-                                },
-                            }}
-                        >
-                            마이페이지
-                        </Link>
-                    </Title>
-                )}
-                {is_login ? (
-                    <>
-                        <Profile size="6" />
-                        <Title size="6">
-                            <Link to="/logout">로그아웃</Link>
-                        </Title>
-                    </>
-                ) : (
-                    <>
-                        <MobileBtn onClick={openModal}>
-                            <Icon name="User" />
-                        </MobileBtn>
-
-                        <Modal open={modalOpen} close={closeModal} header="">
-                            <main> {props.children} </main>
-                        </Modal>
-                    </>
-                )}
-
-                <div className="flex flex-row justify-center items-center gap-5 text-white mt-16 py-5 sm:py-0  md:mt-24">
-                    <Title size="6">
+                <div className="flex flex-row justify-center items-center gap-5 text-white mt-16 py-5 sm:py-0  md:mt-24 ">
+                    <Title size="6" className="">
                         <Link to="/art/list/all">모아보기</Link>
                     </Title>
                     <Title size="6">
                         <Link to="/dimo/qna/all">디모</Link>
                     </Title>
+                    {is_login ? (
+                        <>
+                            <Title size="6">
+                                <Link to="/logout">로그아웃</Link>
+                            </Title>
+                        </>
+                    ) : (
+                        <>
+                            <MobileBtn onClick={openModal}>
+                                <Icon name="User" />
+                            </MobileBtn>
+
+                            <Modal open={modalOpen} close={closeModal} header="">
+                                <main> {props.children} </main>
+                            </Modal>
+                        </>
+                    )}
+                    {is_login && (
+                        <>
+                            <Title size="6">
+                                <Link
+                                    to={{
+                                        pathname: `/myspace/myprofile`,
+                                        state: {
+                                            nickname: { nickname },
+                                            owner_id: { ownerId },
+                                        },
+                                    }}
+                                >
+                                    마이페이지
+                                </Link>
+                            </Title>
+                            <div onClick={() => alert("로그아웃되었습니다!")}>
+                                <Link to="/logout">
+                                    <Profile size="6" className="" />
+                                </Link>
+                            </div>
+                        </>
+                    )}
                 </div>
             </ProfileBox>
             {/* <MiniBtn onClick={setShowCategory}>{showCategory ? <>close</> : <>open!</>}</MiniBtn>

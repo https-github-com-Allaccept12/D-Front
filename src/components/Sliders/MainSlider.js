@@ -37,22 +37,23 @@ const NextBtn = tw.button`
 const MainSlider = (props) => {
     const slider = useRef(null);
 
-    let hotists = useSelector((state) => state.mainPage.artist);
+    let hotlists = useSelector((state) => state.mainPage.artist);
     let makeSlides = () => {};
-    if (hotists) {
+    // console.log(hotlists);
+    if (hotlists) {
         makeSlides = () => {
             const arr = [];
-            for (let i = 0; i < hotists.length; i++) {
+            for (let i = 0; i < hotlists.length; i++) {
                 arr.push(
                     <SS>
                         <Slides
                             type="main"
-                            image={hotists[i].account_profile}
-                            nickname={hotists[i].account_nickname}
-                            thumnail1={hotists[i].img_url_fir}
-                            thumnail2={hotists[i].img_url_sec}
-                            job={hotists[i].account_job}
-                            follow={hotists[i].is_follow}
+                            image={hotlists[i].account_profile}
+                            nickname={hotlists[i].account_nickname}
+                            thumnail1={hotlists[i].img_url_fir}
+                            thumnail2={hotlists[i].img_url_sec}
+                            job={hotlists[i].account_job}
+                            follow={hotlists[i].is_follow}
                         />
                     </SS>,
                 );
@@ -105,9 +106,9 @@ const MainSlider = (props) => {
                     <Icon name="ArrowL" iconSize="48" />{" "}
                 </PrevBtn>
                 <Slide {...settings} ref={slider}>
-                    {/* {hotists.map((item, index) => (<SS><Slides main key={index} info={item}/></SS>))} */}
+                    {/* {hotlists.map((item, index) => (<SS><Slides main key={index} info={item}/></SS>))} */}
                     {makeSlides()}
-                    <SS>
+                    {/* <SS>
                         <Slides type="main" />
                     </SS>
                     <SS>
@@ -121,7 +122,7 @@ const MainSlider = (props) => {
                     </SS>
                     <SS>
                         <Slides type="main" />
-                    </SS>
+                    </SS> */}
                 </Slide>
                 <NextBtn onClick={() => slider?.current?.slickNext()}>
                     <Icon name="ArrowR" iconSize="48" />
