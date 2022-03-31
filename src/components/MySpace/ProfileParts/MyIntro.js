@@ -19,7 +19,7 @@ const MyIntro = (props) => {
       setTitleContent(info.title_content)
       setSubContent(info.sub_content)
     }
-  },)
+  }, [info])
   // const titleContent = ""
   // const subContent = ""
   return (

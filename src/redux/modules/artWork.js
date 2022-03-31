@@ -40,12 +40,34 @@ export const artworkDetailLoad = createAsyncThunk(
   }
 )
 
+export const PortfolioLoad = createAsyncThunk(
+  "/PortfolioLoad",
+  ({ owner_account_id, dispatch }) => {
+    console.log('here');
+    axios
+      .get(`http://keykim.shop/api/my-page/career-feed`, {
+        params: {
+          owner_account_id: owner_account_id
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        const porfolio_data = res.data.data;
+        dispatch(portfolios(porfolio_data));
+      })
+      .catch((err) => console.log(err));
+  }
+);
+
 export const artworkSlice = createSlice({
   name: "artwork",
   initialState: {},
   reducers: {
     artworks: (state, action) => {
       state.artworks = action.payload;
+    },
+    portfolios: (state, action) => {
+      state.portfolios = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -63,5 +85,5 @@ export const artworkSlice = createSlice({
   },
 });
 
-export const { artworks } = artworkSlice.actions;
+export const { artworks, portfolios } = artworkSlice.actions;
 export default artworkSlice.reducer;

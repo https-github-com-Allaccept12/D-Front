@@ -73,7 +73,7 @@ const TendencyTest = (props) => {
 
     // console.log(designation);
     return (
-        <div className="flex flex-col justify-center items-center h-screen gap-4">
+        <div className="flex flex-col items-center justify-center h-screen gap-4">
             {TestNum === 0 && (
                 <div className="text-center">
                     <Flexs>
@@ -88,7 +88,7 @@ const TendencyTest = (props) => {
                         나의 디자인 성향은?
                     </Title>
 
-                    <Text size="1" className="text-gray-600 mt-5">
+                    <Text size="1" className="mt-5 text-gray-600">
                         디자이너라고 모두가 같은 성격을 가지고 있지는 않죠. <br /> 디플과 함께 숨겨진 나만의 디자인
                         성향을 발견해보세요!
                     </Text>
@@ -116,7 +116,7 @@ const TendencyTest = (props) => {
                         <br />
                     </Hidden>
                     <Quest>
-                        <div className="justify-start items-start text-2xl font-bold text-purple-500">Q1</div>
+                        <div className="items-start justify-start text-2xl font-bold text-purple-500">Q1</div>
                         <br />
                         🏢 회사 첫 출근날, 내 자리를 세팅한 뒤 나는
                     </Quest>
@@ -780,7 +780,7 @@ const TendencyTest = (props) => {
                             },
                         }}
                     >
-                        <div className="flex justify-center items-center mt-10">
+                        <div className="flex items-center justify-center mt-10">
                             <Button size="1" color="1">
                                 보러가기
                             </Button>
@@ -803,7 +803,7 @@ const TendencyTest = (props) => {
                     </>
                 ) : (
                     <>
-                        <div className="flex justify-center items-center mr-5 mt-4">
+                        <div className="flex items-center justify-center mt-4 mr-5">
                             <img src={dPlus} />
                         </div>
                     </>
