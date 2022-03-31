@@ -4,7 +4,7 @@ import tw from "tailwind-styled-components";
 
 const Btn = tw.button`
    rounded-full text-sm md:text-base shadow-sm flex flex-row justify-center items-center 
-   font-min1 w-44
+   font-min1 w-44 shrink-0
   ${(props) => (props.followed == "true" ? `h-b01 w-24 px-12` : "")};
   ${(props) => (props.followed == "false" ? `h-b01 w-24 px-12` : "")};
   ${(props) => (props.size === "1" ? `h-b01 px-6 w-36` : "")};

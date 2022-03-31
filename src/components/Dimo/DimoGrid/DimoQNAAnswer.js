@@ -44,10 +44,14 @@ const DimoQNAAnswer = (props) => {
             <Card selected={selected}>
                 <Footer>
                     <div className="justify-start flex flex-row">
-                        <Profile size="5" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
+                        <Profile
+                            size="5"
+                            src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
+                            className="hidden md:flex"
+                        />
                         <div className="-mt-2 ml-3">
                             <Title size="5" className="my-3">
-                                이름dfsfsdfsfsfsf
+                                이름dfsfs
                             </Title>
                             <div className="flex flex-col">
                                 <Subtitle size="2">

@@ -88,10 +88,7 @@ const DimoFilter = (props) => {
                         <Title size="5" className="ml-1">
                             카테고리
                         </Title>
-                        <TabBtn>
-                            <Icon name="StarE" iconSize="20" />
-                            전체보기정보공유
-                        </TabBtn>
+                        <TabBtn>🌈 전체보기</TabBtn>
                         <TabBtn>
                             <Icon name="StarE" iconSize="20" />
                             UI/UX

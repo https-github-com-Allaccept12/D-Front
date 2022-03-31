@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Label, Profile, Title, Text, Subtitle, InputNoTitle, FollowBtn } from "../../../elements";
+import { Button, Label, Profile, Title, Text, Subtitle, InputNoTitle, FollowBtn, Icon } from "../../../elements";
 
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -72,11 +72,14 @@ const DimoQNAQuestion = (props) => {
                     </Text>
                 </Body>
                 <Btns>
-                    <div className="flex flex-row justify-between">
+                    <div className="flex flex-row justify-between gap-2">
                         <Button size="3" onClick={setShowAnswer}>
-                            답변남기기
+                            <span className="hidden 2xl:contents">답변남기기</span>
+                            <span className="2xl:hidden">
+                                <Icon name="Talk" />
+                            </span>
                         </Button>
-                        <div className="flex flex-col md:flex-row gap-3">
+                        <div className="flex flex-col lg:flex-row gap-3">
                             <Button icon name="HeartE" color="5" size="3" count="8">
                                 <span className="hidden 2xl:contents">좋아요</span>
                             </Button>
@@ -94,7 +97,11 @@ const DimoQNAQuestion = (props) => {
 
                 <Footer>
                     <div className="justify-start flex flex-row">
-                        <Profile size="5" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
+                        <Profile
+                            size="5"
+                            src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
+                            className="hidden md:flex"
+                        />
                         <div className="-mt-2 ml-3">
                             <Title size="5" className="my-3">
                                 이름dfsfsdfsfsfsf
