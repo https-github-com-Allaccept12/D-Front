@@ -2,7 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 const ArtWorkImage = tw.img`
-overflow-hidden object-cover object-center m-2 rounded-lg
+overflow-hidden object-cover object-center m-2 rounded-lg pointer-events-none
 ${(props) => (props.size === "1" ? `w-c01 h-c01` : "")};
 ${(props) => (props.size === "2" ? `w-c02 h-c02` : "")};
 ${(props) => (props.size === "3" ? `w-c03 h-c03` : "")};
@@ -13,7 +13,7 @@ ${(props) => (props.size === "6" ? `w-c06 h-c06` : "")};
 
 const ArtWorkCard = tw.div`
 m-2 rounded-lg justify-center flex flex-col items-center
-border-y-yellow-200 
+border-y-yellow-200  pointer-events-none
 ${(props) => (props.size === "1" ? `w-c01 h-c01` : "")};
 ${(props) => (props.size === "2" ? `w-c02 h-c02` : "")};
 ${(props) => (props.size === "3" ? `w-c03 h-c03 bg-dpurple-200 shadow-md` : "")};
