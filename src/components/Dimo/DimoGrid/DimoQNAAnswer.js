@@ -36,9 +36,16 @@ py-10 flex flex-row justify-between
 
 const DimoQNAAnswer = (props) => {
     const { selected, followed } = props;
+    const history = useHistory();
     const [showAnswer, setShowAnswer] = useToggle();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
+
+    const commentSubmit = () => {
+        const data = { comment: name.value };
+        history.goBack();
+        //여기에 뭔가 돌아가기버튼...
+    };
     return (
         <>
             <Card selected={selected}>
@@ -116,8 +123,12 @@ const DimoQNAAnswer = (props) => {
                                     cardsize="1"
                                     maxlen="30"
                                     width="2"
+                                    is_submit
+                                    onSubmit={commentSubmit}
                                 />
-                                <Button size="3">제출</Button>
+                                <Button size="3" className="invisible xl:visible">
+                                    제출
+                                </Button>
                             </div>
                         </div>
                         <Comment />

@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Button, Title } from "../../elements";
-import ArtPost from "./ArtPost";
+import ArtPostMain from "./ArtPostMain";
 import tw from "tailwind-styled-components";
 import { useHistory, useLocation } from "react-router-dom";
 import { ArtWorkCategory, ArtWorkWrite } from "../../components/ArtWorks";
@@ -25,16 +25,14 @@ const p = [
 
 const ArtWorkAllList = (props) => {
     const artworks = useSelector((state) => state.mainPage.artworks);
-    console.log(artworks);
+    // console.log(artworks);
     let arrayArtworks = () => {};
     if (artworks) {
         arrayArtworks = () => {
             const arr = [];
             for (let i = 0; i < artworks.length; i++) {
                 arr.push(
-                    <ArtPost
-                        size="7"
-                        main
+                    <ArtPostMain
                         profile={artworks[i].account_profile}
                         nickname={artworks[i].account_nickname}
                         thumnail={artworks[i].img}

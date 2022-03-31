@@ -1,10 +1,21 @@
 import React from "react";
-import { Profile, HeartButton, IconBtn, SkillThumbnailMini, Title, Input, TypeBtn, SnsIcons } from "../../elements";
+import {
+    Profile,
+    HeartButton,
+    IconBtn,
+    SkillThumbnailMini,
+    Title,
+    Button,
+    InputNoTitle,
+    TypeBtn,
+    SnsIcons,
+} from "../../elements";
 
 import DetailSlider from "../Sliders/DetailSlider";
 import { Comment } from "../Comment";
 import { useInput } from "../../hooks";
 import tw from "tailwind-styled-components";
+import { useHistory, Link, useLocation } from "react-router-dom";
 
 const Grid = tw.div`
 flex justify-center items-center flex-col w-full
@@ -48,8 +59,14 @@ flex flex-col grow md:px-5
 
 const ArtWorkDetail = (props) => {
     const { id } = props;
+    const history = useHistory();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
+    const commentSubmit = () => {
+        const data = { comment: name.value };
+        history.goBack();
+        //여기에 뭔가 돌아가기버튼...
+    };
     return (
         <>
             <Grid>
@@ -111,15 +128,27 @@ const ArtWorkDetail = (props) => {
                         </Title>
 
                         <CommentBox>
-                            <Profile size="5" className="absolute invisible md:visible" />
-                            <Input
-                                value={name.value}
-                                onChange={name.onChange}
-                                is_error={name.errors}
-                                is_value={name.value.length}
-                                textarea
-                                maxlen="30"
-                            />
+                            <div className="bg-white flex p-5 xl:px-10 2xl:px-20 gap-3">
+                                <div>
+                                    <Profile size="6" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
+                                </div>
+                                <div className="w-full ml-auto">
+                                    <InputNoTitle
+                                        value={name.value}
+                                        onChange={name.onChange}
+                                        is_error={name.errors}
+                                        is_value={name.value.length}
+                                        cardsize="1"
+                                        maxlen="30"
+                                        width="2"
+                                        is_submit
+                                        onSubmit={commentSubmit}
+                                    />
+                                    <Button size="3" className="invisible">
+                                        제출
+                                    </Button>
+                                </div>
+                            </div>
 
                             <div className="">
                                 <Comment />

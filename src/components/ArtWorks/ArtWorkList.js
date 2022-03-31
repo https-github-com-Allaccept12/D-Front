@@ -8,7 +8,7 @@ import ArtWorkInsideFilter from "./ArtWorkInsideFilter";
 
 const Grid = tw.div` 
 flex flex-row flex-wrap items-center justify-center 
-lg:justify-start gap-6 sm:px-3 md:px-4 xl:px-8 2xl:px-20
+xl:justify-start gap-6 sm:px-3 md:px-4 xl:px-8 2xl:px-20
 
 `;
 

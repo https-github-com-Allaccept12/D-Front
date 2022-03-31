@@ -8,7 +8,7 @@ import ArtWorkList from "./ArtWorkList";
 import ArtWorkInsideFilter from "./ArtWorkInsideFilter";
 import ArtPost from "./ArtPost";
 import ArtWorkAllList from "./ArtWorkAllList";
-
+import ArtPostMain from "./ArtPostMain";
 export {
     ArtWorkDetail,
     ArtWorkCreateModal,
@@ -19,4 +19,5 @@ export {
     ArtWorkInsideFilter,
     ArtPost,
     ArtWorkAllList,
+    ArtPostMain,
 };
