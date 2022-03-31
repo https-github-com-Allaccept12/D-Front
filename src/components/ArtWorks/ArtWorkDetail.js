@@ -118,7 +118,7 @@ const ArtWorkDetail = (props) => {
                                 is_error={name.errors}
                                 is_value={name.value.length}
                                 textarea
-                                maxLen="30"
+                                maxlen="30"
                             />
 
                             <div className="">

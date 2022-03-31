@@ -114,8 +114,8 @@ const DimoSharedDetail = (props) => {
                                 is_error={name.errors}
                                 is_value={name.value.length}
                                 textarea
-                                cardSize="1"
-                                maxLen="30"
+                                cardsize="1"
+                                maxlen="30"
                                 width="2"
                             />
                             <Button size="3">제출</Button>

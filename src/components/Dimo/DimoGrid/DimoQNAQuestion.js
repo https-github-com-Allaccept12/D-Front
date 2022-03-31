@@ -74,12 +74,9 @@ const DimoQNAQuestion = (props) => {
                 <Btns>
                     <div className="flex flex-row justify-between gap-2">
                         <Button size="3" onClick={setShowAnswer}>
-                            <span className="hidden 2xl:contents">답변남기기</span>
-                            <span className="2xl:hidden">
-                                <Icon name="Talk" />
-                            </span>
+                            <span className="">답변남기기</span>
                         </Button>
-                        <div className="flex flex-col lg:flex-row gap-3">
+                        <div className="flex flex-col xl:flex-row gap-3">
                             <Button icon name="HeartE" color="5" size="3" count="8">
                                 <span className="hidden 2xl:contents">좋아요</span>
                             </Button>
@@ -129,8 +126,8 @@ const DimoQNAQuestion = (props) => {
                                 is_error={name.errors}
                                 is_value={name.value.length}
                                 textarea
-                                cardSize="3"
-                                maxLen="30"
+                                cardsize="3"
+                                maxlen="30"
                                 width="2"
                             />
                             <Button size="3">제출</Button>

@@ -139,13 +139,13 @@ const CreateProfile = (props) => {
 
                             <Names>
                                 <Input
-                                    cardSize="2"
+                                    cardsize="2"
                                     title="닉네임"
                                     onBlur={checkNickname}
                                     value={nickname.value}
                                     onChange={nickname.onChange}
                                     is_value={nickname.value.length}
-                                    maxLen="10"
+                                    maxlen="10"
                                 />
                                 {nicknameState == "available" && <p className="pr-16 text-xs text-right">✔️</p>}
                                 {nicknameState == "fail" && (
@@ -154,7 +154,7 @@ const CreateProfile = (props) => {
                                     </p>
                                 )}
                                 <Input
-                                    cardSize="2"
+                                    cardsize="2"
                                     title="이름"
                                     value={name.value}
                                     onChange={name.onChange}
@@ -186,28 +186,28 @@ const CreateProfile = (props) => {
                                 Contact
                             </Title>
                             <Input
-                                cardSize="2"
+                                cardsize="2"
                                 title="이메일"
                                 value={email.value}
                                 onChange={email.onChange}
                                 is_value={email.value.length}
                             ></Input>
                             <Input
-                                cardSize="2"
+                                cardsize="2"
                                 title="링크드인"
                                 value={linkedIn.value}
                                 onChange={linkedIn.onChange}
                                 is_value={linkedIn.value.length}
                             ></Input>
                             <Input
-                                cardSize="2"
+                                cardsize="2"
                                 title="브런치"
                                 value={brunch.value}
                                 onChange={brunch.onChange}
                                 is_value={brunch.value.length}
                             ></Input>
                             <Input
-                                cardSize="2"
+                                cardsize="2"
                                 title="인스타그램"
                                 value={instagram.value}
                                 onChange={instagram.onChange}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Title, Image, Logo } from "../elements";
+import { Title, Image, Logo, Profile, Icon, Button } from "../elements";
 import { getCookie } from "../shared/cookie";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -42,7 +42,7 @@ const Header = (props) => {
             <div className="flex flex-row md:h-[7.8rem] w-full md:w-3/6 xl:w-3/4 ml-auto justify-center md:justify-start py-5 md:py-0">
                 {/* <Title size="6"><Link to="/">홈</Link></Title> */}
 
-                <div className="flex  items-center gap-10 text-dpurple-300 md:pl-10 xl:pl-10 2xl:pl-1">
+                <div className="flex  items-center gap-3 lg:gap-10 text-dpurple-300 md:pl-10 xl:pl-10 2xl:pl-1">
                     <Title size="6">
                         <Link to="/art/list/all">모아보기</Link>
                     </Title>
@@ -61,9 +61,18 @@ const Header = (props) => {
                         </Title>
                     )}
                     {is_login ? (
-                        <Title size="6">
-                            <Link to="/logout">로그아웃</Link>
-                        </Title>
+                        <div className="xl:absolute xl:right-10 2xl:right-36 top-8">
+                            <div className="flex flex-row justify-center items-center gap-5">
+                                <Button size="3" color="4" className="hidden xl:flex">
+                                    <Link to="/createart">작업 업로드</Link>
+                                </Button>
+                                <div onClick={() => alert("로그아웃되었습니다!")}>
+                                    <Link to="/logout">
+                                        <Profile size="6" className="" />
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
                     ) : (
                         <>
                             <Title size="6" className="cursor-pointer" onClick={openModal}>

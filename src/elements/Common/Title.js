@@ -7,7 +7,7 @@ ${(props) => (props.size === "2" ? `font-minB text-2xl md:text-4xl` : "")};
 ${(props) => (props.size === "3" ? `font-minB text-xl md:text-3xl` : "")};
 ${(props) => (props.size === "4" ? `font-minB text-2xl` : "")};
 ${(props) => (props.size === "5" ? `font-minB text-xl` : "")};
-${(props) => (props.size === "6" ? `font-min1 text-xl` : "")};
+${(props) => (props.size === "6" ? `font-min1 text-sm md:text-xl` : "")};
 ${(props) => (props.color === "W" ? `text-white` : "")};
 `;
 

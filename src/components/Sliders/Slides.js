@@ -56,11 +56,13 @@ const Slides = (props) => {
                         className="-mt-36 overflow-hidden bg-white
         rounded-b-xl w-[18.75rem] h-[8.9rem]"
                     >
-                        <div className="absolute bottom-[4.6rem] pl-6 hover:scale-110 cursor-pointer">
-                            <Profile size="3" src={props.image} main />
+                        <div className="absolute bottom-[5rem] pl-6 hover:scale-110 cursor-pointer">
+                            <Profile size="3" src={props.image} />
                         </div>
                         <div className="pt-6 pl-40">
-                            <Title size="5">{props.nickname} 님</Title>
+                            <Title size="5" className="truncate">
+                                {props.nickname} 님
+                            </Title>
                             <div className="-mt-1">
                                 <Text size="5">{props.job} </Text>
                             </div>

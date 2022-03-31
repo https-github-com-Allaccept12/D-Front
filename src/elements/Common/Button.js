@@ -72,9 +72,23 @@ const Btn = tw.button`
   
   `
           : ""};
+          ${(props) =>
+              props.color === "7"
+                  ? `
+        text-white
+        border border-white
+        bg-transparent
+        hover:bg-dpurple-100
+        active:bg-dpurple-200
+        disabled:border-dred-100
+        disabled:bg-white
+        disabled:text-dpurple-200
+        
+        `
+                  : ""};
 `;
 const IconColor = tw.span` 
-mr-2
+mr-2 
 ${(props) => (props.iconColor === "heart" ? `text-dred-300` : "")};
 `;
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Title, Image, Logo } from "../elements";
+import { Title, Icon, Logo, Profile, Button } from "../elements";
 import { getCookie } from "../shared/cookie";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -38,7 +38,7 @@ const Header = (props) => {
                     <Logo name="DplusCF" logoSizeW="200" logoSizeH="59" />
                 </Link>
             </div>
-            <div className="hidden lg:flex lg:flex-row md:h-[7.8rem] w-full lg:w-3/6 xl:w-3/4 ml-auto text-white md:pl-10 xl:pl-10 2xl:pl-1">
+            <div className="hidden lg:flex lg:flex-row md:h-[7.8rem] w-full lg:w-4/6 xl:w-3/4 ml-auto text-white md:pl-10 xl:pl-10 2xl:pl-1">
                 {/* <Title size="6"><Link to="/">홈</Link></Title> */}
                 <div className="flex items-center gap-8">
                     <Title size="6">
@@ -47,6 +47,7 @@ const Header = (props) => {
                     <Title size="6">
                         <Link to="/dimo/qna/all">디모</Link>
                     </Title>
+
                     {is_login && (
                         <Title size="6">
                             <Link
@@ -58,24 +59,34 @@ const Header = (props) => {
                             </Link>
                         </Title>
                     )}
+
                     {is_login ? (
-                        <Title size="6">
-                            <Link to="/logout">로그아웃</Link>
-                        </Title>
+                        <>
+                            <div className="xl:absolute xl:right-10 2xl:right-36 top-8">
+                                <div className="flex flex-row justify-center items-center gap-5">
+                                    <Button size="3" color="7">
+                                        <Link to="/createart">작업 업로드</Link>
+                                    </Button>
+                                    <Link to="/logout">
+                                        <Profile size="6" className="" />
+                                    </Link>
+                                </div>
+                            </div>
+                        </>
                     ) : (
                         <>
-                            <Title size="6" className="cursor-pointer" onClick={openModal}>
-                                Login
-                                {/* <Link to="/login">login</Link> */}
+                            <Title
+                                size="6"
+                                className="cursor-pointer xl:absolute xl:right-10 2xl:right-36 top-12"
+                                onClick={openModal}
+                            >
+                                <Icon name="User" />
                             </Title>
                             <Modal open={modalOpen} close={closeModal} header="">
                                 <main> {props.children} </main>
                             </Modal>
                         </>
                     )}
-                    {/* <Title size="6">
-                        <Link to="/tendencytest">cre!</Link>
-                    </Title> */}
                 </div>
             </div>
         </div>
