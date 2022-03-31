@@ -3,10 +3,15 @@ import { artworkFiles } from "../../redux/modules/image";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Dropzone, { useDropzone } from "react-dropzone";
-import { Button, Card } from "../../elements";
+import { Button, Title, Text } from "../../elements";
 import ArtWorkCreateModal from "./ArtWorkCreateModal";
 import { Portal } from "@mui/material";
 import ArtWorkChangeList from "./ArtWorkChangeList";
+import tw from "tailwind-styled-components";
+
+const Grid = tw.div`
+ bg-white w-full xl:p-10
+`;
 
 const ArtWorkCreate = (props) => {
     let history = useHistory();
@@ -34,47 +39,51 @@ const ArtWorkCreate = (props) => {
 
     return (
         <>
-            <div className="z-0 grid w-full h-screen grid-cols-12 grid-rows-6 bs-gray-200">
-                <div className="grid col-span-1"></div>
-                <div className="grid col-span-10 col-start-3 row-span-1 row-start-1 mt-20 h-fit">작업 업로드</div>
-                <div className="grid col-span-10 col-start-2 row-span-6 row-start-2 h-5/6">
-                    <div className="grid w-full xl:w-4/5 col-span-7 col-start-2 row-start-1 row-end-7 border-2 border-dpurple-200 border-dashed place-content-center h-fit min-h-[40rem]">
-                        <div className="w-full">
-                            <Dropzone
-                                maxFiles={10}
-                                accept={"image/gif, image/jpg, image/jpeg, image/png"}
-                                onDrop={onDrop}
-                            >
-                                {({ getRootProps, getInputProps }) => (
-                                    <section>
-                                        <div className="flex flex-col justify-center items-center" {...getRootProps()}>
-                                            <input {...getInputProps()} />
-                                            <>
-                                                <p className="text-[#A1ADC0] text-center">Click or Drag&Drop</p>
-                                                <p>파일은 복수로 첨부 가능하며, 최대 20MB까지 업로드 됩니다.</p>
-                                            </>
-                                        </div>
-                                    </section>
-                                )}
-                            </Dropzone>
-                        </div>
-                        <div className="z-10">
-                            <ArtWorkChangeList list={previews} />
+            <div className="flex w-full bg-gray-200 flex-col xl:p-10">
+                <Title size="3" className="justify-start text-left items-start flex xl:py-10">
+                    작업 업로드
+                </Title>
+                <Grid>
+                    <div className="row-span-6 row-start-2 h-5/6 my-5">
+                        <div className="grid w-full col-span-7 col-start-2 row-start-1 row-end-7 border-2 border-dgray-300 border-dashed place-content-center h-fit min-h-[40rem] rounded-md">
+                            <div className="w-full">
+                                <Dropzone
+                                    maxFiles={10}
+                                    accept={"image/gif, image/jpg, image/jpeg, image/png"}
+                                    onDrop={onDrop}
+                                >
+                                    {({ getRootProps, getInputProps }) => (
+                                        <section>
+                                            <div
+                                                className="flex flex-col justify-center items-center p-5"
+                                                {...getRootProps()}
+                                            >
+                                                <input {...getInputProps()} />
+                                                <>
+                                                    <Text size="1" className="text-[#A1ADC0] text-center animate-pulse">
+                                                        Click or Drag & Drop here
+                                                    </Text>
+                                                    <Text size="3">
+                                                        파일은 복수로 첨부 가능하며, 최대 20MB까지 업로드 됩니다.
+                                                    </Text>
+                                                </>
+                                            </div>
+                                        </section>
+                                    )}
+                                </Dropzone>
+                            </div>
+                            <div className="">
+                                <ArtWorkChangeList list={previews} />
+                            </div>
                         </div>
                     </div>
-                    <div className="hidden xl:contents">
-                        <div className="grid col-span-1 col-start-8 row-start-1">이미지 추가</div>
-                        <div className="grid col-span-1 col-start-8 row-start-2">동영상 추가</div>
-                        <div className="grid col-span-1 col-start-8 row-start-3">파일 순서 변경</div>
+                    <div className="flex flex-col justify-end">
+                        <Button color="4" size="3" onClick={handleModal}>
+                            다음
+                        </Button>
+                        <Portal>{modalOn && <ArtWorkCreateModal onClose={handleModal} />}</Portal>
                     </div>
-                </div>
-                <div className=""></div>
-                <div className="fixed bottom-10 right-10 xl:bottom-24 xl:right-24">
-                    <Button color="4" size="3" onClick={handleModal}>
-                        다음
-                    </Button>
-                    <Portal>{modalOn && <ArtWorkCreateModal onClose={handleModal} />}</Portal>
-                </div>
+                </Grid>
             </div>
         </>
     );
