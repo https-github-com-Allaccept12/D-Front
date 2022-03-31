@@ -1,7 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { artworkFiles } from "../../redux/modules/image";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import Dropzone, { useDropzone } from "react-dropzone";
 import { Button, Title, Text } from "../../elements";
 import ArtWorkCreateModal from "./ArtWorkCreateModal";
@@ -14,7 +13,6 @@ const Grid = tw.div`
 `;
 
 const ArtWorkCreate = (props) => {
-    let history = useHistory();
     const dispatch = useDispatch();
     const [images, setImages] = useState([]);
     const [previews, SetPreviews] = useState([]);
@@ -39,12 +37,12 @@ const ArtWorkCreate = (props) => {
 
     return (
         <>
-            <div className="flex w-full bg-gray-200 flex-col xl:p-10">
-                <Title size="3" className="justify-start text-left items-start flex xl:py-10">
+            <div className="flex flex-col w-full bg-gray-200 xl:p-10">
+                <Title size="3" className="flex items-start justify-start text-left xl:py-10">
                     작업 업로드
                 </Title>
                 <Grid>
-                    <div className="row-span-6 row-start-2 h-5/6 my-5">
+                    <div className="row-span-6 row-start-2 my-5 h-5/6">
                         <div className="grid w-full col-span-7 col-start-2 row-start-1 row-end-7 border-2 border-dgray-300 border-dashed place-content-center h-fit min-h-[40rem] rounded-md">
                             <div className="w-full">
                                 <Dropzone
@@ -55,7 +53,7 @@ const ArtWorkCreate = (props) => {
                                     {({ getRootProps, getInputProps }) => (
                                         <section>
                                             <div
-                                                className="flex flex-col justify-center items-center p-5"
+                                                className="flex flex-col items-center justify-center p-5"
                                                 {...getRootProps()}
                                             >
                                                 <input {...getInputProps()} />
@@ -73,7 +71,7 @@ const ArtWorkCreate = (props) => {
                                 </Dropzone>
                             </div>
                             <div className="">
-                                <ArtWorkChangeList list={previews} />
+                                <ArtWorkChangeList list={previews} setPreviews={SetPreviews} />
                             </div>
                         </div>
                     </div>
