@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { Icon } from "../../elements";
 
 const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
@@ -16,12 +17,12 @@ const getItemStyle = (isDragging, draggableStyle) => ({
     userSelect: "none",
     padding: grid * 2,
     margin: `0 0 ${grid}px 0`,
-    background: isDragging ? "#752BD9" : "white",
+    background: isDragging ? "#E5E7EB" : "white",
     ...draggableStyle,
 });
 
 const getListStyle = (isDraggingOver) => ({
-    background: isDraggingOver ? "#752BD9" : "white",
+    background: isDraggingOver ? "#E5E7EB" : "white",
     padding: grid,
 });
 
@@ -34,11 +35,20 @@ function ArtWorkChangeList(props) {
         }));
 
     const [items, setItems] = useState(getItems(list.length));
+    const [forceRerender, setForceRerender] = useState(true);
     React.useEffect(() => {
         setItems(getItems(list.length));
     }, [list]);
     // id를 가진 array centent만 보내기!!
-    console.log(items);
+    // console.log(items);
+
+    const trashOnClick = (idx) => {
+        var tempItems = items;
+        tempItems.splice(idx, 1);
+        setItems(tempItems);
+        // 여기쯤 디스패치
+        setForceRerender(!forceRerender);
+    };
 
     const onDragEnd = (result) => {
         // dropped outside the list
@@ -71,7 +81,19 @@ function ArtWorkChangeList(props) {
                                         style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
                                         className="flex justify-center items-center"
                                     >
-                                        <img src={item.content} />
+                                        <img
+                                            src={item.content}
+                                            className="overflow-hidden object-cover object-center"
+                                        />
+
+                                        <div className="mt-auto -ml-12 p-4 text-dpurple-200">
+                                            <Icon
+                                                onClick={(event) => {
+                                                    trashOnClick(idx);
+                                                }}
+                                                name="Delete"
+                                            />
+                                        </div>
                                     </div>
                                 )}
                             </Draggable>

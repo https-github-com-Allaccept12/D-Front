@@ -8,7 +8,7 @@ import { MultiSelect } from "react-multi-select-component";
 import Dropzone, { useDropzone } from "react-dropzone";
 import skillList from "./skillList";
 import profile_upload from "../../static/images/profile_upload.svg";
-import { Button, Card, Input, CheckBox, SelectBox, SelectBoxFor12 } from "../../elements";
+import { Button, Card, Input, CheckBox, Title, RadioButton, InputNoTitle } from "../../elements";
 
 const ArtWorkCreateModal = ({ onClose }) => {
     // 기본 세팅
@@ -51,7 +51,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
     for (var value of toolSelected) {
         specialty.push(value.value);
     }
-    console.log(specialty);
+    // console.log(specialty);
 
     // 저작권-------------------------------------------------------------------------
     // useState
@@ -157,9 +157,9 @@ const ArtWorkCreateModal = ({ onClose }) => {
 
     return (
         <Portal>
-            <div className="absolute z-10 w-full h-full bg-gray-500 bg-opacity-80">
-                <div className="z-20 flex lg:w-5/6 mx-auto my-20 text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto h-5/6 modal-content">
-                    <div className="h-full p-4 bg-white modal-header rounded-t-md">
+            <div className="fixed z-10 w-full h-full bg-gray-500 bg-opacity-80">
+                <div className="z-20 flex lg:w-5/6 mx-auto my-6 xl:my-20 text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto h-5/6 modal-content flex-col">
+                    <div className="p-4 bg-white modal-header rounded-t-md">
                         <button
                             type="button"
                             onClick={onClose}
@@ -168,8 +168,8 @@ const ArtWorkCreateModal = ({ onClose }) => {
                             aria-label="Close"
                         ></button>
                     </div>
-                    <div className="grid w-full h-full col-start-2 p-4 overflow-y-scroll bg-white modal-body">
-                        <div className="">
+                    <div className="xl:grid w-full h-full xl:col-start-2 p-4 overflow-y-scroll overflow-x-hidden bg-white modal-body">
+                        <div className="flex justify-center items-center flex-col md:justify-start xl:ml-24">
                             <p className="text-2xl">프로젝트 표지</p>
                             <Dropzone
                                 multiple={false}
@@ -193,13 +193,13 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                 )}
                             </Dropzone>
                         </div>
-                        <div className="grid items-center h-screen grid-cols-6 col-span-2 col-start-1 col-end-4 row-start-1 bg-white md:col-start-2 grid-rows-10">
+                        <div className="xl:grid items-center h-screen xl:grid-cols-6 col-span-2 col-start-1 col-end-4 row-start-1 bg-white md:col-start-2 grid-rows-10">
                             <div className="col-span-4 col-start-2 col-end-6 row-start-1">
-                                <p className="text-2xl">
+                                <Title size="3">
                                     프로젝트 제목
                                     <span className="font-bold text-purple-600"> *</span>
-                                </p>
-                                <input
+                                </Title>
+                                <InputNoTitle
                                     className="border border-gray-400 rounded-md focus:border-purple-400"
                                     size="70"
                                     height="40"
@@ -210,42 +210,108 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                 />
                             </div>
                             <div className="col-span-4 col-start-2 row-start-2">
-                                <p className="text-2xl">
+                                <Title size="3">
                                     카테고리<span className="font-bold text-purple-600"> *</span>
-                                </p>
+                                </Title>
                                 <div
                                     onChange={handleChange}
                                     className="flex flex-row flex-wrap items-center justify-center gap-5 p-3"
                                 >
-                                    <input type="radio" name="category" value="ui" />
-                                    ui/ux
-                                    <input type="radio" name="category" value="typo" />
-                                    타이포그래피
-                                    <input type="radio" name="category" value="crafts" />
-                                    공예
-                                    <input type="radio" name="category" value="pakage" />
-                                    패키지
-                                    <input type="radio" name="category" value="graphic" />
-                                    그래픽
-                                    <input type="radio" name="category" value="fashion" />
-                                    패션
-                                    <input type="radio" name="category" value="video" />
-                                    영상
-                                    <input type="radio" name="category" value="product" />
-                                    제품
-                                    <input type="radio" name="category" value="game" />
-                                    게임/캐릭터
-                                    <input type="radio" name="category" value="branding" />
-                                    브랜딩/편집
-                                    <input type="radio" name="category" value="interior" />
-                                    건축/인테리어/환경
+                                    <RadioButton
+                                        size="1"
+                                        color="1"
+                                        type="radio"
+                                        name="category"
+                                        value="ui"
+                                        inline="ui/ux"
+                                    />
+                                    <RadioButton
+                                        type="radio"
+                                        size="1"
+                                        color="1"
+                                        name="category"
+                                        value="typo"
+                                        inline="타이포그래피"
+                                    />
+                                    <RadioButton
+                                        type="radio"
+                                        size="1"
+                                        color="1"
+                                        name="category"
+                                        value="crafts"
+                                        inline="공예"
+                                    />
+                                    <RadioButton
+                                        type="radio"
+                                        size="1"
+                                        color="1"
+                                        name="category"
+                                        value="pakage"
+                                        inline="패키지"
+                                    />
+                                    <RadioButton
+                                        type="radio"
+                                        size="1"
+                                        color="1"
+                                        name="category"
+                                        value="graphic"
+                                        inline="그래픽"
+                                    />
+                                    <RadioButton
+                                        type="radio"
+                                        size="1"
+                                        color="1"
+                                        name="category"
+                                        value="fashion"
+                                        inline="패션"
+                                    />
+                                    <RadioButton
+                                        type="radio"
+                                        size="1"
+                                        color="1"
+                                        name="category"
+                                        value="video"
+                                        inline="영상"
+                                    />
+                                    <RadioButton
+                                        type="radio"
+                                        size="1"
+                                        color="1"
+                                        name="category"
+                                        value="product"
+                                        inline="제품"
+                                    />
+                                    <RadioButton
+                                        type="radio"
+                                        size="1"
+                                        color="1"
+                                        name="category"
+                                        value="game"
+                                        inline="게임/캐릭터"
+                                    />
+                                    <RadioButton
+                                        type="radio"
+                                        size="1"
+                                        color="1"
+                                        name="category"
+                                        value="branding"
+                                        inline="브랜딩/편집"
+                                    />
+                                    <RadioButton
+                                        type="radio"
+                                        size="1"
+                                        color="1"
+                                        name="category"
+                                        value="interior"
+                                        inline="건축/인테리어/환경"
+                                    />
                                 </div>
                             </div>
 
                             <div className="col-span-4 col-start-2">
-                                <p className="text-2xl">
+                                <Title size="3">
                                     사용 툴<span className="font-bold text-purple-600"> *</span>
-                                </p>
+                                </Title>
                                 <MultiSelect
                                     options={options}
                                     value={toolSelected}
@@ -255,23 +321,69 @@ const ArtWorkCreateModal = ({ onClose }) => {
                             </div>
 
                             <div className="col-span-4 col-start-2 row-start-4">
-                                <p className="text-2xl">
+                                <Title size="3">
                                     작업 기간<span className="font-bold text-purple-600"> *</span>
-                                </p>
-                                <input type="text" name="startDate" placeholder="YYYY.MM" onChange={handleChange} />
-                                <span> - </span>
-                                <input type="text" name="endDate" placeholder="YYYY.MM" onChange={handleChange} />
+                                </Title>
+                                <div className="flex flex-row gap-3">
+                                    <input
+                                        type="text"
+                                        name="startDate"
+                                        placeholder="YYYY.MM"
+                                        onChange={handleChange}
+                                        className="w-full px-4 border border-dgray-400 rounded-lg py-1
+hover:border-dpurple-200 border-box peer
+active:border-dpurple-300 invalid:text-pink-600
+focus:border-dpurple-300 font-min1
+outline-none"
+                                    />
+                                    <Title size="5"> - </Title>
+                                    <input
+                                        type="text"
+                                        name="endDate"
+                                        placeholder="YYYY.MM"
+                                        onChange={handleChange}
+                                        className="w-full px-4 border border-dgray-400 rounded-lg py-1
+hover:border-dpurple-200 border-box peer
+active:border-dpurple-300 invalid:text-pink-600
+focus:border-dpurple-300 font-min1
+outline-none"
+                                    />
+                                </div>
                             </div>
                             <div className="col-span-4 col-start-2 row-start-5">
-                                <p className="text-2xl">작품 설명</p>
-                                <input type="textarea" name="description" size="100" onChange={handleChange} />
+                                <Title size="3">작품 설명</Title>
+                                <input
+                                    className="w-full px-4 py-4 border border-dgray-400 border-box
+                                    rounded-md shadow-md outline-none resize-none font-min1
+                                    hover:border-dpurple-200 active:border-dpurple-300"
+                                    name="description"
+                                    onChange={handleChange}
+                                />
                             </div>
 
                             <div className="col-span-2 col-start-2 row-start-6">
                                 <p className="text-2xl">
                                     저작권<span className="font-bold text-purple-600"> *</span>
                                 </p>
-                                <select onChange={selectCopyRight} vlaue={CopyRight}>
+                                <select
+                                    onChange={selectCopyRight}
+                                    value={CopyRight}
+                                    className="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-lg font-min2
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded-xl 
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-dpurple-300 focus:outline-none"
+                                >
                                     <option value="" selected disabled hidden>
                                         선택해주세요
                                     </option>
@@ -287,7 +399,25 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                 <p className="text-2xl">
                                     공개 여부<span className="font-bold text-purple-600"> *</span>
                                 </p>
-                                <select onChange={selectPublic} vlaue={Public}>
+                                <select
+                                    onChange={selectPublic}
+                                    value={Public}
+                                    className="form-select appearance-none
+      block
+      w-full
+      px-3
+      py-1.5
+      text-lg font-min2
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding bg-no-repeat
+      border border-solid border-gray-300
+      rounded-xl 
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-dpurple-300 focus:outline-none"
+                                >
                                     <option value="true" selected hidden>
                                         공개
                                     </option>
@@ -297,11 +427,11 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                         </option>
                                     ))}
                                 </select>
-                            </div>
-                            <div className="fixed bottom-24 right-24">
-                                <Button size="2" color="1" onClick={createArtWork}>
-                                    완료
-                                </Button>
+                                <div className="flex justify-end items-end gap-3 p-5">
+                                    <Button size="2" color="1" onClick={createArtWork}>
+                                        완료
+                                    </Button>
+                                </div>
                             </div>
                         </div>
                     </div>

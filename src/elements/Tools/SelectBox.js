@@ -18,7 +18,7 @@ const SelectBox = (props) => {
       text-gray-700
       bg-white bg-clip-padding bg-no-repeat
       border border-solid border-gray-300
-      rounded-xl
+      rounded-xl 
       transition
       ease-in-out
       m-0
