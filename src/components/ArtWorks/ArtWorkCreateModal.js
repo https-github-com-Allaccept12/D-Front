@@ -8,7 +8,7 @@ import { MultiSelect } from "react-multi-select-component";
 import Dropzone, { useDropzone } from "react-dropzone";
 import skillList from "./skillList";
 import profile_upload from "../../static/images/profile_upload.svg";
-import { Button, Card, Input, CheckBox, Title, RadioButton, InputNoTitle } from "../../elements";
+import { Button, Card, Input, CheckBox, Title, RadioButton, InputNoTitle, Text } from "../../elements";
 
 const ArtWorkCreateModal = ({ onClose }) => {
     // 기본 세팅
@@ -142,7 +142,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
             scope: Public,
             thumbnail: thumbnail,
         };
-        console.log(data);
+        // console.log(data);
 
         // 멀티 폼데이터 생성
         const formData = new FormData();
@@ -153,6 +153,36 @@ const ArtWorkCreateModal = ({ onClose }) => {
         // console.log(formData);
         dispatch(CreateNewArtWork(formData));
         history.replace("/art/list/all");
+    };
+
+    const [inputList, setInputList] = useState([
+        {
+            videoLink: "",
+        },
+    ]);
+
+    const handleInputChange = (e, index) => {
+        const { name, value } = e.target;
+        const list = [...inputList];
+        list[index][name] = value;
+        setInputList(list);
+    };
+
+    // handle click event of the Remove button
+    const handleRemoveClick = (index) => {
+        const list = [...inputList];
+        list.splice(index, 1);
+        setInputList(list);
+    };
+
+    // handle click event of the Add button
+    const handleAddClick = () => {
+        setInputList([
+            ...inputList,
+            {
+                videoLink: "",
+            },
+        ]);
     };
 
     return (
@@ -193,7 +223,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                 )}
                             </Dropzone>
                         </div>
-                        <div className="xl:grid items-center h-screen xl:grid-cols-6 col-span-2 col-start-1 col-end-4 row-start-1 bg-white md:col-start-2 grid-rows-10">
+                        <div className="xl:grid items-center h-screen xl:grid-cols-6 col-span-2 col-start-1 col-end-4 row-start-1 bg-white md:col-start-2 grid-rows-10 gap-3">
                             <div className="col-span-4 col-start-2 col-end-6 row-start-1">
                                 <Title size="3">
                                     프로젝트 제목
@@ -350,7 +380,49 @@ outline-none"
                                     />
                                 </div>
                             </div>
-                            <div className="col-span-4 col-start-2 row-start-5">
+
+                            <div className="col-span-4 col-start-2 row-start-5 mt-6">
+                                <Title size="3">동영상 첨부</Title>
+                                <Text size="1">링크 형태로 동영상을 첨부할 수 있습니다</Text>
+
+                                {inputList.map((x, i) => {
+                                    return (
+                                        <>
+                                            {inputList.length - 1 === i && (
+                                                <Title
+                                                    size="6"
+                                                    onClick={handleAddClick}
+                                                    className="text-dpurple-300 cursor-pointer text-right"
+                                                >
+                                                    +추가하기
+                                                </Title>
+                                            )}
+                                            <input
+                                                key={i}
+                                                className="w-full px-4 py-2 border border-dgray-400 border-box
+                                    rounded-md shadow-md outline-none resize-none font-min1
+                                    hover:border-dpurple-200 active:border-dpurple-300"
+                                                name="video"
+                                                value={x.videoLink}
+                                                onChange={(e) => handleInputChange(e, i)}
+                                            />
+
+                                            <div className="col-start-1 row-start-1">
+                                                {inputList.length !== 1 && (
+                                                    <Text
+                                                        size="1"
+                                                        onClick={() => handleRemoveClick(i)}
+                                                        className="rounded-full cursor-pointer text-dpurple-300"
+                                                    >
+                                                        지우기
+                                                    </Text>
+                                                )}
+                                            </div>
+                                        </>
+                                    );
+                                })}
+                            </div>
+                            <div className="col-span-4 col-start-2 row-start-6 mt-8">
                                 <Title size="3">작품 설명</Title>
                                 <input
                                     className="w-full px-4 py-4 border border-dgray-400 border-box
@@ -361,7 +433,7 @@ outline-none"
                                 />
                             </div>
 
-                            <div className="col-span-2 col-start-2 row-start-6">
+                            <div className="col-span-2 col-start-2 row-start-7">
                                 <Title size="3">
                                     저작권<span className="font-bold text-purple-600"> *</span>
                                 </Title>
@@ -396,7 +468,7 @@ outline-none"
                                 </select>
                             </div>
 
-                            <div className="col-span-2 col-start-2 row-start-7">
+                            <div className="col-span-2 col-start-2 row-start-8">
                                 <Title size="3">
                                     공개여부<span className="font-bold text-purple-600"> *</span>
                                 </Title>

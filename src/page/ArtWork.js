@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { ArtWorkFilter, ArtWorkInlineDetail, ArtWorkList, ArtWorkWrite } from "../components/ArtWorks";
 import { Title, Button, CategoryMini, Icon } from "../elements";
-import { artworkPageLoad } from "../redux/modules/artWork"
+import { artworkPageLoad } from "../redux/modules/artWork";
 import { Link, Route, Switch } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
@@ -21,8 +21,7 @@ const ArtWork = (props) => {
     // useEffect(() => {
     dispatch(artworkPageLoad(27));
     // }, [])
-    
-    
+
     return (
         <>
             <div className="bg-dgray-200">
@@ -46,11 +45,6 @@ const ArtWork = (props) => {
                                 <MobileBtn>
                                     <Icon name="Edit" />
                                 </MobileBtn>
-                            </Link>
-                            <Link to="/createart">
-                                <DesBtn>
-                                    <Button size="2">작품등록</Button>
-                                </DesBtn>
                             </Link>
                         </div>
                     </div>

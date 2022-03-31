@@ -11,6 +11,7 @@ ${(props) => (props.size === "5" ? `w-t05 h-t05` : "")};
 ${(props) => (props.size === "6" ? `w-[8.375rem] h-[12.5rem] ` : "")};
 ${(props) => (props.size === "7" ? `w-[18.75rem] h-[18.75rem] ` : "")};
 ${(props) => (props.size === "8" ? `w-[11.875rem] h-[11.875rem] ` : "")};
+${(props) => (props.size === "9" ? `w-[19rem] h-[19rem] ` : "")};
 
 `;
 
