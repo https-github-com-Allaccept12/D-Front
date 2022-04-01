@@ -107,7 +107,7 @@ const Input = (props) => {
     } else {
         return (
             <>
-                <div className="grid grid-cols-8 row-start-1">
+                <div className="grid grid-cols-6 row-start-1">
                     {title && <Title>{title} </Title>}
                     <div className="col-start-3 col-end-8 row-start-1">
                         <label id={label}>

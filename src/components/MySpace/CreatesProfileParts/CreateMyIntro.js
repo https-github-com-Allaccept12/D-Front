@@ -16,10 +16,10 @@ const CreateMyIntro = (props) => {
             setSubContent(info.sub_content);
         }
     }, [info]);
-    const validMaxLen = (value) => value.length <= 200;
-    const validMaxLen1000 = (value) => value.length <= 1000;
-    const intro = useInput(title_content, [validMaxLen]);
-    const sub = useInput(sub_content, [validMaxLen1000]);
+    const validmaxlen = (value) => value.length <= 200;
+    const validmaxlen1000 = (value) => value.length <= 1000;
+    const intro = useInput(title_content, [validmaxlen]);
+    const sub = useInput(sub_content, [validmaxlen1000]);
     const SendIntro = () => {
         let data = {
             title_content: intro.value,
@@ -36,7 +36,7 @@ const CreateMyIntro = (props) => {
                     <Input
                         title="한줄소개"
                         textarea
-                        maxLen="200"
+                        maxlen="200"
                         value={intro.value}
                         onChange={intro.onChange}
                         is_error={intro.errors}
@@ -49,7 +49,7 @@ const CreateMyIntro = (props) => {
                         title="간단소개글"
                         textarea
                         cardsize="3"
-                        maxLen="1000"
+                        maxlen="1000"
                         value={sub.value}
                         onChange={sub.onChange}
                         is_error={sub.errors}
