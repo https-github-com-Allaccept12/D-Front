@@ -1,8 +1,8 @@
 import React from "react";
-import { HeartButton, Subtitle, Icon, Thumbnail, Profile, Text } from "../../elements";
+import { IconBtn, Subtitle, Icon, Thumbnail, Profile, Text } from "../../elements";
 
 import { useDispatch } from "react-redux";
-import { artworkDetailLoad } from "../../redux/modules/artWork"
+import { artworkDetailLoad } from "../../redux/modules/artWork";
 import ArtWorkDetail from "./ArtWorkDetail";
 import tw from "tailwind-styled-components";
 
@@ -15,10 +15,10 @@ const ArtPost = (props) => {
     const dispatch = useDispatch();
     dispatch(artworkDetailLoad);
     const { profile, nickname, thumnail, is_like, like_count, id } = props;
-    const handleClickArtWork = id => {
+    const handleClickArtWork = (id) => {
         console.log(id.id);
         dispatch(artworkDetailLoad(id.id));
-    }
+    };
     return (
         <>
             <Art>
@@ -27,7 +27,9 @@ const ArtPost = (props) => {
                     className="transition duration-150 ease-in-out active:shadow-lg"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModalXl"
-                    onClick={() => {handleClickArtWork({id})}}
+                    onClick={() => {
+                        handleClickArtWork({ id });
+                    }}
                 >
                     <Thumbnail src={thumnail} size="3" />
                 </button>
@@ -36,8 +38,8 @@ const ArtPost = (props) => {
                         <Profile size="7" src={profile} />
                         <Subtitle size="1">{nickname}</Subtitle>
                     </div>
-                    <div className="flex flex-row items-center mt-1 mr-1">
-                        <HeartButton like_cnt={like_count} is_like={is_like} />
+                    <div className="flex flex-row items-center text-dgray-400">
+                        <IconBtn name="HeartE" count="10" />
                     </div>
                 </div>
             </Art>
@@ -57,9 +59,7 @@ const ArtPost = (props) => {
                                 <ArtWorkDetail id={id} />
 
                                 <div className="hidden md:contents">
-                                    <div
-                                        className="flex flex-row justify-start w-20 gap-3 mx-auto lg:fixed top-20 right-10 2xl:right-48 lg:flex-col"
-                                    >
+                                    <div className="flex flex-row justify-start w-20 gap-3 mx-auto lg:fixed top-20 right-10 2xl:right-48 lg:flex-col">
                                         <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
                                                 <Profile size="5" />

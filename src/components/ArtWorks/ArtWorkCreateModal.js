@@ -361,10 +361,10 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                         placeholder="YYYY.MM"
                                         onChange={handleChange}
                                         className="w-full px-4 border border-dgray-400 rounded-lg py-1
-hover:border-dpurple-200 border-box peer
-active:border-dpurple-300 invalid:text-pink-600
-focus:border-dpurple-300 font-min1
-outline-none"
+                                                    hover:border-dpurple-200 border-box peer
+                                                    active:border-dpurple-300 invalid:text-pink-600
+                                                    focus:border-dpurple-300 font-min1
+                                                    outline-none"
                                     />
                                     <Title size="5"> - </Title>
                                     <input
@@ -373,10 +373,10 @@ outline-none"
                                         placeholder="YYYY.MM"
                                         onChange={handleChange}
                                         className="w-full px-4 border border-dgray-400 rounded-lg py-1
-hover:border-dpurple-200 border-box peer
-active:border-dpurple-300 invalid:text-pink-600
-focus:border-dpurple-300 font-min1
-outline-none"
+                                                    hover:border-dpurple-200 border-box peer
+                                                    active:border-dpurple-300 invalid:text-pink-600
+                                                    focus:border-dpurple-300 font-min1
+                                                    outline-none"
                                     />
                                 </div>
                             </div>
@@ -442,20 +442,20 @@ outline-none"
                                     onChange={selectCopyRight}
                                     value={CopyRight}
                                     className="form-select appearance-none
-      block
-      w-full
-      px-3
-      py-1.5
-      text-lg font-min2
-      font-normal
-      text-gray-700
-      bg-white bg-clip-padding bg-no-repeat
-      border border-solid border-gray-300
-      rounded-xl 
-      transition
-      ease-in-out
-      m-0
-      focus:text-gray-700 focus:bg-white focus:border-dpurple-300 focus:outline-none"
+                                                block
+                                                w-full
+                                                px-3
+                                                py-1.5
+                                                text-lg font-min2
+                                                font-normal
+                                                text-gray-700
+                                                bg-white bg-clip-padding bg-no-repeat
+                                                border border-solid border-gray-300
+                                                rounded-xl 
+                                                transition
+                                                ease-in-out
+                                                m-0
+                                                focus:text-gray-700 focus:bg-white focus:border-dpurple-300 focus:outline-none"
                                 >
                                     <option value="" defaultValue disabled hidden>
                                         선택해주세요
@@ -476,20 +476,20 @@ outline-none"
                                     onChange={selectPublic}
                                     value={Public}
                                     className="form-select appearance-none
-      block
-      w-full
-      px-3
-      py-1.5
-      text-lg font-min2
-      font-normal
-      text-gray-700
-      bg-white bg-clip-padding bg-no-repeat
-      border border-solid border-gray-300
-      rounded-xl 
-      transition
-      ease-in-out
-      m-0
-      focus:text-gray-700 focus:bg-white focus:border-dpurple-300 focus:outline-none"
+                                                block
+                                                w-full
+                                                px-3
+                                                py-1.5
+                                                text-lg font-min2
+                                                font-normal
+                                                text-gray-700
+                                                bg-white bg-clip-padding bg-no-repeat
+                                                border border-solid border-gray-300
+                                                rounded-xl 
+                                                transition
+                                                ease-in-out
+                                                m-0
+                                                focus:text-gray-700 focus:bg-white focus:border-dpurple-300 focus:outline-none"
                                 >
                                     <option value="true" defaultValue hidden>
                                         공개

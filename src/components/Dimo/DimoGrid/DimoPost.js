@@ -34,7 +34,7 @@ const TextBox = tw.div`
 `;
 
 const IconBox = tw.div`
-absolute bottom-4 px-9 w-[23.238rem]
+absolute bottom-4 pr-7 w-[23.238rem]
 `;
 
 const DimoPost = (props) => {
@@ -76,8 +76,8 @@ const DimoPost = (props) => {
                                     </TextBox>
 
                                     <IconBox>
-                                        <div className="flex flex-row justify-end">
-                                            <div className="flex flex-row gap-5">
+                                        <div className="flex flex-row justify-end items-end">
+                                            <div className="flex flex-row gap-5 text-dgray-400">
                                                 <IconBtn name="Talk" iconSize="20" count="4" />
                                                 <IconBtn name="HeartE" iconSize="20" count="4" />
                                             </div>
@@ -127,8 +127,8 @@ const DimoPost = (props) => {
                                     </TextBox>
 
                                     <IconBox>
-                                        <div className="flex flex-row justify-end">
-                                            <div className="flex flex-row gap-5">
+                                        <div className="flex flex-row justify-end items-end">
+                                            <div className="flex flex-row gap-5 text-dgray-400">
                                                 <IconBtn name="Talk" iconSize="20" count="4" />
                                                 <IconBtn name="HeartE" iconSize="20" count="4" />
                                             </div>

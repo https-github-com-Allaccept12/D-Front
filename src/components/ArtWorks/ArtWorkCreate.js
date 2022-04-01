@@ -13,6 +13,7 @@ const Grid = tw.div`
 `;
 
 const ArtWorkCreate = (props) => {
+    const { types } = props;
     const dispatch = useDispatch();
     const [images, setImages] = useState([]);
     const [previews, SetPreviews] = useState([]);

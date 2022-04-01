@@ -8,15 +8,16 @@ import DimoPost from "./DimoPost";
 const Grid = tw.div` 
 flex flex-row flex-wrap items-center justify-center
 xl:justify-start lg:gap-2 px-0 sm:px-0 lg:px-4 xl:px-8 2xl:px-10
-
+gap-y-4
 `;
 
 const Box = tw.div`
-flex flex-col lg:gap-3 py-6 rounded-xl mt-2
+flex flex-col lg:gap-3 py-6 rounded-xl mt-2 
 `;
 
 const InnerBox = tw.div`
-bg-white flex flex-col gap-0 py-6 xl:px-2 rounded-xl w-full xl:max-w-[95%] 2xl:max-w-[90%]
+bg-white flex flex-col py-6 xl:px-2 rounded-xl w-full xl:max-w-[95%] 2xl:max-w-[90%]
+
 `;
 
 const Line = tw.hr`

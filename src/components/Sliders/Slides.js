@@ -8,6 +8,10 @@ const IconBox = tw.div`
 absolute bottom-6 px-9 w-full
 `;
 
+const ColorSlide = tw.div`
+absolute w-[32.5rem] h-[18.75rem]  rounded-lg bg-dpurple-200 
+`;
+
 const Slides = (props) => {
     const { type, list } = props;
 
@@ -102,7 +106,7 @@ const Slides = (props) => {
                 <>
                     <Link to="/dimo/qnadetail">
                         <div className="w-[32.5rem] h-[18.75rem] rounded-lg">
-                            <div className="absolute w-[32.5rem] h-[18.75rem] bg-dpurple-200 rounded-lg">
+                            <ColorSlide>
                                 <div>
                                     <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
                                         <Profile
@@ -113,10 +117,10 @@ const Slides = (props) => {
                                     </div>
                                     <div className="absolute top-7 left-28">
                                         <div className="flex flex-row gap-1">
-                                            <Label size="1" color="4">
+                                            <Label size="1" color="7">
                                                 취준생
                                             </Label>
-                                            <Label size="1" color="5">
+                                            <Label size="1" color="7">
                                                 진로고민
                                             </Label>
                                         </div>
@@ -142,7 +146,7 @@ const Slides = (props) => {
                                         </div>
                                     </div>
                                 </IconBox>
-                            </div>
+                            </ColorSlide>
                         </div>
                     </Link>
                 </>

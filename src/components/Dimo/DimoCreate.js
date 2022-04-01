@@ -1,5 +1,14 @@
 import React from "react";
-import { Button, Title, InputNoTitle, Hashtag, Subtitle, SelectBoxCategory, Text } from "../../elements";
+import {
+    Button,
+    Title,
+    InputNoTitle,
+    Hashtag,
+    Subtitle,
+    SelectBoxCategory,
+    Text,
+    FileUploadDimo,
+} from "../../elements";
 
 import { useHistory, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -42,14 +51,7 @@ const DimoCreate = () => {
                             </div>
                             <div className="p-8">
                                 <div className="bg-white p-10 border border-dpurple-200 border-dashed mx-auto">
-                                    <div className="flex justify-center items-center flex-col">
-                                        <Button size="2" color="4" icon name="Plus">
-                                            추가하기
-                                        </Button>
-                                        <Text size="3" className="pt-10 pb-7">
-                                            파일추가 파일은 복수로 첨부가능하며 최대 100mb까지 업로드됩니다.
-                                        </Text>
-                                    </div>
+                                    <FileUploadDimo types="qna" />
                                 </div>
                             </div>
                             <div className="flex justify-center flex-row items-center gap-10 py-10 mb-10 bg-white">
@@ -82,14 +84,7 @@ const DimoCreate = () => {
                             </div>
                             <div className="p-8">
                                 <div className="bg-white p-10 border border-dpurple-200 border-dashed mx-auto">
-                                    <div className="flex justify-center items-center flex-col">
-                                        <Button size="2" color="4" icon name="Plus">
-                                            추가하기
-                                        </Button>
-                                        <Text size="3" className="pt-10 pb-7">
-                                            파일추가 파일은 복수로 첨부가능하며 최대 100mb까지 업로드됩니다.
-                                        </Text>
-                                    </div>
+                                    <FileUploadDimo types="shared" />
                                 </div>
                             </div>
                             <div className="flex justify-center flex-row items-center gap-10 py-10 mb-10 bg-white">

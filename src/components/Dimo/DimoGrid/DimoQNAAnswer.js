@@ -126,7 +126,7 @@ const DimoQNAAnswer = (props) => {
                                     is_submit
                                     onSubmit={commentSubmit}
                                 />
-                                <Button size="3" className="invisible xl:visible">
+                                <Button size="3" className="lg:invisible visible">
                                     제출
                                 </Button>
                             </div>
