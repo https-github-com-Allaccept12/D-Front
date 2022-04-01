@@ -92,10 +92,9 @@ const CreateProfile = (props) => {
             insta: instagram.value,
             job: selected,
             // work_time: 0,
-            phone_number: "010",
             work_time: "1",
         };
-        // console.log(data);
+        console.log(data);
         formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
         formData.append("imgFile", image);
         // dispatch(createProfile(data));
@@ -108,7 +107,7 @@ const CreateProfile = (props) => {
             <FakeHeader />
             <Profile>
                 <Grid>
-                    <div className="flex flex-col mx-auto justify-center max-w-xl items-center xl:mb-32">
+                    <div className="flex flex-col items-center justify-center max-w-xl mx-auto xl:mb-32">
                         <img src={set_profile} />
                         <Title size="5" className="xl:text-2xl">
                             님의 프로필을 구성해 볼까요?
@@ -125,12 +124,12 @@ const CreateProfile = (props) => {
                             <Title size="3" className="pb-5 pl-12">
                                 내 정보
                             </Title>
-                            <div className="grid col-start-1 col-end-2 place-content-center mb-2">
+                            <div className="grid col-start-1 col-end-2 mb-2 place-content-center">
                                 <FileUpload></FileUpload>
                                 {profile !== "" && (
                                     <p
                                         onClick={deleteProfile}
-                                        className="cursor-pointer text-center font-min1 text-dgray-400 hover:text-dpurple-400 "
+                                        className="text-center cursor-pointer font-min1 text-dgray-400 hover:text-dpurple-400 "
                                     >
                                         삭제
                                     </p>
@@ -139,13 +138,13 @@ const CreateProfile = (props) => {
 
                             <Names>
                                 <Input
-                                    cardsize="2"
+                                    cardSize="2"
                                     title="닉네임"
                                     onBlur={checkNickname}
                                     value={nickname.value}
                                     onChange={nickname.onChange}
                                     is_value={nickname.value.length}
-                                    maxlen="10"
+                                    maxLen="10"
                                 />
                                 {nicknameState == "available" && <p className="pr-16 text-xs text-right">✔️</p>}
                                 {nicknameState == "fail" && (
@@ -154,14 +153,14 @@ const CreateProfile = (props) => {
                                     </p>
                                 )}
                                 <Input
-                                    cardsize="2"
+                                    cardSize="2"
                                     title="이름"
                                     value={name.value}
                                     onChange={name.onChange}
                                     is_value={name.value.length}
                                 ></Input>
                                 <div className="grid items-center justify-start">
-                                    <Text className="w-1/2 row-start-1 mr-10 font-min1 text-sm md:text-base mt-3">
+                                    <Text className="w-1/2 row-start-1 mt-3 mr-10 text-sm font-min1 md:text-base">
                                         분야
                                     </Text>
                                     <select
@@ -186,35 +185,35 @@ const CreateProfile = (props) => {
                                 Contact
                             </Title>
                             <Input
-                                cardsize="2"
+                                cardSize="2"
                                 title="이메일"
                                 value={email.value}
                                 onChange={email.onChange}
                                 is_value={email.value.length}
                             ></Input>
                             <Input
-                                cardsize="2"
+                                cardSize="2"
                                 title="링크드인"
                                 value={linkedIn.value}
                                 onChange={linkedIn.onChange}
                                 is_value={linkedIn.value.length}
                             ></Input>
                             <Input
-                                cardsize="2"
+                                cardSize="2"
                                 title="브런치"
                                 value={brunch.value}
                                 onChange={brunch.onChange}
                                 is_value={brunch.value.length}
                             ></Input>
                             <Input
-                                cardsize="2"
+                                cardSize="2"
                                 title="인스타그램"
                                 value={instagram.value}
                                 onChange={instagram.onChange}
                                 is_value={instagram.value.length}
                             ></Input>
                         </Contacts>
-                        <div className="my-10 pb-10">
+                        <div className="pb-10 my-10">
                             <Link to="/CompleteProfile">
                                 <Button size="3" color="1" onClick={SendProfile}>
                                     작성 완료
