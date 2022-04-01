@@ -13,8 +13,9 @@ const MyArtWork = (props) => {
   const dispatch = useDispatch();
   const { info } = props
   const owner_account_id = info;
+  console.log(owner_account_id);
   useEffect(() => {
-    dispatch(PortfolioLoad(owner_account_id, dispatch))
+    dispatch(PortfolioLoad({owner_account_id, dispatch}))
   }, [info])
   
   return (

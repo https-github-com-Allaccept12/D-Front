@@ -18,7 +18,13 @@ export const createProfile = createAsyncThunk(
       .then((res) => {
         console.log(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        // if(err.response.status == 401){
+        //   alert('다시 로그인 해주세요.');
+        //   window.location.href = "/logout";
+        // }
+        console.log(err)
+      });
   }
 );
 

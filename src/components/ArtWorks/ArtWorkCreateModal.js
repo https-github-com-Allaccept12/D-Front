@@ -33,7 +33,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
             dispatch(preview(reader.result));
             // console.log(reader.result.fileName);
         };
-        console.log(thumbnail);
+        // console.log(thumbnail);
         // reader.fileName(acceptedFile[0])
         // reader.onload = (e) => {
         //   console.log(e.target.fileName);
@@ -188,7 +188,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
     return (
         <Portal>
             <div className="fixed z-10 w-full h-full bg-gray-500 bg-opacity-80">
-                <div className="z-20 flex lg:w-5/6 mx-auto my-6 xl:my-20 text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto h-5/6 modal-content flex-col">
+                <div className="z-20 flex flex-col mx-auto my-6 text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto lg:w-5/6 xl:my-20 h-5/6 modal-content">
                     <div className="p-4 bg-white modal-header rounded-t-md">
                         <button
                             type="button"
@@ -198,8 +198,8 @@ const ArtWorkCreateModal = ({ onClose }) => {
                             aria-label="Close"
                         ></button>
                     </div>
-                    <div className="xl:grid w-full h-full xl:col-start-2 p-4 overflow-y-scroll overflow-x-hidden bg-white modal-body">
-                        <div className="flex justify-center items-center flex-col md:justify-start xl:ml-24 ">
+                    <div className="w-full h-full p-4 overflow-x-hidden overflow-y-scroll bg-white xl:grid xl:col-start-2 modal-body">
+                        <div className="flex flex-col items-center justify-center md:justify-start xl:ml-24 ">
                             <Title size="4">프로젝트 표지</Title>
                             <Dropzone
                                 multiple={false}
@@ -224,13 +224,13 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                 )}
                             </Dropzone>
                         </div>
-                        <div className="xl:grid items-center h-screen xl:grid-cols-6 col-span-2 col-start-1 col-end-4 row-start-1 bg-white md:col-start-2 grid-rows-10 gap-3">
+                        <div className="items-center h-screen col-span-2 col-start-1 col-end-4 row-start-1 gap-3 bg-white xl:grid xl:grid-cols-6 md:col-start-2 grid-rows-10">
                             <div className="col-span-4 col-start-2 col-end-6 row-start-1">
                                 <Title size="3">
                                     프로젝트 제목
                                     <span className="font-bold text-purple-600"> *</span>
                                 </Title>
-                                <InputNoTitle
+                                <input
                                     className="border border-gray-400 rounded-md focus:border-purple-400"
                                     size="70"
                                     height="40"
@@ -361,11 +361,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                         name="startDate"
                                         placeholder="YYYY.MM"
                                         onChange={handleChange}
-                                        className="w-full px-4 border border-dgray-400 rounded-lg py-1
-                                                    hover:border-dpurple-200 border-box peer
-                                                    active:border-dpurple-300 invalid:text-pink-600
-                                                    focus:border-dpurple-300 font-min1
-                                                    outline-none"
+                                        className="w-full px-4 py-1 border rounded-lg outline-none border-dgray-400 hover:border-dpurple-200 border-box peer active:border-dpurple-300 invalid:text-pink-600 focus:border-dpurple-300 font-min1"
                                     />
                                     <Title size="5"> - </Title>
                                     <input
@@ -373,11 +369,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                         name="endDate"
                                         placeholder="YYYY.MM"
                                         onChange={handleChange}
-                                        className="w-full px-4 border border-dgray-400 rounded-lg py-1
-                                                    hover:border-dpurple-200 border-box peer
-                                                    active:border-dpurple-300 invalid:text-pink-600
-                                                    focus:border-dpurple-300 font-min1
-                                                    outline-none"
+                                        className="w-full px-4 py-1 border rounded-lg outline-none border-dgray-400 hover:border-dpurple-200 border-box peer active:border-dpurple-300 invalid:text-pink-600 focus:border-dpurple-300 font-min1"
                                     />
                                 </div>
                             </div>
@@ -393,16 +385,14 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                                 <Title
                                                     size="6"
                                                     onClick={handleAddClick}
-                                                    className="text-dpurple-300 cursor-pointer text-right"
+                                                    className="text-right cursor-pointer text-dpurple-300"
                                                 >
                                                     +추가하기
                                                 </Title>
                                             )}
                                             <input
                                                 key={i}
-                                                className="w-full px-4 py-2 border border-dgray-400 border-box
-                                    rounded-md shadow-md outline-none resize-none font-min1
-                                    hover:border-dpurple-200 active:border-dpurple-300"
+                                                className="w-full px-4 py-2 border rounded-md shadow-md outline-none resize-none border-dgray-400 border-box font-min1 hover:border-dpurple-200 active:border-dpurple-300"
                                                 name="video"
                                                 value={x.videoLink}
                                                 onChange={(e) => handleInputChange(e, i)}
@@ -426,9 +416,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                             <div className="col-span-4 col-start-2 row-start-6 mt-8">
                                 <Title size="3">작품 설명</Title>
                                 <input
-                                    className="w-full px-4 py-4 border border-dgray-400 border-box
-                                    rounded-md shadow-md outline-none resize-none font-min1
-                                    hover:border-dpurple-200 active:border-dpurple-300"
+                                    className="w-full px-4 py-4 border rounded-md shadow-md outline-none resize-none border-dgray-400 border-box font-min1 hover:border-dpurple-200 active:border-dpurple-300"
                                     name="description"
                                     onChange={handleChange}
                                 />
@@ -501,7 +489,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                         </option>
                                     ))}
                                 </select>
-                                <div className="flex justify-end items-end gap-3 p-5">
+                                <div className="flex items-end justify-end gap-3 p-5">
                                     <Button size="2" color="1" onClick={createArtWork}>
                                         완료
                                     </Button>
