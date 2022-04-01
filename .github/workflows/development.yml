@@ -28,8 +28,8 @@ jobs:
                   echo "REACT_APP_KAKAO_URI=${{ secrets.REACT_APP_KAKAO_URI }}" >> .env
                   echo "REACT_APP_URL=${{ secrets.REACT_APP_URL }}" >> .env
                   echo "REACT_APP_MYPAGE=${{ secrets.REACT_APP_MYPAGE }}" >> .env
-                  echo "REACT_APP_GOOGLE_CLIENT_ID=${{ secrets.REACT_APP_KAKAO_CLIENTID }}" >> .env
-                  echo "REACT_APP_GOOGLE_REDIRECT_URI=${{ secrets.REACT_APP_GOOGLE_REDIRECT_URI }}" >> .env
+                  echo "REACT_APP_ARTWORK=${{ secrets.REACT_APP_ARTWORK }}" >> .env
+                  echo "REACT_APP_PORTFOLIO=${{ secrets.REACT_APP_PORTFOLIO }}" >> .env
                   cat .env
 
             - name: Build
