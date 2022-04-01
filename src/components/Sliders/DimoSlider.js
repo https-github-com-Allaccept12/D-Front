@@ -7,12 +7,25 @@ import { Image, Text, Icon } from "../../elements";
 export const Slide = tw(Slider)`
 w-full md:w-[32.5rem] lg:w-[40rem] xl:w-[78rem] 2xl:w-[106rem]
     mx-auto text-white pl-5
-    overflow-hidden text-lg
+    overflow-hidden text-lg 
 `;
 
 const SS = tw.div`
     
 `;
+
+const p = [
+    { 1: "1" },
+    { 2: "2" },
+    { 3: "3" },
+    { 4: "4" },
+    { 5: "5" },
+    { 6: "6" },
+    { 7: "7" },
+    { 8: "8" },
+    { 9: "9" },
+    { 10: "10" },
+];
 const PrevBtn = tw.button`
 z-10 text-white ml-10
 `;
@@ -69,21 +82,9 @@ const DimoSlider = (props) => {
                     <Icon name="ArrowL" iconSize="48" />{" "}
                 </PrevBtn>
                 <Slide {...settings} ref={slider}>
-                    <SS>
-                        <Slides type="dimo" list={list} />
-                    </SS>
-                    <SS>
-                        <Slides type="dimo" list={list} />
-                    </SS>
-                    <SS>
-                        <Slides type="dimo" list={list} />
-                    </SS>
-                    <SS>
-                        <Slides type="dimo" list={list} />
-                    </SS>
-                    <SS>
-                        <Slides type="dimo" list={list} />
-                    </SS>
+                    {p.map((n, idx) => {
+                        return <Slides type="dimo" list={list} key={idx} />;
+                    })}
                 </Slide>
                 <NextBtn onClick={() => slider?.current?.slickNext()}>
                     <Icon name="ArrowR" iconSize="48" />

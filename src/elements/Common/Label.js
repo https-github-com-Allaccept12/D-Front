@@ -72,6 +72,18 @@ const Btn = tw.button`
   
   `
           : ""};
+
+          ${(props) =>
+              props.color === "7"
+                  ? `
+        text-white
+        border border-white
+        disabled:border-dred-100
+        disabled:bg-white
+        disabled:text-dred-100
+        
+        `
+                  : ""}; 
 `;
 const IconColor = tw.span` 
 mr-2

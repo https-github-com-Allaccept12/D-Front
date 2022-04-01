@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Label, Profile, Title, Text, Subtitle, InputNoTitle, FollowBtn, Icon } from "../../../elements";
+import { Button, Label, Profile, Title, Text, Subtitle, InputNoTitle, FollowBtn, Answer } from "../../../elements";
 
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -37,8 +37,8 @@ const DimoQNAQuestion = (props) => {
     const { followed } = props;
     const history = useHistory();
     const [showAnswer, setShowAnswer] = useToggle();
-    const validMaxLen = (value) => value.length <= 30;
-    const name = useInput("", [validMaxLen]);
+    // const validMaxLen = (value) => value.length <= 30;
+    const name = useInput("", []);
 
     const commentSubmit = () => {
         const data = { comment: name.value };
@@ -128,19 +128,16 @@ const DimoQNAQuestion = (props) => {
                             <Profile size="5" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
                         </div>
                         <div className="w-4/5 ml-auto mt-12">
-                            <InputNoTitle
+                            <Answer
                                 value={name.value}
                                 onChange={name.onChange}
-                                is_error={name.errors}
-                                is_value={name.value.length}
                                 textarea
                                 is_submit
-                                cardsize="3"
-                                maxlen="30"
-                                width="2"
                                 onSubmit={commentSubmit}
+                                cardsize="3"
+                                width="20"
                             />
-                            <Button size="3" className="invisible xl:visible">
+                            <Button size="3" className="xl:invisible visible">
                                 제출
                             </Button>
                         </div>
