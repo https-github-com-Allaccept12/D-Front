@@ -186,14 +186,26 @@ const CreateMySpaceUser = (props) => {
                         onChange={email.onChange}
                         is_value={email.value.length}
                     ></Input>
-                    <Input cardSize="2" title="링크드인" value={linkedIn.value} onChange={linkedIn.onChange}></Input>
-                    <Input cardSize="2" title="브런치" value={brunch.value} onChange={brunch.onChange}></Input>
+                    <Input cardSize="2" 
+                        title="링크드인" 
+                        value={linkedIn.value} 
+                        onChange={linkedIn.onChange}
+                        placeholder="아이디만 입력해주세요">
+                    </Input>
+                    <Input 
+                        cardSize="2" 
+                        title="브런치" 
+                        value={brunch.value} 
+                        onChange={brunch.onChange}
+                        placeholder="아이디만 입력해주세요">
+                    </Input>
                     <Input
                         cardSize="2"
                         title="인스타그램"
                         value={instagram.value}
                         onChange={instagram.onChange}
-                    ></Input>
+                        placeholder="아이디만 입력해주세요">    
+                    </Input>
                 </div>
             </div>
             <div className="grid w-full py-10 bg-white place-items-center">
