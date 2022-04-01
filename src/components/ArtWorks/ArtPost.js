@@ -98,6 +98,7 @@ const ArtPost = (props) => {
                                         </div>
                                     </div>
                                 </div>
+                                {/* 여기가버튼끝 */}
                             </div>
                         </div>
                     </div>

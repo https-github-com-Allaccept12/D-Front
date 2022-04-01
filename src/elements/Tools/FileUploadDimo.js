@@ -38,9 +38,9 @@ function FileUploadDimo(props) {
 
     const files = myFiles.map((file) => (
         <List key={file.path}>
-            <span className="truncate w-1/2 md:w-2/3 md:max-w-xl lg:w-3/4 lg:max-w-2xl">{file.path}</span> -{" "}
+            <span className="truncate min-w-full w-1/2 md:w-2/3 md:max-w-xl lg:w-3/4 lg:max-w-2xl">{file.path}</span> -
             <span className="hidden">{file.size} bytes</span>
-            <button onClick={removeFile(file)} className="pl-3 text-tiny animate-pulse">
+            <button onClick={removeFile(file)} className="pl-3 text-tiny animate-pulse shrink-0">
                 삭제
             </button>
         </List>

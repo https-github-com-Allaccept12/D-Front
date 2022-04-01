@@ -7,7 +7,7 @@ import { Image, Text, Icon } from "../../elements";
 // 리액트 슬라이더 중에 제일 많이들쓰는거
 // 구글링해서 커스텀 css 만들기!
 export const Slide = tw(Slider)`
-    w-[61.5rem]
+md:w-[30rem] lg:w-[45.5rem] xl:w-[62.5rem]
     ${(props) =>
         props.artwork
             ? `bg-transparent
@@ -20,11 +20,11 @@ const SS = tw.div`
 `;
 
 const PrevBtnDetail = tw.button`
-  z-10 text-dgray-600
+  z-10 text-dgray-500
 `;
 
 const NextBtnDetail = tw.button`
-  z-10 text-dgray-600
+  z-10 text-dgray-500
 `;
 
 const MainSlider = (props) => {
@@ -44,9 +44,14 @@ const MainSlider = (props) => {
         // 0px 하면 슬라이드 끝쪽 이미지가 안잘림
         responsive: [
             // 반응형 웹 구현 옵션
-
             {
-                breakpoint: 1023,
+                breakpoint: 1280,
+                settings: {
+                    slidesToShow: 2,
+                },
+            },
+            {
+                breakpoint: 1024,
                 settings: {
                     slidesToShow: 1,
                 },
@@ -54,36 +59,35 @@ const MainSlider = (props) => {
         ],
     };
 
-    if (artwork)
-        return (
-            <>
-                <div className="flex-row hidden md:flex">
-                    <PrevBtnDetail onClick={() => slider?.current?.slickPrev()}>
-                        <Icon name="ArrowL" iconSize="48" />{" "}
-                    </PrevBtnDetail>
-                    <Slide {...DetailSettings} ref={slider}>
-                        <SS>
-                            <Slides type="artwork" />
-                        </SS>
-                        <SS>
-                            <Slides type="artwork" />
-                        </SS>
-                        <SS>
-                            <Slides type="artwork" />
-                        </SS>
-                        <SS>
-                            <Slides type="artwork" />
-                        </SS>
-                        <SS>
-                            <Slides type="artwork" />
-                        </SS>
-                    </Slide>
-                    <NextBtnDetail onClick={() => slider?.current?.slickNext()}>
-                        <Icon name="ArrowR" iconSize="48" />
-                    </NextBtnDetail>
-                </div>
-            </>
-        );
+    return (
+        <>
+            <div className="flex-row hidden md:flex">
+                <PrevBtnDetail onClick={() => slider?.current?.slickPrev()}>
+                    <Icon name="ArrowL" iconSize="48" />{" "}
+                </PrevBtnDetail>
+                <Slide {...DetailSettings} ref={slider}>
+                    <SS>
+                        <Slides type="artwork" />
+                    </SS>
+                    <SS>
+                        <Slides type="artwork" />
+                    </SS>
+                    <SS>
+                        <Slides type="artwork" />
+                    </SS>
+                    <SS>
+                        <Slides type="artwork" />
+                    </SS>
+                    <SS>
+                        <Slides type="artwork" />
+                    </SS>
+                </Slide>
+                <NextBtnDetail onClick={() => slider?.current?.slickNext()}>
+                    <Icon name="ArrowR" iconSize="48" />
+                </NextBtnDetail>
+            </div>
+        </>
+    );
 };
 
 MainSlider.defaultProps = {

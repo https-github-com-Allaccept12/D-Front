@@ -29,21 +29,21 @@ const Dimo = () => {
                     <div className="xl:grid xl:grid-cols-4 ">
                         <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
                             {b === "qna" ? (
-                                <Title size="6" className="text-dpurple-200">
+                                <Title size="5" className="text-dpurple-200">
                                     <Link to="/dimo/qna/all">QNA</Link>
                                 </Title>
                             ) : (
-                                <Title size="6">
+                                <Title size="5">
                                     <Link to="/dimo/qna/all">QNA</Link>
                                 </Title>
                             )}
 
                             {b === "shared" ? (
-                                <Title size="6" className="text-dpurple-200">
+                                <Title size="5" className="text-dpurple-200">
                                     <Link to="/dimo/shared/all">정보공유</Link>
                                 </Title>
                             ) : (
-                                <Title size="6">
+                                <Title size="5">
                                     <Link to="/dimo/shared/all">정보공유</Link>
                                 </Title>
                             )}
@@ -78,7 +78,7 @@ const Dimo = () => {
 
                         <div className="w-full xl:row-start-3 xl:col-start-2 xl:col-end-5">
                             <div className="w-full h-[200rem]">
-                                <DimoList list={b} key="key"/>
+                                <DimoList list={b} key="key" />
                                 <CategoryMini list={b} />
                                 <Link
                                     to={{
@@ -106,21 +106,21 @@ const Dimo = () => {
                     <div className="xl:grid xl:grid-cols-4 ">
                         <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
                             {b === "qna" ? (
-                                <Title size="6" className="text-dpurple-200">
+                                <Title size="5" className="text-dpurple-200">
                                     <Link to="/dimo/qna/all">QNA</Link>
                                 </Title>
                             ) : (
-                                <Title size="6">
+                                <Title size="5">
                                     <Link to="/dimo/qna/all">QNA</Link>
                                 </Title>
                             )}
 
                             {b === "shared" ? (
-                                <Title size="6" className="text-dpurple-200">
+                                <Title size="5" className="text-dpurple-200">
                                     <Link to="/dimo/shared/all">정보공유</Link>
                                 </Title>
                             ) : (
-                                <Title size="6">
+                                <Title size="5">
                                     <Link to="/dimo/shared/all">정보공유</Link>
                                 </Title>
                             )}
