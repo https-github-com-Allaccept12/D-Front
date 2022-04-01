@@ -44,14 +44,9 @@ export const artworkDetailLoad = createAsyncThunk(
 export const PortfolioLoad = createAsyncThunk(
   "/PortfolioLoad",
   async ({ owner_account_id, dispatch }) => {
-    console.log('here');
+    console.log('owner: ', owner_account_id);
     await axios
-      // .get(process.env.REACT_APP_MYPAGE+'/career-feed', {
-      .get(process.env.REACT_APP_PORTFOLIO, {
-        params: {
-          owner_account_id: owner_account_id
-        },
-      })
+      .get(process.env.REACT_APP_PORTFOLIO+`?owner_account_id=${owner_account_id}`)
       .then((res) => {
         console.log(res);
         const porfolio_data = res.data.data;

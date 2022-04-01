@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { preview } from "../../redux/modules/image";
 import { checknickname } from "../../redux/modules/checkNickname";
 import { createProfile } from "../../redux/modules/createProfile";
-import { setCookie } from "../../shared/cookie";
 import { Button, Title, Image, Input, Text } from "../../elements";
 import set_profile from "../../static/images/set_profile.svg";
 import { useHistory, Link } from "react-router-dom";
@@ -38,8 +37,13 @@ p-4 pl-10 flex gap-3 flex-col
 
 const CreateProfile = (props) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     let profile = useSelector((state) => state.image.url);
     let image = useSelector((state) => state.image.file);
+    // if (!image){
+    //     image = ""
+    // }
+    // console.log(image)
     // let tendencyResult = useSelector((state) => state.tendency.tendency);
     // let interestResult = useSelector((state) => state.interests.interests);
     const [nicknameState, setNicknameState] = useState("");
@@ -82,23 +86,28 @@ const CreateProfile = (props) => {
     };
 
     const SendProfile = () => {
+        if (nicknameState !== "available"){
+            alert("닉네임을 확인해주세요.\n닉네임은 3~10자 영어와 숫자로 이루어져야 합니다.")
+            return
+        }
         const formData = new FormData();
         const data = {
             nickname: nickname.value,
-            intro_content: "ㅋ",
+            intro_content: " ",
             work_email: email.value,
             linked_in: linkedIn.value,
             brunch: brunch.value,
             insta: instagram.value,
             job: selected,
             // work_time: 0,
-            work_time: "1",
+            work_time: " ",
         };
         console.log(data);
         formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
         formData.append("imgFile", image);
         // dispatch(createProfile(data));
         dispatch(createProfile(formData));
+        history.replace('/CompleteProfile');
         // setCookie("nickname", nickname.value);
     };
 
@@ -214,11 +223,11 @@ const CreateProfile = (props) => {
                             ></Input>
                         </Contacts>
                         <div className="pb-10 my-10">
-                            <Link to="/CompleteProfile">
+                            {/* <Link to="/CompleteProfile"> */}
                                 <Button size="3" color="1" onClick={SendProfile}>
                                     작성 완료
                                 </Button>
-                            </Link>
+                            {/* </Link> */}
                         </div>
                     </Body>
                 </Grid>

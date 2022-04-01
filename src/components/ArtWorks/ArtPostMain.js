@@ -14,7 +14,7 @@ flex justify-center items-center flex-col shrink-0
 const ArtPostMain = (props) => {
     const dispatch = useDispatch();
     dispatch(artworkDetailLoad);
-    const { profile, nickname, thumnail, is_like, like_count, id } = props;
+    const { profile, nickname, thumbnail, is_like, like_count, id } = props;
     const handleClickArtWork = (id) => {
         console.log(id.id);
         dispatch(artworkDetailLoad(id.id));
@@ -31,7 +31,7 @@ const ArtPostMain = (props) => {
                         handleClickArtWork({ id });
                     }}
                 >
-                    <Thumbnail src={thumnail} size="7" />
+                    <Thumbnail src={thumbnail} size="7" />
                 </button>
                 <div className="flex flex-row items-center justify-between flex-shrink-0 w-full px-2 mt-1">
                     <div className="flex flex-row items-center gap-2">

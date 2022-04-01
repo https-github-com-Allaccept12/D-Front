@@ -36,7 +36,7 @@ const ArtWorkFilter = (props) => {
                     <TabBtn>👗 패션</TabBtn>
                     <TabBtn>🎮 게임/캐릭터 디자인</TabBtn>
                     <TabBtn>🏠 건축/인테리어/환경 디자인</TabBtn>
-                    <TabBtn>🗃️ 기타</TabBtn>
+                    {/* <TabBtn>🗃️ 기타</TabBtn> */}
                 </Box>
             </Grid>
         </>

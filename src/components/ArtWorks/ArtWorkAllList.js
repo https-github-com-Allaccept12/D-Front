@@ -35,7 +35,7 @@ const ArtWorkAllList = (props) => {
                     <ArtPostMain
                         profile={artworks[i].account_profile}
                         nickname={artworks[i].account_nickname}
-                        thumnail={artworks[i].img}
+                        thumbnail={artworks[i].img}
                         is_like={artworks[i].is_like}
                         like_count={artworks[i].like_count}
                         id={artworks[i].artwork_id}
