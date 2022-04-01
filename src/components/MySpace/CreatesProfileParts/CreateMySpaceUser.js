@@ -9,35 +9,51 @@ import { useHistory, Link } from "react-router-dom";
 import FileUpload from "../../../elements/Tools/FileUpload";
 import { useInput } from "../../../hooks";
 import Dropzone, { useDropzone } from "react-dropzone";
+import axios from "axios";
 
-const CreateProfile = (props) => {
+const CreateMySpaceUser = (props) => {
     const { info } = props;
     const dispatch = useDispatch();
+    const nicknameValidMaxLen = (value) => value.length <= 10;
+    let nickTemp = ""
+    let emailTemp = ""
+    let linkedTemp = ""
+    let brunchTemp = ""
+    let InstaTemp = ""
+    let job = ""
     useEffect(() => {
         dispatch(preview(info.profile_img));
-    }, []);
+    }, [])
+    if (info){
+        nickTemp = info.nickname
+        emailTemp = info.work_email
+        linkedTemp = info.linked_in
+        brunchTemp = info.brunch
+        InstaTemp = info.insta
+        job = info.job
+    }
+    // console.log(nickTemp);
+    const nickname = useInput(nickTemp, [nicknameValidMaxLen]);
+    const email = useInput(emailTemp, []);
+    const linkedIn = useInput(linkedTemp, []);
+    const brunch = useInput(brunchTemp, []);
+    const instagram = useInput(InstaTemp, []);
     const profile = useSelector((state) => state.image.url);
     const image = useSelector((state) => state.image.file);
     const [nicknameState, setNicknameState] = useState("");
-    const nicknameValidMaxLen = (value) => value.length <= 10;
-    const nickname = useInput(info.nickname, [nicknameValidMaxLen]);
-    const name = useInput("", []);
-    const email = useInput(info.work_email, []);
-    const linkedIn = useInput(info.linked_in, []);
-    const brunch = useInput(info.brunch, []);
-    const instagram = useInput(info.insta, []);
+    
     const JobOptions = [
-        { value: "UIUX", label: "UI & UX" },
-        { value: "fashion", label: "패션" },
-        { value: "typography", label: "타이포그래피" },
-        { value: "crafts", label: "공예" },
-        { value: "pakage", label: "패키지" },
-        { value: "graphic", label: "그래픽" },
-        { value: "video", label: "영상/모션" },
-        { value: "product", label: "제품" },
-        { value: "game", label: "게임/캐릭터" },
-        { value: "branding", label: "브랜딩/편집" },
-        { value: "interior", label: "건축/인테리어/환경" },
+        { value: "UI & UX", label: "UI & UX" },
+        { value: "패션", label: "패션" },
+        { value: "타이포그래피", label: "타이포그래피" },
+        { value: "공예", label: "공예" },
+        { value: "패키지", label: "패키지" },
+        { value: "그래픽", label: "그래픽" },
+        { value: "영상/모션", label: "영상/모션" },
+        { value: "제품", label: "제품" },
+        { value: "게임/캐릭터", label: "게임/캐릭터" },
+        { value: "브랜딩/편집", label: "브랜딩/편집" },
+        { value: "건축/인테리어/환경", label: "건축/인테리어/환경" },
     ];
 
     const [selected, setSelected] = useState("");
@@ -52,9 +68,10 @@ const CreateProfile = (props) => {
         dispatch(checknickname({ map, setNicknameState }));
     };
 
-    const deleteProfile = () => {
-        dispatch(preview(""));
-    };
+
+    // const deleteProfile = () => {
+    //     dispatch(preview(""));
+    // };
 
     const onDrop = useCallback((acceptedFile) => {
         const reader = new FileReader();
@@ -70,24 +87,28 @@ const CreateProfile = (props) => {
         const formData = new FormData();
         let data = {
             nickname: nickname.value,
-            // intro_content: introduce.value,
-            name: name.value,
+            // intro_content: intro,
+            work_time: " ",
+            // name: name.value,
             work_email: email.value,
             linked_in: linkedIn.value,
             brunch: brunch.value,
             insta: instagram.value,
             job: selected,
         };
+        console.log(data);
+        console.log(image);
         formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
-        formData.append("profile_img", image);
+        formData.append("imgFile", image);
         // dispatch(createProfile(data));
+        console.log(formData);
         dispatch(createProfile(formData));
     };
 
     return (
         <>
-            <div className="xl:grid gap-3 mt-10 grid-row-3 p-2">
-                <div className="xl:grid row-start-1 row-end-2 mb-10 gap-10">
+            <div className="gap-3 p-2 mt-10 xl:grid grid-row-3">
+                <div className="row-start-1 row-end-2 gap-10 mb-10 xl:grid">
                     <Title size="4">내 정보</Title>
                     <div className="grid col-start-1 col-end-2 place-content-center">
                         <Dropzone
@@ -112,7 +133,7 @@ const CreateProfile = (props) => {
                             )}
                         </Dropzone>
                     </div>
-                    <div className="xl:grid col-start-2 col-end-5">
+                    <div className="col-start-2 col-end-5 xl:grid">
                         <div className="flex flex-col mt-10">
                             <Input
                                 cardSize="2"
@@ -129,7 +150,7 @@ const CreateProfile = (props) => {
                                 <p className="pr-16 text-xs text-right text-red-600">이미 사용 중인 닉네임 입니다.</p>
                             )}
                         </div>
-                        <div className="mt-10">
+                        {/* <div className="mt-10">
                             <Input
                                 cardSize="2"
                                 title="이름"
@@ -138,15 +159,15 @@ const CreateProfile = (props) => {
                                 is_value={name.value.length}
                                 // placeholder={info.}
                             />
-                        </div>
-                        <div className=" flex flex-row items-center justify-between mt-10">
+                        </div> */}
+                        <div className="flex flex-row items-center justify-between mt-10 ">
                             <Subtitle size="2">분야</Subtitle>
                             <select
-                                className="border border-dgray-400 rounded-lg h-12 ml-4 px-5 font-min1 text-base outline-none ring-1 ring-dpurple-200"
+                                className="h-12 px-5 ml-4 text-base border rounded-lg outline-none border-dgray-400 font-min1 ring-1 ring-dpurple-200"
                                 onChange={handleChangeSelect}
                                 value={selected}
                             >
-                                <option>{info.job}</option>
+                                <option>{job}</option>
                                 {JobOptions.map((item, index) => (
                                     <option key={index} value={item.value}>
                                         {item.label}
@@ -156,7 +177,7 @@ const CreateProfile = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className=" flex flex-col gap-3">
+                <div className="flex flex-col gap-3 ">
                     <Title size="4">Contact</Title>
                     <Input
                         cardSize="2"
@@ -176,10 +197,10 @@ const CreateProfile = (props) => {
                 </div>
             </div>
             <div className="grid w-full py-10 bg-white place-items-center">
-                <Button onClick={SendProfile}>다음</Button>
+                <Button onClick={SendProfile}>저장</Button>
             </div>
         </>
     );
 };
 
-export default CreateProfile;
+export default CreateMySpaceUser;

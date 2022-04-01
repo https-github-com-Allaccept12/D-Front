@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { PortfolioLoad } from "../../../redux/modules/artWork";
 import { Button, Title, EditMyArtWork } from "../../../elements";
 import tw from "tailwind-styled-components"
@@ -13,11 +13,14 @@ const MyArtWork = (props) => {
   const dispatch = useDispatch();
   const { info } = props
   const owner_account_id = info;
-  console.log(owner_account_id);
+  
   useEffect(() => {
     dispatch(PortfolioLoad({owner_account_id, dispatch}))
   }, [info])
-  
+  const portfolios = useSelector((state) => state.post.portfolios);
+  console.log(portfolios)
+
+
   return (
     <>
     <>
@@ -30,13 +33,13 @@ const MyArtWork = (props) => {
         </div>
     </>
     <div className="flex flex-row flex-wrap items-center justify-center gap-6">
-     
+    {portfolios.map((value) => <EditMyArtWork src={value.img} size="1"/>)}
+{/* <EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
 <EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
 <EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
 <EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
 <EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
-<EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
-<EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
+<EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" /> */}
    </div>
     </>
   );

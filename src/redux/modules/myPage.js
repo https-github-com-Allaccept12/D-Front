@@ -24,6 +24,24 @@ export const myPageLoad = createAsyncThunk(
   }
 );
 
+export const historyLoad = createAsyncThunk(
+  "/historyLoad",
+  async ({ owner_account_id, dispatch }) => {
+    await axios
+      .get(process.env.REACT_APP_MYPAGE+'/history', {
+        params: {
+          owner_account_id: owner_account_id
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch(history(res.data.data));
+      })
+      .catch((err) => console.log(err));
+  }
+);
+
+
 export const myPageSlice = createSlice({
   name: "myPage",
   initialState: {},
@@ -31,6 +49,9 @@ export const myPageSlice = createSlice({
     myPage: (state, action) => {
       state.myPage = action.payload;
     },
+    history: (state, action) => {
+      state.history = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -43,9 +64,19 @@ export const myPageSlice = createSlice({
       .addCase(myPageLoad.rejected, (state, action) => {
         console.log(action.error.message);
         console.log("create rejected");
+      })
+      .addCase(historyLoad.pending, (state, action) => {
+        console.log("pending");
+      })
+      .addCase(historyLoad.fulfilled, (state, action) => {
+        console.log("create fulfiled");
+      })
+      .addCase(historyLoad.rejected, (state, action) => {
+        console.log(action.error.message);
+        console.log("create rejected");
       });
   },
 });
 
-export const { myPage } = myPageSlice.actions;
+export const { myPage, history } = myPageSlice.actions;
 export default myPageSlice.reducer;

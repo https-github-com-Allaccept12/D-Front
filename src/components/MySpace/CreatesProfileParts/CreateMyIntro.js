@@ -58,7 +58,7 @@ const CreateMyIntro = (props) => {
                     />
                 </div>
             </div>
-            <Button onClick={SendIntro}>다음</Button>
+            <Button onClick={SendIntro}>저장</Button>
         </>
     );
 };

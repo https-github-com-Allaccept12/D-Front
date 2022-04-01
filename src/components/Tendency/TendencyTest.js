@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateTendency } from "../../redux/modules/tendency.js";
 import { Title, Text } from "../../elements";
@@ -40,7 +40,8 @@ const mbti = { I: 0, E: 0, N: 0, S: 0, T: 0, F: 0, P: 0, J: 0 };
 let mbti_s = "";
 
 const TendencyTest = (props) => {
-    let designation = "";
+    // let designation = "";
+    const [designation, setDesignation] = useState("");
     // const token = useSelector((state) => state.user.user);
     const token = sessionStorage.getItem("access_token");
     const history = useHistory();
@@ -49,19 +50,28 @@ const TendencyTest = (props) => {
         .filter((key) => mbti[key] >= 2)
         .join("");
     // console.log(mbti_s);
-    if (mbti_s === "ISTJ" || mbti_s === "ESTJ" || mbti_s === "ISFJ") {
-        designation = "디테일 장인";
-    } else if (mbti_s === "ENTJ" || mbti_s === "ESTP") {
-        designation = "대담한 혁신가";
-    } else if (mbti_s === "INFP" || mbti_s === "INFJ") {
-        designation = "꿈꾸는 예술가";
-    } else if (mbti_s === "INTP" || mbti_s === "ISTP" || mbti_s === "INTJ") {
-        designation = "창의적인 발명가";
-    } else if (mbti_s === "ENTP" || mbti_s === "ENFP" || mbti_s === "ESFP") {
-        designation = "명랑한 모험가";
-    } else if (mbti_s === "ISFP" || mbti_s === "ENFJ" || mbti_s === "ESFJ") {
-        designation = "부드러운 중재자";
-    }
+    useEffect(() => {
+        if (mbti_s === "ISTJ" || mbti_s === "ESTJ" || mbti_s === "ISFJ") {
+            // designation = "디테일 장인";
+            setDesignation("디테일 장인");
+        } else if (mbti_s === "ENTJ" || mbti_s === "ESTP") {
+            // designation = "대담한 혁신가";
+            setDesignation("대담한 혁신가");
+        } else if (mbti_s === "INFP" || mbti_s === "INFJ") {
+            // designation = "꿈꾸는 예술가";
+            setDesignation("꿈꾸는 예술가");
+        } else if (mbti_s === "INTP" || mbti_s === "ISTP" || mbti_s === "INTJ") {
+            // designation = "창의적인 발명가";
+            setDesignation("창의적인 발명가");
+        } else if (mbti_s === "ENTP" || mbti_s === "ENFP" || mbti_s === "ESFP") {
+            // designation = "명랑한 모험가";
+            setDesignation("명랑한 모험가");
+        } else if (mbti_s === "ISFP" || mbti_s === "ENFJ" || mbti_s === "ESFJ") {
+            // designation = "부드러운 중재자";
+            setDesignation("부드러운 중재자");
+        }
+    }, [mbti_s])
+    
 
     // const dispatch = useDispatch();
     // const SendTendency = () => {

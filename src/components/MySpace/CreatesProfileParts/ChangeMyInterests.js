@@ -63,7 +63,7 @@ const ChangeMyInterests = (props) => {
             <Grid>
                 <Body>
                     <div
-                        className="grid items-end h-48 col-start-1 col-end-4 row-start-1 row-end-3 px-5 py-4 md:mx-1 my-1 text-center rounded-md shadow-lg justify-items-start w-full xl:w-72"
+                        className="grid items-end w-full h-48 col-start-1 col-end-4 row-start-1 row-end-3 px-5 py-4 my-1 text-center rounded-md shadow-lg md:mx-1 justify-items-start xl:w-72"
                         onClick={handleClicked}
                     >
                         <div className="flex-col my-3">
@@ -72,7 +72,7 @@ const ChangeMyInterests = (props) => {
                         </div>
                     </div>
                     <div
-                        className="grid items-end w-full xl:w-48 h-48 col-start-4 col-end-6 row-start-1 row-end-3 px-6 py-4 md:mx-1 my-1 text-center rounded-md shadow-lg justify-items-start"
+                        className="grid items-end w-full h-48 col-start-4 col-end-6 row-start-1 row-end-3 px-6 py-4 my-1 text-center rounded-md shadow-lg xl:w-48 md:mx-1 justify-items-start"
                         onClick={handleClicked}
                     >
                         <div className="flex-col my-3">
@@ -81,7 +81,7 @@ const ChangeMyInterests = (props) => {
                         </div>
                     </div>
                     <div
-                        className="grid items-end w-full xl:w-48 col-start-6 col-end-8 row-start-1 row-end-4 px-6 py-4 md:mx-1 my-1 lg:mr-8 text-center rounded-md shadow-lg justify-items-start h-74"
+                        className="grid items-end w-full col-start-6 col-end-8 row-start-1 row-end-4 px-6 py-4 my-1 text-center rounded-md shadow-lg xl:w-48 md:mx-1 lg:mr-8 justify-items-start h-74"
                         onClick={handleClicked}
                     >
                         <div className="flex-col my-3">
@@ -90,7 +90,7 @@ const ChangeMyInterests = (props) => {
                         </div>
                     </div>
                     <div
-                        className="grid items-end w-full xl:w-48 h-48 col-start-1 col-end-3 row-start-3 row-end-5 px-6 py-4 md:mx-1 my-1 text-center rounded-md shadow-lg justify-items-start"
+                        className="grid items-end w-full h-48 col-start-1 col-end-3 row-start-3 row-end-5 px-6 py-4 my-1 text-center rounded-md shadow-lg xl:w-48 md:mx-1 justify-items-start"
                         onClick={handleClicked}
                     >
                         <div className="flex-col my-3">
@@ -99,7 +99,7 @@ const ChangeMyInterests = (props) => {
                         </div>
                     </div>
                     <div
-                        className="grid items-end col-start-3 col-end-6 row-start-3 row-end-6 px-6 py-4 md:mx-1 my-1 text-center rounded-md shadow-lg justify-items-start w-full xl:w-74 h-74"
+                        className="grid items-end w-full col-start-3 col-end-6 row-start-3 row-end-6 px-6 py-4 my-1 text-center rounded-md shadow-lg md:mx-1 justify-items-start xl:w-74 h-74"
                         onClick={handleClicked}
                     >
                         <div className="flex-col my-3">
@@ -108,7 +108,7 @@ const ChangeMyInterests = (props) => {
                         </div>
                     </div>
                     <div
-                        className="grid items-end w-full xl:w-48 h-48 col-start-6 col-end-8 row-start-4 row-end-6 px-6 py-4 md:mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start"
+                        className="grid items-end w-full h-48 col-start-6 col-end-8 row-start-4 row-end-6 px-6 py-4 my-1 mr-8 text-center rounded-md shadow-lg xl:w-48 md:mx-1 justify-items-start"
                         onClick={handleClicked}
                     >
                         <div className="flex-col my-3">
@@ -117,7 +117,7 @@ const ChangeMyInterests = (props) => {
                         </div>
                     </div>
                     <div
-                        className="grid items-end w-full xl:w-48 col-start-1 col-end-3 row-start-5 row-end-7 px-6 py-4 md:mx-1 my-1 text-center rounded-md shadow-lg justify-items-start h-74"
+                        className="grid items-end w-full col-start-1 col-end-3 row-start-5 row-end-7 px-6 py-4 my-1 text-center rounded-md shadow-lg xl:w-48 md:mx-1 justify-items-start h-74"
                         onClick={handleClicked}
                     >
                         <div className="flex-col my-3">
@@ -126,7 +126,7 @@ const ChangeMyInterests = (props) => {
                         </div>
                     </div>
                     <div
-                        className="grid items-end w-full xl:w-48 h-48 col-start-3 col-end-5 row-start-6 row-end-7 px-6 py-4 md:mx-1 my-1 text-center rounded-md shadow-lg justify-items-start"
+                        className="grid items-end w-full h-48 col-start-3 col-end-5 row-start-6 row-end-7 px-6 py-4 my-1 text-center rounded-md shadow-lg xl:w-48 md:mx-1 justify-items-start"
                         onClick={handleClicked}
                     >
                         <div className="flex-col my-3">
@@ -135,7 +135,7 @@ const ChangeMyInterests = (props) => {
                         </div>
                     </div>
                     <div
-                        className="grid items-end h-48 col-start-5 col-end-8 row-start-6 row-end-7 px-6 py-4 md:mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start w-full xl:w-72 md:ml-2"
+                        className="grid items-end w-full h-48 col-start-5 col-end-8 row-start-6 row-end-7 px-6 py-4 my-1 mr-8 text-center rounded-md shadow-lg md:mx-1 justify-items-start xl:w-72 md:ml-2"
                         onClick={handleClicked}
                     >
                         <div className="flex-col my-3">
@@ -144,7 +144,7 @@ const ChangeMyInterests = (props) => {
                         </div>
                     </div>
                     <div
-                        className="grid items-end h-48 col-start-1 col-end-4 row-start-7 px-6 py-4 md:mx-1 my-1 text-center rounded-md shadow-lg justify-items-start row-end-8 w-full xl:w-78"
+                        className="grid items-end w-full h-48 col-start-1 col-end-4 row-start-7 px-6 py-4 my-1 text-center rounded-md shadow-lg md:mx-1 justify-items-start row-end-8 xl:w-78"
                         onClick={handleClicked}
                     >
                         <div className="flex-col my-3">
@@ -153,7 +153,7 @@ const ChangeMyInterests = (props) => {
                         </div>
                     </div>
                     <div
-                        className="grid items-end h-48 col-start-4 col-end-8 row-start-7 px-6 py-4 md:mx-1 my-1 mr-8 text-center rounded-md shadow-lg justify-items-start row-end-8 w-full xl:w-96 lg:ml-3"
+                        className="grid items-end w-full h-48 col-start-4 col-end-8 row-start-7 px-6 py-4 my-1 mr-8 text-center rounded-md shadow-lg md:mx-1 justify-items-start row-end-8 xl:w-96 lg:ml-3"
                         onClick={handleClicked}
                     >
                         <div className="flex-col my-3">

@@ -87,7 +87,7 @@ const CreateProfile = (props) => {
 
     const SendProfile = () => {
         if (nicknameState !== "available"){
-            alert("닉네임을 확인해주세요.\n닉네임은 3~10자 영어와 숫자로 이루어져야 합니다.")
+            alert("닉네임을 확인해주세요.\n닉네임은 3~10자 입니다.")
             return
         }
         const formData = new FormData();
@@ -105,7 +105,7 @@ const CreateProfile = (props) => {
         console.log(data);
         formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
         formData.append("imgFile", image);
-        // dispatch(createProfile(data));
+        console.log(formData);
         dispatch(createProfile(formData));
         history.replace('/CompleteProfile');
         // setCookie("nickname", nickname.value);
@@ -189,7 +189,7 @@ const CreateProfile = (props) => {
                                 </div>
                             </Names>
                         </MyPic>
-                        <Contacts>
+                        {/* <Contacts>
                             <Title size="3" className="pb-5 pl-3">
                                 Contact
                             </Title>
@@ -221,7 +221,7 @@ const CreateProfile = (props) => {
                                 onChange={instagram.onChange}
                                 is_value={instagram.value.length}
                             ></Input>
-                        </Contacts>
+                        </Contacts> */}
                         <div className="pb-10 my-10">
                             {/* <Link to="/CompleteProfile"> */}
                                 <Button size="3" color="1" onClick={SendProfile}>
