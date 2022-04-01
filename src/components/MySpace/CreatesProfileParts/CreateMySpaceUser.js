@@ -22,10 +22,10 @@ const CreateProfile = (props) => {
   const nicknameValidMaxLen = (value) => value.length <= 10;
   const nickname = useInput(info.nickname, [nicknameValidMaxLen]);
   const name = useInput("", []);
-  const email = useInput("", []);
+  const email = useInput(info.work_email, []);
   const linkedIn = useInput(info.linked_in, []);
   const brunch = useInput(info.brunch, []);
-  const instagram = useInput(info.instagram, []);
+  const instagram = useInput(info.insta, []);
   const JobOptions = [
     { value: "UIUX", label: "UI & UX" },
     { value: "fashion", label: "패션" },
