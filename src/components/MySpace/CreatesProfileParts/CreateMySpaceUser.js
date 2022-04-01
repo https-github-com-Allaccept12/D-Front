@@ -11,12 +11,9 @@ import { useInput } from "../../../hooks";
 import Dropzone, { useDropzone } from "react-dropzone";
  
 const CreateProfile = (props) => {
-  const {info} = props
+  const { info } = props;
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(preview(info.profile_img));
-  }, [])
-  const profile = useSelector((state) => state.image.url);
+  const profile = info.profile_img;
   const image = useSelector((state) => state.image.file);
   const [nicknameState, setNicknameState] = useState("");
   const nicknameValidMaxLen = (value) => value.length <= 10;
@@ -27,17 +24,17 @@ const CreateProfile = (props) => {
   const brunch = useInput(info.brunch, []);
   const instagram = useInput(info.instagram, []);
   const JobOptions = [
-    { value: "UIUX", label: "UI & UX" },
-    { value: "fashion", label: "패션" },
-    { value: "typography", label: "타이포그래피" },
-    { value: "crafts", label: "공예" },
-    { value: "pakage", label: "패키지" },
-    { value: "graphic", label: "그래픽" },
-    { value: "video", label: "영상/모션" },
-    { value: "product", label: "제품" },
-    { value: "game", label: "게임/캐릭터" },
-    { value: "branding", label: "브랜딩/편집" },
-    { value: "interior", label: "건축/인테리어/환경" },
+      { value: "UIUX", label: "UI & UX" },
+      { value: "fashion", label: "패션" },
+      { value: "typography", label: "타이포그래피" },
+      { value: "crafts", label: "공예" },
+      { value: "pakage", label: "패키지" },
+      { value: "graphic", label: "그래픽" },
+      { value: "video", label: "영상/모션" },
+      { value: "product", label: "제품" },
+      { value: "game", label: "게임/캐릭터" },
+      { value: "branding", label: "브랜딩/편집" },
+      { value: "interior", label: "건축/인테리어/환경" },
   ];
 
   const [selected, setSelected] = useState("");

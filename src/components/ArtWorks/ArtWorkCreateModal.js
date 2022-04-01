@@ -177,8 +177,8 @@ const ArtWorkCreateModal = ({ onClose }) => {
                         ></button>
                     </div>
                     <div className="w-full h-full p-4 overflow-x-hidden overflow-y-scroll bg-white xl:grid xl:col-start-2 modal-body">
-                        <div className="flex flex-col items-center justify-center md:justify-start xl:ml-24">
-                            <p className="text-2xl">프로젝트 표지</p>
+                        <div className="flex flex-col items-center justify-center md:justify-start xl:ml-24 ">
+                            <Title size="4">프로젝트 표지</Title>
                             <Dropzone
                                 multiple={false}
                                 accept={"image/gif, image/jpg, image/jpeg, image/png"}
@@ -201,7 +201,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                 )}
                             </Dropzone>
                         </div>
-                        <div className="items-center h-screen col-span-2 col-start-1 col-end-4 row-start-1 bg-white xl:grid xl:grid-cols-6 md:col-start-2 grid-rows-10">
+                        <div className="items-center h-screen col-span-2 col-start-1 col-end-4 row-start-1 gap-3 bg-white xl:grid xl:grid-cols-6 md:col-start-2 grid-rows-10">
                             <div className="col-span-4 col-start-2 col-end-6 row-start-1">
                                 <Title size="3">
                                     프로젝트 제목
