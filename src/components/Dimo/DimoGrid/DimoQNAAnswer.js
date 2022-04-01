@@ -112,7 +112,11 @@ const DimoQNAAnswer = (props) => {
                         <UnderLine />
                         <div className="bg-white flex p-5 xl:px-10 2xl:px-20 gap-3">
                             <div>
-                                <Profile size="6" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
+                                <Profile
+                                    size="6"
+                                    src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
+                                    className="hidden lg:flex"
+                                />
                             </div>
                             <div className="w-full ml-auto">
                                 <InputNoTitle

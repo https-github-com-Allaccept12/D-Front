@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Label, Profile, Title, Text, Subtitle, InputNoTitle, Icon } from "../../../elements";
+import { Button, Label, Profile, Title, Text, Answer, InputNoTitle, Icon } from "../../../elements";
 import { Comment } from "../../Comment";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -38,9 +38,15 @@ bg-dgray-200 md:p-10 xl:px-20
 `;
 
 const DimoSharedDetail = (props) => {
+    const history = useHistory();
     const [showAnswer, setShowAnswer] = useToggle();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
+    const commentSubmit = () => {
+        const data = { comment: name.value };
+        history.goBack();
+        //여기에 뭔가 돌아가기버튼...
+    };
     return (
         <>
             <Bg>
@@ -104,21 +110,28 @@ const DimoSharedDetail = (props) => {
                 <Card>
                     <div className="bg-dgray-200 rounded-md flex p-5 xl:px-10 2xl:px-20 mt-20">
                         <div>
-                            <Title size="5">댓글 남기기</Title>
-                            <Profile size="5" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
+                            <Title size="6" className="hidden lg:flex">
+                                댓글 남기기
+                            </Title>
+                            <Profile
+                                size="5"
+                                src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
+                                className="hidden lg:flex"
+                            />
                         </div>
-                        <div className="w-4/5 ml-auto mt-12">
-                            <InputNoTitle
+                        <div className="w-full lg:w-11/12 ml-auto mt-12">
+                            <Answer
                                 value={name.value}
                                 onChange={name.onChange}
-                                is_error={name.errors}
-                                is_value={name.value.length}
                                 textarea
-                                cardsize="1"
-                                maxlen="30"
-                                width="2"
+                                is_submit
+                                onSubmit={commentSubmit}
+                                cardsize="2"
+                                width="20"
                             />
-                            <Button size="3">제출</Button>
+                            <Button size="3" className="xl:invisible visible mt-4">
+                                제출
+                            </Button>
                         </div>
                     </div>
                     <div className="p-4">

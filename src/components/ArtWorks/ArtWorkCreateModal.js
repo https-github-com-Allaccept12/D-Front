@@ -199,7 +199,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                         ></button>
                     </div>
                     <div className="xl:grid w-full h-full xl:col-start-2 p-4 overflow-y-scroll overflow-x-hidden bg-white modal-body">
-                        <div className="flex justify-center items-center flex-col md:justify-start xl:ml-24">
+                        <div className="flex justify-center items-center flex-col md:justify-start xl:ml-24 ">
                             <Title size="4">프로젝트 표지</Title>
                             <Dropzone
                                 multiple={false}
@@ -214,7 +214,8 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                                 <Card size="6" types="image" src={cover} />
                                             ) : (
                                                 <>
-                                                    <img src={profile_upload} />
+                                                    {/* <img src={profile_upload} /> */}
+                                                    <div className="w-t04 h-t04 bg-dgray-200"> </div>
                                                     <p className="text-[#A1ADC0] text-center">Click or Drag&Drop</p>
                                                 </>
                                             )}

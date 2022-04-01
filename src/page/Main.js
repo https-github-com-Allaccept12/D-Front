@@ -51,7 +51,7 @@ const Main = (props) => {
                 >
                     추천 아트워크
                 </Title>
-                <div className="flex flex-wrap items-center justify-center gap-5 xl:justify-start">
+                <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-4 2xl:gap-8 xl:justify-start">
                     <ArtWorkAllList />
                 </div>
             </div>
