@@ -28,7 +28,7 @@ const Main = (props) => {
     return (
         <>
             <div className="w-full">
-                <div className="invisible text-white lg:visible lg:absolute inset-44 ">
+                <div className="invisible text-white lg:visible lg:absolute inset-44 h-1/3">
                     <Title size="2">Hot 디자이너</Title>
                     <div className="mt-4 ml-1">
                         <Subtitle size="1">

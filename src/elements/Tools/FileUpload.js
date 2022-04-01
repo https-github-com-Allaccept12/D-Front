@@ -9,6 +9,7 @@ function FileUpload() {
   const profile = useSelector((state) => state.image.url);
   // console.log(profile);
   const dispatch = useDispatch();
+  
   const onDrop = useCallback((acceptedFile) => {
     const reader = new FileReader();
     dispatch(forSend(acceptedFile[0]));

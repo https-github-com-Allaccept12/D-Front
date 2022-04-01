@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { preview } from "../../../redux/modules/image";
+import { preview, forSend } from "../../../redux/modules/image";
 import { checknickname } from "../../../redux/modules/checkNickname";
 import { createProfile } from "../../../redux/modules/createProfile";
 import { Button, Input, Profile } from "../../../elements";
@@ -13,7 +13,10 @@ import Dropzone, { useDropzone } from "react-dropzone";
 const CreateProfile = (props) => {
   const {info} = props
   const dispatch = useDispatch();
-  const profile = info.profile_img;
+  useEffect(() => {
+    dispatch(preview(info.profile_img));
+  }, [])
+  const profile = useSelector((state) => state.image.url);
   const image = useSelector((state) => state.image.file);
   const [nicknameState, setNicknameState] = useState("");
   const nicknameValidMaxLen = (value) => value.length <= 10;
@@ -52,11 +55,11 @@ const CreateProfile = (props) => {
   const deleteProfile = () => {
     dispatch(preview(""));
   };
+  
 
   const onDrop = useCallback((acceptedFile) => {
     const reader = new FileReader();
     dispatch(forSend(acceptedFile[0]));
-
     reader.readAsDataURL(acceptedFile[0]);
     reader.onload = () => {
       dispatch(preview(reader.result));

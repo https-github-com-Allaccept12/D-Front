@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { CreateNewArtWork } from "../../redux/modules/artWork";
@@ -16,12 +16,20 @@ const ArtWorkCreateModal = ({ onClose }) => {
     const dispatch = useDispatch();
     // 작품 이미지들 리덕스에서 불러옴
     const artworkfiles = useSelector((state) => state.image.artworkFiles);
+    // 작품 썸네일 초기화
+    // useEffect(() => {
+    //     dispatch(preview(info.profile_img));
+    //   }, [])
 
     // 표지 ------------------------------------------------------------------------
     // 리덕스에서 불러옴
     const cover = useSelector((state) => state.image.url);
     // useState
     const [forSendCover, setForSendCover] = useState();
+    // 초기화 처음 로드 시 표지 초기화
+    useEffect(() => {
+        dispatch(preview(""));
+      }, [])
     // 이미지 처리 함수
     const [thumbnail, setThumbnail] = useState();
     const onDrop = useCallback((acceptedFile) => {
@@ -131,7 +139,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
         const skills = specialty.join("/");
         // 서버에 보내기 전 data에 json형식으로 모아주기 --------------------------------------------
         const data = {
-            title: inputs.title,
+            title: "inputs.title",
             category: inputs.category,
             specialty: skills,
             work_start: inputs.startDate,
@@ -158,7 +166,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
     return (
         <Portal>
             <div className="fixed z-10 w-full h-full bg-gray-500 bg-opacity-80">
-                <div className="z-20 flex lg:w-5/6 mx-auto my-6 xl:my-20 text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto h-5/6 modal-content flex-col">
+                <div className="z-20 flex flex-col mx-auto my-6 text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto lg:w-5/6 xl:my-20 h-5/6 modal-content">
                     <div className="p-4 bg-white modal-header rounded-t-md">
                         <button
                             type="button"
@@ -168,8 +176,8 @@ const ArtWorkCreateModal = ({ onClose }) => {
                             aria-label="Close"
                         ></button>
                     </div>
-                    <div className="xl:grid w-full h-full xl:col-start-2 p-4 overflow-y-scroll overflow-x-hidden bg-white modal-body">
-                        <div className="flex justify-center items-center flex-col md:justify-start xl:ml-24">
+                    <div className="w-full h-full p-4 overflow-x-hidden overflow-y-scroll bg-white xl:grid xl:col-start-2 modal-body">
+                        <div className="flex flex-col items-center justify-center md:justify-start xl:ml-24">
                             <p className="text-2xl">프로젝트 표지</p>
                             <Dropzone
                                 multiple={false}
@@ -193,7 +201,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                 )}
                             </Dropzone>
                         </div>
-                        <div className="xl:grid items-center h-screen xl:grid-cols-6 col-span-2 col-start-1 col-end-4 row-start-1 bg-white md:col-start-2 grid-rows-10">
+                        <div className="items-center h-screen col-span-2 col-start-1 col-end-4 row-start-1 bg-white xl:grid xl:grid-cols-6 md:col-start-2 grid-rows-10">
                             <div className="col-span-4 col-start-2 col-end-6 row-start-1">
                                 <Title size="3">
                                     프로젝트 제목
@@ -330,11 +338,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                         name="startDate"
                                         placeholder="YYYY.MM"
                                         onChange={handleChange}
-                                        className="w-full px-4 border border-dgray-400 rounded-lg py-1
-hover:border-dpurple-200 border-box peer
-active:border-dpurple-300 invalid:text-pink-600
-focus:border-dpurple-300 font-min1
-outline-none"
+                                        className="w-full px-4 py-1 border rounded-lg outline-none border-dgray-400 hover:border-dpurple-200 border-box peer active:border-dpurple-300 invalid:text-pink-600 focus:border-dpurple-300 font-min1"
                                     />
                                     <Title size="5"> - </Title>
                                     <input
@@ -342,20 +346,14 @@ outline-none"
                                         name="endDate"
                                         placeholder="YYYY.MM"
                                         onChange={handleChange}
-                                        className="w-full px-4 border border-dgray-400 rounded-lg py-1
-hover:border-dpurple-200 border-box peer
-active:border-dpurple-300 invalid:text-pink-600
-focus:border-dpurple-300 font-min1
-outline-none"
+                                        className="w-full px-4 py-1 border rounded-lg outline-none border-dgray-400 hover:border-dpurple-200 border-box peer active:border-dpurple-300 invalid:text-pink-600 focus:border-dpurple-300 font-min1"
                                     />
                                 </div>
                             </div>
                             <div className="col-span-4 col-start-2 row-start-5">
                                 <Title size="3">작품 설명</Title>
                                 <input
-                                    className="w-full px-4 py-4 border border-dgray-400 border-box
-                                    rounded-md shadow-md outline-none resize-none font-min1
-                                    hover:border-dpurple-200 active:border-dpurple-300"
+                                    className="w-full px-4 py-4 border rounded-md shadow-md outline-none resize-none border-dgray-400 border-box font-min1 hover:border-dpurple-200 active:border-dpurple-300"
                                     name="description"
                                     onChange={handleChange}
                                 />
@@ -427,7 +425,7 @@ outline-none"
                                         </option>
                                     ))}
                                 </select>
-                                <div className="flex justify-end items-end gap-3 p-5">
+                                <div className="flex items-end justify-end gap-3 p-5">
                                     <Button size="2" color="1" onClick={createArtWork}>
                                         완료
                                     </Button>
