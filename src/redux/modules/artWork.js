@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 import { URL, token } from "../UrlForAxios";
 
 export const CreateNewArtWork = createAsyncThunk(
@@ -30,7 +31,7 @@ export const artworkPageLoad = createAsyncThunk(
 );
 
 export const artworkDetailLoad = createAsyncThunk(
-  "/artworkPageLoad",
+  "/artworkDetailLoad",
   (artworkID) => {
     URL.get(`/api/artwork/detail/${artworkID}`)
       .then((res) => {
@@ -42,10 +43,11 @@ export const artworkDetailLoad = createAsyncThunk(
 
 export const PortfolioLoad = createAsyncThunk(
   "/PortfolioLoad",
-  ({ owner_account_id, dispatch }) => {
+  async ({ owner_account_id, dispatch }) => {
     console.log('here');
-    axios
-      .get(`http://keykim.shop/api/my-page/career-feed`, {
+    await axios
+      // .get(process.env.REACT_APP_MYPAGE+'/career-feed', {
+      .get(process.env.REACT_APP_PORTFOLIO, {
         params: {
           owner_account_id: owner_account_id
         },
@@ -54,6 +56,7 @@ export const PortfolioLoad = createAsyncThunk(
         console.log(res);
         const porfolio_data = res.data.data;
         dispatch(portfolios(porfolio_data));
+        return porfolio_data
       })
       .catch((err) => console.log(err));
   }
@@ -81,7 +84,17 @@ export const artworkSlice = createSlice({
       .addCase(CreateNewArtWork.rejected, (state, action) => {
         console.log(action.error.message);
         console.log("create rejected");
-      });
+      })
+      .addCase(PortfolioLoad.pending, (state, action) => {
+        console.log("pending");
+      })
+      .addCase(PortfolioLoad.fulfilled, (state, action) => {
+        console.log("create fulfiled");
+      })
+      .addCase(PortfolioLoad.rejected, (state, action) => {
+        console.log(action.error.message);
+        console.log("create rejected");
+      })
   },
 });
 
