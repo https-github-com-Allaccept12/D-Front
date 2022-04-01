@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Suspense } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCookie } from "../shared/cookie";
-import { myPageLoad } from "../redux/modules/myPage";
+import { myPageLoad, historyLoad } from "../redux/modules/myPage";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import { Icon, Title } from "../elements";
 import { MyPageCategory, MyProfile, MySpaceTab, TopOfProfile } from "../components/MySpace";
@@ -39,6 +39,7 @@ const MyPage = (props) => {
 
     useEffect(() => {
         dispatch(myPageLoad({ account_id, owner_account_id, dispatch }));
+        dispatch(historyLoad({ owner_account_id, dispatch }))
     }, [account_id, owner_account_id, dispatch]);
 
     // let info = null
@@ -47,19 +48,20 @@ const MyPage = (props) => {
     // })
 
     const info = useSelector((state) => state.myPage.myPage);
+    const exp = useSelector((state) => state.myPage.history);
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[2];
 
     return (
         <>
-            <div className="2xl:grid grid-cols-5">
-                <div className="hidden xl:contents w-40 h-full mt-4 md:ml-28 ">
+            <div className="grid-cols-5 2xl:grid">
+                <div className="hidden w-40 h-full mt-4 xl:contents md:ml-28 ">
                     <MyPageCategory />
                 </div>
                 {/* 내정보일땐 마이프로필 다른사람정보일땐 디폴리오 각 메뉴를 클릭하면 메뉴 */}
                 <Suspense fallback={<h1>Loading..</h1>}>
-                    <TopOfProfile info={info} />
+                    <TopOfProfile info={info} exp={exp}/>
                 </Suspense>
                 {/* <div className="col-start-2 col-end-6">
           <div className=" bg-blue-400 h-52 w-[80.625rem]">

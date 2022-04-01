@@ -122,7 +122,7 @@ const CreateMySkill = (props) => {
       </div>
       <div className="mt-10">
         <Button onClick={SendSkill}>
-          다음
+          저장
         </Button>
       </div>
     </>

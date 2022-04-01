@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "./TendencyButton";
 import tw from "tailwind-styled-components";
 import { Title, Subtitle, Text } from "../../elements";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FacebookShareButton, FacebookIcon, TwitterIcon, TwitterShareButton } from "react-share";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -56,15 +56,28 @@ const Cover = tw.div`
 absolute top-0 w-full
 `;
 
-const MyInterests = ({ history, location, match }) => {
+const TendencyResult = ({ history, location, match }) => {
     const currentUrl = window.location.href;
     const token = sessionStorage.getItem("access_token");
     const [is_loaded, setIsLoaded] = useState(false);
+    const fromMyPage = useLocation().state.from;
+    // console.log(fromMyPage);
     useEffect(() => {
-        let timer = setTimeout(() => {
-            setIsLoaded(true);
-        }, 2000);
+        if(fromMyPage){
+            let timer = setTimeout(() => {
+                setIsLoaded(true);
+            }, 0);
+        } else{
+            let timer = setTimeout(() => {
+                setIsLoaded(true);
+            }, 2000);
+        }
+        
     });
+
+    const Back = () => {
+        history.goBack();
+    }
 
     const dispatch = useDispatch();
     const SendTendency = () => {
@@ -132,6 +145,12 @@ const MyInterests = ({ history, location, match }) => {
                                     />
                                 </CopyToClipboard>
                             </CardBox>
+                            {fromMyPage ? 
+                                <Button size="3" onClick={Back} color="4" className="mb-[0.75rem]">
+                                    확인
+                                </Button>
+                            :
+                            <>
                             <Link to="/">
                                 <Button size="3" color="4" className="mb-[0.75rem]">
                                     D PLUS 홈으로
@@ -140,6 +159,8 @@ const MyInterests = ({ history, location, match }) => {
                             <Button size="3" color="5" onClick={SendTendency}>
                                 관심사 저장하기
                             </Button>
+                            </>
+                            }
                         </InnerFlex>
                     </Flex>
                     {!is_loaded && <Spinner />}
@@ -204,6 +225,12 @@ const MyInterests = ({ history, location, match }) => {
                                     />
                                 </CopyToClipboard>
                             </CardBox>
+                            {fromMyPage ? 
+                                <Button size="3" onClick={Back} color="4" className="mb-[0.75rem]">
+                                    확인
+                                </Button>
+                            :
+                            <>
                             <Link to="/">
                                 <Button size="3" color="4" className="mb-[0.75rem]">
                                     D PLUS 홈으로
@@ -212,6 +239,8 @@ const MyInterests = ({ history, location, match }) => {
                             <Button size="3" color="5" onClick={SendTendency}>
                                 관심사 저장하기
                             </Button>
+                            </>
+                            }
                         </InnerFlex>
                         {!is_loaded && <Spinner />}
                     </Flex>
@@ -276,6 +305,12 @@ const MyInterests = ({ history, location, match }) => {
                                     />
                                 </CopyToClipboard>
                             </CardBox>
+                            {fromMyPage ? 
+                                <Button size="3" onClick={Back} color="4" className="mb-[0.75rem]">
+                                    확인
+                                </Button>
+                            :
+                            <>
                             <Link to="/">
                                 <Button size="3" color="4" className="mb-[0.75rem]">
                                     D PLUS 홈으로
@@ -284,6 +319,8 @@ const MyInterests = ({ history, location, match }) => {
                             <Button size="3" color="5" onClick={SendTendency}>
                                 관심사 저장하기
                             </Button>
+                            </>
+                            }
                         </InnerFlex>
                     </Flex>
                     {!is_loaded && <Spinner />}
@@ -348,6 +385,12 @@ const MyInterests = ({ history, location, match }) => {
                                     />
                                 </CopyToClipboard>
                             </CardBox>
+                            {fromMyPage ? 
+                                <Button size="3" onClick={Back} color="4" className="mb-[0.75rem]">
+                                    확인
+                                </Button>
+                            :
+                            <>
                             <Link to="/">
                                 <Button size="3" color="4" className="mb-[0.75rem]">
                                     D PLUS 홈으로
@@ -356,6 +399,8 @@ const MyInterests = ({ history, location, match }) => {
                             <Button size="3" color="5" onClick={SendTendency}>
                                 관심사 저장하기
                             </Button>
+                            </>
+                            }
                         </InnerFlex>
                     </Flex>
                     {!is_loaded && <Spinner />}
@@ -420,6 +465,12 @@ const MyInterests = ({ history, location, match }) => {
                                     />
                                 </CopyToClipboard>
                             </CardBox>
+                            {fromMyPage ? 
+                                <Button size="3" onClick={Back} color="4" className="mb-[0.75rem]">
+                                    확인
+                                </Button>
+                            :
+                            <>
                             <Link to="/">
                                 <Button size="3" color="4" className="mb-[0.75rem]">
                                     D PLUS 홈으로
@@ -428,6 +479,8 @@ const MyInterests = ({ history, location, match }) => {
                             <Button size="3" color="5" onClick={SendTendency}>
                                 관심사 저장하기
                             </Button>
+                            </>
+                            }
                         </InnerFlex>
                     </Flex>
                     {!is_loaded && <Spinner />}
@@ -494,6 +547,12 @@ const MyInterests = ({ history, location, match }) => {
                                     />
                                 </CopyToClipboard>
                             </CardBox>
+                            {fromMyPage ? 
+                                <Button size="3" onClick={Back} color="4" className="mb-[0.75rem]">
+                                    확인
+                                </Button>
+                            :
+                            <>
                             <Link to="/">
                                 <Button size="3" color="4" className="mb-[0.75rem]">
                                     D PLUS 홈으로
@@ -502,6 +561,9 @@ const MyInterests = ({ history, location, match }) => {
                             <Button size="3" color="5" onClick={SendTendency}>
                                 관심사 저장하기
                             </Button>
+                            </>
+                            }
+                            
                         </InnerFlex>
                     </Flex>
                     {!is_loaded && <Spinner />}
@@ -513,4 +575,4 @@ const MyInterests = ({ history, location, match }) => {
     }
 };
 
-export default MyInterests;
+export default TendencyResult;

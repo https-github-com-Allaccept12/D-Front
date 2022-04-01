@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { myPageLoad } from "../../../redux/modules/myPage";
 
@@ -23,24 +24,8 @@ import back_harmonious from "../../../static/images/MyPageImages/back_harmonious
 import back_innovator from "../../../static/images/MyPageImages/back_innovator.svg";
 
 const TopOfProfile = (props) => {
-    // const info = sessionStorage.getItem("mypage_data");
-    // const info = useSelector(state => state.myPage.myPage);
-    // const dispatch = useDispatch();
-    // let account_id = 0;
-    // const id_cookie = sessionStorage.getItem("account_id")
-    // if (id_cookie) {
-    //     account_id = id_cookie;
-    //     console.log("account_id: ", account_id);
-    // }
-    // const owner_account_id = account_id;
-    // console.log(account_id, owner_account_id);
-    // useEffect(() => {
-    // dispatch(myPageLoad({ account_id, owner_account_id, dispatch }))
-    // }, [dispatch, account_id, owner_account_id]);
 
-    // const info = useSelector(state => state.myPage.myPage);
-
-    const { info } = props;
+    const { info, exp } = props;
     console.log(info);
     let nickname = "";
     let following = "";
@@ -64,10 +49,15 @@ const TopOfProfile = (props) => {
         linkedin = info.linked_in;
         brunch = info.brunch;
     }
+    // const toSNS = (params, e) => {
+    //     window.open(params, '_blank');
+    // }
 
     return (
+        <>
         <div className="col-start-2 col-end-6">
             <div className="w-full">
+                
                 {tendency == "창의적인 발명가" && (
                     <div className="grid items-center justify-items-center relative bg-[#E9EDFF] h-[22.5rem] w-full">
                         <img src={back_inventor} />
@@ -104,6 +94,15 @@ const TopOfProfile = (props) => {
                         <div className="ml-2">
                             <div className="grid p-1 rounded-lg justify-items-center">
                                 <Title size="2">{nickname}</Title>
+                                <Link
+                                    to={{
+                                        pathname: `/Result/${tendency}`,
+                                        state: {
+                                            title: { tendency },
+                                            from: true,
+                                        },
+                                    }}
+                                >
                                 <div className="mt-2 mb-4">
                                     {tendency == "명랑한 모험가" && <img src={adventure} />}
                                     {tendency == "꿈꾸는 예술가" && <img src={artist} />}
@@ -112,25 +111,44 @@ const TopOfProfile = (props) => {
                                     {tendency == "대담한 혁신가" && <img src={innovator} />}
                                     {tendency == "창의적인 발명가" && <img src={inventor} />}
                                 </div>
+                                </Link>
                                 <Subtitle size="1">{job} Designer</Subtitle>
                                 <div className="my-4">
                                     팔로잉 {following} ㅣ 팔로워 {follower}
                                 </div>
 
                                 <div className="flex flex-row p-1 text-2xl">
-                                    {Email && <Icon name="Time" src={iconEmail} iconSize="32" />}
-                                    {instagram && <Icon name="Time" src={iconInstagram} iconSize="32" />}
-                                    {linkedin && <Icon name="Time" src={iconLinkedin} iconSize="32" />}
-                                    {brunch && <Icon name="Time" src={iconBrunch} iconSize="32" />}
+                                    <div className="mx-2 cursor-pointer">
+                                        <a href={'mailto:'+Email} target="_blank">
+                                            {Email && <Icon name="Email" src={iconEmail} iconSize="32" />}
+                                        </a>
+                                    </div>
+                                    <div className="mx-2 cursor-pointer">
+                                        <a href={'http://instagram.com/'+instagram} target="_blank">
+                                            {instagram && <Icon name="Instagram" src={iconInstagram} iconSize="32" />}
+                                        </a>
+                                    </div>
+                                    <div className="mx-2 cursor-pointer">
+                                        <a href={'http://linkedin.com/in/'+linkedin} target="_blank">
+                                            {linkedin && <Icon name="LinkedIn" src={iconLinkedin} iconSize="32" />}
+                                        </a>
+                                    </div>
+                                    <div className="mx-2 cursor-pointer">
+                                        <a href={'http://brunch.co.kr/@'+brunch} target="_blank">
+                                            {brunch && <Icon name="Brunch" src={iconBrunch} iconSize="32" />}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <MySpaceTab info={info} />
+                    <MySpaceTab info={info} exp={exp} />
                 </div>
             </div>
         </div>
+        
+        </>
     );
 };
 

@@ -116,12 +116,6 @@ const MainSlider = (props) => {
                     </SS>
                     <SS>
                         <Slides type="main" />
-                    </SS>
-                    <SS>
-                        <Slides type="main" />
-                    </SS>
-                    <SS>
-                        <Slides type="main" />
                     </SS> */}
                 </Slide>
                 <NextBtn onClick={() => slider?.current?.slickNext()}>

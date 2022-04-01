@@ -80,6 +80,20 @@ const CreateMyExp = (props) => {
         ]);
     };
 
+    const [isChecked, setIsChecked] = useState(false)
+    const checkWorking = () => {
+        setIsChecked(!isChecked);
+        if(isChecked){
+            const list = [...inputList];
+            list[0]["work_end"] = "";
+            setInputList(list);
+        } else{
+            const list = [...inputList];
+            list[0]["work_end"] = "재직 중";
+            setInputList(list);
+        }
+    }
+
     const SendExps = () => {
         const arr = [];
         const data = {};
@@ -87,6 +101,7 @@ const CreateMyExp = (props) => {
             arr.push(inputList[i]);
         }
         data["history"] = arr;
+        console.log(data);
         dispatch(editExp(data));
     };
 
@@ -155,13 +170,13 @@ const CreateMyExp = (props) => {
 
                                 <div className="col-start-1 col-end-4 row-start-4">
                                     <InputBox>
-                                        <InputTitle>시작날짜</InputTitle>
+                                        <InputTitle>시작 날짜</InputTitle>
                                         <div className="col-start-2 col-end-8">
                                             <label id="">
                                                 <InputStyles
                                                     className="ml10"
                                                     name="work_start"
-                                                    placeholder="시작날짜 입력"
+                                                    placeholder="YYYY.MM"
                                                     value={x.work_start}
                                                     onChange={(e) => handleInputChange(e, i)}
                                                 />
@@ -170,21 +185,24 @@ const CreateMyExp = (props) => {
                                     </InputBox>
                                 </div>
 
-                                <div className="col-start-4 col-end-9  row-start-4">
+                                <div className="col-start-4 col-end-9 row-start-4">
                                     <InputBox>
-                                        <InputTitle>종료날짜</InputTitle>
+                                        <InputTitle>종료 날짜</InputTitle>
                                         <div className="col-start-2 col-end-8">
                                             <label id="">
                                                 <InputStyles
                                                     className="ml10"
                                                     name="work_end"
-                                                    placeholder="종료날짜 입력"
+                                                    placeholder="YYYY.MM"
                                                     value={x.work_end}
                                                     onChange={(e) => handleInputChange(e, i)}
+                                                    disabled={isChecked ? true : false}
                                                 />
                                             </label>
                                         </div>
                                     </InputBox>
+                                    <input type="checkbox" value={isChecked} onChange={checkWorking}/>
+                                    <span> 재직 중</span>
                                 </div>
 
                                 <div className="w-full col-span-8 row-start-5">
@@ -231,7 +249,7 @@ const CreateMyExp = (props) => {
                     );
                 })}
                 {/* <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div> */}
-                <Button onClick={SendExps}>다음</Button>
+                <Button onClick={SendExps}>저장</Button>
             </div>
         </>
     );

@@ -36,8 +36,46 @@ import { ReactComponent as Upload } from "../../static/icons/Upload.svg";
 import { ReactComponent as User } from "../../static/icons/User.svg";
 import { ReactComponent as Video } from "../../static/icons/Video.svg";
 
+import { ReactComponent as Email } from "../../static/icons/sns/E-mail.svg";
+import { ReactComponent as Instagram } from "../../static/icons/sns/instagram.svg";
+import { ReactComponent as LinkedIn } from "../../static/icons/sns/linkedin.svg";
+import { ReactComponent as Brunch } from "../../static/icons/sns/brunch.svg";
+
+
 const Icon = (props) => {
     const { name, iconSize, onClick, className } = props;
+
+    if (name === "Email") {
+        return (
+            <div className={className}>
+                <Email width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
+    }
+    
+    if (name === "Instagram") {
+        return (
+            <div className={className}>
+                <Instagram width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
+    }
+    
+    if (name === "LinkedIn") {
+        return (
+            <div className={className}>
+                <LinkedIn width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
+    }
+
+    if (name === "Brunch") {
+        return (
+            <div className={className}>
+                <Brunch width={iconSize} height={iconSize} onClick={onClick} />
+            </div>
+        );
+    }
 
     if (name === "ArrowL") {
         return (
