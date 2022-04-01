@@ -1,11 +1,15 @@
 import React from "react";
-import { Button, Label, Profile, Title, Text, HeartButton } from "../../../../elements";
+import { Button, Label, Profile, Title, Text, IconBtn } from "../../../../elements";
 
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
 const InnerLine = tw.hr`
 border border-dgray-300 w-full col-span-full mt-10 mb-5
+`;
+
+const IconBox = tw.div`
+absolute bottom-4 pr-7 w-[21rem] md:w-[31.4375rem] xl:w-[62.875rem] 
 `;
 
 const DimoCard = (props) => {
@@ -16,8 +20,8 @@ const DimoCard = (props) => {
     let history = useHistory();
     return (
         <>
-            <div className="w-[62.875rem] h-[36.25rem] rounded-lg ">
-                <div className="absolute w-[62.875rem] h-[36.25rem] bg-white rounded-lg border border-dgray-200 hover:shadow-xl">
+            <div className="w-[21rem] h-[18rem] md:w-[31.4375rem] md:h-[18.125rem] xl:w-[62.875rem] xl:h-[36.25rem] rounded-lg ">
+                <div className="absolute w-[21rem] h-[18rem]   md:w-[31.4375rem] md:h-[18.125rem] xl:w-[62.875rem] xl:h-[36.25rem] bg-white rounded-lg border border-dgray-200 hover:shadow-xl">
                     <div>
                         <div className="absolute top-7 pl-8 hover:scale-110 cursor-pointer">
                             <Profile size="6" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" main />
@@ -43,15 +47,14 @@ const DimoCard = (props) => {
                         </Text>{" "}
                         <Text size="2">(더보기)</Text>
                     </div>
-                    <div className="absolute bottom-7 px-10 w-full">
-                        <div className="flex flex-row justify-between">
-                            <HeartButton like_cnt="1" is_like />
-                            <div className="flex flex-row space-x-4">
-                                <HeartButton like_cnt="0" is_like />
-                                <HeartButton like_cnt="1" is_like />
+                    <IconBox>
+                        <div className="flex flex-row justify-end items-end">
+                            <div className="flex flex-row gap-5 text-dgray-400">
+                                <IconBtn name="Talk" iconSize="20" count="4" />
+                                <IconBtn name="HeartE" iconSize="20" count="4" />
                             </div>
                         </div>
-                    </div>
+                    </IconBox>
                 </div>
             </div>
 
