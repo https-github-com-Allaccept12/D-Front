@@ -124,10 +124,16 @@ const DimoQNAQuestion = (props) => {
                 <>
                     <div className="bg-dgray-300 flex p-5 xl:px-10 2xl:px-20 mt-20">
                         <div>
-                            <Title size="5">답변 남기기</Title>
-                            <Profile size="5" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
+                            <Title size="6" className="hidden lg:flex">
+                                답변 남기기
+                            </Title>
+                            <Profile
+                                size="5"
+                                src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
+                                className="hidden lg:flex"
+                            />
                         </div>
-                        <div className="w-4/5 ml-auto mt-12">
+                        <div className="w-full lg:w-11/12 ml-auto mt-12">
                             <Answer
                                 value={name.value}
                                 onChange={name.onChange}
@@ -137,7 +143,7 @@ const DimoQNAQuestion = (props) => {
                                 cardsize="3"
                                 width="20"
                             />
-                            <Button size="3" className="xl:invisible visible">
+                            <Button size="3" className="xl:invisible visible mt-4">
                                 제출
                             </Button>
                         </div>

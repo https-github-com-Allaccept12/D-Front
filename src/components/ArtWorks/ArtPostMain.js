@@ -1,5 +1,5 @@
 import React from "react";
-import { HeartButton, Subtitle, Icon, Thumbnail, Profile, Text } from "../../elements";
+import { HeartButton, Subtitle, Icon, Thumbnail, Profile, Text, IconBtn } from "../../elements";
 
 import { useDispatch } from "react-redux";
 import { artworkDetailLoad } from "../../redux/modules/artWork";
@@ -31,15 +31,15 @@ const ArtPostMain = (props) => {
                         handleClickArtWork({ id });
                     }}
                 >
-                    <Thumbnail src={thumnail} size="9" />
+                    <Thumbnail src={thumnail} size="7" />
                 </button>
                 <div className="flex flex-row items-center justify-between flex-shrink-0 w-full px-2 mt-1">
                     <div className="flex flex-row items-center gap-2">
                         <Profile size="7" src={profile} />
                         <Subtitle size="1">{nickname}</Subtitle>
                     </div>
-                    <div className="flex flex-row items-center mt-1 mr-1">
-                        <HeartButton like_cnt={like_count} is_like={is_like} />
+                    <div className="flex flex-row items-center mt-1 mr-1 text-dgray-400">
+                        <IconBtn name="HeartE" iconSize="20" count="4" />
                     </div>
                 </div>
             </Art>
@@ -58,7 +58,7 @@ const ArtPostMain = (props) => {
                             <div className="modal-body">
                                 <ArtWorkDetail id={id} />
 
-                                <div className="hidden md:contents">
+                                <div className="hidden lg:contents">
                                     <div className="flex flex-row justify-start w-20 gap-3 mx-auto lg:fixed top-20 right-10 2xl:right-48 lg:flex-col">
                                         <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">

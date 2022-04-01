@@ -6,6 +6,7 @@ w-full px-4 py-4 border border-dgray-400 border-box
   rounded-md shadow-md outline-none resize-none font-min1
   hover:border-dpurple-200 active:border-dpurple-300
    flex flex-wrap  break-words whitespace-pre-wrap h-44
+   ${(props) => (props.cardsize === "1" ? `h-I01 px-4` : "")};   
 ${(props) => (props.cardsize === "2" ? `h-I02 px-4` : "")};
 ${(props) => (props.cardsize === "3" ? `h-I03 px-4` : "")};
 ${(props) => (props.is_error ? `border-2 border-dred-500` : "")};
@@ -39,8 +40,8 @@ const Answer = (props) => {
             <div className="w-full">
                 <label id={label}>
                     <TextAreaField
-                        type="textarea"
                         value={value}
+                        cardsize={cardsize}
                         placeholder={placeholder}
                         onChange={onChange}
                         onKeyPress={(e) => {

@@ -58,7 +58,7 @@ const ArtPost = (props) => {
                             <div className="modal-body">
                                 <ArtWorkDetail id={id} />
 
-                                <div className="hidden md:contents">
+                                <div className="hidden lg:contents">
                                     <div className="flex flex-row justify-start w-20 gap-3 mx-auto lg:fixed top-20 right-10 2xl:right-48 lg:flex-col">
                                         <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">

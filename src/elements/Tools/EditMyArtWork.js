@@ -4,29 +4,29 @@ import tw from "tailwind-styled-components";
 
 const ArtWorkImage = tw.img`
 overflow-hidden object-cover object-center rounded-md
-w-t01 h-t01 relative
+xl:w-t01 xl:h-t01 relative w-t03 h-t03
 ${(props) => (props.size === "1" ? `` : "")};
 `;
 
 const Hover = tw.div`
-rounded-md w-t01 h-t01 relative
+rounded-md xl:w-t01 xl:h-t01 relative w-t03 h-t03 
 ${(props) => (props.size === "1" ? `` : "")};
 `;
 
 const Actives = tw.div`
-absolute w-t01 h-t01 z-10 bg-dgray-600 top-0 rounded-md
-opacity-0 hover:opacity-80
+absolute xl:w-t01 xl:h-t01 z-10 bg-dgray-600 top-0 rounded-md
+opacity-0 hover:opacity-80 h-t03 w-t03 
 `;
 const Constan = tw.div`
-absolute w-t01 h-20 z-10 top-0 rounded-md
+absolute xl:w-t01 w-t03 h-20 z-10 top-0 rounded-md
 
 `;
 
 const Edit = tw.div`
-absolute top-44 left-28
+absolute inset-6 xl:top-44 xl:left-28
 `;
 const FlexBox = tw.div`
- flex flex-row w-full gap-4
+ w-full gap-4 flex flex-row
 `;
 
 const BadgeBox = tw.div`
@@ -50,10 +50,10 @@ const EditMyArtWork = (props) => {
                     </Edit>
                 </Actives>
                 <Constan>
-                    <BadgeBox>
-                        <CircleBtn name="MyStarMini">dd</CircleBtn>
-                        <CircleBtn name="PrivateMini">dd</CircleBtn>
-                    </BadgeBox>
+                    {/* <BadgeBox>
+                            <CircleBtn name="MyStarMini">dd</CircleBtn>
+                            <CircleBtn name="PrivateMini">dd</CircleBtn>
+                        </BadgeBox> */}
                 </Constan>
             </Hover>
         </>

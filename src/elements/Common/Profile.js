@@ -16,10 +16,10 @@ ${(props) => (props.main ? `border-white border-2` : "")};
 `;
 
 const Profile = (props) => {
-    const { src, size, main, className } = props;
+    const { src, size, main, className, onClick } = props;
     return (
         <>
-            <ArtWorkImage src={src} size={size} main={main} className={className} />
+            <ArtWorkImage src={src} size={size} main={main} className={className} onClick={onClick} />
         </>
     );
 };
@@ -29,6 +29,7 @@ Profile.defaultProps = {
     size: "3",
     main: false,
     className: "",
+    onClick: () => {},
 };
 
 export default Profile;

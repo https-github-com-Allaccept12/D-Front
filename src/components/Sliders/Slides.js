@@ -169,10 +169,10 @@ const Slides = (props) => {
                                     </div>
                                     <div className="absolute top-7 left-28">
                                         <div className="flex flex-row gap-1">
-                                            <Label size="1" color="4">
+                                            <Label size="1" color="7">
                                                 취준생
                                             </Label>
-                                            <Label size="1" color="5">
+                                            <Label size="1" color="7">
                                                 진로고민
                                             </Label>
                                         </div>

@@ -93,7 +93,7 @@ const DimoPost = (props) => {
     if (list === "shared")
         return (
             <>
-                <Link to="/dimo/qnadetail">
+                <Link to="/dimo/shareddetail">
                     <Art>
                         <Box>
                             <Grid>

@@ -11,20 +11,6 @@ ${(props) => (props.is_error ? `ring-1 ring-dred-400` : "")};
 ${(props) => (props.cardsize === "1" ? `h-I01 px-4` : "")};
 `;
 
-const TextAreaField = tw.textarea`
-w-full px-4 py-4 border border-dgray-400 border-box
-  rounded-md shadow-md outline-none resize-none font-min1
-  hover:border-dpurple-200 active:border-dpurple-300
-${(props) => (props.cardsize === "2" ? `h-I02 px-4` : "")};
-${(props) => (props.cardsize === "3" ? `h-I03 px-4` : "")};
-${(props) => (props.is_error ? `border-2 border-dred-500` : "")};
-`;
-
-const Title = tw.h2`
-  mr-2 inline-flex mt-1 font-min1 col-span-2
-  shrink-0 text-sm md:text-base w-24 row-start-1 col-start-1
-`;
-
 const Sp = tw.h2`
 flex justify-end text-xs font-min1
 peer-invalid:visible
@@ -65,29 +51,6 @@ const InputNoTitle = (props) => {
                                     onSubmit(e);
                                 }
                             }}
-                        />
-                        {is_error && <Sp>글자수를 초과하였습니다.</Sp>}
-                        <Sp>
-                            {is_value}/{maxlen}
-                        </Sp>
-                    </label>
-                </div>
-            </>
-        );
-    } else if (textarea) {
-        return (
-            <>
-                <div className="col-start-3 col-end-8 row-start-1">
-                    <label id={label}>
-                        <TextAreaField
-                            type={type}
-                            value={value}
-                            is_error={is_error}
-                            placeholder={placeholder}
-                            onChange={onChange}
-                            cardsize={cardsize}
-                            maxlen={maxlen}
-                            className={className}
                         />
                         {is_error && <Sp>글자수를 초과하였습니다.</Sp>}
                         <Sp>

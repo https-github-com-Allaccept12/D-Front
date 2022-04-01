@@ -5,6 +5,7 @@ import {
     IconBtn,
     SkillThumbnailMini,
     Title,
+    Text,
     Button,
     InputNoTitle,
     TypeBtn,
@@ -13,7 +14,7 @@ import {
 
 import DetailSlider from "../Sliders/DetailSlider";
 import { Comment } from "../Comment";
-import { useInput } from "../../hooks";
+import { useInput, useToggle } from "../../hooks";
 import tw from "tailwind-styled-components";
 import { useHistory, Link, useLocation } from "react-router-dom";
 
@@ -57,11 +58,21 @@ const CommentBox = tw.div`
 flex flex-col grow md:px-5
 `;
 
+const MobileBox = tw.div`
+ bg-white w-40 border-2 rounded-xl absolute z-30
+`;
+
+const Flex = tw.div`
+flex flex-col gap-2 justify-center items-center
+`;
+
 const ArtWorkDetail = (props) => {
     const { id } = props;
     const history = useHistory();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
+    const [showMenu, setShowMenu] = useToggle();
+
     const commentSubmit = () => {
         const data = { comment: name.value };
         history.goBack();
@@ -104,10 +115,25 @@ const ArtWorkDetail = (props) => {
                     <div className="p-6 bg-white">
                         <ProfileBox>
                             <div className="flex flex-row items-center justify-start">
-                                <Profile size="5" className="mb-3" />
+                                <Profile size="5" className="mb-3" onClick={setShowMenu} />
+                                {showMenu && (
+                                    <div className="absolute w-40">
+                                        <MobileBox>
+                                            <Flex>
+                                                <Text size="1">프로필</Text>
+                                                <Text size="1">팔로우</Text>
+                                                <Text size="1">좋아요</Text>
+                                                <Text size="1">스크랩</Text>
+                                                <Text size="1">공유하기</Text>
+                                            </Flex>
+                                        </MobileBox>
+                                    </div>
+                                )}
 
                                 <div className="flex flex-col gap-1 ml-2 text-left">
-                                    <p className="font-semibold text-dgray-600">이름 이름</p>
+                                    <Text size="1" className="font-semibold text-dgray-600">
+                                        이름 이름
+                                    </Text>
                                     <div className="flex flex-row justify-start gap-x-1">
                                         <TypeBtn types="art" />
 
@@ -144,7 +170,7 @@ const ArtWorkDetail = (props) => {
                                         is_submit
                                         onSubmit={commentSubmit}
                                     />
-                                    <Button size="3" className="invisible">
+                                    <Button size="3" className="invisible ">
                                         제출
                                     </Button>
                                 </div>

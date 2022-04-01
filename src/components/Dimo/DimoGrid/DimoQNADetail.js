@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Label, Title, Text, Input, Profile, HeartButton } from "../../../elements";
+import { Button, Label, Title, Text, Input, Profile, Icon } from "../../../elements";
 
 import { useHistory } from "react-router-dom";
 import { Comment } from "../../Comment";
@@ -50,7 +50,10 @@ const DimoQNADetail = (props) => {
                         <Grid>
                             <DimoQNAQuestion followed="true" />
                             <InnerLine />
-                            <Title size="3">답변 2개</Title>
+                            <div className="flex flex-row justify-start items-center gap-3">
+                                <Icon name="Talk" iconSize="36" />
+                                <Title size="3">답변 2개</Title>
+                            </div>
                             <DimoQNAAnswer selected="true" followed="false" />
                             <DimoQNAAnswer selected="false" followed="true" />
                         </Grid>
