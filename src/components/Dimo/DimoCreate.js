@@ -36,6 +36,7 @@ const DimoCreate = () => {
     const content = useInput("", []);
     const a = location.pathname;
     const dispatch = useDispatch();
+    const dimofiles = useSelector((state) => state.image.dimoFiles);
     const JobOptions = [
         { value: "UI & UX", label: "UI & UX" },
         { value: "패션", label: "패션" },
@@ -52,26 +53,36 @@ const DimoCreate = () => {
     const [selected, setSelected] = useState("");
     const [hashtags, setHashtags] = useState([]);
 
+    
+
     const handleChangeSelect = (e) => {
         setSelected(e.target.value);
     };
 
     const status = a.split("/")[3];
 
+    const forSendTags = [];
+    for (var item of hashtags){
+        var dic = {};
+        dic["tag"] = item;
+        forSendTags.push(dic);
+    }
+    
     const data = {
         title: title.value,
         category: selected,
         content: content.value,
         img: [{ img_url: "" }],
-        is_selected: hashtags,
+        hashTag: forSendTags,
         board: status.toUpperCase(),
     };
-    console.log(data);
     //태그는 어디에...
     //이미지 등록하기
     const sandData = () => {
+        console.log('befor send: ', data);
         const formData = new FormData();
         formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
+        // dimofiles.forEach((element) => formData.append("imgFile", element));
         dispatch(CreateNewDimo(formData));
         // console.log(formData);
         history.replace("/dimo/qna/all");
@@ -86,7 +97,7 @@ const DimoCreate = () => {
                         <Subtitle size="1">디자이너님들에게 질문해보세요! 멋진 정보를 얻을 수 있을거에요!</Subtitle>
 
                         <InnerGrid>
-                            <div className="grid grid-cols-2 p-8 gap-4">
+                            <div className="grid grid-cols-2 gap-4 p-8">
                                 <select
                                     className="appearance-none
                                 block
@@ -115,7 +126,7 @@ const DimoCreate = () => {
                                 </select>
                                 <Hashtag hashtags={hashtags} setHashtags={setHashtags} />
                             </div>
-                            <div className="px-8 flex flex-col gap-7">
+                            <div className="flex flex-col px-8 gap-7">
                                 <InputNoTitle placeholder="제목" value={title.value} onChange={title.onChange} />
                                 <InputNoTitle
                                     textarea
@@ -126,11 +137,11 @@ const DimoCreate = () => {
                                 />
                             </div>
                             <div className="p-8">
-                                <div className="bg-white p-10 border border-dpurple-200 border-dashed mx-auto">
+                                <div className="p-10 mx-auto bg-white border border-dashed border-dpurple-200">
                                     <FileUploadDimo types="qna" />
                                 </div>
                             </div>
-                            <div className="flex justify-center flex-row items-center gap-10 py-10 mb-10 bg-white">
+                            <div className="flex flex-row items-center justify-center gap-10 py-10 mb-10 bg-white">
                                 <Button size="2" onClick={sandData}>
                                     등록하기
                                 </Button>
@@ -152,7 +163,7 @@ const DimoCreate = () => {
                         </Subtitle>
 
                         <InnerGrid>
-                            <div className="grid grid-cols-2 p-8 gap-4">
+                            <div className="grid grid-cols-2 gap-4 p-8">
                                 <select
                                     className="appearance-none
                                 block
@@ -181,7 +192,7 @@ const DimoCreate = () => {
                                 </select>
                                 <Hashtag />
                             </div>
-                            <div className="px-8 flex flex-col gap-7">
+                            <div className="flex flex-col px-8 gap-7">
                                 <InputNoTitle placeholder="제목" value={title.value} onChange={title.onChange} />
                                 <InputNoTitle
                                     textarea
@@ -192,11 +203,11 @@ const DimoCreate = () => {
                                 />
                             </div>
                             <div className="p-8">
-                                <div className="bg-white p-10 border border-dpurple-200 border-dashed mx-auto">
+                                <div className="p-10 mx-auto bg-white border border-dashed border-dpurple-200">
                                     <FileUploadDimo types="shared" />
                                 </div>
                             </div>
-                            <div className="flex justify-center flex-row items-center gap-10 py-10 mb-10 bg-white">
+                            <div className="flex flex-row items-center justify-center gap-10 py-10 mb-10 bg-white">
                                 <Button size="2">등록하기</Button>
                             </div>
                         </InnerGrid>

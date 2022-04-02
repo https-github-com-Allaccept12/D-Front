@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from "react";
+import { dimoFiles } from "../../redux/modules/image";
 import { useDropzone } from "react-dropzone";
 import { Button, Text } from "../../elements";
 import tw from "tailwind-styled-components";
@@ -13,6 +14,7 @@ function FileUploadDimo(props) {
     const onDrop = useCallback(
         (acceptedFiles) => {
             setMyFiles([...myFiles, ...acceptedFiles]);
+            dispatch(dimoFiles(myFiles));
         },
         [myFiles],
     );
@@ -32,13 +34,12 @@ function FileUploadDimo(props) {
     };
 
     // console.log(myFiles);
-    const sandImageFiles = () => {
-        dispatch(myFiles);
-    };
+    // const sandImageFiles = () => {
+    // };
 
     const files = myFiles.map((file) => (
         <List key={file.path}>
-            <span className="truncate min-w-full w-1/2 md:w-2/3 md:max-w-xl lg:w-3/4 lg:max-w-2xl">{file.path}</span> -
+            <span className="w-1/2 min-w-full truncate md:w-2/3 md:max-w-xl lg:w-3/4 lg:max-w-2xl">{file.path}</span> -
             <span className="hidden">{file.size} bytes</span>
             <button onClick={removeFile(file)} className="pl-3 text-tiny animate-pulse shrink-0">
                 삭제
@@ -48,7 +49,7 @@ function FileUploadDimo(props) {
 
     return (
         <>
-            <div className="flex justify-center items-center flex-col">
+            <div className="flex flex-col items-center justify-center">
                 {files.length > 0 ? (
                     <>
                         <div className="">
@@ -64,7 +65,7 @@ function FileUploadDimo(props) {
                     <>
                         <div
                             {...getRootProps({ className: "dropzone" })}
-                            className="flex justify-center items-center flex-col pt-10 pb-7"
+                            className="flex flex-col items-center justify-center pt-10 pb-7"
                         >
                             <Button size="2" color="4" icon name="Plus">
                                 추가하기

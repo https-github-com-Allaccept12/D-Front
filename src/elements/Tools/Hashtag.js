@@ -12,7 +12,6 @@ const Hashtag = (props) => {
     const sandTags = () => {
         setHashtags(tags);
         setForceRerender(!forceRerender);
-        // console.log("sand");
 
         // dispatch(tags);
     };

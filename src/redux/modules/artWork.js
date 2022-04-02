@@ -21,10 +21,11 @@ export const CreateNewArtWork = createAsyncThunk(
 
 export const artworkPageLoad = createAsyncThunk(
   "/artworkPageLoad",
-  (artworkID) => {
-    URL.get(`/api/artwork/${artworkID}`)
+  (dispatch) => {
+    URL.get(`/api/artwork/0`)
       .then((res) => {
         console.log(res);
+        dispatch(artworks(res.data.data))
       })
       .catch((err) => console.log(err));
   }

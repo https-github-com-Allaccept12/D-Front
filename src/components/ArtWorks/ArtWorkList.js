@@ -37,7 +37,26 @@ const p = [
     { id: "101" },
 ];
 
+
+
 const ArtWorkList = (props) => {
+    const artworks = useSelector((state) => state.artwork.artworks);
+    // console.log(artworks);
+    artworks.map((value, index) => {
+        console.log(value, index);
+    })
+
+    // const Posts = () => {
+    //     artworks.map((value) => {
+    //         const nick = value.account_nickname;
+    //         const profile = value.account_profile;
+    //         const img = value.img;
+    //         const like = value.like_count;
+            
+    //         return (<ArtPost size="3"/>);
+    //     })
+    // }
+
     return (
         <>
             <Box>
@@ -45,13 +64,26 @@ const ArtWorkList = (props) => {
                     <ArtWorkInsideFilter />
                     <Line />
                     <Grid>
-                        {p.map((n) => {
+                        {artworks.map((value, index) => {
+                            // const nick = value.account_nickname;
+                            // const profile = value.account_profile;
+                            // const img = value.img;
+                            // const like = value.like_count;
+
+                            <ArtPost 
+                                profile={value.account_profile} 
+                                nickname={value.account_nickname} 
+                                thumbnail={value.img}
+                                like_count={value.like_count}
+                                size="3"/>
+                        })}
+                        {/* {p.map((n) => {
                             return (
                                 <>
                                     <ArtPost key={n.id.toString()} size="3" />
                                 </>
                             );
-                        })}
+                        })} */}
                     </Grid>
                 </InnerBox>
             </Box>
