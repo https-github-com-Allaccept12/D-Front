@@ -44,7 +44,7 @@ const DimoFilter = (props) => {
                 </Grid>
             </>
         );
-    if (list === "shared")
+    if (list === "info")
         return (
             <>
                 <Grid>

@@ -152,7 +152,7 @@ const Slides = (props) => {
                 </>
             </>
         );
-    if (type === "dimo" && list === "shared")
+    if (type === "dimo" && list === "info")
         return (
             <>
                 <>
