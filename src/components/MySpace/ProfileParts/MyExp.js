@@ -26,16 +26,16 @@ const MyExp = (props) => {
   const [workStart, setWorkStart] = useState("");
   const [workEnd, setWorkEnd] = useState("");
   const [achievements, setAchievements] = useState([]);
-  useEffect(() => {
-    setCompany(exp[0].company_name);
-    setDepartment(exp[0].company_department);
-    setPosition(exp[0].company_position);
-    setWorkStart(exp[0].work_start);
-    setWorkEnd(exp[0].work_end);
-    setAchievements(exp[0].achievements.split('\n'));
+  // useEffect(() => {
+  //   setCompany(exp[0].company_name);
+  //   setDepartment(exp[0].company_department);
+  //   setPosition(exp[0].company_position);
+  //   setWorkStart(exp[0].work_start);
+  //   setWorkEnd(exp[0].work_end);
+  //   setAchievements(exp[0].achievements.split('\n'));
 
-    // console.log(achievements)
-  }, [exp])
+  //   // console.log(achievements)
+  // }, [exp])
 
   
   return (
