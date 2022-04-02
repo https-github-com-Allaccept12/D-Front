@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { preview, forSend } from "../../../redux/modules/image";
+import { myPageLoad } from "../../../redux/modules/myPage";
 import { checknickname } from "../../../redux/modules/checkNickname";
 import { createProfile } from "../../../redux/modules/createProfile";
 import { Button, Input, Profile, Text, Title, Subtitle } from "../../../elements";
@@ -12,26 +13,46 @@ import Dropzone, { useDropzone } from "react-dropzone";
 import axios from "axios";
 
 const CreateMySpaceUser = (props) => {
-    const { info } = props;
+    // const { info } = props;
     const dispatch = useDispatch();
+
+    let account_id = 0;
+    const id_cookie = sessionStorage.getItem("account_id");
+    if (id_cookie) {
+        account_id = id_cookie;
+        // console.log("account_id: ", account_id);
+    }
+    const owner_account_id = account_id;
+    useEffect(() => {
+        dispatch(myPageLoad({ account_id, owner_account_id, dispatch }));
+    }, [dispatch, account_id, owner_account_id]);
+
+    const info = useSelector((state) => state.myPage.myPage);
+
+
     const nicknameValidMaxLen = (value) => value.length <= 10;
+    
     let nickTemp = ""
     let emailTemp = ""
     let linkedTemp = ""
     let brunchTemp = ""
     let InstaTemp = ""
     let job = ""
+
     useEffect(() => {
-        dispatch(preview(info.profile_img));
-    }, [])
-    if (info){
-        nickTemp = info.nickname
-        emailTemp = info.work_email
-        linkedTemp = info.linked_in
-        brunchTemp = info.brunch
-        InstaTemp = info.insta
-        job = info.job
-    }
+        if(info){
+            dispatch(preview(info.profile_img));
+        }
+    }, [info])
+    
+    nickTemp = info.nickname
+    emailTemp = info.work_email
+    linkedTemp = info.linked_in
+    brunchTemp = info.brunch
+    InstaTemp = info.insta
+    job = info.job
+    
+    
     // console.log(nickTemp);
     const nickname = useInput(nickTemp, [nicknameValidMaxLen]);
     const email = useInput(emailTemp, []);
@@ -141,7 +162,7 @@ const CreateMySpaceUser = (props) => {
                                 onBlur={checkNickname}
                                 value={nickname.value}
                                 onChange={nickname.onChange}
-                                is_value={nickname.value.length}
+                                is_value={info && nickname.value.length}
                                 is_error={nickname.errors}
                                 maxLen="10"
                             />
