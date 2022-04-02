@@ -23,7 +23,7 @@ absolute xl:w-t01 w-t03 h-20 z-10 top-0 rounded-md
 `;
 
 const Edit = tw.div`
-absolute inset-6 xl:top-44 xl:left-28
+absolute top-24 left-6 xl:top-44 xl:left-28
 `;
 const FlexBox = tw.div`
  w-full gap-4 flex flex-row
@@ -50,10 +50,10 @@ const EditMyArtWork = (props) => {
                     </Edit>
                 </Actives>
                 <Constan>
-                    {/* <BadgeBox>
-                            <CircleBtn name="MyStarMini">dd</CircleBtn>
-                            <CircleBtn name="PrivateMini">dd</CircleBtn>
-                        </BadgeBox> */}
+                    <BadgeBox>
+                        <CircleBtn name="MyStarMini" states="true" />
+                        <CircleBtn name="PrivateMini" states="false" />
+                    </BadgeBox>
                 </Constan>
             </Hover>
         </>

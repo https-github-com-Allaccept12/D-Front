@@ -11,9 +11,9 @@ const MyAnswer = (props) => {
     return (
         <>
             <Box>
-                <DimoQNAComment />
-                <DimoQNAComment />
-                <DimoQNAComment />
+                <DimoQNAComment states="true" />
+                <DimoQNAComment states="false" />
+                <DimoQNAComment states="true" />
             </Box>
         </>
     );

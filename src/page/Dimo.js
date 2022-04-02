@@ -38,13 +38,13 @@ const Dimo = () => {
                                 </Title>
                             )}
 
-                            {b === "shared" ? (
+                            {b === "info" ? (
                                 <Title size="5" className="text-dpurple-200">
-                                    <Link to="/dimo/shared/all">정보공유</Link>
+                                    <Link to="/dimo/info/all">정보공유</Link>
                                 </Title>
                             ) : (
                                 <Title size="5">
-                                    <Link to="/dimo/shared/all">정보공유</Link>
+                                    <Link to="/dimo/info/all">정보공유</Link>
                                 </Title>
                             )}
                         </div>
@@ -99,7 +99,7 @@ const Dimo = () => {
             </>
         );
 
-    if (b === "shared")
+    if (b === "info")
         return (
             <>
                 <div className="bg-dgray-200 min-h-screen h-[200rem]">
@@ -117,11 +117,11 @@ const Dimo = () => {
 
                             {b === "shared" ? (
                                 <Title size="5" className="text-dpurple-200">
-                                    <Link to="/dimo/shared/all">정보공유</Link>
+                                    <Link to="/dimo/info/all">정보공유</Link>
                                 </Title>
                             ) : (
                                 <Title size="5">
-                                    <Link to="/dimo/shared/all">정보공유</Link>
+                                    <Link to="/dimo/info/all">정보공유</Link>
                                 </Title>
                             )}
                         </div>

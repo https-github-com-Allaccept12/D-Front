@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+
 import tw from "tailwind-styled-components";
+import JobOptions from "./JobOptions";
 
 const SelectBoxCategory = (props) => {
+    const { value, onChange, option } = props;
+
+    const [selected, setSelected] = useState("");
+
+    const handleChangeSelect = (e) => {
+        setSelected(e.target.value);
+    };
+
     return (
         <>
             <div>
@@ -22,21 +32,10 @@ const SelectBoxCategory = (props) => {
                                 m-0
                                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     aria-label="Default select example"
-                >
-                    <option value="0">카테고리 선택</option>
-                    <option value="1">UI/UX</option>
-                    <option value="2">그래픽디자인</option>
-                    <option value="3">브랜딩/편집디자인</option>
-                    <option value="3">제품/패키지 디자인</option>
-                    <option value="3">타이포그래피</option>
-                    <option value="3">영상/모션그래픽</option>
-                    <option value="3">공예</option>
-
-                    <option value="3">패션</option>
-                    <option value="3">게임/캐릭터디자인</option>
-                    <option value="3">건축/인테리어/환경디자인</option>
-                    <option value="3">기타</option>
-                </select>
+                    onChange={onChange}
+                    value={value}
+                    option={option}
+                ></select>
             </div>
         </>
     );

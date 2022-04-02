@@ -13,24 +13,26 @@ import myPageSlice from "./modules/myPage";
 import mainPageArtistsSlice from "./modules/mainPageReducer";
 import artworkSlice from "./modules/artWork";
 import userSlice from "./modules/userState";
+import dimoSlice from "./modules/dimo";
 
 export default configureStore({
-  reducer: {
-    // user: userSlice,
-    image: imageSlice,
-    post: postSlice,
-    checknickname: checkNicknameSlice,
-    profile: profileSlice,
-    tendency: tendencySlice,
-    interests: interestsSlice,
-    mainPageLoad: mainPageSlice,
-    mainPage: mainPageArtistsSlice,
-    artwork: artworkSlice,
-    myPage: myPageSlice,
-    user: userSlice,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }),
+    reducer: {
+        // user: userSlice,
+        image: imageSlice,
+        post: postSlice,
+        checknickname: checkNicknameSlice,
+        profile: profileSlice,
+        tendency: tendencySlice,
+        interests: interestsSlice,
+        mainPageLoad: mainPageSlice,
+        mainPage: mainPageArtistsSlice,
+        artwork: artworkSlice,
+        myPage: myPageSlice,
+        user: userSlice,
+        dimo: dimoSlice,
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }),
 });

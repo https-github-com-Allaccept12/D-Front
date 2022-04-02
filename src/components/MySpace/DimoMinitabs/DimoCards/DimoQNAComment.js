@@ -12,6 +12,7 @@ w-full
 `;
 
 const DimoQNAComment = (props) => {
+    const { states } = props;
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[1];
@@ -20,7 +21,7 @@ const DimoQNAComment = (props) => {
     return (
         <>
             <Box>
-                <Text className="text-dpurple-300">채택된 댓글</Text>
+                {states == "true" ? <Text className="text-dpurple-300">채택된 댓글</Text> : ""}
                 <Subtitle size="1">댓글 댓글댓글</Subtitle>
                 <Text className="text-dgray-400">몇분 전</Text>
                 <Title size="6" className="text-dgray-400 mt-10 cursor-pointer">

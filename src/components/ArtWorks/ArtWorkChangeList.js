@@ -45,13 +45,11 @@ function ArtWorkChangeList(props) {
         var tempItems = items;
         tempItems.splice(idx, 1);
         setItems(tempItems);
-        const forParent = []
-        for(var item of items){
+        const forParent = [];
+        for (var item of items) {
             forParent.push(item.content);
         }
-        // dispatch()
-        setPreviews(forParent)
-        // 여기쯤 디스패치
+        setPreviews(forParent);
         setForceRerender(!forceRerender);
     };
 

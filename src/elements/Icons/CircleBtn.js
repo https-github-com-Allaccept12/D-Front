@@ -17,7 +17,8 @@ import tw from "tailwind-styled-components";
 
 const Badge = tw.div`
 w-8 h-8 rounded-full bg-white flex justify-center items-center
-opacity-100 hover:scale-110 cursor-pointer 
+opacity-100 hover:animate-spin cursor-pointer 
+${(props) => (props.states == "true" ? "" : `hidden`)};
 `;
 
 const Icons = tw.i`
@@ -27,10 +28,11 @@ hover:scale-110 opacity-100 cursor-pointer
 
 const IconBox = tw.div`
 flex flex-col justify-center items-center
+
 `;
 
 const CircleBtn = (props) => {
-    const { name, iconSize, onClick } = props;
+    const { name, iconSize, onClick, states } = props;
 
     if (name === "Edit") {
         return (
@@ -95,7 +97,7 @@ const CircleBtn = (props) => {
     if (name === "MyStarMini") {
         return (
             <>
-                <Badge>
+                <Badge states={states}>
                     <StarF width="16" height="16" onClick={onClick} />
                 </Badge>
             </>
@@ -105,7 +107,7 @@ const CircleBtn = (props) => {
     if (name === "PrivateMini") {
         return (
             <>
-                <Badge>
+                <Badge states={states}>
                     <Private width="16" height="16" onClick={onClick} />
                 </Badge>
             </>
