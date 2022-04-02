@@ -33,7 +33,7 @@ const MyArtWork = (props) => {
         </div>
     </>
     <div className="flex flex-row flex-wrap items-center justify-center gap-6">
-    {portfolios.map((value) => <EditMyArtWork src={value.img} size="1"/>)}
+    {portfolios && portfolios.map((value) => (<EditMyArtWork src={value.img} size="1"/>))}
 {/* <EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
 <EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
 <EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
