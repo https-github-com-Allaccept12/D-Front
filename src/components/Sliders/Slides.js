@@ -89,10 +89,10 @@ const Slides = (props) => {
     if (type === "artwork")
         return (
             <>
-                <div className="rounded-lg">
-                    <Card size="4" src="https://thumb.ac-illust.com/a5/a5b68711f17ff70ea9974c0a32a2fcb5_t.jpeg" />
-                    <div className="absolute bottom-3 ">
-                        <div className="ml-2 rounded-b-lg bg-dgray-500 opacity-80 w-c04 h-14">
+                <div className="rounded-lg flex justify-center items-center">
+                    <Thumbnail size="7" src="https://thumb.ac-illust.com/a5/a5b68711f17ff70ea9974c0a32a2fcb5_t.jpeg" />
+                    <div className="absolute bottom-0">
+                        <div className="rounded-b-lg bg-dgray-500 opacity-80 w-[18.75rem] h-14">
                             <div className="flex items-center justify-center pt-3 font-min1">프로젝트 이름</div>
                         </div>
                     </div>

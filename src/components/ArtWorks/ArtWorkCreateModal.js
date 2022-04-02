@@ -230,13 +230,14 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                     프로젝트 제목
                                     <span className="font-bold text-purple-600"> *</span>
                                 </Title>
-                                <input
+                                <InputNoTitle
                                     className="border border-gray-400 rounded-md focus:border-purple-400"
                                     size="70"
                                     height="40"
                                     placeholder="내용을 입력하세요"
                                     type="text"
                                     name="title"
+                                    value={inputs.title}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -356,20 +357,20 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                     작업 기간<span className="font-bold text-purple-600"> *</span>
                                 </Title>
                                 <div className="flex flex-row gap-3">
-                                    <input
+                                    <InputNoTitle
                                         type="text"
                                         name="startDate"
                                         placeholder="YYYY.MM"
                                         onChange={handleChange}
-                                        className="w-full px-4 py-1 border rounded-lg outline-none border-dgray-400 hover:border-dpurple-200 border-box peer active:border-dpurple-300 invalid:text-pink-600 focus:border-dpurple-300 font-min1"
+                                        value={inputs.startDate}
                                     />
                                     <Title size="5"> - </Title>
-                                    <input
+                                    <InputNoTitle
                                         type="text"
                                         name="endDate"
                                         placeholder="YYYY.MM"
+                                        value={inputs.endDate}
                                         onChange={handleChange}
-                                        className="w-full px-4 py-1 border rounded-lg outline-none border-dgray-400 hover:border-dpurple-200 border-box peer active:border-dpurple-300 invalid:text-pink-600 focus:border-dpurple-300 font-min1"
                                     />
                                 </div>
                             </div>
@@ -390,10 +391,10 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                                     +추가하기
                                                 </Title>
                                             )}
-                                            <input
+                                            <InputNoTitle
                                                 key={i}
-                                                className="w-full px-4 py-2 border rounded-md shadow-md outline-none resize-none border-dgray-400 border-box font-min1 hover:border-dpurple-200 active:border-dpurple-300"
-                                                name="video"
+                                                placeholder="영어로 입력하세요"
+                                                name="videoLink"
                                                 value={x.videoLink}
                                                 onChange={(e) => handleInputChange(e, i)}
                                             />
@@ -415,9 +416,10 @@ const ArtWorkCreateModal = ({ onClose }) => {
                             </div>
                             <div className="col-span-4 col-start-2 row-start-6 mt-8">
                                 <Title size="3">작품 설명</Title>
-                                <input
-                                    className="w-full px-4 py-4 border rounded-md shadow-md outline-none resize-none border-dgray-400 border-box font-min1 hover:border-dpurple-200 active:border-dpurple-300"
+                                <InputNoTitle
+                                    placeholder="작품에 대한 설명을 입력해주세요(선택)"
                                     name="description"
+                                    value={inputs.description}
                                     onChange={handleChange}
                                 />
                             </div>
@@ -440,7 +442,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                                 text-gray-700
                                                 bg-white bg-clip-padding bg-no-repeat
                                                 border border-solid border-gray-300
-                                                rounded-xl 
+                                                rounded-md 
                                                 transition
                                                 ease-in-out
                                                 m-0
@@ -474,7 +476,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                                 text-gray-700
                                                 bg-white bg-clip-padding bg-no-repeat
                                                 border border-solid border-gray-300
-                                                rounded-xl 
+                                                rounded-md 
                                                 transition
                                                 ease-in-out
                                                 m-0

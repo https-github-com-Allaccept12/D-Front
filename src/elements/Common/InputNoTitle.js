@@ -2,7 +2,7 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 const InputStyles = tw.input`
-w-full px-4 border border-dgray-400 rounded-lg py-1
+w-full px-4 border border-dgray-400 rounded-md py-1
 hover:border-dpurple-200 border-box peer
 active:border-dpurple-300 invalid:text-pink-600
 focus:border-dpurple-300 font-min1
@@ -32,6 +32,7 @@ const InputNoTitle = (props) => {
         is_value,
         maxlen,
         className,
+        name,
     } = props;
     if (is_submit) {
         return (
@@ -68,6 +69,7 @@ const InputNoTitle = (props) => {
                         <InputStyles
                             type={type}
                             value={value}
+                            name={name}
                             is_error={is_error}
                             cardsize={cardsize}
                             placeholder={placeholder}
