@@ -39,7 +39,7 @@ const ArtPostMain = (props) => {
                         <Subtitle size="1">{nickname}</Subtitle>
                     </div>
                     <div className="flex flex-row items-center mt-1 mr-1 text-dgray-400">
-                        <IconBtn name="HeartE" iconSize="20" count="4" />
+                        <IconBtn name="HeartE" iconSize="20" count={like_count} />
                     </div>
                 </div>
             </Art>

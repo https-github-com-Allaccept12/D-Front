@@ -13,11 +13,14 @@ export const imageSlice = createSlice({
     artworkFiles: (state, action) => {
       state.artworkFiles = action.payload;
     },
+    dimoFiles: (state, action) => {
+      state.dimoFiles = action.payload;
+    }
     // preview(state, action) {
     //     state.value = action.payload
     // }
   },
 });
 
-export const { preview, forSend, artworkFiles } = imageSlice.actions;
+export const { preview, forSend, artworkFiles, dimoFiles } = imageSlice.actions;
 export default imageSlice.reducer;
