@@ -4,26 +4,9 @@ import { Button, Title } from "../../elements";
 import ArtPostMain from "./ArtPostMain";
 import tw from "tailwind-styled-components";
 import { useHistory, useLocation } from "react-router-dom";
-import { ArtWorkCategory, ArtWorkWrite } from "../../components/ArtWorks";
+import { ArtWorkCategory, ArtWorkWrite } from "../ArtWorks";
 
-const Grid = tw.div` 
-flex flex-row flex-wrap items-center gap-4 2xl:max-w-[80%]
-`;
-
-const p = [
-    { 1: "1" },
-    { 2: "2" },
-    { 3: "3" },
-    { 4: "4" },
-    { 5: "5" },
-    { 6: "6" },
-    { 7: "7" },
-    { 8: "8" },
-    { 9: "9" },
-    { 10: "10" },
-];
-
-const ArtWorkAllList = (props) => {
+const ArtWorkHotList = (props) => {
     const artworks = useSelector((state) => state.mainPage.artworks);
     // console.log(artworks);
     let arrayArtworks = () => {};
@@ -62,4 +45,4 @@ const ArtWorkAllList = (props) => {
     }
 };
 
-export default ArtWorkAllList;
+export default ArtWorkHotList;

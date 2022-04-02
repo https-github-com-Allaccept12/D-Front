@@ -7,7 +7,7 @@ import ArtWorkFilter from "./ArtWorkFilter";
 import ArtWorkList from "./ArtWorkList";
 import ArtWorkInsideFilter from "./ArtWorkInsideFilter";
 import ArtPost from "./ArtPost";
-import ArtWorkAllList from "./ArtWorkAllList";
+import ArtWorkHotList from "./ArtWorkHotList";
 import ArtPostMain from "./ArtPostMain";
 export {
     ArtWorkDetail,
@@ -18,6 +18,6 @@ export {
     ArtWorkList,
     ArtWorkInsideFilter,
     ArtPost,
-    ArtWorkAllList,
+    ArtWorkHotList,
     ArtPostMain,
 };

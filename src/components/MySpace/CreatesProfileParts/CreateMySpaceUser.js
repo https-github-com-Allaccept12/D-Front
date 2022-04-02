@@ -29,33 +29,30 @@ const CreateMySpaceUser = (props) => {
 
     const info = useSelector((state) => state.myPage.myPage);
 
-
     const nicknameValidMaxLen = (value) => value.length <= 10;
-    
-    let nickTemp = ""
-    let emailTemp = ""
-    let linkedTemp = ""
-    let brunchTemp = ""
-    let InstaTemp = ""
-    let job = ""
+
+    let nickTemp = "";
+    let emailTemp = "";
+    let linkedTemp = "";
+    let brunchTemp = "";
+    let InstaTemp = "";
+    let job = "";
 
     useEffect(() => {
-        if(info){
+        if (info) {
             dispatch(preview(info.profile_img));
         }
-    }, [info])
-    
-    if(info){
-        nickTemp = info.nickname
-        emailTemp = info.work_email
-        linkedTemp = info.linked_in
-        brunchTemp = info.brunch
-        InstaTemp = info.insta
-        job = info.job
+    }, [info]);
+
+    if (info) {
+        nickTemp = info.nickname;
+        emailTemp = info.work_email;
+        linkedTemp = info.linked_in;
+        brunchTemp = info.brunch;
+        InstaTemp = info.insta;
+        job = info.job;
     }
-    
-    
-    
+
     // console.log(nickTemp);
     const nickname = useInput(nickTemp, [nicknameValidMaxLen]);
     const email = useInput(emailTemp, []);
@@ -65,7 +62,7 @@ const CreateMySpaceUser = (props) => {
     const profile = useSelector((state) => state.image.url);
     const image = useSelector((state) => state.image.file);
     const [nicknameState, setNicknameState] = useState("");
-    
+
     const JobOptions = [
         { value: "UI & UX", label: "UI & UX" },
         { value: "패션", label: "패션" },
@@ -91,7 +88,6 @@ const CreateMySpaceUser = (props) => {
         };
         dispatch(checknickname({ map, setNicknameState }));
     };
-
 
     // const deleteProfile = () => {
     //     dispatch(preview(""));
@@ -163,10 +159,10 @@ const CreateMySpaceUser = (props) => {
                                 cardSize="2"
                                 title="닉네임"
                                 onBlur={checkNickname}
-                                value={nickname && nickname.value}
-                                onChange={nickname && nickname.onChange}
-                                is_value={nickname && nickname.value.length}
-                                is_error={nickname && nickname.errors}
+                                value={nickname?.value}
+                                onChange={nickname?.onChange}
+                                is_value={nickname?.value.length}
+                                is_error={nickname?.errors}
                                 maxLen="10"
                             />
                             {nicknameState == "available" && <p className="-mt-10 text-xs text-right">✔️</p>}
@@ -206,30 +202,31 @@ const CreateMySpaceUser = (props) => {
                     <Input
                         cardSize="2"
                         title="이메일"
-                        value={email && email.value}
-                        onChange={email && email.onChange}
-                        is_value={email && email.value.length}
+                        value={email?.value}
+                        onChange={email?.onChange}
+                        // is_value={email?.value.length}
                     ></Input>
-                    <Input cardSize="2" 
-                        title="링크드인" 
-                        value={linkedIn && linkedIn.value} 
-                        onChange={linkedIn && linkedIn.onChange}
-                        placeholder="아이디만 입력해주세요">
-                    </Input>
-                    <Input 
-                        cardSize="2" 
-                        title="브런치" 
-                        value={brunch && brunch.value} 
-                        onChange={brunch && brunch.onChange}
-                        placeholder="아이디만 입력해주세요">
-                    </Input>
+                    <Input
+                        cardSize="2"
+                        title="링크드인"
+                        value={linkedIn?.value}
+                        onChange={linkedIn?.onChange}
+                        placeholder="아이디만 입력해주세요"
+                    ></Input>
+                    <Input
+                        cardSize="2"
+                        title="브런치"
+                        value={brunch?.value}
+                        onChange={brunch?.onChange}
+                        placeholder="아이디만 입력해주세요"
+                    ></Input>
                     <Input
                         cardSize="2"
                         title="인스타그램"
-                        value={instagram && instagram.value}
-                        onChange={instagram && instagram.onChange}
-                        placeholder="아이디만 입력해주세요">    
-                    </Input>
+                        value={instagram?.value}
+                        onChange={instagram?.onChange}
+                        placeholder="아이디만 입력해주세요"
+                    ></Input>
                 </div>
             </div>
             <div className="grid w-full py-10 bg-white place-items-center">
