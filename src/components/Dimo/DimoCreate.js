@@ -50,6 +50,7 @@ const DimoCreate = () => {
         { value: "건축/인테리어/환경", label: "건축/인테리어/환경" },
     ];
     const [selected, setSelected] = useState("");
+    const [hashtags, setHashtags] = useState([]);
 
     const handleChangeSelect = (e) => {
         setSelected(e.target.value);
@@ -62,8 +63,8 @@ const DimoCreate = () => {
         category: selected,
         content: content.value,
         img: [{ img_url: "" }],
-        is_selected: "",
-        board: status,
+        is_selected: hashtags,
+        board: status.toUpperCase(),
     };
     console.log(data);
     //태그는 어디에...
@@ -112,7 +113,7 @@ const DimoCreate = () => {
                                         </option>
                                     ))}
                                 </select>
-                                <Hashtag />
+                                <Hashtag hashtags={hashtags} setHashtags={setHashtags} />
                             </div>
                             <div className="px-8 flex flex-col gap-7">
                                 <InputNoTitle placeholder="제목" value={title.value} onChange={title.onChange} />
