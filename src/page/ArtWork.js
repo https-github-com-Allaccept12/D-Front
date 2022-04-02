@@ -17,10 +17,10 @@ opacity-60 hover:opacity-100
 `;
 
 const ArtWork = (props) => {
-    const dispatch = useDispatch(artworkPageLoad);
-    // useEffect(() => {
+    const dispatch = useDispatch();
+    useEffect(() => {
     dispatch(artworkPageLoad(dispatch));
-    // }, [])
+    }, [])
 
     return (
         <>

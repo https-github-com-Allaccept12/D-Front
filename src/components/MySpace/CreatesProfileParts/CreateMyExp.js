@@ -37,7 +37,7 @@ w-full py-4 border border-dgray-400 border-box h-I02 px-4
 
 // 인풋리스트에 모아서 전달하기... 화면을 이동하면 내용이 사라진다..!
 const CreateMyExp = (props) => {
-    const { info } = props;
+    const { info, exp } = props;
     const dispatch = useDispatch();
     const [inputList, setInputList] = useState([
         {
@@ -80,16 +80,16 @@ const CreateMyExp = (props) => {
         ]);
     };
 
-    const [isChecked, setIsChecked] = useState(false)
-    const checkWorking = () => {
-        setIsChecked(!isChecked);
-        if(isChecked){
+    const checkWorking = (e, i) => {
+        if(e.target.value == 'off'){
             const list = [...inputList];
-            list[0]["work_end"] = "";
+            list[i]["work_end"] = "";
+            e.target.value = 'on';
             setInputList(list);
-        } else{
+        }else{
             const list = [...inputList];
-            list[0]["work_end"] = "재직 중";
+            list[i]["work_end"] = "재직 중";
+            e.target.value = 'off';
             setInputList(list);
         }
     }
@@ -107,7 +107,7 @@ const CreateMyExp = (props) => {
 
     return (
         <>
-            <div className="grid w-full grid-cols-4 gap-3 col-span-full">
+            <div className="grid w-full grid-cols-4 gap-3 col-span-full justify-items-center">
                 <TitleBox>
                     <Title size="4" className="my-6">
                         업무경험
@@ -196,12 +196,12 @@ const CreateMyExp = (props) => {
                                                     placeholder="YYYY.MM"
                                                     value={x.work_end}
                                                     onChange={(e) => handleInputChange(e, i)}
-                                                    disabled={isChecked ? true : false}
+                                                    // disabled={isChecked ? true : false}
                                                 />
                                             </label>
                                         </div>
                                     </InputBox>
-                                    <input type="checkbox" value={isChecked} onChange={checkWorking}/>
+                                    <input type="checkbox" onChange={(e) => checkWorking(e, i)}/>
                                     <span> 재직 중</span>
                                 </div>
 

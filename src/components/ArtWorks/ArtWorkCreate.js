@@ -20,6 +20,10 @@ const ArtWorkCreate = (props) => {
     const [modalOn, setModalOn] = useState(false);
 
     const handleModal = () => {
+        if(!modalOn & previews.length === 0){
+            alert('아 이미지 추가하셈');
+            return
+        }
         setModalOn(!modalOn);
         dispatch(artworkFiles(images));
     };

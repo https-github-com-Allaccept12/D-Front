@@ -27,9 +27,9 @@ const MyProfile = (props) => {
         <>
             <Suspense fallback={<h1>Loading..</h1>}>
                 <MyIntro info={info} />
-                <MyExp exp={exp} />
-                <MyPortfolio info={info} />
                 <MySkill info={info} />
+                <MyPortfolio info={info} />
+                <MyExp exp={exp} />
             </Suspense>
             {/* <MyTimeLine info={info} /> */}
         </>

@@ -64,6 +64,7 @@ const EditMySpace = (props) => {
     }, [dispatch, account_id, owner_account_id]);
 
     const info = useSelector((state) => state.myPage.myPage);
+    const exp = useSelector((state) => state.myPage.history);
     let tendency = "";
     if (info) {
         tendency = info.tendency;
@@ -84,12 +85,12 @@ const EditMySpace = (props) => {
         },
         {
             tab: "업무 경험",
-            content: <CreateMyExp info={info} />,
+            content: <CreateMyExp info={info} exp={exp} />,
         },
-        {
-            tab: "포트폴리오",
-            content: <ChangeMyPortfolio />,
-        },
+        // {
+        //     tab: "포트폴리오",
+        //     content: <ChangeMyPortfolio />,
+        // },
         {
             tab: "보유 스킬",
             content: <CreateMySkill info={info} />,
@@ -146,7 +147,7 @@ const EditMySpace = (props) => {
                     </div>
                 )}
 
-                <div className="flex flex-row w-full xl:w-4/5 2xl:w-2/3 mx-auto">
+                <div className="flex flex-row w-full mx-auto xl:w-4/5 2xl:w-2/3">
                     <div className="flex flex-col items-start justify-start w-full mx-auto mt-3">
                         <Title size="4">프로필 수정</Title>
 
@@ -161,9 +162,9 @@ const EditMySpace = (props) => {
                                     마이페이지로
                                 </Button>
                             </Link>
-                            <Button size="2" color="1">
+                            {/* <Button size="2" color="1">
                                 수정하기
-                            </Button>
+                            </Button> */}
                         </div>
                     </div>
 
@@ -288,7 +289,7 @@ const EditMySpace = (props) => {
                             {array_sample[4].tab}
                         </TabBtn>
 
-                        <TabBtn
+                        {/* <TabBtn
                             onClick={() => {
                                 changeItem([5]);
                             }}
@@ -308,7 +309,7 @@ const EditMySpace = (props) => {
                                 />
                             )}
                             {array_sample[5].tab}
-                        </TabBtn>
+                        </TabBtn> */}
                     </ProgBox>
                 </div>
             </div>
@@ -387,7 +388,7 @@ const EditMySpace = (props) => {
                     {array_sample[4].tab}
                 </TabBtn>
 
-                <TabBtn
+                {/* <TabBtn
                     onClick={() => {
                         changeItem([5]);
                     }}
@@ -399,7 +400,7 @@ const EditMySpace = (props) => {
                         <Icon name="Cancel" iconSize="16" className="mr-3 text-white rounded-full bg-dgray-400" />
                     )}
                     {array_sample[5].tab}
-                </TabBtn>
+                </TabBtn> */}
             </ProgBoxMobile>
         </>
     );

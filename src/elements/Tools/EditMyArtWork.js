@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { getMaster, removeMaster, updateScope, deleteArtwork } from "../../redux/modules/artWork";
 import CircleBtn from "../Icons/CircleBtn";
 import tw from "tailwind-styled-components";
 
@@ -34,7 +36,24 @@ w-full flex flex-row justify-end items-end gap-3 p-5
 `;
 
 const EditMyArtWork = (props) => {
-    const { src, size } = props;
+    const dispatch = useDispatch();
+    const { src, size, isMaster, scope, artwork_id } = props;
+    const [is_master, setMaster] = useState(isMaster);
+    const [is_public, setPublic] = useState(scope);
+
+    const ClickMaster = () => {
+        setMaster(!is_master);
+        (is_master ? dispatch(getMaster(artwork_id)) : dispatch(removeMaster(artwork_id)));
+    }
+    const ClickPublic = () => {
+        setPublic(!is_public);
+        dispatch(updateScope(artwork_id));
+    }
+
+    const ClickDelete = () => {
+        dispatch(deleteArtwork(artwork_id));
+    }
+    
     return (
         <>
             <Hover>
@@ -42,17 +61,17 @@ const EditMyArtWork = (props) => {
                 <Actives>
                     <Edit>
                         <FlexBox>
-                            <CircleBtn name="Edit"></CircleBtn>
-                            <CircleBtn name="Delete"></CircleBtn>
-                            <CircleBtn name="MyStar"></CircleBtn>
-                            <CircleBtn name="Private"></CircleBtn>
+                            {/* <CircleBtn name="Edit"></CircleBtn> */}
+                            <CircleBtn name="Delete" onClick={ClickDelete}></CircleBtn>
+                            <CircleBtn name="MyStar" onClick={ClickMaster}></CircleBtn>
+                            <CircleBtn name="Private" onClick={ClickPublic}></CircleBtn>
                         </FlexBox>
                     </Edit>
                 </Actives>
                 <Constan>
                     <BadgeBox>
-                        <CircleBtn name="MyStarMini" states="true" />
-                        <CircleBtn name="PrivateMini" states="false" />
+                        <CircleBtn name="MyStarMini" states={is_master} />
+                        <CircleBtn name="PrivateMini" states={!is_public} />
                     </BadgeBox>
                 </Constan>
             </Hover>

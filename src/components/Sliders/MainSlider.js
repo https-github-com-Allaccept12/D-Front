@@ -39,7 +39,6 @@ const MainSlider = (props) => {
 
     let hotlists = useSelector((state) => state.mainPage.artist);
     let makeSlides = () => {};
-    // console.log(hotlists);
     if (hotlists) {
         makeSlides = () => {
             const arr = [];
@@ -50,8 +49,8 @@ const MainSlider = (props) => {
                             type="main"
                             image={hotlists[i].account_profile}
                             nickname={hotlists[i].account_nickname}
-                            thumnail1={hotlists[i].img_url_fir}
-                            thumnail2={hotlists[i].img_url_sec}
+                            thumnail1={hotlists[i].artWorks[0]}
+                            thumnail2={hotlists[i].artWorks[1]}
                             job={hotlists[i].account_job}
                             follow={hotlists[i].is_follow}
                         />

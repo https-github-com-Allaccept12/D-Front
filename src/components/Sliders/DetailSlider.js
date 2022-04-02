@@ -29,7 +29,7 @@ const NextBtnDetail = tw.button`
 
 const MainSlider = (props) => {
     const slider = React.useRef(null);
-    const { main, artwork, dimo } = props;
+    const { main, artwork, dimo, others } = props;
 
     const DetailSettings = {
         dots: false, // 슬라이드 밑에 점 보이게
@@ -66,7 +66,17 @@ const MainSlider = (props) => {
                     <Icon name="ArrowL" iconSize="48" />{" "}
                 </PrevBtnDetail>
                 <Slide {...DetailSettings} ref={slider}>
-                    <SS>
+                    {main === "main" && 
+                        (others && others.map((value) => {
+                            return (
+                                // <Images src={value.img_url} />
+                                <SS>
+                                    <Slides type="artwork" value={value}/>
+                                </SS>
+                            )
+                        }))
+                    }
+                    {/* <SS>
                         <Slides type="artwork" />
                     </SS>
                     <SS>
@@ -80,7 +90,7 @@ const MainSlider = (props) => {
                     </SS>
                     <SS>
                         <Slides type="artwork" />
-                    </SS>
+                    </SS> */}
                 </Slide>
                 <NextBtnDetail onClick={() => slider?.current?.slickNext()}>
                     <Icon name="ArrowR" iconSize="48" />

@@ -21,6 +21,7 @@ export const kakaoSlice = createAsyncThunk(
           sessionStorage.setItem("access_token", access_token);
           sessionStorage.setItem("refresh_token", refresh_token);
           sessionStorage.setItem("account_id", account_id);
+          sessionStorage.setItem("profile_img", profile_img);
           dispatch(preview(profile_img));
           dispatch(user(access_token));
           if (have_to_signup) {
