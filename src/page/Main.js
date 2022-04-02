@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Title, Text, Subtitle, Thumbnail } from "../elements";
 import { MainSlider } from "../components";
-import { ArtWorkAllList, ArtWorkPost } from "../components/ArtWorks";
+import { ArtWorkHotList, ArtWorkPost } from "../components/ArtWorks";
 import { mainPageLoad } from "../redux/modules/mainPageLoad";
 import { setCookie, getCookie } from "../shared/cookie";
 
@@ -52,7 +52,7 @@ const Main = (props) => {
                     추천 아트워크
                 </Title>
                 <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-4 2xl:gap-8 xl:justify-start">
-                    <ArtWorkAllList />
+                    <ArtWorkHotList />
                 </div>
             </div>
         </>
