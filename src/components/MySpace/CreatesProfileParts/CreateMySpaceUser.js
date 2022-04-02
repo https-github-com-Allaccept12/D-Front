@@ -45,12 +45,15 @@ const CreateMySpaceUser = (props) => {
         }
     }, [info])
     
-    nickTemp = info.nickname
-    emailTemp = info.work_email
-    linkedTemp = info.linked_in
-    brunchTemp = info.brunch
-    InstaTemp = info.insta
-    job = info.job
+    if(info){
+        nickTemp = info.nickname
+        emailTemp = info.work_email
+        linkedTemp = info.linked_in
+        brunchTemp = info.brunch
+        InstaTemp = info.insta
+        job = info.job
+    }
+    
     
     
     // console.log(nickTemp);
