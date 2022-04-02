@@ -160,10 +160,10 @@ const CreateMySpaceUser = (props) => {
                                 cardSize="2"
                                 title="닉네임"
                                 onBlur={checkNickname}
-                                value={nickname.value}
-                                onChange={nickname.onChange}
-                                is_value={info && nickname.value.length}
-                                is_error={nickname.errors}
+                                value={nickname && nickname.value}
+                                onChange={nickname && nickname.onChange}
+                                is_value={nickname && nickname.value.length}
+                                is_error={nickname && nickname.errors}
                                 maxLen="10"
                             />
                             {nicknameState == "available" && <p className="-mt-10 text-xs text-right">✔️</p>}
@@ -188,7 +188,7 @@ const CreateMySpaceUser = (props) => {
                                 onChange={handleChangeSelect}
                                 value={selected}
                             >
-                                <option>{job}</option>
+                                <option>{job && job}</option>
                                 {JobOptions.map((item, index) => (
                                     <option key={index} value={item.value}>
                                         {item.label}
@@ -203,28 +203,28 @@ const CreateMySpaceUser = (props) => {
                     <Input
                         cardSize="2"
                         title="이메일"
-                        value={email.value}
-                        onChange={email.onChange}
-                        is_value={email.value.length}
+                        value={email && email.value}
+                        onChange={email && email.onChange}
+                        is_value={email && email.value.length}
                     ></Input>
                     <Input cardSize="2" 
                         title="링크드인" 
-                        value={linkedIn.value} 
-                        onChange={linkedIn.onChange}
+                        value={linkedIn && linkedIn.value} 
+                        onChange={linkedIn && linkedIn.onChange}
                         placeholder="아이디만 입력해주세요">
                     </Input>
                     <Input 
                         cardSize="2" 
                         title="브런치" 
-                        value={brunch.value} 
-                        onChange={brunch.onChange}
+                        value={brunch && brunch.value} 
+                        onChange={brunch && brunch.onChange}
                         placeholder="아이디만 입력해주세요">
                     </Input>
                     <Input
                         cardSize="2"
                         title="인스타그램"
-                        value={instagram.value}
-                        onChange={instagram.onChange}
+                        value={instagram && instagram.value}
+                        onChange={instagram && instagram.onChange}
                         placeholder="아이디만 입력해주세요">    
                     </Input>
                 </div>
