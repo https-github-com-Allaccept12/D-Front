@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "./Hashtag.css";
 
 const Hashtag = (props) => {
     const { setHashtags, hashtags } = props;
     //해시태그
-    const [tags, setTags] = useState(["궁금해요!"]);
-    const [forceRerender, setForceRerender] = useState(true);
+    const [tags, setTags] = useState(["궁금해요"]);
     // console.log(tags);
 
     const sandTags = () => {
         setHashtags(tags);
-        setForceRerender(!forceRerender);
-
-        // dispatch(tags);
     };
+    useEffect(() => {
+        setHashtags(tags);
+    }, [sandTags]);
 
     return <ReactTagInput tags={tags} onChange={(newTags) => [setTags(newTags), sandTags()]} />;
 };

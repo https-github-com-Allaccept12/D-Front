@@ -14,7 +14,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateNewDimo } from "../../redux/modules/dimo";
 import tw from "tailwind-styled-components";
-import JobOptions from "../../elements/Tools/JobOptions";
+// import JobOptions from "../../elements/Tools/JobOptions";
 import { useInput } from "../../hooks";
 
 const Grid = tw.div`
@@ -38,23 +38,21 @@ const DimoCreate = () => {
     const dispatch = useDispatch();
     const dimofiles = useSelector((state) => state.image.dimoFiles);
     const JobOptions = [
-        { value: "UI & UX", label: "UI & UX" },
-        { value: "패션", label: "패션" },
-        { value: "타이포그래피", label: "타이포그래피" },
-        { value: "공예", label: "공예" },
-        { value: "패키지", label: "패키지" },
-        { value: "그래픽", label: "그래픽" },
-        { value: "영상/모션", label: "영상/모션" },
-        { value: "제품", label: "제품" },
-        { value: "게임/캐릭터", label: "게임/캐릭터" },
-        { value: "브랜딩/편집", label: "브랜딩/편집" },
-        { value: "건축/인테리어/환경", label: "건축/인테리어/환경" },
+        { value: "uiux", label: "UI & UX" },
+        { value: "fashion", label: "패션" },
+        { value: "typo", label: "타이포그래피" },
+        { value: "craft", label: "공예" },
+        { value: "package", label: "패키지" },
+        { value: "graphic", label: "그래픽" },
+        { value: "video", label: "영상/모션" },
+        { value: "product", label: "제품" },
+        { value: "game", label: "게임/캐릭터" },
+        { value: "edit", label: "브랜딩/편집" },
+        { value: "eco", label: "건축/인테리어/환경" },
     ];
     const [selected, setSelected] = useState("");
     const [hashtags, setHashtags] = useState([]);
-
-    
-
+    // console.log(selected);
     const handleChangeSelect = (e) => {
         setSelected(e.target.value);
     };
@@ -62,12 +60,12 @@ const DimoCreate = () => {
     const status = a.split("/")[3];
 
     const forSendTags = [];
-    for (var item of hashtags){
+    for (var item of hashtags) {
         var dic = {};
         dic["tag"] = item;
         forSendTags.push(dic);
     }
-    
+
     const data = {
         title: title.value,
         category: selected,
@@ -76,10 +74,11 @@ const DimoCreate = () => {
         hashTag: forSendTags,
         board: status.toUpperCase(),
     };
+    // console.log(data);
     //태그는 어디에...
     //이미지 등록하기
     const sandData = () => {
-        console.log('befor send: ', data);
+        console.log("befor send: ", data);
         const formData = new FormData();
         formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
         // dimofiles.forEach((element) => formData.append("imgFile", element));
@@ -190,7 +189,7 @@ const DimoCreate = () => {
                                         </option>
                                     ))}
                                 </select>
-                                <Hashtag />
+                                <Hashtag hashtags={hashtags} setHashtags={setHashtags} />
                             </div>
                             <div className="flex flex-col px-8 gap-7">
                                 <InputNoTitle placeholder="제목" value={title.value} onChange={title.onChange} />
@@ -204,11 +203,13 @@ const DimoCreate = () => {
                             </div>
                             <div className="p-8">
                                 <div className="p-10 mx-auto bg-white border border-dashed border-dpurple-200">
-                                    <FileUploadDimo types="shared" />
+                                    <FileUploadDimo types="info" />
                                 </div>
                             </div>
                             <div className="flex flex-row items-center justify-center gap-10 py-10 mb-10 bg-white">
-                                <Button size="2">등록하기</Button>
+                                <Button size="2" onClick={sandData}>
+                                    등록하기
+                                </Button>
                             </div>
                         </InnerGrid>
                     </Body>
