@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import {
     Profile,
     HeartButton,
@@ -11,9 +11,18 @@ import {
     TypeBtn,
     SnsIcons,
 } from "../../elements";
+import adventure from "../../static/images/MyPageImages/adventure.svg";
+import artist from "../../static/images/MyPageImages/artist.svg";
+import detail from "../../static/images/MyPageImages/detail.svg";
+import harmonious from "../../static/images/MyPageImages/harmonious.svg";
+import innovator from "../../static/images/MyPageImages/innovator.svg";
+import inventor from "../../static/images/MyPageImages/inventor.svg";
 
+
+import { useSelector } from "react-redux";
 import DetailSlider from "../Sliders/DetailSlider";
 import { Comment } from "../Comment";
+import skillList from "../ArtWorks/skillList_code";
 import { useInput, useToggle } from "../../hooks";
 import tw from "tailwind-styled-components";
 import { useHistory, Link, useLocation } from "react-router-dom";
@@ -66,8 +75,62 @@ const Flex = tw.div`
 flex flex-col gap-2 justify-center items-center
 `;
 
+
+
 const ArtWorkDetail = (props) => {
-    const { id } = props;
+    
+    const myProfileImg = sessionStorage.getItem("profile_img");
+    const writerInfo = useSelector((state) => state.myPage.myPage);
+    const artworks = useSelector((state) => state.artwork.detailArtwork);
+    
+    console.log(artworks);
+    const [nickname, setNickname] = useState("");
+    const [category, setCategory] = useState("");
+    const [profile, setProfile] = useState("");
+    const [content, setContent] = useState("");
+    const [copyright, setCopyright] = useState("");
+    const [time, setTime] = useState("");
+    const [specialty, setSpecialty] = useState([]);
+    const [title, setTitle] = useState("");
+    const [commentCount, setCommentCount] = useState("");
+    const [likeCount, setLikeCount] = useState("");
+    const [viewCount, setViewCount] = useState("");
+    const [images, setImages] = useState([]);
+    const [tendency, setTendency] = useState("");
+    const [others, setOthers] = useState([]);
+
+    useEffect(() => {
+        if(artworks){
+            setNickname(artworks.artWorkSubDetail.account_nickname);
+            setCategory(artworks.artWorkSubDetail.category);
+            setProfile(artworks.artWorkSubDetail.account_profile_img);
+            setContent(artworks.artWorkSubDetail.content);
+            setCopyright(artworks.artWorkSubDetail.account_nickname);
+            setTime(artworks.artWorkSubDetail.create_time);
+            setTitle(artworks.artWorkSubDetail.title);
+            setCommentCount(artworks.artWorkSubDetail.comment_count);
+            setLikeCount(artworks.artWorkSubDetail.like_count);
+            setViewCount(artworks.artWorkSubDetail.view_count);
+            setImages(artworks.img);
+            setOthers(artworks.similar_Work);
+            const temp = artworks.artWorkSubDetail.specialty.split('/')
+            const temp2 = []
+            for (var i = 0; temp.length; i++){
+              var x = temp.pop()
+              for (var skill of skillList){
+                if (x == skill.label){
+                    temp2.push(skill.value);
+                }
+              }
+            }
+            setSpecialty(temp2);
+        }
+        if(writerInfo){
+            setTendency(writerInfo.tendency);
+        }
+    }, [artworks, writerInfo]);
+    console.log(images);
+
     const history = useHistory();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
@@ -87,35 +150,45 @@ const ArtWorkDetail = (props) => {
                             <Profile size="6" className="hidden sm:contents" />
                         </div>
                         <div className="flex flex-col gap-2 ml-2 text-left">
-                            <Title size="6">은행 어플리케이션 디자인</Title>
+                            <Title size="6">{title}</Title>
                             <p className="flex flex-row text-md text-dgray-500 font-min2">
-                                2022.03.10
-                                <InnerLine /> UX / UI
+                                {time.split('T')[0]}
+                                <InnerLine /> {category}
                             </p>
                         </div>
                         <div className="flex flex-row gap-2 ml-auto">
-                            <SkillThumbnailMini skill="A1" />
-                            <SkillThumbnailMini skill="A5" />
+                            {specialty && specialty.map((value) => {
+                                return (
+                                    <SkillThumbnailMini skill={value} />
+                                )
+                            })}
                         </div>
                     </Header>
                 </Box>
 
                 <ModalBody>
-                    <Images
+                    {images && images.map((value) => {
+                        return (
+                            <Images src={value.img_url} />
+                        )
+                    })}
+                    {/* <Images
                         src="https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/cnoC/image/d8fBsA26Y_-zWzEHHYNUgV51oWU.JPG"
                         alt=""
-                    />
+                    /> */}
 
                     <ViewBox>
-                        <IconBtn name="HeartE" iconSize="24" count="40" />
-                        <IconBtn name="Eye" iconSize="28" count="40" />
-                        <IconBtn name="Talk" iconSize="24" count="40" />
+                        <IconBtn name="HeartE" iconSize="24" count={likeCount} />
+                        <IconBtn name="Eye" iconSize="28" count={viewCount} />
+                        <IconBtn name="Talk" iconSize="24" count={commentCount} />
                     </ViewBox>
 
                     <div className="p-6 bg-white">
                         <ProfileBox>
                             <div className="flex flex-row items-center justify-start">
-                                <Profile size="5" className="mb-3" onClick={setShowMenu} />
+                                <Profile size="5" className="mb-3" src={profile} 
+                                // onClick={setShowMenu} 
+                                />
                                 {showMenu && (
                                     <div className="absolute w-40">
                                         <MobileBox>
@@ -131,14 +204,22 @@ const ArtWorkDetail = (props) => {
                                 )}
 
                                 <div className="flex flex-col gap-1 ml-2 text-left">
-                                    <Text size="1" className="font-semibold text-dgray-600">
-                                        이름 이름
-                                    </Text>
+                                    <Title size="6" className="font-semibold text-dgray-600">
+                                        {nickname && nickname}
+                                    </Title>
                                     <div className="flex flex-row justify-start gap-x-1">
-                                        <TypeBtn types="art" />
+                                        {/* <TypeBtn types="art" />
+                                        <div className="mt-2 mb-4"> */}
+                                        {tendency && (tendency == "명랑한 모험가" && <img src={adventure} />)}
+                                        {tendency && (tendency == "꿈꾸는 예술가" && <img src={artist} />)}
+                                        {tendency && (tendency == "디테일 장인" && <img src={detail} />)}
+                                        {tendency && (tendency == "부드러운 중재자" && <img src={harmonious} />)}
+                                        {tendency && (tendency == "대담한 혁신가" && <img src={innovator} />)}
+                                        {tendency && (tendency == "창의적인 발명가" && <img src={inventor} />)}
+                                {/* </div> */}
 
-                                        <SnsIcons sns="Behance" />
-                                        <SnsIcons sns="Kakao" />
+                                        {/* <SnsIcons sns="Behance" />
+                                        <SnsIcons sns="Kakao" /> */}
                                     </div>
                                 </div>
                             </div>
@@ -146,17 +227,17 @@ const ArtWorkDetail = (props) => {
 
                         {/* 슬라이더 자리 */}
 
-                        <DetailSlider />
+                        <DetailSlider main="main" others={others}/>
                         <Line />
 
-                        <Title size="6" className="hidden pb-5 pl-7 md:contents">
+                        {/* <Title size="6" className="hidden pb-5 pl-7 md:contents">
                             댓글 0개
-                        </Title>
+                        </Title> */}
 
                         <CommentBox>
-                            <div className="bg-white flex p-5 xl:px-10 2xl:px-20 gap-3">
+                            <div className="flex gap-3 p-5 bg-white xl:px-10 2xl:px-20">
                                 <div>
-                                    <Profile size="6" src="http://kids.donga.com/www/data/news/201408/2014080726.jpg" />
+                                    <Profile size="6" src={myProfileImg}/>
                                 </div>
                                 <div className="w-full ml-auto">
                                     <InputNoTitle

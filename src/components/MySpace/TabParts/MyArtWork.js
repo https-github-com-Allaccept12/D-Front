@@ -18,7 +18,7 @@ const MyArtWork = (props) => {
     dispatch(PortfolioLoad({owner_account_id, dispatch}))
   }, [info])
   const portfolios = useSelector((state) => state.post.portfolios);
-  console.log(portfolios)
+  // console.log(portfolios);
 
 
   return (
@@ -33,13 +33,8 @@ const MyArtWork = (props) => {
         </div>
     </>
     <div className="flex flex-row flex-wrap items-center justify-center gap-6">
-    {portfolios && portfolios.map((value) => (<EditMyArtWork src={value.img} size="1"/>))}
-{/* <EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
-<EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
-<EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
-<EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
-<EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />
-<EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" /> */}
+    {portfolios && portfolios.map((value) => (<EditMyArtWork src={value.img} artwork_id={value.artwork_id} isMaster={value.is_master} scope={value.scope} size="1"/>))}
+
    </div>
     </>
   );

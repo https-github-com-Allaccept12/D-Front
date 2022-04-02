@@ -18,7 +18,7 @@ import tw from "tailwind-styled-components";
 const Badge = tw.div`
 w-8 h-8 rounded-full bg-white flex justify-center items-center
 opacity-100 hover:animate-spin cursor-pointer 
-${(props) => (props.states == "true" ? "" : `hidden`)};
+${(props) => (props.states == true ? "" : `hidden`)};
 `;
 
 const Icons = tw.i`
@@ -41,7 +41,7 @@ const CircleBtn = (props) => {
                     <Icons>
                         <Edit width="28" height="28" onClick={onClick} />
                     </Icons>
-                    <Text size="1" className="text-white mt-2">
+                    <Text size="1" className="mt-2 text-white">
                         수정
                     </Text>
                 </IconBox>
@@ -56,7 +56,7 @@ const CircleBtn = (props) => {
                     <Icons>
                         <Delete width="28" height="28" onClick={onClick} />
                     </Icons>
-                    <Text size="1" className="text-white mt-2">
+                    <Text size="1" className="mt-2 text-white">
                         삭제
                     </Text>
                 </IconBox>
@@ -71,7 +71,7 @@ const CircleBtn = (props) => {
                     <Icons>
                         <StarE width="28" height="28" onClick={onClick} />
                     </Icons>
-                    <Text size="1" className="text-white mt-2">
+                    <Text size="1" className="mt-2 text-white">
                         대표작품
                     </Text>
                 </IconBox>
@@ -86,7 +86,7 @@ const CircleBtn = (props) => {
                     <Icons>
                         <Private width="28" height="28" onClick={onClick} />
                     </Icons>
-                    <Text size="1" className="text-white mt-2">
+                    <Text size="1" className="mt-2 text-white">
                         비공개
                     </Text>
                 </IconBox>

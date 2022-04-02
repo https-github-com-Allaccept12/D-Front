@@ -24,39 +24,24 @@ const Line = tw.hr`
 w-[95%] border mx-auto border-gray-300 my-6
 `;
 
-const p = [
-    { id: "11" },
-    { id: "21" },
-    { id: "31" },
-    { id: "41" },
-    { id: "51" },
-    { id: "61" },
-    { id: "71" },
-    { id: "81" },
-    { id: "91" },
-    { id: "101" },
-];
+// const p = [
+//     { id: "11" },
+//     { id: "21" },
+//     { id: "31" },
+//     { id: "41" },
+//     { id: "51" },
+//     { id: "61" },
+//     { id: "71" },
+//     { id: "81" },
+//     { id: "91" },
+//     { id: "101" },
+// ];
 
 
 
 const ArtWorkList = (props) => {
     const artworks = useSelector((state) => state.artwork.artworks);
-    // console.log(artworks);
-    artworks.map((value, index) => {
-        console.log(value, index);
-    })
-
-    // const Posts = () => {
-    //     artworks.map((value) => {
-    //         const nick = value.account_nickname;
-    //         const profile = value.account_profile;
-    //         const img = value.img;
-    //         const like = value.like_count;
-            
-    //         return (<ArtPost size="3"/>);
-    //     })
-    // }
-
+    console.log(artworks);
     return (
         <>
             <Box>
@@ -64,18 +49,20 @@ const ArtWorkList = (props) => {
                     <ArtWorkInsideFilter />
                     <Line />
                     <Grid>
-                        {artworks.map((value, index) => {
-                            // const nick = value.account_nickname;
-                            // const profile = value.account_profile;
-                            // const img = value.img;
-                            // const like = value.like_count;
-
-                            <ArtPost 
-                                profile={value.account_profile} 
-                                nickname={value.account_nickname} 
-                                thumbnail={value.img}
-                                like_count={value.like_count}
-                                size="3"/>
+                        {artworks && artworks.map((value) => {
+                            return (
+                                <ArtPost 
+                                    account_id={value.account_id}
+                                    id={value.artwork_id}
+                                    profile={value.account_profile} 
+                                    nickname={value.account_nickname} 
+                                    thumbnail={value.img}
+                                    like_count={value.like_count}
+                                    is_like={value.is_like}
+                                    is_bookmark={value.is_bookmark}
+                                    size="3"/>
+                            )
+                            
                         })}
                         {/* {p.map((n) => {
                             return (

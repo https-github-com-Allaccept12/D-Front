@@ -128,6 +128,35 @@ const ArtWorkCreateModal = ({ onClose }) => {
 
     // 다음 버튼 클릭 시 실행 함수
     const createArtWork = () => {
+        if(!thumbnail){
+            alert('썸네일을 등록해 주세요');
+            return
+        }
+        if(toolSelected.length === 0){
+            alert('사용 툴을 정해 주세요');
+            return
+        }
+        if(!inputs.startDate){
+            alert('작업 기간을 설정해 주세요');
+            return
+        }
+        if(!inputs.endDate){
+            alert('작업 기간을 설정해 주세요');
+            return
+        }
+        if(!inputs.title){
+            alert('프로젝트 제목을 작성해 주세요');
+            return
+        }
+        if(!inputs.category){
+            alert('작품 카테고리를 설정해 주세요');
+            return
+        }
+        if(!CopyRight){
+            alert('저작권 여부를 설정해 주세요');
+            return
+        }
+
         const skills = specialty.join("/");
         // 서버에 보내기 전 data에 json형식으로 모아주기 --------------------------------------------
         const data = {
@@ -146,7 +175,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
 
         // 멀티 폼데이터 생성
         const formData = new FormData();
-        // console.log(data);
+        console.log(data);
         formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
         formData.append("imgFile", forSendCover);
         artworkfiles.forEach((element) => formData.append("imgFile", element));

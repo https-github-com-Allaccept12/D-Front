@@ -1,6 +1,8 @@
 import React from "react";
 
-import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { searchArtwork } from "../../redux/modules/artWork";
+
 import { Icon, Text } from "../../elements";
 import tw from "tailwind-styled-components";
 
@@ -33,7 +35,15 @@ hover:text-dgray-500 active:text-dpurple-300
 `;
 
 const ArtWorkInsideFilter = (props) => {
-    let history = useHistory();
+    let dispatch = useDispatch();
+
+    const keyPress = (e) => {
+        if(e.key == 'Enter'){
+            const keyword = e.target.value;
+            dispatch(searchArtwork({keyword, dispatch}));
+            // console.log('enter', e.target.value);
+        }
+    }
     return (
         <>
             <Grid>
@@ -54,7 +64,7 @@ const ArtWorkInsideFilter = (props) => {
                     </TextCSS>
                 </FilterBtn>
                 <div className="relative">
-                    <SInput placeholder="Search" type="text" />
+                    <SInput placeholder="Search" type="text" onKeyPress={keyPress} />
                     <Icon name="Search" className="absolute inset-3 text-dgray-500" />
                 </div>
             </Grid>
