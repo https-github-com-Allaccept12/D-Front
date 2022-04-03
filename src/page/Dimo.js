@@ -1,9 +1,11 @@
 import React from "react";
 import { Link, Route, Switch, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { DimoFilter, DimoList } from "../components/Dimo";
 import tw from "tailwind-styled-components";
 import { Title, Button, CategoryMini, Icon } from "../elements";
 import { DimoSlider } from "../components";
+import { dimoPageLoadQna, dimoPageLoadInfo } from "../redux/modules/dimo";
 
 const SlideBox = tw.div`
 row-start-2 col-span-full
@@ -21,7 +23,20 @@ const Dimo = () => {
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[2];
+    const dispatch = useDispatch();
     // console.log(b);
+    const dimoQna = (props) => {
+        useEffect(() => {
+            dispatch(dimoPageLoadQna(dispatch));
+        }, []);
+    };
+
+    const dimoInfo = (props) => {
+        useEffect(() => {
+            dispatch(dimoPageLoadInfo(dispatch));
+        }, []);
+    };
+
     if (b === "qna")
         return (
             <>

@@ -1,6 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Button, SearchInput, Title } from "../../../elements";
+
 import tw from "tailwind-styled-components";
 import { useHistory, useLocation } from "react-router-dom";
 import DimoInsideFilter from "./DimoInsideFilter";
@@ -39,6 +40,8 @@ const p = [
 
 const DimoList = (props) => {
     const { list } = props;
+    const dimo = useSelector((state) => state.dimo.dimos);
+    // console.log(useSelector((state) => state.dimo));
     return (
         <>
             <Box>
