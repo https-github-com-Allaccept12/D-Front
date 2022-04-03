@@ -21,14 +21,14 @@ const MyProfile = (props) => {
     // }, [dispatch, account_id, owner_account_id]);
 
     // const info = useSelector(state => state.myPage.myPage);
-    const { info, exp } = props;
+    const { info, exp, feed } = props;
 
     return (
         <>
             <Suspense fallback={<h1>Loading..</h1>}>
                 <MyIntro info={info} />
                 <MySkill info={info} />
-                <MyPortfolio info={info} />
+                <MyPortfolio feed={feed} />
                 <MyExp exp={exp} />
             </Suspense>
             {/* <MyTimeLine info={info} /> */}

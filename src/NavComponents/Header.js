@@ -63,12 +63,13 @@ const Header = (props) => {
                     {is_login ? (
                         <>
                             <div className="xl:absolute xl:right-10 2xl:right-36 top-8">
-                                <div className="flex flex-row justify-center items-center gap-5">
+                                <div className="flex flex-row items-center justify-center gap-5">
                                     <Button size="3" color="7">
                                         <Link to="/createart">작업 업로드</Link>
                                     </Button>
                                     <Link to="/logout">
-                                        <Profile size="6" className="" />
+                                        {/* <Profile size="6" className="" /> */}
+                                        <span>로그아웃</span>
                                     </Link>
                                 </div>
                             </div>

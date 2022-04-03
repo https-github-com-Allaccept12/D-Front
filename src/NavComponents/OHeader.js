@@ -42,7 +42,7 @@ const Header = (props) => {
             <div className="flex flex-row md:h-[7.8rem] w-full md:w-3/6 xl:w-3/4 ml-auto justify-center md:justify-start py-5 md:py-0">
                 {/* <Title size="6"><Link to="/">홈</Link></Title> */}
 
-                <div className="flex  items-center gap-3 lg:gap-10 text-dpurple-300 md:pl-10 xl:pl-10 2xl:pl-1">
+                <div className="flex items-center gap-3 lg:gap-10 text-dpurple-300 md:pl-10 xl:pl-10 2xl:pl-1">
                     <Title size="6">
                         <Link to="/art/list/all">모아보기</Link>
                     </Title>
@@ -62,7 +62,7 @@ const Header = (props) => {
                     )}
                     {is_login ? (
                         <div className="xl:absolute xl:right-10 2xl:right-36 top-8">
-                            <div className="flex flex-row justify-center items-center gap-5">
+                            <div className="flex flex-row items-center justify-center gap-5">
                                 <Link to="/createart">
                                     <Button size="3" color="4" className="hidden xl:flex">
                                         작업 업로드
@@ -70,7 +70,7 @@ const Header = (props) => {
                                 </Link>
                                 <div onClick={() => alert("로그아웃되었습니다!")}>
                                     <Link to="/logout">
-                                        <Profile size="6" className="" />
+                                        <span>로그아웃</span>
                                     </Link>
                                 </div>
                             </div>

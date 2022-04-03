@@ -18,7 +18,8 @@ import harmonious from "../../static/images/MyPageImages/harmonious.svg";
 import innovator from "../../static/images/MyPageImages/innovator.svg";
 import inventor from "../../static/images/MyPageImages/inventor.svg";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { submitComment } from "../../redux/modules/artWork";
 import DetailSlider from "../Sliders/DetailSlider";
 import { Comment } from "../Comment";
 import skillList from "../ArtWorks/skillList_code";
@@ -75,11 +76,13 @@ flex flex-col gap-2 justify-center items-center
 `;
 
 const ArtWorkDetail = (props) => {
+    const dispatch = useDispatch();
     const myProfileImg = sessionStorage.getItem("profile_img");
     const writerInfo = useSelector((state) => state.myPage.myPage);
     const artworks = useSelector((state) => state.artwork.detailArtwork);
 
     console.log(artworks);
+    const [artworkId, setArtworkId] = useState("");
     const [nickname, setNickname] = useState("");
     const [category, setCategory] = useState("");
     const [profile, setProfile] = useState("");
@@ -94,9 +97,11 @@ const ArtWorkDetail = (props) => {
     const [images, setImages] = useState([]);
     const [tendency, setTendency] = useState("");
     const [others, setOthers] = useState([]);
+    const [comment, setComment] = useState([]);
 
     useEffect(() => {
         if (artworks) {
+            setArtworkId(artworks.artWorkSubDetail.artwork_id);
             setNickname(artworks.artWorkSubDetail.account_nickname);
             setCategory(artworks.artWorkSubDetail.category);
             setProfile(artworks.artWorkSubDetail.account_profile_img);
@@ -108,6 +113,7 @@ const ArtWorkDetail = (props) => {
             setLikeCount(artworks.artWorkSubDetail.like_count);
             setViewCount(artworks.artWorkSubDetail.view_count);
             setImages(artworks.img);
+            setComment(artworks.comment);
             setOthers(artworks.similar_Work);
             const temp = artworks.artWorkSubDetail.specialty.split("/");
             const temp2 = [];
@@ -125,7 +131,7 @@ const ArtWorkDetail = (props) => {
             setTendency(writerInfo.tendency);
         }
     }, [artworks, writerInfo]);
-    console.log(images);
+    console.log(comment);
 
     const history = useHistory();
     const validMaxLen = (value) => value.length <= 30;
@@ -133,8 +139,10 @@ const ArtWorkDetail = (props) => {
     const [showMenu, setShowMenu] = useToggle();
 
     const commentSubmit = () => {
-        const data = { comment: name.value };
-        history.goBack();
+        const artwork_id = artworkId;
+        const data = { content: name.value };
+            dispatch(submitComment({artwork_id, data}));
+        // history.goBack();
         //여기에 뭔가 돌아가기버튼...
     };
     return (
@@ -166,10 +174,6 @@ const ArtWorkDetail = (props) => {
                         images.map((value) => {
                             return <Images src={value.img_url} />;
                         })}
-                    {/* <Images
-                        src="https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/cnoC/image/d8fBsA26Y_-zWzEHHYNUgV51oWU.JPG"
-                        alt=""
-                    /> */}
 
                     <ViewBox>
                         <IconBtn name="HeartE" iconSize="24" count={likeCount} />
@@ -255,8 +259,9 @@ const ArtWorkDetail = (props) => {
                             </div>
 
                             <div className="">
-                                <Comment />
-                                <Comment />
+                                {comment && comment.map((value) => {
+                                    return <Comment value={value} />;
+                                })}
                             </div>
                         </CommentBox>
                     </div>

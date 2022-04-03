@@ -13,9 +13,37 @@ absolute w-[32.5rem] h-[18.75rem]  rounded-lg bg-dpurple-200
 `;
 
 const Slides = (props) => {
-    const { type, list, value } = props;
+    const history = useHistory();
+    const { type, list, value, id, nickname } = props;
+    let { job } = props;
+    if(job === "uiux"){
+        job = "UI / UX"
+    } else if(job === "fashion"){
+        job = "패션"
+    } else if(job === "typo"){
+        job = "타이포그래피"
+    } else if(job === "craft"){
+        job = "공예"
+    } else if(job === "package"){
+        job = "패키지"
+    } else if(job === "graphic"){
+        job = "그래픽"
+    } else if(job === "video"){
+        job = "영상 / 모션"
+    } else if(job === "product"){
+        job = "제품"
+    } else if(job === "game"){
+        job = "게임 / 캐릭터"
+    } else if(job === "edit"){
+        job = "브랜딩 / 편집"
+    } else if(job === "eco"){
+        job = "건축 / 인테리어 / 환경"
+    }
 
-    let history = useHistory();
+    const goToProfile = () => {
+        history.push(`/myspace/myprofile/${nickname}/${id}`);
+    }
+
     if (type === "main")
         return (
             <>
@@ -29,7 +57,7 @@ const Slides = (props) => {
 
                         <div
                             className=" absolute top-0 
-        w-[18.75rem] h-[22.813rem] rounded-lg"
+        w-[18.75rem] h-[21rem] rounded-lg"
                         >
                             <div className="flex flex-row items-center justify-evenly shrink-0 ml-[0.8rem] mt-3 gap-3">
                                 <div
@@ -61,14 +89,16 @@ const Slides = (props) => {
         rounded-b-xl w-[18.75rem] h-[8.9rem]"
                     >
                         <div className="absolute bottom-[5rem] pl-6 hover:scale-110 cursor-pointer">
-                            <Profile size="3" src={props.image} />
+                            {/* <Link to='/myspace/myprofile?id='> */}
+                            <Profile size="3" src={props.image} onClick={goToProfile}/>
+                            {/* </Link> */}
                         </div>
                         <div className="pt-6 pl-40">
                             <Title size="5" className="truncate">
                                 {props.nickname} 님
                             </Title>
                             <div className="-mt-1">
-                                <Text size="5">{props.job} </Text>
+                                <Text size="5">{job} </Text>
                             </div>
                         </div>
                         <div className="flex justify-center mt-5">
@@ -125,7 +155,7 @@ const Slides = (props) => {
                                     </div>
                                 </div>
                                 <div className="absolute px-10 top-28">
-                                    <Text size="2" className="flex flex-wrap w-80 h-24 overflow-hidden text-ellipsis">
+                                    <Text size="2" className="flex flex-wrap h-24 overflow-hidden w-80 text-ellipsis">
                                         {value.content}
                                     </Text>
                                     <Text size="2">(더보기)</Text>
