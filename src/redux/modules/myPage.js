@@ -41,6 +41,22 @@ export const historyLoad = createAsyncThunk(
   }
 );
 
+export const careerFeed = createAsyncThunk(
+  "/careerFeed",
+  async ({ owner_account_id, dispatch }) => {
+    await axios
+      .get(process.env.REACT_APP_MYPAGE+'/career-feed', {
+        params: {
+          owner_account_id: owner_account_id
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        dispatch(careerFeed(res.data.data));
+      })
+      .catch((err) => console.log(err));
+  }
+);
 
 export const myPageSlice = createSlice({
   name: "myPage",
@@ -51,6 +67,9 @@ export const myPageSlice = createSlice({
     },
     history: (state, action) => {
       state.history = action.payload;
+    },
+    feed: (state, action) => {
+      state.careerFeed = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -74,9 +93,19 @@ export const myPageSlice = createSlice({
       .addCase(historyLoad.rejected, (state, action) => {
         console.log(action.error.message);
         console.log("create rejected");
+      })
+      .addCase(careerFeed.pending, (state, action) => {
+        console.log("pending");
+      })
+      .addCase(careerFeed.fulfilled, (state, action) => {
+        console.log("create fulfiled");
+      })
+      .addCase(careerFeed.rejected, (state, action) => {
+        console.log(action.error.message);
+        console.log("create rejected");
       });
   },
 });
 
-export const { myPage, history } = myPageSlice.actions;
+export const { myPage, history, feed } = myPageSlice.actions;
 export default myPageSlice.reducer;

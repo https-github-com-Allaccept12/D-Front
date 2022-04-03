@@ -49,7 +49,6 @@ const EditMyArtWork = (props) => {
         setPublic(!is_public);
         dispatch(updateScope(artwork_id));
     }
-
     const ClickDelete = () => {
         dispatch(deleteArtwork(artwork_id));
     }

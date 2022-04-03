@@ -47,6 +47,7 @@ const MainSlider = (props) => {
                     <SS>
                         <Slides
                             type="main"
+                            id={hotlists[i].account_id}
                             image={hotlists[i].account_profile}
                             nickname={hotlists[i].account_nickname}
                             thumnail1={hotlists[i].artWorks[0]}

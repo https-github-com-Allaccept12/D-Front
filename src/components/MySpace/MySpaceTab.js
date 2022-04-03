@@ -14,12 +14,12 @@ import {
 import { MyArtWork, MyPic, MyPosts, MyQNA } from "../MySpace";
 
 const MySpaceTab = (props) => {
-  const {info, exp} = props
+  const {info, exp, feed} = props
   const location = useLocation();
   const a = location.pathname;
   const b = a.split("/")[2];
 
-  if (b === "myprofile") return <MyProfile info={info} exp={exp}/>;
+  if (b === "myprofile") return <MyProfile info={info} exp={exp} feed={feed} />;
   if (b === "mywork") return <MyArtWork info={info.account_id} />;
   if (b === "mypic") return <MyPic info={info} />;
   if (b === "share") return <MyPosts />;

@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Button, EditMyArtWork, Title } from "../../../elements";
 
 import { useHistory } from "react-router-dom";
@@ -9,6 +10,8 @@ border border-gray-600 my-6 w-5/6 mx-auto
 `;
 
 const MyPortfolio = (props) => {
+    const feed = useSelector((state) => state.myPage.feed);
+    
     return (
         <>
             <div className="flex flex-row flex-wrap items-center justify-start w-5/6 mx-auto">
@@ -18,7 +21,15 @@ const MyPortfolio = (props) => {
             </div>
             <Line />
             <div className="flex flex-row flex-wrap items-center justify-center gap-10">
-                <EditMyArtWork
+                {feed && feed.map((value) => {
+                    return (
+                    <EditMyArtWork
+                        src={feed.img}
+                        size="1"
+                    />
+                    )
+                })}
+                {/* <EditMyArtWork
                     src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg"
                     size="1"
                 />
@@ -33,7 +44,7 @@ const MyPortfolio = (props) => {
                 <EditMyArtWork
                     src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg"
                     size="1"
-                />
+                /> */}
             </div>
         </>
     );

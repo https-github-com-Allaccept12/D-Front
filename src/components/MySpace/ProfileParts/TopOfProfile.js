@@ -25,7 +25,7 @@ import back_innovator from "../../../static/images/MyPageImages/back_innovator.s
 
 const TopOfProfile = (props) => {
 
-    const { info, exp } = props;
+    const { info, exp, feed } = props;
     console.log(info);
     let nickname = "";
     let following = "";
@@ -48,6 +48,29 @@ const TopOfProfile = (props) => {
         instagram = info.insta;
         linkedin = info.linked_in;
         brunch = info.brunch;
+        if(job === "uiux"){
+            job = "UI/UX"
+        } else if(job === "fashion"){
+            job = "패션"
+        } else if(job === "typo"){
+            job = "타이포그래피"
+        } else if(job === "craft"){
+            job = "공예"
+        } else if(job === "package"){
+            job = "패키지"
+        } else if(job === "graphic"){
+            job = "그래픽"
+        } else if(job === "video"){
+            job = "영상/모션"
+        } else if(job === "product"){
+            job = "제품"
+        } else if(job === "game"){
+            job = "게임/캐릭터"
+        } else if(job === "edit"){
+            job = "브랜딩/편집"
+        } else if(job === "eco"){
+            job = "건축/인테리어/환경"
+        }
     }
     // const toSNS = (params, e) => {
     //     window.open(params, '_blank');
@@ -143,7 +166,7 @@ const TopOfProfile = (props) => {
                         </div>
                     </div>
 
-                    <MySpaceTab info={info} exp={exp} />
+                    <MySpaceTab info={info} exp={exp} feed={feed} />
                 </div>
             </div>
         </div>
