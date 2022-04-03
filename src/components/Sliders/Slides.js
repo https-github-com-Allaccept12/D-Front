@@ -105,35 +105,28 @@ const Slides = (props) => {
         return (
             <>
                 <>
-                    <Link to="/dimo/qnadetail">
+                    <Link to="/dimo/qnadetail/">
                         <div className="w-[32.5rem] h-[18.75rem] rounded-lg">
                             <ColorSlide>
                                 <div>
                                     <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
-                                        <Profile
-                                            size="6"
-                                            src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
-                                            main
-                                        />
+                                        <Profile size="6" src={value.account_profile_img} />
                                     </div>
                                     <div className="absolute top-7 left-28">
                                         <div className="flex flex-row gap-1">
-                                            <Label size="1" color="7">
-                                                취준생
-                                            </Label>
-                                            <Label size="1" color="7">
-                                                진로고민
-                                            </Label>
+                                            <Label className="">{value.hash_tag[0].tag}</Label>
+                                            {value.hash_tag[1] ? (
+                                                <Label className="">{value.hash_tag[1].tag}</Label>
+                                            ) : (
+                                                ""
+                                            )}
                                         </div>
-                                        <Title size="6">이런이런 질문들이 있어여</Title>
+                                        <Title size="6">{value.title}</Title>
                                     </div>
                                 </div>
                                 <div className="absolute px-10 top-28">
-                                    <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
-                                        안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이
-                                        아니라 고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을
-                                        얻고자 글을 올리게 되었습니다. 제 전공은 산업디자인입니다. 때문에 구체적인
-                                        시각디자인과 UIUX 관련 수업을 수강한 적은 없습니다.
+                                    <Text size="2" className="flex flex-wrap w-80 h-24 overflow-hidden text-ellipsis">
+                                        {value.content}
                                     </Text>
                                     <Text size="2">(더보기)</Text>
                                 </div>
@@ -142,8 +135,8 @@ const Slides = (props) => {
                                         {/* 여기가 디테일링크 */}
 
                                         <div className="flex flex-row gap-5">
-                                            <IconBtn name="Talk" iconSize="20" count="4" />
-                                            <IconBtn name="HeartE" iconSize="20" count="4" />
+                                            <IconBtn name="Talk" iconSize="20" count={value.comment_count} />
+                                            <IconBtn name="HeartE" iconSize="20" count={value.like_count} />
                                         </div>
                                     </div>
                                 </IconBox>
@@ -159,42 +152,40 @@ const Slides = (props) => {
                 <>
                     <Link to="/dimo/shareddetail">
                         <div className="w-[32.5rem] h-[18.75rem] rounded-lg">
-                            <div className="absolute w-[32.5rem] h-[18.75rem] bg-dpurple-200 rounded-lg">
+                            <ColorSlide>
                                 <div>
                                     <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
-                                        <Profile
-                                            size="6"
-                                            src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
-                                            main
-                                        />
+                                        <Profile size="6" src={value.account_profile_img} />
                                     </div>
                                     <div className="absolute top-7 left-28">
                                         <div className="flex flex-row gap-1">
-                                            <Label size="1" color="7">
-                                                취준생
-                                            </Label>
-                                            <Label size="1" color="7">
-                                                진로고민
-                                            </Label>
+                                            <Label className="">{value.hash_tag[0].tag}</Label>
+                                            {value.hash_tag[1] ? (
+                                                <Label className="">{value.hash_tag[1].tag}</Label>
+                                            ) : (
+                                                ""
+                                            )}
                                         </div>
-                                        <Title size="6">꿀팁 공유 공유 </Title>
+                                        <Title size="6">{value.title}</Title>
                                     </div>
                                 </div>
                                 <div className="absolute px-10 top-28">
                                     <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
-                                        공유하기 공유하기 나는 꿀팁
+                                        {value.content}
                                     </Text>
                                     <Text size="2">(더보기)</Text>
                                 </div>
                                 <IconBox>
                                     <div className="flex flex-row justify-end">
+                                        {/* 여기가 디테일링크 */}
+
                                         <div className="flex flex-row gap-5">
-                                            <IconBtn name="Talk" iconSize="20" count="4" />
-                                            <IconBtn name="HeartE" iconSize="20" count="4" />
+                                            <IconBtn name="Talk" iconSize="20" count={value.comment_count} />
+                                            <IconBtn name="HeartE" iconSize="20" count={value.like_count} />
                                         </div>
                                     </div>
                                 </IconBox>
-                            </div>
+                            </ColorSlide>
                         </div>
                     </Link>
                 </>

@@ -18,7 +18,6 @@ import harmonious from "../../static/images/MyPageImages/harmonious.svg";
 import innovator from "../../static/images/MyPageImages/innovator.svg";
 import inventor from "../../static/images/MyPageImages/inventor.svg";
 
-
 import { useSelector } from "react-redux";
 import DetailSlider from "../Sliders/DetailSlider";
 import { Comment } from "../Comment";
@@ -75,14 +74,11 @@ const Flex = tw.div`
 flex flex-col gap-2 justify-center items-center
 `;
 
-
-
 const ArtWorkDetail = (props) => {
-    
     const myProfileImg = sessionStorage.getItem("profile_img");
     const writerInfo = useSelector((state) => state.myPage.myPage);
     const artworks = useSelector((state) => state.artwork.detailArtwork);
-    
+
     console.log(artworks);
     const [nickname, setNickname] = useState("");
     const [category, setCategory] = useState("");
@@ -100,7 +96,7 @@ const ArtWorkDetail = (props) => {
     const [others, setOthers] = useState([]);
 
     useEffect(() => {
-        if(artworks){
+        if (artworks) {
             setNickname(artworks.artWorkSubDetail.account_nickname);
             setCategory(artworks.artWorkSubDetail.category);
             setProfile(artworks.artWorkSubDetail.account_profile_img);
@@ -113,19 +109,19 @@ const ArtWorkDetail = (props) => {
             setViewCount(artworks.artWorkSubDetail.view_count);
             setImages(artworks.img);
             setOthers(artworks.similar_Work);
-            const temp = artworks.artWorkSubDetail.specialty.split('/')
-            const temp2 = []
-            for (var i = 0; temp.length; i++){
-              var x = temp.pop()
-              for (var skill of skillList){
-                if (x == skill.label){
-                    temp2.push(skill.value);
+            const temp = artworks.artWorkSubDetail.specialty.split("/");
+            const temp2 = [];
+            for (var i = 0; temp.length; i++) {
+                var x = temp.pop();
+                for (var skill of skillList) {
+                    if (x == skill.label) {
+                        temp2.push(skill.value);
+                    }
                 }
-              }
             }
             setSpecialty(temp2);
         }
-        if(writerInfo){
+        if (writerInfo) {
             setTendency(writerInfo.tendency);
         }
     }, [artworks, writerInfo]);
@@ -152,26 +148,24 @@ const ArtWorkDetail = (props) => {
                         <div className="flex flex-col gap-2 ml-2 text-left">
                             <Title size="6">{title}</Title>
                             <p className="flex flex-row text-md text-dgray-500 font-min2">
-                                {time.split('T')[0]}
+                                {time.split("T")[0]}
                                 <InnerLine /> {category}
                             </p>
                         </div>
                         <div className="flex flex-row gap-2 ml-auto">
-                            {specialty && specialty.map((value) => {
-                                return (
-                                    <SkillThumbnailMini skill={value} />
-                                )
-                            })}
+                            {specialty &&
+                                specialty.map((value) => {
+                                    return <SkillThumbnailMini skill={value} />;
+                                })}
                         </div>
                     </Header>
                 </Box>
 
                 <ModalBody>
-                    {images && images.map((value) => {
-                        return (
-                            <Images src={value.img_url} />
-                        )
-                    })}
+                    {images &&
+                        images.map((value) => {
+                            return <Images src={value.img_url} />;
+                        })}
                     {/* <Images
                         src="https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/cnoC/image/d8fBsA26Y_-zWzEHHYNUgV51oWU.JPG"
                         alt=""
@@ -186,8 +180,11 @@ const ArtWorkDetail = (props) => {
                     <div className="p-6 bg-white">
                         <ProfileBox>
                             <div className="flex flex-row items-center justify-start">
-                                <Profile size="5" className="mb-3" src={profile} 
-                                // onClick={setShowMenu} 
+                                <Profile
+                                    size="5"
+                                    className="mb-3"
+                                    src={profile}
+                                    // onClick={setShowMenu}
                                 />
                                 {showMenu && (
                                     <div className="absolute w-40">
@@ -210,13 +207,13 @@ const ArtWorkDetail = (props) => {
                                     <div className="flex flex-row justify-start gap-x-1">
                                         {/* <TypeBtn types="art" />
                                         <div className="mt-2 mb-4"> */}
-                                        {tendency && (tendency == "명랑한 모험가" && <img src={adventure} />)}
-                                        {tendency && (tendency == "꿈꾸는 예술가" && <img src={artist} />)}
-                                        {tendency && (tendency == "디테일 장인" && <img src={detail} />)}
-                                        {tendency && (tendency == "부드러운 중재자" && <img src={harmonious} />)}
-                                        {tendency && (tendency == "대담한 혁신가" && <img src={innovator} />)}
-                                        {tendency && (tendency == "창의적인 발명가" && <img src={inventor} />)}
-                                {/* </div> */}
+                                        {tendency && tendency == "명랑한 모험가" && <img src={adventure} />}
+                                        {tendency && tendency == "꿈꾸는 예술가" && <img src={artist} />}
+                                        {tendency && tendency == "디테일 장인" && <img src={detail} />}
+                                        {tendency && tendency == "부드러운 중재자" && <img src={harmonious} />}
+                                        {tendency && tendency == "대담한 혁신가" && <img src={innovator} />}
+                                        {tendency && tendency == "창의적인 발명가" && <img src={inventor} />}
+                                        {/* </div> */}
 
                                         {/* <SnsIcons sns="Behance" />
                                         <SnsIcons sns="Kakao" /> */}
@@ -227,7 +224,7 @@ const ArtWorkDetail = (props) => {
 
                         {/* 슬라이더 자리 */}
 
-                        <DetailSlider main="main" others={others}/>
+                        <DetailSlider main="main" others={others} />
                         <Line />
 
                         {/* <Title size="6" className="hidden pb-5 pl-7 md:contents">
@@ -237,7 +234,7 @@ const ArtWorkDetail = (props) => {
                         <CommentBox>
                             <div className="flex gap-3 p-5 bg-white xl:px-10 2xl:px-20">
                                 <div>
-                                    <Profile size="6" src={myProfileImg}/>
+                                    <Profile size="6" src={myProfileImg} />
                                 </div>
                                 <div className="w-full ml-auto">
                                     <InputNoTitle

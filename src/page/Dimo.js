@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, Route, Switch, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { DimoFilter, DimoList } from "../components/Dimo";
 import tw from "tailwind-styled-components";
 import { Title, Button, CategoryMini, Icon } from "../elements";
 import { DimoSlider } from "../components";
-import { dimoPageLoadQna, dimoPageLoadInfo } from "../redux/modules/dimo";
+import { dimoPageLoadQna, dimoPageLoadInfo, categoryDimo } from "../redux/modules/dimo";
 
 const SlideBox = tw.div`
 row-start-2 col-span-full
@@ -23,18 +23,22 @@ const Dimo = () => {
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[2];
+    const board = b.toUpperCase();
+    console.log(b);
+    const category = "uiux";
     const dispatch = useDispatch();
     // console.log(b);
-    const dimoQna = (props) => {
-        useEffect(() => {
-            dispatch(dimoPageLoadQna(dispatch));
-        }, []);
-    };
 
-    const dimoInfo = (props) => {
-        useEffect(() => {
-            dispatch(dimoPageLoadInfo(dispatch));
-        }, []);
+    useEffect(() => {
+        dispatch(dimoPageLoadQna(dispatch));
+    }, []);
+
+    useEffect(() => {
+        dispatch(dimoPageLoadInfo(dispatch));
+    }, []);
+
+    const setPage = () => {
+        dispatch(categoryDimo({ category, dispatch, board }));
     };
 
     if (b === "qna")
@@ -44,21 +48,21 @@ const Dimo = () => {
                     <div className="xl:grid xl:grid-cols-4 ">
                         <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
                             {b === "qna" ? (
-                                <Title size="5" className="text-dpurple-200">
+                                <Title size="5" className="text-dpurple-200" onClick={setPage}>
                                     <Link to="/dimo/qna/all">QNA</Link>
                                 </Title>
                             ) : (
-                                <Title size="5">
+                                <Title size="5" onClick={setPage}>
                                     <Link to="/dimo/qna/all">QNA</Link>
                                 </Title>
                             )}
 
                             {b === "info" ? (
-                                <Title size="5" className="text-dpurple-200">
+                                <Title size="5" className="text-dpurple-200" onClick={setPage}>
                                     <Link to="/dimo/info/all">정보공유</Link>
                                 </Title>
                             ) : (
-                                <Title size="5">
+                                <Title size="5" onClick={setPage}>
                                     <Link to="/dimo/info/all">정보공유</Link>
                                 </Title>
                             )}
@@ -94,7 +98,7 @@ const Dimo = () => {
                         <div className="w-full xl:row-start-3 xl:col-start-2 xl:col-end-5">
                             <div className="w-full h-[200rem]">
                                 <DimoList list={b} key="key" />
-                                <CategoryMini list={b} />
+                                <CategoryMini list="qna" />
                                 <Link
                                     to={{
                                         pathname: `/dimo/create/${b}`,
@@ -121,21 +125,21 @@ const Dimo = () => {
                     <div className="xl:grid xl:grid-cols-4 ">
                         <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
                             {b === "qna" ? (
-                                <Title size="5" className="text-dpurple-200">
+                                <Title size="5" className="text-dpurple-200" onClick={setPage}>
                                     <Link to="/dimo/qna/all">QNA</Link>
                                 </Title>
                             ) : (
-                                <Title size="5">
+                                <Title size="5" onClick={setPage}>
                                     <Link to="/dimo/qna/all">QNA</Link>
                                 </Title>
                             )}
 
-                            {b === "shared" ? (
-                                <Title size="5" className="text-dpurple-200">
+                            {b === "info" ? (
+                                <Title size="5" className="text-dpurple-200" onClick={setPage}>
                                     <Link to="/dimo/info/all">정보공유</Link>
                                 </Title>
                             ) : (
-                                <Title size="5">
+                                <Title size="5" onClick={setPage}>
                                     <Link to="/dimo/info/all">정보공유</Link>
                                 </Title>
                             )}
@@ -171,7 +175,7 @@ const Dimo = () => {
                         <div className="w-full xl:row-start-3 xl:col-start-2 xl:col-end-5">
                             <div className="w-full h-[200rem]">
                                 <DimoList list={b} />
-                                <CategoryMini list={b} />
+                                <CategoryMini list="info" />
                                 <Link
                                     to={{
                                         pathname: `/dimo/create/${b}`,

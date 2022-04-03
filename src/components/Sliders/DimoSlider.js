@@ -3,10 +3,11 @@ import Slider from "react-slick";
 import tw from "tailwind-styled-components";
 import Slides from "./Slides";
 import { Image, Text, Icon } from "../../elements";
+import { useSelector, useDispatch } from "react-redux";
 
 export const Slide = tw(Slider)`
 w-full md:w-[32.5rem] lg:w-[40rem] xl:w-[78rem] 2xl:w-[106rem]
-    mx-auto text-white pl-5
+    mx-auto text-white pl-5 lg:ml-40 xl:ml-5
     overflow-hidden text-lg 
 `;
 
@@ -36,13 +37,16 @@ z-10 text-white mr-10
 
 const DimoSlider = (props) => {
     const slider = React.useRef(null);
+    const dimosQNA = useSelector((state) => state.dimo.dimosQNA);
+    const dimosINFO = useSelector((state) => state.dimo.dimosINFO);
+    // console.log(dimosINFO.postRecommendationFeed);
     const { list } = props;
 
     const settings = {
         dots: false, // 슬라이드 밑에 점 보이게
         infinite: true, // 무한으로 반복
         speed: 500,
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 2000, // 넘어가는 속도
         slidesToShow: 3, // 4장씩 보이게
         slidesToScroll: 1, // 1장씩 뒤로 넘어가게
@@ -75,23 +79,54 @@ const DimoSlider = (props) => {
         ],
     };
 
-    return (
-        <>
-            <div className="flex-row hidden md:flex">
-                <PrevBtn onClick={() => slider?.current?.slickPrev()}>
-                    <Icon name="ArrowL" iconSize="48" />{" "}
-                </PrevBtn>
-                <Slide {...settings} ref={slider}>
-                    {p.map((n, idx) => {
-                        return <Slides type="dimo" list={list} key={idx} />;
-                    })}
-                </Slide>
-                <NextBtn onClick={() => slider?.current?.slickNext()}>
-                    <Icon name="ArrowR" iconSize="48" />
-                </NextBtn>
-            </div>
-        </>
-    );
+    if (list === "qna")
+        return (
+            <>
+                <div className="flex-row hidden md:flex">
+                    <PrevBtn onClick={() => slider?.current?.slickPrev()}>
+                        <Icon name="ArrowL" iconSize="48" />{" "}
+                    </PrevBtn>
+                    <Slide {...settings} ref={slider}>
+                        {dimosQNA &&
+                            dimosQNA.postRecommendationFeed.map((value) => {
+                                return (
+                                    // <Images src={value.img_url} />
+                                    <SS key={value.post_id}>
+                                        <Slides type="dimo" list={list} value={value} />
+                                    </SS>
+                                );
+                            })}
+                    </Slide>
+                    <NextBtn onClick={() => slider?.current?.slickNext()}>
+                        <Icon name="ArrowR" iconSize="48" />
+                    </NextBtn>
+                </div>
+            </>
+        );
+    else if (list === "info")
+        return (
+            <>
+                <div className="flex-row hidden md:flex">
+                    <PrevBtn onClick={() => slider?.current?.slickPrev()}>
+                        <Icon name="ArrowL" iconSize="48" />{" "}
+                    </PrevBtn>
+                    <Slide {...settings} ref={slider}>
+                        {dimosINFO &&
+                            dimosINFO.postRecommendationFeed.map((value) => {
+                                return (
+                                    // <Images src={value.img_url} />
+                                    <SS key={value.post_id}>
+                                        <Slides type="dimo" list={list} value={value} />
+                                    </SS>
+                                );
+                            })}
+                    </Slide>
+                    <NextBtn onClick={() => slider?.current?.slickNext()}>
+                        <Icon name="ArrowR" iconSize="48" />
+                    </NextBtn>
+                </div>
+            </>
+        );
 };
 
 export default DimoSlider;

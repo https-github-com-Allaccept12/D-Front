@@ -34,7 +34,8 @@ py-10 flex flex-row justify-between
 `;
 
 const DimoQNAQuestion = (props) => {
-    const { followed } = props;
+    const { followed, value } = props;
+    console.log(value.hash_tag[1].tag);
     const history = useHistory();
     const [showAnswer, setShowAnswer] = useToggle();
     // const validMaxLen = (value) => value.length <= 30;
@@ -51,32 +52,26 @@ const DimoQNAQuestion = (props) => {
             <Card>
                 <Header>
                     <div className="flex flex-row gap-1 md:pt-10 pb-4">
-                        <Label size="2" color="4">
-                            UI/UX
-                        </Label>
-                        <Label size="2" color="5">
-                            진로고민
-                        </Label>
+                        {value.hash_tag
+                            ? value.hash_tag.map((value, idx) => {
+                                  return <Label key={idx}>{value.tag}</Label>;
+                              })
+                            : ""}
+                        <Label className="">{value.hash_tag[0].tag}</Label>
+                        {value.hash_tag[1] ? <Label className="">{value.hash_tag[1].tag}</Label> : ""}
                     </div>
-                    <Title size="5">UI/UX 취업 관련 질문입니다</Title>
+                    <Title size="5">{value.postAnswerSubDetail?.title}</Title>
                     <div className="flex flex-row py-3">
-                        <Text size="1">2022.07.17</Text>
+                        <Text size="1">{value.postAnswerSubDetail?.modify_time}</Text>
                         <InnerLine />
-                        <Text size="1">조회수 2천</Text>
+                        <Text size="1">조회수 {value.postAnswerSubDetail?.view_count}</Text>
                         <InnerLine />
-                        <Text size="1">채택완료</Text>
+                        {value.postAnswerSubDetail?.is_selected && <Text size="1">채택완료</Text>}
                     </div>
                 </Header>
                 <Body>
                     <Text size="2" className="flex flex-wrap w-full pt-4 pb-16">
-                        안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며
-                        제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다.
-                        안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며
-                        제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다.
-                        안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며
-                        제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다.
-                        안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이 되며
-                        제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게 되었습니다.
+                        {value.postAnswerSubDetail?.content}
                     </Text>
                 </Body>
                 <Btns>
@@ -104,15 +99,15 @@ const DimoQNAQuestion = (props) => {
                     <div className="justify-start flex flex-row">
                         <Profile
                             size="5"
-                            src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
+                            src={value.postAnswerSubDetail.account_profile_img}
                             className="hidden md:flex"
                         />
                         <div className="-mt-2 ml-3">
                             <Title size="5" className="my-3">
-                                이름dfsfsdfsfsfsf
+                                {value.postAnswerSubDetail.account_nickname}
                             </Title>
                             <Subtitle size="1">
-                                채택률<span className="text-blue-300">100 %</span> / 마감률{" "}
+                                채택률<span className="text-blue-300">100 %</span> / 마감률
                                 <span className="text-blue-300">100 %</span>
                             </Subtitle>
                         </div>
