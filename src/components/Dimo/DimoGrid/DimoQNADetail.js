@@ -30,7 +30,7 @@ const DimoQNADetail = ({ history, location, match }) => {
 
     const dimos = useSelector((state) => state.dimo.detaildimoQna);
     const dimoSimilars = useSelector((state) => state.dimo.dimoQnaDetailSimilars);
-    console.log(dimoSimilars);
+    const dimosPost = useSelector((state) => state.dimo.detaildimoQna?.postAnswerSubDetail);
 
     return (
         <>
@@ -75,7 +75,7 @@ const DimoQNADetail = ({ history, location, match }) => {
                 <div className="col-start-1 col-end-4 row-start-1 col-span-full">
                     <Box>
                         <Grid>
-                            <DimoQNAQuestion followed="true" value={dimos} />
+                            <DimoQNAQuestion followed="true" value={dimos} post={dimosPost} />
                             <InnerLine />
                             <div className="flex flex-row justify-start items-center gap-3">
                                 <Icon name="Talk" iconSize="36" />
