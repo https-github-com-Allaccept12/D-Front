@@ -167,7 +167,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
             work_end: inputs.endDate,
             content: inputs.description,
             copyright: CopyRight,
-            is_master: false,
+            master: false,
             scope: Public,
             thumbnail: thumbnail,
         };
