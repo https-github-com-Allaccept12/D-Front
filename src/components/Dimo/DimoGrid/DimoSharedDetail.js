@@ -4,6 +4,7 @@ import { Comment } from "../../Comment";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useToggle, useInput } from "../../../hooks";
+import { useDispatch, useSelector } from "react-redux";
 
 const UnderLine = tw.hr`
 border border-dgray-300 w-full col-span-full mt-10 mb-5
@@ -42,6 +43,9 @@ const DimoSharedDetail = (props) => {
     const [showAnswer, setShowAnswer] = useToggle();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
+
+    const dimos = useSelector((state) => state.dimo.detailDimoInfo);
+    console.log(dimos);
     const commentSubmit = () => {
         const data = { comment: name.value };
         history.goBack();
@@ -60,26 +64,16 @@ const DimoSharedDetail = (props) => {
                                 진로고민
                             </Label>
                         </div>
-                        <Title size="5">UI/UX 취업 관련 질문입니다</Title>
+                        <Title size="5">{dimos.postSubDetail.title}</Title>
                         <div className="flex flex-row py-3">
-                            <Text size="1">2022.07.17</Text>
+                            <Text size="1">{dimos.postSubDetail.create_time}</Text>
                             <InnerLine />
-                            <Text size="1">조회수 2천</Text>
-                            <InnerLine />
-                            <Text size="1">채택완료</Text>
+                            <Text size="1">조회수 {dimos.postSubDetail.view_count}</Text>
                         </div>
                     </Header>
                     <Body>
                         <Text size="2" className="flex flex-wrap w-full pt-4 pb-16">
-                            안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이 아니라 고학년이
-                            되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을 올리게
-                            되었습니다. 안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다. 다름이
-                            아니라 고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을 얻고자 글을
-                            올리게 되었습니다. 안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년 학생입니다.
-                            다름이 아니라 고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의 의견을
-                            얻고자 글을 올리게 되었습니다. 안녕하세요. UI / UX 디자이너를 꿈꾸고 있는 대학교 3학년
-                            학생입니다. 다름이 아니라 고학년이 되며 제 미래에 대한 고민이 많아져서 많은 디자이너 분들의
-                            의견을 얻고자 글을 올리게 되었습니다.
+                            {dimos.postSubDetail.content}
                         </Text>
                     </Body>
                     <Btns>
@@ -88,10 +82,10 @@ const DimoSharedDetail = (props) => {
                                 답변남기기
                             </Button>
                             <div className="flex flex-col md:flex-row gap-3">
-                                <Button icon name="HeartE" color="5" size="3" count="8">
+                                <Button icon name="HeartE" color="5" size="3" count={dimos.postSubDetail.like_count}>
                                     <span className="hidden 2xl:contents">좋아요</span>
                                 </Button>
-                                <Button icon name="BookmarkE" color="5" size="3" count="8">
+                                <Button icon name="BookmarkE" color="5" size="3" count={dimos.bookmark_count}>
                                     <span className="hidden 2xl:contents">스크랩</span>
                                 </Button>
                                 <Button icon name="Link" color="5" size="3">
@@ -104,7 +98,8 @@ const DimoSharedDetail = (props) => {
                 <UnderLine />
 
                 <div className="flex flex-row font-min1">
-                    <Icon name="Talk" iconSize="32" /> <span className="text-xl mb-1 pl-2">댓글 7개</span>
+                    <Icon name="Talk" iconSize="32" />{" "}
+                    <span className="text-xl mb-1 pl-2">댓글 {dimos.comment_count}개</span>
                 </div>
 
                 <Card>

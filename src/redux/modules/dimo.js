@@ -16,23 +16,63 @@ export const CreateNewDimo = createAsyncThunk("post/CreateDimo", async (formData
         .catch((err) => console.log(err));
 });
 
-export const dimoPageLoadQna = createAsyncThunk("/dimoPageLoad", (dispatch) => {
-    URL.get(`/api/post/0/qna`)
+export const dimoPageLoadQna = createAsyncThunk("/dimoPageLoad", (dispatch, board) => {
+    URL.get(`/api/post/recommend/QNA`)
         .then((res) => {
             console.log(res);
-            dispatch(dimos(res.data.data));
+            dispatch(dimosQNA(res.data.data));
         })
         .catch((err) => console.log(err));
 });
 
-export const dimoPageLoadInfo = createAsyncThunk("/dimoPageLoad", (dispatch) => {
-    URL.get(`/api/post/0/info`)
+export const dimoPageLoadInfo = createAsyncThunk("/dimoPageLoad", (dispatch, board) => {
+    URL.get(`/api/post/recommend/INFO`)
         .then((res) => {
             console.log(res);
-            dispatch(dimos(res.data.data));
+            dispatch(dimosINFO(res.data.data));
         })
         .catch((err) => console.log(err));
 });
+
+//카테고리
+export const categoryDimo = createAsyncThunk("/categoryDimo", ({ category, dispatch, board }) => {
+    console.log(category, board);
+    URL.get(`/api/post/category/${category}/0/${board}`)
+        .then((res) => {
+            console.log(res);
+            dispatch(categoryDimos(res.data.data));
+        })
+        .catch((err) => console.log(err));
+});
+
+//qna 상세보기
+export const dimoQnaDetailSimilar = createAsyncThunk("/dimoQnaDetailSimilar", ({ category, post_id, dispatch }) =>
+    URL.get(`/api/post/question/similar/${category}/${post_id}`)
+        .then((res) => {
+            console.log(res);
+            dispatch(dimoQnaDetailSimilars(res.data.data));
+        })
+        .catch((err) => console.log(err)),
+);
+
+export const dimoQnaDetailLoad = createAsyncThunk("/dimoQnaDetailLoad", ({ post_id, dispatch }) =>
+    URL.get(`/api/post/question/${post_id}`)
+        .then((res) => {
+            console.log(res);
+            dispatch(detailDimoQna(res.data.data));
+        })
+        .catch((err) => console.log(err)),
+);
+
+//info 상세보기
+export const dimoInfoDetailLoad = createAsyncThunk("/dimoInfoDetailLoad", ({ post_id, dispatch }) =>
+    URL.get(`/api/post/${post_id}`)
+        .then((res) => {
+            console.log(res);
+            dispatch(detailDimoInfo(res.data.data));
+        })
+        .catch((err) => console.log(err)),
+);
 
 export const searchDimo = createAsyncThunk("/searchDimo", ({ keyword, dispatch }) => {
     URL.get(`/api/post/search/0/${keyword}`)
@@ -43,12 +83,16 @@ export const searchDimo = createAsyncThunk("/searchDimo", ({ keyword, dispatch }
         .catch((err) => console.log(err));
 });
 
-// 없음...?
-export const categoryDimo = createAsyncThunk("/categoryDimo", ({ category, dispatch }) => {
-    URL.get(`/api/post/category/${category}/0`)
+// 삭제 /api/post/{post_id}?category=’category’&board=’board’
+export const deleteDimo = createAsyncThunk("/deleteDimo", (post_id, category, board) => {
+    URL.delete(`/api/post/${post_id}?category=${category}&board=${board}`, {
+        headers: {
+            Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+    })
         .then((res) => {
             console.log(res);
-            dispatch(dimos(res.data.data));
         })
         .catch((err) => console.log(err));
 });
@@ -57,8 +101,27 @@ export const dimoSlice = createSlice({
     name: "dimo",
     initialState: {},
     reducers: {
-        dimo: (state, action) => {
+        dimos: (state, action) => {
             state.dimos = action.payload;
+        },
+        dimosQNA: (state, action) => {
+            state.dimosQNA = action.payload;
+        },
+        dimosINFO: (state, action) => {
+            state.dimosINFO = action.payload;
+        },
+        detailDimoQna: (state, action) => {
+            state.detaildimoQna = action.payload;
+        },
+        dimoQnaDetailSimilars: (state, action) => {
+            state.dimoQnaDetailSimilars = action.payload;
+        },
+
+        detailDimoInfo: (state, action) => {
+            state.detailDimoInfo = action.payload;
+        },
+        categoryDimos: (state, action) => {
+            state.categoryDimos = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -92,9 +155,20 @@ export const dimoSlice = createSlice({
             .addCase(categoryDimo.rejected, (state, action) => {
                 console.log(action.error.message);
                 console.log("create rejected");
+            })
+            .addCase(deleteDimo.pending, (state, action) => {
+                console.log("pending");
+            })
+            .addCase(deleteDimo.fulfilled, (state, action) => {
+                console.log("create fulfiled");
+            })
+            .addCase(deleteDimo.rejected, (state, action) => {
+                console.log(action.error.message);
+                console.log("create rejected");
             });
     },
 });
 
-export const { dimos } = dimoSlice.actions;
+export const { dimos, dimosQNA, dimosINFO, categoryDimos, detailDimoQna, dimoQnaDetailSimilars, detailDimoInfo } =
+    dimoSlice.actions;
 export default dimoSlice.reducer;

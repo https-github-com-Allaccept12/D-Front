@@ -13,13 +13,12 @@ flex justify-center items-center flex-col shrink-0
 `;
 
 const ArtPost = (props) => {
-    
     const { account_id, profile, nickname, thumbnail, is_like, like_count, id, is_bookmark } = props;
     const dispatch = useDispatch();
     const handleClickArtWork = () => {
         let owner_account_id = account_id;
-        dispatch(artworkDetailLoad({id, dispatch}));
-        dispatch(myPageLoad({account_id, owner_account_id, dispatch}))
+        dispatch(artworkDetailLoad({ id, dispatch }));
+        dispatch(myPageLoad({ account_id, owner_account_id, dispatch }));
     };
     return (
         <>
@@ -64,7 +63,7 @@ const ArtPost = (props) => {
                                     <div className="flex flex-row justify-start w-20 gap-3 mx-auto lg:fixed top-20 right-10 2xl:right-48 lg:flex-col">
                                         <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                                <Profile size="5" src={profile}/>
+                                                <Profile size="5" src={profile} />
                                             </div>
                                             <Text size="1">프로필</Text>
                                         </div>
@@ -77,16 +76,22 @@ const ArtPost = (props) => {
                                         </div>
                                         <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                                {!is_like ? <Icon name="HeartE" iconSize="48" className="absolute" /> :
-                                                <Icon name="HeartF" iconSize="48" className="absolute" />}
+                                                {!is_like ? (
+                                                    <Icon name="HeartE" iconSize="48" className="absolute" />
+                                                ) : (
+                                                    <Icon name="HeartF" iconSize="48" className="absolute" />
+                                                )}
                                                 <Profile size="5" className="invisible" />
                                             </div>
                                             <Text size="1">좋아요</Text>
                                         </div>
                                         <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                                {!is_bookmark ? <Icon name="BookmarkE" iconSize="48" className="absolute" /> :
-                                                <Icon name="BookmarkF" iconSize="48" className="absolute" />}
+                                                {!is_bookmark ? (
+                                                    <Icon name="BookmarkE" iconSize="48" className="absolute" />
+                                                ) : (
+                                                    <Icon name="BookmarkF" iconSize="48" className="absolute" />
+                                                )}
                                                 {/* <Icon name="BookmarkE" iconSize="48" className="absolute" /> */}
                                                 <Profile size="5" className="invisible" />
                                             </div>

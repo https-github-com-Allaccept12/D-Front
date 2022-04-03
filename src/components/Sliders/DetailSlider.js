@@ -66,16 +66,18 @@ const MainSlider = (props) => {
                     <Icon name="ArrowL" iconSize="48" />{" "}
                 </PrevBtnDetail>
                 <Slide {...DetailSettings} ref={slider}>
-                    {main === "main" && 
-                        (others && others.map((value) => {
-                            return (
-                                // <Images src={value.img_url} />
-                                <SS>
-                                    <Slides type="artwork" value={value}/>
-                                </SS>
-                            )
-                        }))
-                    }
+                    {main === "main" &&
+                        others.length > 3 &&
+                        others.map((value) => {
+                            if (others.length > 3)
+                                return (
+                                    // <Images src={value.img_url} />
+                                    <SS>
+                                        <Slides type="artwork" value={value} />
+                                    </SS>
+                                );
+                            else return <></>;
+                        })}
                     {/* <SS>
                         <Slides type="artwork" />
                     </SS>

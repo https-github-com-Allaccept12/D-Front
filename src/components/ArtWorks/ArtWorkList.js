@@ -37,8 +37,6 @@ w-[95%] border mx-auto border-gray-300 my-6
 //     { id: "101" },
 // ];
 
-
-
 const ArtWorkList = (props) => {
     const artworks = useSelector((state) => state.artwork.artworks);
     console.log(artworks);
@@ -49,21 +47,24 @@ const ArtWorkList = (props) => {
                     <ArtWorkInsideFilter />
                     <Line />
                     <Grid>
-                        {artworks && artworks.map((value) => {
-                            return (
-                                <ArtPost 
-                                    account_id={value.account_id}
-                                    id={value.artwork_id}
-                                    profile={value.account_profile} 
-                                    nickname={value.account_nickname} 
-                                    thumbnail={value.img}
-                                    like_count={value.like_count}
-                                    is_like={value.is_like}
-                                    is_bookmark={value.is_bookmark}
-                                    size="3"/>
-                            )
-                            
-                        })}
+                        {artworks &&
+                            artworks.map((value) => {
+                                return (
+                                    <div key={value.account_id}>
+                                        <ArtPost
+                                            account_id={value.account_id}
+                                            id={value.artwork_id}
+                                            profile={value.account_profile}
+                                            nickname={value.account_nickname}
+                                            thumbnail={value.img}
+                                            like_count={value.like_count}
+                                            is_like={value.is_like}
+                                            is_bookmark={value.is_bookmark}
+                                            size="3"
+                                        />
+                                    </div>
+                                );
+                            })}
                         {/* {p.map((n) => {
                             return (
                                 <>

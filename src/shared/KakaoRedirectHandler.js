@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { kakaoLoginAxios } from "../redux/modules/user";
 import { kakaoSlice } from "../redux/modules/temp";
+import Spinner from "../components/Tendency/Spinner";
 
 const KakaoRedirectHandler = (props) => {
     const dispatch = useDispatch();
@@ -21,7 +22,11 @@ const KakaoRedirectHandler = (props) => {
     // }
     // history.replace("/");
 
-    return "Wait a minuate Please";
+    return (
+        <>
+            <Spinner />
+        </>
+    );
 };
 
 export default KakaoRedirectHandler;

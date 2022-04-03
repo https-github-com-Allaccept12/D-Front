@@ -71,7 +71,7 @@ const DimoCreate = () => {
         category: selected,
         content: content.value,
         img: [{ img_url: "" }],
-        hashTag: forSendTags,
+        hash_tag: forSendTags,
         board: status.toUpperCase(),
     };
     // console.log(data);
