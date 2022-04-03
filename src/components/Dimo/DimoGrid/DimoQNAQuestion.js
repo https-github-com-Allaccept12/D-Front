@@ -3,8 +3,9 @@ import { Button, Label, Profile, Title, Text, Subtitle, InputNoTitle, FollowBtn,
 
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
+import { useDispatch, useSelector } from "react-redux";
 import { useToggle, useInput } from "../../../hooks";
-
+import { CreateAnswerDimo } from "../../../redux/modules/dimo";
 const UnderLine = tw.hr`
 border border-dgray-300 w-full col-span-full mt-10 mb-5
 `;
@@ -34,16 +35,23 @@ py-10 flex flex-row justify-between
 `;
 
 const DimoQNAQuestion = (props) => {
-    const { followed, value } = props;
-    console.log(value.hash_tag[1].tag);
+    const { followed, value, post } = props;
+    // console.log(t[1].tag);
+    const dispatch = useDispatch();
+
     const history = useHistory();
     const [showAnswer, setShowAnswer] = useToggle();
     // const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", []);
+    // const t = value.hash_tag;
+    // console.log(post.post_id);
+    const answerSubmit = () => {
+        const post_id = post.post_id;
+        const content = `content: ${name.value}`;
+        const data = { post_id, content };
 
-    const commentSubmit = () => {
-        const data = { comment: name.value };
-        history.goBack();
+        dispatch(CreateAnswerDimo(data));
+        // history.goBack();
         //여기에 뭔가 돌아가기버튼...
     };
 
@@ -51,27 +59,27 @@ const DimoQNAQuestion = (props) => {
         <>
             <Card>
                 <Header>
-                    <div className="flex flex-row gap-1 md:pt-10 pb-4">
-                        {value.hash_tag
-                            ? value.hash_tag.map((value, idx) => {
+                    {/* <div className="flex flex-row gap-1 md:pt-10 pb-4">
+                        {t
+                            ? t.map((value, idx) => {
                                   return <Label key={idx}>{value.tag}</Label>;
                               })
                             : ""}
-                        <Label className="">{value.hash_tag[0].tag}</Label>
-                        {value.hash_tag[1] ? <Label className="">{value.hash_tag[1].tag}</Label> : ""}
-                    </div>
-                    <Title size="5">{value.postAnswerSubDetail?.title}</Title>
+                        <Label className="">{t[0].tag}</Label>
+                        {t[1] ? <Label className="">{t[1].tag}</Label> : ""}
+                    </div> */}
+                    <Title size="5">{post.title}</Title>
                     <div className="flex flex-row py-3">
-                        <Text size="1">{value.postAnswerSubDetail?.modify_time}</Text>
+                        <Text size="1">{post.modify_time}</Text>
                         <InnerLine />
-                        <Text size="1">조회수 {value.postAnswerSubDetail?.view_count}</Text>
+                        <Text size="1">조회수 {post.view_count}</Text>
                         <InnerLine />
-                        {value.postAnswerSubDetail?.is_selected && <Text size="1">채택완료</Text>}
+                        {post.is_selected && <Text size="1">채택완료</Text>}
                     </div>
                 </Header>
                 <Body>
                     <Text size="2" className="flex flex-wrap w-full pt-4 pb-16">
-                        {value.postAnswerSubDetail?.content}
+                        {post.content}
                     </Text>
                 </Body>
                 <Btns>
@@ -97,14 +105,10 @@ const DimoQNAQuestion = (props) => {
 
                 <Footer>
                     <div className="justify-start flex flex-row">
-                        <Profile
-                            size="5"
-                            src={value.postAnswerSubDetail.account_profile_img}
-                            className="hidden md:flex"
-                        />
+                        <Profile size="5" src={post.account_profile_img} className="hidden md:flex" />
                         <div className="-mt-2 ml-3">
                             <Title size="5" className="my-3">
-                                {value.postAnswerSubDetail.account_nickname}
+                                {post.account_nickname}
                             </Title>
                             <Subtitle size="1">
                                 채택률<span className="text-blue-300">100 %</span> / 마감률
@@ -134,11 +138,11 @@ const DimoQNAQuestion = (props) => {
                                 onChange={name.onChange}
                                 textarea
                                 is_submit
-                                onSubmit={commentSubmit}
+                                onSubmit={answerSubmit}
                                 cardsize="3"
                                 width="20"
                             />
-                            <Button size="3" className="xl:invisible visible mt-4">
+                            <Button size="3" className="xl:invisible visible mt-4" onClick={answerSubmit}>
                                 제출
                             </Button>
                         </div>

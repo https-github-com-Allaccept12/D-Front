@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { HeartButton, Text, Icon, Title, Profile, Label, IconBtn } from "../../../elements";
 import { useDispatch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
@@ -57,27 +57,31 @@ const DimoPost = (props) => {
 
     const handleClickDimoQna = () => {
         // let owner_account_id = account_id;
-
-        dispatch(dimoQnaDetailLoad({ post_id, dispatch }));
-        dispatch(dimoQnaDetailSimilar({ category, post_id, dispatch }));
+        useEffect(() => {
+            dispatch(dimoQnaDetailLoad({ post_id, dispatch }));
+            dispatch(dimoQnaDetailSimilar({ category, post_id, dispatch }));
+        });
     };
 
     const handleClickDimoInfo = () => {
         dispatch(dimoInfoDetailLoad({ post_id, dispatch }));
     };
+    useEffect(() => {
+        dispatch(dimoQnaDetailLoad({ post_id, dispatch }));
+    }, [dispatch]);
 
     if (list === "qna")
         return (
             <>
-                <Link
-                    to={{
-                        pathname: `/dimo/qnadetail/${post_id}`,
-                        state: {
-                            id: { post_id },
-                        },
-                    }}
-                >
-                    <Art onClick={handleClickDimoQna}>
+                <Art onClick={handleClickDimoQna}>
+                    <Link
+                        to={{
+                            pathname: `/dimo/qnadetail/${post_id}`,
+                            state: {
+                                id: { post_id },
+                            },
+                        }}
+                    >
                         <Box>
                             <Grid>
                                 <Card>
@@ -113,8 +117,8 @@ const DimoPost = (props) => {
                                 </Card>
                             </Grid>
                         </Box>
-                    </Art>
-                </Link>
+                    </Link>
+                </Art>
             </>
         );
     if (list === "info")
