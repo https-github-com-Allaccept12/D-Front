@@ -99,7 +99,7 @@ export const deleteDimo = createAsyncThunk("/deleteDimo", (post_id, category, bo
 
 export const CreateAnswerDimo = createAsyncThunk("post/CreateAnswerDimo", async (data, thunkAPI) => {
     const { content, post_id } = data;
-    console.log(content);
+    // console.log(content);
     await URL.post(`/api/post/answer/${post_id}`, data, {
         headers: {
             "content-type": "application/json",
@@ -113,10 +113,10 @@ export const CreateAnswerDimo = createAsyncThunk("post/CreateAnswerDimo", async 
         .catch((err) => console.log(err));
 });
 
-export const CreateInfoDimo = createAsyncThunk("post/CreateAnswerDimo", async (data, thunkAPI) => {
+export const CreateInfoDimo = createAsyncThunk("post/CreateInfoDimo", async (data, thunkAPI) => {
     const { content, post_id } = data;
     // console.log(content);
-    await URL.post(`/api/post/comment/${post_id}`, JSON.stringify(content), {
+    await URL.post(`/api/post/comment/${post_id}`, data, {
         headers: {
             "content-type": "application/json",
             Authorization: "Bearer " + token,
@@ -168,36 +168,7 @@ export const dimoSlice = createSlice({
                 console.log(action.error.message);
                 console.log("create rejected");
             })
-            .addCase(searchDimo.pending, (state, action) => {
-                console.log("pending");
-            })
-            .addCase(searchDimo.fulfilled, (state, action) => {
-                console.log("create fulfiled");
-            })
-            .addCase(searchDimo.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
-            })
-            .addCase(categoryDimo.pending, (state, action) => {
-                console.log("pending");
-            })
-            .addCase(categoryDimo.fulfilled, (state, action) => {
-                console.log("create fulfiled");
-            })
-            .addCase(categoryDimo.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
-            })
-            .addCase(deleteDimo.pending, (state, action) => {
-                console.log("pending");
-            })
-            .addCase(deleteDimo.fulfilled, (state, action) => {
-                console.log("create fulfiled");
-            })
-            .addCase(deleteDimo.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
-            })
+
             .addCase(CreateAnswerDimo.pending, (state, action) => {
                 console.log("pending");
             })
@@ -205,6 +176,17 @@ export const dimoSlice = createSlice({
                 console.log("create fulfiled");
             })
             .addCase(CreateAnswerDimo.rejected, (state, action) => {
+                console.log(action.error.message);
+                console.log("create rejected");
+            })
+
+            .addCase(CreateInfoDimo.pending, (state, action) => {
+                console.log("pending");
+            })
+            .addCase(CreateInfoDimo.fulfilled, (state, action) => {
+                console.log("create fulfiled");
+            })
+            .addCase(CreateInfoDimo.rejected, (state, action) => {
                 console.log(action.error.message);
                 console.log("create rejected");
             });

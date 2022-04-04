@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Label, Profile, Title, Text, Answer, InputNoTitle, Icon } from "../../../elements";
-import { Comment } from "../../Comment";
+import { CommentDimo } from "../../Comment";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useToggle, useInput } from "../../../hooks";
 import { useDispatch, useSelector } from "react-redux";
+import { dimoInfoDetailLoad, CreateInfoDimo } from "../../../redux/modules/dimo";
 
 const UnderLine = tw.hr`
 border border-dgray-300 w-full col-span-full mt-10 mb-5
@@ -38,17 +39,27 @@ const Bg = tw.div`
 bg-dgray-200 md:p-10 xl:px-20
 `;
 
-const DimoSharedDetail = (props) => {
-    const history = useHistory();
+const DimoSharedDetail = ({ history, location, match }) => {
+    const post_id = match.params.name;
+    const dispatch = useDispatch();
+    const [loading, setLoading] = useToggle();
+    useEffect(() => {
+        dispatch(dimoInfoDetailLoad({ post_id, dispatch }));
+    }, [useSelector]);
+
     const [showAnswer, setShowAnswer] = useToggle();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
 
-    const dimos = useSelector((state) => state.dimo.detailDimoInfo);
+    const dimos = useSelector((state) => state.dimo.detailDimoInfo.postSubDetail);
     console.log(dimos);
+
     const commentSubmit = () => {
-        const data = { comment: name.value };
-        history.goBack();
+        const content = name.value;
+        const data = { post_id, content };
+
+        dispatch(CreateInfoDimo(data));
+        // history.goBack();
         //여기에 뭔가 돌아가기버튼...
     };
     return (
@@ -64,16 +75,16 @@ const DimoSharedDetail = (props) => {
                                 진로고민
                             </Label>
                         </div>
-                        <Title size="5">{dimos.postSubDetail.title}</Title>
+                        <Title size="5">{dimos.title}</Title>
                         <div className="flex flex-row py-3">
-                            <Text size="1">{dimos.postSubDetail.create_time}</Text>
+                            <Text size="1">{dimos.create_time}</Text>
                             <InnerLine />
-                            <Text size="1">조회수 {dimos.postSubDetail.view_count}</Text>
+                            <Text size="1">조회수 {dimos.view_count}</Text>
                         </div>
                     </Header>
                     <Body>
                         <Text size="2" className="flex flex-wrap w-full pt-4 pb-16">
-                            {dimos.postSubDetail.content}
+                            {dimos.content}
                         </Text>
                     </Body>
                     <Btns>
@@ -82,7 +93,7 @@ const DimoSharedDetail = (props) => {
                                 답변남기기
                             </Button>
                             <div className="flex flex-col md:flex-row gap-3">
-                                <Button icon name="HeartE" color="5" size="3" count={dimos.postSubDetail.like_count}>
+                                <Button icon name="HeartE" color="5" size="3" count={dimos.like_count}>
                                     <span className="hidden 2xl:contents">좋아요</span>
                                 </Button>
                                 <Button icon name="BookmarkE" color="5" size="3" count={dimos.bookmark_count}>
@@ -129,12 +140,7 @@ const DimoSharedDetail = (props) => {
                             </Button>
                         </div>
                     </div>
-                    <div className="p-4">
-                        <Comment />
-                        <Comment />
-                        <Comment />
-                        <Comment />
-                    </div>
+                    <div className="p-4">{/* <CommentDimo value={dimos.comment} /> */}</div>
                 </Card>
             </Bg>
         </>

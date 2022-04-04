@@ -37,6 +37,7 @@ const DimoCreate = () => {
     const a = location.pathname;
     const dispatch = useDispatch();
     const dimofiles = useSelector((state) => state.image.dimoFiles);
+    console.log(dimofiles);
     const JobOptions = [
         { value: "uiux", label: "UI & UX" },
         { value: "fashion", label: "패션" },

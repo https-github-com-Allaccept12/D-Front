@@ -22,14 +22,12 @@ border border-dgray-300 w-full col-span-full mt-10 mb-5
 
 `;
 
-const dimos = useSelector((state) => state.dimo.detaildimoQna);
-const dimoSimilars = useSelector((state) => state.dimo.dimoQnaDetailSimilars);
-const dimosPost = useSelector((state) => state.dimo.detaildimoQna?.postAnswerSubDetail);
-
 const DimoQNADetail = ({ history, location, match }) => {
     const dispatch = useDispatch();
     const id = match.params.name;
-
+    const dimos = useSelector((state) => state.dimo.detaildimoQna);
+    const dimoSimilars = useSelector((state) => state.dimo.dimoQnaDetailSimilars);
+    const dimosPost = useSelector((state) => state.dimo.detaildimoQna?.postAnswerSubDetail);
     // let owner_account_id = account_id;
 
     return (
@@ -79,16 +77,29 @@ const DimoQNADetail = ({ history, location, match }) => {
                             <InnerLine />
                             <div className="flex flex-row justify-start items-center gap-3">
                                 <Icon name="Talk" iconSize="36" />
-                                <Title size="3">{dimos?.answer_count}</Title>
+                                <Title size="3">{dimos.answer_count}</Title>
                             </div>
-                            {dimos?.answer_count > 0 ? (
-                                <>
-                                    <DimoQNAAnswer selected="true" followed="false" />
-                                    <DimoQNAAnswer selected="false" followed="true" />
-                                </>
-                            ) : (
-                                ""
-                            )}
+                            {dimos.answer_count > 0
+                                ? dimos.answers.map((value) => {
+                                      return (
+                                          <div key={value.answer_id}>
+                                              <DimoQNAAnswer
+                                                  selected={value.is_selected}
+                                                  account_id={value.account_id}
+                                                  account_nickname={value.account_nickname}
+                                                  account_profile_img={value.account_profile_img}
+                                                  answer_id={value.answer_id}
+                                                  content={value.content}
+                                                  is_follow={value.is_follow}
+                                                  is_like={value.is_like}
+                                                  is_selected={value.is_selected}
+                                                  like_count={value.like_count}
+                                                  modify_time={value.modify_time}
+                                              />
+                                          </div>
+                                      );
+                                  })
+                                : ""}
                         </Grid>
                     </Box>
                 </div>

@@ -66,9 +66,13 @@ const DimoPost = (props) => {
     const handleClickDimoInfo = () => {
         dispatch(dimoInfoDetailLoad({ post_id, dispatch }));
     };
+
     useEffect(() => {
         dispatch(dimoQnaDetailLoad({ post_id, dispatch }));
+        dispatch(dimoInfoDetailLoad({ post_id, dispatch }));
     }, [dispatch]);
+
+    // const dimos = useSelector((state) => state.dimo.detailDimoInfo.postSubDetail);
 
     if (list === "qna")
         return (
@@ -124,15 +128,15 @@ const DimoPost = (props) => {
     if (list === "info")
         return (
             <>
-                <Link
-                    to={{
-                        pathname: `/dimo/infodetail/${post_id}`,
-                        state: {
-                            id: { post_id },
-                        },
-                    }}
-                >
-                    <Art onClick={handleClickDimoInfo}>
+                <Art onClick={handleClickDimoInfo}>
+                    <Link
+                        to={{
+                            pathname: `/dimo/infodetail/${post_id}`,
+                            state: {
+                                id: { post_id },
+                            },
+                        }}
+                    >
                         <Box>
                             <Grid>
                                 <Card>
@@ -166,8 +170,8 @@ const DimoPost = (props) => {
                                 </Card>
                             </Grid>
                         </Box>
-                    </Art>
-                </Link>
+                    </Link>
+                </Art>
             </>
         );
     else return null;
