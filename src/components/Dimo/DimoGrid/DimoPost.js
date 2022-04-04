@@ -126,7 +126,7 @@ const DimoPost = (props) => {
             <>
                 <Link
                     to={{
-                        pathname: `/dimo/shareddetail/${post_id}`,
+                        pathname: `/dimo/infodetail/${post_id}`,
                         state: {
                             id: { post_id },
                         },

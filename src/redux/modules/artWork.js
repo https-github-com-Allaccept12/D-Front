@@ -143,7 +143,7 @@ export const submitComment = createAsyncThunk("/categoryArtwork", ({ artwork_id,
 });
 
 // 댓글 수정
-export const commentModify = createAsyncThunk("/commentModify", ({comment_id, data}) => {
+export const commentModify = createAsyncThunk("/commentModify", ({ comment_id, data }) => {
     URL.patch(`/api/artwork/comment/${comment_id}`, data, {
         headers: {
             Authorization: "Bearer " + token,
@@ -287,8 +287,7 @@ export const artworkSlice = createSlice({
                 console.log("create rejected");
             });
     },
-    },
-);
+});
 
 export const { artworks, portfolios, detailArtwork } = artworkSlice.actions;
 export default artworkSlice.reducer;

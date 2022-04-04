@@ -4,6 +4,7 @@ import { getCookie } from "../shared/cookie";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { categoryDimo } from "../redux/modules/dimo";
 import { Modal } from "../elements/Tools/Modal";
 
 const Header = (props) => {
@@ -11,6 +12,12 @@ const Header = (props) => {
     const [ownerId, setOwnerId] = useState("");
     const [accountId, setAccountId] = useState("");
     const [modalOpen, setModalOpen] = useState(false);
+    const dispatch = useDispatch();
+    const category = "uiux";
+    const board = "QNA";
+    const setPage = () => {
+        dispatch(categoryDimo({ category, dispatch, board }));
+    };
 
     const openModal = () => {
         setModalOpen(true);
@@ -46,7 +53,7 @@ const Header = (props) => {
                     <Title size="6">
                         <Link to="/art/list/all">모아보기</Link>
                     </Title>
-                    <Title size="6">
+                    <Title size="6" onClick={setPage}>
                         <Link to="/dimo/qna/all">디모</Link>
                     </Title>
                     {is_login && (

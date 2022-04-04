@@ -14,35 +14,35 @@ absolute w-[32.5rem] h-[18.75rem]  rounded-lg bg-dpurple-200
 
 const Slides = (props) => {
     const history = useHistory();
-    const { type, list, value, id, nickname } = props;
+    const { type, list, value, id, nickname, post_id } = props;
     let { job } = props;
-    if(job === "uiux"){
-        job = "UI / UX"
-    } else if(job === "fashion"){
-        job = "패션"
-    } else if(job === "typo"){
-        job = "타이포그래피"
-    } else if(job === "craft"){
-        job = "공예"
-    } else if(job === "package"){
-        job = "패키지"
-    } else if(job === "graphic"){
-        job = "그래픽"
-    } else if(job === "video"){
-        job = "영상 / 모션"
-    } else if(job === "product"){
-        job = "제품"
-    } else if(job === "game"){
-        job = "게임 / 캐릭터"
-    } else if(job === "edit"){
-        job = "브랜딩 / 편집"
-    } else if(job === "eco"){
-        job = "건축 / 인테리어 / 환경"
+    if (job === "uiux") {
+        job = "UI / UX";
+    } else if (job === "fashion") {
+        job = "패션";
+    } else if (job === "typo") {
+        job = "타이포그래피";
+    } else if (job === "craft") {
+        job = "공예";
+    } else if (job === "package") {
+        job = "패키지";
+    } else if (job === "graphic") {
+        job = "그래픽";
+    } else if (job === "video") {
+        job = "영상 / 모션";
+    } else if (job === "product") {
+        job = "제품";
+    } else if (job === "game") {
+        job = "게임 / 캐릭터";
+    } else if (job === "edit") {
+        job = "브랜딩 / 편집";
+    } else if (job === "eco") {
+        job = "건축 / 인테리어 / 환경";
     }
 
     const goToProfile = () => {
         history.push(`/myspace/myprofile/${nickname}/${id}`);
-    }
+    };
 
     if (type === "main")
         return (
@@ -90,7 +90,7 @@ const Slides = (props) => {
                     >
                         <div className="absolute bottom-[5rem] pl-6 hover:scale-110 cursor-pointer">
                             {/* <Link to='/myspace/myprofile?id='> */}
-                            <Profile size="3" src={props.image} onClick={goToProfile}/>
+                            <Profile size="3" src={props.image} onClick={goToProfile} />
                             {/* </Link> */}
                         </div>
                         <div className="pt-6 pl-40">
@@ -135,7 +135,14 @@ const Slides = (props) => {
         return (
             <>
                 <>
-                    <Link to="/dimo/qnadetail/">
+                    <Link
+                        to={{
+                            pathname: `/dimo/qnadetail/${post_id}`,
+                            state: {
+                                id: { post_id },
+                            },
+                        }}
+                    >
                         <div className="w-[32.5rem] h-[18.75rem] rounded-lg">
                             <ColorSlide>
                                 <div>
@@ -180,7 +187,14 @@ const Slides = (props) => {
         return (
             <>
                 <>
-                    <Link to="/dimo/shareddetail">
+                    <Link
+                        to={{
+                            pathname: `/dimo/infodetail/${post_id}`,
+                            state: {
+                                id: { post_id },
+                            },
+                        }}
+                    >
                         <div className="w-[32.5rem] h-[18.75rem] rounded-lg">
                             <ColorSlide>
                                 <div>

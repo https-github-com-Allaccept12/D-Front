@@ -6,9 +6,9 @@ import { Image, Text, Icon } from "../../elements";
 import { useSelector, useDispatch } from "react-redux";
 
 export const Slide = tw(Slider)`
-w-full md:w-[32.5rem] lg:w-[40rem] xl:w-[78rem] 2xl:w-[106rem]
+w-full md:w-[32.5rem] lg:w-[66rem] 2xl:w-[106rem]
     mx-auto text-white pl-5 lg:ml-40 xl:ml-5
-    overflow-hidden text-lg 
+    overflow-hidden text-lg flex
 `;
 
 const SS = tw.div`
@@ -61,7 +61,7 @@ const DimoSlider = (props) => {
             {
                 breakpoint: 1700,
                 settings: {
-                    slidesToShow: 2,
+                    slidesToShow: 1,
                 },
             },
             {
@@ -92,7 +92,7 @@ const DimoSlider = (props) => {
                                 return (
                                     // <Images src={value.img_url} />
                                     <SS key={value.post_id}>
-                                        <Slides type="dimo" list={list} value={value} />
+                                        <Slides type="dimo" list={list} value={value} post_id={value.post_id} />
                                     </SS>
                                 );
                             })}
@@ -116,7 +116,7 @@ const DimoSlider = (props) => {
                                 return (
                                     // <Images src={value.img_url} />
                                     <SS key={value.post_id}>
-                                        <Slides type="dimo" list={list} value={value} />
+                                        <Slides type="dimo" list={list} value={value} post_id={value.post_id} />
                                     </SS>
                                 );
                             })}
