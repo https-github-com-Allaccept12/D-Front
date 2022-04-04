@@ -21,7 +21,7 @@ const ArtPost = (props) => {
 
     const handleClickArtWork = () => {
         let owner_account_id = account_id;
-        const visitor_account_id = account_id
+        const visitor_account_id = sessionStorage.getItem("account_id");
         dispatch(artworkDetailLoad({ artwork_id, visitor_account_id, dispatch }));
         dispatch(myPageLoad({ account_id, owner_account_id, dispatch }));
     };
@@ -39,7 +39,7 @@ const ArtPost = (props) => {
     }
 
     const clickBookmark = () => {
-        setLike(!bookmark);
+        setBookmark(!bookmark);
         if (bookmark){
             console.log('unmark');
             dispatch(UnMarkArtwork(artwork_id));

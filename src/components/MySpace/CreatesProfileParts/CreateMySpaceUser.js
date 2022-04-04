@@ -122,7 +122,7 @@ const CreateMySpaceUser = (props) => {
         formData.append("imgFile", image);
         // dispatch(createProfile(data));
         console.log(formData);
-        dispatch(createProfile(formData));
+        dispatch(createProfile({formData, dispatch}));
     };
 
     return (

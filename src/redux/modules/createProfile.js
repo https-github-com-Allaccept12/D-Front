@@ -1,14 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { refreshSlice } from "./temp";
 import { URL, token } from "../UrlForAxios";
+import { useDispatch } from "react-redux";
 
 const initialState = {};
 
 export const createProfile = createAsyncThunk(
   "post/createProfile",
   // async (formData, thunkAPI) => {
-  async (data, thunkAPI) => {
+  async ({formData, dispatch}) => {
     //   await URL.post('/api/profile', formData, {
-    await URL.post("/api/profile", data, {
+    await URL.post("/api/profile", formData, {
       headers: {
         "content-type": "multipart/form-data",
         Authorization: "Bearer " + token,
@@ -19,11 +21,18 @@ export const createProfile = createAsyncThunk(
         console.log(res);
       })
       .catch((err) => {
+        const access_token = sessionStorage.getItem("access_token");
+        const refresh_token = sessionStorage.getItem("refresh_token");
         // if(err.response.status == 401){
         //   alert('다시 로그인 해주세요.');
         //   window.location.href = "/logout";
         // }
-        console.log(err)
+        // console.log(err.response);
+        console.log(err.response.data.status);
+        if (err.response.data.status == 444){
+            console.log('here');
+            dispatch(refreshSlice({access_token, refresh_token}));
+        }
       });
   }
 );

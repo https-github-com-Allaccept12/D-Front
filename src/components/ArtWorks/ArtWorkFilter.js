@@ -40,7 +40,7 @@ const ArtWorkFilter = (props) => {
                     <TabBtn value="ui" onClick={ClickCategory}>📱 UI/UX</TabBtn>
                     <TabBtn value="graphic" onClick={ClickCategory}>🎨 그래픽디자인</TabBtn>
                     <TabBtn value="branding" onClick={ClickCategory}>📠 브랜딩/편집디자인</TabBtn>
-                    <TabBtn value="pakage" onClick={ClickCategory}>🎁 패키지 디자인</TabBtn>
+                    <TabBtn value="package" onClick={ClickCategory}>🎁 패키지 디자인</TabBtn>
                     <TabBtn value="product" onClick={ClickCategory}>🎁 제품 디자인</TabBtn>
                     <TabBtn value="typo" onClick={ClickCategory}>📝 타이포그래피</TabBtn>
                     <TabBtn value="video" onClick={ClickCategory}>🎬 영상/모션그래픽</TabBtn>

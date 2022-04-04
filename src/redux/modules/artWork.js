@@ -279,7 +279,7 @@ export const MarkArtwork = createAsyncThunk("/MarkArtwork", (artwork_id) => {
 
 // 북마크 해제
 export const UnMarkArtwork = createAsyncThunk("/UnMarkArtwork", (artwork_id) => {
-    URL.post(`/api/bookmark/artwork/${artwork_id}`, artwork_id, {
+    URL.delete(`/api/bookmark/artwork/${artwork_id}`, {
         headers: {
             Authorization: "Bearer " + token,
         },
