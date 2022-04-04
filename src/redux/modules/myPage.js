@@ -52,7 +52,7 @@ export const careerFeed = createAsyncThunk(
       })
       .then((res) => {
         console.log(res);
-        dispatch(careerFeed(res.data.data));
+        dispatch(feed(res.data.data));
       })
       .catch((err) => console.log(err));
   }

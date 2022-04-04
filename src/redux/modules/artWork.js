@@ -53,7 +53,7 @@ export const PortfolioLoad = createAsyncThunk("/PortfolioLoad", async ({ owner_a
 
 // 대표작품 설정
 export const getMaster = createAsyncThunk("/getMaster", (artwork_id) => {
-    URL.delete(`/api/my-page/masterpiece/${artwork_id}`, {
+    URL.post(`/api/my-page/masterpiece/${artwork_id}`, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -88,7 +88,19 @@ export const updateScope = createAsyncThunk("/updateScope", (artwork_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            console.log(token, artwork_id);
+            console.log(res);
+        })
+        .catch((err) => console.log(err));
+});
+
+export const postScope = createAsyncThunk("/updateScope", (artwork_id) => {
+    URL.post(`/api/my-page/hidepiece/${artwork_id}`, {
+        headers: {
+            Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+    })
+        .then((res) => {
             console.log(res);
         })
         .catch((err) => console.log(err));
@@ -159,6 +171,21 @@ export const commentModify = createAsyncThunk("/commentModify", ({comment_id, da
 // 댓글 삭제
 export const commentDelete = createAsyncThunk("/commentDelete", (comment_id) => {
     URL.delete(`/api/artwork/comment/${comment_id}`, {
+        headers: {
+            Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+    })
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => console.log(err));
+});
+
+
+// 좋아요
+export const LikeArtwork = createAsyncThunk("/LikeArtwork", (artwork_id) => {
+    URL.post(`/api/artwork/like/${artwork_id}`, {
         headers: {
             Authorization: "Bearer " + token,
         },

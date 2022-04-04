@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getMaster, removeMaster, updateScope, deleteArtwork } from "../../redux/modules/artWork";
+import { getMaster, removeMaster, updateScope, postScope, deleteArtwork } from "../../redux/modules/artWork";
 import CircleBtn from "../Icons/CircleBtn";
 import tw from "tailwind-styled-components";
 
@@ -47,7 +47,7 @@ const EditMyArtWork = (props) => {
     }
     const ClickPublic = () => {
         setPublic(!is_public);
-        dispatch(updateScope(artwork_id));
+        (is_public ? dispatch(updateScope(artwork_id)) : dispatch(postScope(artwork_id)));
     }
     const ClickDelete = () => {
         dispatch(deleteArtwork(artwork_id));
