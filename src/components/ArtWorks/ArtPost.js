@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import { IconBtn, Subtitle, Icon, Thumbnail, Profile, Text } from "../../elements";
 
 import { useDispatch } from "react-redux";
-import { artworkDetailLoad } from "../../redux/modules/artWork";
+import { artworkDetailLoad, LikeArtwork } from "../../redux/modules/artWork";
 import { myPageLoad } from "../../redux/modules/myPage";
 import ArtWorkDetail from "./ArtWorkDetail";
 import tw from "tailwind-styled-components";
@@ -14,12 +14,19 @@ flex justify-center items-center flex-col shrink-0
 
 const ArtPost = (props) => {
     const { account_id, profile, nickname, thumbnail, is_like, like_count, id, is_bookmark } = props;
+    console.log(profile);
     const dispatch = useDispatch();
     const handleClickArtWork = () => {
         let owner_account_id = account_id;
         dispatch(artworkDetailLoad({ id, dispatch }));
         dispatch(myPageLoad({ account_id, owner_account_id, dispatch }));
     };
+
+    const clickLike = () => {
+        console.log('click');
+        dispatch(LikeArtwork(id));
+    }
+
     return (
         <>
             <Art>
@@ -74,7 +81,7 @@ const ArtPost = (props) => {
                                             </div>
                                             <Text size="1">팔로우</Text>
                                         </div>
-                                        <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
+                                        <div onClick={clickLike} className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
                                                 {!is_like ? (
                                                     <Icon name="HeartE" iconSize="48" className="absolute" />

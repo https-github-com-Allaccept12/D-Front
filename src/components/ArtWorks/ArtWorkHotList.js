@@ -8,7 +8,7 @@ import { ArtWorkCategory, ArtWorkWrite } from "../ArtWorks";
 
 const ArtWorkHotList = (props) => {
     const artworks = useSelector((state) => state.mainPage.artworks);
-    // console.log(artworks);
+    console.log(artworks);
     let arrayArtworks = () => {};
     if (artworks) {
         arrayArtworks = () => {

@@ -80,7 +80,7 @@ const ArtWorkDetail = (props) => {
     const myProfileImg = sessionStorage.getItem("profile_img");
     const writerInfo = useSelector((state) => state.myPage.myPage);
     const artworks = useSelector((state) => state.artwork.detailArtwork);
-
+    
     console.log(artworks);
     const [artworkId, setArtworkId] = useState("");
     const [nickname, setNickname] = useState("");

@@ -44,7 +44,7 @@ const Comment = (props) => {
                     <div className="flex flex-col ">
                         <div className="flex flex-row items-center gap-3 mt-1">
                             <Subtitle size="1" className="">
-                                닉네임
+                                {/* {value.account_nickname} */}
                             </Subtitle>
                             <Text size="4">{value.modify_time.split('T')[0] + ' ' + value.modify_time.split('T')[1].split('.')[0].slice(undefined, 5)}</Text>
                         </div>

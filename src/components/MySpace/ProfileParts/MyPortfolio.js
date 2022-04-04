@@ -24,7 +24,7 @@ const MyPortfolio = (props) => {
                 {feed && feed.map((value) => {
                     return (
                     <EditMyArtWork
-                        src={feed.img}
+                        src={value.img}
                         size="1"
                     />
                     )

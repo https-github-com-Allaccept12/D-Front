@@ -50,7 +50,7 @@ const MyPage = (props) => {
 
     const info = useSelector((state) => state.myPage.myPage);
     const exp = useSelector((state) => state.myPage.history);
-    const feed = useSelector((state) => state.myPage.history);
+    const feed = useSelector((state) => state.myPage.feed);
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[2];
