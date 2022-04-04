@@ -58,6 +58,7 @@ const DimoInsideFilter = (props) => {
 
     const ByLike = () => {
         const category = "uiux";
+        console.log("d");
         dispatch(orderByLikeDimo({ category, board, dispatch }));
     };
 
@@ -77,13 +78,13 @@ const DimoInsideFilter = (props) => {
         <>
             <Grid>
                 <FilterBtn>
-                    <TextCSS>
-                        <Icon name="HeartE" iconSize="14" onClick={ByLike} />
+                    <TextCSS onClick={ByLike}>
+                        <Icon name="HeartE" iconSize="14"/>
                         <ColorSpan>인기순</ColorSpan>
                     </TextCSS>
                     <InnerLine />
-                    <TextCSS>
-                        <Icon name="Time" iconSize="14" onClick={orderByNew} />
+                    <TextCSS onClick={orderByNew}>
+                        <Icon name="Time" iconSize="14" />
                         <ColorSpan>최신순</ColorSpan>
                     </TextCSS>
                 </FilterBtn>

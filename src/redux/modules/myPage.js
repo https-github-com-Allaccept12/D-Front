@@ -73,6 +73,81 @@ export const bookmarkList = createAsyncThunk(
   }
 );
 
+// 내 게시글
+export const myPostList = createAsyncThunk(
+  "/myPostList",
+  async ({ visitor_account_id, dispatch }) => {
+    console.log(visitor_account_id),
+    await axios
+      .get(process.env.REACT_APP_MYPAGE+`/community/myPost/INFO?start=0&visitor_account_id=${visitor_account_id}`)
+      .then((res) => {
+        console.log(res);
+        dispatch(myposts(res.data.data));
+      })
+      .catch((err) => console.log(err));
+  }
+);
+
+// 북마크한 게시글
+export const myBookMarkList = createAsyncThunk(
+  "/myBookMarkList",
+  async ({ visitor_account_id, dispatch }) => {
+    console.log(visitor_account_id),
+    await axios
+      .get(process.env.REACT_APP_MYPAGE+`/community/post/bookmark/INFO?start=0&visitor_account_id=${visitor_account_id}`)
+      .then((res) => {
+        console.log(res);
+        dispatch(mymarks(res.data.data));
+      })
+      .catch((err) => console.log(err));
+  }
+);
+
+// 내 댓글
+export const myCommentList = createAsyncThunk(
+  "/myCommentList",
+  async ({ visitor_account_id, dispatch }) => {
+    console.log(visitor_account_id),
+    await axios
+      .get(process.env.REACT_APP_MYPAGE+`/community/mycomment?start=0&visitor_account_id=${visitor_account_id}`)
+      .then((res) => {
+        console.log(res);
+        dispatch(mycomments(res.data.data));
+      })
+      .catch((err) => console.log(err));
+  }
+);
+
+// 내 QNA
+export const myQNAList = createAsyncThunk(
+  "/myQNAList",
+  async ({ visitor_account_id, dispatch }) => {
+    console.log(visitor_account_id),
+    await axios
+      .get(process.env.REACT_APP_MYPAGE+`/community/myPost/QNA?start=0&visitor_account_id=${visitor_account_id}`)
+      .then((res) => {
+        console.log(res);
+        dispatch(myqnas(res.data.data));
+      })
+      .catch((err) => console.log(err));
+  }
+);
+
+// 내 답글
+export const myAnswerList = createAsyncThunk(
+  "/myAnswerList",
+  async ({ visitor_account_id, dispatch }) => {
+    console.log(visitor_account_id),
+    await axios
+      .get(process.env.REACT_APP_MYPAGE+`/community/myanswer?start=0&visitor_account_id=${visitor_account_id}`)
+      .then((res) => {
+        console.log(res);
+        dispatch(myanswers(res.data.data));
+      })
+      .catch((err) => console.log(err));
+  }
+);
+
 export const myPageSlice = createSlice({
   name: "myPage",
   initialState: {},
@@ -88,6 +163,21 @@ export const myPageSlice = createSlice({
     },
     bookmarked: (state, action) => {
       state.bookmarked = action.payload;
+    },
+    myposts: (state, action) => {
+      state.myposts = action.payload;
+    },
+    mymarks: (state, action) => {
+      state.mymarks = action.payload;
+    },
+    mycomments: (state, action) => {
+      state.mycomments = action.payload;
+    },
+    myqnas: (state, action) => {
+      state.myqnas = action.payload;
+    },
+    myanswers: (state, action) => {
+      state.myanswers = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -131,9 +221,59 @@ export const myPageSlice = createSlice({
       .addCase(bookmarkList.rejected, (state, action) => {
         console.log(action.error.message);
         console.log("create rejected");
+      })
+      .addCase(myPostList.pending, (state, action) => {
+        console.log("pending");
+      })
+      .addCase(myPostList.fulfilled, (state, action) => {
+        console.log("create fulfiled");
+      })
+      .addCase(myPostList.rejected, (state, action) => {
+        console.log(action.error.message);
+        console.log("create rejected");
+      })
+      .addCase(myBookMarkList.pending, (state, action) => {
+        console.log("pending");
+      })
+      .addCase(myBookMarkList.fulfilled, (state, action) => {
+        console.log("create fulfiled");
+      })
+      .addCase(myBookMarkList.rejected, (state, action) => {
+        console.log(action.error.message);
+        console.log("create rejected");
+      })
+      .addCase(myCommentList.pending, (state, action) => {
+        console.log("pending");
+      })
+      .addCase(myCommentList.fulfilled, (state, action) => {
+        console.log("create fulfiled");
+      })
+      .addCase(myCommentList.rejected, (state, action) => {
+        console.log(action.error.message);
+        console.log("create rejected");
+      })
+      .addCase(myQNAList.pending, (state, action) => {
+        console.log("pending");
+      })
+      .addCase(myQNAList.fulfilled, (state, action) => {
+        console.log("create fulfiled");
+      })
+      .addCase(myQNAList.rejected, (state, action) => {
+        console.log(action.error.message);
+        console.log("create rejected");
+      })
+      .addCase(myAnswerList.pending, (state, action) => {
+        console.log("pending");
+      })
+      .addCase(myAnswerList.fulfilled, (state, action) => {
+        console.log("create fulfiled");
+      })
+      .addCase(myAnswerList.rejected, (state, action) => {
+        console.log(action.error.message);
+        console.log("create rejected");
       });
   },
 });
 
-export const { myPage, history, feed, bookmarked } = myPageSlice.actions;
+export const { myPage, history, feed, bookmarked, myposts, mymarks, mycomments, myqnas } = myPageSlice.actions;
 export default myPageSlice.reducer;

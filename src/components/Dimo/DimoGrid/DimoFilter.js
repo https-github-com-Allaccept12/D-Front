@@ -59,8 +59,11 @@ const DimoFilter = (props) => {
                         <TabBtn value="edit" onClick={ClickCategory}>
                             📠 브랜딩/편집디자인
                         </TabBtn>
+                        <TabBtn value="product" onClick={ClickCategory}>
+                            🎁 제품 디자인
+                        </TabBtn>
                         <TabBtn value="package" onClick={ClickCategory}>
-                            🎁 제품/패키지 디자인
+                            🎁 패키지 디자인
                         </TabBtn>
                         <TabBtn value="typo" onClick={ClickCategory}>
                             📝 타이포그래피

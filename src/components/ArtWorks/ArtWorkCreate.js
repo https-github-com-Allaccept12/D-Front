@@ -1,6 +1,7 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { artworkFiles } from "../../redux/modules/image";
-import { useDispatch } from "react-redux";
+import { ModifyArtWork } from "../../redux/modules/artWork";
+import { useDispatch, useSelector } from "react-redux";
 import Dropzone, { useDropzone } from "react-dropzone";
 import { Button, Title, Text } from "../../elements";
 import ArtWorkCreateModal from "./ArtWorkCreateModal";
@@ -12,13 +13,36 @@ const Grid = tw.div`
  bg-white w-full xl:p-10
 `;
 
-const ArtWorkCreate = (props) => {
-    const { types } = props;
+const ArtWorkCreate = (location) => {
     const dispatch = useDispatch();
+    let artwork_id = "";
+    let isEdit = false;
+    useEffect(() => {
+        if (location.location.state){
+            const visitor_account_id = sessionStorage.getItem("account_id");
+            artwork_id = location.location.state.artwork_id;
+            isEdit = location.location.state.isedit;
+            if (isEdit){
+                dispatch(ModifyArtWork({artwork_id, visitor_account_id, dispatch}));
+            }
+        }
+        
+    }, [])
+    
+    const editImgs = useSelector((state) => state.artwork.modifyForPreview);
+    console.log(editImgs);
     const [images, setImages] = useState([]);
     const [previews, SetPreviews] = useState([]);
     const [modalOn, setModalOn] = useState(false);
 
+    useEffect(() => {
+        if(editImgs){
+            for(var item of editImgs.img){
+                SetPreviews((temp) => [...temp, item.img_url]);
+            }
+        }
+    }, [])
+    console.log(previews);
     const handleModal = () => {
         if(!modalOn & previews.length === 0){
             alert('아 이미지 추가하셈');

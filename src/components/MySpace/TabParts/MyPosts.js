@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Image, Title } from "../../../elements";
 
-import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { myPostList, myBookMarkList, myCommentList } from "../../../redux/modules/myPage";
 import { useTabs } from "../../../hooks";
 import tw from "tailwind-styled-components";
 import { MyBookmark, MyComment, MyPost } from "../../MySpace";
@@ -25,7 +26,21 @@ flex flex-row 2xl:justify-start justify-center items-center w-5/6 mx-auto
 `;
 
 const MyPosts = (props) => {
-    let history = useHistory();
+    const visitor_account_id = sessionStorage.getItem("account_id");
+    const dispatch = useDispatch();
+  
+    useEffect(() => {
+      dispatch(myPostList({visitor_account_id, dispatch}));
+      dispatch(myBookMarkList({visitor_account_id, dispatch}));
+      dispatch(myCommentList({visitor_account_id, dispatch}));
+    }, [])
+    
+    const myposts = useSelector((state) => state.myPage.myposts);
+    const mymarks = useSelector((state) => state.myPage.mymarks);
+    const mycomments = useSelector((state) => state.myPage.mycomments);
+    console.log(myposts);
+    console.log(mymarks);
+    console.log(mycomments);
 
     const array_sample = [
         {
@@ -47,7 +62,7 @@ const MyPosts = (props) => {
     return (
         <>
             <>
-                <div className="flex w-5/6 mx-auto flex-col justify-start items-start mt-3">
+                <div className="flex flex-col items-start justify-start w-5/6 mx-auto mt-3">
                     <Title size="4">게시글 관리</Title>
 
                     <Line />
