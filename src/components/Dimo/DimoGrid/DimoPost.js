@@ -55,21 +55,31 @@ const DimoPost = (props) => {
     } = props;
     const dispatch = useDispatch();
 
+    let account_id = 0;
+    // const id_cookie = getCookie("account_id");
+    const id_cookie = sessionStorage.getItem("account_id");
+    if (id_cookie) {
+        account_id = id_cookie;
+        // console.log("account_id: ", account_id);
+    }
+    const visitor_account_id = account_id;
+    // console.log(account_id, owner_account_id);
+
     const handleClickDimoQna = () => {
         // let owner_account_id = account_id;
         useEffect(() => {
-            dispatch(dimoQnaDetailLoad({ post_id, dispatch }));
-            dispatch(dimoQnaDetailSimilar({ category, post_id, dispatch }));
+            dispatch(dimoQnaDetailLoad({ post_id, dispatch, visitor_account_id }));
+            dispatch(dimoQnaDetailSimilar({ category, post_id, dispatch, visitor_account_id }));
         });
     };
 
     const handleClickDimoInfo = () => {
-        dispatch(dimoInfoDetailLoad({ post_id, dispatch }));
+        dispatch(dimoInfoDetailLoad({ post_id, dispatch, visitor_account_id }));
     };
 
     useEffect(() => {
-        dispatch(dimoQnaDetailLoad({ post_id, dispatch }));
-        dispatch(dimoInfoDetailLoad({ post_id, dispatch }));
+        dispatch(dimoQnaDetailLoad({ post_id, dispatch, visitor_account_id }));
+        dispatch(dimoInfoDetailLoad({ post_id, dispatch, visitor_account_id }));
     }, [dispatch]);
 
     // const dimos = useSelector((state) => state.dimo.detailDimoInfo.postSubDetail);

@@ -6,7 +6,7 @@ import { Comment } from "../../Comment";
 import DimoPost from "./DimoPost";
 import DimoQNAQuestion from "./DimoQNAQuestion";
 import DimoQNAAnswer from "./DimoQNAAnswer";
-import { detailDimoQna } from "../../../redux/modules/dimo";
+import { detailDimoQna, deleteDimo } from "../../../redux/modules/dimo";
 import tw from "tailwind-styled-components";
 
 const Box = tw.div`
@@ -24,10 +24,12 @@ border border-dgray-300 w-full col-span-full mt-10 mb-5
 
 const DimoQNADetail = ({ history, location, match }) => {
     const dispatch = useDispatch();
-    const id = match.params.name;
+
     const dimos = useSelector((state) => state.dimo.detaildimoQna);
     const dimoSimilars = useSelector((state) => state.dimo.dimoQnaDetailSimilars);
     const dimosPost = useSelector((state) => state.dimo.detaildimoQna?.postAnswerSubDetail);
+    const post_id = match.params.name;
+
     // let owner_account_id = account_id;
 
     return (

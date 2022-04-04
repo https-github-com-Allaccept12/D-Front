@@ -1,11 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Label, Profile, Title, Text, Answer, InputNoTitle, Icon } from "../../../elements";
 import { CommentDimo } from "../../Comment";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useToggle, useInput } from "../../../hooks";
 import { useDispatch, useSelector } from "react-redux";
-import { dimoInfoDetailLoad, CreateInfoDimo } from "../../../redux/modules/dimo";
+import {
+    dimoInfoDetailLoad,
+    CreateInfoDimo,
+    likeDimoInfo,
+    dislikeDimoInfo,
+    bookmarkAdd,
+    bookmarkRemove,
+    deleteDimo,
+} from "../../../redux/modules/dimo";
 
 const UnderLine = tw.hr`
 border border-dgray-300 w-full col-span-full mt-10 mb-5
@@ -43,16 +51,26 @@ const DimoSharedDetail = ({ history, location, match }) => {
     const post_id = match.params.name;
     const dispatch = useDispatch();
     const [loading, setLoading] = useToggle();
+    let account_id = 0;
+    // const id_cookie = getCookie("account_id");
+    const id_cookie = sessionStorage.getItem("account_id");
+    if (id_cookie) {
+        account_id = id_cookie;
+        // console.log("account_id: ", account_id);
+    }
+    const visitor_account_id = account_id;
+    // console.log(account_id, owner_account_id);
     useEffect(() => {
-        dispatch(dimoInfoDetailLoad({ post_id, dispatch }));
+        dispatch(dimoInfoDetailLoad({ post_id, dispatch, visitor_account_id }));
     }, [useSelector]);
 
     const [showAnswer, setShowAnswer] = useToggle();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
 
+    const dimo = useSelector((state) => state.dimo.detailDimoInfo);
     const dimos = useSelector((state) => state.dimo.detailDimoInfo.postSubDetail);
-    console.log(dimos);
+    console.log(dimo);
 
     const commentSubmit = () => {
         const content = name.value;
@@ -62,10 +80,46 @@ const DimoSharedDetail = ({ history, location, match }) => {
         // history.goBack();
         //여기에 뭔가 돌아가기버튼...
     };
+    const ClickDelete = () => {
+        const board = `INFO`;
+        const category = dimos.category;
+        dispatch(deleteDimo({ post_id, category, board }));
+        history.replace("/dimo/qna");
+    };
+
+    const [like_cnt, setLikeCnt] = useState(dimos.like_count);
+    const [is_like, setIsLike] = useState(dimo.is_like);
+    const cancelLike = () => {
+        setIsLike(false);
+        setLikeCnt(like_cnt - 1);
+        dispatch(dislikeDimoInfo(post_id));
+    };
+
+    const addLike = () => {
+        setIsLike(true);
+        setLikeCnt(like_cnt + 1);
+        dispatch(likeDimoInfo(post_id));
+    };
+
+    const [book_cnt, setBookCnt] = useState(dimo.bookmark_count);
+    const [is_bookmark, setIsBookmark] = useState(dimo.is_bookmark);
+    // console.log(dimos);
+    const cancelBook = () => {
+        setIsBookmark(false);
+        setBookCnt(book_cnt - 1);
+        dispatch(bookmarkRemove(post_id));
+    };
+
+    const addBook = () => {
+        setIsBookmark(true);
+        setBookCnt(book_cnt + 1);
+        dispatch(bookmarkAdd(post_id));
+    };
     return (
         <>
             <Bg>
                 <Card>
+                    <button onClick={ClickDelete}>삭제</button>
                     <Header>
                         <div className="flex flex-row gap-1 md:pt-10 pb-4">
                             <Label size="2" color="4">
@@ -93,12 +147,32 @@ const DimoSharedDetail = ({ history, location, match }) => {
                                 답변남기기
                             </Button>
                             <div className="flex flex-col md:flex-row gap-3">
-                                <Button icon name="HeartE" color="5" size="3" count={dimos.like_count}>
-                                    <span className="hidden 2xl:contents">좋아요</span>
-                                </Button>
-                                <Button icon name="BookmarkE" color="5" size="3" count={dimos.bookmark_count}>
-                                    <span className="hidden 2xl:contents">스크랩</span>
-                                </Button>
+                                {is_like ? (
+                                    <Button icon name="HeartF" color="5" size="3" count={like_cnt} onClick={cancelLike}>
+                                        <span className="hidden 2xl:contents">좋아요</span>
+                                    </Button>
+                                ) : (
+                                    <Button icon name="HeartE" color="4" size="3" count={like_cnt} onClick={addLike}>
+                                        <span className="hidden 2xl:contents">ddd좋아요</span>
+                                    </Button>
+                                )}
+
+                                {is_bookmark ? (
+                                    <Button
+                                        icon
+                                        name="BookmarkF"
+                                        color="5"
+                                        size="3"
+                                        count={book_cnt}
+                                        onClick={cancelBook}
+                                    >
+                                        <span className="hidden 2xl:contents">스크랩</span>
+                                    </Button>
+                                ) : (
+                                    <Button icon name="BookmarkE" color="5" size="3" count={book_cnt} onClick={addBook}>
+                                        <span className="hidden 2xl:contents">스크랩</span>
+                                    </Button>
+                                )}
                                 <Button icon name="Link" color="5" size="3">
                                     공유<span className="hidden xl:contents">하기</span>
                                 </Button>
@@ -109,8 +183,8 @@ const DimoSharedDetail = ({ history, location, match }) => {
                 <UnderLine />
 
                 <div className="flex flex-row font-min1">
-                    <Icon name="Talk" iconSize="32" />{" "}
-                    <span className="text-xl mb-1 pl-2">댓글 {dimos.comment_count}개</span>
+                    <Icon name="Talk" iconSize="32" />
+                    <span className="text-xl mb-1 pl-2">댓글 {dimo.comment_count}개</span>
                 </div>
 
                 <Card>
@@ -135,12 +209,31 @@ const DimoSharedDetail = ({ history, location, match }) => {
                                 cardsize="2"
                                 width="20"
                             />
-                            <Button size="3" className="xl:invisible visible mt-4">
+                            <Button size="3" className="xl:invisible visible mt-4" onClick={commentSubmit}>
                                 제출
                             </Button>
                         </div>
                     </div>
-                    <div className="p-4">{/* <CommentDimo value={dimos.comment} /> */}</div>
+                    <div className="p-4">
+                        {dimo.comment_count > 0
+                            ? dimo.comment.map((value) => {
+                                  return (
+                                      <div key={value.comment_id}>
+                                          <CommentDimo
+                                              account_id={value.account_id}
+                                              account_nickname={value.nickname}
+                                              account_profile_img={value.profile_img}
+                                              comment_id={value.comment_id}
+                                              content={value.content}
+                                              is_comment_like={value.is_comment_like}
+                                              like_count={value.like_count}
+                                              modify_time={value.modify_time}
+                                          />
+                                      </div>
+                                  );
+                              })
+                            : ""}
+                    </div>
                 </Card>
             </Bg>
         </>

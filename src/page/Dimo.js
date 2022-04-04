@@ -47,25 +47,13 @@ const Dimo = () => {
                 <div className="bg-dgray-200 min-h-screen h-[200rem]">
                     <div className="xl:grid xl:grid-cols-4 ">
                         <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
-                            {b === "qna" ? (
-                                <Title size="5" className="text-dpurple-200" onClick={setPage}>
-                                    <Link to="/dimo/qna">QNA</Link>
-                                </Title>
-                            ) : (
-                                <Title size="5" onClick={setPage}>
-                                    <Link to="/dimo/qna">QNA</Link>
-                                </Title>
-                            )}
+                            <Title size="5" className="text-dpurple-200">
+                                <Link to="/dimo/qna/uiux">QNA</Link>
+                            </Title>
 
-                            {b === "info" ? (
-                                <Title size="5" className="text-dpurple-200" onClick={setPage}>
-                                    <Link to="/dimo/info">정보공유</Link>
-                                </Title>
-                            ) : (
-                                <Title size="5" onClick={setPage}>
-                                    <Link to="/dimo/info">정보공유</Link>
-                                </Title>
-                            )}
+                            <Title size="5" className="text-dpurple-200">
+                                <Link to="/dimo/info/uiux">정보공유</Link>
+                            </Title>
                         </div>
                         <div className="hidden xl:contents">
                             <div className="col-start-4 w-36 xl:mt-10 2xl:ml-32 ">
@@ -124,25 +112,13 @@ const Dimo = () => {
                 <div className="bg-dgray-200 min-h-screen h-[200rem]">
                     <div className="xl:grid xl:grid-cols-4 ">
                         <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
-                            {b === "qna" ? (
-                                <Title size="5" className="text-dpurple-200" onClick={setPage}>
-                                    <Link to="/dimo/qna">QNA</Link>
-                                </Title>
-                            ) : (
-                                <Title size="5" onClick={setPage}>
-                                    <Link to="/dimo/qna">QNA</Link>
-                                </Title>
-                            )}
+                            <Title size="5" className="text-dpurple-200">
+                                <Link to="/dimo/qna/uiux">QNA</Link>
+                            </Title>
 
-                            {b === "info" ? (
-                                <Title size="5" className="text-dpurple-200" onClick={setPage}>
-                                    <Link to="/dimo/info">정보공유</Link>
-                                </Title>
-                            ) : (
-                                <Title size="5" onClick={setPage}>
-                                    <Link to="/dimo/info">정보공유</Link>
-                                </Title>
-                            )}
+                            <Title size="5" className="text-dpurple-200">
+                                <Link to="/dimo/info/uiux">정보공유</Link>
+                            </Title>
                         </div>
                         <div className="hidden xl:contents">
                             <div className="col-start-4 w-36 xl:mt-10 2xl:ml-32 ">
