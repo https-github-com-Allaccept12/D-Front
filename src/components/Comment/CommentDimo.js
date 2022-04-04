@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { commentDelete, commentModify } from "../../redux/modules/artWork";
+import { commentDeleteDimo, commentModifyDimo } from "../../redux/modules/dimo";
 import { useInput } from "../../hooks";
 import { Button, Profile, Text, Subtitle, InputNoTitle, HeartButton } from "../../elements";
 
 const CommentDimo = (props) => {
-    const { value } = props;
-    const [contentValue, setContentValue] = useState(value.content);
+    const {
+        account_id,
+        account_nickname,
+        account_profile_img,
+        comment_id,
+        content,
+        is_comment_like,
+        like_count,
+        modify_time,
+    } = props;
+    const [contentValue, setContentValue] = useState(content);
     const dispatch = useDispatch();
     const [commentContent, setContent] = useState("");
     const [modifyDiv, setModifyDiv] = useState(false);
@@ -22,33 +31,32 @@ const CommentDimo = (props) => {
     };
 
     const modifyComment = () => {
-        const comment_id = value.comment_id;
         const content = name.value;
         const data = { content: content };
         console.log(content);
-        dispatch(commentModify({ comment_id, data }));
+        dispatch(commentModifyDimo({ comment_id, data }));
         setContentValue(content);
         setContent(content);
         setModifyDiv(!modifyDiv);
     };
 
     const deleteComment = () => {
-        dispatch(commentDelete(value.comment_id));
+        dispatch(commentDeleteDimo(comment_id));
     };
     return (
         <>
             <div className="flex items-center justify-between gap-2">
                 <div className="flex flex-row justify-start">
-                    <Profile size="5" className="hidden sm:flex" />
+                    <Profile size="5" className="hidden sm:flex" src={account_profile_img} />
                     <div className="flex flex-col ">
                         <div className="flex flex-row items-center gap-3 mt-1">
                             <Subtitle size="1" className="">
-                                {/* {value.account_nickname} */}
+                                {account_nickname}
                             </Subtitle>
                             <Text size="4">
-                                {value.modify_time.split("T")[0] +
+                                {modify_time.split("T")[0] +
                                     " " +
-                                    value.modify_time.split("T")[1].split(".")[0].slice(undefined, 5)}
+                                    modify_time.split("T")[1].split(".")[0].slice(undefined, 5)}
                             </Text>
                         </div>
                         {modifyDiv ? (
@@ -62,7 +70,7 @@ const CommentDimo = (props) => {
                                     maxlen="30"
                                     width="2"
                                     is_submit
-                                    placeholder={value.content}
+                                    placeholder={content}
                                     onSubmit={modifyComment}
                                 />
                                 <Button size="3" className="invisible ">
@@ -71,7 +79,7 @@ const CommentDimo = (props) => {
                             </div>
                         ) : (
                             <Text size="2" className="m-1">
-                                {value.content}
+                                {content}
                             </Text>
                         )}
                     </div>

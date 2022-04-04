@@ -53,14 +53,6 @@ const DimoQNAAnswer = (props) => {
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
 
-    // const commentSubmit = () => {
-    //     const post_id = post.post_id;
-    //     const content = name.value;
-    //     const data = { post_id, content };
-    //     dispatch(CreateCommentDimo(data));
-    //     //여기에 뭔가 돌아가기버튼...
-    // };
-
     return (
         <>
             <Card selected={selected}>
@@ -100,57 +92,19 @@ const DimoQNAAnswer = (props) => {
                 </Body>
                 <Btns>
                     <div className="flex flex-row justify-between">
-                        <Button size="3" onClick={setShowAnswer}>
-                            답글 달기
+                        <Button
+                            icon
+                            name="HeartE"
+                            color="5"
+                            size="3"
+                            count="8"
+                            is_like={is_like}
+                            like_count={like_count}
+                        >
+                            <span className="hidden 2xl:contents">좋아요</span>
                         </Button>
-                        <div className="flex flex-row space-x-4">
-                            <Button
-                                icon
-                                name="HeartE"
-                                color="5"
-                                size="3"
-                                count="8"
-                                is_like={is_like}
-                                like_count={like_count}
-                            >
-                                <span className="hidden 2xl:contents">좋아요</span>
-                            </Button>
-                        </div>
                     </div>
                 </Btns>
-
-                {showAnswer && (
-                    <>
-                        <UnderLine />
-                        <div className="bg-white flex p-5 xl:px-10 2xl:px-20 gap-3">
-                            <div>
-                                {/* 여기는 내프로필인데.. */}
-                                <Profile size="6" src={account_profile_img} className="hidden lg:flex" />
-                            </div>
-                            <div className="w-full ml-auto">
-                                <InputNoTitle
-                                    value={name.value}
-                                    onChange={name.onChange}
-                                    is_error={name.errors}
-                                    is_value={name.value.length}
-                                    cardsize="1"
-                                    maxlen="30"
-                                    width="2"
-                                    is_submit
-                                    onSubmit={commentSubmit}
-                                />
-                                <Button size="3" className="lg:invisible visible">
-                                    제출
-                                </Button>
-                            </div>
-                        </div>
-                        <Comment />
-                        <Comment />
-                        <Comment />
-                        <Comment />
-                        <Comment />
-                    </>
-                )}
             </Card>
         </>
     );
