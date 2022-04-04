@@ -49,21 +49,21 @@ const Dimo = () => {
                         <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
                             {b === "qna" ? (
                                 <Title size="5" className="text-dpurple-200" onClick={setPage}>
-                                    <Link to="/dimo/qna/all">QNA</Link>
+                                    <Link to="/dimo/qna">QNA</Link>
                                 </Title>
                             ) : (
                                 <Title size="5" onClick={setPage}>
-                                    <Link to="/dimo/qna/all">QNA</Link>
+                                    <Link to="/dimo/qna">QNA</Link>
                                 </Title>
                             )}
 
                             {b === "info" ? (
                                 <Title size="5" className="text-dpurple-200" onClick={setPage}>
-                                    <Link to="/dimo/info/all">정보공유</Link>
+                                    <Link to="/dimo/info">정보공유</Link>
                                 </Title>
                             ) : (
                                 <Title size="5" onClick={setPage}>
-                                    <Link to="/dimo/info/all">정보공유</Link>
+                                    <Link to="/dimo/info">정보공유</Link>
                                 </Title>
                             )}
                         </div>
@@ -126,21 +126,21 @@ const Dimo = () => {
                         <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
                             {b === "qna" ? (
                                 <Title size="5" className="text-dpurple-200" onClick={setPage}>
-                                    <Link to="/dimo/qna/all">QNA</Link>
+                                    <Link to="/dimo/qna">QNA</Link>
                                 </Title>
                             ) : (
                                 <Title size="5" onClick={setPage}>
-                                    <Link to="/dimo/qna/all">QNA</Link>
+                                    <Link to="/dimo/qna">QNA</Link>
                                 </Title>
                             )}
 
                             {b === "info" ? (
                                 <Title size="5" className="text-dpurple-200" onClick={setPage}>
-                                    <Link to="/dimo/info/all">정보공유</Link>
+                                    <Link to="/dimo/info">정보공유</Link>
                                 </Title>
                             ) : (
                                 <Title size="5" onClick={setPage}>
-                                    <Link to="/dimo/info/all">정보공유</Link>
+                                    <Link to="/dimo/info">정보공유</Link>
                                 </Title>
                             )}
                         </div>

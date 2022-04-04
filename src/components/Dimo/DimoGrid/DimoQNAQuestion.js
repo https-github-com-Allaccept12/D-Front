@@ -48,7 +48,7 @@ const DimoQNAQuestion = (props) => {
     // console.log(post.post_id);
     const answerSubmit = () => {
         const post_id = post.post_id;
-        const content = `content: ${name.value}`;
+        const content = name.value;
         const data = { post_id, content };
 
         dispatch(CreateAnswerDimo(data));
@@ -61,7 +61,7 @@ const DimoQNAQuestion = (props) => {
             <Card>
                 <Header>
                     {/* <div className="flex flex-row gap-1 md:pt-10 pb-4">
-                        {t
+                        {post
                             ? t.map((value, idx) => {
                                   return <Label key={idx}>{value.tag}</Label>;
                               })
