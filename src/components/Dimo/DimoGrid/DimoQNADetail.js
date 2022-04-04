@@ -22,14 +22,12 @@ border border-dgray-300 w-full col-span-full mt-10 mb-5
 
 `;
 
-
 const DimoQNADetail = ({ history, location, match }) => {
+    const dispatch = useDispatch();
+    const id = match.params.name;
     const dimos = useSelector((state) => state.dimo.detaildimoQna);
     const dimoSimilars = useSelector((state) => state.dimo.dimoQnaDetailSimilars);
     const dimosPost = useSelector((state) => state.dimo.detaildimoQna?.postAnswerSubDetail);
-    const dispatch = useDispatch();
-    const id = match.params.name;
-
     // let owner_account_id = account_id;
 
     return (
