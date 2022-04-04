@@ -131,7 +131,6 @@ const ArtWorkDetail = (props) => {
             setTendency(writerInfo.tendency);
         }
     }, [artworks, writerInfo]);
-    console.log(comment);
 
     const history = useHistory();
     const validMaxLen = (value) => value.length <= 30;

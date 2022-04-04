@@ -1,4 +1,6 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { requestFollow } from "../../redux/modules/user";
 import { Label, Title, HeartButton, Text, Card, Profile, Button, Thumbnail, IconBtn } from "../../elements";
 import tw from "tailwind-styled-components";
 
@@ -14,7 +16,8 @@ absolute w-[32.5rem] h-[18.75rem]  rounded-lg bg-dpurple-200
 
 const Slides = (props) => {
     const history = useHistory();
-    const { type, list, value, id, nickname, post_id } = props;
+    const dispatch = useDispatch();
+    const { type, list, value, id, nickname, post_id, follow } = props;
     let { job } = props;
     if (job === "uiux") {
         job = "UI / UX";
@@ -38,6 +41,11 @@ const Slides = (props) => {
         job = "브랜딩 / 편집";
     } else if (job === "eco") {
         job = "건축 / 인테리어 / 환경";
+    }
+
+    const makeFollow = () => {
+        const account_id = {account_id : id};
+        dispatch(requestFollow(account_id));
     }
 
     const goToProfile = () => {
@@ -102,8 +110,8 @@ const Slides = (props) => {
                             </div>
                         </div>
                         <div className="flex justify-center mt-5">
-                            {!props.follow ? (
-                                <Button size="3" color="1">
+                            {!follow ? (
+                                <Button size="3" color="1" onClick={makeFollow}>
                                     팔로우
                                 </Button>
                             ) : (

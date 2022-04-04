@@ -6,11 +6,11 @@ import { URL, token, account_id } from "../UrlForAxios";
 
 export const mainPageLoad = createAsyncThunk(
   "/mainPageLoad",
-  async ({ account_id, dispatch }) => {
+  async ({ visitor_account_id, dispatch }) => {
     await axios
       .get(process.env.REACT_APP_URL, {
         params: {
-          account_id: account_id,
+          visitor_account_id: visitor_account_id,
         },
       })
       .then((res) => {

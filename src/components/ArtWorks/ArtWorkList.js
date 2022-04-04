@@ -50,10 +50,10 @@ const ArtWorkList = (props) => {
                         {artworks &&
                             artworks.map((value) => {
                                 return (
-                                    <div key={value.account_id}>
+                                    <div>
                                         <ArtPost
                                             account_id={value.account_id}
-                                            id={value.artwork_id}
+                                            artwork_id={value.artwork_id}
                                             profile={value.account_profile}
                                             nickname={value.account_nickname}
                                             thumbnail={value.img}

@@ -32,13 +32,13 @@ const DimoQNADetail = ({ history, location, match }) => {
 
     return (
         <>
-            <div className="xl:grid xl:grid-cols-4 bg-dgray-200 h-full">
-                <div className="col-start-4 col-span-2 xl:grid grid-rows-6 ">
-                    <div className="top-28 h-full invisible fixed 2xl:visible 2xl:absolute">
-                        <div className=" flex flex-col">
-                            <div className="flex flex-row justify-end items-end self-end">
+            <div className="h-full xl:grid xl:grid-cols-4 bg-dgray-200">
+                <div className="col-span-2 col-start-4 grid-rows-6 xl:grid ">
+                    <div className="fixed invisible h-full top-28 2xl:visible 2xl:absolute">
+                        <div className="flex flex-col ">
+                            <div className="flex flex-row items-end self-end justify-end">
                                 <div className="row-start-1 ">
-                                    <Title size="4" className="mt-10 md:mt-28 mb-3 ml-1">
+                                    <Title size="4" className="mt-10 mb-3 ml-1 md:mt-28">
                                         유사한 질문
                                     </Title>
                                     <div className="flex flex-col gap-5 h-fit">
@@ -75,7 +75,7 @@ const DimoQNADetail = ({ history, location, match }) => {
                         <Grid>
                             <DimoQNAQuestion followed="true" value={dimos} post={dimosPost} />
                             <InnerLine />
-                            <div className="flex flex-row justify-start items-center gap-3">
+                            <div className="flex flex-row items-center justify-start gap-3">
                                 <Icon name="Talk" iconSize="36" />
                                 <Title size="3">{dimos.answer_count}</Title>
                             </div>

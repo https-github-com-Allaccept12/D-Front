@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useDispatch } from "react-redux";
-import { searchArtwork } from "../../redux/modules/artWork";
+import { searchArtwork, orderByLike, orderByFollow, artworkPageLoad } from "../../redux/modules/artWork";
 
 import { Icon, Text } from "../../elements";
 import tw from "tailwind-styled-components";
@@ -35,12 +35,28 @@ hover:text-dgray-500 active:text-dpurple-300
 `;
 
 const ArtWorkInsideFilter = (props) => {
-    let dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const visitor_account_id = sessionStorage.getItem("account_id");
+
+
+    const ByLike = () => {
+        const category = sessionStorage.getItem("category");
+        dispatch(orderByLike({category, dispatch}));
+    }
+
+    const orderByTime = () => {
+        dispatch(artworkPageLoad(dispatch));
+    }
+
+    const ByFollow = () => {
+        const category = sessionStorage.getItem("category");
+        dispatch(orderByFollow({category, visitor_account_id, dispatch}));
+    }
 
     const keyPress = (e) => {
         if(e.key == 'Enter'){
             const keyword = e.target.value;
-            dispatch(searchArtwork({keyword, dispatch}));
+            dispatch(searchArtwork({keyword, visitor_account_id, dispatch}));
             // console.log('enter', e.target.value);
         }
     }
@@ -48,18 +64,18 @@ const ArtWorkInsideFilter = (props) => {
         <>
             <Grid>
                 <FilterBtn>
-                    <TextCSS>
+                    <TextCSS onClick={ByLike}>
                         <Icon name="HeartE" iconSize="14" />
                         <ColorSpan>인기순</ColorSpan>
                     </TextCSS>
                     <InnerLine />
-                    <TextCSS>
-                        <Icon name="Time" iconSize="14" />
+                    <TextCSS onClick={orderByTime} >
+                        <Icon name="Time" iconSize="14"/>
                         <ColorSpan>최신순</ColorSpan>
                     </TextCSS>
                     <InnerLine />
-                    <TextCSS>
-                        <Icon name="User" iconSize="14" />
+                    <TextCSS onClick={ByFollow}>
+                        <Icon name="User" iconSize="14"/>
                         <ColorSpan>팔로우 디자이너</ColorSpan>
                     </TextCSS>
                 </FilterBtn>
