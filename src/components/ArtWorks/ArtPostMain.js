@@ -13,9 +13,10 @@ flex justify-center items-center flex-col shrink-0
 
 const ArtPostMain = (props) => {
     const dispatch = useDispatch();
+    const visitor_account_id = sessionStorage.getItem("account_id");
     const { profile, nickname, thumbnail, is_like, like_count, id } = props;
     const handleClickArtWork = () => {
-        dispatch(artworkDetailLoad({ id, dispatch }));
+        dispatch(artworkDetailLoad({ id, visitor_account_id, dispatch }));
     };
     return (
         <>

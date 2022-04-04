@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { IconBtn, Subtitle, Icon, Thumbnail, Profile, Text } from "../../elements";
 
 import { useDispatch } from "react-redux";
-import { artworkDetailLoad, LikeArtwork } from "../../redux/modules/artWork";
+import { artworkDetailLoad, LikeArtwork, UnLikeArtwork, MarkArtwork, UnMarkArtwork } from "../../redux/modules/artWork";
 import { myPageLoad } from "../../redux/modules/myPage";
 import ArtWorkDetail from "./ArtWorkDetail";
 import tw from "tailwind-styled-components";
@@ -13,20 +13,43 @@ flex justify-center items-center flex-col shrink-0
 `;
 
 const ArtPost = (props) => {
-    const { account_id, profile, nickname, thumbnail, is_like, like_count, id, is_bookmark } = props;
-    console.log(profile);
+    const { account_id, profile, nickname, thumbnail, is_like, like_count, artwork_id, is_bookmark } = props;
+    console.log(account_id, nickname, "여기요 여기");
     const dispatch = useDispatch();
+    const [like, setLike] = useState(is_like);
+    const [bookmark, setBookmark] = useState(is_bookmark);
+
     const handleClickArtWork = () => {
         let owner_account_id = account_id;
-        dispatch(artworkDetailLoad({ id, dispatch }));
+        const visitor_account_id = account_id
+        dispatch(artworkDetailLoad({ artwork_id, visitor_account_id, dispatch }));
         dispatch(myPageLoad({ account_id, owner_account_id, dispatch }));
     };
 
     const clickLike = () => {
-        console.log('click');
-        dispatch(LikeArtwork(id));
+        setLike(!like);
+        if (like){
+            console.log('unlike');
+            dispatch(UnLikeArtwork(artwork_id));
+        } else{
+            console.log('like');
+            dispatch(LikeArtwork(artwork_id));
+
+        }
     }
 
+    const clickBookmark = () => {
+        setLike(!bookmark);
+        if (bookmark){
+            console.log('unmark');
+            dispatch(UnMarkArtwork(artwork_id));
+        } else{
+            console.log('mark');
+            dispatch(MarkArtwork(artwork_id));
+
+        }
+    }
+    
     return (
         <>
             <Art>
@@ -36,7 +59,7 @@ const ArtPost = (props) => {
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModalXl"
                     onClick={() => {
-                        handleClickArtWork({ id });
+                        handleClickArtWork({ artwork_id });
                     }}
                 >
                     <Thumbnail src={thumbnail} size="3" />
@@ -52,7 +75,7 @@ const ArtPost = (props) => {
                 </div>
             </Art>
 
-            <>
+            {/* <> */}
                 <div
                     className="fixed top-0 left-0 hidden w-full h-full overflow-x-hidden overflow-y-auto outline-none modal fade"
                     id="exampleModalXl"
@@ -64,7 +87,7 @@ const ArtPost = (props) => {
                     <div className="relative w-auto pointer-events-none modal-dialog modal-xl">
                         <div className="relative flex flex-col w-full text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto modal-content bg-clip-padding">
                             <div className="modal-body">
-                                <ArtWorkDetail id={id} />
+                                <ArtWorkDetail artwork_id={artwork_id} />
 
                                 <div className="hidden lg:contents">
                                     <div className="flex flex-row justify-start w-20 gap-3 mx-auto lg:fixed top-20 right-10 2xl:right-48 lg:flex-col">
@@ -92,7 +115,7 @@ const ArtPost = (props) => {
                                             </div>
                                             <Text size="1">좋아요</Text>
                                         </div>
-                                        <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
+                                        <div onClick={clickBookmark} className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
                                                 {!is_bookmark ? (
                                                     <Icon name="BookmarkE" iconSize="48" className="absolute" />
@@ -120,7 +143,7 @@ const ArtPost = (props) => {
                         </div>
                     </div>
                 </div>
-            </>
+            {/* </> */}
         </>
     );
 };

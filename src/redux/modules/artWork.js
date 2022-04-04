@@ -28,20 +28,31 @@ export const artworkPageLoad = createAsyncThunk("/artworkPageLoad", (dispatch) =
 });
 
 // 아트워크 상세페이지
-export const artworkDetailLoad = createAsyncThunk("/artworkDetailLoad", ({ id, dispatch }) => {
-    URL.get(`/api/artwork/detail/${id}`)
-        .then((res) => {
-            console.log(res);
-            dispatch(detailArtwork(res.data.data));
-        })
-        .catch((err) => console.log(err));
+export const artworkDetailLoad = createAsyncThunk("/artworkDetailLoad", ({ artwork_id, visitor_account_id, dispatch }) => {
+    console.log(artwork_id, visitor_account_id),
+    URL.get(`/api/artwork/detail/${artwork_id}`, {
+        params: {
+            visitor_account_id: visitor_account_id
+        },
+      })
+    // ?visitor_account_id${visitor_account_id}`)
+    .then((res) => {
+        console.log(res);
+        dispatch(detailArtwork(res.data.data));
+    })
+    .catch((err) => console.log(err));
 });
 
 // 내 작품 불러오기
-export const PortfolioLoad = createAsyncThunk("/PortfolioLoad", async ({ owner_account_id, dispatch }) => {
-    console.log("owner: ", owner_account_id);
+export const PortfolioLoad = createAsyncThunk("/PortfolioLoad", async ({ owner_account_id, visitor_account_id, dispatch }) => {
     await axios
-        .get(process.env.REACT_APP_PORTFOLIO + `/0?owner_account_id=${owner_account_id}`)
+        .get(process.env.REACT_APP_PORTFOLIO + `/0`, {
+            params: {
+                owner_account_id: owner_account_id,
+                visitor_account_id: visitor_account_id
+            },
+          })
+        //   ?owner_account_id=${owner_account_id}?visitor_account_id=${visitor_account_id}`)
         .then((res) => {
             console.log(res);
             const porfolio_data = res.data.data;
@@ -53,35 +64,44 @@ export const PortfolioLoad = createAsyncThunk("/PortfolioLoad", async ({ owner_a
 
 // 대표작품 설정
 export const getMaster = createAsyncThunk("/getMaster", (artwork_id) => {
-    URL.post(`/api/my-page/masterpiece/${artwork_id}`, {
+    URL.post(`/api/my-page/masterpiece/${artwork_id}`, artwork_id, {
         headers: {
             Authorization: "Bearer " + token,
         },
         withCredentials: true,
     })
         .then((res) => {
+            console.log('post');
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            console.log('post');
+            console.log(err);
+        });
 });
 
 // 대표작품 해제
 export const removeMaster = createAsyncThunk("/removeMaster", (artwork_id) => {
-    URL.delete(`/api/my-page/masterpiece/${artwork_id}`, {
+    URL.post(`/api/my-page/masterpiece/${artwork_id}`, artwork_id, {
         headers: {
             Authorization: "Bearer " + token,
         },
         withCredentials: true,
     })
         .then((res) => {
+            console.log('delete');
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            console.log('delete');
+            console.log(err);
+        });
+
 });
 
 // 공개 비공개 전환
 export const updateScope = createAsyncThunk("/updateScope", (artwork_id) => {
-    URL.delete(`/api/my-page/hidepiece/${artwork_id}`, {
+    URL.post(`/api/my-page/hidepiece/${artwork_id}`, artwork_id, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -94,7 +114,7 @@ export const updateScope = createAsyncThunk("/updateScope", (artwork_id) => {
 });
 
 export const postScope = createAsyncThunk("/updateScope", (artwork_id) => {
-    URL.post(`/api/my-page/hidepiece/${artwork_id}`, {
+    URL.post(`/api/my-page/hidepiece/${artwork_id}`, artwork_id, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -121,8 +141,12 @@ export const deleteArtwork = createAsyncThunk("/deleteArtwork", (artwork_id) => 
 });
 
 // 작품 검색
-export const searchArtwork = createAsyncThunk("/searchArtwork", ({ keyword, dispatch }) => {
-    URL.get(`/api/artwork/search/0/${keyword}`)
+export const searchArtwork = createAsyncThunk("/searchArtwork", ({ keyword, visitor_account_id, dispatch }) => {
+    URL.get(`/api/artwork/search/0/${keyword}`, {
+        params: {
+            visitor_account_id: visitor_account_id
+            },
+        })
         .then((res) => {
             console.log(res);
             dispatch(artworks(res.data.data));
@@ -136,6 +160,34 @@ export const categoryArtwork = createAsyncThunk("/categoryArtwork", ({ category,
         .then((res) => {
             console.log(res);
             dispatch(artworks(res.data.data));
+            sessionStorage.setItem("category", category);
+        })
+        .catch((err) => console.log(err));
+});
+
+// 좋아요순 정렬
+export const orderByLike = createAsyncThunk("/orderByLike", ({ category, dispatch }) => {
+    URL.get(`/api/artwork/sort/${category}?start=0`)
+        .then((res) => {
+            console.log(res);
+            dispatch(artworks(res.data.data));
+            sessionStorage.setItem("category", category);
+        })
+        .catch((err) => console.log(err));
+});
+
+
+// 팔로우한 작가 작품
+export const orderByFollow = createAsyncThunk("/orderByFollow", ({ category, visitor_account_id, dispatch }) => {
+    URL.get(`/api/artwork/sort-follow/${category}/0`, {
+        params: {
+            visitor_account_id: visitor_account_id
+            },
+        })
+        .then((res) => {
+            console.log(res);
+            dispatch(artworks(res.data.data));
+            sessionStorage.setItem("category", category);
         })
         .catch((err) => console.log(err));
 });
@@ -185,7 +237,49 @@ export const commentDelete = createAsyncThunk("/commentDelete", (comment_id) => 
 
 // 좋아요
 export const LikeArtwork = createAsyncThunk("/LikeArtwork", (artwork_id) => {
-    URL.post(`/api/artwork/like/${artwork_id}`, {
+    URL.post(`/api/artwork/like/${artwork_id}`, artwork_id, {
+        headers: {
+            Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+    })
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => console.log(err));
+});
+
+// 좋아요 해제
+export const UnLikeArtwork = createAsyncThunk("/UnLikeArtwork", (artwork_id) => {
+    URL.delete(`/api/artwork/like/${artwork_id}`, {
+        headers: {
+            Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+    })
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => console.log(err));
+});
+
+// 북마크
+export const MarkArtwork = createAsyncThunk("/MarkArtwork", (artwork_id) => {
+    URL.post(`/api/bookmark/artwork/${artwork_id}`, artwork_id, {
+        headers: {
+            Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+    })
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => console.log(err));
+});
+
+// 북마크 해제
+export const UnMarkArtwork = createAsyncThunk("/UnMarkArtwork", (artwork_id) => {
+    URL.post(`/api/bookmark/artwork/${artwork_id}`, artwork_id, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -310,6 +404,56 @@ export const artworkSlice = createSlice({
                 console.log("create fulfiled");
             })
             .addCase(commentModify.rejected, (state, action) => {
+                console.log(action.error.message);
+                console.log("create rejected");
+            })
+            .addCase(LikeArtwork.pending, (state, action) => {
+                console.log("pending");
+            })
+            .addCase(LikeArtwork.fulfilled, (state, action) => {
+                console.log("create fulfiled");
+            })
+            .addCase(LikeArtwork.rejected, (state, action) => {
+                console.log(action.error.message);
+                console.log("create rejected");
+            })
+            .addCase(UnLikeArtwork.pending, (state, action) => {
+                console.log("pending");
+            })
+            .addCase(UnLikeArtwork.fulfilled, (state, action) => {
+                console.log("create fulfiled");
+            })
+            .addCase(UnLikeArtwork.rejected, (state, action) => {
+                console.log(action.error.message);
+                console.log("create rejected");
+            })
+            .addCase(MarkArtwork.pending, (state, action) => {
+                console.log("pending");
+            })
+            .addCase(MarkArtwork.fulfilled, (state, action) => {
+                console.log("create fulfiled");
+            })
+            .addCase(MarkArtwork.rejected, (state, action) => {
+                console.log(action.error.message);
+                console.log("create rejected");
+            })
+            .addCase(UnMarkArtwork.pending, (state, action) => {
+                console.log("pending");
+            })
+            .addCase(UnMarkArtwork.fulfilled, (state, action) => {
+                console.log("create fulfiled");
+            })
+            .addCase(UnMarkArtwork.rejected, (state, action) => {
+                console.log(action.error.message);
+                console.log("create rejected");
+            })
+            .addCase(orderByLike.pending, (state, action) => {
+                console.log("pending");
+            })
+            .addCase(orderByLike.fulfilled, (state, action) => {
+                console.log("create fulfiled");
+            })
+            .addCase(orderByLike.rejected, (state, action) => {
                 console.log(action.error.message);
                 console.log("create rejected");
             });

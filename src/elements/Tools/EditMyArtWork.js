@@ -61,6 +61,7 @@ const EditMyArtWork = (props) => {
                     <Edit>
                         <FlexBox>
                             {/* <CircleBtn name="Edit"></CircleBtn> */}
+                            {/* <CircleBtn name="Edit" onClick={}></CircleBtn> */}
                             <CircleBtn name="Delete" onClick={ClickDelete}></CircleBtn>
                             <CircleBtn name="MyStar" onClick={ClickMaster}></CircleBtn>
                             <CircleBtn name="Private" onClick={ClickPublic}></CircleBtn>

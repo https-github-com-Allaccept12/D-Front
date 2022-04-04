@@ -1,26 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import userApi from "./userApi";
+import { URL, token } from "../UrlForAxios";
 
-const UserApi = new userApi();
 
-const userState = {
-  user: {},
-  isLogin: false,
-};
-
-export const kakaoLoginAxios = createAsyncThunk(
-  "user/kakaoLoginAxios",
-  async ({ code, history }, { dispatch }) => {
-    const user = await UserApi.kakaoLogin({ code, history });
-    // console.log(user);
-    // console.log(sessionStorage.getItem("access_token"))
-
-    if (user) {
-      dispatch(user.data);
-      return user;
-    }
-  }
-);
+// 팔로우
+export const requestFollow = createAsyncThunk("/requestFollow", (account_id) => {
+  URL.post(`/api/follow`, account_id, {
+      headers: {
+          Authorization: "Bearer " + token,
+      },
+      withCredentials: true,
+  })
+      .then((res) => {
+          console.log(res);
+      })
+      .catch((err) => console.log(err));
+});
 
 // export const kakaoLogin = createAsyncThunk(
 //     'user/kakaoLogin',
@@ -41,13 +35,21 @@ export const kakaoLoginAxios = createAsyncThunk(
 
 export const userSlice = createSlice({
   name: "user",
-  initialState: userState,
+  initialState: {},
   reducer: {},
   extraReducers: (builder) => {
-    builder.addCase(kakaoLoginAxios.fulfilled, (state, action) => {
-      state.isLogin = true;
-    });
-  },
+    builder
+        .addCase(requestFollow.pending, (state, action) => {
+            console.log("pending");
+        })
+        .addCase(requestFollow.fulfilled, (state, action) => {
+            console.log("create fulfiled");
+        })
+        .addCase(requestFollow.rejected, (state, action) => {
+            console.log(action.error.message);
+            console.log("create rejected");
+        })
+      }
 });
 
 export default userSlice.reducer;

@@ -13,9 +13,10 @@ const MyArtWork = (props) => {
   const dispatch = useDispatch();
   const { info } = props
   const owner_account_id = info;
-  
+  const visitor_account_id = sessionStorage.getItem("account_id");
+
   useEffect(() => {
-    dispatch(PortfolioLoad({owner_account_id, dispatch}))
+    dispatch(PortfolioLoad({owner_account_id, visitor_account_id, dispatch}))
   }, [info])
   const portfolios = useSelector((state) => state.post.portfolios);
   // console.log(portfolios);

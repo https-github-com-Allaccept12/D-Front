@@ -10,8 +10,7 @@ border border-gray-600 my-6 w-5/6 mx-auto
 `;
 
 const MyPortfolio = (props) => {
-    const feed = useSelector((state) => state.myPage.feed);
-    
+    const feed = useSelector((state) => state.myPage.careerFeed);
     return (
         <>
             <div className="flex flex-row flex-wrap items-center justify-start w-5/6 mx-auto">

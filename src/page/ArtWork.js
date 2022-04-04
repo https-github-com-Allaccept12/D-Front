@@ -20,7 +20,7 @@ const ArtWork = (props) => {
     const dispatch = useDispatch();
     useEffect(() => {
     dispatch(artworkPageLoad(dispatch));
-    }, [])
+    })
 
     return (
         <>
