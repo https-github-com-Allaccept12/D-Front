@@ -1,8 +1,10 @@
 import React from "react";
 
-import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Icon, Text } from "../../../elements";
 import tw from "tailwind-styled-components";
+import { useDispatch } from "react-redux";
+import { searchDimo, orderByLikeDimo, orderByNewDimo } from "../../../redux/modules/dimo";
 
 const Grid = tw.div` 
 flex flex-col md:flex-row justify-between md:px-4 xl:px-8
@@ -33,23 +35,60 @@ hover:text-dgray-500 active:text-dpurple-300
 `;
 
 const DimoInsideFilter = (props) => {
-    let history = useHistory();
+    const visitor_account_id = sessionStorage.getItem("account_id");
+    const dispatch = useDispatch();
+    const location = useLocation();
+    const a = location.pathname;
+    const b = a.split("/")[2];
+    const board = b.toUpperCase();
+
+    const JobOptions = [
+        { value: "uiux", label: "UI & UX" },
+        { value: "fashion", label: "패션" },
+        { value: "typo", label: "타이포그래피" },
+        { value: "craft", label: "공예" },
+        { value: "package", label: "패키지" },
+        { value: "graphic", label: "그래픽" },
+        { value: "video", label: "영상/모션" },
+        { value: "product", label: "제품" },
+        { value: "game", label: "게임/캐릭터" },
+        { value: "edit", label: "브랜딩/편집" },
+        { value: "eco", label: "건축/인테리어/환경" },
+    ];
+
+    const ByLike = () => {
+        const category = "uiux";
+        dispatch(orderByLikeDimo({ category, board, dispatch }));
+    };
+
+    const orderByNew = () => {
+        const category = "uiux";
+        dispatch(orderByNewDimo({ category, board, dispatch }));
+    };
+
+    const keyPress = (e) => {
+        if (e.key == "Enter") {
+            const keyword = e.target.value;
+            dispatch(searchDimo({ keyword, visitor_account_id, board, dispatch }));
+            // console.log('enter', e.target.value);
+        }
+    };
     return (
         <>
             <Grid>
                 <FilterBtn>
                     <TextCSS>
-                        <Icon name="HeartE" iconSize="14" />
+                        <Icon name="HeartE" iconSize="14" onClick={ByLike} />
                         <ColorSpan>인기순</ColorSpan>
                     </TextCSS>
                     <InnerLine />
                     <TextCSS>
-                        <Icon name="Time" iconSize="14" />
+                        <Icon name="Time" iconSize="14" onClick={orderByNew} />
                         <ColorSpan>최신순</ColorSpan>
                     </TextCSS>
                 </FilterBtn>
                 <div className="relative">
-                    <SInput placeholder="Search" type="text" />
+                    <SInput placeholder="Search" type="text" onKeyPress={keyPress} />
                     <Icon name="Search" className="absolute inset-3 Text-dgray-500" />
                 </div>
             </Grid>

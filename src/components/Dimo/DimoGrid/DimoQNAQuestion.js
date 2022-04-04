@@ -54,7 +54,7 @@ const DimoQNAQuestion = (props) => {
     // const t = value.hash_tag;
     // console.log(post.post_id);
     const answerSubmit = () => {
-        // const content = name.value;
+        const content = name.value;
 
         const data = { post_id, content };
 
@@ -127,7 +127,7 @@ const DimoQNAQuestion = (props) => {
                             <span className="">답변남기기</span>
                         </Button>
                         <div className="flex flex-col xl:flex-row gap-3">
-                            {is_like ? (
+                            {is_like == "true" ? (
                                 <Button icon name="HeartF" color="5" size="3" count={like_cnt} onClick={cancelLike}>
                                     <span className="hidden 2xl:contents">좋아요</span>
                                 </Button>
@@ -200,35 +200,6 @@ const DimoQNAQuestion = (props) => {
                             </Button>
                         </div>
                     </div>
-
-                    {!modifyDiv && (
-                        <>
-                            <button onClick={openModify}>수정</button>
-                            <button onClick={deleteComment}>삭제</button>
-                        </>
-                    )}
-
-                    {/* {modifyDiv ? (
-                        <div className="w-full ml-auto">
-                            <InputNoTitle
-                                value={modify.value}
-                                onChange={modify.onChange}
-                                cardsize="1"
-                                maxlen="30"
-                                width="2"
-                                is_submit
-                                placeholder={content}
-                                onSubmit={modifyQuestion}
-                            />
-                            <Button size="3" className="invisible ">
-                                제출
-                            </Button>
-                        </div>
-                    ) : (
-                        <Text size="2" className="m-1">
-                            {content}
-                        </Text>
-                    )} */}
                 </>
             )}
         </>

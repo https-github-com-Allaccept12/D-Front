@@ -159,18 +159,23 @@ export const dimoInfoDetailLoad = createAsyncThunk("/dimoInfoDetailLoad", ({ pos
         .catch((err) => console.log(err)),
 );
 
-export const searchDimo = createAsyncThunk("/searchDimo", ({ keyword, dispatch }) => {
-    URL.get(`/api/post/search/0/${keyword}`)
+//  삭제 /api/post/{post_id}?category=’category’&board=’board’
+export const deleteDimo = createAsyncThunk("/deleteDimo", ({ post_id, category, board }) => {
+    URL.delete(`/api/post/${post_id}?board=${board}`, {
+        headers: {
+            // "content-type": "application/json",
+            Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+    })
         .then((res) => {
             console.log(res);
-            dispatch(dimos(res.data.data));
         })
         .catch((err) => console.log(err));
 });
 
-//  삭제 /api/post/{post_id}?category=’category’&board=’board’
-export const deleteDimo = createAsyncThunk("/deleteDimo", ({ post_id, category, board }) => {
-    URL.delete(`/api/post/${post_id}?board=${board}`, {
+export const deleteAnswerDimo = createAsyncThunk("/deleteAnswerDimo", (answer_id) => {
+    URL.delete(`/api/post/answer/${answer_id}`, {
         headers: {
             // "content-type": "application/json",
             Authorization: "Bearer " + token,
@@ -245,6 +250,57 @@ export const commentDeleteDimo = createAsyncThunk("/commentDeleteDimo", (comment
         .catch((err) => console.log(err));
 });
 
+///api/post/search/{last_post_id}/{keyword}
+export const searchDimo = createAsyncThunk("/searchDimo", ({ keyword, dispatch, board, visitor_account_id }) => {
+    URL.get(`/api/post/search/0/${board}/${keyword}`, {
+        params: {
+            visitor_account_id: visitor_account_id,
+        },
+    })
+        .then((res) => {
+            console.log(res);
+            dispatch(dimos(res.data.data));
+        })
+        .catch((err) => console.log(err));
+});
+
+///api/post/category/{category}/{last_post_id}/{board}
+export const orderByNewDimo = createAsyncThunk(
+    "/orderByNewDimo",
+    ({ category, dispatch, board, visitor_account_id }) => {
+        URL.get(`/api/post/category/${category}/0/${board}`, {
+            params: {
+                visitor_account_id: visitor_account_id,
+            },
+        })
+            .then((res) => {
+                console.log(res);
+                dispatch(dimos(res.data.data));
+                sessionStorage.setItem("category", category);
+            })
+            .catch((err) => console.log(err));
+    },
+);
+
+// /api/post/category/like/{category}/{board}?start=0
+export const orderByLikeDimo = createAsyncThunk(
+    "/orderByNewDimo",
+    ({ category, dispatch, board, visitor_account_id }) => {
+        URL.get(`/api/post/category/like/${category}/${board}?start=0`, {
+            params: {
+                start: 0,
+                visitor_account_id: visitor_account_id,
+            },
+        })
+            .then((res) => {
+                console.log(res);
+                dispatch(dimos(res.data.data));
+                sessionStorage.setItem("category", category);
+            })
+            .catch((err) => console.log(err));
+    },
+);
+
 export const dimoSlice = createSlice({
     name: "dimo",
     initialState: {},
@@ -303,6 +359,17 @@ export const dimoSlice = createSlice({
                 console.log("create fulfiled");
             })
             .addCase(CreateInfoDimo.rejected, (state, action) => {
+                console.log(action.error.message);
+                console.log("create rejected");
+            })
+
+            .addCase(orderByLikeDimo.pending, (state, action) => {
+                console.log("pending");
+            })
+            .addCase(orderByLikeDimo.fulfilled, (state, action) => {
+                console.log("create fulfiled");
+            })
+            .addCase(orderByLikeDimo.rejected, (state, action) => {
                 console.log(action.error.message);
                 console.log("create rejected");
             });

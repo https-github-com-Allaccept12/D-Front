@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Label, Title, Text, Input, Profile, Icon } from "../../../elements";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -6,7 +6,7 @@ import { Comment } from "../../Comment";
 import DimoPost from "./DimoPost";
 import DimoQNAQuestion from "./DimoQNAQuestion";
 import DimoQNAAnswer from "./DimoQNAAnswer";
-import { detailDimoQna, deleteDimo } from "../../../redux/modules/dimo";
+import { detailDimoQna, deleteDimo, dimoQnaDetailLoad } from "../../../redux/modules/dimo";
 import tw from "tailwind-styled-components";
 
 const Box = tw.div`
@@ -24,11 +24,25 @@ border border-dgray-300 w-full col-span-full mt-10 mb-5
 
 const DimoQNADetail = ({ history, location, match }) => {
     const dispatch = useDispatch();
-
+    let account_id = 0;
+    // const id_cookie = getCookie("account_id");
+    const id_cookie = sessionStorage.getItem("account_id");
+    if (id_cookie) {
+        account_id = id_cookie;
+        // console.log("account_id: ", account_id);
+    }
+    const visitor_account_id = account_id;
+    // console.log(account_id, owner_account_id);
     const dimos = useSelector((state) => state.dimo.detaildimoQna);
     const dimoSimilars = useSelector((state) => state.dimo.dimoQnaDetailSimilars);
+
+    useEffect(() => {
+        dispatch(dimoQnaDetailLoad({ post_id, dispatch, visitor_account_id }));
+    }, []);
+
     const dimosPost = useSelector((state) => state.dimo.detaildimoQna?.postAnswerSubDetail);
     const post_id = match.params.name;
+    console.log(dimos);
 
     // let owner_account_id = account_id;
 
@@ -75,7 +89,7 @@ const DimoQNADetail = ({ history, location, match }) => {
                 <div className="col-start-1 col-end-4 row-start-1 col-span-full">
                     <Box>
                         <Grid>
-                            <DimoQNAQuestion followed="true" value={dimos} post={dimosPost} />
+                            <DimoQNAQuestion followed="true" value={dimos} post={dimos} />
                             <InnerLine />
                             <div className="flex flex-row items-center justify-start gap-3">
                                 <Icon name="Talk" iconSize="36" />

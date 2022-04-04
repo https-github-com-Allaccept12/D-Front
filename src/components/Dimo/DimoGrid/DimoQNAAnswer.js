@@ -3,7 +3,9 @@ import { Button, Subtitle, Profile, Title, Text, FollowBtn, InputNoTitle } from 
 import { Comment } from "../../Comment";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
+import { useDispatch, useSelector } from "react-redux";
 import { useToggle, useInput } from "../../../hooks";
+import { deleteAnswerDimo } from "../../../redux/modules/dimo";
 
 const UnderLine = tw.hr`
 border border-dgray-300 w-full col-span-full mt-10 mb-5
@@ -49,14 +51,21 @@ const DimoQNAAnswer = (props) => {
         modify_time,
     } = props;
     const history = useHistory();
+    const dispatch = useDispatch();
     const [showAnswer, setShowAnswer] = useToggle();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
+
+    const ClickDelete = () => {
+        dispatch(deleteAnswerDimo(answer_id));
+        history.replace("/dimo/qna");
+    };
 
     return (
         <>
             <Card selected={selected}>
                 <Footer>
+                    <button onClick={ClickDelete}>삭제</button>
                     <div className="justify-start flex flex-row">
                         <Profile size="5" src={account_profile_img} className="hidden md:flex" />
                         <div className="-mt-2 ml-3">
