@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { myPageLoad } from "../../../redux/modules/myPage";
+import { requestFollowing, requestFollower } from "../../../redux/modules/user";
 
 import { MySpaceTab } from "../../../components/MySpace";
 import { Profile, Button, Icon, Title, Subtitle } from "../../../elements";
@@ -24,9 +25,10 @@ import back_harmonious from "../../../static/images/MyPageImages/back_harmonious
 import back_innovator from "../../../static/images/MyPageImages/back_innovator.svg";
 
 const TopOfProfile = (props) => {
-
+    const dispatch = useDispatch();
     const { info, exp, feed } = props;
     console.log(info);
+    let account_id = "";
     let nickname = "";
     let following = "";
     let follower = "";
@@ -38,6 +40,7 @@ const TopOfProfile = (props) => {
     let linkedin = "";
     let brunch = "";
     if (info) {
+        account_id = info.account_id;
         nickname = info.nickname;
         following = info.following_count;
         follower = info.follower_count;
@@ -72,9 +75,12 @@ const TopOfProfile = (props) => {
             job = "건축/인테리어/환경"
         }
     }
-    // const toSNS = (params, e) => {
-    //     window.open(params, '_blank');
-    // }
+    const followingList = () => {
+        dispatch(requestFollowing({account_id, dispatch}));
+    }
+    const followerList = () => {
+        dispatch(requestFollower({account_id, dispatch}));
+    }
 
     return (
         <>
@@ -137,7 +143,7 @@ const TopOfProfile = (props) => {
                                 </Link>
                                 <Subtitle size="1">{job} Designer</Subtitle>
                                 <div className="my-4">
-                                    팔로잉 {following} ㅣ 팔로워 {follower}
+                                    <span onClick={followingList}>팔로잉 {following}</span> ㅣ <span onClick={followerList}>팔로워 {follower}</span>
                                 </div>
 
                                 <div className="flex flex-row p-1 text-2xl">

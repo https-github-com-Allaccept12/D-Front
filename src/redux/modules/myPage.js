@@ -58,6 +58,21 @@ export const careerFeed = createAsyncThunk(
   }
 );
 
+// 북마크한 작업물
+export const bookmarkList = createAsyncThunk(
+  "/bookmarkList",
+  async ({ visitor_account_id, dispatch }) => {
+    console.log(visitor_account_id),
+    await axios
+      .get(process.env.REACT_APP_MYPAGE+`/bookmark/0?visitor_account_id=${visitor_account_id}`)
+      .then((res) => {
+        console.log(res);
+        dispatch(bookmarked(res.data.data));
+      })
+      .catch((err) => console.log(err));
+  }
+);
+
 export const myPageSlice = createSlice({
   name: "myPage",
   initialState: {},
@@ -70,6 +85,9 @@ export const myPageSlice = createSlice({
     },
     feed: (state, action) => {
       state.careerFeed = action.payload;
+    },
+    bookmarked: (state, action) => {
+      state.bookmarked = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -103,9 +121,19 @@ export const myPageSlice = createSlice({
       .addCase(careerFeed.rejected, (state, action) => {
         console.log(action.error.message);
         console.log("create rejected");
+      })
+      .addCase(bookmarkList.pending, (state, action) => {
+        console.log("pending");
+      })
+      .addCase(bookmarkList.fulfilled, (state, action) => {
+        console.log("create fulfiled");
+      })
+      .addCase(bookmarkList.rejected, (state, action) => {
+        console.log(action.error.message);
+        console.log("create rejected");
       });
   },
 });
 
-export const { myPage, history, feed } = myPageSlice.actions;
+export const { myPage, history, feed, bookmarked } = myPageSlice.actions;
 export default myPageSlice.reducer;

@@ -36,22 +36,54 @@ export const kakaoSlice = createAsyncThunk(
   }
 );
 
+
+
 export const refreshSlice = createAsyncThunk(
   "post/refresh",
   async ({ access_token, refresh_token }) => {
-    await URL.post(`/user/refresh`, {
+    console.log('access:', access_token);
+    console.log('refresh:', refresh_token);
+
+    URL.get(`/user/refresh?accessToken`,{
       headers: {
-        AccessAuthorization: "Bearer " + access_token,
-        RefreshAuthorization: "Bearer " + refresh_token,
-      },
+        AccessAuthorization: access_token,
+        RefreshAuthorization: refresh_token
+        },
       withCredentials: true,
-    })
+      })
       .then((res) => {
-        console.log(res);
+        sessionStorage.setItem("access_token",res.data.data.accessToken);
+        sessionStorage.setItem("refresh_token",res.data.data.refreshToken);
+        alert('다시 로그인 해주세요.');
+        window.location.href = "/logout";
       })
       .catch((err) => console.log(err));
   }
 );
+
+
+export const tempSlice = createSlice({
+  name: "refreshSlice",
+  initialState,
+  reducer: {
+    // setThumbnail: (state, action) => {
+    // state.project.thumbNailNum = action.payload;
+    // },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(refreshSlice.pending, (state, action) => {
+        console.log("pending");
+      })
+      .addCase(refreshSlice.fulfilled, (state, action) => {
+        console.log("create fulfiled");
+      })
+      .addCase(refreshSlice.rejected, (state, action) => {
+        console.log(action.error.message);
+        console.log("create rejected");
+      });
+  },
+});
 
 // export const userSlice = createSlice({
 //   name: "user",
