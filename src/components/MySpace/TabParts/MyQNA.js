@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Title } from "../../../elements";
 
-import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { myQNAList, myAnswerList } from "../../../redux/modules/myPage";
 import { useTabs } from "../../../hooks";
 
 import { MyAnswer, MyQuestion } from "../../MySpace";
@@ -26,7 +27,6 @@ flex flex-row 2xl:justify-start justify-center items-center w-5/6 mx-auto
 `;
 
 const MyQNA = (props) => {
-    let history = useHistory();
 
     const array_sample = [
         {
@@ -41,10 +41,27 @@ const MyQNA = (props) => {
     const { currentItem, changeItem } = useTabs(0, array_sample);
     const [active, setActive] = useState("0");
 
+
+    
+    const visitor_account_id = sessionStorage.getItem("account_id");
+    const dispatch = useDispatch();
+  
+    useEffect(() => {
+        dispatch(myQNAList({visitor_account_id, dispatch}));
+        dispatch(myAnswerList({visitor_account_id, dispatch}));
+    }, [])
+    
+    const myqnas = useSelector((state) => state.myPage.myqnas);
+    const myanswers = useSelector((state) => state.myPage.myanswers);
+    console.log(myqnas);
+    console.log(myanswers);
+
+
+
     return (
         <>
             <>
-                <div className="flex w-5/6 mx-auto flex-col justify-start items-start mt-3">
+                <div className="flex flex-col items-start justify-start w-5/6 mx-auto mt-3">
                     <Title size="4">QNA 관리</Title>
 
                     <Line />

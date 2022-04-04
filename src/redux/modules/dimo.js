@@ -286,12 +286,7 @@ export const orderByNewDimo = createAsyncThunk(
 export const orderByLikeDimo = createAsyncThunk(
     "/orderByNewDimo",
     ({ category, dispatch, board, visitor_account_id }) => {
-        URL.get(`/api/post/category/like/${category}/${board}?start=0`, {
-            params: {
-                start: 0,
-                visitor_account_id: visitor_account_id,
-            },
-        })
+        URL.get(`/api/post/category/like/${category}/${board}?start=0`)
             .then((res) => {
                 console.log(res);
                 dispatch(dimos(res.data.data));

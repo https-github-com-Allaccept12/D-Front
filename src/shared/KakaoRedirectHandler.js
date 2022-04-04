@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { kakaoLoginAxios } from "../redux/modules/user";
 import { kakaoSlice } from "../redux/modules/temp";
-import Spinner from "../components/Tendency/Spinner";
+import PageLoadSpinner from "../elements/Common/PageLoadSpinner";
 
 const KakaoRedirectHandler = (props) => {
     const dispatch = useDispatch();
@@ -24,7 +24,7 @@ const KakaoRedirectHandler = (props) => {
 
     return (
         <>
-            <Spinner />
+            <PageLoadSpinner />
         </>
     );
 };

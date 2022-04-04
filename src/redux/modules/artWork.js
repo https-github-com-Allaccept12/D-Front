@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { refreshSlice } from "./temp";
 import axios from "axios";
 import { URL, token } from "../UrlForAxios";
 
@@ -13,8 +14,29 @@ export const CreateNewArtWork = createAsyncThunk("post/CreateNewArtWork", async 
     })
         .then((res) => {
             console.log(res);
+            
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            console.log(err);
+            if (err.response.data.status == 444){
+                console.log('here');
+                dispatch(refreshSlice({access_token, refresh_token}));
+            }
+        });
+});
+
+// 작품 수정을 위한 preview
+export const ModifyArtWork = createAsyncThunk("post/ModifyArtWork", ({artwork_id, visitor_account_id, dispatch}) => {
+    URL.get(`/api/artwork/detail/${artwork_id}`, {
+        params: {
+            visitor_account_id: visitor_account_id
+        },
+    })
+    .then((res) => {
+        console.log(res);
+        dispatch(modifyForPreview(res.data.data));
+    })
+    .catch((err) => console.log(err));
 });
 
 // 모아보기 페이지 로드
@@ -304,6 +326,9 @@ export const artworkSlice = createSlice({
         detailArtwork: (state, action) => {
             state.detailArtwork = action.payload;
         },
+        modifyForPreview: (state, action) => {
+            state.modifyForPreview = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -456,9 +481,19 @@ export const artworkSlice = createSlice({
             .addCase(orderByLike.rejected, (state, action) => {
                 console.log(action.error.message);
                 console.log("create rejected");
+            })
+            .addCase(ModifyArtWork.pending, (state, action) => {
+                console.log("pending");
+            })
+            .addCase(ModifyArtWork.fulfilled, (state, action) => {
+                console.log("create fulfiled");
+            })
+            .addCase(ModifyArtWork.rejected, (state, action) => {
+                console.log(action.error.message);
+                console.log("create rejected");
             });
     },
 });
 
-export const { artworks, portfolios, detailArtwork } = artworkSlice.actions;
+export const { artworks, portfolios, detailArtwork, modifyForPreview } = artworkSlice.actions;
 export default artworkSlice.reducer;

@@ -18,15 +18,24 @@ export const requestFollow = createAsyncThunk("/requestFollow", (account_id) => 
 
 // 팔로잉리스트
 export const requestFollowing = createAsyncThunk("/requestFollowing", ({ account_id, dispatch }) => {
-  URL.get(`/api/follow/following?account_id=${account_id}`)
+  URL.get(`/api/follow/following`,{
+        params: {
+            account_id: account_id
+        },
+        })
       .then((res) => {
           console.log(res);
       })
       .catch((err) => console.log(err));
 });
+
 // 팔로워리스트
 export const requestFollower = createAsyncThunk("/requestFollower", ({ account_id, dispatch }) => {
-  URL.get(`/api/follow/following?account_id=${account_id}`)
+  URL.get(`/api/follow/follower`,{
+        params: {
+            account_id: account_id
+        },
+      })
       .then((res) => {
           console.log(res);
       })
