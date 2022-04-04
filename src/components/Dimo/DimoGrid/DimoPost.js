@@ -53,6 +53,7 @@ const DimoPost = (props) => {
         title,
         list,
     } = props;
+    console.log(post_id);
     const dispatch = useDispatch();
 
     let account_id = 0;

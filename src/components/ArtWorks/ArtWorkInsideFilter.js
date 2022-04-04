@@ -38,28 +38,27 @@ const ArtWorkInsideFilter = (props) => {
     const dispatch = useDispatch();
     const visitor_account_id = sessionStorage.getItem("account_id");
 
-
     const ByLike = () => {
         const category = sessionStorage.getItem("category");
-        dispatch(orderByLike({category, dispatch}));
-    }
+        dispatch(orderByLike({ category, dispatch }));
+    };
 
     const orderByTime = () => {
         dispatch(artworkPageLoad(dispatch));
-    }
+    };
 
     const ByFollow = () => {
         const category = sessionStorage.getItem("category");
-        dispatch(orderByFollow({category, visitor_account_id, dispatch}));
-    }
+        dispatch(orderByFollow({ category, visitor_account_id, dispatch }));
+    };
 
     const keyPress = (e) => {
-        if(e.key == 'Enter'){
+        if (e.key == "Enter") {
             const keyword = e.target.value;
-            dispatch(searchArtwork({keyword, visitor_account_id, dispatch}));
+            dispatch(searchArtwork({ keyword, visitor_account_id, dispatch }));
             // console.log('enter', e.target.value);
         }
-    }
+    };
     return (
         <>
             <Grid>
@@ -69,13 +68,13 @@ const ArtWorkInsideFilter = (props) => {
                         <ColorSpan>인기순</ColorSpan>
                     </TextCSS>
                     <InnerLine />
-                    <TextCSS onClick={orderByTime} >
-                        <Icon name="Time" iconSize="14"/>
+                    <TextCSS onClick={orderByTime}>
+                        <Icon name="Time" iconSize="14" />
                         <ColorSpan>최신순</ColorSpan>
                     </TextCSS>
                     <InnerLine />
                     <TextCSS onClick={ByFollow}>
-                        <Icon name="User" iconSize="14"/>
+                        <Icon name="User" iconSize="14" />
                         <ColorSpan>팔로우 디자이너</ColorSpan>
                     </TextCSS>
                 </FilterBtn>
