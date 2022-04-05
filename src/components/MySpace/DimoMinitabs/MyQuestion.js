@@ -8,12 +8,16 @@ min-h-screen flex flex-col gap-3 w-full
 `;
 
 const MyQuestion = (props) => {
+    const { data, profile } = props;
     return (
         <>
             <Box>
-                <DimoQNACard />
-                <DimoQNACard />
-                <DimoQNACard />
+                {data && data.map((value) => {
+                    return (
+                        <DimoQNACard data={value} profile={profile}/>
+                        )
+                    }
+                )}
             </Box>
         </>
     );

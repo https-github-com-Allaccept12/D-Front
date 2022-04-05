@@ -8,12 +8,19 @@ min-h-screen flex flex-col gap-3 w-full
 `;
 
 const MyAnswer = (props) => {
+    const { data } = props;
     return (
         <>
             <Box>
-                <DimoQNAComment states="true" />
+                {data && data.map((value) => {
+                    return (
+                        <DimoQNAComment data={value}/>
+                        )
+                    }
+                )}
+                {/* <DimoQNAComment states="true" />
                 <DimoQNAComment states="false" />
-                <DimoQNAComment states="true" />
+                <DimoQNAComment states="true" /> */}
             </Box>
         </>
     );

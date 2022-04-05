@@ -12,7 +12,7 @@ w-full
 `;
 
 const DimoQNAComment = (props) => {
-    const { states } = props;
+    const { states, data } = props;
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[1];
@@ -22,10 +22,10 @@ const DimoQNAComment = (props) => {
         <>
             <Box>
                 {states == "true" ? <Text className="text-dpurple-300">채택된 댓글</Text> : ""}
-                <Subtitle size="1">댓글 댓글댓글</Subtitle>
-                <Text className="text-dgray-400">몇분 전</Text>
-                <Title size="6" className="text-dgray-400 mt-10 cursor-pointer">
-                    피그마 장단점 설명해드립니다
+                <Subtitle size="1">{data && data.content}</Subtitle>
+                {/* <Text className="text-dgray-400">몇분 전</Text> */}
+                <Title size="6" className="mt-10 cursor-pointer text-dgray-400">
+                    {data && data.title}
                 </Title>
             </Box>
             <InnerLine />

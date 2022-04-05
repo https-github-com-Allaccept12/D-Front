@@ -172,7 +172,7 @@ const TopOfProfile = (props) => {
                         </div>
                     </div>
 
-                    <MySpaceTab info={info} exp={exp} feed={feed} />
+                    <MySpaceTab profile={info && info?.profile_img} exp={exp} feed={feed} />
                 </div>
             </div>
         </div>

@@ -275,5 +275,5 @@ export const myPageSlice = createSlice({
   },
 });
 
-export const { myPage, history, feed, bookmarked, myposts, mymarks, mycomments, myqnas } = myPageSlice.actions;
+export const { myPage, history, feed, bookmarked, myposts, mymarks, mycomments, myqnas, myanswers } = myPageSlice.actions;
 export default myPageSlice.reducer;

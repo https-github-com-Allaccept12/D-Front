@@ -7,12 +7,17 @@ min-h-screen flex flex-col gap-3 w-full
 `;
 
 const MyComment = (props) => {
+    const { data } = props;
     return (
         <>
             <Box>
-                <DimoComment />
-                <DimoComment />
-                <DimoComment />
+                {data.map((value) => {
+                    return (
+                        <DimoComment data={value}/>
+                        )
+                    }
+                )}
+                
             </Box>
         </>
     );
