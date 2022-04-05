@@ -17,7 +17,27 @@ absolute w-[32.5rem] h-[18.75rem]  rounded-lg bg-dpurple-200
 const Slides = (props) => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const { type, list, value, id, nickname, post_id, follow } = props;
+    const {
+        type,
+        list,
+        value,
+        id,
+        nickname,
+        post_id,
+        follow,
+        account_id,
+        account_nickname,
+        account_profile_img,
+        category,
+        comment_count,
+        content,
+        create_time,
+        hash_tag1,
+        hash_tag2,
+        is_selected,
+        like_count,
+        title,
+    } = props;
     let { job } = props;
     if (job === "uiux") {
         job = "UI / UX";
@@ -44,9 +64,9 @@ const Slides = (props) => {
     }
 
     const makeFollow = () => {
-        const account_id = {account_id : id};
+        const account_id = { account_id: id };
         dispatch(requestFollow(account_id));
-    }
+    };
 
     const goToProfile = () => {
         history.push(`/myspace/myprofile/${nickname}/${id}`);
@@ -155,23 +175,19 @@ const Slides = (props) => {
                             <ColorSlide>
                                 <div>
                                     <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
-                                        <Profile size="6" src={value.account_profile_img} />
+                                        <Profile size="6" src={account_profile_img} />
                                     </div>
                                     <div className="absolute top-7 left-28">
                                         <div className="flex flex-row gap-1">
-                                            <Label className="">{value.hash_tag[0].tag}</Label>
-                                            {value.hash_tag[1] ? (
-                                                <Label className="">{value.hash_tag[1].tag}</Label>
-                                            ) : (
-                                                ""
-                                            )}
+                                            <Label className="">{hash_tag1}</Label>
+                                            {hash_tag1 ? <Label className="">{hash_tag2}</Label> : ""}
                                         </div>
-                                        <Title size="6">{value.title}</Title>
+                                        <Title size="6">{title}</Title>
                                     </div>
                                 </div>
                                 <div className="absolute px-10 top-28">
                                     <Text size="2" className="flex flex-wrap h-24 overflow-hidden w-80 text-ellipsis">
-                                        {value.content}
+                                        {content}
                                     </Text>
                                     <Text size="2">(더보기)</Text>
                                 </div>
@@ -180,8 +196,8 @@ const Slides = (props) => {
                                         {/* 여기가 디테일링크 */}
 
                                         <div className="flex flex-row gap-5">
-                                            <IconBtn name="Talk" iconSize="20" count={value.comment_count} />
-                                            <IconBtn name="HeartE" iconSize="20" count={value.like_count} />
+                                            <IconBtn name="Talk" iconSize="20" count={comment_count} />
+                                            <IconBtn name="HeartE" iconSize="20" count={like_count} />
                                         </div>
                                     </div>
                                 </IconBox>
@@ -207,23 +223,19 @@ const Slides = (props) => {
                             <ColorSlide>
                                 <div>
                                     <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
-                                        <Profile size="6" src={value.account_profile_img} />
+                                        <Profile size="6" src={account_profile_img} />
                                     </div>
                                     <div className="absolute top-7 left-28">
                                         <div className="flex flex-row gap-1">
-                                            <Label className="">{value.hash_tag[0].tag}</Label>
-                                            {value.hash_tag[1] ? (
-                                                <Label className="">{value.hash_tag[1].tag}</Label>
-                                            ) : (
-                                                ""
-                                            )}
+                                            <Label className="">{hash_tag1}</Label>
+                                            {hash_tag1 ? <Label className="">{hash_tag2}</Label> : ""}
                                         </div>
-                                        <Title size="6">{value.title}</Title>
+                                        <Title size="6">{title}</Title>
                                     </div>
                                 </div>
                                 <div className="absolute px-10 top-28">
                                     <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
-                                        {value.content}
+                                        {content}
                                     </Text>
                                     <Text size="2">(더보기)</Text>
                                 </div>
@@ -232,8 +244,8 @@ const Slides = (props) => {
                                         {/* 여기가 디테일링크 */}
 
                                         <div className="flex flex-row gap-5">
-                                            <IconBtn name="Talk" iconSize="20" count={value.comment_count} />
-                                            <IconBtn name="HeartE" iconSize="20" count={value.like_count} />
+                                            <IconBtn name="Talk" iconSize="20" count={comment_count} />
+                                            <IconBtn name="HeartE" iconSize="20" count={like_count} />
                                         </div>
                                     </div>
                                 </IconBox>
