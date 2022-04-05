@@ -1,7 +1,7 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { CreateNewArtWork } from "../../redux/modules/artWork";
+import { CreateNewArtWork, RequestModifyArtWork } from "../../redux/modules/artWork";
 import { preview } from "../../redux/modules/image";
 import Portal from "../../elements/Tools/Portal";
 import { MultiSelect } from "react-multi-select-component";
@@ -10,7 +10,21 @@ import skillList from "./skillList";
 import profile_upload from "../../static/images/profile_upload.svg";
 import { Button, Card, Input, CheckBox, Title, RadioButton, InputNoTitle, Text } from "../../elements";
 
-const ArtWorkCreateModal = ({ onClose }) => {
+const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) => {
+    console.log(info, isEdit, deleteList, artwork_id);
+    // 작품 수정 시 세팅
+    const [titleTemp, setTitleTemp] = useState("");
+    const [contentTemp, setContentTemp] = useState("");
+    const [thumbnailInEdit, setThumbnailInEdit] = useState("");
+    let spcialtyTemp = '';
+    useEffect(() => {
+        if(isEdit){
+            setTitleTemp(info?.title);
+            setContentTemp(info?.content);
+            setThumbnailInEdit(info?.thumbnail);
+        }
+    }, [])
+
     // 기본 세팅
     const history = useHistory();
     const dispatch = useDispatch();
@@ -26,6 +40,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
     const [thumbnail, setThumbnail] = useState();
     const onDrop = useCallback((acceptedFile) => {
         setThumbnail(acceptedFile[0].name);
+        setThumbnailInEdit(acceptedFile[0].name);
         const reader = new FileReader();
         setForSendCover(acceptedFile[0]);
         reader.readAsDataURL(acceptedFile[0]);
@@ -46,6 +61,23 @@ const ArtWorkCreateModal = ({ onClose }) => {
     const options = skillList;
     // useState
     const [toolSelected, setToolSelected] = useState([]);
+
+    useEffect(() => {
+        if(isEdit){
+            spcialtyTemp = info.specialty;
+            var mainTemp = spcialtyTemp.split('/');
+            for (var i in mainTemp){
+                var dic = {}
+                dic['label'] = mainTemp[i];
+                dic['value'] = mainTemp[i];
+                if (i == 0) {
+                toolSelected.pop();  
+                }
+                toolSelected.push(dic);
+            }
+        }
+      }, [])
+
     // string으로 변환
     const specialty = [];
     for (var value of toolSelected) {
@@ -88,16 +120,6 @@ const ArtWorkCreateModal = ({ onClose }) => {
         { value: true, label: "공개" },
         { value: false, label: "비공개" },
     ];
-    // selectBox 컴포넌트
-    // const PublicSelectBox = (props) => {
-    //   return (
-    //     <select onChange={selectPublic}>
-    //       {props.options.map((option) => (
-    //         <option key={option.value} value={option.value}>{option.name}</option>
-    //       ))}
-    //     </select>
-    //   )
-    // }
     // select 실행함수
     const selectPublic = (e) => {
         if (e.target.value == "true") {
@@ -128,7 +150,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
 
     // 다음 버튼 클릭 시 실행 함수
     const createArtWork = () => {
-        if(!thumbnail){
+        if(!thumbnail & !isEdit){
             alert('썸네일을 등록해 주세요');
             return
         }
@@ -158,19 +180,38 @@ const ArtWorkCreateModal = ({ onClose }) => {
         }
 
         const skills = specialty.join("/");
+
+
         // 서버에 보내기 전 data에 json형식으로 모아주기 --------------------------------------------
-        const data = {
-            title: inputs.title,
-            category: inputs.category,
-            specialty: skills,
-            work_start: inputs.startDate,
-            work_end: inputs.endDate,
-            content: inputs.description,
-            copyright: CopyRight,
-            is_master: false,
-            scope: Public,
-            thumbnail: thumbnail,
-        };
+        let data = {}
+        if (isEdit){
+            data = {
+                title: inputs.title,
+                category: inputs.category,
+                specialty: skills,
+                work_start: inputs.startDate,
+                work_end: inputs.endDate,
+                content: inputs.description,
+                copyright: CopyRight,
+                is_master: false,
+                scope: Public,
+                thumbnail: thumbnailInEdit,
+                delete_img: deleteList, 
+            }
+        } else{
+            data = {
+                title: inputs.title,
+                category: inputs.category,
+                specialty: skills,
+                work_start: inputs.startDate,
+                work_end: inputs.endDate,
+                content: inputs.description,
+                copyright: CopyRight,
+                is_master: false,
+                scope: Public,
+                thumbnail: thumbnail,
+            }
+        }
         // console.log(data);
 
         // 멀티 폼데이터 생성
@@ -180,8 +221,12 @@ const ArtWorkCreateModal = ({ onClose }) => {
         formData.append("imgFile", forSendCover);
         artworkfiles.forEach((element) => formData.append("imgFile", element));
         // console.log(formData);
-        dispatch(CreateNewArtWork(formData));
-        history.replace("/art/list/all");
+        if(isEdit){
+            dispatch(RequestModifyArtWork({artwork_id, formData}));
+        }else{
+            dispatch(CreateNewArtWork(formData));
+        }
+        // history.replace("/art/list/all");
     };
 
     const [inputList, setInputList] = useState([
@@ -263,7 +308,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                     className="border border-gray-400 rounded-md focus:border-purple-400"
                                     size="70"
                                     height="40"
-                                    placeholder="내용을 입력하세요"
+                                    placeholder={titleTemp ? titleTemp : "내용을 입력하세요"}
                                     type="text"
                                     name="title"
                                     value={inputs.title}
@@ -422,7 +467,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                             )}
                                             <InputNoTitle
                                                 key={i}
-                                                placeholder="영어로 입력하세요"
+                                                placeholder="주소를 붙여 넣어 주세요"
                                                 name="videoLink"
                                                 value={x.videoLink}
                                                 onChange={(e) => handleInputChange(e, i)}
@@ -446,7 +491,7 @@ const ArtWorkCreateModal = ({ onClose }) => {
                             <div className="col-span-4 col-start-2 row-start-6 mt-8">
                                 <Title size="3">작품 설명</Title>
                                 <InputNoTitle
-                                    placeholder="작품에 대한 설명을 입력해주세요(선택)"
+                                    placeholder={contentTemp ? contentTemp : "작품에 대한 설명을 입력해주세요(선택)"}
                                     name="description"
                                     value={inputs.description}
                                     onChange={handleChange}
@@ -511,8 +556,8 @@ const ArtWorkCreateModal = ({ onClose }) => {
                                                 m-0
                                                 focus:text-gray-700 focus:bg-white focus:border-dpurple-300 focus:outline-none"
                                 >
-                                    <option value="true" defaultValue hidden>
-                                        공개
+                                    <option value="" defaultValue disabled hidden>
+                                        선택해주세요
                                     </option>
                                     {publicOptions.map((item, index) => (
                                         <option key={index} value={item.value}>

@@ -15,15 +15,7 @@ const RadioButton = (props) => {
                     <label className="inline-flex items-center">
                         <input
                             type="radio"
-                            className="form-radio 
-              text-dpurple-200 w-7 h-7 font-min1
-              border-2
-              focus-visible:border-0
-              focus-within:border-0
-              rounded-full 
-              hover:bg-dpurple-200
-              disabled:text-dgray-300 
-              disabled:bg-dgray-200"
+                            className="border-2 rounded-full form-radio text-dpurple-200 w-7 h-7 font-min1 focus-visible:border-0 focus-within:border-0 hover:bg-dpurple-200 disabled:text-dgray-300 disabled:bg-dgray-200"
                             name={name}
                             value={value}
                             onChange={onChange}
@@ -40,15 +32,7 @@ const RadioButton = (props) => {
                 <label className="inline-flex items-center">
                     <input
                         type="radio"
-                        className="form-radio 
-                      text-dgray-600 w-7 h-7 font-min1
-                      rounded-full border-2 hover:border-dgray-600 
-                      hover:bg-dgray-600
-                      focus-visible:border-0
-                      focus-within:border-0
-                      disabled:text-dgray-300 
-                      disabled:bg-dgray-200 
-                      disabled:border-0"
+                        className="border-2 rounded-full form-radio text-dgray-600 w-7 h-7 font-min1 hover:border-dgray-600 hover:bg-dgray-600 focus-visible:border-0 focus-within:border-0 disabled:text-dgray-300 disabled:bg-dgray-200 disabled:border-0"
                         name="radio"
                         value="1"
                     />
@@ -64,14 +48,7 @@ const RadioButton = (props) => {
                     <label className="inline-flex items-center">
                         <input
                             type="radio"
-                            className="form-radio 
-                      text-dpurple-200 w-4 h-4 font-min1
-                      rounded-full border-2 hover:border-dpurple-200              
-                      focus-visible:border-0
-                      focus-within:border-0 
-                      disabled:text-dgray-300 
-                      disabled:bg-dgray-200 
-                      disabled:border-0"
+                            className="w-4 h-4 border-2 rounded-full form-radio text-dpurple-200 font-min1 hover:border-dpurple-200 focus-visible:border-0 focus-within:border-0 disabled:text-dgray-300 disabled:bg-dgray-200 disabled:border-0"
                             name="radio"
                             value="1"
                         />
@@ -89,14 +66,7 @@ const RadioButton = (props) => {
                     <label className="inline-flex items-center">
                         <input
                             type="radio"
-                            className="form-radio 
-                      text-dgray-600 w-4 h-4 font-min1
-                      rounded-full border-2 hover:border-dgray-600     
-                      focus-visible:border-0
-                      focus-within:border-0
-                      disabled:text-dgray-300 
-                      disabled:bg-dgray-200 
-                      disabled:border-0"
+                            className="w-4 h-4 border-2 rounded-full form-radio text-dgray-600 font-min1 hover:border-dgray-600 focus-visible:border-0 focus-within:border-0 disabled:text-dgray-300 disabled:bg-dgray-200 disabled:border-0"
                             name="radio"
                             value="1"
                         />

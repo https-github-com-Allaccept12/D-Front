@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import { ModifyArtWork } from "../../redux/modules/artWork";
 import { getMaster, removeMaster, updateScope, postScope, deleteArtwork } from "../../redux/modules/artWork";
 import CircleBtn from "../Icons/CircleBtn";
 import tw from "tailwind-styled-components";
@@ -39,9 +40,10 @@ w-full flex flex-row justify-end items-end gap-3 p-5
 const EditMyArtWork = (props) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const { src, size, isMaster, scope, artwork_id } = props;
+    const { src, size, isMaster, scope, artwork_id, category } = props;
     const [is_master, setMaster] = useState(isMaster);
     const [is_public, setPublic] = useState(scope);
+    console.log('in here, ',artwork_id);
 
     const ClickMaster = () => {
         setMaster(!is_master);
@@ -52,15 +54,19 @@ const EditMyArtWork = (props) => {
         (is_public ? dispatch(updateScope(artwork_id)) : dispatch(postScope(artwork_id)));
     }
     const ClickDelete = () => {
-        dispatch(deleteArtwork(artwork_id));
+        dispatch(deleteArtwork({artwork_id, category}));
     }
     const ClickEdit = () => {
+        console.log('click, ', artwork_id);
+        const visitor_account_id = sessionStorage.getItem("account_id");
+        dispatch(ModifyArtWork({artwork_id, visitor_account_id, dispatch}));
         // history.push(`/createart?key=edit&artwork_id=${artwork_id}`);
         history.push({
             pathname: "/createart",
             state:{
                 isedit: true,
-                artwork_id: artwork_id
+                artwork_id: artwork_id,
+
             }
         })
     }

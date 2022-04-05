@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from "react";
 import { artworkFiles } from "../../redux/modules/image";
 import { ModifyArtWork } from "../../redux/modules/artWork";
 import { useDispatch, useSelector } from "react-redux";
+import { preview } from "../../redux/modules/image";
 import Dropzone, { useDropzone } from "react-dropzone";
 import { Button, Title, Text } from "../../elements";
 import ArtWorkCreateModal from "./ArtWorkCreateModal";
@@ -15,34 +16,68 @@ const Grid = tw.div`
 
 const ArtWorkCreate = (location) => {
     const dispatch = useDispatch();
-    let artwork_id = "";
-    let isEdit = false;
+    // let artwork_id = "";
+    // let isEdit = false;
+    const [isEdit, setIsEdit] = useState(false);
+    const [artwork_id, setArtworkId] = useState("");
+    // const [info, setInfo] = useState();
+    const [firstList, setFirstList] = useState([]);
+    // const [firstThumbnail, setFirstThumbnail] = useState([]);
+    const [previews, SetPreviews] = useState([]);
+    console.log(location.location);
+    const editImgs = useSelector((state) => state.artwork.modifyForPreview);
+    const info = useSelector((state) => state.artwork.modifyForInfo);
+    const firstThumbnail = useSelector((state) => state.image.url);
     useEffect(() => {
         if (location.location.state){
             const visitor_account_id = sessionStorage.getItem("account_id");
-            artwork_id = location.location.state.artwork_id;
-            isEdit = location.location.state.isedit;
-            if (isEdit){
-                dispatch(ModifyArtWork({artwork_id, visitor_account_id, dispatch}));
-            }
-        }
-        
-    }, [])
-    
-    const editImgs = useSelector((state) => state.artwork.modifyForPreview);
-    console.log(editImgs);
-    const [images, setImages] = useState([]);
-    const [previews, SetPreviews] = useState([]);
-    const [modalOn, setModalOn] = useState(false);
+            setArtworkId(location.location.state.artwork_id);
+            setIsEdit(location.location.state.isedit);
+            // setFirstList(editImgs && editImgs.img);
+            // setFirstThumbnail(editImgs && editImgs.artWorkSubDetail.thumbnail);
+            // if(firstList){ 
+            // for(let pres of firstList){
+            //     console.log('item:', pres);
+            //     previews.push(pres);
+            //     // SetPreviews((temp) => [...temp, pres]);
+            // }
+            // console.log('before preview:', previews);
+            // dispatch(preview(firstThumbnail));
+            // if (isEdit){
+            //     dispatch(ModifyArtWork({artwork_id, visitor_account_id, dispatch}));
+            // }
+        // }
+    }
+    }, [editImgs])
 
     useEffect(() => {
-        if(editImgs){
-            for(var item of editImgs.img){
-                SetPreviews((temp) => [...temp, item.img_url]);
-            }
-        }
-    }, [])
-    console.log(previews);
+        SetPreviews(editImgs);
+    }, [editImgs]);
+
+    // console.log('isEdit', isEdit, artwork_id);
+    const [images, setImages] = useState([]);
+    const [modalOn, setModalOn] = useState(false);
+    const [deleteList, setDeleteList] = useState([]);
+    console.log(deleteList);
+    console.log('deleteList: ', deleteList);
+    console.log('ediimgs: ', editImgs);
+    console.log('firstThumbnail: ', firstThumbnail);
+    console.log('info: ', info);
+
+    // useEffect(() => {
+    //     console.log('firstList', firstList);
+    //     if(firstList){ 
+    //         for(let pres of firstList){
+    //             console.log('item:', pres);
+    //             previews.push(pres);
+    //             // SetPreviews((temp) => [...temp, pres]);
+    //         }
+    //         console.log('before preview:', previews);
+    //         dispatch(preview(firstThumbnail));
+
+    //     }
+    // }, [])
+    // console.log(previews);
     const handleModal = () => {
         if(!modalOn & previews.length === 0){
             alert('아 이미지 추가하셈');
@@ -64,6 +99,7 @@ const ArtWorkCreate = (location) => {
     }, []);
     // const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
+    console.log(images);
     return (
         <>
             <div className="flex flex-col w-full bg-gray-200 xl:p-10">
@@ -100,7 +136,7 @@ const ArtWorkCreate = (location) => {
                                 </Dropzone>
                             </div>
                             <div className="">
-                                <ArtWorkChangeList list={previews} setPreviews={SetPreviews} />
+                                <ArtWorkChangeList list={previews} setPreviews={SetPreviews} firstThumbnail={firstThumbnail} isEdit={isEdit} setDeleteList={setDeleteList}/>
                             </div>
                         </div>
                     </div>
@@ -108,7 +144,7 @@ const ArtWorkCreate = (location) => {
                         <Button color="4" size="3" onClick={handleModal}>
                             다음
                         </Button>
-                        <Portal>{modalOn && <ArtWorkCreateModal onClose={handleModal} />}</Portal>
+                        <Portal>{modalOn && <ArtWorkCreateModal onClose={handleModal} info={info}  isEdit={isEdit} deleteList={deleteList} artwork_id={artwork_id} />}</Portal>
                     </div>
                 </Grid>
             </div>
