@@ -20,12 +20,11 @@ const DimoCard = (props) => {
     return (
         <>
             <Box>
-                <Subtitle size="1" className="truncate w-3/4">
-                    댓글 내용 댓글 내용댓글 꿀팁이에요 어쩌구 내용댓글 내용댓글 내용댓글 내용댓글 내용 댓글 내용댓글
-                    내용 댓글 내용댓글 내용 댓글 내용댓글 내용
+                <Subtitle size="1" className="w-3/4 truncate">
+                    {data && data.content}
                 </Subtitle>
                 <Text className="text-dgray-400">몇분 전</Text>
-                <Title size="6" className="text-dgray-400 mt-10  truncate">
+                <Title size="6" className="mt-10 truncate text-dgray-400">
                     포스트제목 피그마 장단점 설명해드립니다
                 </Title>
             </Box>

@@ -9,13 +9,19 @@ min-h-screen flex flex-col gap-3
 `;
 
 const MyPost = (props) => {
-    let history = useHistory();
+    const { data, profile } = props;
+    const history = useHistory();
     return (
         <>
             <Box>
-                <DimoCard />
-                <DimoCard />
-                <DimoCard />
+                {data && data.map((value) => {
+                    return (
+                        <DimoCard data={value} profile={profile} isMine={true}/>
+                    )
+                })}
+                
+                {/* <DimoCard />
+                <DimoCard /> */}
             </Box>
         </>
     );

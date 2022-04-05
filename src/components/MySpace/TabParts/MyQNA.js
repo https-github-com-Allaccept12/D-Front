@@ -27,18 +27,7 @@ flex flex-row 2xl:justify-start justify-center items-center w-5/6 mx-auto
 `;
 
 const MyQNA = (props) => {
-
-    const array_sample = [
-        {
-            tab: "나의 질문",
-            content: <MyQuestion />,
-        },
-        {
-            tab: "나의 답변",
-            content: <MyAnswer />,
-        },
-    ];
-    const { currentItem, changeItem } = useTabs(0, array_sample);
+    const { profile } = props;
     const [active, setActive] = useState("0");
 
 
@@ -57,6 +46,18 @@ const MyQNA = (props) => {
     console.log(myanswers);
 
 
+    const array_sample = [
+        {
+            tab: "나의 질문",
+            content: <MyQuestion data={myqnas} profile={profile}/>,
+        },
+        {
+            tab: "나의 답변",
+            content: <MyAnswer data={myanswers}/>,
+        },
+    ];
+    
+    const { currentItem, changeItem } = useTabs(0, array_sample);
 
     return (
         <>

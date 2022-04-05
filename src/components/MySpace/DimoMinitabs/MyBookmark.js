@@ -7,12 +7,19 @@ min-h-screen flex flex-col gap-3
 `;
 
 const MyBookmark = (props) => {
+    const { data } = props;
     return (
         <>
             <Box>
+                {data.map((value) => {
+                    return (
+                        <DimoCard data={value} isMine={false}/>
+                        )
+                    }
+                )}
+                {/* <DimoCard />
                 <DimoCard />
-                <DimoCard />
-                <DimoCard />
+                <DimoCard /> */}
             </Box>
         </>
     );

@@ -26,6 +26,7 @@ flex flex-row 2xl:justify-start justify-center items-center w-5/6 mx-auto
 `;
 
 const MyPosts = (props) => {
+    const { profile } = props;
     const visitor_account_id = sessionStorage.getItem("account_id");
     const dispatch = useDispatch();
   
@@ -45,15 +46,15 @@ const MyPosts = (props) => {
     const array_sample = [
         {
             tab: "나의 글",
-            content: <MyPost />,
+            content: <MyPost data={myposts} profile={profile}/>,
         },
         {
             tab: "내댓글",
-            content: <MyComment />,
+            content: <MyComment data={mymarks}/>,
         },
         {
             tab: "스크랩글",
-            content: <MyBookmark />,
+            content: <MyBookmark data={mycomments}/>,
         },
     ];
     const { currentItem, changeItem } = useTabs(0, array_sample);
