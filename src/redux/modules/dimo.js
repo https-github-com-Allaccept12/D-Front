@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { refreshSlice } from "./temp";
 import axios from "axios";
 import { URL, token } from "../UrlForAxios";
 
@@ -14,34 +15,60 @@ export const CreateNewDimo = createAsyncThunk("post/CreateDimo", async (formData
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
-// 슬라이드 받아오는 애... 둘다 page폴더의 Dimo.js에 등록해줬는데 artwork를 한번 거쳐야 정상적으로 슬라이드를 받아옴... 왤까여...
-export const dimoPageLoadQna = createAsyncThunk("/dimoPageLoad", (dispatch, board, visitor_account_id) => {
-    URL.get(`/api/post/recommend/QNA`, {
+// /api/post/{post_id}
+export const editDimo = createAsyncThunk("/editDimo", ({ formData }) => {
+    URL.patch(`/api/post/${post_id}`, formData, {
+        headers: {
+            "content-type": "multipart/form-data",
+            Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+    })
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
+});
+
+// 슬라이드 받아오는 애... 두개를 하나로합치고 useEffect를 먹여줬으나 그래도....
+export const dimoPageLoad = createAsyncThunk("/dimoPageLoad", ({ dispatch, board, visitor_account_id }) => {
+    URL.get(`/api/post/recommend/${board}`, {
         params: {
             visitor_account_id: visitor_account_id,
         },
     })
         .then((res) => {
             console.log(res);
-            dispatch(dimosQNA(res.data.data));
+            dispatch(dimos(res.data.data));
         })
-        .catch((err) => console.log(err));
-});
-
-export const dimoPageLoadInfo = createAsyncThunk("/dimoPageLoad", (dispatch, board, visitor_account_id) => {
-    URL.get(`/api/post/recommend/INFO`, {
-        params: {
-            visitor_account_id: visitor_account_id,
-        },
-    })
-        .then((res) => {
-            console.log(res);
-            dispatch(dimosINFO(res.data.data));
-        })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 //카테고리 검색(전체보기 기능이 슬라이드랑 붙어있느라 디모엔 빠져서 uiux가 기본으로 나오게 세팅해둠 역시 페이지 폴더의 Dimo.js)
@@ -56,7 +83,15 @@ export const categoryDimo = createAsyncThunk("/categoryDimo", ({ category, dispa
             console.log(res);
             dispatch(categoryDimos(res.data.data));
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 //qna 상세보기 본문
@@ -144,7 +179,7 @@ export const bookmarkRemove = createAsyncThunk("/bookmarkRemove", (post_id) => {
         .catch((err) => console.log(err));
 });
 
-//info 상세보기 얘는 세번중 한번 제대로 안뜸...ㅠㅠ
+//info 상세보기
 export const dimoInfoDetailLoad = createAsyncThunk("/dimoInfoDetailLoad", ({ post_id, dispatch, visitor_account_id }) =>
     URL.get(`/api/post/${post_id}`, {
         params: {
@@ -174,6 +209,7 @@ export const deleteDimo = createAsyncThunk("/deleteDimo", ({ post_id, category, 
         .catch((err) => console.log(err));
 });
 
+//답변삭제
 export const deleteAnswerDimo = createAsyncThunk("/deleteAnswerDimo", (answer_id) => {
     URL.delete(`/api/post/answer/${answer_id}`, {
         headers: {
@@ -193,6 +229,21 @@ export const CreateAnswerDimo = createAsyncThunk("/CreateAnswerDimo", async (dat
     const { content, post_id } = data;
     // console.log(content);
     await URL.post(`/api/post/answer/${post_id}`, data, {
+        headers: {
+            "content-type": "application/json",
+            Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+    })
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => console.log(err));
+});
+
+//답변수정
+export const editAnswerDimo = createAsyncThunk("/editAnswerDimo", async ({ answer_id, data }) => {
+    await URL.patch(`/api/post/answer/${answer_id}`, data, {
         headers: {
             "content-type": "application/json",
             Authorization: "Bearer " + token,
@@ -250,7 +301,7 @@ export const commentDeleteDimo = createAsyncThunk("/commentDeleteDimo", (comment
         .catch((err) => console.log(err));
 });
 
-///api/post/search/{last_post_id}/{keyword}
+///api/post/search/{last_post_id}/{keyword} 검색기능
 export const searchDimo = createAsyncThunk("/searchDimo", ({ keyword, dispatch, board, visitor_account_id }) => {
     URL.get(`/api/post/search/0/${board}/${keyword}`, {
         params: {
@@ -264,7 +315,7 @@ export const searchDimo = createAsyncThunk("/searchDimo", ({ keyword, dispatch, 
         .catch((err) => console.log(err));
 });
 
-///api/post/category/{category}/{last_post_id}/{board}
+///api/post/category/{category}/{last_post_id}/{board} 검색
 export const orderByNewDimo = createAsyncThunk(
     "/orderByNewDimo",
     ({ category, dispatch, board, visitor_account_id }) => {
@@ -282,7 +333,7 @@ export const orderByNewDimo = createAsyncThunk(
     },
 );
 
-// /api/post/category/like/{category}/{board}?start=0
+// /api/post/category/like/{category}/{board}?start=0 검색
 export const orderByLikeDimo = createAsyncThunk(
     "/orderByNewDimo",
     ({ category, dispatch, board, visitor_account_id }) => {
@@ -303,12 +354,7 @@ export const dimoSlice = createSlice({
         dimos: (state, action) => {
             state.dimos = action.payload;
         },
-        dimosQNA: (state, action) => {
-            state.dimosQNA = action.payload;
-        },
-        dimosINFO: (state, action) => {
-            state.dimosINFO = action.payload;
-        },
+
         detailDimoQna: (state, action) => {
             state.detaildimoQna = action.payload;
         },
@@ -358,6 +404,17 @@ export const dimoSlice = createSlice({
                 console.log("create rejected");
             })
 
+            .addCase(editDimo.pending, (state, action) => {
+                console.log("pending");
+            })
+            .addCase(editDimo.fulfilled, (state, action) => {
+                console.log("create fulfiled");
+            })
+            .addCase(editDimo.rejected, (state, action) => {
+                console.log(action.error.message);
+                console.log("create rejected");
+            })
+
             .addCase(orderByLikeDimo.pending, (state, action) => {
                 console.log("pending");
             })
@@ -371,6 +428,5 @@ export const dimoSlice = createSlice({
     },
 });
 
-export const { dimos, dimosQNA, dimosINFO, categoryDimos, detailDimoQna, dimoQnaDetailSimilars, detailDimoInfo } =
-    dimoSlice.actions;
+export const { dimos, categoryDimos, detailDimoQna, dimoQnaDetailSimilars, detailDimoInfo } = dimoSlice.actions;
 export default dimoSlice.reducer;
