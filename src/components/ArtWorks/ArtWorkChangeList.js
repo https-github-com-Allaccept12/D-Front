@@ -27,7 +27,8 @@ const getListStyle = (isDraggingOver) => ({
 });
 
 function ArtWorkChangeList(props) {
-    const { list, setPreviews } = props;
+    const { list, setPreviews, setDeleteList, isEdit } = props;
+    console.log(list);
     const getItems = (count) =>
         Array.from({ length: count }, (v, k) => k).map((k) => ({
             id: `item-${k}`,
@@ -41,13 +42,17 @@ function ArtWorkChangeList(props) {
     }, [list]);
     // id를 가진 array centent만 보내기!!
 
-    const trashOnClick = (idx) => {
+    const trashOnClick = (idx, item) => {
+        console.log(isEdit, item);
         var tempItems = items;
         tempItems.splice(idx, 1);
         setItems(tempItems);
         const forParent = [];
-        for (var item of items) {
-            forParent.push(item.content);
+        for (var i of items) {
+            forParent.push(i.content);
+        }
+        if(isEdit){
+            setDeleteList((temp) => [...temp, {"img_url":item.content}]);
         }
         setPreviews(forParent);
         setForceRerender(!forceRerender);
@@ -92,7 +97,7 @@ function ArtWorkChangeList(props) {
                                         <div className="p-4 mt-auto -ml-12 text-dpurple-200">
                                             <Icon
                                                 onClick={(event) => {
-                                                    trashOnClick(idx);
+                                                    trashOnClick(idx, item);
                                                 }}
                                                 name="Delete"
                                             />

@@ -1,11 +1,35 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { refreshSlice } from "./temp";
+import { preview } from "./image";
 import axios from "axios";
 import { URL, token } from "../UrlForAxios";
 
 // 작품 등록
 export const CreateNewArtWork = createAsyncThunk("post/CreateNewArtWork", async (formData, thunkAPI) => {
     await URL.post("/api/artwork", formData, {
+        headers: {
+            "content-type": "multipart/form-data",
+            Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+    })
+        .then((res) => {
+            console.log(res);
+            
+        })
+        .catch((err) => {
+            console.log(err);
+            if (err.response.data.status == 444){
+                console.log('here');
+                dispatch(refreshSlice({access_token, refresh_token}));
+            }
+        });
+});
+
+//작품 수정
+export const RequestModifyArtWork = createAsyncThunk("post/RequestModifyArtWork", async ({artwork_id, formData}) => {
+    console.log(artwork_id);
+    await URL.patch(`/api/artwork/${artwork_id}`, formData, {
         headers: {
             "content-type": "multipart/form-data",
             Authorization: "Bearer " + token,
@@ -33,8 +57,15 @@ export const ModifyArtWork = createAsyncThunk("post/ModifyArtWork", ({artwork_id
         },
     })
     .then((res) => {
-        console.log(res);
-        dispatch(modifyForPreview(res.data.data));
+        console.log(res.data.data.artWorkSubDetail);
+        const x = res.data.data.img;
+        const temp = []
+        for(var item of x){
+            temp.push(item.img_url);
+        }
+        dispatch(modifyForPreview(temp));
+        dispatch(preview(res.data.data.artWorkSubDetail.thumbnail));
+        dispatch(modifyForInfo(res.data.data.artWorkSubDetail));
     })
     .catch((err) => console.log(err));
 });
@@ -149,7 +180,7 @@ export const postScope = createAsyncThunk("/updateScope", (artwork_id) => {
 });
 
 // 작품 삭제
-export const deleteArtwork = createAsyncThunk("/deleteArtwork", (artwork_id) => {
+export const deleteArtwork = createAsyncThunk("/deleteArtwork", ({artwork_id, category}) => {
     URL.delete(`/api/artwork/${artwork_id}/${category}`, {
         headers: {
             Authorization: "Bearer " + token,
@@ -315,7 +346,8 @@ export const UnMarkArtwork = createAsyncThunk("/UnMarkArtwork", (artwork_id) => 
 
 export const artworkSlice = createSlice({
     name: "artwork",
-    initialState: {},
+    initialState: {modifyForPreview: {editImgs : {img: []}}
+    },
     reducers: {
         artworks: (state, action) => {
             state.artworks = action.payload;
@@ -329,6 +361,9 @@ export const artworkSlice = createSlice({
         modifyForPreview: (state, action) => {
             state.modifyForPreview = action.payload;
         },
+        modifyForInfo: (state, action) => {
+            state.modifyForInfo = action.payload;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -491,9 +526,19 @@ export const artworkSlice = createSlice({
             .addCase(ModifyArtWork.rejected, (state, action) => {
                 console.log(action.error.message);
                 console.log("create rejected");
+            })
+            .addCase(RequestModifyArtWork.pending, (state, action) => {
+                console.log("pending");
+            })
+            .addCase(RequestModifyArtWork.fulfilled, (state, action) => {
+                console.log("create fulfiled");
+            })
+            .addCase(RequestModifyArtWork.rejected, (state, action) => {
+                console.log(action.error.message);
+                console.log("create rejected");
             });
     },
 });
 
-export const { artworks, portfolios, detailArtwork, modifyForPreview } = artworkSlice.actions;
+export const { artworks, portfolios, detailArtwork, modifyForPreview, modifyForInfo } = artworkSlice.actions;
 export default artworkSlice.reducer;

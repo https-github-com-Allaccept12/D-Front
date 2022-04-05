@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Button, EditMyArtWork, Title } from "../../../elements";
 
@@ -11,6 +11,12 @@ border border-gray-600 my-6 w-5/6 mx-auto
 
 const MyPortfolio = (props) => {
     const feed = useSelector((state) => state.myPage.careerFeed);
+    console.log(feed);
+    // const [feeds, setFeeds] = useState([]);
+
+    // useEffect(() => {
+    //     feed.forEach((el) => feeds.push(el));
+    // }, [feed])
     return (
         <>
             <div className="flex flex-row flex-wrap items-center justify-start w-5/6 mx-auto">
@@ -24,6 +30,7 @@ const MyPortfolio = (props) => {
                     return (
                     <EditMyArtWork
                         src={value.img}
+                        artwork_id={value.artwork_id}
                         size="1"
                     />
                     )

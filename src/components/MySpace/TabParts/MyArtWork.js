@@ -19,7 +19,7 @@ const MyArtWork = (props) => {
     dispatch(PortfolioLoad({owner_account_id, visitor_account_id, dispatch}))
   }, [info])
   const portfolios = useSelector((state) => state.post.portfolios);
-  // console.log(portfolios);
+  console.log(portfolios);
 
 
   return (
@@ -34,7 +34,7 @@ const MyArtWork = (props) => {
         </div>
     </>
     <div className="flex flex-row flex-wrap items-center justify-center gap-6">
-    {portfolios && portfolios.map((value) => (<EditMyArtWork src={value.img} artwork_id={value.artwork_id} isMaster={value.is_master} scope={value.scope} size="1"/>))}
+    {portfolios && portfolios.map((value) => (<EditMyArtWork src={value.img} artwork_id={value.artwork_id} isMaster={value.is_master} scope={value.scope} category={value.category} size="1"/>))}
 
    </div>
     </>
