@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { HeartButton, Text, Icon, Title, Profile, Label, IconBtn } from "../../../elements";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 import { dimoQnaDetailLoad, dimoQnaDetailSimilar, dimoInfoDetailLoad } from "../../../redux/modules/dimo";
 import tw from "tailwind-styled-components";
@@ -53,8 +53,8 @@ const DimoPost = (props) => {
         title,
         list,
     } = props;
-    console.log(post_id);
-    const dispatch = useDispatch();
+
+    let dispatch = useDispatch();
 
     let account_id = 0;
     // const id_cookie = getCookie("account_id");
@@ -68,20 +68,18 @@ const DimoPost = (props) => {
 
     const handleClickDimoQna = () => {
         // let owner_account_id = account_id;
-        useEffect(() => {
-            dispatch(dimoQnaDetailLoad({ post_id, dispatch, visitor_account_id }));
-            dispatch(dimoQnaDetailSimilar({ category, post_id, dispatch, visitor_account_id }));
-        });
+        dispatch(dimoQnaDetailLoad({ post_id, dispatch, visitor_account_id }));
+        dispatch(dimoQnaDetailSimilar({ category, post_id, dispatch, visitor_account_id }));
     };
 
     const handleClickDimoInfo = () => {
         dispatch(dimoInfoDetailLoad({ post_id, dispatch, visitor_account_id }));
     };
 
-    useEffect(() => {
-        dispatch(dimoQnaDetailLoad({ post_id, dispatch, visitor_account_id }));
-        dispatch(dimoInfoDetailLoad({ post_id, dispatch, visitor_account_id }));
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(dimoQnaDetailLoad({ post_id, dispatch, visitor_account_id }));
+    //     dispatch(dimoInfoDetailLoad({ post_id, dispatch, visitor_account_id }));
+    // }, [dispatch]);
 
     // const dimos = useSelector((state) => state.dimo.detailDimoInfo.postSubDetail);
 
@@ -94,6 +92,7 @@ const DimoPost = (props) => {
                             pathname: `/dimo/qnadetail/${post_id}`,
                             state: {
                                 id: { post_id },
+                                category: { category },
                             },
                         }}
                     >

@@ -1,8 +1,9 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { dimoFiles } from "../../redux/modules/image";
-import { useDropzone } from "react-dropzone";
+import Dropzone, { useDropzone } from "react-dropzone";
 import { Button, Text } from "../../elements";
 import tw from "tailwind-styled-components";
+import { useSelector, useDispatch } from "react-redux";
 
 const List = tw.li`
  font-min1 text-base text-dgray-500 
@@ -10,18 +11,19 @@ const List = tw.li`
 `;
 function FileUploadDimo(props) {
     const [myFiles, setMyFiles] = useState([]);
+    const dispatch = useDispatch();
+    const onDrop = useCallback((acceptedFiles) => {
+        setMyFiles([...myFiles, ...acceptedFiles]);
+        const reader = new FileReader();
+        reader.readAsDataURL(myFiles);
+        reader.onloadend = () => {
+            SetPreviews((temp) => [...temp, reader.result]);
+        };
+    }, []);
 
-    const onDrop = useCallback(
-        (acceptedFiles) => {
-            setMyFiles([...myFiles, ...acceptedFiles]);
-            dispatch(dimoFiles(myFiles));
-        },
-        [myFiles],
-    );
-
-    const { getRootProps, getInputProps } = useDropzone({
-        onDrop,
-    });
+    useEffect(() => {
+        dispatch(dimoFiles(myFiles));
+    }, [onDrop]);
 
     const removeFile = (file) => () => {
         const newFiles = [...myFiles];
@@ -63,17 +65,31 @@ function FileUploadDimo(props) {
                     </>
                 ) : (
                     <>
-                        <div
-                            {...getRootProps({ className: "dropzone" })}
-                            className="flex flex-col items-center justify-center pt-10 pb-7"
-                        >
-                            <Button size="2" color="4" icon name="Plus">
-                                추가하기
-                            </Button>
-                            <input {...getInputProps()} />
-                            <Text size="3" className="pt-10 pb-7">
-                                파일추가 파일은 복수로 첨부가능하며 최대 100mb까지 업로드됩니다.
-                            </Text>
+                        <div className="w-full">
+                            <Dropzone
+                                maxFiles={10}
+                                accept={"image/gif, image/jpg, image/jpeg, image/png"}
+                                onDrop={onDrop}
+                            >
+                                {({ getRootProps, getInputProps }) => (
+                                    <section>
+                                        <div
+                                            className="flex flex-col items-center justify-center p-5"
+                                            {...getRootProps()}
+                                        >
+                                            <input {...getInputProps()} />
+                                            <>
+                                                <Text size="1" className="text-[#A1ADC0] text-center animate-pulse">
+                                                    Click or Drag & Drop here
+                                                </Text>
+                                                <Text size="3">
+                                                    파일은 복수로 첨부 가능하며, 최대 20MB까지 업로드 됩니다.
+                                                </Text>
+                                            </>
+                                        </div>
+                                    </section>
+                                )}
+                            </Dropzone>
                         </div>
                     </>
                 )}

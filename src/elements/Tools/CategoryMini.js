@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { categoryArtwork, artworkPageLoad } from "../../redux/modules/artWork";
 import { categoryDimo } from "../../redux/modules/dimo";
 const Grid = tw.div` 
-fixed top-4 left-16 w-3/4 h-full rounded-xl xl:hidden
+fixed top-4 left-16 w-2/4 rounded-xl xl:hidden
 `;
 
 const Box = tw.div`

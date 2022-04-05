@@ -33,14 +33,15 @@ const DimoQNADetail = ({ history, location, match }) => {
     }
     const visitor_account_id = account_id;
     // console.log(account_id, owner_account_id);
-    const dimos = useSelector((state) => state.dimo.detaildimoQna);
-    const dimoSimilars = useSelector((state) => state.dimo.dimoQnaDetailSimilars);
+    const dimos = useSelector((state) => state.dimo?.detaildimoQna);
+    const dimosdetail = useSelector((state) => state.dimo.detaildimoQna?.postAnswerSubDetail);
+    const dimoSimilars = useSelector((state) => state.dimo?.dimoQnaDetailSimilars);
+    console.log(dimos);
 
     useEffect(() => {
         dispatch(dimoQnaDetailLoad({ post_id, dispatch, visitor_account_id }));
     }, []);
 
-    const dimosPost = useSelector((state) => state.dimo.detaildimoQna?.postAnswerSubDetail);
     const post_id = match.params.name;
     console.log(dimos);
 
@@ -61,20 +62,20 @@ const DimoQNADetail = ({ history, location, match }) => {
                                         {dimoSimilars &&
                                             dimoSimilars.map((value) => {
                                                 return (
-                                                    <div key={value.post_id}>
+                                                    <div key={value?.post_id}>
                                                         <DimoPost
                                                             list="qna"
-                                                            account_nickname={value.account_nickname}
-                                                            account_profile_img={value.account_profile_img}
-                                                            category={value.category}
-                                                            comment_count={value.comment_count}
-                                                            content={value.content}
-                                                            create_time={value.create_time}
-                                                            hash_tag={value.hash_tag}
-                                                            is_selected={value.is_selected}
-                                                            like_count={value.like_count}
-                                                            post_id={value.post_id}
-                                                            title={value.title}
+                                                            account_nickname={value?.account_nickname}
+                                                            account_profile_img={value?.account_profile_img}
+                                                            category={value?.category}
+                                                            comment_count={value?.comment_count}
+                                                            content={value?.content}
+                                                            create_time={value?.create_time}
+                                                            hash_tag={value?.hash_tag}
+                                                            is_selected={value?.is_selected}
+                                                            like_count={value?.like_count}
+                                                            post_id={value?.post_id}
+                                                            title={value?.title}
                                                             size="3"
                                                         />
                                                     </div>
@@ -89,13 +90,13 @@ const DimoQNADetail = ({ history, location, match }) => {
                 <div className="col-start-1 col-end-4 row-start-1 col-span-full">
                     <Box>
                         <Grid>
-                            <DimoQNAQuestion followed="true" value={dimos} post={dimos} />
+                            <DimoQNAQuestion followed="true" value={dimos} post={dimosdetail} />
                             <InnerLine />
                             <div className="flex flex-row items-center justify-start gap-3">
                                 <Icon name="Talk" iconSize="36" />
-                                <Title size="3">{dimos.answer_count}</Title>
+                                <Title size="3">{dimos?.answer_count ? dimos?.answer_count : <>0</>}</Title>
                             </div>
-                            {dimos.answer_count > 0
+                            {dimos?.answer_count && dimos.answer_count > 0
                                 ? dimos.answers.map((value) => {
                                       return (
                                           <div key={value.answer_id}>

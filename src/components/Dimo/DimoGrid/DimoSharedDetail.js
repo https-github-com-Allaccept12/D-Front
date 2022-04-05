@@ -69,7 +69,7 @@ const DimoSharedDetail = ({ history, location, match }) => {
     const name = useInput("", [validMaxLen]);
 
     const dimo = useSelector((state) => state.dimo.detailDimoInfo);
-    const dimos = useSelector((state) => state.dimo.detailDimoInfo.postSubDetail);
+    const dimos = useSelector((state) => state.dimo.detailDimoInfo?.postSubDetail);
     console.log(dimo);
 
     const commentSubmit = () => {
@@ -82,13 +82,13 @@ const DimoSharedDetail = ({ history, location, match }) => {
     };
     const ClickDelete = () => {
         const board = `INFO`;
-        const category = dimos.category;
+        const category = dimos?.category;
         dispatch(deleteDimo({ post_id, category, board }));
         history.replace("/dimo/qna");
     };
 
-    const [like_cnt, setLikeCnt] = useState(dimos.like_count);
-    const [is_like, setIsLike] = useState(dimo.is_like);
+    const [like_cnt, setLikeCnt] = useState(dimos?.like_count);
+    const [is_like, setIsLike] = useState(dimo?.is_like);
     const cancelLike = () => {
         setIsLike(false);
         setLikeCnt(like_cnt - 1);
@@ -101,8 +101,8 @@ const DimoSharedDetail = ({ history, location, match }) => {
         dispatch(likeDimoInfo(post_id));
     };
 
-    const [book_cnt, setBookCnt] = useState(dimo.bookmark_count);
-    const [is_bookmark, setIsBookmark] = useState(dimo.is_bookmark);
+    const [book_cnt, setBookCnt] = useState(dimo?.bookmark_count);
+    const [is_bookmark, setIsBookmark] = useState(dimo?.is_bookmark);
     // console.log(dimos);
     const cancelBook = () => {
         setIsBookmark(false);
@@ -122,23 +122,22 @@ const DimoSharedDetail = ({ history, location, match }) => {
                     <button onClick={ClickDelete}>삭제</button>
                     <Header>
                         <div className="flex flex-row gap-1 md:pt-10 pb-4">
-                            <Label size="2" color="4">
-                                UI/UX
-                            </Label>
-                            <Label size="2" color="5">
-                                진로고민
-                            </Label>
+                            {dimo
+                                ? dimo?.hash_tag.map((value, idx) => {
+                                      return <Label key={idx}>{value?.tag}</Label>;
+                                  })
+                                : ""}
                         </div>
-                        <Title size="5">{dimos.title}</Title>
+                        <Title size="5">{dimos?.title}</Title>
                         <div className="flex flex-row py-3">
-                            <Text size="1">{dimos.create_time}</Text>
+                            <Text size="1">{dimos?.create_time}</Text>
                             <InnerLine />
-                            <Text size="1">조회수 {dimos.view_count}</Text>
+                            <Text size="1">조회수 {dimos?.view_count}</Text>
                         </div>
                     </Header>
                     <Body>
                         <Text size="2" className="flex flex-wrap w-full pt-4 pb-16">
-                            {dimos.content}
+                            {dimos?.content}
                         </Text>
                     </Body>
                     <Btns>
@@ -184,7 +183,7 @@ const DimoSharedDetail = ({ history, location, match }) => {
 
                 <div className="flex flex-row font-min1">
                     <Icon name="Talk" iconSize="32" />
-                    <span className="text-xl mb-1 pl-2">댓글 {dimo.comment_count}개</span>
+                    <span className="text-xl mb-1 pl-2">댓글 {dimo?.comment_count}개</span>
                 </div>
 
                 <Card>
@@ -215,19 +214,19 @@ const DimoSharedDetail = ({ history, location, match }) => {
                         </div>
                     </div>
                     <div className="p-4">
-                        {dimo.comment_count > 0
-                            ? dimo.comment.map((value) => {
+                        {dimo?.comment_count && dimo?.comment_count > 0
+                            ? dimo?.comment.map((value) => {
                                   return (
-                                      <div key={value.comment_id}>
+                                      <div key={value?.comment_id}>
                                           <CommentDimo
-                                              account_id={value.account_id}
-                                              account_nickname={value.nickname}
-                                              account_profile_img={value.profile_img}
-                                              comment_id={value.comment_id}
-                                              content={value.content}
-                                              is_comment_like={value.is_comment_like}
-                                              like_count={value.like_count}
-                                              modify_time={value.modify_time}
+                                              account_id={value?.account_id}
+                                              account_nickname={value?.nickname}
+                                              account_profile_img={value?.profile_img}
+                                              comment_id={value?.comment_id}
+                                              content={value?.content}
+                                              is_comment_like={value?.is_comment_like}
+                                              like_count={value?.like_count}
+                                              modify_time={value?.modify_time}
                                           />
                                       </div>
                                   );
