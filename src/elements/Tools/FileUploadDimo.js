@@ -13,7 +13,9 @@ function FileUploadDimo(props) {
     const [myFiles, setMyFiles] = useState([]);
     const dispatch = useDispatch();
     const onDrop = useCallback((acceptedFiles) => {
-        setMyFiles([...myFiles, ...acceptedFiles]);
+        for (let file of acceptedFiles) {
+            setMyFiles((zz) => [...zz, file]);
+        }
         const reader = new FileReader();
         reader.readAsDataURL(myFiles);
         reader.onloadend = () => {
@@ -23,7 +25,7 @@ function FileUploadDimo(props) {
 
     useEffect(() => {
         dispatch(dimoFiles(myFiles));
-    }, [onDrop]);
+    });
 
     const removeFile = (file) => () => {
         const newFiles = [...myFiles];

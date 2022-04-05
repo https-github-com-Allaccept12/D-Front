@@ -37,7 +37,6 @@ const DimoCreate = () => {
     const a = location.pathname;
     const dispatch = useDispatch();
     const dimo = useSelector((state) => state.image.dimoFiles);
-    console.log(dimo);
 
     const JobOptions = [
         { value: "uiux", label: "UI & UX" },
@@ -72,7 +71,6 @@ const DimoCreate = () => {
         title: title.value,
         category: selected,
         content: content.value,
-        img: [{ img_url: "" }],
         hash_tag: forSendTags,
         board: status.toUpperCase(),
     };
@@ -80,10 +78,12 @@ const DimoCreate = () => {
     //태그는 어디에...
     //이미지 등록하기
     const sandData = () => {
-        console.log("befor send: ", data);
         const formData = new FormData();
         formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
-        // dimofiles.forEach((element) => formData.append("imgFile", element));
+        dimo.forEach((element) => formData.append("imgFile", element));
+        for (var pair of formData.entries()){
+            console.log(pair);
+        }
         dispatch(CreateNewDimo(formData));
         // console.log(formData);
         history.replace("/dimo/qna/all");

@@ -23,11 +23,6 @@ export const createProfile = createAsyncThunk(
       .catch((err) => {
         const access_token = sessionStorage.getItem("access_token");
         const refresh_token = sessionStorage.getItem("refresh_token");
-        // if(err.response.status == 401){
-        //   alert('다시 로그인 해주세요.');
-        //   window.location.href = "/logout";
-        // }
-        // console.log(err.response);
         console.log(err.response.data.status);
         if (err.response.data.status == 444){
             console.log('here');
