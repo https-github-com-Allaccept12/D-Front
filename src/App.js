@@ -38,7 +38,7 @@ function App() {
 
                     <Route exact path="/dimo/qnadetail/:name" component={DimoQNADetail} />
                     <Route exact path="/dimo/infodetail/:name" component={DimoSharedDetail} />
-                    <Route exact path="/dimo/create/:name" component={DimoCreate} />
+                    <Route exact path={["/dimo/create/:name", "/dimo/create/edits/:name"]} component={DimoCreate} />
 
                     <Route exact path={["/myspace", "/myspace/:name"]} component={MyPage} />
 

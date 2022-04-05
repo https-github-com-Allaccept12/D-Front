@@ -48,9 +48,39 @@ const DimoSlider = (props) => {
         dispatch(dimoPageLoad({ dispatch, board, visitor_account_id }));
     }, [board, dispatch]);
 
-    const dimos = useSelector((state) => state.dimo.dimos?.postRecommendationFeed);
+    let dimos = useSelector((state) => state.dimo.dimos?.postRecommendationFeed);
     console.log(dimos);
     const { list } = props;
+    let makeSlides = () => {};
+    if (dimos)
+        makeSlides = () => {
+            const arr = [];
+            for (let i = 0; i < dimos.length; i++) {
+                arr.push(
+                    <SS>
+                        <Slides
+                            // key={dimos[i].post_id}
+                            type="dimo"
+                            account_id={dimos[i].account_id}
+                            account_nickname={dimos[i].account_nickname}
+                            account_profile_img={dimos[i].account_profile_img}
+                            category={dimos[i].category}
+                            comment_count={dimos[i].comment_count}
+                            content={dimos[i].content}
+                            create_time={dimos[i].create_time}
+                            hash_tag1={dimos[i].hash_tag[0]?.tag}
+                            hash_tag2={dimos[i].hash_tag[1]?.tag}
+                            is_selected={dimos[i].is_selected}
+                            like_count={dimos[i].like_count}
+                            title={dimos[i].title}
+                            list={list}
+                            post_id={dimos[i].post_id}
+                        />
+                    </SS>,
+                );
+            }
+            return arr;
+        };
 
     const settings = {
         dots: false, // 슬라이드 밑에 점 보이게
@@ -93,20 +123,13 @@ const DimoSlider = (props) => {
         return (
             <>
                 <div className="flex-row hidden md:flex">
-                    <PrevBtn onClick={() => slider.current.slickPrev()}>
+                    <PrevBtn onClick={() => slider?.current.slickPrev()}>
                         <Icon name="ArrowL" iconSize="48" />
                     </PrevBtn>
                     <Slide {...settings} ref={slider}>
-                        {dimos &&
-                            dimos.map((value) => {
-                                return (
-                                    <SS key={value?.post_id}>
-                                        <Slides type="dimo" list={list} value={value} post_id={value?.post_id} />
-                                    </SS>
-                                );
-                            })}
+                        {makeSlides()}
                     </Slide>
-                    <NextBtn onClick={() => slider.current.slickNext()}>
+                    <NextBtn onClick={() => slider?.current.slickNext()}>
                         <Icon name="ArrowR" iconSize="48" />
                     </NextBtn>
                 </div>

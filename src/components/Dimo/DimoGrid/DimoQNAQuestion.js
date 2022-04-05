@@ -24,7 +24,7 @@ const Header = tw.div`
 `;
 
 const Body = tw.div`
-
+ my-5
 `;
 
 const Btns = tw.div`
@@ -35,11 +35,16 @@ const Footer = tw.div`
 py-10 flex flex-row justify-between
 `;
 
+const Images = tw.img`
+object-cover w-full h-fit object-center rounded-md flex flex-col justify-center items-center mx-auto m-2
+`;
+
 const DimoQNAQuestion = (props) => {
     const { followed, value, post } = props;
     const location = useLocation();
     const a = location.pathname;
     const post_id = a.split("/")[3];
+    // console.log(value.img[0].img_url);
 
     // const post_id = post.post_id;
 
@@ -110,6 +115,19 @@ const DimoQNAQuestion = (props) => {
                             : ""}
                     </div>
                     <button onClick={ClickDelete}>삭제</button>
+
+                    <Link
+                        to={{
+                            pathname: `/dimo/create/edits/${post_id}`,
+                            state: {
+                                isedit: true,
+                                post_id: post_id,
+                                board: "QNA",
+                            },
+                        }}
+                    >
+                        수정
+                    </Link>
                     <Title size="5">{post?.title}</Title>
                     <div className="flex flex-row py-3">
                         <Text size="1">{post?.modify_time}</Text>
@@ -122,7 +140,16 @@ const DimoQNAQuestion = (props) => {
                 <Body>
                     <Text size="2" className="flex flex-wrap w-full pt-4 pb-16">
                         {post?.content}
+                        {/* {value?.img} */}
                     </Text>
+                    {value?.img &&
+                        value?.img.map((value, idx) => {
+                            return (
+                                <div key={idx}>
+                                    <Images src={value?.img_url} alt="" />
+                                </div>
+                            );
+                        })}
                 </Body>
                 <Btns>
                     <div className="flex flex-row justify-between gap-2">
@@ -166,10 +193,10 @@ const DimoQNAQuestion = (props) => {
                             <Title size="5" className="my-3">
                                 {post?.account_nickname}
                             </Title>
-                            <Subtitle size="1">
+                            {/* <Subtitle size="1">
                                 채택률<span className="text-blue-300">100 %</span> / 마감률
                                 <span className="text-blue-300">100 %</span>
-                            </Subtitle>
+                            </Subtitle> */}
                         </div>
                     </div>
                     <FollowBtn size="2" color="1" followed={followed} />

@@ -106,8 +106,9 @@ const MainSlider = (props) => {
                     <Icon name="ArrowL" iconSize="48" />{" "}
                 </PrevBtn>
                 <Slide {...settings} ref={slider}>
-                    {/* {hotlists.map((item, index) => (<SS><Slides main key={index} info={item}/></SS>))} */}
                     {makeSlides()}
+                    {/* {hotlists.map((item, index) => (<SS><Slides main key={index} info={item}/></SS>))} */}
+
                     {/* <SS>
                         <Slides type="main" />
                     </SS>

@@ -34,6 +34,7 @@ import SelectBoxCategory from "./Tools/SelectBoxCategory";
 import FollowBtn from "./Tools/FollowBtn";
 import FileUploadDimo from "./Tools/FileUploadDimo";
 import Answer from "./Common/Answer";
+import FileEditDimo from "./Tools/FileEditDimo";
 
 export {
     Title,
@@ -71,4 +72,5 @@ export {
     FollowBtn,
     FileUploadDimo,
     Answer,
+    FileEditDimo,
 };

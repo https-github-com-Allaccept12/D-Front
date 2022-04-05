@@ -27,7 +27,14 @@ export const CreateNewDimo = createAsyncThunk("post/CreateDimo", async (formData
 });
 
 // /api/post/{post_id}
-export const editDimo = createAsyncThunk("/editDimo", ({ formData }) => {
+export const editDimo = createAsyncThunk("/editDimo", ({ post_id, formData }) => {
+    for (var key of formData.keys()) {
+        console.log(key);
+    }
+
+    for (var value of formData.values()) {
+        console.log(value);
+    }
     URL.patch(`/api/post/${post_id}`, formData, {
         headers: {
             "content-type": "multipart/form-data",
@@ -105,7 +112,15 @@ export const dimoQnaDetailLoad = createAsyncThunk("/dimoQnaDetailLoad", ({ post_
             console.log(res);
             dispatch(detailDimoQna(res.data.data));
         })
-        .catch((err) => console.log(err)),
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        }),
 );
 
 //qna 상세보기 유사한 질문
@@ -121,7 +136,15 @@ export const dimoQnaDetailSimilar = createAsyncThunk(
                 console.log(res);
                 dispatch(dimoQnaDetailSimilars(res.data.data));
             })
-            .catch((err) => console.log(err)),
+            .catch((err) => {
+                const access_token = sessionStorage.getItem("access_token");
+                const refresh_token = sessionStorage.getItem("refresh_token");
+                console.log(err.response.data.status);
+                if (err.response.data.status == 444) {
+                    console.log("here");
+                    dispatch(refreshSlice({ access_token, refresh_token }));
+                }
+            }),
 );
 
 // 게시글에 좋아요 /api/post/like/{post_id} 근데 만들다보니 얘는 공통이라 qna에도 적용
@@ -135,7 +158,15 @@ export const likeDimoInfo = createAsyncThunk("/likeDimoInfo", (post_id) => {
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 //게시글에 안좋아요
@@ -149,7 +180,15 @@ export const dislikeDimoInfo = createAsyncThunk("/dislikeDimoInfo", (post_id) =>
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 //북마크랑 북마크 취소
@@ -163,7 +202,15 @@ export const bookmarkAdd = createAsyncThunk("/bookmarkAdd", (post_id) => {
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 export const bookmarkRemove = createAsyncThunk("/bookmarkRemove", (post_id) => {
@@ -176,7 +223,15 @@ export const bookmarkRemove = createAsyncThunk("/bookmarkRemove", (post_id) => {
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 //info 상세보기
@@ -191,7 +246,15 @@ export const dimoInfoDetailLoad = createAsyncThunk("/dimoInfoDetailLoad", ({ pos
 
             dispatch(detailDimoInfo(res.data.data));
         })
-        .catch((err) => console.log(err)),
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        }),
 );
 
 //  삭제 /api/post/{post_id}?category=’category’&board=’board’
@@ -206,7 +269,15 @@ export const deleteDimo = createAsyncThunk("/deleteDimo", ({ post_id, category, 
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 //답변삭제
@@ -221,7 +292,15 @@ export const deleteAnswerDimo = createAsyncThunk("/deleteAnswerDimo", (answer_id
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 //답변달기 api
@@ -238,7 +317,15 @@ export const CreateAnswerDimo = createAsyncThunk("/CreateAnswerDimo", async (dat
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 //답변수정
@@ -253,7 +340,15 @@ export const editAnswerDimo = createAsyncThunk("/editAnswerDimo", async ({ answe
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 //인포댓글달기
@@ -270,7 +365,15 @@ export const CreateInfoDimo = createAsyncThunk("/CreateInfoDimo", async (data, t
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 // 인포에댓글 수정
@@ -284,7 +387,15 @@ export const commentModifyDimo = createAsyncThunk("/commentModifyDimo", ({ comme
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 // 인포댓글 삭제
@@ -298,7 +409,15 @@ export const commentDeleteDimo = createAsyncThunk("/commentDeleteDimo", (comment
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 ///api/post/search/{last_post_id}/{keyword} 검색기능
@@ -312,7 +431,15 @@ export const searchDimo = createAsyncThunk("/searchDimo", ({ keyword, dispatch, 
             console.log(res);
             dispatch(dimos(res.data.data));
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 ///api/post/category/{category}/{last_post_id}/{board} 검색
@@ -329,7 +456,15 @@ export const orderByNewDimo = createAsyncThunk(
                 dispatch(dimos(res.data.data));
                 sessionStorage.setItem("category", category);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                const access_token = sessionStorage.getItem("access_token");
+                const refresh_token = sessionStorage.getItem("refresh_token");
+                console.log(err.response.data.status);
+                if (err.response.data.status == 444) {
+                    console.log("here");
+                    dispatch(refreshSlice({ access_token, refresh_token }));
+                }
+            });
     },
 );
 
@@ -343,7 +478,15 @@ export const orderByLikeDimo = createAsyncThunk(
                 dispatch(dimos(res.data.data));
                 sessionStorage.setItem("category", category);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                const access_token = sessionStorage.getItem("access_token");
+                const refresh_token = sessionStorage.getItem("refresh_token");
+                console.log(err.response.data.status);
+                if (err.response.data.status == 444) {
+                    console.log("here");
+                    dispatch(refreshSlice({ access_token, refresh_token }));
+                }
+            });
     },
 );
 
