@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Slider from "react-slick";
 import tw from "tailwind-styled-components";
 import Slides from "./Slides";
 import { Image, Text, Icon } from "../../elements";
 import { useSelector, useDispatch } from "react-redux";
-
+import { Link, Route, Switch, useLocation } from "react-router-dom";
+import { dimoPageLoad, categoryDimo } from "../../redux/modules/dimo";
 export const Slide = tw(Slider)`
 w-full md:w-[32.5rem] lg:w-[66rem] 2xl:w-[106rem]
     mx-auto text-white pl-5 lg:ml-40 xl:ml-5
@@ -15,18 +16,6 @@ const SS = tw.div`
     
 `;
 
-const p = [
-    { 1: "1" },
-    { 2: "2" },
-    { 3: "3" },
-    { 4: "4" },
-    { 5: "5" },
-    { 6: "6" },
-    { 7: "7" },
-    { 8: "8" },
-    { 9: "9" },
-    { 10: "10" },
-];
 const PrevBtn = tw.button`
 z-10 text-white ml-10
 `;
@@ -37,9 +26,30 @@ z-10 text-white mr-10
 
 const DimoSlider = (props) => {
     const slider = React.useRef(null);
-    const dimosQNA = useSelector((state) => state.dimo.dimosQNA);
-    const dimosINFO = useSelector((state) => state.dimo.dimosINFO);
-    // console.log(dimosINFO.postRecommendationFeed);
+    const location = useLocation();
+    const a = location.pathname;
+    const b = a.split("/")[2];
+    let board = b.toUpperCase();
+
+    const dispatch = useDispatch();
+    let account_id = 0;
+    // const id_cookie = getCookie("account_id");
+    const id_cookie = sessionStorage.getItem("account_id");
+    if (id_cookie) {
+        account_id = id_cookie;
+        // console.log("account_id: ", account_id);
+    }
+    const visitor_account_id = account_id;
+    useEffect(() => {
+        if (board === "INFO") {
+            dispatch(dimoPageLoad({ dispatch, board, visitor_account_id }));
+        }
+        board = "QNA";
+        dispatch(dimoPageLoad({ dispatch, board, visitor_account_id }));
+    }, [board, dispatch]);
+
+    const dimos = useSelector((state) => state.dimo.dimos?.postRecommendationFeed);
+    console.log(dimos);
     const { list } = props;
 
     const settings = {
@@ -83,21 +93,20 @@ const DimoSlider = (props) => {
         return (
             <>
                 <div className="flex-row hidden md:flex">
-                    <PrevBtn onClick={() => slider?.current?.slickPrev()}>
-                        <Icon name="ArrowL" iconSize="48" />{" "}
+                    <PrevBtn onClick={() => slider.current.slickPrev()}>
+                        <Icon name="ArrowL" iconSize="48" />
                     </PrevBtn>
                     <Slide {...settings} ref={slider}>
-                        {dimosQNA &&
-                            dimosQNA.postRecommendationFeed.map((value) => {
+                        {dimos &&
+                            dimos.map((value) => {
                                 return (
-                                    // <Images src={value.img_url} />
-                                    <SS key={value.post_id}>
-                                        <Slides type="dimo" list={list} value={value} post_id={value.post_id} />
+                                    <SS key={value?.post_id}>
+                                        <Slides type="dimo" list={list} value={value} post_id={value?.post_id} />
                                     </SS>
                                 );
                             })}
                     </Slide>
-                    <NextBtn onClick={() => slider?.current?.slickNext()}>
+                    <NextBtn onClick={() => slider.current.slickNext()}>
                         <Icon name="ArrowR" iconSize="48" />
                     </NextBtn>
                 </div>
@@ -107,21 +116,21 @@ const DimoSlider = (props) => {
         return (
             <>
                 <div className="flex-row hidden md:flex">
-                    <PrevBtn onClick={() => slider?.current?.slickPrev()}>
-                        <Icon name="ArrowL" iconSize="48" />{" "}
+                    <PrevBtn onClick={() => slider.current.slickPrev()}>
+                        <Icon name="ArrowL" iconSize="48" />
                     </PrevBtn>
                     <Slide {...settings} ref={slider}>
-                        {dimosINFO &&
-                            dimosINFO.postRecommendationFeed.map((value) => {
+                        {dimos &&
+                            dimos.map((value) => {
                                 return (
                                     // <Images src={value.img_url} />
-                                    <SS key={value.post_id}>
-                                        <Slides type="dimo" list={list} value={value} post_id={value.post_id} />
+                                    <SS key={value?.post_id}>
+                                        <Slides type="dimo" list={list} value={value} post_id={value?.post_id} />
                                     </SS>
                                 );
                             })}
                     </Slide>
-                    <NextBtn onClick={() => slider?.current?.slickNext()}>
+                    <NextBtn onClick={() => slider.current.slickNext()}>
                         <Icon name="ArrowR" iconSize="48" />
                     </NextBtn>
                 </div>

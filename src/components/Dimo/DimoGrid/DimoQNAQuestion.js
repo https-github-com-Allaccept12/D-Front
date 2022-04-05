@@ -37,8 +37,12 @@ py-10 flex flex-row justify-between
 
 const DimoQNAQuestion = (props) => {
     const { followed, value, post } = props;
-    console.log(post);
-    const post_id = post.post_id;
+    const location = useLocation();
+    const a = location.pathname;
+    const post_id = a.split("/")[3];
+
+    // const post_id = post.post_id;
+
     const dispatch = useDispatch();
 
     const history = useHistory();
@@ -62,6 +66,7 @@ const DimoQNAQuestion = (props) => {
         // history.goBack();
         //여기에 뭔가 돌아가기버튼...
     };
+
     const ClickDelete = () => {
         const board = `QNA`;
         const category = post.category;
@@ -79,8 +84,8 @@ const DimoQNAQuestion = (props) => {
     //     setModifyDiv(!modifyDiv);
     // };
 
-    const [like_cnt, setLikeCnt] = useState(post.like_count);
-    const [is_like, setIsLike] = useState(post.is_like);
+    const [like_cnt, setLikeCnt] = useState(post?.like_count);
+    const [is_like, setIsLike] = useState(post?.is_like);
     const cancelLike = () => {
         setIsLike(false);
         setLikeCnt(like_cnt - 1);
@@ -97,28 +102,26 @@ const DimoQNAQuestion = (props) => {
         <>
             <Card>
                 <Header>
-                    {/* <div className="flex flex-row gap-1 md:pt-10 pb-4">
-                        {post
-                            ? t.map((value, idx) => {
-                                  return <Label key={idx}>{value.tag}</Label>;
+                    <div className="flex flex-row gap-1 md:pt-10 pb-4">
+                        {value
+                            ? value.hash_tag.map((value, idx) => {
+                                  return <Label key={idx}>{value?.tag}</Label>;
                               })
                             : ""}
-                        <Label className="">{t[0].tag}</Label>
-                        {t[1] ? <Label className="">{t[1].tag}</Label> : ""}
-                    </div> */}
+                    </div>
                     <button onClick={ClickDelete}>삭제</button>
-                    <Title size="5">{post.title}</Title>
+                    <Title size="5">{post?.title}</Title>
                     <div className="flex flex-row py-3">
-                        <Text size="1">{post.modify_time}</Text>
+                        <Text size="1">{post?.modify_time}</Text>
                         <InnerLine />
-                        <Text size="1">조회수 {post.view_count}</Text>
+                        <Text size="1">조회수 {post?.view_count}</Text>
                         <InnerLine />
-                        {post.is_selected && <Text size="1">채택완료</Text>}
+                        {post?.is_selected && <Text size="1">채택완료</Text>}
                     </div>
                 </Header>
                 <Body>
                     <Text size="2" className="flex flex-wrap w-full pt-4 pb-16">
-                        {post.content}
+                        {post?.content}
                     </Text>
                 </Body>
                 <Btns>
@@ -158,10 +161,10 @@ const DimoQNAQuestion = (props) => {
 
                 <Footer>
                     <div className="justify-start flex flex-row">
-                        <Profile size="5" src={post.account_profile_img} className="hidden md:flex" />
+                        <Profile size="5" src={post?.account_profile_img} className="hidden md:flex" />
                         <div className="-mt-2 ml-3">
                             <Title size="5" className="my-3">
-                                {post.account_nickname}
+                                {post?.account_nickname}
                             </Title>
                             <Subtitle size="1">
                                 채택률<span className="text-blue-300">100 %</span> / 마감률

@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Subtitle, Profile, Title, Text, FollowBtn, InputNoTitle } from "../../../elements";
 import { Comment } from "../../Comment";
 import { useHistory, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useToggle, useInput } from "../../../hooks";
-import { deleteAnswerDimo } from "../../../redux/modules/dimo";
+import { deleteAnswerDimo, editAnswerDimo } from "../../../redux/modules/dimo";
 
 const UnderLine = tw.hr`
 border border-dgray-300 w-full col-span-full mt-10 mb-5
@@ -53,12 +53,34 @@ const DimoQNAAnswer = (props) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const [showAnswer, setShowAnswer] = useToggle();
-    const validMaxLen = (value) => value.length <= 30;
-    const name = useInput("", [validMaxLen]);
+
+    const [contentValue, setContentValue] = useState(content);
+    const [commentContent, setContent] = useState("");
+    const [modifyDiv, setModifyDiv] = useState(false);
+
+    const name = useInput("", []);
 
     const ClickDelete = () => {
         dispatch(deleteAnswerDimo(answer_id));
         history.replace("/dimo/qna");
+    };
+
+    useEffect(() => {
+        setContent(contentValue);
+    }, [contentValue]);
+
+    const openModify = () => {
+        setModifyDiv(!modifyDiv);
+    };
+
+    const modifyComment = () => {
+        const content = name.value;
+        const data = { content: content };
+        console.log(content);
+        dispatch(editAnswerDimo({ answer_id, data }));
+        setContentValue(content);
+        setContent(content);
+        setModifyDiv(!modifyDiv);
     };
 
     return (
@@ -66,6 +88,11 @@ const DimoQNAAnswer = (props) => {
             <Card selected={selected}>
                 <Footer>
                     <button onClick={ClickDelete}>삭제</button>
+                    {!modifyDiv && (
+                        <>
+                            <button onClick={openModify}>수정</button>
+                        </>
+                    )}
                     <div className="justify-start flex flex-row">
                         <Profile size="5" src={account_profile_img} className="hidden md:flex" />
                         <div className="-mt-2 ml-3">
@@ -87,7 +114,11 @@ const DimoQNAAnswer = (props) => {
                 <UnderLine />
                 <Header>
                     <div className="flex flex-row py-3">
-                        <Text size="1">{modify_time}</Text>
+                        <Text size="1">
+                            {modify_time.split("T")[0] +
+                                " " +
+                                modify_time.split("T")[1].split(".")[0].slice(undefined, 5)}
+                        </Text>
                         <InnerLine />
                         {/* <Text size="1">조회수 2천</Text>
                         <InnerLine /> */}
@@ -96,7 +127,29 @@ const DimoQNAAnswer = (props) => {
                 </Header>
                 <Body>
                     <Text size="2" className="flex flex-wrap w-full pt-4 pb-16">
-                        {content}
+                        <div className="flex flex-col ">
+                            {modifyDiv ? (
+                                <div className="w-full ml-auto">
+                                    <InputNoTitle
+                                        value={name.value}
+                                        onChange={name.onChange}
+                                        cardsize="1"
+                                        maxlen="30"
+                                        width="2"
+                                        is_submit
+                                        placeholder={content}
+                                        onSubmit={modifyComment}
+                                    />
+                                    <Button size="3" className="invisible ">
+                                        제출
+                                    </Button>
+                                </div>
+                            ) : (
+                                <Text size="2" className="m-1">
+                                    {content}
+                                </Text>
+                            )}
+                        </div>
                     </Text>
                 </Body>
                 <Btns>
@@ -115,6 +168,10 @@ const DimoQNAAnswer = (props) => {
                     </div>
                 </Btns>
             </Card>
+
+            <></>
+
+            <></>
         </>
     );
 };
