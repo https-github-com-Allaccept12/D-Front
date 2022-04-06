@@ -63,8 +63,9 @@ const TendencyResult = ({ history, match }) => {
     const token = sessionStorage.getItem("access_token");
     const [is_loaded, setIsLoaded] = useState(false);
     const [myTendency, setMyTendency] = useState("");
-    const fromMyPage = useLocation().state.from;
-    // console.log(fromMyPage);
+    const fromMyPage = location.state.from;
+    console.log(location.state);
+    console.log(fromMyPage);
 
     useEffect(() => {
         setMyTendency(location.state.title.tendency);
@@ -158,13 +159,13 @@ const TendencyResult = ({ history, match }) => {
                                 </Button>
                             ) : (
                                 <>
-                                    <Link to="/">
+                                    {/* <Link to="/">
                                         <Button size="3" color="4" className="mb-[0.75rem]">
                                             D PLUS 홈으로
                                         </Button>
-                                    </Link>
-                                    <Button size="3" color="5" onClick={SendTendency}>
-                                        관심사 저장하기
+                                    </Link> */}
+                                    <Button size="3" color="4" onClick={SendTendency}>
+                                        다음
                                     </Button>
                                 </>
                             )}
@@ -238,13 +239,13 @@ const TendencyResult = ({ history, match }) => {
                                 </Button>
                             ) : (
                                 <>
-                                    <Link to="/">
+                                    {/* <Link to="/">
                                         <Button size="3" color="4" className="mb-[0.75rem]">
                                             D PLUS 홈으로
                                         </Button>
-                                    </Link>
-                                    <Button size="3" color="5" onClick={SendTendency}>
-                                        관심사 저장하기
+                                    </Link> */}
+                                    <Button size="3" color="4" onClick={SendTendency}>
+                                        다음
                                     </Button>
                                 </>
                             )}
@@ -318,13 +319,13 @@ const TendencyResult = ({ history, match }) => {
                                 </Button>
                             ) : (
                                 <>
-                                    <Link to="/">
+                                    {/* <Link to="/">
                                         <Button size="3" color="4" className="mb-[0.75rem]">
                                             D PLUS 홈으로
                                         </Button>
-                                    </Link>
-                                    <Button size="3" color="5" onClick={SendTendency}>
-                                        관심사 저장하기
+                                    </Link> */}
+                                    <Button size="3" color="4" onClick={SendTendency}>
+                                        다음
                                     </Button>
                                 </>
                             )}
@@ -398,13 +399,13 @@ const TendencyResult = ({ history, match }) => {
                                 </Button>
                             ) : (
                                 <>
-                                    <Link to="/">
+                                    {/* <Link to="/">
                                         <Button size="3" color="4" className="mb-[0.75rem]">
                                             D PLUS 홈으로
                                         </Button>
-                                    </Link>
+                                    </Link> */}
                                     <Button size="3" color="5" onClick={SendTendency}>
-                                        관심사 저장하기
+                                        다음
                                     </Button>
                                 </>
                             )}
@@ -478,13 +479,13 @@ const TendencyResult = ({ history, match }) => {
                                 </Button>
                             ) : (
                                 <>
-                                    <Link to="/">
+                                    {/* <Link to="/">
                                         <Button size="3" color="4" className="mb-[0.75rem]">
                                             D PLUS 홈으로
                                         </Button>
-                                    </Link>
-                                    <Button size="3" color="5" onClick={SendTendency}>
-                                        관심사 저장하기
+                                    </Link> */}
+                                    <Button size="3" color="4" onClick={SendTendency}>
+                                        다음
                                     </Button>
                                 </>
                             )}
@@ -560,13 +561,13 @@ const TendencyResult = ({ history, match }) => {
                                 </Button>
                             ) : (
                                 <>
-                                    <Link to="/">
+                                    {/* <Link to="/">
                                         <Button size="3" color="4" className="mb-[0.75rem]">
                                             D PLUS 홈으로
                                         </Button>
-                                    </Link>
-                                    <Button size="3" color="5" onClick={SendTendency}>
-                                        관심사 저장하기
+                                    </Link> */}
+                                    <Button size="3" color="4" onClick={SendTendency}>
+                                        다음
                                     </Button>
                                 </>
                             )}

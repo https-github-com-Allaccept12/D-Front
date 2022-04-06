@@ -10,6 +10,7 @@ import FileUpload from "../../elements/Tools/FileUpload";
 import { useInput } from "../../hooks";
 import { FakeHeader } from "../../NavComponents";
 import tw from "tailwind-styled-components";
+import Swal from 'sweetalert2';
 
 const Profile = tw.div`
 bg-gradient-to-r from-[#9262F7] to-[#7681FB] absolute top-0 w-full h-[100rem]
@@ -20,7 +21,7 @@ xl:grid w-full xl:w-4/5 mx-auto mt-44 bg-white gap-3 rounded-md
 `;
 
 const Body = tw.div`
-xl:grid col-start-2 col-end-3 pt-16 bg-white
+xl:grid col-start-2 col-end-3 pt-16 bg-white justify-items-center
 `;
 
 const MyPic = tw.div`
@@ -87,7 +88,13 @@ const CreateProfile = (props) => {
 
     const SendProfile = () => {
         if (nicknameState !== "available") {
-            alert("닉네임을 확인해주세요.\n닉네임은 3~10자 입니다.");
+            Swal.fire({
+                icon: 'error',
+                title: '닉네임을 확인해주세요.',
+                text: '닉네임은 3~10자 입니다.',
+                showConfirmButton: false,
+                timer: 1500
+              })
             return;
         }
         const formData = new FormData();
@@ -119,12 +126,10 @@ const CreateProfile = (props) => {
                     <div className="flex flex-col items-center justify-center max-w-xl mx-auto xl:mb-32">
                         <img src={set_profile} />
                         <Title size="5" className="xl:text-2xl">
-                            님의 프로필을 구성해 볼까요?
+                            프로필을 구성해 볼까요?
                         </Title>
                         <Text size="1" className="mt-4">
                             다른 이용자님들에게 보여질 프로필입니다.
-                            <br />
-                            설정하신 프로필은 어쩌구저쩌구에 활용됩니다.
                         </Text>
                     </div>
 

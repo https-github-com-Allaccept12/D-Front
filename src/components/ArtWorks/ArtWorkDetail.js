@@ -76,7 +76,7 @@ flex flex-col gap-2 justify-center items-center
 `;
 
 const ArtWorkDetail = (props) => {
-    const { fromPostMain, setTempProfile, setBarArtWorkId, setBarBookMark, setBarLike, setBarFollow } = props;
+    const { closeRef, fromPostMain, setTempProfile, setBarArtWorkId, setBarBookMark, setBarLike, setBarFollow } = props;
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const myProfileImg = sessionStorage.getItem("profile_img");

@@ -82,7 +82,10 @@ const CategoryMini = (props) => {
                                 📠 브랜딩/편집디자인
                             </TabBtn>
                             <TabBtn value="package" onClick={ClickCategoryDimo}>
-                                🎁 제품/패키지 디자인
+                                🎁 패키지 디자인
+                            </TabBtn>
+                            <TabBtn value="package" onClick={ClickCategoryDimo}>
+                            🏷️ 제품 디자인
                             </TabBtn>
                             <TabBtn value="typo" onClick={ClickCategoryDimo}>
                                 📝 타이포그래피
@@ -134,7 +137,10 @@ const CategoryMini = (props) => {
                                 📠 브랜딩/편집디자인
                             </TabBtn>
                             <TabBtn value="package" onClick={ClickCategoryDimo}>
-                                🎁 제품/패키지 디자인
+                                🎁 패키지 디자인
+                            </TabBtn>
+                            <TabBtn value="package" onClick={ClickCategoryDimo}>
+                                🏷️ 제품 디자인
                             </TabBtn>
                             <TabBtn value="typo" onClick={ClickCategoryDimo}>
                                 📝 타이포그래피
@@ -189,7 +195,10 @@ const CategoryMini = (props) => {
                                 📠 브랜딩/편집디자인
                             </TabBtn>
                             <TabBtn value="pakage" onClick={ClickCategory}>
-                                🎁 제품/패키지 디자인
+                                🎁 패키지 디자인
+                            </TabBtn>
+                            <TabBtn value="pakage" onClick={ClickCategory}>
+                                🏷️ 제품 디자인
                             </TabBtn>
                             <TabBtn value="typo" onClick={ClickCategory}>
                                 📝 타이포그래피

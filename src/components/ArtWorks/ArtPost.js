@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IconBtn, Subtitle, Icon, Thumbnail, Profile, Text } from "../../elements";
 
 import { useDispatch } from "react-redux";
@@ -18,7 +18,6 @@ flex justify-center items-center flex-col shrink-0
 
 const ArtPost = (props) => {
     const { account_id, profile, nickname, thumbnail, is_follow, is_like, like_count, artwork_id, is_bookmark } = props;
-    console.log(account_id, nickname, "여기요 여기");
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [follow, setFollow] = useState(is_like);
@@ -32,6 +31,7 @@ const ArtPost = (props) => {
     const ArtWorkURL = `localhost:3000/detailart/${barArtWorkId}`;
 
     const handleClickArtWork = () => {
+        // setShowDetail(!showDetail);
         let owner_account_id = account_id;
         const visitor_account_id = sessionStorage.getItem("account_id");
         dispatch(artworkDetailLoad({ artwork_id, visitor_account_id, dispatch }));
@@ -39,12 +39,7 @@ const ArtPost = (props) => {
     };
 
     const clickProfile = () => {
-        console.log('clickckcick');
-        navigate(`/myspace/myprofile/${barArtWorkId}`, {
-            state: {
-                owner_id: { barArtWorkId },
-            }
-        })
+        navigate(`/myspace/myprofile/${account_id}`)
     }
     
     const clickFollow = () => {
@@ -133,9 +128,11 @@ const ArtPost = (props) => {
 
                                 <div className="hidden lg:contents">
                                     <div className="flex flex-row justify-start w-20 gap-3 mx-auto lg:fixed top-20 right-10 2xl:right-48 lg:flex-col">
-                                        <div onclick={clickProfile} className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
+                                        <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                                <Profile onclick={clickProfile} size="5" src={tempProfile} />
+                                                <button onClick={clickProfile} data-bs-dismiss="modal">
+                                                <Profile size="5" src={tempProfile} />
+                                                </button>
                                             </div>
                                             <Text size="1">프로필</Text>
                                         </div>

@@ -218,7 +218,7 @@ export const categoryArtwork = createAsyncThunk("/categoryArtwork", ({ category,
         .catch((err) => console.log(err));
 });
 
-// 좋아요순 정렬
+// 카테고리별 좋아요순 정렬
 export const orderByLike = createAsyncThunk("/orderByLike", ({ category, dispatch }) => {
     URL.get(`/api/artwork/sort/${category}?start=0`)
         .then((res) => {
@@ -229,6 +229,16 @@ export const orderByLike = createAsyncThunk("/orderByLike", ({ category, dispatc
         .catch((err) => console.log(err));
 });
 
+// 카테고리별 최신순 정렬
+export const orderByTime = createAsyncThunk("/orderByTime", ({ category, dispatch }) => {
+    URL.get(`/api/artwork/category/${category}?start=0`)
+        .then((res) => {
+            console.log(res);
+            dispatch(artworks(res.data.data));
+            sessionStorage.setItem("category", category);
+        })
+        .catch((err) => console.log(err));
+});
 
 // 팔로우한 작가 작품
 export const orderByFollow = createAsyncThunk("/orderByFollow", ({ category, visitor_account_id, dispatch }) => {

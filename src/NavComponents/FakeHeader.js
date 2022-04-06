@@ -23,7 +23,7 @@ const Header = (props) => {
     }, []);
 
     return (
-        <div className="w-full z-50 absolute top-0">
+        <div className="absolute top-0 z-50 w-full">
             <div className="flex justify-center items-center mx-auto md:absolute md:top-[2.25rem] md:left-[7.375rem] text-white">
                 <Link to="/">
                     <Logo name="DplusCF" />
@@ -53,9 +53,17 @@ const Header = (props) => {
                         </Title>
                     )}
                     {is_login ? (
+                        <div onClick={() => 
+                            Swal.fire({
+                                icon: 'success',
+                                title: '로그아웃 되었습니다',
+                                showConfirmButton: false,
+                                timer: 1000
+                            })}>
                         <Title size="6">
                             <Link to="/logout">로그아웃</Link>
                         </Title>
+                        </div>
                     ) : (
                         <Title size="6">
                             <Link to="/login">login</Link>

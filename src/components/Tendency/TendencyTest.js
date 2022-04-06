@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { CreateTendency } from "../../redux/modules/tendency.js";
 import { Title, Text } from "../../elements";
 import Button from "./TendencyButton";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useToggle } from "../../hooks";
 
@@ -41,6 +41,7 @@ let mbti_s = "";
 
 const TendencyTest = (props) => {
     // let designation = "";
+    const navigate = useNavigate();
     const [designation, setDesignation] = useState("");
     // const token = useSelector((state) => state.user.user);
     const token = sessionStorage.getItem("access_token");
@@ -73,10 +74,11 @@ const TendencyTest = (props) => {
     }, [mbti_s]);
 
     const ClickToResult = () => {
+        const tendency = designation;
         navigate(`/Result/${tendency}`, {
             state: {
                 title: { tendency },
-                from: true,
+                from: false,
             },
         });
     }

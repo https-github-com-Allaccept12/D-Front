@@ -71,9 +71,17 @@ const HeaderMini = (props) => {
                     </Title>
                     {is_login ? (
                         <>
+                            <div onClick={() => 
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: '로그아웃 되었습니다',
+                                        showConfirmButton: false,
+                                        timer: 1000
+                                    })}>
                             <Title size="6">
                                 <Link to="/logout">로그아웃</Link>
                             </Title>
+                            </div>
                         </>
                     ) : (
                         <>
@@ -92,7 +100,13 @@ const HeaderMini = (props) => {
                                 마이페이지
                             </Title>
 
-                            <Title size="1" onClick={() => alert("로그아웃되었습니다!")}>
+                            <Title size="1" onClick={() => 
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: '로그아웃 되었습니다',
+                                    showConfirmButton: false,
+                                    timer: 1000
+                                  })}>
                                 <Link to="/logout">
                                     <Profile size="6" className="" />
                                 </Link>
