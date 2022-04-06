@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { categoryDimo } from "../redux/modules/dimo";
 import { Modal } from "../elements/Tools/Modal";
 
-const Header = (props) => {
+const OHeader = (props) => {
     const [is_login, setIsLogin] = useState(false);
     const [ownerId, setOwnerId] = useState("");
     const [accountId, setAccountId] = useState("");
@@ -16,6 +16,8 @@ const Header = (props) => {
     let navigate = useNavigate();
     const category = "uiux";
     const board = "QNA";
+    let nickname = "";
+    let owner_id = "";
     const setPage = () => {
         dispatch(categoryDimo({ category, dispatch, board }));
     };
@@ -38,6 +40,7 @@ const Header = (props) => {
             setIsLogin(false);
         }
     }, []);
+
     const goToMyPage = () => {
         navigate(`/myspace/myprofile`, {
             state: {
@@ -46,6 +49,7 @@ const Header = (props) => {
             },
         });
     };
+
     return (
         <div className="md:h-[7.8rem] w-full">
             <div className="flex justify-center items-center mx-auto md:absolute md:top-[2.25rem] md:left-[7.375rem] py-5 md:py-0 ">
@@ -65,7 +69,7 @@ const Header = (props) => {
                         <Link to="/dimo/qna">디모</Link>
                     </Title>
                     {is_login && (
-                        <Title size="6" onClick={goToMyPage}>
+                        <Title size="6" onClick={goToMyPage} className="cursor-pointer">
                             마이페이지
                         </Title>
                     )}
@@ -79,7 +83,7 @@ const Header = (props) => {
                                 </Link>
                                 <div onClick={() => alert("로그아웃되었습니다!")}>
                                     <Link to="/logout">
-                                        <span>로그아웃</span>
+                                        <Title size="6">로그아웃</Title>
                                     </Link>
                                 </div>
                             </div>
@@ -101,4 +105,4 @@ const Header = (props) => {
     );
 };
 
-export default Header;
+export default OHeader;

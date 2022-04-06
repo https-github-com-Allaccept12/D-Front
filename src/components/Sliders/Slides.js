@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { requestFollow } from "../../redux/modules/user";
 import { Label, Title, HeartButton, Text, Card, Profile, Button, Thumbnail, IconBtn } from "../../elements";
 import tw from "tailwind-styled-components";
-
+import { useToggle } from "../../hooks";
 import { useNavigate, Link } from "react-router-dom";
 import { DimoWorkPost } from "../Dimo";
 const IconBox = tw.div`
@@ -11,7 +11,7 @@ absolute bottom-6 px-9 w-full
 `;
 
 const ColorSlide = tw.div`
-absolute w-[32.5rem] h-[18.75rem]  rounded-lg bg-dpurple-200 
+absolute w-[28.9rem] h-[18.75rem]  rounded-lg bg-dpurple-200 cursor-pointer
 `;
 
 const Slides = (props) => {
@@ -38,6 +38,9 @@ const Slides = (props) => {
         like_count,
         title,
     } = props;
+
+    const [is_fow, setIsfow] = useToggle(follow);
+
     let { job } = props;
     if (job === "uiux") {
         job = "UI / UX";
@@ -65,11 +68,30 @@ const Slides = (props) => {
 
     const makeFollow = () => {
         const account_id = { account_id: id };
+        setIsfow();
         dispatch(requestFollow(account_id));
     };
 
     const goToProfile = () => {
         navigate(`/myspace/myprofile/${nickname}/${id}`);
+    };
+
+    const goToDimoQNA = () => {
+        navigate(`/dimo/qnadetail/${post_id}`, {
+            state: {
+                post_id: post_id,
+                board: "QNA",
+            },
+        });
+    };
+
+    const goToDimoINFO = () => {
+        navigate(`/dimo/infodetail/${post_id}`, {
+            state: {
+                post_id: post_id,
+                board: "INFO",
+            },
+        });
     };
 
     if (type === "main")
@@ -130,9 +152,9 @@ const Slides = (props) => {
                             </div>
                         </div>
                         <div className="flex justify-center mt-5">
-                            {!follow ? (
+                            {!is_fow === true ? (
                                 <Button size="3" color="1" onClick={makeFollow}>
-                                    팔로우
+                                    팔로우🎉
                                 </Button>
                             ) : (
                                 <Button size="3" color="4">
@@ -159,102 +181,85 @@ const Slides = (props) => {
             </>
         );
 
-    if (type === "dimo" && list === "qna")
+    if (type === "dimo" && list === "QNA")
         return (
             <>
                 <>
-                    <Link
-                        to={{
-                            pathname: `/dimo/qnadetail/${post_id}`,
-                            state: {
-                                id: { post_id },
-                            },
-                        }}
-                    >
-                        <div className="w-[32.5rem] h-[18.75rem] rounded-lg">
-                            <ColorSlide>
-                                <div>
-                                    <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
-                                        <Profile size="6" src={account_profile_img} />
-                                    </div>
-                                    <div className="absolute top-7 left-28">
-                                        <div className="flex flex-row gap-1">
-                                            <Label className="">{hash_tag1}</Label>
-                                            {hash_tag1 ? <Label className="">{hash_tag2}</Label> : ""}
-                                        </div>
-                                        <Title size="6">{title}</Title>
-                                    </div>
+                    <div className="w-[28.9rem] h-[18.75rem] rounded-lg" onClick={goToDimoQNA}>
+                        <ColorSlide>
+                            <div>
+                                <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
+                                    <Profile size="6" src={value.account_profile_img} />
                                 </div>
-                                <div className="absolute px-10 top-28">
-                                    <Text size="2" className="flex flex-wrap h-24 overflow-hidden w-80 text-ellipsis">
-                                        {content}
-                                    </Text>
-                                    <Text size="2">(더보기)</Text>
+                                <div className="absolute top-7 left-28">
+                                    {/* <div className="flex flex-row gap-1">
+                                        <Label slides="true">{hash_tag1}</Label>
+                                        {hash_tag1 && <Label slides="true">{hash_tag2}</Label>}
+                                    </div> */}
+                                    <Title size="6">{value.title}</Title>
                                 </div>
-                                <IconBox>
-                                    <div className="flex flex-row justify-end">
-                                        {/* 여기가 디테일링크 */}
+                            </div>
+                            <div className="absolute px-10 top-28">
+                                <Text size="2" className="flex flex-wrap h-24 overflow-hidden w-80 text-ellipsis">
+                                    {value.content}
+                                </Text>
+                                <Text size="2">(더보기)</Text>
+                            </div>
+                            <IconBox>
+                                <div className="flex flex-row justify-end">
+                                    {/* 여기가 디테일링크 */}
 
-                                        <div className="flex flex-row gap-5">
-                                            <IconBtn name="Talk" iconSize="20" count={comment_count} />
-                                            <IconBtn name="HeartE" iconSize="20" count={like_count} />
-                                        </div>
+                                    <div className="flex flex-row gap-5">
+                                        <IconBtn name="Talk" iconSize="20" count={value.comment_count} />
+                                        <IconBtn name="HeartE" iconSize="20" count={value.like_count} />
                                     </div>
-                                </IconBox>
-                            </ColorSlide>
-                        </div>
-                    </Link>
+                                </div>
+                            </IconBox>
+                        </ColorSlide>
+                    </div>
                 </>
             </>
         );
-    if (type === "dimo" && list === "info")
+    if (type === "dimo" && list === "INFO")
         return (
             <>
                 <>
-                    <Link
-                        to={{
-                            pathname: `/dimo/infodetail/${post_id}`,
-                            state: {
-                                id: { post_id },
-                            },
-                        }}
-                    >
-                        <div className="w-[32.5rem] h-[18.75rem] rounded-lg">
-                            <ColorSlide>
-                                <div>
-                                    <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
-                                        <Profile size="6" src={account_profile_img} />
-                                    </div>
-                                    <div className="absolute top-7 left-28">
-                                        <div className="flex flex-row gap-1">
-                                            <Label className="">{hash_tag1}</Label>
-                                            {hash_tag1 ? <Label className="">{hash_tag2}</Label> : ""}
-                                        </div>
-                                        <Title size="6">{title}</Title>
-                                    </div>
+                    <div className="w-[28.9rem] h-[18.75rem] rounded-lg" onClick={goToDimoINFO}>
+                        <ColorSlide>
+                            <div>
+                                <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
+                                    <Profile size="6" src={value.account_profile_img} />
                                 </div>
-                                <div className="absolute px-10 top-28">
-                                    <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
-                                        {content}
-                                    </Text>
-                                    <Text size="2">(더보기)</Text>
+                                <div className="absolute top-7 left-28">
+                                    {/* <div className="flex flex-row gap-1">
+                                        <Label slides="true">{value.hash_tag1}</Label>
+                                        {value.hash_tag1 && <Label slides="true">{value.hash_tag2}</Label>}
+                                    </div> */}
+                                    <Title size="6">{value.title}</Title>
                                 </div>
-                                <IconBox>
-                                    <div className="flex flex-row justify-end">
-                                        {/* 여기가 디테일링크 */}
+                            </div>
+                            <div className="absolute px-10 top-28">
+                                <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
+                                    {value.content}
+                                </Text>
+                                <Text size="2">(더보기)</Text>
+                            </div>
+                            <IconBox>
+                                <div className="flex flex-row justify-end">
+                                    {/* 여기가 디테일링크 */}
 
-                                        <div className="flex flex-row gap-5">
-                                            <IconBtn name="Talk" iconSize="20" count={comment_count} />
-                                            <IconBtn name="HeartE" iconSize="20" count={like_count} />
-                                        </div>
+                                    <div className="flex flex-row gap-5">
+                                        <IconBtn name="Talk" iconSize="20" count={value.comment_count} />
+                                        <IconBtn name="HeartE" iconSize="20" count={value.like_count} />
                                     </div>
-                                </IconBox>
-                            </ColorSlide>
-                        </div>
-                    </Link>
+                                </div>
+                            </IconBox>
+                        </ColorSlide>
+                    </div>
                 </>
             </>
         );
+    else return null;
 };
 
 export default Slides;

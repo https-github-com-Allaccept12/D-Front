@@ -7,8 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, Route, Switch, useLocation } from "react-router-dom";
 import { dimoPageLoad, categoryDimo } from "../../redux/modules/dimo";
 export const Slide = tw(Slider)`
-w-full md:w-[32.5rem] lg:w-[66rem] 2xl:w-[106rem]
-    mx-auto text-white pl-5 lg:ml-40 xl:ml-5
+w-full md:w-[32.5rem] lg:w-[68rem] 2xl:w-[96rem]
+    mx-auto text-white pl-6 lg:ml-40 xl:ml-5
     overflow-hidden text-lg flex
 `;
 
@@ -24,13 +24,14 @@ const NextBtn = tw.button`
 z-10 text-white mr-10
 `;
 
-const slidedimolider = (props) => {
+const slidedlider = (props) => {
     const { list, slidedimo } = props;
     const slider = React.useRef(null);
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[2];
     let board = b.toUpperCase();
+    console.log(board);
 
     const dispatch = useDispatch();
     let account_id = 0;
@@ -42,46 +43,13 @@ const slidedimolider = (props) => {
     }
     const visitor_account_id = account_id;
     useEffect(() => {
-        if (board === "INFO") {
-            dispatch(dimoPageLoad({ dispatch, board, visitor_account_id }));
-        }
-        board = "QNA";
+        let board = b.toUpperCase();
         dispatch(dimoPageLoad({ dispatch, board, visitor_account_id }));
-    }, [board, dispatch]);
+    }, [dispatch]);
 
-    // let slidedimo = useSelector((state) => state.dimo.slidedimo?.postRecommendationFeed);
-    console.log(slidedimo);
-
+    let slided = useSelector((state) => state.dimo.dimos.postRecommendationFeed);
+    console.log(slided);
     let makeSlides = () => {};
-    if (slidedimo)
-        makeSlides = () => {
-            const arr = [];
-            for (let i = 0; i < slidedimo.length; i++) {
-                arr.push(
-                    <SS>
-                        <Slides
-                            // key={slidedimo[i].post_id}
-                            type="dimo"
-                            account_id={slidedimo[i].account_id}
-                            account_nickname={slidedimo[i].account_nickname}
-                            account_profile_img={slidedimo[i].account_profile_img}
-                            category={slidedimo[i].category}
-                            comment_count={slidedimo[i].comment_count}
-                            content={slidedimo[i].content}
-                            create_time={slidedimo[i].create_time}
-                            hash_tag1={slidedimo[i].hash_tag[0]?.tag}
-                            hash_tag2={slidedimo[i].hash_tag[1]?.tag}
-                            is_selected={slidedimo[i].is_selected}
-                            like_count={slidedimo[i].like_count}
-                            title={slidedimo[i].title}
-                            list={list}
-                            post_id={slidedimo[i].post_id}
-                        />
-                    </SS>,
-                );
-            }
-            return arr;
-        };
 
     const settings = {
         dots: false, // 슬라이드 밑에 점 보이게
@@ -120,7 +88,7 @@ const slidedimolider = (props) => {
         ],
     };
 
-    if (list === "qna")
+    if (list === "QNA")
         return (
             <>
                 <div className="flex-row hidden md:flex">
@@ -128,7 +96,15 @@ const slidedimolider = (props) => {
                         <Icon name="ArrowL" iconSize="48" />
                     </PrevBtn>
                     <Slide {...settings} ref={slider}>
-                        {makeSlides()}
+                        {slided.map((value) => {
+                            console.log(value);
+                            return (
+                                // <Images src={value.img_url} />
+                                <SS>
+                                    <Slides type="dimo" value={value} list="QNA" />
+                                </SS>
+                            );
+                        })}
                     </Slide>
                     <NextBtn onClick={() => slider?.current.slickNext()}>
                         <Icon name="ArrowR" iconSize="48" />
@@ -136,25 +112,24 @@ const slidedimolider = (props) => {
                 </div>
             </>
         );
-    else if (list === "info")
+    else if (list === "INFO")
         return (
             <>
                 <div className="flex-row hidden md:flex">
-                    <PrevBtn onClick={() => slider.current.slickPrev()}>
+                    <PrevBtn onClick={() => slider?.current.slickPrev()}>
                         <Icon name="ArrowL" iconSize="48" />
                     </PrevBtn>
                     <Slide {...settings} ref={slider}>
-                        {slidedimo &&
-                            slidedimo.map((value) => {
-                                return (
-                                    // <Images src={value.img_url} />
-                                    <SS key={value?.post_id}>
-                                        <Slides type="dimo" list={list} value={value} post_id={value?.post_id} />
-                                    </SS>
-                                );
-                            })}
+                        {slided.map((value) => {
+                            return (
+                                // <Images src={value.img_url} />
+                                <SS>
+                                    <Slides type="dimo" value={value} list="INFO" />
+                                </SS>
+                            );
+                        })}
                     </Slide>
-                    <NextBtn onClick={() => slider.current.slickNext()}>
+                    <NextBtn onClick={() => slider?.current.slickNext()}>
                         <Icon name="ArrowR" iconSize="48" />
                     </NextBtn>
                 </div>
@@ -162,4 +137,4 @@ const slidedimolider = (props) => {
         );
 };
 
-export default slidedimolider;
+export default slidedlider;

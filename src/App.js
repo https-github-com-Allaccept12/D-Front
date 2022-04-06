@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes, useLocation, useParams } from "react-router-dom";
-import { Header, OHeader, NotFound, HeaderMini } from "./NavComponents";
+import { Header, OHeader, NotFound, HeaderMini, Footer } from "./NavComponents";
 import { TendencyTest, MyInterests, Result, CreateProfile } from "./components";
 import { Main, ArtWork, Dimo, Login, LogOut, EditMySpace, MyPage } from "./page";
 import { CompleteProfile } from "./components";
@@ -18,7 +18,7 @@ function App() {
         <>
             <div id="modal"></div>
             <div id="root"></div>
-            <div className="w-full m-auto App">
+            <div className="w-full m-auto App ">
                 {a === "/" && (
                     <>
                         <Header />
@@ -64,6 +64,7 @@ function App() {
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </div>
+            <Footer />
         </>
     );
 }

@@ -50,7 +50,7 @@ const DimoQNADetail = ({ history, location, match }) => {
 
     return (
         <>
-            <div className="h-full xl:grid xl:grid-cols-4 bg-dgray-200">
+            <div className="h-[100rem] xl:grid xl:grid-cols-4 bg-dgray-200">
                 <div className="col-span-2 col-start-4 grid-rows-6 xl:grid ">
                     <div className="fixed invisible h-full top-28 2xl:visible 2xl:absolute">
                         <div className="flex flex-col ">

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { commentDeleteDimo, commentModifyDimo } from "../../redux/modules/dimo";
-import { useInput } from "../../hooks";
+import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useInput, useToggle } from "../../hooks";
 import { Button, Profile, Text, Subtitle, InputNoTitle, HeartButton } from "../../elements";
 
 const CommentDimo = (props) => {
@@ -15,10 +16,14 @@ const CommentDimo = (props) => {
         like_count,
         modify_time,
     } = props;
+    let navigate = useNavigate();
+    let { pathname } = useLocation();
+    const post_id = pathname.split("/")[3];
     const [contentValue, setContentValue] = useState(content);
     const dispatch = useDispatch();
     const [commentContent, setContent] = useState("");
     const [modifyDiv, setModifyDiv] = useState(false);
+
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
 
@@ -42,7 +47,10 @@ const CommentDimo = (props) => {
 
     const deleteComment = () => {
         dispatch(commentDeleteDimo(comment_id));
+        navigate(`/dimo/info`, { replace: true });
+        // forceUpdate();
     };
+
     return (
         <>
             <div className="flex items-center justify-between gap-2">
@@ -73,7 +81,7 @@ const CommentDimo = (props) => {
                                     placeholder={content}
                                     onSubmit={modifyComment}
                                 />
-                                <Button size="3" className="invisible ">
+                                <Button size="3" className="invisible">
                                     제출
                                 </Button>
                             </div>

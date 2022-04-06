@@ -16,7 +16,7 @@ border h-4 mx-3 mt-1 text-dgray-300
 `;
 
 const Card = tw.div`
-w-full mt-10 rounded-lg border border-dgray-200 bg-white sm:px-28 p-3
+w-full mt-10 rounded-lg border border-dgray-200 bg-white sm:px-28 p-3 
 `;
 
 const Header = tw.div`
@@ -41,13 +41,10 @@ object-cover w-full h-fit object-center rounded-md flex flex-col justify-center 
 
 const DimoQNAQuestion = (props) => {
     const { followed, value, post } = props;
-    const { pathname } = useLocation();
+    const location = useLocation();
     const navigate = useNavigate();
 
-    const post_id = pathname.split("/")[3];
-    // console.log(value.img[0].img_url);
-
-    // const post_id = post.post_id;
+    const post_id = location.state.post_id;
 
     const dispatch = useDispatch();
 
@@ -162,7 +159,7 @@ const DimoQNAQuestion = (props) => {
                                 </Button>
                             ) : (
                                 <Button icon name="HeartE" color="4" size="3" count={like_cnt} onClick={addLike}>
-                                    <span className="hidden 2xl:contents">ddd좋아요</span>
+                                    <span className="hidden 2xl:contents">좋아요</span>
                                 </Button>
                             )}
                             {/* 
