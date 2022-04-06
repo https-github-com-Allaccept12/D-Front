@@ -51,7 +51,7 @@ const ArtWorkFilter = (props) => {
                         🎁 패키지 디자인
                     </TabBtn>
                     <TabBtn value="product" onClick={ClickCategory}>
-                        🎁 제품 디자인
+                        🏷️ 제품 디자인
                     </TabBtn>
                     <TabBtn value="typo" onClick={ClickCategory}>
                         📝 타이포그래피

@@ -1,5 +1,6 @@
 import React, { useEffect, Suspense } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getCookie } from "../../../shared/cookie";
 import { myPageLoad } from "../../../redux/modules/myPage";
 import { useHistory, Link } from "react-router-dom";
@@ -8,6 +9,7 @@ import { MySpaceUser, MyExp, MyPortfolio, MySkill, MyTimeLine, MyIntro } from ".
 
 // 한번에 다 보여주기
 const MyProfile = (props) => {
+    const location = useLocation();
     // const dispatch = useDispatch();
     // let account_id = 0;
     // const id_cookie = getCookie("account_id");
@@ -22,7 +24,6 @@ const MyProfile = (props) => {
 
     // const info = useSelector(state => state.myPage.myPage);
     const { info, exp, feed } = props;
-    console.log('여기는 오니 ㅋ', info);
 
     return (
         <>
@@ -30,7 +31,7 @@ const MyProfile = (props) => {
                 <MyIntro info={info} />
                 <MySkill info={info} />
                 <MyPortfolio feed={feed} />
-                <MyExp exp={exp} />
+                <MyExp exp={exp}/>
             </Suspense>
             {/* <MyTimeLine info={info} /> */}
         </>

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
     Profile,
     HeartButton,
@@ -13,6 +14,15 @@ import {
     Icon,
 } from "../../elements";
 
+import adventure from "../../static/images/MyPageImages/adventure.svg";
+import artist from "../../static/images/MyPageImages/artist.svg";
+import detail from "../../static/images/MyPageImages/detail.svg";
+import harmonious from "../../static/images/MyPageImages/harmonious.svg";
+import innovator from "../../static/images/MyPageImages/innovator.svg";
+import inventor from "../../static/images/MyPageImages/inventor.svg";
+import skillList from "../ArtWorks/skillList_code";
+
+import { artworkDetailLoad } from "../../redux/modules/artWork";
 import DetailSlider from "../Sliders/DetailSlider";
 import { Comment } from "../Comment";
 import { useInput, useToggle } from "../../hooks";
@@ -68,7 +78,78 @@ flex flex-col gap-2 justify-center items-center
 `;
 
 const ArtWorkInlineDetail = (props) => {
-    const { id } = props;
+    const location = useLocation();
+    const dispatch = useDispatch();
+    const a = location.pathname;
+    const artwork_id = a.split('/')[2];
+
+    useEffect(() => {
+        console.log('loading');
+        const visitor_account_id = sessionStorage.getItem('account_id');
+        dispatch(artworkDetailLoad({artwork_id, visitor_account_id, dispatch}))
+    }, [])
+
+    const myProfileImg = sessionStorage.getItem("profile_img");
+    
+    const artworks = useSelector((state) => state.artwork.detailArtwork);
+    console.log(artworks);
+
+    const [artworkId, setArtworkId] = useState("");
+    const [nickname, setNickname] = useState("");
+    const [category, setCategory] = useState("");
+    const [profile, setProfile] = useState("");
+    const [content, setContent] = useState("");
+    const [copyright, setCopyright] = useState("");
+    const [time, setTime] = useState("");
+    const [specialty, setSpecialty] = useState([]);
+    const [title, setTitle] = useState("");
+    const [commentCount, setCommentCount] = useState("");
+    const [likeCount, setLikeCount] = useState("");
+    const [viewCount, setViewCount] = useState("");
+    const [images, setImages] = useState([]);
+    const [tendency, setTendency] = useState("");
+    const [others, setOthers] = useState([]);
+    const [comment, setComment] = useState([]);
+
+    useEffect(() => {
+        if (artworks) {
+            setArtworkId(artworks.artWorkSubDetail.artwork_id);
+            setNickname(artworks.artWorkSubDetail.account_nickname);
+            setCategory(artworks.artWorkSubDetail.category);
+            setProfile(artworks.artWorkSubDetail.account_profile_img);
+            // setTempProfile(artworks.artWorkSubDetail.account_profile_img);
+            // setBarArtWorkId(artworks.artWorkSubDetail.artwork_id);
+            // setBarLike(artworks.is_like);
+            // setBarBookMark(artworks.is_bookmark);
+            setContent(artworks.artWorkSubDetail.content);
+            setCopyright(artworks.artWorkSubDetail.account_nickname);
+            setTime(artworks.artWorkSubDetail.create_time);
+            setTitle(artworks.artWorkSubDetail.title);
+            setCommentCount(artworks.artWorkSubDetail.comment_count);
+            setLikeCount(artworks.artWorkSubDetail.like_count);
+            setViewCount(artworks.artWorkSubDetail.view_count);
+            setImages(artworks.img);
+            setComment(artworks.comment);
+            setOthers(artworks.similar_Work);
+            const temp = artworks.artWorkSubDetail.specialty.split("/");
+            const temp2 = [];
+            for (var i = 0; temp.length; i++) {
+                var x = temp.pop();
+                for (var skill of skillList) {
+                    if (x == skill.label) {
+                        temp2.push(skill.value);
+                    }
+                }
+            }
+            setSpecialty(temp2);
+        }
+        // if (writerInfo) {
+        //     setTendency(writerInfo.tendency);
+        // }
+    }, [artworks]);
+
+
+
     const navigate = useNavigate();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
@@ -81,122 +162,136 @@ const ArtWorkInlineDetail = (props) => {
     };
     return (
         <>
-            <div className="bg-dgray-200 p-20 ">
-                <Grid>
-                    <Box>
-                        <Header>
-                            <div className="flex items-center">
-                                <Profile size="6" className="hidden sm:contents" />
-                            </div>
-                            <div className="flex flex-col gap-2 ml-2 text-left">
-                                <Title size="6">은행 어플리케이션 디자인</Title>
-                                <p className="flex flex-row text-md text-dgray-500 font-min2">
-                                    2022.03.10
-                                    <InnerLine /> UX / UI
-                                </p>
-                            </div>
-                            <div className="flex flex-row gap-2 ml-auto">
-                                <SkillThumbnailMini skill="A1" />
-                                <SkillThumbnailMini skill="A5" />
-                            </div>
-                        </Header>
-                    </Box>
-
-                    <ModalBody>
-                        <Images
-                            src="https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/cnoC/image/d8fBsA26Y_-zWzEHHYNUgV51oWU.JPG"
-                            alt=""
-                        />
-
-                        <ViewBox>
-                            <IconBtn name="HeartE" iconSize="24" count="40" />
-                            <IconBtn name="Eye" iconSize="28" count="40" />
-                            <IconBtn name="Talk" iconSize="24" count="40" />
-                        </ViewBox>
-
-                        <div className="p-6 bg-white">
-                            <ProfileBox>
-                                <div className="flex flex-row items-center justify-start">
-                                    <Profile size="5" className="mb-3" onClick={setShowMenu} />
-                                    {showMenu && (
-                                        <div className="absolute w-40">
-                                            <MobileBox>
-                                                <Flex>
-                                                    <Text size="1">프로필</Text>
-                                                    <Text size="1">팔로우</Text>
-                                                    <Text size="1">좋아요</Text>
-                                                    <Text size="1">스크랩</Text>
-                                                    <Text size="1">공유하기</Text>
-                                                </Flex>
-                                            </MobileBox>
-                                        </div>
-                                    )}
-
-                                    <div className="flex flex-col gap-1 ml-2 text-left">
-                                        <Text size="1" className="font-semibold text-dgray-600">
-                                            이름 이름
-                                        </Text>
-                                        <div className="flex flex-row justify-start gap-x-1">
-                                            <TypeBtn types="art" />
-
-                                            <SnsIcons sns="Behance" />
-                                            <SnsIcons sns="Kakao" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </ProfileBox>
-
-                            {/* 슬라이더 자리 */}
-
-                            <DetailSlider />
-                            <Line />
-
-                            <Title size="6" className="hidden pb-5 pl-7 md:contents">
-                                댓글 0개
-                            </Title>
-
-                            <CommentBox>
-                                <div className="bg-white flex p-5 xl:px-10 2xl:px-20 gap-3">
-                                    <div>
-                                        <Profile
-                                            size="6"
-                                            src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
-                                        />
-                                    </div>
-                                    <div className="w-full ml-auto">
-                                        <InputNoTitle
-                                            value={name.value}
-                                            onChange={name.onChange}
-                                            is_error={name.errors}
-                                            is_value={name.value.length}
-                                            cardsize="1"
-                                            maxlen="30"
-                                            width="2"
-                                            is_submit
-                                            onSubmit={commentSubmit}
-                                        />
-                                        <Button size="3" className="invisible ">
-                                            제출
-                                        </Button>
-                                    </div>
-                                </div>
-
-                                <div className="">
-                                    <Comment />
-                                    <Comment />
-                                </div>
-                            </CommentBox>
+            <div className="p-20 bg-dgray-200 ">
+            <Grid>
+                <Box>
+                    <Header>
+                        <div className="flex items-center">
+                            <Profile size="6" className="hidden sm:contents" />
                         </div>
-                        <button
-                            type="button"
-                            className="box-content w-4 h-4 p-1 text-white border-none rounded-none btn-close opacity-80 focus:shadow-none focus:outline-none focus:opacity-100 md:hidden"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                        ></button>
-                    </ModalBody>
-                </Grid>
+                        <div className="flex flex-col gap-2 ml-2 text-left">
+                            <Title size="6">{title}</Title>
+                            <p className="flex flex-row text-md text-dgray-500 font-min2">
+                                {time.split("T")[0]}
+                                <InnerLine /> {category}
+                            </p>
+                        </div>
+                        <div className="flex flex-row gap-2 ml-auto">
+                            {specialty &&
+                                specialty.map((value) => {
+                                    return <SkillThumbnailMini skill={value} />;
+                                })}
+                        </div>
+                    </Header>
+                </Box>
 
-                <div className="hidden lg:contents">
+                <ModalBody>
+                    {images &&
+                        images.map((value) => {
+                            return <Images src={value.img_url} />;
+                        })}
+
+                    <ViewBox>
+                        <IconBtn name="HeartE" iconSize="24" count={likeCount} />
+                        <IconBtn name="Eye" iconSize="28" count={viewCount} />
+                        <IconBtn name="Talk" iconSize="24" count={commentCount} />
+                    </ViewBox>
+
+                    <div className="p-6 bg-white">
+                        <ProfileBox>
+                            <div className="flex flex-row items-center justify-start">
+                                <Profile
+                                    size="5"
+                                    className="mb-3"
+                                    src={profile}
+                                    // onClick={setShowMenu}
+                                />
+                                {showMenu && (
+                                    <div className="absolute w-40">
+                                        <MobileBox>
+                                            <Flex>
+                                                <Text size="1">프로필</Text>
+                                                <Text size="1">팔로우</Text>
+                                                <Text size="1">좋아요</Text>
+                                                <Text size="1">스크랩</Text>
+                                                <Text size="1">공유하기</Text>
+                                            </Flex>
+                                        </MobileBox>
+                                    </div>
+                                )}
+
+                                <div className="flex flex-col gap-1 ml-2 text-left">
+                                    <Title size="6" className="font-semibold text-dgray-600">
+                                        {nickname && nickname}
+                                    </Title>
+                                    <div className="flex flex-row justify-start gap-x-1">
+                                        {/* <TypeBtn types="art" />
+                                        <div className="mt-2 mb-4"> */}
+                                        {tendency && tendency == "명랑한 모험가" && <img src={adventure} />}
+                                        {tendency && tendency == "꿈꾸는 예술가" && <img src={artist} />}
+                                        {tendency && tendency == "디테일 장인" && <img src={detail} />}
+                                        {tendency && tendency == "부드러운 중재자" && <img src={harmonious} />}
+                                        {tendency && tendency == "대담한 혁신가" && <img src={innovator} />}
+                                        {tendency && tendency == "창의적인 발명가" && <img src={inventor} />}
+                                        {/* </div> */}
+
+                                        {/* <SnsIcons sns="Behance" />
+                                        <SnsIcons sns="Kakao" /> */}
+                                    </div>
+                                </div>
+                            </div>
+                        </ProfileBox>
+
+                        {/* 슬라이더 자리 */}
+
+                        <DetailSlider main="main" others={others} />
+                        <Line />
+
+                        {/* <Title size="6" className="hidden pb-5 pl-7 md:contents">
+                            댓글 0개
+                        </Title> */}
+
+                        <CommentBox>
+                            <div className="flex gap-3 p-5 bg-white xl:px-10 2xl:px-20">
+                                <div>
+                                    <Profile size="6" src={myProfileImg} />
+                                </div>
+                                <div className="w-full ml-auto">
+                                    <InputNoTitle
+                                        value={name.value}
+                                        onChange={name.onChange}
+                                        is_error={name.errors}
+                                        is_value={name.value.length}
+                                        cardsize="1"
+                                        maxlen="30"
+                                        width="2"
+                                        is_submit
+                                        onSubmit={commentSubmit}
+                                    />
+                                    <Button size="3" className="invisible ">
+                                        제출
+                                    </Button>
+                                </div>
+                            </div>
+
+                            <div className="">
+                                {comment &&
+                                    comment.map((value) => {
+                                        return <Comment value={value} />;
+                                    })}
+                            </div>
+                        </CommentBox>
+                    </div>
+                    <button
+                        type="button"
+                        className="box-content w-4 h-4 p-1 text-white border-none rounded-none btn-close opacity-80 focus:shadow-none focus:outline-none focus:opacity-100 md:hidden"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+                </ModalBody>
+            </Grid>
+
+                {/* <div className="hidden lg:contents">
                     <div className="flex flex-row justify-start w-20 gap-3 mx-auto lg:fixed top-20 right-10 2xl:right-48 lg:flex-col">
                         <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
@@ -235,7 +330,7 @@ const ArtWorkInlineDetail = (props) => {
                             </Text>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     );

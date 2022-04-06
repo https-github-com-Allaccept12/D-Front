@@ -29,7 +29,7 @@ const MyExp = (props) => {
           </Title> */}
         </div>
         <Line />
-          {exp && exp.map((value) => {
+          {exp && exp.map((value, key) => {
             return(
           <>
           <ol className="grid grid-cols-3 mb-10">

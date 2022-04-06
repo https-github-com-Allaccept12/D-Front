@@ -73,7 +73,7 @@ const Slides = (props) => {
     };
 
     const goToProfile = () => {
-        navigate(`/myspace/myprofile/${nickname}/${id}`);
+        navigate(`/myspace/myprofile/${id}`);
     };
 
     const goToDimoQNA = () => {

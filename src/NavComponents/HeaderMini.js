@@ -52,7 +52,7 @@ const HeaderMini = (props) => {
     }, []);
 
     const goToMyPage = () => {
-        navigate(`/myspace/myprofile`, {
+        navigate(`/myspace/myprofile/${ownerId}`, {
             state: {
                 nickname: { nickname },
                 owner_id: { ownerId },
@@ -62,7 +62,7 @@ const HeaderMini = (props) => {
     return (
         <>
             <ProfileBox>
-                <div className="flex flex-row justify-center items-center gap-5 text-white mt-16 py-5 sm:py-0  md:mt-24 ">
+                <div className="flex flex-row items-center justify-center gap-5 py-5 mt-16 text-white sm:py-0 md:mt-24 ">
                     <Title size="6" className="">
                         <Link to="/art/list/all">모아보기</Link>
                     </Title>
