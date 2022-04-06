@@ -7,6 +7,7 @@ import Portal from "../../elements/Tools/Portal";
 import { MultiSelect } from "react-multi-select-component";
 import Dropzone, { useDropzone } from "react-dropzone";
 import skillList from "./skillList";
+import Swal from 'sweetalert2';
 import profile_upload from "../../static/images/profile_upload.svg";
 import { Button, Card, Input, CheckBox, Title, RadioButton, InputNoTitle, Text } from "../../elements";
 
@@ -226,6 +227,13 @@ const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) =
             dispatch(CreateNewArtWork(formData));
         }
         // navigate.replace("/art/list/all");
+        Swal.fire({
+            icon: 'success',
+            title: '등록 성공!',
+            showConfirmButton: false,
+            timer: 1000
+          })
+        navigate(`/art/list/all`, { replace: true })
     };
 
     const [inputList, setInputList] = useState([

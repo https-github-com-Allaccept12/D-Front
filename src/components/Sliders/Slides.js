@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { requestFollow } from "../../redux/modules/user";
+import { requestFollow, requestUnFollow } from "../../redux/modules/user";
 import { Label, Title, HeartButton, Text, Card, Profile, Button, Thumbnail, IconBtn } from "../../elements";
 import tw from "tailwind-styled-components";
 import { useToggle } from "../../hooks";
@@ -39,7 +39,7 @@ const Slides = (props) => {
         like_count,
         title,
     } = props;
-    console.log(post_id);
+    // console.log(post_id);
 
     const [is_fow, setIsfow] = useToggle(follow);
 
@@ -70,8 +70,14 @@ const Slides = (props) => {
 
     const makeFollow = () => {
         const account_id = { account_id: id };
+        console.log('account_id:', account_id, 'now:', follow);
         setIsfow();
-        dispatch(requestFollow(account_id));
+        if(follow){
+            dispatch(requestUnFollow(account_id));
+        }else{
+            dispatch(requestFollow(account_id));
+        }
+        
     };
 
     const goToProfile = () => {

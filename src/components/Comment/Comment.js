@@ -39,11 +39,11 @@ const Comment = (props) => {
         <>
             <div className="flex items-center justify-between gap-2">
                 <div className="flex flex-row justify-start">
-                    <Profile size="5" className="hidden sm:flex" />
+                    <Profile size="5" className="hidden sm:flex" src={value.account_profile} />
                     <div className="flex flex-col ">
                         <div className="flex flex-row items-center gap-3 mt-1">
                             <Subtitle size="1" className="">
-                                {/* {value.account_nickname} */}
+                                {value.account_nickname}
                             </Subtitle>
                             <Text size="4">
                                 {value.modify_time.split("T")[0] +
@@ -82,7 +82,7 @@ const Comment = (props) => {
                         <button onClick={deleteComment}>삭제</button>
                     </>
                 )}
-                <HeartButton like_cnt="4" is_like="" />
+                {/* <HeartButton like_cnt="4" is_like="" /> */}
             </div>
         </>
     );

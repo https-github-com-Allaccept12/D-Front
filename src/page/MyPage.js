@@ -63,47 +63,13 @@ const MyPage = (props) => {
         <>
             <div className="grid-cols-5 2xl:grid">
                 <div className="hidden w-40 h-full mt-4 xl:contents md:ml-28 ">
-                    <MyPageCategory />
+                    <MyPageCategory myPageId={myPageId} account_id={account_id}/>
                 </div>
                 {/* 내정보일땐 마이프로필 다른사람정보일땐 디폴리오 각 메뉴를 클릭하면 메뉴 */}
                 <Suspense fallback={<h1>Loading..</h1>}>
                     <TopOfProfile info={info} exp={exp} feed={feed}/>
                 </Suspense>
-                {/* <div className="col-start-2 col-end-6">
-          <div className=" bg-blue-400 h-52 w-[80.625rem]">
-            {" "}
-            여기에 배경이미지
-            <div className="items-center justify-items-center">
-              <div className="flex justify-end">팔로잉 팔로워</div>
-
-              <div className="flex flex-col items-center mt-20">
-                <Profile size="1" />
-                <div className="ml-2">
-                  <div className="grid p-1 rounded-lg justify-items-center">
-                    <h3 className="text-xl font-medium text-gray-800 font-minB">
-                      펭귄 님
-                    </h3>
-                    <span className="text-sm text-gray-600 font-minB">
-                      UX/UI Designer
-                    </span>
-                    <Button size="3">
-                      <span className="text-xs font-min-2"> INTP </span>
-                    </Button>
-
-                    <div className="flex flex-row p-1 text-2xl">
-                      <Icon name="Time" iconSize="32" />
-                      <Icon name="Talk" iconSize="32" />
-                      <Icon name="Link" iconSize="32" />
-                      <Icon name="Edit" iconSize="32" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <MySpaceTab />
-            </div>
-          </div>
-        </div> */}
+                
             </div>
 
             <MobileBtn onClick={setShowCategory}>

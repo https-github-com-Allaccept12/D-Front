@@ -58,6 +58,7 @@ const ArtWorkList = (props) => {
                                             nickname={value.account_nickname}
                                             thumbnail={value.img}
                                             like_count={value.like_count}
+                                            is_follow={value.is_follow}
                                             is_like={value.is_like}
                                             is_bookmark={value.is_bookmark}
                                             size="3"

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { editSkills } from "../../../redux/modules/editProfile";
 import { Button, Title, SkillThumbnail } from "../../../elements";
 import skillList from "../../ArtWorks/skillList";
@@ -18,6 +19,7 @@ border border-dgray-300 w-full col-span-full mt-10
 const CreateMySkill = (props) => {
   const {info} = props;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const options = skillList;
   let main = "";
   let sub = "";
@@ -78,6 +80,7 @@ const CreateMySkill = (props) => {
       };
       console.log(data);
       dispatch(editSkills(data));
+      navigate(-1);
     }
   };
 

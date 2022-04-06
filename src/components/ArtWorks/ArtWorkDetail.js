@@ -76,13 +76,14 @@ flex flex-col gap-2 justify-center items-center
 `;
 
 const ArtWorkDetail = (props) => {
-    const { setTempProfile, setBarArtWorkId, setBarBookMark, setBarLike } = props;
+    const { fromPostMain, setTempProfile, setBarArtWorkId, setBarBookMark, setBarLike, setBarFollow } = props;
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const myProfileImg = sessionStorage.getItem("profile_img");
     const writerInfo = useSelector((state) => state.myPage.myPage);
     const artworks = useSelector((state) => state.artwork.detailArtwork);
 
-    console.log(artworks);
+    // console.log(artworks);
     const [artworkId, setArtworkId] = useState("");
     const [nickname, setNickname] = useState("");
     const [category, setCategory] = useState("");
@@ -108,8 +109,11 @@ const ArtWorkDetail = (props) => {
             setProfile(artworks.artWorkSubDetail.account_profile_img);
             setTempProfile(artworks.artWorkSubDetail.account_profile_img);
             setBarArtWorkId(artworks.artWorkSubDetail.artwork_id);
-            setBarLike(artworks.is_like);
-            setBarBookMark(artworks.is_bookmark);
+            if(!fromPostMain){
+                setBarFollow(artworks.is_follow);
+                setBarLike(artworks.is_like);
+                setBarBookMark(artworks.is_bookmark);
+            }
             setContent(artworks.artWorkSubDetail.content);
             setCopyright(artworks.artWorkSubDetail.account_nickname);
             setTime(artworks.artWorkSubDetail.create_time);
@@ -145,6 +149,8 @@ const ArtWorkDetail = (props) => {
         const artwork_id = artworkId;
         const data = { content: name.value };
         dispatch(submitComment({ artwork_id, data }));
+
+        navigate(`/art/list/all`, { replace: true });
         // history.goBack();
         //여기에 뭔가 돌아가기버튼...
     };

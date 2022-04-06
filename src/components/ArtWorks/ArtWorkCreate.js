@@ -2,20 +2,24 @@ import React, { useState, useCallback, useEffect } from "react";
 import { artworkFiles } from "../../redux/modules/image";
 import { ModifyArtWork } from "../../redux/modules/artWork";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { preview } from "../../redux/modules/image";
 import Dropzone, { useDropzone } from "react-dropzone";
 import { Button, Title, Text } from "../../elements";
 import ArtWorkCreateModal from "./ArtWorkCreateModal";
 import { Portal } from "@mui/material";
 import ArtWorkChangeList from "./ArtWorkChangeList";
+import Swal from 'sweetalert2';
 import tw from "tailwind-styled-components";
 
 const Grid = tw.div`
  bg-white w-full xl:p-10
 `;
 
-const ArtWorkCreate = (location) => {
+const ArtWorkCreate = () => {
     const dispatch = useDispatch();
+    const location = useLocation();
+    console.log(location.state);
     // let artwork_id = "";
     // let isEdit = false;
     const [isEdit, setIsEdit] = useState(false);
@@ -29,10 +33,10 @@ const ArtWorkCreate = (location) => {
     const info = useSelector((state) => state.artwork.modifyForInfo);
     const firstThumbnail = useSelector((state) => state.image.url);
     useEffect(() => {
-        if (location.location.state){
+        if (location.state){
             const visitor_account_id = sessionStorage.getItem("account_id");
-            setArtworkId(location.location.state.artwork_id);
-            setIsEdit(location.location.state.isedit);
+            setArtworkId(location.state.artwork_id);
+            setIsEdit(location.state.isedit);
             // setFirstList(editImgs && editImgs.img);
             // setFirstThumbnail(editImgs && editImgs.artWorkSubDetail.thumbnail);
             // if(firstList){ 
@@ -51,7 +55,10 @@ const ArtWorkCreate = (location) => {
     }, [editImgs])
 
     useEffect(() => {
-        SetPreviews(editImgs);
+        if(isEdit){
+            SetPreviews(editImgs);
+        }
+        
     }, [editImgs]);
 
     // console.log('isEdit', isEdit, artwork_id);
@@ -80,7 +87,10 @@ const ArtWorkCreate = (location) => {
     // console.log(previews);
     const handleModal = () => {
         if(!modalOn & previews.length === 0){
-            alert('아 이미지 추가하셈');
+            Swal.fire({
+                icon: 'error',
+                title: '이미지를 추가해 주세요.',
+              })
             return
         }
         setModalOn(!modalOn);

@@ -12,6 +12,7 @@ const Main = (props) => {
         setCookie("access_token", sessionStorage.getItem("access_token"), 7);
         setCookie("refresh_token", sessionStorage.getItem("refresh_token"), 7);
         setCookie("account_id", sessionStorage.getItem("account_id"), 7);
+        setCookie("profile_img", sessionStorage.getItem("profile_img"), 7);
     }
     useEffect(() => {
         let account_id = 0;

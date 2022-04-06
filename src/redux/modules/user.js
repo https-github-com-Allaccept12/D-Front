@@ -16,6 +16,20 @@ export const requestFollow = createAsyncThunk("/requestFollow", (account_id) => 
       .catch((err) => console.log(err));
 });
 
+// 언팔로우
+export const requestUnFollow = createAsyncThunk("/requestFollow", (account_id) => {
+  URL.delete(`/api/follow`, account_id, {
+      headers: {
+          Authorization: "Bearer " + token,
+      },
+      withCredentials: true,
+  })
+      .then((res) => {
+          console.log(res);
+      })
+      .catch((err) => console.log(err));
+});
+
 // 팔로잉리스트
 export const requestFollowing = createAsyncThunk("/requestFollowing", ({ account_id, dispatch }) => {
   URL.get(`/api/follow/following`,{

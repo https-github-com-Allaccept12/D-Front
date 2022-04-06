@@ -6,7 +6,7 @@ import { checknickname } from "../../../redux/modules/checkNickname";
 import { createProfile } from "../../../redux/modules/createProfile";
 import { Button, Input, Profile, Text, Title, Subtitle } from "../../../elements";
 import set_profile from "../../../static/images/set_profile.svg";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FileUpload from "../../../elements/Tools/FileUpload";
 import { useInput } from "../../../hooks";
 import Dropzone, { useDropzone } from "react-dropzone";
@@ -15,6 +15,7 @@ import axios from "axios";
 const CreateMySpaceUser = (props) => {
     // const { info } = props;
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     let account_id = 0;
     const id_cookie = sessionStorage.getItem("account_id");
@@ -123,6 +124,7 @@ const CreateMySpaceUser = (props) => {
         // dispatch(createProfile(data));
         console.log(formData);
         dispatch(createProfile({formData, dispatch}));
+        navigate(-1);
     };
 
     return (

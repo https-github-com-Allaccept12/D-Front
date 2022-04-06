@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { editExp } from "../../../redux/modules/editProfile";
 import { Button, Title, Input, CheckBox, Text } from "../../../elements";
 import tw from "tailwind-styled-components";
@@ -39,6 +40,7 @@ w-full py-4 border border-dgray-400 border-box h-I02 px-4
 const CreateMyExp = (props) => {
     const { info, exp } = props;
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [inputList, setInputList] = useState([
         {
             company_name: "",
@@ -103,6 +105,7 @@ const CreateMyExp = (props) => {
         data["history"] = arr;
         console.log(data);
         dispatch(editExp(data));
+        navigate(-1);
     };
 
     return (

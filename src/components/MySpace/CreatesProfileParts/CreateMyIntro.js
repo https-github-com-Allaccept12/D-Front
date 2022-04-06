@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { editIntroduce } from "../../../redux/modules/editProfile";
 import { myPageLoad } from "../../../redux/modules/myPage";
 import { useInput } from "../../../hooks";
@@ -7,6 +8,7 @@ import { Button, Input } from "../../../elements";
 
 const CreateMyIntro = (props) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { info } = props;
     const [title_content, setTitleContent] = useState("");
     const [sub_content, setSubContent] = useState("");
@@ -18,8 +20,18 @@ const CreateMyIntro = (props) => {
     }, [info]);
     const validmaxlen = (value) => value.length <= 200;
     const validmaxlen1000 = (value) => value.length <= 1000;
-    const intro = useInput(title_content, [validmaxlen]);
-    const sub = useInput(sub_content, [validmaxlen1000]);
+
+
+    let introTemp = ''
+    let subTemp = ''
+
+    if(info){
+        introTemp = info.title_content;
+        subTemp = info.sub_content;
+    }
+
+    const intro = useInput(introTemp, [validmaxlen]);
+    const sub = useInput(subTemp, [validmaxlen1000]);
     const SendIntro = () => {
         let data = {
             title_content: intro.value,
@@ -27,6 +39,7 @@ const CreateMyIntro = (props) => {
         };
         console.log(data);
         dispatch(editIntroduce(data));
+        navigate(-1);
     };
 
     return (

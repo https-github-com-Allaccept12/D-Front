@@ -6,6 +6,7 @@ import { artworkDetailLoad, LikeArtwork, UnLikeArtwork, MarkArtwork, UnMarkArtwo
 import { myPageLoad } from "../../redux/modules/myPage";
 import ArtWorkDetail from "./ArtWorkDetail";
 import tw from "tailwind-styled-components";
+import Swal from 'sweetalert2';
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Art = tw.div`
@@ -72,7 +73,12 @@ const ArtPostMain = (props) => {
     // }
 
     const ClickShare = () => {
-        alert('클립보드에 복사됐습니다.')
+        Swal.fire({
+            icon: 'success',
+            title: '클립보드에 복사됐습니다.',
+            showConfirmButton: false,
+            timer: 1000
+          })
     }
 
 
@@ -111,7 +117,7 @@ const ArtPostMain = (props) => {
                     <div className="relative w-auto pointer-events-none modal-dialog modal-xl">
                         <div className="relative flex flex-col w-full text-current bg-white border-none rounded-md shadow-lg outline-none pointer-events-auto modal-content bg-clip-padding">
                             <div className="modal-body">
-                                <ArtWorkDetail setBarBookMark={setBarBookMark} setBarLike={setBarLike} artwork_id={artwork_id} setTempProfile={setTempProfile} setBarArtWorkId={setBarArtWorkId}/>
+                                <ArtWorkDetail fromPostMain={true} setBarBookMark={setBarBookMark} setBarLike={setBarLike} artwork_id={artwork_id} setTempProfile={setTempProfile} setBarArtWorkId={setBarArtWorkId}/>
 
                                 <div className="hidden lg:contents">
                                     <div className="flex flex-row justify-start w-20 gap-3 mx-auto lg:fixed top-20 right-10 2xl:right-48 lg:flex-col">
