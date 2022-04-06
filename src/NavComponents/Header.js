@@ -12,6 +12,7 @@ const Header = (props) => {
     const [accountId, setAccountId] = useState("");
     const [modalOpen, setModalOpen] = useState(false);
     let navigate = useNavigate();
+    let nickname = "";
     const openModal = () => {
         setModalOpen(true);
     };
@@ -53,12 +54,12 @@ const Header = (props) => {
                     <Title size="6">
                         <Link to="/art/list/all">모아보기</Link>
                     </Title>
-                    <Title size="6">
+                    {/* <Title size="6">
                         <Link to="/dimo/qna">디모</Link>
-                    </Title>
+                    </Title> */}
 
                     {is_login && (
-                        <Title size="6" onClick={goToMyPage}>
+                        <Title size="6" onClick={goToMyPage} className="cursor-pointer">
                             마이페이지
                         </Title>
                     )}
@@ -71,7 +72,7 @@ const Header = (props) => {
                                         <Link to="/createart">작업 업로드</Link>
                                     </Button>
                                     <Link to="/logout">
-                                        <span>로그아웃</span>
+                                        <Title size="6">로그아웃</Title>
                                     </Link>
                                 </div>
                             </div>

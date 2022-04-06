@@ -24,19 +24,26 @@ const DimoFilter = (props) => {
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[2];
+    // let category = location.state.category;
 
     const dispatch = useDispatch();
     const ClickCategory = (e) => {
         console.log(e.target.value);
         const category = e.target.value;
         const board = b.toUpperCase();
+    };
 
-        if (b === "qna") {
-            console.log(category, board);
-            dispatch(categoryDimo({ category, dispatch, board }));
-        } else if (b === "info") {
-            dispatch(categoryDimo({ category, dispatch, board }));
-        } else return null;
+    const goToINFO = () => {
+        navigate(
+            `/dimo/info`,
+            {
+                state: {
+                    board: "INFO",
+                    category: "uiux",
+                },
+            },
+            { replace: true },
+        );
     };
 
     if (list === "qna")

@@ -78,21 +78,6 @@ const MainSlider = (props) => {
                                 );
                             else return <></>;
                         })}
-                    {/* <SS>
-                        <Slides type="artwork" />
-                    </SS>
-                    <SS>
-                        <Slides type="artwork" />
-                    </SS>
-                    <SS>
-                        <Slides type="artwork" />
-                    </SS>
-                    <SS>
-                        <Slides type="artwork" />
-                    </SS>
-                    <SS>
-                        <Slides type="artwork" />
-                    </SS> */}
                 </Slide>
                 <NextBtnDetail onClick={() => slider?.current?.slickNext()}>
                     <Icon name="ArrowR" iconSize="48" />

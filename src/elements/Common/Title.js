@@ -12,10 +12,10 @@ ${(props) => (props.color === "W" ? `text-white` : "")};
 `;
 
 const Title = (props) => {
-    const { children, onClick, size, color, className } = props;
+    const { children, onClick, size, color, className, value } = props;
 
     return (
-        <TitleText onClick={onClick} size={size} color={color} className={className}>
+        <TitleText onClick={onClick} size={size} color={color} className={className} value={value}>
             {children}
         </TitleText>
     );
@@ -27,6 +27,7 @@ Title.defaultProps = {
     size: 3,
     color: "",
     className: "",
+    value: "",
 };
 
 export default Title;

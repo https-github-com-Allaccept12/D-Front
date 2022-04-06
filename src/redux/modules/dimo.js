@@ -492,9 +492,11 @@ export const orderByLikeDimo = createAsyncThunk(
 
 export const dimoSlice = createSlice({
     name: "dimo",
-    initialState: {},
+    initialState: { dimos: { postRecommendationFeed: [] } },
     reducers: {
         dimos: (state, action) => {
+            console.log(state);
+            console.log(action);
             state.dimos = action.payload;
         },
 

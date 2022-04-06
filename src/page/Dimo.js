@@ -6,6 +6,7 @@ import tw from "tailwind-styled-components";
 import { Title, Button, CategoryMini, Icon } from "../elements";
 import { DimoSlider } from "../components";
 import { dimoPageLoad, categoryDimo } from "../redux/modules/dimo";
+import { useToggle } from "../hooks";
 
 const SlideBox = tw.div`
 row-start-2 col-span-full
@@ -19,11 +20,16 @@ const MobileBtn = tw.button`
 bg-dpurple-200  rounded-full p-2 xl:hidden fixed bottom-10 right-5 text-white shadow-md
 `;
 
-const Dimo = () => {
-    let dimos = useSelector((state) => state.dimo.dimos?.postRecommendationFeed);
+const Dimo = (props) => {
+    const { dimos } = props;
+
     const location = useLocation();
     const navigate = useNavigate();
+    const [lights, SetLight] = useToggle();
+    const [lightss, SetLights] = useToggle();
+
     const a = location.pathname;
+
     const b = a.split("/")[2];
     const board = b.toUpperCase();
     // console.log(b);
@@ -39,18 +45,28 @@ const Dimo = () => {
     }
     const visitor_account_id = account_id;
 
-    const setPage = (e) => {
-        console.log(e.target.value);
-        const board = e.target.value;
-        const category = "uiux";
-
-        dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
-        // dispatch(dimoPageLoad({ dispatch, board, visitor_account_id }));
+    const goToQNA = () => {
+        navigate(`/dimo/qna`, {
+            state: {
+                board: "QNA",
+                category: "uiux",
+            },
+        });
     };
     useEffect(() => {
         const board = b.toUpperCase();
         dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
-    }, [setPage]);
+        dispatch(dimoPageLoad({ dispatch, board, visitor_account_id }));
+    }, [navigate]);
+
+    const goToINFO = () => {
+        navigate(`/dimo/info`, {
+            state: {
+                board: "INFO",
+                category: "uiux",
+            },
+        });
+    };
 
     const goToCreate = () => {
         navigate(`/dimo/create/${b}`, {
@@ -65,15 +81,13 @@ const Dimo = () => {
             <div className="bg-dgray-200 min-h-screen h-[200rem]">
                 <div className="xl:grid xl:grid-cols-4 ">
                     <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
-                        {b === "qna" ? (
-                            <Title size="5" value="QNA" onClick={setPage} className="text-dpurple-200">
-                                <Link to="/dimo/info/uiux">QNA</Link>
-                            </Title>
-                        ) : (
-                            <Title size="5" value="INFO" onClick={setPage} className="text-dpurple-200">
-                                <Link to="/dimo/qna/uiux">정보공유</Link>
-                            </Title>
-                        )}
+                        <Title size="5" value="QNA" onClick={goToQNA} className="text-dpurple-200 cursor-pointer">
+                            QNA
+                        </Title>
+
+                        <Title size="5" value="INFO" onClick={goToINFO} className="text-dpurple-200 cursor-pointer">
+                            정보공유
+                        </Title>
                     </div>
                     <div className="hidden xl:contents">
                         <div className="col-start-4 w-36 xl:mt-10 2xl:ml-32 ">
@@ -83,7 +97,7 @@ const Dimo = () => {
                         </div>
                     </div>
                     <SlideBox>
-                        <DimoSlider list={b} slidedimo={dimos} />
+                        <DimoSlider list={board} slidedimo={dimos} />
                     </SlideBox>
 
                     <Box>

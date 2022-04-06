@@ -25,24 +25,11 @@ const Line = tw.hr`
 w-[95%] border mx-auto border-gray-300 my-6
 `;
 
-const p = [
-    { id: "11" },
-    { id: "21" },
-    { id: "31" },
-    { id: "41" },
-    { id: "51" },
-    { id: "61" },
-    { id: "71" },
-    { id: "81" },
-    { id: "91" },
-    { id: "101" },
-];
-
 const DimoList = (props) => {
     const { list } = props;
     const dimos = useSelector((state) => state.dimo.categoryDimos);
 
-    console.log(dimos);
+    // console.log(dimos);
     return (
         <>
             <Box>

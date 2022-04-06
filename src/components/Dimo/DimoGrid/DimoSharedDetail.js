@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Label, Profile, Title, Text, Answer, InputNoTitle, Icon } from "../../../elements";
 import { CommentDimo } from "../../Comment";
-import { useHistory, Link, useLocation } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useToggle, useInput } from "../../../hooks";
 import { useDispatch, useSelector } from "react-redux";
@@ -47,14 +47,16 @@ const Bg = tw.div`
 bg-dgray-200 md:p-10 xl:px-20
 `;
 
-const DimoSharedDetail = ({ match }) => {
-    const { pathname } = useLocation();
+const DimoSharedDetail = () => {
+    let location = useLocation();
+    let navigate = useNavigate();
     // const navigate = useNavigate();
 
-    const post_id = pathname.split("/")[3];
+    const post_id = location.state.post_id;
+    // console.log(post_id);
     // const post_id = match.params.name;
     const dispatch = useDispatch();
-    const [loading, setLoading] = useToggle();
+
     let account_id = 0;
     // const id_cookie = getCookie("account_id");
     const id_cookie = sessionStorage.getItem("account_id");
@@ -81,14 +83,14 @@ const DimoSharedDetail = ({ match }) => {
         const data = { post_id, content };
 
         dispatch(CreateInfoDimo(data));
-        // history.goBack();
-        //여기에 뭔가 돌아가기버튼...
+        navigate(`/dimo/info/uiux`, { replace: true });
     };
+
     const ClickDelete = () => {
         const board = `INFO`;
         const category = dimos?.category;
         dispatch(deleteDimo({ post_id, category, board }));
-        history.replace("/dimo/qna");
+        navigate("/dimo/qna", { replace: true });
     };
 
     const [like_cnt, setLikeCnt] = useState(dimos?.like_count);
@@ -107,7 +109,7 @@ const DimoSharedDetail = ({ match }) => {
 
     const [book_cnt, setBookCnt] = useState(dimo?.bookmark_count);
     const [is_bookmark, setIsBookmark] = useState(dimo?.is_bookmark);
-    // console.log(dimos);
+
     const cancelBook = () => {
         setIsBookmark(false);
         setBookCnt(book_cnt - 1);
@@ -119,6 +121,7 @@ const DimoSharedDetail = ({ match }) => {
         setBookCnt(book_cnt + 1);
         dispatch(bookmarkAdd(post_id));
     };
+
     return (
         <>
             <Bg>

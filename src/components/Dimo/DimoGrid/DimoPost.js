@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { HeartButton, Text, Icon, Title, Profile, Label, IconBtn } from "../../../elements";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useNavigate } from "react-router-dom";
 import { dimoQnaDetailLoad, dimoQnaDetailSimilar, dimoInfoDetailLoad } from "../../../redux/modules/dimo";
 import tw from "tailwind-styled-components";
 
 const Art = tw.div`
-flex justify-center items-center flex-col shrink-0
+flex justify-center items-center flex-col shrink-0 cursor-pointer
 `;
 
 const Box = tw.div`
@@ -53,9 +53,9 @@ const DimoPost = (props) => {
         title,
         list,
     } = props;
-
+    // console.log(title);
     let dispatch = useDispatch();
-
+    let navigate = useNavigate();
     let account_id = 0;
     // const id_cookie = getCookie("account_id");
     const id_cookie = sessionStorage.getItem("account_id");
@@ -83,55 +83,62 @@ const DimoPost = (props) => {
 
     // const dimos = useSelector((state) => state.dimo.detailDimoInfo.postSubDetail);
 
+    const goToDimoQNA = () => {
+        navigate(`/dimo/qnadetail/${post_id}`, {
+            state: {
+                id: { post_id },
+                category: { category },
+            },
+        });
+    };
+
+    const goToDimoINFO = () => {
+        navigate(`/dimo/infodetail/${post_id}`, {
+            state: {
+                id: { post_id },
+                category: { category },
+            },
+        });
+    };
     if (list === "qna")
         return (
             <>
                 <Art onClick={handleClickDimoQna}>
-                    <Link
-                        to={{
-                            pathname: `/dimo/qnadetail/${post_id}`,
-                            state: {
-                                id: { post_id },
-                                category: { category },
-                            },
-                        }}
-                    >
-                        <Box>
-                            <Grid>
-                                <Card>
-                                    <Header>
-                                        <Profile size="5" src={account_profile_img} className="absolute inset-6" />
-                                        <LabelBox>
-                                            <div className="flex flex-row gap-1 flex-wrap">
-                                                <Label className="" size="1">
-                                                    {hash_tag[0]?.tag}
-                                                </Label>
-                                                {hash_tag[1] ? <Label className="">{hash_tag[1]?.tag}</Label> : ""}
-                                            </div>
-                                        </LabelBox>
-
-                                        <div className="absolute top-[3.5rem] left-[7rem] w-[13rem] overflow-hidden">
-                                            <Title size="5" className="text-left truncate">
-                                                {title}
-                                            </Title>
+                    <Box onClick={goToDimoQNA}>
+                        <Grid>
+                            <Card>
+                                <Header>
+                                    <Profile size="5" src={account_profile_img} className="absolute inset-6" />
+                                    <LabelBox>
+                                        <div className="flex flex-row gap-1 flex-wrap">
+                                            <Label className="" size="1">
+                                                {hash_tag[0]?.tag}
+                                            </Label>
+                                            {hash_tag[1] ? <Label className="">{hash_tag[1]?.tag}</Label> : ""}
                                         </div>
-                                    </Header>
-                                    <TextBox>
-                                        <p className="w-[20.25rem] h-24 text-ellipsis overflow-hidden">{content}</p>
-                                    </TextBox>
+                                    </LabelBox>
 
-                                    <IconBox>
-                                        <div className="flex flex-row justify-end items-end">
-                                            <div className="flex flex-row gap-5 text-dgray-400">
-                                                <IconBtn name="Talk" iconSize="20" count={comment_count} />
-                                                <IconBtn name="HeartE" iconSize="20" count={like_count} />
-                                            </div>
+                                    <div className="absolute top-[3.5rem] left-[7rem] w-[13rem] overflow-hidden">
+                                        <Title size="5" className="text-left truncate">
+                                            {title}
+                                        </Title>
+                                    </div>
+                                </Header>
+                                <TextBox>
+                                    <p className="w-[20.25rem] h-24 text-ellipsis overflow-hidden">{content}</p>
+                                </TextBox>
+
+                                <IconBox>
+                                    <div className="flex flex-row justify-end items-end">
+                                        <div className="flex flex-row gap-5 text-dgray-400">
+                                            <IconBtn name="Talk" iconSize="20" count={comment_count} />
+                                            <IconBtn name="HeartE" iconSize="20" count={like_count} />
                                         </div>
-                                    </IconBox>
-                                </Card>
-                            </Grid>
-                        </Box>
-                    </Link>
+                                    </div>
+                                </IconBox>
+                            </Card>
+                        </Grid>
+                    </Box>
                 </Art>
             </>
         );
@@ -139,48 +146,39 @@ const DimoPost = (props) => {
         return (
             <>
                 <Art onClick={handleClickDimoInfo}>
-                    <Link
-                        to={{
-                            pathname: `/dimo/infodetail/${post_id}`,
-                            state: {
-                                id: { post_id },
-                            },
-                        }}
-                    >
-                        <Box>
-                            <Grid>
-                                <Card>
-                                    <Header>
-                                        <Profile size="5" src={account_profile_img} className="absolute inset-6" />
-                                        <LabelBox>
-                                            <div className="flex flex-row gap-1">
-                                                <Label className="">{hash_tag[0]?.tag}</Label>
-                                                {hash_tag[1] ? <Label className="">{hash_tag[1].tag}</Label> : ""}
-                                            </div>
-                                        </LabelBox>
-
-                                        <div className="absolute top-[3.5rem] left-[7rem] w-[13rem] overflow-hidden">
-                                            <Title size="5" className="text-left truncate">
-                                                {title}
-                                            </Title>
+                    <Box onClick={goToDimoINFO}>
+                        <Grid>
+                            <Card>
+                                <Header>
+                                    <Profile size="5" src={account_profile_img} className="absolute inset-6" />
+                                    <LabelBox>
+                                        <div className="flex flex-row gap-1">
+                                            <Label className="">{hash_tag[0]?.tag}</Label>
+                                            {hash_tag[1] ? <Label className="">{hash_tag[1].tag}</Label> : ""}
                                         </div>
-                                    </Header>
-                                    <TextBox>
-                                        <p className="w-[20.25rem] h-24 text-ellipsis overflow-hidden">{content}</p>
-                                    </TextBox>
+                                    </LabelBox>
 
-                                    <IconBox>
-                                        <div className="flex flex-row justify-end items-end">
-                                            <div className="flex flex-row gap-5 text-dgray-400">
-                                                <IconBtn name="Talk" iconSize="20" count={comment_count} />
-                                                <IconBtn name="HeartE" iconSize="20" count={like_count} />
-                                            </div>
+                                    <div className="absolute top-[3.5rem] left-[7rem] w-[13rem] overflow-hidden">
+                                        <Title size="5" className="text-left truncate">
+                                            {title}
+                                        </Title>
+                                    </div>
+                                </Header>
+                                <TextBox>
+                                    <p className="w-[20.25rem] h-24 text-ellipsis overflow-hidden">{content}</p>
+                                </TextBox>
+
+                                <IconBox>
+                                    <div className="flex flex-row justify-end items-end">
+                                        <div className="flex flex-row gap-5 text-dgray-400">
+                                            <IconBtn name="Talk" iconSize="20" count={comment_count} />
+                                            <IconBtn name="HeartE" iconSize="20" count={like_count} />
                                         </div>
-                                    </IconBox>
-                                </Card>
-                            </Grid>
-                        </Box>
-                    </Link>
+                                    </div>
+                                </IconBox>
+                            </Card>
+                        </Grid>
+                    </Box>
                 </Art>
             </>
         );

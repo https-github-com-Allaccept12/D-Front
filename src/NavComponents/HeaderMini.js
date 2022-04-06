@@ -66,9 +66,9 @@ const HeaderMini = (props) => {
                     <Title size="6" className="">
                         <Link to="/art/list/all">모아보기</Link>
                     </Title>
-                    <Title size="6">
+                    {/* <Title size="6">
                         <Link to="/dimo/qna">디모</Link>
-                    </Title>
+                    </Title> */}
                     {is_login ? (
                         <>
                             <Title size="6">
@@ -91,12 +91,12 @@ const HeaderMini = (props) => {
                             <Title size="6" onClick={goToMyPage}>
                                 마이페이지
                             </Title>
-                            (
-                            <div onClick={() => alert("로그아웃되었습니다!")}>
+
+                            <Title size="1" onClick={() => alert("로그아웃되었습니다!")}>
                                 <Link to="/logout">
                                     <Profile size="6" className="" />
                                 </Link>
-                            </div>
+                            </Title>
                         </>
                     )}
                 </div>

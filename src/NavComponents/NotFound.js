@@ -9,7 +9,7 @@ const NotFound = (props) => {
         <div className="flex flex-col p-3 justify-center items-center">
             <Button
                 onClick={() => {
-                    navigate.goBack();
+                    navigate(-1);
                 }}
             >
                 뒤로가기
