@@ -28,6 +28,7 @@ w-[95%] border mx-auto border-gray-300 my-6
 const DimoList = (props) => {
     const { list } = props;
     const dimos = useSelector((state) => state.dimo.categoryDimos);
+    console.log(dimos);
 
     // console.log(dimos);
     return (
@@ -37,8 +38,32 @@ const DimoList = (props) => {
                     <DimoInsideFilter />
                     <Line />
                     <Grid>
-                        {dimos &&
-                            dimos.postMainPage.map((value) => {
+                        {dimos?.postMainPage
+                            ? dimos.postMainPage.map((value) => {
+                                  return (
+                                      <div key={value.post_id}>
+                                          <DimoPost
+                                              account_nickname={value.account_nickname}
+                                              account_profile_img={value.account_profile_img}
+                                              category={value.category}
+                                              comment_count={value.comment_count}
+                                              content={value.content}
+                                              create_time={value.create_time}
+                                              hash_tag={value.hash_tag}
+                                              is_selected={value.is_selected}
+                                              like_count={value.like_count}
+                                              post_id={value.post_id}
+                                              title={value.title}
+                                              list={list}
+                                              size="3"
+                                          />
+                                      </div>
+                                  );
+                              })
+                            : ""}
+
+                        {dimos?.postSearchPageMain &&
+                            dimos.postSearchPageMain.map((value) => {
                                 return (
                                     <div key={value.post_id}>
                                         <DimoPost

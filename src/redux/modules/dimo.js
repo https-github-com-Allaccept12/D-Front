@@ -429,7 +429,7 @@ export const searchDimo = createAsyncThunk("/searchDimo", ({ keyword, dispatch, 
     })
         .then((res) => {
             console.log(res);
-            dispatch(dimos(res.data.data));
+            dispatch(categoryDimos(res.data.data));
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
@@ -453,7 +453,7 @@ export const orderByNewDimo = createAsyncThunk(
         })
             .then((res) => {
                 console.log(res);
-                dispatch(dimos(res.data.data));
+                dispatch(categoryDimos(res.data.data));
                 sessionStorage.setItem("category", category);
             })
             .catch((err) => {
@@ -475,7 +475,7 @@ export const orderByLikeDimo = createAsyncThunk(
         URL.get(`/api/post/category/like/${category}/${board}?start=0`)
             .then((res) => {
                 console.log(res);
-                dispatch(dimos(res.data.data));
+                dispatch(categoryDimos(res.data.data));
                 sessionStorage.setItem("category", category);
             })
             .catch((err) => {
@@ -497,6 +497,9 @@ export const dimoSlice = createSlice({
         dimos: (state, action) => {
             console.log(state);
             console.log(action);
+            state.dimos = action.payload;
+        },
+        dimoSearch: (state, action) => {
             state.dimos = action.payload;
         },
 
@@ -573,5 +576,6 @@ export const dimoSlice = createSlice({
     },
 });
 
-export const { dimos, categoryDimos, detailDimoQna, dimoQnaDetailSimilars, detailDimoInfo } = dimoSlice.actions;
+export const { dimos, categoryDimos, dimosSearch, detailDimoQna, dimoQnaDetailSimilars, detailDimoInfo } =
+    dimoSlice.actions;
 export default dimoSlice.reducer;

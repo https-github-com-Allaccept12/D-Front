@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Slider from "react-slick";
 import tw from "tailwind-styled-components";
 import Slides from "./Slides";
@@ -7,8 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, Route, Switch, useLocation } from "react-router-dom";
 import { dimoPageLoad, categoryDimo } from "../../redux/modules/dimo";
 export const Slide = tw(Slider)`
-w-full md:w-[32.5rem] lg:w-[68rem] 2xl:w-[96rem]
-    mx-auto text-white pl-6 lg:ml-40 xl:ml-5
+w-full md:w-[32.5rem]  2xl:w-[96rem]
+    mx-auto text-white pl-10 lg:ml-40 xl:ml-5
     overflow-hidden text-lg flex
 `;
 
@@ -50,7 +50,13 @@ const slidedlider = (props) => {
     let slided = useSelector((state) => state.dimo.dimos.postRecommendationFeed);
     console.log(slided);
     let makeSlides = () => {};
+    const [time, setTime] = useState(true);
 
+    useEffect(() => {
+        const aaa = setTimeout(() => {
+            setTime();
+        }, 100);
+    }, 0);
     const settings = {
         dots: false, // 슬라이드 밑에 점 보이게
         infinite: true, // 무한으로 반복
@@ -91,30 +97,37 @@ const slidedlider = (props) => {
     if (list === "QNA")
         return (
             <>
-                <div className="flex-row hidden md:flex">
-                    <PrevBtn onClick={() => slider?.current.slickPrev()}>
-                        <Icon name="ArrowL" iconSize="48" />
-                    </PrevBtn>
-                    <Slide {...settings} ref={slider}>
-                        {slided.map((value) => {
-                            console.log(value);
-                            return (
-                                // <Images src={value.img_url} />
-                                <SS>
-                                    <Slides type="dimo" value={value} list="QNA" />
-                                </SS>
-                            );
-                        })}
-                    </Slide>
-                    <NextBtn onClick={() => slider?.current.slickNext()}>
-                        <Icon name="ArrowR" iconSize="48" />
-                    </NextBtn>
-                </div>
+                {time === true ? (
+                    <></>
+                ) : (
+                    <>
+                        <div className="flex-row hidden md:flex">
+                            <PrevBtn onClick={() => slider?.current.slickPrev()}>
+                                <Icon name="ArrowL" iconSize="48" />
+                            </PrevBtn>
+                            <Slide {...settings} ref={slider}>
+                                {slided.map((value) => {
+                                    console.log(value);
+                                    return (
+                                        // <Images src={value.img_url} />
+                                        <SS>
+                                            <Slides type="dimo" value={value} list="QNA" />
+                                        </SS>
+                                    );
+                                })}
+                            </Slide>
+                            <NextBtn onClick={() => slider?.current.slickNext()}>
+                                <Icon name="ArrowR" iconSize="48" />
+                            </NextBtn>
+                        </div>
+                    </>
+                )}
             </>
         );
-    else if (list === "INFO")
+    else
         return (
             <>
+                {}
                 <div className="flex-row hidden md:flex">
                     <PrevBtn onClick={() => slider?.current.slickPrev()}>
                         <Icon name="ArrowL" iconSize="48" />
@@ -123,7 +136,7 @@ const slidedlider = (props) => {
                         {slided.map((value) => {
                             return (
                                 // <Images src={value.img_url} />
-                                <SS>
+                                <SS key={value.post_id}>
                                     <Slides type="dimo" value={value} list="INFO" />
                                 </SS>
                             );
