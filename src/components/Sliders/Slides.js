@@ -39,7 +39,7 @@ const Slides = (props) => {
         like_count,
         title,
     } = props;
-    // console.log(post_id);
+    console.log();
 
     const [is_fow, setIsfow] = useToggle(follow);
 
@@ -200,10 +200,19 @@ const Slides = (props) => {
                                     <Profile size="6" src={value.account_profile_img} />
                                 </div>
                                 <div className="absolute top-7 left-28">
-                                    {/* <div className="flex flex-row gap-1">
-                                        <Label slides="true">{hash_tag1}</Label>
-                                        {hash_tag1 && <Label slides="true">{hash_tag2}</Label>}
-                                    </div> */}
+                                    <div className="flex flex-row gap-1 ">
+                                        {value ? (
+                                            <>
+                                                <Label co="slide">{value.hash_tag[0]?.tag}</Label>
+
+                                                {value?.hash_tag[1] && (
+                                                    <Label co="slide">{value.hash_tag[1]?.tag}</Label>
+                                                )}
+                                            </>
+                                        ) : (
+                                            ""
+                                        )}
+                                    </div>
                                     <Title size="6">{value.title}</Title>
                                 </div>
                             </div>
@@ -239,10 +248,19 @@ const Slides = (props) => {
                                     <Profile size="6" src={value.account_profile_img} />
                                 </div>
                                 <div className="absolute top-7 left-28">
-                                    {/* <div className="flex flex-row gap-1">
-                                        <Label slides="true">{value.hash_tag1}</Label>
-                                        {value.hash_tag1 && <Label slides="true">{value.hash_tag2}</Label>}
-                                    </div> */}
+                                    <div className="flex flex-row gap-1 ">
+                                        {value ? (
+                                            <>
+                                                <Label co="slide">{value.hash_tag[0]?.tag}</Label>
+
+                                                {value?.hash_tag[1] && (
+                                                    <Label co="slide">{value.hash_tag[1]?.tag}</Label>
+                                                )}
+                                            </>
+                                        ) : (
+                                            ""
+                                        )}
+                                    </div>
                                     <Title size="6">{value.title}</Title>
                                 </div>
                             </div>

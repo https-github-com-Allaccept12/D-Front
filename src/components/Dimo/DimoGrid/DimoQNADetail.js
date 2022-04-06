@@ -44,7 +44,7 @@ const DimoQNADetail = ({ history, location, match }) => {
     const { pathname } = useLocation();
 
     const post_id = pathname.split("/")[3];
-    console.log(dimos);
+    // console.log(dimos);
 
     // let owner_account_id = account_id;
 

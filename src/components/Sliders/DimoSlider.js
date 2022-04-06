@@ -31,7 +31,7 @@ const slidedlider = (props) => {
     const a = location.pathname;
     const b = a.split("/")[2];
     let board = b.toUpperCase();
-    console.log(board);
+    // console.log(board);
 
     const dispatch = useDispatch();
     let account_id = 0;
@@ -107,7 +107,7 @@ const slidedlider = (props) => {
                             </PrevBtn>
                             <Slide {...settings} ref={slider}>
                                 {slided.map((value) => {
-                                    console.log(value);
+                                    // console.log(value);
                                     return (
                                         // <Images src={value.img_url} />
                                         <SS>
