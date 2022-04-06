@@ -1,16 +1,19 @@
 import React from "react";
-import { Route, Switch, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import { Header, OHeader, NotFound, HeaderMini } from "./NavComponents";
 import { TendencyTest, MyInterests, Result, CreateProfile } from "./components";
 import { Main, ArtWork, Dimo, Login, LogOut, EditMySpace, MyPage } from "./page";
 import { CompleteProfile } from "./components";
 import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "./components/Dimo";
 import { ArtWorkWrite, ArtWorkCreate, ArtWorkInlineDetail } from "./components/ArtWorks";
+import { useSelector } from "react-redux";
 import KakaoRedirectHandler from "./shared/KakaoRedirectHandler";
 
 function App() {
     const location = useLocation();
     const a = location.pathname;
+    let dimos = useSelector((state) => state.dimo.dimos?.postRecommendationFeed);
+
     return (
         <>
             <div id="modal"></div>
@@ -25,35 +28,40 @@ function App() {
 
                 {(a === "/tendencytest") | (a === "/") ? "" : <OHeader />}
 
-                <Switch>
-                    <Route exact path="/" component={Main} />
-                    <Route exact path="/Main" component={Main} />
-                    <Route exact path="/logout" component={LogOut} />
-                    <Route exact path="/Login" component={Login} />
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/Main" element={<Main />} />
+                    <Route path="/logout" element={<LogOut />} />
+                    <Route path="/Login" element={<Login />} />
 
-                    <Route path={["/art", "/art/:name"]} component={ArtWork} />
-                    <Route exact path="/createart" component={ArtWorkCreate} />
-                    <Route exact path="/detailart/:name" component={ArtWorkInlineDetail} />
-                    <Route path={["/dimo/qna", "/dimo/info"]} component={Dimo} />
+                    <Route path="/art" element={<ArtWork />} />
+                    <Route path="/art/*" element={<ArtWork />} />
+                    <Route path="/createart" element={<ArtWorkCreate />} />
+                    <Route path="/detailart/*" element={<ArtWorkInlineDetail />} />
+                    <Route path="/dimo/qna/*" element={<Dimo {...dimos} />} />
+                    <Route path="/dimo/info/*" element={<Dimo {...dimos} />} />
 
-                    <Route exact path="/dimo/qnadetail/:name" component={DimoQNADetail} />
-                    <Route exact path="/dimo/infodetail/:name" component={DimoSharedDetail} />
-                    <Route exact path={["/dimo/create/:name", "/dimo/create/edits/:name"]} component={DimoCreate} />
+                    <Route path="/dimo/qnadetail/*" element={<DimoQNADetail />} />
+                    <Route path="/dimo/infodetail/*" element={<DimoSharedDetail />} />
+                    <Route path="/dimo/create/*" element={<DimoCreate />} />
+                    <Route path="/dimo/create/edits/*" element={<DimoCreate />} />
 
-                    <Route exact path={["/myspace", "/myspace/:name"]} component={MyPage} />
+                    <Route path="/myspace" element={<MyPage />} />
+                    <Route path="/myspace/*" element={<MyPage />} />
 
-                    <Route exact path={["/editmyspace", "/editmyspace/:name"]} component={EditMySpace} />
+                    <Route path="/editmyspace" element={<EditMySpace />} />
+                    <Route path="/editmyspace/*" element={<EditMySpace />} />
 
-                    <Route exact path="/tendencytest" component={TendencyTest} />
+                    <Route path="/tendencytest" element={<TendencyTest />} />
 
-                    <Route exact path="/Result/:name" component={Result} />
-                    <Route exact path="/myinterests" component={MyInterests} />
-                    <Route exact path="/createprofile" component={CreateProfile} />
-                    <Route exact path="/completeprofile" component={CompleteProfile} />
-                    <Route path="/user/kakao/callback" component={KakaoRedirectHandler} />
+                    <Route path="/Result/*" element={<Result />} />
+                    <Route path="/myinterests" element={<MyInterests />} />
+                    <Route path="/createprofile" element={<CreateProfile />} />
+                    <Route path="/completeprofile" element={<CompleteProfile />} />
+                    <Route path="/user/kakao/callback" element={<KakaoRedirectHandler />} />
 
-                    <Route component={NotFound} />
-                </Switch>
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
             </div>
         </>
     );

@@ -47,8 +47,12 @@ const Bg = tw.div`
 bg-dgray-200 md:p-10 xl:px-20
 `;
 
-const DimoSharedDetail = ({ history, location, match }) => {
-    const post_id = match.params.name;
+const DimoSharedDetail = ({ match }) => {
+    const { pathname } = useLocation();
+    // const navigate = useNavigate();
+
+    const post_id = pathname.split("/")[3];
+    // const post_id = match.params.name;
     const dispatch = useDispatch();
     const [loading, setLoading] = useToggle();
     let account_id = 0;

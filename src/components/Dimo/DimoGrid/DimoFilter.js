@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Title, Text, Icon } from "../../../elements";
-import { useHistory, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { categoryDimo } from "../../../redux/modules/dimo";
 import tw from "tailwind-styled-components";
 
@@ -20,7 +20,7 @@ flex flex-row py-2 px-2 font-min1 text-tiny hover:bg-dpurple-100 rounded-lg gap-
 const DimoFilter = (props) => {
     const { list } = props;
 
-    const history = useHistory();
+    const navigate = useNavigate();
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[2];

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { ArtWorkFilter, ArtWorkInlineDetail, ArtWorkList, ArtWorkWrite } from "../components/ArtWorks";
 import { Title, Button, CategoryMini, Icon } from "../elements";
 import { artworkPageLoad } from "../redux/modules/artWork";
-import { Link, Route, Switch } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
 const MobileBtn = tw.button`
@@ -19,8 +19,8 @@ opacity-60 hover:opacity-100
 const ArtWork = (props) => {
     const dispatch = useDispatch();
     useEffect(() => {
-    dispatch(artworkPageLoad(dispatch));
-    })
+        dispatch(artworkPageLoad(dispatch));
+    });
 
     return (
         <>
@@ -49,10 +49,10 @@ const ArtWork = (props) => {
                         </div>
                     </div>
                 </div>
-                <Switch>
+                <Routes>
                     {/* <Route exact path="/art/list/:name" component={ArtWorkAllList} /> */}
-                    <Route exact path="/art/detail" component={ArtWorkInlineDetail} />
-                </Switch>
+                    <Route path="/art/detail" element={<ArtWorkInlineDetail />} />
+                </Routes>
             </div>
         </>
     );

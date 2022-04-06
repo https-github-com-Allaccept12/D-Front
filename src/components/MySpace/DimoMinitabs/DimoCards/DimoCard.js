@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Label, Profile, Title, Text, IconBtn } from "../../../../elements";
 
-import { useHistory, Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
 const InnerLine = tw.hr`
@@ -22,7 +22,7 @@ const DimoCard = (props) => {
     const a = location.pathname;
     const b = a.split("/")[1];
     const { size } = props;
-    let history = useHistory();
+
     return (
         <>
             <Grid>
@@ -30,19 +30,11 @@ const DimoCard = (props) => {
                     <div className="absolute w-[20rem] h-[20rem]   md:w-[28.4375rem] md:h-[18.125rem] xl:w-[62.875rem] xl:h-[30.25rem] bg-white rounded-lg border border-dgray-200 hover:shadow-xl">
                         <div>
                             <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
-                                {isMine ? 
-                                    <Profile
-                                        size="6"
-                                        src={profile}
-                                        main
-                                    />
-                                    :
-                                    <Profile
-                                        size="6"
-                                        src={data && data.profileImg}
-                                        main
-                                    />
-                                }
+                                {isMine ? (
+                                    <Profile size="6" src={profile} main />
+                                ) : (
+                                    <Profile size="6" src={data && data.profileImg} main />
+                                )}
                             </div>
                             <div className="absolute top-7 left-28">
                                 <div className="flex flex-row gap-1">
@@ -58,7 +50,7 @@ const DimoCard = (props) => {
                         </div>
                         <div className="absolute px-10 top-28">
                             <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
-                            {data && data.content}
+                                {data && data.content}
                             </Text>
                             <Text size="2">(더보기)</Text>
                         </div>

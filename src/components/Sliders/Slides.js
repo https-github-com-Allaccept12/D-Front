@@ -4,7 +4,7 @@ import { requestFollow } from "../../redux/modules/user";
 import { Label, Title, HeartButton, Text, Card, Profile, Button, Thumbnail, IconBtn } from "../../elements";
 import tw from "tailwind-styled-components";
 
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { DimoWorkPost } from "../Dimo";
 const IconBox = tw.div`
 absolute bottom-6 px-9 w-full
@@ -15,7 +15,7 @@ absolute w-[32.5rem] h-[18.75rem]  rounded-lg bg-dpurple-200
 `;
 
 const Slides = (props) => {
-    const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const {
         type,
@@ -69,7 +69,7 @@ const Slides = (props) => {
     };
 
     const goToProfile = () => {
-        history.push(`/myspace/myprofile/${nickname}/${id}`);
+        navigate(`/myspace/myprofile/${nickname}/${id}`);
     };
 
     if (type === "main")

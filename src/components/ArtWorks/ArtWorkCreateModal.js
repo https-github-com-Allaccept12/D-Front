@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CreateNewArtWork, RequestModifyArtWork } from "../../redux/modules/artWork";
 import { preview } from "../../redux/modules/image";
 import Portal from "../../elements/Tools/Portal";
@@ -16,17 +16,17 @@ const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) =
     const [titleTemp, setTitleTemp] = useState("");
     const [contentTemp, setContentTemp] = useState("");
     const [thumbnailInEdit, setThumbnailInEdit] = useState("");
-    let spcialtyTemp = '';
+    let spcialtyTemp = "";
     useEffect(() => {
-        if(isEdit){
+        if (isEdit) {
             setTitleTemp(info?.title);
             setContentTemp(info?.content);
             setThumbnailInEdit(info?.thumbnail);
         }
-    }, [])
+    }, []);
 
     // 기본 세팅
-    const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     // 작품 이미지들 리덕스에서 불러옴
     const artworkfiles = useSelector((state) => state.image.artworkFiles);
@@ -63,20 +63,20 @@ const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) =
     const [toolSelected, setToolSelected] = useState([]);
 
     useEffect(() => {
-        if(isEdit){
+        if (isEdit) {
             spcialtyTemp = info.specialty;
-            var mainTemp = spcialtyTemp.split('/');
-            for (var i in mainTemp){
-                var dic = {}
-                dic['label'] = mainTemp[i];
-                dic['value'] = mainTemp[i];
+            var mainTemp = spcialtyTemp.split("/");
+            for (var i in mainTemp) {
+                var dic = {};
+                dic["label"] = mainTemp[i];
+                dic["value"] = mainTemp[i];
                 if (i == 0) {
-                toolSelected.pop();  
+                    toolSelected.pop();
                 }
                 toolSelected.push(dic);
             }
         }
-      }, [])
+    }, []);
 
     // string으로 변환
     const specialty = [];
@@ -150,41 +150,40 @@ const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) =
 
     // 다음 버튼 클릭 시 실행 함수
     const createArtWork = () => {
-        if(!thumbnail & !isEdit){
-            alert('썸네일을 등록해 주세요');
-            return
+        if (!thumbnail & !isEdit) {
+            alert("썸네일을 등록해 주세요");
+            return;
         }
-        if(toolSelected.length === 0){
-            alert('사용 툴을 정해 주세요');
-            return
+        if (toolSelected.length === 0) {
+            alert("사용 툴을 정해 주세요");
+            return;
         }
-        if(!inputs.startDate){
-            alert('작업 기간을 설정해 주세요');
-            return
+        if (!inputs.startDate) {
+            alert("작업 기간을 설정해 주세요");
+            return;
         }
-        if(!inputs.endDate){
-            alert('작업 기간을 설정해 주세요');
-            return
+        if (!inputs.endDate) {
+            alert("작업 기간을 설정해 주세요");
+            return;
         }
-        if(!inputs.title){
-            alert('프로젝트 제목을 작성해 주세요');
-            return
+        if (!inputs.title) {
+            alert("프로젝트 제목을 작성해 주세요");
+            return;
         }
-        if(!inputs.category){
-            alert('작품 카테고리를 설정해 주세요');
-            return
+        if (!inputs.category) {
+            alert("작품 카테고리를 설정해 주세요");
+            return;
         }
-        if(!CopyRight){
-            alert('저작권 여부를 설정해 주세요');
-            return
+        if (!CopyRight) {
+            alert("저작권 여부를 설정해 주세요");
+            return;
         }
 
         const skills = specialty.join("/");
 
-
         // 서버에 보내기 전 data에 json형식으로 모아주기 --------------------------------------------
-        let data = {}
-        if (isEdit){
+        let data = {};
+        if (isEdit) {
             data = {
                 title: inputs.title,
                 category: inputs.category,
@@ -196,9 +195,9 @@ const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) =
                 is_master: false,
                 scope: Public,
                 thumbnail: thumbnailInEdit,
-                delete_img: deleteList, 
-            }
-        } else{
+                delete_img: deleteList,
+            };
+        } else {
             data = {
                 title: inputs.title,
                 category: inputs.category,
@@ -210,7 +209,7 @@ const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) =
                 is_master: false,
                 scope: Public,
                 thumbnail: thumbnail,
-            }
+            };
         }
         // console.log(data);
 
@@ -221,12 +220,12 @@ const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) =
         formData.append("imgFile", forSendCover);
         artworkfiles.forEach((element) => formData.append("imgFile", element));
         // console.log(formData);
-        if(isEdit){
-            dispatch(RequestModifyArtWork({artwork_id, formData}));
-        }else{
+        if (isEdit) {
+            dispatch(RequestModifyArtWork({ artwork_id, formData }));
+        } else {
             dispatch(CreateNewArtWork(formData));
         }
-        // history.replace("/art/list/all");
+        // navigate.replace("/art/list/all");
     };
 
     const [inputList, setInputList] = useState([

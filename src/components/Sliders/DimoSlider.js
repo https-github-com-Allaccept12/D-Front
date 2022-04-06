@@ -24,7 +24,8 @@ const NextBtn = tw.button`
 z-10 text-white mr-10
 `;
 
-const DimoSlider = (props) => {
+const slidedimolider = (props) => {
+    const { list, slidedimo } = props;
     const slider = React.useRef(null);
     const location = useLocation();
     const a = location.pathname;
@@ -48,33 +49,33 @@ const DimoSlider = (props) => {
         dispatch(dimoPageLoad({ dispatch, board, visitor_account_id }));
     }, [board, dispatch]);
 
-    let dimos = useSelector((state) => state.dimo.dimos?.postRecommendationFeed);
-    console.log(dimos);
-    const { list } = props;
+    // let slidedimo = useSelector((state) => state.dimo.slidedimo?.postRecommendationFeed);
+    console.log(slidedimo);
+
     let makeSlides = () => {};
-    if (dimos)
+    if (slidedimo)
         makeSlides = () => {
             const arr = [];
-            for (let i = 0; i < dimos.length; i++) {
+            for (let i = 0; i < slidedimo.length; i++) {
                 arr.push(
                     <SS>
                         <Slides
-                            // key={dimos[i].post_id}
+                            // key={slidedimo[i].post_id}
                             type="dimo"
-                            account_id={dimos[i].account_id}
-                            account_nickname={dimos[i].account_nickname}
-                            account_profile_img={dimos[i].account_profile_img}
-                            category={dimos[i].category}
-                            comment_count={dimos[i].comment_count}
-                            content={dimos[i].content}
-                            create_time={dimos[i].create_time}
-                            hash_tag1={dimos[i].hash_tag[0]?.tag}
-                            hash_tag2={dimos[i].hash_tag[1]?.tag}
-                            is_selected={dimos[i].is_selected}
-                            like_count={dimos[i].like_count}
-                            title={dimos[i].title}
+                            account_id={slidedimo[i].account_id}
+                            account_nickname={slidedimo[i].account_nickname}
+                            account_profile_img={slidedimo[i].account_profile_img}
+                            category={slidedimo[i].category}
+                            comment_count={slidedimo[i].comment_count}
+                            content={slidedimo[i].content}
+                            create_time={slidedimo[i].create_time}
+                            hash_tag1={slidedimo[i].hash_tag[0]?.tag}
+                            hash_tag2={slidedimo[i].hash_tag[1]?.tag}
+                            is_selected={slidedimo[i].is_selected}
+                            like_count={slidedimo[i].like_count}
+                            title={slidedimo[i].title}
                             list={list}
-                            post_id={dimos[i].post_id}
+                            post_id={slidedimo[i].post_id}
                         />
                     </SS>,
                 );
@@ -143,8 +144,8 @@ const DimoSlider = (props) => {
                         <Icon name="ArrowL" iconSize="48" />
                     </PrevBtn>
                     <Slide {...settings} ref={slider}>
-                        {dimos &&
-                            dimos.map((value) => {
+                        {slidedimo &&
+                            slidedimo.map((value) => {
                                 return (
                                     // <Images src={value.img_url} />
                                     <SS key={value?.post_id}>
@@ -161,4 +162,4 @@ const DimoSlider = (props) => {
         );
 };
 
-export default DimoSlider;
+export default slidedimolider;

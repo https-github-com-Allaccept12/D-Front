@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CreateInterests } from "../../redux/modules/interests.js";
 import { Button, Title, Text } from "../../elements";
 import { FakeHeader } from "../../NavComponents";
@@ -47,7 +47,7 @@ const MyInterests = (props) => {
     const token = sessionStorage.getItem("access_token");
     const [isClicked, setIsClicked] = useState(false);
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     // 선택 시 실행 function
     const handleClicked = (e) => {
@@ -73,7 +73,7 @@ const MyInterests = (props) => {
         console.log(selectInterest);
         const interest = { interest: selectInterest };
         dispatch(CreateInterests({ interest, token }));
-        history.replace("/CreateProfile");
+        navigate("/CreateProfile", { replace: true });
     };
 
     return (

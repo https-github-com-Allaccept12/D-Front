@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { kakaoLoginAxios } from "../redux/modules/user";
 import { kakaoSlice } from "../redux/modules/temp";
 import PageLoadSpinner from "../elements/Common/PageLoadSpinner";
@@ -8,7 +7,6 @@ import PageLoadSpinner from "../elements/Common/PageLoadSpinner";
 const KakaoRedirectHandler = (props) => {
     const dispatch = useDispatch();
     // const navigate = useNavigate();
-    const history = useHistory();
 
     const code = new URL(window.location.href).searchParams.get("code");
 

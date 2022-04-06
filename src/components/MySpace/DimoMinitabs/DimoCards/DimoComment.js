@@ -1,7 +1,7 @@
 import React from "react";
 import { Subtitle, Text, Title } from "../../../../elements";
 
-import { useHistory, Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
 const InnerLine = tw.hr`
@@ -16,7 +16,7 @@ const DimoCard = (props) => {
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[1];
-    let history = useHistory();
+
     return (
         <>
             <Box>
