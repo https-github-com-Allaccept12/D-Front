@@ -18,6 +18,7 @@ const MySpaceTab = (props) => {
   const location = useLocation();
   const a = location.pathname;
   const b = a.split("/")[2];
+  console.log('그럼여기는 ㅋ', info);
 
   if (b === "myprofile") return <MyProfile info={info} exp={exp} feed={feed} />;
   if (b === "mywork") return <MyArtWork info={info?.account_id} />;

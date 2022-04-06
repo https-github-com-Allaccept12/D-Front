@@ -72,6 +72,14 @@ const TendencyTest = (props) => {
         }
     }, [mbti_s]);
 
+    const ClickToResult = () => {
+        navigate(`/Result/${tendency}`, {
+            state: {
+                title: { tendency },
+                from: true,
+            },
+        });
+    }
     // const dispatch = useDispatch();
     // const SendTendency = () => {
     //     const tendency = { tendency: designation };
@@ -781,20 +789,20 @@ const TendencyTest = (props) => {
 
                     <Title size="4">과연 당신의 타입은!</Title>
 
-                    <Link
+                    {/* <Link
                         to={{
                             pathname: `/Result/${designation}`,
                             state: {
                                 title: { designation },
                             },
                         }}
-                    >
-                        <div className="flex items-center justify-center mt-10">
+                    > */}
+                        <div onClick={ClickToResult} className="flex items-center justify-center mt-10">
                             <Button size="1" color="1">
                                 보러가기
                             </Button>
                         </div>
-                    </Link>
+                    {/* </Link> */}
                 </Flex>
             )}
             <div className="grid items-center col-start-4 row-start-4">

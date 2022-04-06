@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Label, Profile, Title, Text, IconBtn } from "../../../../elements";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
 const InnerLine = tw.hr`
@@ -19,13 +19,18 @@ cursor-pointer hover:scale-105
 const DimoCard = (props) => {
     const { data, profile, isMine } = props;
     const location = useLocation();
+    const navigate = useNavigate();
     const a = location.pathname;
     const b = a.split("/")[1];
     const { size } = props;
+    
+    const goToDetail = () => {
+        navigate(`/dimo/infodetail/${data.post_id}`);
+    };
 
     return (
         <>
-            <Grid>
+            <Grid onClick={goToDetail}>
                 <div className="w-[20rem] h-[20rem] md:w-[28.4375rem] md:h-[18.125rem] xl:w-[62.875rem] xl:h-[30.25rem] rounded-lg ">
                     <div className="absolute w-[20rem] h-[20rem]   md:w-[28.4375rem] md:h-[18.125rem] xl:w-[62.875rem] xl:h-[30.25rem] bg-white rounded-lg border border-dgray-200 hover:shadow-xl">
                         <div>
@@ -38,12 +43,14 @@ const DimoCard = (props) => {
                             </div>
                             <div className="absolute top-7 left-28">
                                 <div className="flex flex-row gap-1">
-                                    <Label size="1" color="4">
-                                        취준생
-                                    </Label>
-                                    <Label size="1" color="5">
-                                        진로고민
-                                    </Label>
+                                    {data && data.hash_tag.map((value) => {
+                                        return (
+                                            <Label size="1" color="4">
+                                                {value.tag}
+                                            </Label>
+                                        )
+                                    })}
+                                    
                                 </div>
                                 <Title size="6">{data && data.title}</Title>
                             </div>

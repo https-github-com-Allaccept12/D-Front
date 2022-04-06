@@ -22,6 +22,7 @@ const MyProfile = (props) => {
 
     // const info = useSelector(state => state.myPage.myPage);
     const { info, exp, feed } = props;
+    console.log('여기는 오니 ㅋ', info);
 
     return (
         <>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "./TendencyButton";
 import tw from "tailwind-styled-components";
 import { Title, Subtitle, Text } from "../../elements";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FacebookShareButton, FacebookIcon, TwitterIcon, TwitterShareButton } from "react-share";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -56,12 +56,20 @@ const Cover = tw.div`
 absolute top-0 w-full
 `;
 
-const TendencyResult = ({ history, location, match }) => {
+const TendencyResult = ({ history, match }) => {
     const currentUrl = window.location.href;
+    const location = useLocation();
+    const navigate = useNavigate();
     const token = sessionStorage.getItem("access_token");
     const [is_loaded, setIsLoaded] = useState(false);
+    const [myTendency, setMyTendency] = useState('');
     const fromMyPage = useLocation().state.from;
     // console.log(fromMyPage);
+
+    useEffect(() => {
+        setMyTendency(location.state.title.tendency);
+    }, [])
+
     useEffect(() => {
         if(fromMyPage){
             let timer = setTimeout(() => {
@@ -76,19 +84,20 @@ const TendencyResult = ({ history, location, match }) => {
     });
 
     const Back = () => {
-        history.goBack();
+        navigate(-1);
     }
 
     const dispatch = useDispatch();
     const SendTendency = () => {
-        const tendency = { tendency: match.params.name };
+        const tendency = { tendency: myTendency };
         console.log(tendency);
         dispatch(CreateTendency({ tendency, token }));
 
         history.replace("/MyInterests");
     };
 
-    if (match.params.name === "디테일 장인")
+
+    if (myTendency === "디테일 장인")
         return (
             <>
                 <Cover>
@@ -101,7 +110,7 @@ const TendencyResult = ({ history, location, match }) => {
                                 1px의 여백도 놓치지 않는 섬세함
                             </Subtitle>
                             <Title size="2" className="text-[#F5C3AF]">
-                                {match.params.name}
+                                {myTendency}
                             </Title>
                             <Result src={Detail} alt="" />
                             <Subtitle size="3" className="text-[#F5C3AF]">
@@ -168,7 +177,7 @@ const TendencyResult = ({ history, location, match }) => {
             </>
         );
 
-    if (match.params.name === "대담한 혁신가")
+    if (myTendency === "대담한 혁신가")
         return (
             <>
                 <Cover>
@@ -181,7 +190,7 @@ const TendencyResult = ({ history, location, match }) => {
                                 한계를 뛰어넘는 문제 해결력
                             </Subtitle>
                             <Title size="2" className="text-[#DB4A60]">
-                                {match.params.name}
+                                {myTendency}
                             </Title>
                             <Result src={Innovator} alt="" />
                             <Subtitle size="3" className=" text-[#DB4A60]">
@@ -248,7 +257,7 @@ const TendencyResult = ({ history, location, match }) => {
             </>
         );
 
-    if (match.params.name === "꿈꾸는 예술가")
+    if (myTendency === "꿈꾸는 예술가")
         return (
             <>
                 <Cover>
@@ -261,7 +270,7 @@ const TendencyResult = ({ history, location, match }) => {
                                 저너머를 바라보는 남다른 시각
                             </Subtitle>
                             <Title size="2" className="text-[#9262F7]">
-                                {match.params.name}
+                                {myTendency}
                             </Title>
                             <Result src={Artist} alt="" />
                             <Subtitle size="3" className=" text-[#9262F7]">
@@ -328,7 +337,7 @@ const TendencyResult = ({ history, location, match }) => {
             </>
         );
 
-    if (match.params.name === "창의적인 발명가")
+    if (myTendency === "창의적인 발명가")
         return (
             <>
                 <Cover>
@@ -341,7 +350,7 @@ const TendencyResult = ({ history, location, match }) => {
                                 넘치는 호기심의 타오르는 열정
                             </Subtitle>
                             <Title size="2" className="text-[#5876FF]">
-                                {match.params.name}
+                                {myTendency}
                             </Title>
                             <Result src={Inventor} alt="" />
                             <Subtitle size="3" className="text-[#5876FF]">
@@ -408,7 +417,7 @@ const TendencyResult = ({ history, location, match }) => {
             </>
         );
 
-    if (match.params.name === "명랑한 모험가")
+    if (myTendency === "명랑한 모험가")
         return (
             <>
                 <Cover>
@@ -421,7 +430,7 @@ const TendencyResult = ({ history, location, match }) => {
                                 톡톡 튀는 아이디어와 에너지
                             </Subtitle>
                             <Title size="2" className="text-[#FED263]">
-                                {match.params.name}
+                                {myTendency}
                             </Title>
                             <Result src={Adventure} alt="" />
                             <Subtitle size="3" className="text-[#FED263]">
@@ -488,7 +497,7 @@ const TendencyResult = ({ history, location, match }) => {
             </>
         );
 
-    if (match.params.name === "부드러운 중재자")
+    if (myTendency === "부드러운 중재자")
         return (
             <>
                 <Cover>
@@ -501,7 +510,7 @@ const TendencyResult = ({ history, location, match }) => {
                                 모든 것을 조화롭게 만드는 이해력
                             </Subtitle>
                             <Title size="2" className="text-[#1ABC9C]">
-                                {match.params.name}
+                                {myTendency}
                             </Title>
                             <Result src={Harmonious} alt="" />
                             <Subtitle size="3" className=" text-[#1ABC9C]">

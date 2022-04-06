@@ -26,25 +26,8 @@ flex flex-wrap justify-center items-center mx-auto gap-8 mt-20
 
 
 const MySkill = (props) => {
-  const {info} = props
-  const [mainSkill, setMainSkill] = useState([]);
-  const [subSkill, setSubSkill] = useState([]);
-  const [mainSkillCode, setMainSkillCode] = useState([])
-  useEffect(() => {
-    if (info){ 
-      setMainSkill(info.specialty.split('/'));
-      setSubSkill(info.other_specialty.split('/'));
-    }
-    for (var i = 0; mainSkill.length; i++){
-      var x = mainSkill.pop()
-      for (var skill of skillList){
-        if (x == skill.label){
-          mainSkillCode.push(skill.value);
-        }
-      }
-    }
-    
-  }, [info])
+  const mainSkill = useSelector((state) => state.myPage.mySpecialty);
+  const subSkill = useSelector((state) => state.myPage.subSpecialty);
   return (
     <>
       <div className="flex flex-row flex-wrap items-center justify-start w-5/6 mx-auto">
@@ -63,7 +46,7 @@ const MySkill = (props) => {
 
         <Box>
           <InnerBox>
-            {mainSkillCode.map((item) => (
+            {mainSkill && mainSkill.map((item) => (
               <SkillThumbnail skill={item}/>
             ))}
           </InnerBox>
@@ -71,7 +54,7 @@ const MySkill = (props) => {
 
         <Box02>
           <InnerBox02>
-            {subSkill.map((item) => (
+            {subSkill && subSkill.map((item) => (
               <Button size="3" color="4" value={item}>
               {item}
             </Button>
