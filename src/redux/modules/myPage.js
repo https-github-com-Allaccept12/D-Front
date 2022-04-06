@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { artists, artworks } from "./mainPageReducer";
-import { preview } from "./image";
-import { URL, token, account_id } from "../UrlForAxios";
+import skillList from "../../components/ArtWorks/skillList_code";
 
 export const myPageLoad = createAsyncThunk(
   "/myPageLoad",
@@ -17,7 +15,19 @@ export const myPageLoad = createAsyncThunk(
       .then((res) => {
         console.log(res);
         const mypage_data = res.data.data;
+        const temp = res.data.data.specialty.split('/');
+        const subspecialty = res.data.data.other_specialty.split('/');
+        const specialty = []
+        temp.map((value) => {
+            for(var item of skillList){
+              if(item.label == value){
+                specialty.push(item.value);
+              }
+            }
+        })
         dispatch(myPage(mypage_data));
+        dispatch(mySpecialty(specialty));
+        dispatch(subSpecialty(subspecialty));
         return mypage_data;
       })
       .catch((err) => console.log(err));
@@ -150,10 +160,17 @@ export const myAnswerList = createAsyncThunk(
 
 export const myPageSlice = createSlice({
   name: "myPage",
-  initialState: {},
+  initialState: {myPage:{specialty: '', mySpecialty:[], subSpecialty:[], lengthSpecialty:'',}},
+  // initialState: {},
   reducers: {
     myPage: (state, action) => {
       state.myPage = action.payload;
+    },
+    mySpecialty: (state, action) => {
+      state.mySpecialty = action.payload;
+    },
+    subSpecialty: (state, action) => {
+      state.subSpecialty = action.payload;
     },
     history: (state, action) => {
       state.history = action.payload;
@@ -275,5 +292,5 @@ export const myPageSlice = createSlice({
   },
 });
 
-export const { myPage, history, feed, bookmarked, myposts, mymarks, mycomments, myqnas, myanswers } = myPageSlice.actions;
+export const { myPage, mySpecialty, subSpecialty, history, feed, bookmarked, myposts, mymarks, mycomments, myqnas, myanswers } = myPageSlice.actions;
 export default myPageSlice.reducer;

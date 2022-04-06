@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { myPageLoad } from "../../../redux/modules/myPage";
 import { requestFollowing, requestFollower } from "../../../redux/modules/user";
@@ -25,6 +25,7 @@ import back_harmonious from "../../../static/images/MyPageImages/back_harmonious
 import back_innovator from "../../../static/images/MyPageImages/back_innovator.svg";
 
 const TopOfProfile = (props) => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { info, exp, feed } = props;
     console.log(info);
@@ -82,6 +83,16 @@ const TopOfProfile = (props) => {
         dispatch(requestFollower({account_id, dispatch}));
     }
 
+    const ClickTendency = () => {
+        navigate(`/Result/${tendency}`, {
+            state: {
+                title: { tendency },
+                from: true,
+            },
+        });
+        console.log('clicktendency');
+    }
+
     return (
         <>
         <div className="col-start-2 col-end-6">
@@ -123,7 +134,7 @@ const TopOfProfile = (props) => {
                         <div className="ml-2">
                             <div className="grid p-1 rounded-lg justify-items-center">
                                 <Title size="2">{nickname}</Title>
-                                <Link
+                                {/* <Link
                                     to={{
                                         pathname: `/Result/${tendency}`,
                                         state: {
@@ -131,8 +142,8 @@ const TopOfProfile = (props) => {
                                             from: true,
                                         },
                                     }}
-                                >
-                                <div className="mt-2 mb-4">
+                                > */}
+                                <div className="mt-2 mb-4 cursor-pointer " onClick={ClickTendency}>
                                     {tendency == "명랑한 모험가" && <img src={adventure} />}
                                     {tendency == "꿈꾸는 예술가" && <img src={artist} />}
                                     {tendency == "디테일 장인" && <img src={detail} />}
@@ -140,7 +151,7 @@ const TopOfProfile = (props) => {
                                     {tendency == "대담한 혁신가" && <img src={innovator} />}
                                     {tendency == "창의적인 발명가" && <img src={inventor} />}
                                 </div>
-                                </Link>
+                                {/* </Link> */}
                                 <Subtitle size="1">{job} Designer</Subtitle>
                                 <div className="my-4">
                                     <span onClick={followingList}>팔로잉 {following}</span> ㅣ <span onClick={followerList}>팔로워 {follower}</span>
@@ -172,7 +183,7 @@ const TopOfProfile = (props) => {
                         </div>
                     </div>
 
-                    <MySpaceTab profile={info && info?.profile_img} exp={exp} feed={feed} />
+                    <MySpaceTab profile={info && info?.profile_img} info={info} exp={exp} feed={feed} />
                 </div>
             </div>
         </div>

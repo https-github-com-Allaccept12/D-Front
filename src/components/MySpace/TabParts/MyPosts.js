@@ -50,11 +50,11 @@ const MyPosts = (props) => {
         },
         {
             tab: "내댓글",
-            content: <MyComment data={mymarks}/>,
+            content: <MyComment data={mycomments}/>,
         },
         {
             tab: "스크랩글",
-            content: <MyBookmark data={mycomments}/>,
+            content: <MyBookmark data={mymarks}/>,
         },
     ];
     const { currentItem, changeItem } = useTabs(0, array_sample);
