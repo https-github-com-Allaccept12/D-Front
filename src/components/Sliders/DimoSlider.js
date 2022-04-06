@@ -8,7 +8,7 @@ import { Link, Route, Switch, useLocation } from "react-router-dom";
 import { dimoPageLoad, categoryDimo } from "../../redux/modules/dimo";
 export const Slide = tw(Slider)`
 w-full md:w-[32.5rem]  2xl:w-[96rem]
-    mx-auto text-white pl-10 lg:ml-40 xl:ml-5
+    mx-auto text-white pl-10 lg:ml-40 xl:ml-20
     overflow-hidden text-lg flex
 `;
 
@@ -48,7 +48,7 @@ const slidedlider = (props) => {
     }, [dispatch]);
 
     let slided = useSelector((state) => state.dimo.dimos.postRecommendationFeed);
-    console.log(slided);
+
     let makeSlides = () => {};
     const [time, setTime] = useState(true);
 
@@ -111,7 +111,7 @@ const slidedlider = (props) => {
                                     return (
                                         // <Images src={value.img_url} />
                                         <SS>
-                                            <Slides type="dimo" value={value} list="QNA" />
+                                            <Slides type="dimo" value={value} list="QNA" post_id={value.post_id} />
                                         </SS>
                                     );
                                 })}
@@ -137,7 +137,7 @@ const slidedlider = (props) => {
                             return (
                                 // <Images src={value.img_url} />
                                 <SS key={value.post_id}>
-                                    <Slides type="dimo" value={value} list="INFO" />
+                                    <Slides type="dimo" value={value} list="INFO" post_id={value.post_id} />
                                 </SS>
                             );
                         })}

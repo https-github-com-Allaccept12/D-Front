@@ -12,30 +12,29 @@ const Comment = (props) => {
     const [modifyDiv, setModifyDiv] = useState(false);
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
-    
+
     useEffect(() => {
         setContent(contentValue);
-    }, [contentValue])
+    }, [contentValue]);
 
     const openModify = () => {
         setModifyDiv(!modifyDiv);
-    }
+    };
 
     const modifyComment = () => {
         const comment_id = value.comment_id;
         const content = name.value;
-        const data = {content: content}
+        const data = { content: content };
         console.log(content);
-        dispatch(commentModify({comment_id, data}));
+        dispatch(commentModify({ comment_id, data }));
         setContentValue(content);
         setContent(content);
         setModifyDiv(!modifyDiv);
-    }
-
+    };
 
     const deleteComment = () => {
         dispatch(commentDelete(value.comment_id));
-    }
+    };
     return (
         <>
             <div className="flex items-center justify-between gap-2">
@@ -46,9 +45,13 @@ const Comment = (props) => {
                             <Subtitle size="1" className="">
                                 {/* {value.account_nickname} */}
                             </Subtitle>
-                            <Text size="4">{value.modify_time.split('T')[0] + ' ' + value.modify_time.split('T')[1].split('.')[0].slice(undefined, 5)}</Text>
+                            <Text size="4">
+                                {value.modify_time.split("T")[0] +
+                                    " " +
+                                    value.modify_time.split("T")[1].split(".")[0].slice(undefined, 5)}
+                            </Text>
                         </div>
-                        {modifyDiv ? 
+                        {modifyDiv ? (
                             <div className="w-full ml-auto">
                                 <InputNoTitle
                                     value={name.value}
@@ -66,15 +69,19 @@ const Comment = (props) => {
                                     제출
                                 </Button>
                             </div>
-                        :
+                        ) : (
                             <Text size="2" className="m-1">
                                 {value.content}
                             </Text>
-                        }
+                        )}
                     </div>
                 </div>
-                {!modifyDiv && <><button onClick={openModify}>수정</button>
-                <button onClick={deleteComment}>삭제</button></>}
+                {!modifyDiv && (
+                    <>
+                        <button onClick={openModify}>수정</button>
+                        <button onClick={deleteComment}>삭제</button>
+                    </>
+                )}
                 <HeartButton like_cnt="4" is_like="" />
             </div>
         </>

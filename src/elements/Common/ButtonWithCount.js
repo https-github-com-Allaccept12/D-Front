@@ -3,11 +3,11 @@ import Icon from "../Icons/Icon";
 import tw from "tailwind-styled-components";
 
 const Btn = tw.button`
-   rounded-full text-sm lg:text-base shadow-sm flex flex-row justify-center items-center 
+   rounded-full text-sm md:text-base shadow-sm flex flex-row justify-center items-center 
    font-min1
-  ${(props) => (props.size === "1" ? `h-b01 px-12` : "")};
-  ${(props) => (props.size === "2" ? `h-b02 px-8 py-4` : "")};
-  ${(props) => (props.size === "3" ? `h-b03 px-8 py-5` : "")};
+  ${(props) => (props.size === "1" ? `h-b01 px-6 w-36` : "")};
+  ${(props) => (props.size === "2" ? `h-b02 px-4 py-4 w-36` : "")};
+  ${(props) => (props.size === "3" ? `h-b03 px-2 py-5 w-40` : "")};
 
   ${(props) =>
       props.color === "1"
@@ -72,15 +72,43 @@ const Btn = tw.button`
   
   `
           : ""};
+          ${(props) =>
+              props.color === "7"
+                  ? `
+        text-white
+        border border-white
+        bg-transparent
+        hover:bg-dpurple-100
+        active:bg-dpurple-200
+        disabled:border-dred-100
+        disabled:bg-white
+        disabled:text-dpurple-200
+        
+        `
+                  : ""};
 `;
 const IconColor = tw.span` 
-mr-2
+mr-2 
 ${(props) => (props.iconColor === "heart" ? `text-dred-300` : "")};
+${(props) => (props.iconColor === "book" ? `text-dpurple-300` : "")};
 `;
 
 const ButtonWithCount = (props) => {
-    const { size, color, styles, children, onClick, disabled, is_loading, icon, name, iconSize, iconColor, className } =
-        props;
+    const {
+        size,
+        color,
+        styles,
+        children,
+        onClick,
+        disabled,
+        is_loading,
+        icon,
+        name,
+        iconSize,
+        iconColor,
+        className,
+        count,
+    } = props;
 
     return (
         <Btn
@@ -97,8 +125,15 @@ const ButtonWithCount = (props) => {
                     <Icon name={name} iconSize={iconSize} />
                 </IconColor>
             )}
+
             {children}
-            {count}
+            {count ? (
+                <>
+                    <div className="pl-6">{count}</div>
+                </>
+            ) : (
+                <div className="pl-6">0</div>
+            )}
         </Btn>
     );
 };

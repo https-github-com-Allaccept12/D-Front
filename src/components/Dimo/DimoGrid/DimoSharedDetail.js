@@ -53,7 +53,7 @@ const DimoSharedDetail = () => {
     // const navigate = useNavigate();
 
     const post_id = location.state.post_id;
-    // console.log(post_id);
+    console.log(post_id);
     // const post_id = match.params.name;
     const dispatch = useDispatch();
 
@@ -68,7 +68,7 @@ const DimoSharedDetail = () => {
     // console.log(account_id, owner_account_id);
     useEffect(() => {
         dispatch(dimoInfoDetailLoad({ post_id, dispatch, visitor_account_id }));
-    }, [useSelector]);
+    }, []);
 
     const [showAnswer, setShowAnswer] = useToggle();
     const validMaxLen = (value) => value.length <= 30;
@@ -90,7 +90,7 @@ const DimoSharedDetail = () => {
         const board = `INFO`;
         const category = dimos?.category;
         dispatch(deleteDimo({ post_id, category, board }));
-        navigate("/dimo/qna", { replace: true });
+        navigate("/dimo/info", { replace: true });
     };
 
     const [like_cnt, setLikeCnt] = useState(dimos?.like_count);

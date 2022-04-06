@@ -12,6 +12,7 @@ absolute bottom-6 px-9 w-full
 
 const ColorSlide = tw.div`
 absolute w-[28.9rem] h-[18.75rem]  rounded-lg bg-dpurple-200 cursor-pointer
+
 `;
 
 const Slides = (props) => {
@@ -38,6 +39,7 @@ const Slides = (props) => {
         like_count,
         title,
     } = props;
+    console.log(post_id);
 
     const [is_fow, setIsfow] = useToggle(follow);
 

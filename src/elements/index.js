@@ -35,6 +35,7 @@ import FollowBtn from "./Tools/FollowBtn";
 import FileUploadDimo from "./Tools/FileUploadDimo";
 import Answer from "./Common/Answer";
 import FileEditDimo from "./Tools/FileEditDimo";
+import ButtonWithCount from "./Common/ButtonWithCount";
 
 export {
     Title,
@@ -73,4 +74,5 @@ export {
     FileUploadDimo,
     Answer,
     FileEditDimo,
+    ButtonWithCount,
 };

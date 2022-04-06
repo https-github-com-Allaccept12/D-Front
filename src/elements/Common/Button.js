@@ -90,6 +90,7 @@ const Btn = tw.button`
 const IconColor = tw.span` 
 mr-2 
 ${(props) => (props.iconColor === "heart" ? `text-dred-300` : "")};
+${(props) => (props.iconColor === "book" ? `text-dpurple-300` : "")};
 `;
 
 const Button = (props) => {
@@ -126,13 +127,6 @@ const Button = (props) => {
             )}
 
             {children}
-            {count ? (
-                <>
-                    <div className="pl-6">{count}</div>
-                </>
-            ) : (
-                ""
-            )}
         </Btn>
     );
 };

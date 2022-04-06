@@ -22,11 +22,11 @@ disabled:bg-dpurple-100`
 `;
 
 const FollowBtn = (props) => {
-    const { size, children, color, onClick, disabled, className, followed } = props;
+    const { size, children, color, onClick, disabled, className, followed, val } = props;
 
     return (
-        <Btn size={size} onClick={onClick} color={color} className={className}>
-            {followed == "true" ? (
+        <Btn size={size} onClick={onClick} color={color} className={className} val={val}>
+            {followed ? (
                 <>
                     <Icon name="Success" iconSize="24" className="pr-2" />
                     팔로잉

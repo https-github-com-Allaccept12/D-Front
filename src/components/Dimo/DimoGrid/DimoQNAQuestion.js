@@ -1,12 +1,20 @@
 import React, { useState } from "react";
-import { Button, Label, Profile, Title, Text, Subtitle, InputNoTitle, FollowBtn, Answer } from "../../../elements";
-
+import { Button, Label, Profile, Title, Text, Subtitle, ButtonWithCount, FollowBtn, Answer } from "../../../elements";
+import { requestFollow } from "../../../redux/modules/user";
 import { useNavigate, Link, useLocation } from "react-router-dom";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import tw from "tailwind-styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useToggle, useInput } from "../../../hooks";
 import { CreateAnswerDimo } from "../../../redux/modules/dimo";
-import { detailDimoQna, deleteDimo, likeDimoInfo, dislikeDimoInfo } from "../../../redux/modules/dimo";
+import {
+    detailDimoQna,
+    deleteDimo,
+    likeDimoInfo,
+    dislikeDimoInfo,
+    bookmarkAdd,
+    bookmarkRemove,
+} from "../../../redux/modules/dimo";
 const UnderLine = tw.hr`
 border border-dgray-300 w-full col-span-full mt-10 mb-5
 `;
@@ -39,12 +47,27 @@ const Images = tw.img`
 object-cover w-full h-fit object-center rounded-md flex flex-col justify-center items-center mx-auto m-2
 `;
 
+const MyBtn = tw.button`
+    font-min1 text-tiny text-dpurple-200 hover:text-dpurple-300 mr-1
+`;
+
 const DimoQNAQuestion = (props) => {
     const { followed, value, post } = props;
+
+    const [is_fow, setIsfow] = useToggle(followed);
     const location = useLocation();
     const navigate = useNavigate();
-
+    const currentUrl = window.location.href;
     const post_id = location.state.post_id;
+    console.log(post_id);
+    let account_id = 0;
+    // const id_cookie = getCookie("account_id");
+    const id_cookie = sessionStorage.getItem("account_id");
+    if (id_cookie) {
+        account_id = id_cookie;
+    }
+    let owner_account_id = post?.account_id;
+    const visitor_account_id = account_id;
 
     const dispatch = useDispatch();
 
@@ -65,8 +88,7 @@ const DimoQNAQuestion = (props) => {
         const data = { post_id, content };
 
         dispatch(CreateAnswerDimo(data));
-        // navigate.goBack();
-        //여기에 뭔가 돌아가기버튼...
+        navigate(-1);
     };
 
     const ClickDelete = () => {
@@ -88,6 +110,8 @@ const DimoQNAQuestion = (props) => {
 
     const [like_cnt, setLikeCnt] = useState(post?.like_count);
     const [is_like, setIsLike] = useState(post?.is_like);
+    const [book_cnt, setBookCnt] = useState(post?.bookMark_count);
+    const [is_bookmark, setIsBookmark] = useState(post?.is_bookmark);
     const cancelLike = () => {
         setIsLike(false);
         setLikeCnt(like_cnt - 1);
@@ -100,6 +124,18 @@ const DimoQNAQuestion = (props) => {
         dispatch(likeDimoInfo(post_id));
     };
 
+    const cancelBook = () => {
+        setIsBookmark(false);
+        setBookCnt(book_cnt - 1);
+        dispatch(bookmarkRemove(post_id));
+    };
+
+    const addBook = () => {
+        setIsBookmark(true);
+        setBookCnt(book_cnt + 1);
+        dispatch(bookmarkAdd(post_id));
+    };
+
     const goToEdit = () => {
         navigate(`/dimo/create/edits/${post_id}`, {
             state: {
@@ -108,6 +144,12 @@ const DimoQNAQuestion = (props) => {
                 board: "QNA",
             },
         });
+    };
+
+    const makeFollow = () => {
+        const account_id = { account_id: visitor_account_id };
+        setIsfow();
+        dispatch(requestFollow(account_id));
     };
 
     return (
@@ -121,9 +163,15 @@ const DimoQNAQuestion = (props) => {
                               })
                             : ""}
                     </div>
-                    <button onClick={ClickDelete}>삭제</button>
+                    {owner_account_id == visitor_account_id ? (
+                        <>
+                            <MyBtn onClick={goToEdit}>수정</MyBtn>
+                            <MyBtn onClick={ClickDelete}>삭제</MyBtn>
+                        </>
+                    ) : (
+                        " "
+                    )}
 
-                    <button onClick={goToEdit}>수정</button>
                     <Title size="5">{post?.title}</Title>
                     <div className="flex flex-row py-3">
                         <Text size="1">{post?.modify_time}</Text>
@@ -149,33 +197,79 @@ const DimoQNAQuestion = (props) => {
                 </Body>
                 <Btns>
                     <div className="flex flex-row justify-between gap-2">
-                        <Button size="3" onClick={setShowAnswer}>
-                            <span className="">답변남기기</span>
-                        </Button>
-                        <div className="flex flex-col xl:flex-row gap-3">
-                            {is_like == "true" ? (
-                                <Button icon name="HeartF" color="5" size="3" count={like_cnt} onClick={cancelLike}>
-                                    <span className="hidden 2xl:contents">좋아요</span>
-                                </Button>
-                            ) : (
-                                <Button icon name="HeartE" color="4" size="3" count={like_cnt} onClick={addLike}>
-                                    <span className="hidden 2xl:contents">좋아요</span>
-                                </Button>
-                            )}
-                            {/* 
-                            {is_bookmark ? (
-                                <Button icon name="BookmarkE" color="5" size="3" count={book_cnt} onClick={cancelBook}>
-                                    <span className="hidden 2xl:contents">스크랩</span>
-                                </Button>
-                            ) : (
-                                <Button icon name="BookmarkF" color="5" size="3" count={book_cnt} onClick={addBook}>
-                                    <span className="hidden 2xl:contents">스크랩</span>
-                                </Button>
-                            )} */}
-
-                            <Button icon name="Link" color="5" size="3">
-                                공유<span className="hidden xl:contents">하기</span>
+                        {owner_account_id == visitor_account_id ? (
+                            <>
+                                <Text size="1" className="animate-bounce mt-28 lg:mt-0">
+                                    멋진 답변이 곧 달릴거예요!
+                                </Text>
+                            </>
+                        ) : (
+                            <Button size="3" onClick={setShowAnswer}>
+                                답변남기기
                             </Button>
+                        )}
+
+                        <div className="flex flex-col xl:flex-row gap-3">
+                            {is_like ? (
+                                <ButtonWithCount
+                                    icon
+                                    name="HeartF"
+                                    iconColor="heart"
+                                    color="5"
+                                    size="3"
+                                    count={like_cnt}
+                                    onClick={cancelLike}
+                                >
+                                    <span className="hidden 2xl:contents">좋아요</span>
+                                </ButtonWithCount>
+                            ) : (
+                                <ButtonWithCount
+                                    icon
+                                    name="HeartE"
+                                    color="4"
+                                    size="3"
+                                    count={like_cnt}
+                                    onClick={addLike}
+                                >
+                                    <span className="hidden 2xl:contents">좋아요</span>
+                                </ButtonWithCount>
+                            )}
+
+                            {is_bookmark ? (
+                                <ButtonWithCount
+                                    icon
+                                    name="BookmarkF"
+                                    iconColor="book"
+                                    color="5"
+                                    size="3"
+                                    count={book_cnt}
+                                    onClick={cancelBook}
+                                >
+                                    <span className="hidden 2xl:contents">스크랩</span>
+                                </ButtonWithCount>
+                            ) : (
+                                <ButtonWithCount
+                                    icon
+                                    name="BookmarkE"
+                                    color="4"
+                                    size="3"
+                                    count={book_cnt}
+                                    onClick={addBook}
+                                >
+                                    <span className="hidden 2xl:contents">스크랩</span>
+                                </ButtonWithCount>
+                            )}
+                            <CopyToClipboard text={currentUrl}>
+                                <Button
+                                    icon
+                                    name="Link"
+                                    color="5"
+                                    size="3"
+                                    onClick={() => alert("주소가 복사되었습니다!")}
+                                >
+                                    공유<span className="hidden xl:contents">하기</span>
+                                </Button>
+                            </CopyToClipboard>
                         </div>
                     </div>
                 </Btns>
@@ -189,13 +283,9 @@ const DimoQNAQuestion = (props) => {
                             <Title size="5" className="my-3">
                                 {post?.account_nickname}
                             </Title>
-                            {/* <Subtitle size="1">
-                                채택률<span className="text-blue-300">100 %</span> / 마감률
-                                <span className="text-blue-300">100 %</span>
-                            </Subtitle> */}
                         </div>
                     </div>
-                    <FollowBtn size="2" color="1" followed={followed} />
+                    <FollowBtn size="2" color="1" followed={followed} onClick={makeFollow} val={is_fow} />
                 </Footer>
             </Card>
             {showAnswer && (

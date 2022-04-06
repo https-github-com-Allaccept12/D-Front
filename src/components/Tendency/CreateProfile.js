@@ -189,39 +189,7 @@ const CreateProfile = (props) => {
                                 </div>
                             </Names>
                         </MyPic>
-                        {/* <Contacts>
-                            <Title size="3" className="pb-5 pl-3">
-                                Contact
-                            </Title>
-                            <Input
-                                cardSize="2"
-                                title="이메일"
-                                value={email.value}
-                                onChange={email.onChange}
-                                is_value={email.value.length}
-                            ></Input>
-                            <Input
-                                cardSize="2"
-                                title="링크드인"
-                                value={linkedIn.value}
-                                onChange={linkedIn.onChange}
-                                is_value={linkedIn.value.length}
-                            ></Input>
-                            <Input
-                                cardSize="2"
-                                title="브런치"
-                                value={brunch.value}
-                                onChange={brunch.onChange}
-                                is_value={brunch.value.length}
-                            ></Input>
-                            <Input
-                                cardSize="2"
-                                title="인스타그램"
-                                value={instagram.value}
-                                onChange={instagram.onChange}
-                                is_value={instagram.value.length}
-                            ></Input>
-                        </Contacts> */}
+
                         <div className="pb-10 my-10">
                             {/* <Link to="/CompleteProfile"> */}
                             <Button size="3" color="1" onClick={SendProfile}>
