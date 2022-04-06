@@ -95,7 +95,7 @@ const DimoQNAQuestion = (props) => {
         const board = `QNA`;
         const category = post.category;
         dispatch(deleteDimo({ post_id, category, board }));
-        navigate.replace("/dimo/qna");
+        navigate("/dimo/qna", { replace: true });
     };
 
     // const modifyQuestion = () => {
@@ -199,7 +199,7 @@ const DimoQNAQuestion = (props) => {
                     <div className="flex flex-row justify-between gap-2">
                         {owner_account_id == visitor_account_id ? (
                             <>
-                                <Text size="1" className="animate-bounce mt-28 lg:mt-0">
+                                <Text size="1" className="animate-bounce mt-28 lg:mt-10">
                                     멋진 답변이 곧 달릴거예요!
                                 </Text>
                             </>
