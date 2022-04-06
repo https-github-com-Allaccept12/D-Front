@@ -32,7 +32,7 @@ w-full bg-white
 
 const DimoCreate = ({ match }) => {
     let location = useLocation();
-    console.log(location.pathname);
+    console.log(location.state.board);
 
     const navigate = useNavigate();
     const { pathname } = useLocation();
@@ -41,7 +41,7 @@ const DimoCreate = ({ match }) => {
     let isEdit = false;
     let board = "";
 
-    // const bbb = pathname.split("/")[3];
+    const bbb = pathname.split("/")[4];
 
     // let deletes = []
     // useEffect(() => {
@@ -60,14 +60,21 @@ const DimoCreate = ({ match }) => {
     const editImgs = useSelector((state) => state.dimo?.detaildimoQna);
     const delete_img = useSelector((state) => state?.image?.dimoDeletes);
 
+    const editsInfoImgs = useSelector((state) => state.dimo.detaildimoInfo);
+    const editInfo = useSelector((state) => state.dimo?.detailDimoInfo?.postSubDetail);
+    console.log(editInfo.post_id);
+    console.log(editInfo);
     const title = useInput("", []);
     const content = useInput("", []);
     const edit = useInput(edits?.title, []);
     const editContents = useInput(edits?.content, []);
 
+    const editInfoTitle = useInput(editInfo?.title, []);
+    const editInfoContents = useInput(editInfo?.content, []);
+
     const dispatch = useDispatch();
     const dimo = useSelector((state) => state.image.dimoFiles);
-    console.log(editImgs);
+    console.log(editsInfoImgs);
 
     const JobOptions = [
         { value: "uiux", label: "UI & UX" },
@@ -82,13 +89,13 @@ const DimoCreate = ({ match }) => {
         { value: "edit", label: "브랜딩/편집" },
         { value: "eco", label: "건축/인테리어/환경" },
     ];
-    const [selected, setSelected] = useState("");
+    const [selected, setSelected] = useState("카테고리를 선택해주세요");
     const [hashtags, setHashtags] = useState([]);
-    // console.log(selected);
+    console.log(selected);
     const handleChangeSelect = (e) => {
         setSelected(e.target.value);
     };
-    console.log(selected);
+
     const status = pathname.split("/")[3];
 
     const forSendTags = [];
@@ -123,7 +130,22 @@ const DimoCreate = ({ match }) => {
         // board: match.params.board,
     };
 
+    const sandInfoEditData = {
+        title: editInfoTitle.value,
+        category: selected,
+        delete_img: forDeletes,
+        hash_tag: forSendTags,
+        content: editInfoContents.value,
+        // is_selected: edits.is_selected,
+        // board: match.params.board,
+    };
+
+    // console.log(selected);
     const sandData = () => {
+        if (selected == undefined || selected == "카테고리를 선택해주세요") {
+            alert("카테고리를 입력해주세요!");
+            return;
+        }
         const formData = new FormData();
         formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
         dimo.forEach((element) => formData.append("imgFile", element));
@@ -136,18 +158,36 @@ const DimoCreate = ({ match }) => {
     };
 
     const sandEditData = () => {
+        if (selected == undefined || selected == "카테고리를 선택해주세요") {
+            alert("카테고리를 입력해주세요!");
+            return;
+        }
         const formData = new FormData();
 
-        formData.append("data", new Blob([JSON.stringify(editData)], { type: "application/json" }));
-        dimo.forEach((element) => formData.append("imgFile", element));
-        for (var pair of formData.entries()) {
-            console.log(pair);
-        }
-        const post_id = bbb;
-        console.log(formData, post_id);
-        dispatch(editDimo({ formData, post_id }));
+        if (location.state?.board === "QNA") {
+            formData.append("data", new Blob([JSON.stringify(editData)], { type: "application/json" }));
+            dimo.forEach((element) => formData.append("imgFile", element));
+            for (var pair of formData.entries()) {
+                console.log(pair);
+            }
+            const post_id = bbb;
+            console.log(formData, post_id);
+            dispatch(editDimo({ formData, post_id }));
 
-        navigate.replace("/dimo/qna/all");
+            navigate("/dimo/qna/all", { replace: true });
+        }
+        if (location.state?.board === "INFO") {
+            formData.append("data", new Blob([JSON.stringify(sandInfoEditData)], { type: "application/json" }));
+            dimo.forEach((element) => formData.append("imgFile", element));
+            for (var pair of formData.entries()) {
+                console.log(pair);
+            }
+            const post_id = bbb;
+            console.log(formData, post_id);
+            dispatch(editDimo({ formData, post_id }));
+
+            navigate("/dimo/qna/all", { replace: true });
+        }
     };
 
     if (status === "qna")
@@ -204,7 +244,11 @@ const DimoCreate = ({ match }) => {
                                 </div>
                             </div>
                             <div className="flex flex-row items-center justify-center gap-10 py-10 mb-10 bg-white">
-                                <Button size="2" onClick={sandData}>
+                                <Button
+                                    size="2"
+                                    onClick={sandData}
+                                    disabled={selected === "카테고리를 선택해주세요" ? true : false}
+                                >
                                     등록하기
                                 </Button>
                             </div>
@@ -270,7 +314,11 @@ const DimoCreate = ({ match }) => {
                                 </div>
                             </div>
                             <div className="flex flex-row items-center justify-center gap-10 py-10 mb-10 bg-white">
-                                <Button size="2" onClick={sandData}>
+                                <Button
+                                    size="2"
+                                    onClick={sandData}
+                                    disabled={selected === "카테고리를 선택해주세요" ? true : false}
+                                >
                                     등록하기
                                 </Button>
                             </div>
@@ -280,7 +328,84 @@ const DimoCreate = ({ match }) => {
             </>
         );
 
-    if (status === "edits")
+    if (status === "edits" && location.state?.board === "INFO")
+        return (
+            <>
+                <Grid>
+                    <Body>
+                        <Title size="2">수정하기</Title>
+                        <Subtitle size="1">글을 수정하고 싶을땐 여기</Subtitle>
+
+                        <InnerGrid>
+                            <div className="grid grid-cols-2 gap-4 p-8">
+                                <select
+                                    className="appearance-none
+                                block
+                                w-full
+                                px-3
+                                py-1.5
+                                text-base font-min2
+                                font-normal
+                                text-gray-700
+                                bg-white bg-clip-padding bg-no-repeat
+                                border border-solid border-gray-300
+                                rounded-md
+                                transition
+                                ease-in-out
+                                m-0
+                                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                    onChange={handleChangeSelect}
+                                    // defaultValue={edits?.category}
+                                    value={selected}
+                                >
+                                    <option>카테고리를 선택해주세요</option>
+                                    {JobOptions.map((item, index) => (
+                                        <option key={index} value={item.value}>
+                                            {item.label}
+                                        </option>
+                                    ))}
+                                </select>
+                                <Hashtag hashtags={hashtags} setHashtags={setHashtags} />
+                            </div>
+                            <div className="flex flex-col px-8 gap-7">
+                                <InputNoTitle
+                                    placeholder="제목"
+                                    value={editInfoTitle.value}
+                                    onChange={editInfoTitle.onChange}
+                                />
+                                <InputNoTitle
+                                    textarea
+                                    maxlen="80"
+                                    placeholder="내용"
+                                    value={editInfoContents.value}
+                                    onChange={editInfoContents.onChange}
+                                />
+                            </div>
+                            <div className="p-8">
+                                <div className="p-10 mx-auto bg-white border border-dashed border-dpurple-200">
+                                    {editsInfoImgs?.img ? (
+                                        <FileEditDimo imgs={editsInfoImgs?.img} />
+                                    ) : (
+                                        <FileUploadDimo types="info" />
+                                    )}
+                                </div>
+                            </div>
+                            <div className="flex flex-row items-center justify-center gap-10 py-10 mb-10 bg-white">
+                                <Button
+                                    size="2"
+                                    onClick={sandInfoEditData}
+                                    disabled={selected === "카테고리를 선택해주세요" ? true : false}
+                                >
+                                    등록하기
+                                </Button>
+                            </div>
+                        </InnerGrid>
+                    </Body>
+                </Grid>
+            </>
+        );
+
+    if (status === "edits" && location.state?.board === "QNA")
         return (
             <>
                 <Grid>
@@ -331,11 +456,19 @@ const DimoCreate = ({ match }) => {
                             </div>
                             <div className="p-8">
                                 <div className="p-10 mx-auto bg-white border border-dashed border-dpurple-200">
-                                    <FileEditDimo imgs={editImgs.img} />
+                                    {editImgs.img ? (
+                                        <FileEditDimo imgs={editImgs.img} />
+                                    ) : (
+                                        <FileUploadDimo types="qna" />
+                                    )}
                                 </div>
                             </div>
                             <div className="flex flex-row items-center justify-center gap-10 py-10 mb-10 bg-white">
-                                <Button size="2" onClick={sandEditData}>
+                                <Button
+                                    size="2"
+                                    onClick={sandEditData}
+                                    disabled={selected === "카테고리를 선택해주세요" ? true : false}
+                                >
                                     등록하기
                                 </Button>
                             </div>

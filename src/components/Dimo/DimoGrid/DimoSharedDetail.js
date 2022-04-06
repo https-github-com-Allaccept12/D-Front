@@ -47,6 +47,10 @@ const Bg = tw.div`
 bg-dgray-200 md:p-10 xl:px-20
 `;
 
+const MyBtn = tw.button`
+    font-min1 text-tiny text-dpurple-200 hover:text-dpurple-300 mr-1
+`;
+
 const DimoSharedDetail = () => {
     let location = useLocation();
     let navigate = useNavigate();
@@ -57,15 +61,6 @@ const DimoSharedDetail = () => {
     // const post_id = match.params.name;
     const dispatch = useDispatch();
 
-    let account_id = 0;
-    // const id_cookie = getCookie("account_id");
-    const id_cookie = sessionStorage.getItem("account_id");
-    if (id_cookie) {
-        account_id = id_cookie;
-        // console.log("account_id: ", account_id);
-    }
-    const visitor_account_id = account_id;
-    // console.log(account_id, owner_account_id);
     useEffect(() => {
         dispatch(dimoInfoDetailLoad({ post_id, dispatch, visitor_account_id }));
     }, []);
@@ -76,8 +71,18 @@ const DimoSharedDetail = () => {
 
     const dimo = useSelector((state) => state.dimo.detailDimoInfo);
     const dimos = useSelector((state) => state.dimo.detailDimoInfo?.postSubDetail);
-    console.log(dimo);
+    console.log(dimos);
 
+    let account_id = 0;
+    // const id_cookie = getCookie("account_id");
+    const id_cookie = sessionStorage.getItem("account_id");
+    if (id_cookie) {
+        account_id = id_cookie;
+    }
+
+    let owner_account_id = dimos?.account_id;
+    const visitor_account_id = account_id;
+    // console.log(owner_account_id);
     const commentSubmit = () => {
         const content = name.value;
         const data = { post_id, content };
@@ -122,11 +127,33 @@ const DimoSharedDetail = () => {
         dispatch(bookmarkAdd(post_id));
     };
 
+    const goToEdit = () => {
+        navigate(`/dimo/create/edits/${post_id}`, {
+            state: {
+                isedit: true,
+                post_id: post_id,
+                board: "INFO",
+            },
+        });
+    };
+
+    const makeFollow = () => {
+        const account_id = { account_id: visitor_account_id };
+        setIsfow();
+        dispatch(requestFollow(account_id));
+    };
     return (
         <>
             <Bg>
                 <Card>
-                    <button onClick={ClickDelete}>삭제</button>
+                    {owner_account_id == visitor_account_id ? (
+                        <>
+                            <MyBtn onClick={goToEdit}>수정</MyBtn>
+                            <MyBtn onClick={ClickDelete}>삭제</MyBtn>
+                        </>
+                    ) : (
+                        " "
+                    )}
                     <Header>
                         <div className="flex flex-row gap-1 md:pt-10 pb-4">
                             {dimo
