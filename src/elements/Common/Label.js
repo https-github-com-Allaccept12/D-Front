@@ -4,11 +4,11 @@ import tw from "tailwind-styled-components";
 
 const Btn = tw.button`
    rounded-full shadow-sm flex flex-row justify-center items-center
-   font-min1 flex-shrink-0 
+   font-min1 flex-shrink-0 text-base font-min1 bg-dpurple-200 text-white
   ${(props) => (props.size === "1" ? `h-5 px-3 text-sm` : "")};
   ${(props) => (props.size === "2" ? `h-7 px-5 py-1 text-base ` : "")};
   ${(props) => (props.size === "4" ? `h-10 px-5 py-1 text-base ` : "")};
-  ${(props) => (props.slides == "true" ? `text-base bg-white text-dpurple-300` : "")};
+
 
 `;
 const IconColor = tw.span` 
@@ -61,6 +61,7 @@ Label.defaultProps = {
     onClick: () => {},
     iconColor: "",
     className: "",
+    slide: false,
 };
 
 export default Label;

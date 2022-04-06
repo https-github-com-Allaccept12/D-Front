@@ -31,7 +31,7 @@ absolute top-9 left-[7rem]
 `;
 
 const TextBox = tw.div`
- px-5 text-ellipsis w-[22.25rem] h-22 absolute left-4 top-28
+ px-5 text-ellipsis w-[19.25rem] h-22 absolute left-2 top-28
 `;
 
 const IconBox = tw.div`
@@ -86,8 +86,8 @@ const DimoPost = (props) => {
     const goToDimoQNA = () => {
         navigate(`/dimo/qnadetail/${post_id}`, {
             state: {
-                id: { post_id },
-                category: { category },
+                post_id: post_id,
+                category: category,
             },
         });
     };
@@ -95,8 +95,8 @@ const DimoPost = (props) => {
     const goToDimoINFO = () => {
         navigate(`/dimo/infodetail/${post_id}`, {
             state: {
-                id: { post_id },
-                category: { category },
+                post_id: post_id,
+                category: category,
             },
         });
     };

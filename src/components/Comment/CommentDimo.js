@@ -94,11 +94,12 @@ const CommentDimo = (props) => {
                 </div>
                 {!modifyDiv && (
                     <>
-                        <button onClick={openModify}>수정</button>
-                        <button onClick={deleteComment}>삭제</button>
+                        <div className="flex justify-end flex-row font-min1 text-tiny gap-2">
+                            <button onClick={openModify}>수정</button>
+                            <button onClick={deleteComment}>삭제</button>
+                        </div>
                     </>
                 )}
-                <HeartButton like_cnt="4" is_like="" />
             </div>
         </>
     );

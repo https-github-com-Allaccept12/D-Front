@@ -62,30 +62,29 @@ const TendencyResult = ({ history, match }) => {
     const navigate = useNavigate();
     const token = sessionStorage.getItem("access_token");
     const [is_loaded, setIsLoaded] = useState(false);
-    const [myTendency, setMyTendency] = useState('');
+    const [myTendency, setMyTendency] = useState("");
     const fromMyPage = useLocation().state.from;
     // console.log(fromMyPage);
 
     useEffect(() => {
         setMyTendency(location.state.title.tendency);
-    }, [])
+    }, []);
 
     useEffect(() => {
-        if(fromMyPage){
+        if (fromMyPage) {
             let timer = setTimeout(() => {
                 setIsLoaded(true);
             }, 0);
-        } else{
+        } else {
             let timer = setTimeout(() => {
                 setIsLoaded(true);
             }, 2000);
         }
-        
     });
 
     const Back = () => {
         navigate(-1);
-    }
+    };
 
     const dispatch = useDispatch();
     const SendTendency = () => {
@@ -93,9 +92,8 @@ const TendencyResult = ({ history, match }) => {
         console.log(tendency);
         dispatch(CreateTendency({ tendency, token }));
 
-        history.replace("/MyInterests");
+        navigate("/MyInterests", { replace: true });
     };
-
 
     if (myTendency === "디테일 장인")
         return (
@@ -154,22 +152,22 @@ const TendencyResult = ({ history, match }) => {
                                     />
                                 </CopyToClipboard>
                             </CardBox>
-                            {fromMyPage ? 
+                            {fromMyPage ? (
                                 <Button size="3" onClick={Back} color="4" className="mb-[0.75rem]">
                                     확인
                                 </Button>
-                            :
-                            <>
-                            <Link to="/">
-                                <Button size="3" color="4" className="mb-[0.75rem]">
-                                    D PLUS 홈으로
-                                </Button>
-                            </Link>
-                            <Button size="3" color="5" onClick={SendTendency}>
-                                관심사 저장하기
-                            </Button>
-                            </>
-                            }
+                            ) : (
+                                <>
+                                    <Link to="/">
+                                        <Button size="3" color="4" className="mb-[0.75rem]">
+                                            D PLUS 홈으로
+                                        </Button>
+                                    </Link>
+                                    <Button size="3" color="5" onClick={SendTendency}>
+                                        관심사 저장하기
+                                    </Button>
+                                </>
+                            )}
                         </InnerFlex>
                     </Flex>
                     {!is_loaded && <Spinner />}
@@ -234,22 +232,22 @@ const TendencyResult = ({ history, match }) => {
                                     />
                                 </CopyToClipboard>
                             </CardBox>
-                            {fromMyPage ? 
+                            {fromMyPage ? (
                                 <Button size="3" onClick={Back} color="4" className="mb-[0.75rem]">
                                     확인
                                 </Button>
-                            :
-                            <>
-                            <Link to="/">
-                                <Button size="3" color="4" className="mb-[0.75rem]">
-                                    D PLUS 홈으로
-                                </Button>
-                            </Link>
-                            <Button size="3" color="5" onClick={SendTendency}>
-                                관심사 저장하기
-                            </Button>
-                            </>
-                            }
+                            ) : (
+                                <>
+                                    <Link to="/">
+                                        <Button size="3" color="4" className="mb-[0.75rem]">
+                                            D PLUS 홈으로
+                                        </Button>
+                                    </Link>
+                                    <Button size="3" color="5" onClick={SendTendency}>
+                                        관심사 저장하기
+                                    </Button>
+                                </>
+                            )}
                         </InnerFlex>
                         {!is_loaded && <Spinner />}
                     </Flex>
@@ -314,22 +312,22 @@ const TendencyResult = ({ history, match }) => {
                                     />
                                 </CopyToClipboard>
                             </CardBox>
-                            {fromMyPage ? 
+                            {fromMyPage ? (
                                 <Button size="3" onClick={Back} color="4" className="mb-[0.75rem]">
                                     확인
                                 </Button>
-                            :
-                            <>
-                            <Link to="/">
-                                <Button size="3" color="4" className="mb-[0.75rem]">
-                                    D PLUS 홈으로
-                                </Button>
-                            </Link>
-                            <Button size="3" color="5" onClick={SendTendency}>
-                                관심사 저장하기
-                            </Button>
-                            </>
-                            }
+                            ) : (
+                                <>
+                                    <Link to="/">
+                                        <Button size="3" color="4" className="mb-[0.75rem]">
+                                            D PLUS 홈으로
+                                        </Button>
+                                    </Link>
+                                    <Button size="3" color="5" onClick={SendTendency}>
+                                        관심사 저장하기
+                                    </Button>
+                                </>
+                            )}
                         </InnerFlex>
                     </Flex>
                     {!is_loaded && <Spinner />}
@@ -394,22 +392,22 @@ const TendencyResult = ({ history, match }) => {
                                     />
                                 </CopyToClipboard>
                             </CardBox>
-                            {fromMyPage ? 
+                            {fromMyPage ? (
                                 <Button size="3" onClick={Back} color="4" className="mb-[0.75rem]">
                                     확인
                                 </Button>
-                            :
-                            <>
-                            <Link to="/">
-                                <Button size="3" color="4" className="mb-[0.75rem]">
-                                    D PLUS 홈으로
-                                </Button>
-                            </Link>
-                            <Button size="3" color="5" onClick={SendTendency}>
-                                관심사 저장하기
-                            </Button>
-                            </>
-                            }
+                            ) : (
+                                <>
+                                    <Link to="/">
+                                        <Button size="3" color="4" className="mb-[0.75rem]">
+                                            D PLUS 홈으로
+                                        </Button>
+                                    </Link>
+                                    <Button size="3" color="5" onClick={SendTendency}>
+                                        관심사 저장하기
+                                    </Button>
+                                </>
+                            )}
                         </InnerFlex>
                     </Flex>
                     {!is_loaded && <Spinner />}
@@ -474,22 +472,22 @@ const TendencyResult = ({ history, match }) => {
                                     />
                                 </CopyToClipboard>
                             </CardBox>
-                            {fromMyPage ? 
+                            {fromMyPage ? (
                                 <Button size="3" onClick={Back} color="4" className="mb-[0.75rem]">
                                     확인
                                 </Button>
-                            :
-                            <>
-                            <Link to="/">
-                                <Button size="3" color="4" className="mb-[0.75rem]">
-                                    D PLUS 홈으로
-                                </Button>
-                            </Link>
-                            <Button size="3" color="5" onClick={SendTendency}>
-                                관심사 저장하기
-                            </Button>
-                            </>
-                            }
+                            ) : (
+                                <>
+                                    <Link to="/">
+                                        <Button size="3" color="4" className="mb-[0.75rem]">
+                                            D PLUS 홈으로
+                                        </Button>
+                                    </Link>
+                                    <Button size="3" color="5" onClick={SendTendency}>
+                                        관심사 저장하기
+                                    </Button>
+                                </>
+                            )}
                         </InnerFlex>
                     </Flex>
                     {!is_loaded && <Spinner />}
@@ -556,23 +554,22 @@ const TendencyResult = ({ history, match }) => {
                                     />
                                 </CopyToClipboard>
                             </CardBox>
-                            {fromMyPage ? 
+                            {fromMyPage ? (
                                 <Button size="3" onClick={Back} color="4" className="mb-[0.75rem]">
                                     확인
                                 </Button>
-                            :
-                            <>
-                            <Link to="/">
-                                <Button size="3" color="4" className="mb-[0.75rem]">
-                                    D PLUS 홈으로
-                                </Button>
-                            </Link>
-                            <Button size="3" color="5" onClick={SendTendency}>
-                                관심사 저장하기
-                            </Button>
-                            </>
-                            }
-                            
+                            ) : (
+                                <>
+                                    <Link to="/">
+                                        <Button size="3" color="4" className="mb-[0.75rem]">
+                                            D PLUS 홈으로
+                                        </Button>
+                                    </Link>
+                                    <Button size="3" color="5" onClick={SendTendency}>
+                                        관심사 저장하기
+                                    </Button>
+                                </>
+                            )}
                         </InnerFlex>
                     </Flex>
                     {!is_loaded && <Spinner />}
