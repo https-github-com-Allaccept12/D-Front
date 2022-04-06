@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Title, Icon, Logo, Profile, Button } from "../elements";
 import { getCookie } from "../shared/cookie";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Modal } from "../elements/Tools/Modal";
 
@@ -11,7 +11,7 @@ const Header = (props) => {
     const [ownerId, setOwnerId] = useState("");
     const [accountId, setAccountId] = useState("");
     const [modalOpen, setModalOpen] = useState(false);
-
+    let navigate = useNavigate();
     const openModal = () => {
         setModalOpen(true);
     };
@@ -31,6 +31,10 @@ const Header = (props) => {
         }
     }, []);
 
+    const goToMyPage = () => {
+        navigate(`/myspace/myprofile`, { replace: true });
+    };
+
     return (
         <div className="bg-gradient-to-r from-[#A162F7] to-[#6F88FC] h-32 md:h-[30rem] relative w-full ">
             <div className="flex justify-center items-center mx-auto md:absolute md:top-[2.25rem] md:left-[7.375rem] py-5 md:py-0 ">
@@ -49,14 +53,8 @@ const Header = (props) => {
                     </Title>
 
                     {is_login && (
-                        <Title size="6">
-                            <Link
-                                to={{
-                                    pathname: `/myspace/myprofile`,
-                                }}
-                            >
-                                마이페이지
-                            </Link>
+                        <Title size="6" onClick={goToMyPage}>
+                            마이페이지
                         </Title>
                     )}
 
@@ -68,7 +66,6 @@ const Header = (props) => {
                                         <Link to="/createart">작업 업로드</Link>
                                     </Button>
                                     <Link to="/logout">
-                                        {/* <Profile size="6" className="" /> */}
                                         <span>로그아웃</span>
                                     </Link>
                                 </div>

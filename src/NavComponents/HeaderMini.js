@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Title, Image, Logo, Profile, Icon } from "../elements";
 import { getCookie } from "../shared/cookie";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useToggle } from "../hooks";
 import { Modal } from "../elements/Tools/Modal";
@@ -22,6 +22,7 @@ animate-bounce
 `;
 
 const HeaderMini = (props) => {
+    let navigate = useNavigate();
     const [is_login, setIsLogin] = useState(false);
     const [nickname, setNickname] = useState("");
     const [ownerId, setOwnerId] = useState("");
@@ -50,6 +51,14 @@ const HeaderMini = (props) => {
         }
     }, []);
 
+    const goToMyPage = () => {
+        navigate(`/myspace/myprofile`, {
+            state: {
+                nickname: { nickname },
+                owner_id: { ownerId },
+            },
+        });
+    };
     return (
         <>
             <ProfileBox>
@@ -79,19 +88,10 @@ const HeaderMini = (props) => {
                     )}
                     {is_login && (
                         <>
-                            <Title size="6">
-                                <Link
-                                    to={{
-                                        pathname: `/myspace/myprofile`,
-                                        state: {
-                                            nickname: { nickname },
-                                            owner_id: { ownerId },
-                                        },
-                                    }}
-                                >
-                                    마이페이지
-                                </Link>
+                            <Title size="6" onClick={goToMyPage}>
+                                마이페이지
                             </Title>
+                            (
                             <div onClick={() => alert("로그아웃되었습니다!")}>
                                 <Link to="/logout">
                                     <Profile size="6" className="" />

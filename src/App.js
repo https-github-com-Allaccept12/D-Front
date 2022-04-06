@@ -48,6 +48,7 @@ function App() {
 
                     <Route path="/myspace" element={<MyPage />} />
                     <Route path="/myspace/*" element={<MyPage />} />
+                    <Route path="/myspace/myprofile/*" element={<MyPage />} />
 
                     <Route path="/editmyspace" element={<EditMySpace />} />
                     <Route path="/editmyspace/*" element={<EditMySpace />} />
