@@ -31,8 +31,11 @@ w-full bg-white
 `;
 
 const DimoCreate = ({ match }) => {
-    const { pathname } = useLocation();
+    let location = useLocation();
+    console.log(location.pathname);
+
     const navigate = useNavigate();
+    const { pathname } = useLocation();
     console.log(pathname);
     let post_id = "";
     let isEdit = false;
