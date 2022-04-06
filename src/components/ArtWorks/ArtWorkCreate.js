@@ -90,6 +90,8 @@ const ArtWorkCreate = () => {
             Swal.fire({
                 icon: 'error',
                 title: '이미지를 추가해 주세요.',
+                showConfirmButton: false,
+                timer: 1000
               })
             return
         }

@@ -72,9 +72,17 @@ const Header = (props) => {
                                     <Button size="3" color="7">
                                         <Link to="/createart">작업 업로드</Link>
                                     </Button>
+                                    <div onClick={() => 
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: '로그아웃 되었습니다',
+                                        showConfirmButton: false,
+                                        timer: 1000
+                                    })}>
                                     <Link to="/logout">
                                         <Title size="6">로그아웃</Title>
                                     </Link>
+                                </div>
                                 </div>
                             </div>
                         </>

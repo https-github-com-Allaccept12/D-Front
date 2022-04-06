@@ -81,7 +81,13 @@ const OHeader = (props) => {
                                         작업 업로드
                                     </Button>
                                 </Link>
-                                <div onClick={() => alert("로그아웃되었습니다!")}>
+                                <div onClick={() => 
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: '로그아웃 되었습니다',
+                                        showConfirmButton: false,
+                                        timer: 1000
+                                    })}>
                                     <Link to="/logout">
                                         <Title size="6">로그아웃</Title>
                                     </Link>

@@ -47,7 +47,7 @@ const MySkill = (props) => {
         <Box>
           <InnerBox>
             {mainSkill && mainSkill.map((item) => (
-              <SkillThumbnail skill={item}/>
+              <SkillThumbnail skill={item} key={item}/>
             ))}
           </InnerBox>
         </Box>

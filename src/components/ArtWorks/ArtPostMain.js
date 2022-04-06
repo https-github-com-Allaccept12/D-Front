@@ -123,7 +123,7 @@ const ArtPostMain = (props) => {
                                     <div className="flex flex-row justify-start w-20 gap-3 mx-auto lg:fixed top-20 right-10 2xl:right-48 lg:flex-col">
                                     <div onclick={clickProfile} className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                                <Profile onclick={clickProfile} size="5" src={tempProfile} />
+                                                <Profile onClick={clickProfile} size="5" src={tempProfile} />
                                             </div>
                                             <Text size="1">프로필</Text>
                                         </div>

@@ -8,7 +8,9 @@ import { MultiSelect } from "react-multi-select-component";
 import Dropzone, { useDropzone } from "react-dropzone";
 import skillList from "./skillList";
 import Swal from 'sweetalert2';
-import profile_upload from "../../static/images/profile_upload.svg";
+import { styled } from '@mui/material/styles';
+import Badge from '@mui/material/Badge';
+import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import { Button, Card, Input, CheckBox, Title, RadioButton, InputNoTitle, Text } from "../../elements";
 
 const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) => {
@@ -89,6 +91,37 @@ const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) =
     // 저작권-------------------------------------------------------------------------
     // useState
     const [CopyRight, setCopyRight] = useState("");
+    // 툴팁 설정
+    const CustomWidthTooltip = styled(({ className, ...props }) => (
+        <Tooltip {...props} classes={{ popper: className }} />
+      ))({
+        [`& .${tooltipClasses.tooltip}`]: {
+          maxWidth: 500,
+        },
+      });
+    // 저작권 툴팁 Text
+    const copyrightText = `
+    판권 소유 
+    명시적인 허가 없이 다른 사용자들이 내 작품을 사용할 수 없습니다. 
+
+    저작자표시 
+    저작자의 이름, 저작물의 제목, 출처 등 저작자에 관한 표시를 해주어야 합니다. 
+
+    저작자표시-비영리 
+    저작자를 밝히면 자유로운 이용이 가능하지만 영리목적으로 이용할 수 없습니다. 
+
+    저작자표시-변경금지
+    저작자를 밝히면 자유로운 이용이 가능하지만, 변경 없이 그대로 이용해야 합니다. 
+
+    저작자표시-동일조건변경허락 
+    저작자를 밝히면 자유로운 이용이 가능하고 저작물의 변경도 가능하지만, 2차적 저작물에는 원 저작물에 적용된 것과 동일한 라이선스를 적용해야 합니다.
+
+    저작자표시-비영리-동일조건변경허락 
+    저작자를 밝히면 이용이 가능하며 저작물의 변경도 가능하지만, 영리목적으로 이용할 수 없고 2차적 저작물에는 원 저작물과 동일한 라이선스를 적용해야 합니다.
+
+    저작자표시-비영리-변경금지
+    저작자를 밝히면 자유로운 이용이 가능하지만, 영리목적으로 이용할 수 없고 변경 없이 그대로 이용해야 합니다.
+    `;
     // options
     const copyrightOptions = [
         { value: "판권 소유", label: "판권 소유" },
@@ -152,31 +185,67 @@ const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) =
     // 다음 버튼 클릭 시 실행 함수
     const createArtWork = () => {
         if (!thumbnail & !isEdit) {
-            alert("썸네일을 등록해 주세요");
+            Swal.fire({
+                icon: 'error',
+                title: '썸네일을 등록해 주세요',
+                showConfirmButton: false,
+                timer: 1000
+              })
             return;
         }
         if (toolSelected.length === 0) {
-            alert("사용 툴을 정해 주세요");
+            Swal.fire({
+                icon: 'error',
+                title: '사용 툴을 정해 주세요',
+                showConfirmButton: false,
+                timer: 1000
+              })
             return;
         }
         if (!inputs.startDate) {
-            alert("작업 기간을 설정해 주세요");
+            Swal.fire({
+                icon: 'error',
+                title: '작업 기간을 설정해 주세요',
+                showConfirmButton: false,
+                timer: 1000
+              })
+            timer: 1000
             return;
         }
         if (!inputs.endDate) {
-            alert("작업 기간을 설정해 주세요");
+            Swal.fire({
+                icon: 'error',
+                title: '작업 기간을 설정해 주세요',
+                showConfirmButton: false,
+                timer: 1000
+              })
             return;
         }
         if (!inputs.title) {
-            alert("프로젝트 제목을 작성해 주세요");
+            Swal.fire({
+                icon: 'error',
+                title: '프로젝트 제목을 작성해 주세요',
+                showConfirmButton: false,
+                timer: 1000
+              })
             return;
         }
         if (!inputs.category) {
-            alert("작품 카테고리를 설정해 주세요");
+            Swal.fire({
+                icon: 'error',
+                title: '작품 카테고리를 설정해 주세요',
+                showConfirmButton: false,
+                timer: 1000
+              })
             return;
         }
         if (!CopyRight) {
-            alert("저작권 여부를 설정해 주세요");
+            Swal.fire({
+                icon: 'error',
+                title: '저작권 여부를 설정해 주세요',
+                showConfirmButton: false,
+                timer: 1000
+              })
             return;
         }
 
@@ -227,12 +296,26 @@ const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) =
             dispatch(CreateNewArtWork(formData));
         }
         // navigate.replace("/art/list/all");
+        let timerInterval
         Swal.fire({
-            icon: 'success',
-            title: '등록 성공!',
-            showConfirmButton: false,
-            timer: 1000
-          })
+        title: '업로드 중..',
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading()
+        },
+        willClose: () => {
+            clearInterval(timerInterval)
+        }
+        }).then((result) => {
+            Swal.fire({
+                icon: 'success',
+                title: '성공!',
+                showConfirmButton: false,
+                timer: 1000
+              })
+        
+        })
         navigate(`/art/list/all`, { replace: true })
     };
 
@@ -506,8 +589,12 @@ const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) =
                             </div>
 
                             <div className="col-span-2 col-start-2 row-start-7">
+                                <Tooltip title={copyrightText} placement='left'>
+                                    <Badge badgeContent={"?"} color='secondary'></Badge>
+                                </Tooltip>
                                 <Title size="3">
                                     저작권<span className="font-bold text-purple-600"> *</span>
+                                    
                                 </Title>
 
                                 <select

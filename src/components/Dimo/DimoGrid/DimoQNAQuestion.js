@@ -4,6 +4,7 @@ import { requestFollow } from "../../../redux/modules/user";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import tw from "tailwind-styled-components";
+import Swal from 'sweetalert2';
 import { useDispatch, useSelector } from "react-redux";
 import { useToggle, useInput } from "../../../hooks";
 import { CreateAnswerDimo } from "../../../redux/modules/dimo";
@@ -156,7 +157,7 @@ const DimoQNAQuestion = (props) => {
         <>
             <Card>
                 <Header>
-                    <div className="flex flex-row gap-1 md:pt-10 pb-4">
+                    <div className="flex flex-row gap-1 pb-4 md:pt-10">
                         {value
                             ? value.hash_tag.map((value, idx) => {
                                   return <Label key={idx}>{value?.tag}</Label>;
@@ -209,7 +210,7 @@ const DimoQNAQuestion = (props) => {
                             </Button>
                         )}
 
-                        <div className="flex flex-col xl:flex-row gap-3">
+                        <div className="flex flex-col gap-3 xl:flex-row">
                             {is_like ? (
                                 <ButtonWithCount
                                     icon
@@ -265,7 +266,12 @@ const DimoQNAQuestion = (props) => {
                                     name="Link"
                                     color="5"
                                     size="3"
-                                    onClick={() => alert("주소가 복사되었습니다!")}
+                                    onClick={() => Swal.fire({
+                                        icon: 'success',
+                                        title: '클립보드에 복사됐습니다.',
+                                        showConfirmButton: false,
+                                        timer: 1000
+                                      })}
                                 >
                                     공유<span className="hidden xl:contents">하기</span>
                                 </Button>
@@ -277,9 +283,9 @@ const DimoQNAQuestion = (props) => {
                 <UnderLine />
 
                 <Footer>
-                    <div className="justify-start flex flex-row">
+                    <div className="flex flex-row justify-start">
                         <Profile size="5" src={post?.account_profile_img} className="hidden md:flex" />
-                        <div className="-mt-2 ml-3">
+                        <div className="ml-3 -mt-2">
                             <Title size="5" className="my-3">
                                 {post?.account_nickname}
                             </Title>
@@ -290,7 +296,7 @@ const DimoQNAQuestion = (props) => {
             </Card>
             {showAnswer && (
                 <>
-                    <div className="bg-dgray-300 flex p-5 xl:px-10 2xl:px-20 mt-20">
+                    <div className="flex p-5 mt-20 bg-dgray-300 xl:px-10 2xl:px-20">
                         <div>
                             <Title size="6" className="hidden lg:flex">
                                 답변 남기기
@@ -301,7 +307,7 @@ const DimoQNAQuestion = (props) => {
                                 className="hidden lg:flex"
                             />
                         </div>
-                        <div className="w-full lg:w-11/12 ml-auto mt-12">
+                        <div className="w-full mt-12 ml-auto lg:w-11/12">
                             <Answer
                                 value={name.value}
                                 onChange={name.onChange}
@@ -311,7 +317,7 @@ const DimoQNAQuestion = (props) => {
                                 cardsize="3"
                                 width="20"
                             />
-                            <Button size="3" className="xl:invisible visible mt-4" onClick={answerSubmit}>
+                            <Button size="3" className="visible mt-4 xl:invisible" onClick={answerSubmit}>
                                 제출
                             </Button>
                         </div>

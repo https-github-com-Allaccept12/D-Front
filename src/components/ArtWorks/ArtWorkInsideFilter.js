@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useDispatch } from "react-redux";
-import { searchArtwork, orderByLike, orderByFollow, artworkPageLoad } from "../../redux/modules/artWork";
+import { searchArtwork, orderByLike, orderByFollow, orderByTime } from "../../redux/modules/artWork";
 
 import { Icon, Text } from "../../elements";
 import tw from "tailwind-styled-components";
@@ -43,8 +43,8 @@ const ArtWorkInsideFilter = (props) => {
         dispatch(orderByLike({ category, dispatch }));
     };
 
-    const orderByTime = () => {
-        dispatch(artworkPageLoad(dispatch));
+    const ByTime = () => {
+        dispatch(orderByTime({ category, dispatch}));
     };
 
     const ByFollow = () => {
@@ -68,7 +68,7 @@ const ArtWorkInsideFilter = (props) => {
                         <ColorSpan>인기순</ColorSpan>
                     </TextCSS>
                     <InnerLine />
-                    <TextCSS onClick={orderByTime}>
+                    <TextCSS onClick={ByTime}>
                         <Icon name="Time" iconSize="14" />
                         <ColorSpan>최신순</ColorSpan>
                     </TextCSS>
