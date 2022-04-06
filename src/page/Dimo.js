@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, Route, Switch, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { DimoFilter, DimoList } from "../components/Dimo";
 import tw from "tailwind-styled-components";
@@ -20,7 +20,9 @@ bg-dpurple-200  rounded-full p-2 xl:hidden fixed bottom-10 right-5 text-white sh
 `;
 
 const Dimo = () => {
+    let dimos = useSelector((state) => state.dimo.dimos?.postRecommendationFeed);
     const location = useLocation();
+    const navigate = useNavigate();
     const a = location.pathname;
     const b = a.split("/")[2];
     const board = b.toUpperCase();
@@ -50,6 +52,14 @@ const Dimo = () => {
         dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
     }, [setPage]);
 
+    const goToCreate = () => {
+        navigate(`/dimo/create/${b}`, {
+            state: {
+                title: { b },
+            },
+        });
+    };
+
     return (
         <>
             <div className="bg-dgray-200 min-h-screen h-[200rem]">
@@ -67,20 +77,13 @@ const Dimo = () => {
                     </div>
                     <div className="hidden xl:contents">
                         <div className="col-start-4 w-36 xl:mt-10 2xl:ml-32 ">
-                            <Link
-                                to={{
-                                    pathname: `/dimo/create/${b}`,
-                                    state: {
-                                        title: { b },
-                                    },
-                                }}
-                            >
-                                <Button size="3">글쓰기</Button>
-                            </Link>
+                            <Button size="3" onClick={goToCreate}>
+                                글쓰기
+                            </Button>
                         </div>
                     </div>
                     <SlideBox>
-                        <DimoSlider list={b} />
+                        <DimoSlider list={b} slidedimo={dimos} />
                     </SlideBox>
 
                     <Box>
@@ -97,18 +100,10 @@ const Dimo = () => {
                         <div className="w-full h-[200rem]">
                             <DimoList list={b} key="key" />
                             <CategoryMini list={b} />
-                            <Link
-                                to={{
-                                    pathname: `/dimo/create/${b}`,
-                                    state: {
-                                        title: { b },
-                                    },
-                                }}
-                            >
-                                <MobileBtn>
-                                    <Icon name="Edit" />
-                                </MobileBtn>
-                            </Link>
+
+                            <MobileBtn onClick={goToCreate}>
+                                <Icon name="Edit" />
+                            </MobileBtn>
                         </div>
                     </div>
                 </div>

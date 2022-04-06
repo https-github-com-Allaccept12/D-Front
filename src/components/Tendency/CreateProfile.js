@@ -5,7 +5,7 @@ import { checknickname } from "../../redux/modules/checkNickname";
 import { createProfile } from "../../redux/modules/createProfile";
 import { Button, Title, Image, Input, Text } from "../../elements";
 import set_profile from "../../static/images/set_profile.svg";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import FileUpload from "../../elements/Tools/FileUpload";
 import { useInput } from "../../hooks";
 import { FakeHeader } from "../../NavComponents";
@@ -37,7 +37,7 @@ p-4 pl-10 flex gap-3 flex-col
 
 const CreateProfile = (props) => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    const navigate = useNavigate();
     let profile = useSelector((state) => state.image.url);
     let image = useSelector((state) => state.image.file);
     // if (!image){
@@ -107,7 +107,7 @@ const CreateProfile = (props) => {
         formData.append("imgFile", image);
         console.log(formData);
         dispatch(createProfile(formData));
-        history.replace("/CompleteProfile");
+        navigate("/CompleteProfile", { replace: true });
         // setCookie("nickname", nickname.value);
     };
 

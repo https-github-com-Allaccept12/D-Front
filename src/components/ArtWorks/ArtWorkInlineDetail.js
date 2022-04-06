@@ -17,7 +17,7 @@ import DetailSlider from "../Sliders/DetailSlider";
 import { Comment } from "../Comment";
 import { useInput, useToggle } from "../../hooks";
 import tw from "tailwind-styled-components";
-import { useHistory, Link, useLocation } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 
 const Grid = tw.div`
 flex justify-center items-center flex-col w-full max-w-6xl mx-auto
@@ -69,14 +69,14 @@ flex flex-col gap-2 justify-center items-center
 
 const ArtWorkInlineDetail = (props) => {
     const { id } = props;
-    const history = useHistory();
+    const navigate = useNavigate();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
     const [showMenu, setShowMenu] = useToggle();
 
     const commentSubmit = () => {
         const data = { comment: name.value };
-        history.goBack();
+        navigate(-1);
         //여기에 뭔가 돌아가기버튼...
     };
     return (

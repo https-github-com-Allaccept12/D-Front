@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Subtitle, Profile, Title, Text, FollowBtn, InputNoTitle } from "../../../elements";
 import { Comment } from "../../Comment";
-import { useHistory, Link, useLocation } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useToggle, useInput } from "../../../hooks";
@@ -50,7 +50,7 @@ const DimoQNAAnswer = (props) => {
         like_count,
         modify_time,
     } = props;
-    const history = useHistory();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [showAnswer, setShowAnswer] = useToggle();
 
@@ -62,7 +62,7 @@ const DimoQNAAnswer = (props) => {
 
     const ClickDelete = () => {
         dispatch(deleteAnswerDimo(answer_id));
-        history.replace("/dimo/qna");
+        navigate("/dimo/qna");
     };
 
     useEffect(() => {

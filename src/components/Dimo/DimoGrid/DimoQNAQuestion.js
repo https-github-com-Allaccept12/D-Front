@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Label, Profile, Title, Text, Subtitle, InputNoTitle, FollowBtn, Answer } from "../../../elements";
 
-import { useHistory, Link, useLocation } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useToggle, useInput } from "../../../hooks";
@@ -41,16 +41,16 @@ object-cover w-full h-fit object-center rounded-md flex flex-col justify-center 
 
 const DimoQNAQuestion = (props) => {
     const { followed, value, post } = props;
-    const location = useLocation();
-    const a = location.pathname;
-    const post_id = a.split("/")[3];
+    const { pathname } = useLocation();
+    const navigate = useNavigate();
+
+    const post_id = pathname.split("/")[3];
     // console.log(value.img[0].img_url);
 
     // const post_id = post.post_id;
 
     const dispatch = useDispatch();
 
-    const history = useHistory();
     const [showAnswer, setShowAnswer] = useToggle();
     const [contentValue, setContentValue] = useState();
 
@@ -68,7 +68,7 @@ const DimoQNAQuestion = (props) => {
         const data = { post_id, content };
 
         dispatch(CreateAnswerDimo(data));
-        // history.goBack();
+        // navigate.goBack();
         //여기에 뭔가 돌아가기버튼...
     };
 
@@ -76,7 +76,7 @@ const DimoQNAQuestion = (props) => {
         const board = `QNA`;
         const category = post.category;
         dispatch(deleteDimo({ post_id, category, board }));
-        history.replace("/dimo/qna");
+        navigate.replace("/dimo/qna");
     };
 
     // const modifyQuestion = () => {
@@ -103,6 +103,16 @@ const DimoQNAQuestion = (props) => {
         dispatch(likeDimoInfo(post_id));
     };
 
+    const goToEdit = () => {
+        navigate(`/dimo/create/edits/${post_id}`, {
+            state: {
+                isedit: true,
+                post_id: post_id,
+                board: "QNA",
+            },
+        });
+    };
+
     return (
         <>
             <Card>
@@ -116,18 +126,7 @@ const DimoQNAQuestion = (props) => {
                     </div>
                     <button onClick={ClickDelete}>삭제</button>
 
-                    <Link
-                        to={{
-                            pathname: `/dimo/create/edits/${post_id}`,
-                            state: {
-                                isedit: true,
-                                post_id: post_id,
-                                board: "QNA",
-                            },
-                        }}
-                    >
-                        수정
-                    </Link>
+                    <button onClick={goToEdit}>수정</button>
                     <Title size="5">{post?.title}</Title>
                     <div className="flex flex-row py-3">
                         <Text size="1">{post?.modify_time}</Text>

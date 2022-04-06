@@ -6,7 +6,7 @@ import Button from "./TendencyButton";
 import { Link } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useToggle } from "../../hooks";
-import { useHistory } from "react-router-dom";
+
 import dPlus from "../../static/logo/Dplus/DplusC.png";
 import AdventureIcon from "../../static/images/ResultIcon/Adventure.svg";
 import ArtistIcon from "../../static/images/ResultIcon/Artist.svg";
@@ -44,7 +44,7 @@ const TendencyTest = (props) => {
     const [designation, setDesignation] = useState("");
     // const token = useSelector((state) => state.user.user);
     const token = sessionStorage.getItem("access_token");
-    const history = useHistory();
+
     const [TestNum, nextTestNum] = useState(0);
     mbti_s = Object.keys(mbti)
         .filter((key) => mbti[key] >= 2)
@@ -70,8 +70,7 @@ const TendencyTest = (props) => {
             // designation = "부드러운 중재자";
             setDesignation("부드러운 중재자");
         }
-    }, [mbti_s])
-    
+    }, [mbti_s]);
 
     // const dispatch = useDispatch();
     // const SendTendency = () => {

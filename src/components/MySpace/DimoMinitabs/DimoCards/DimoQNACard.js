@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Label, Profile, Title, Text, IconBtn } from "../../../../elements";
 
-import { useHistory, Link, useLocation } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
 const InnerLine = tw.hr`
@@ -22,11 +22,11 @@ const DimoQNACard = (props) => {
     const a = location.pathname;
     const b = a.split("/")[1];
     const { size } = props;
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const goToDetail = () => {
-        history.push(`/dimo/qnadetail/${data.post_id}`);
-    }
+        navigate(`/dimo/qnadetail/${data.post_id}`);
+    };
 
     return (
         <>
@@ -35,11 +35,7 @@ const DimoQNACard = (props) => {
                     <div className="absolute w-[20rem] h-[20rem]   md:w-[28.4375rem] md:h-[18.125rem] xl:w-[62.875rem] xl:h-[30.25rem] bg-white rounded-lg border border-dgray-200 hover:shadow-xl">
                         <div>
                             <div className="absolute pl-8 cursor-pointer top-7 hover:scale-110">
-                                <Profile
-                                    size="6"
-                                    src={profile}
-                                    main
-                                />
+                                <Profile size="6" src={profile} main />
                             </div>
                             <div className="absolute top-7 left-28">
                                 {/* <div className="flex flex-row gap-1">

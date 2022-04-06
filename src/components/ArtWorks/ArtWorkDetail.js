@@ -25,7 +25,7 @@ import { Comment } from "../Comment";
 import skillList from "../ArtWorks/skillList_code";
 import { useInput, useToggle } from "../../hooks";
 import tw from "tailwind-styled-components";
-import { useHistory, Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Grid = tw.div`
 flex justify-center items-center flex-col w-full
@@ -80,7 +80,7 @@ const ArtWorkDetail = (props) => {
     const myProfileImg = sessionStorage.getItem("profile_img");
     const writerInfo = useSelector((state) => state.myPage.myPage);
     const artworks = useSelector((state) => state.artwork.detailArtwork);
-    
+
     console.log(artworks);
     const [artworkId, setArtworkId] = useState("");
     const [nickname, setNickname] = useState("");
@@ -132,7 +132,6 @@ const ArtWorkDetail = (props) => {
         }
     }, [artworks, writerInfo]);
 
-    const history = useHistory();
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
     const [showMenu, setShowMenu] = useToggle();
@@ -140,7 +139,7 @@ const ArtWorkDetail = (props) => {
     const commentSubmit = () => {
         const artwork_id = artworkId;
         const data = { content: name.value };
-            dispatch(submitComment({artwork_id, data}));
+        dispatch(submitComment({ artwork_id, data }));
         // history.goBack();
         //여기에 뭔가 돌아가기버튼...
     };
@@ -258,9 +257,10 @@ const ArtWorkDetail = (props) => {
                             </div>
 
                             <div className="">
-                                {comment && comment.map((value) => {
-                                    return <Comment value={value} />;
-                                })}
+                                {comment &&
+                                    comment.map((value) => {
+                                        return <Comment value={value} />;
+                                    })}
                             </div>
                         </CommentBox>
                     </div>

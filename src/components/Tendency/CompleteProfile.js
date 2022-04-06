@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Title, Text } from "../../elements";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import celebration from "../../static/images/celebration.svg";
 import { FakeHeader } from "../../NavComponents";
 import tw from "tailwind-styled-components";
@@ -14,7 +14,6 @@ md:w-full lg:2/3 xl:w-1/2 py-28 mt-44 text-center bg-white rounded-md xl:mx-auto
 `;
 
 const CompleteProfile = (props) => {
-    let history = useHistory();
     const toHome = (e) => {
         window.location.href = "/";
     };

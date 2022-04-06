@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Button, Label, Title, Text, Input, Profile, Icon } from "../../../elements";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Comment } from "../../Comment";
 import DimoPost from "./DimoPost";
 import DimoQNAQuestion from "./DimoQNAQuestion";
@@ -41,8 +41,9 @@ const DimoQNADetail = ({ history, location, match }) => {
     useEffect(() => {
         dispatch(dimoQnaDetailLoad({ post_id, dispatch, visitor_account_id }));
     }, []);
+    const { pathname } = useLocation();
 
-    const post_id = match.params.name;
+    const post_id = pathname.split("/")[3];
     console.log(dimos);
 
     // let owner_account_id = account_id;

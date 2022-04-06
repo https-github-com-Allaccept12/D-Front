@@ -11,7 +11,7 @@ import {
     FileEditDimo,
 } from "../../elements";
 
-import { useHistory, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateNewDimo, editDimo } from "../../redux/modules/dimo";
 import tw from "tailwind-styled-components";
@@ -30,25 +30,28 @@ const InnerGrid = tw.div`
 w-full bg-white
 `;
 
-const DimoCreate = ({ history, location, match }) => {
+const DimoCreate = ({ match }) => {
+    const { pathname } = useLocation();
+    const navigate = useNavigate();
+    console.log(pathname);
     let post_id = "";
     let isEdit = false;
     let board = "";
-    const a = location.pathname;
-    const bbb = a.split("/")[4];
+
+    // const bbb = pathname.split("/")[3];
 
     // let deletes = []
-    useEffect(() => {
-        if (match.params.post_id) {
-            const visitor_account_id = sessionStorage.getItem("account_id");
-            post_id = match.params.post_id;
-            isEdit = match.params.isedit;
-            board = match.params.board;
-            if (isEdit) {
-                dispatch(dimoQnaDetailLoad({ post_id, dispatch, visitor_account_id }));
-            }
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (match.params.post_id) {
+    //         const visitor_account_id = sessionStorage.getItem("account_id");
+    //         post_id = match.params.post_id;
+    //         isEdit = match.params.isedit;
+    //         board = match.params.board;
+    //         if (isEdit) {
+    //             dispatch(dimoQnaDetailLoad({ post_id, dispatch, visitor_account_id }));
+    //         }
+    //     }
+    // }, []);
 
     const edits = useSelector((state) => state.dimo.detaildimoQna?.postAnswerSubDetail);
     const editImgs = useSelector((state) => state.dimo?.detaildimoQna);
@@ -83,7 +86,7 @@ const DimoCreate = ({ history, location, match }) => {
         setSelected(e.target.value);
     };
     console.log(selected);
-    const status = a.split("/")[3];
+    const status = pathname.split("/")[3];
 
     const forSendTags = [];
     for (var item of hashtags) {
@@ -113,8 +116,8 @@ const DimoCreate = ({ history, location, match }) => {
         delete_img: forDeletes,
         hash_tag: forSendTags,
         content: editContents.value,
-        is_selected: edits.is_selected,
-        board: match.params.board,
+        // is_selected: edits.is_selected,
+        // board: match.params.board,
     };
 
     const sandData = () => {
@@ -126,7 +129,7 @@ const DimoCreate = ({ history, location, match }) => {
         }
         dispatch(CreateNewDimo(formData));
         // console.log(formData);
-        history.replace("/dimo/qna/all");
+        navigate("/dimo/qna/all", { replace: true });
     };
 
     const sandEditData = () => {
@@ -141,7 +144,7 @@ const DimoCreate = ({ history, location, match }) => {
         console.log(formData, post_id);
         dispatch(editDimo({ formData, post_id }));
 
-        history.replace("/dimo/qna/all");
+        navigate.replace("/dimo/qna/all");
     };
 
     if (status === "qna")
