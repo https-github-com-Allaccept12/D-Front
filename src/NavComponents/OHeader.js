@@ -39,7 +39,12 @@ const Header = (props) => {
         }
     }, []);
     const goToMyPage = () => {
-        navigate(`/myspace/myprofile`, { replace: true });
+        navigate(`/myspace/myprofile`, {
+            state: {
+                nickname: { nickname },
+                owner_id: { ownerId },
+            },
+        });
     };
     return (
         <div className="md:h-[7.8rem] w-full">
