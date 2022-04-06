@@ -25,6 +25,12 @@ flex flex-row py-2 px-2 font-min1 text-tiny hover:bg-dpurple-100 rounded-lg gap-
 `;
 
 const MyPage = (props) => {
+
+    const location = useLocation();
+    const a = location.pathname;
+    const b = a.split("/")[2];
+    const myPageId = a.split('/')[3];
+
     const [showCategory, setShowCategory] = useToggle();
     const dispatch = useDispatch();
     let account_id = 0;
@@ -34,8 +40,9 @@ const MyPage = (props) => {
         account_id = id_cookie;
         // console.log("account_id: ", account_id);
     }
-    const owner_account_id = account_id;
-    // console.log(account_id, owner_account_id);
+    // console.log('location:', location.state.owner_id);
+    const owner_account_id = myPageId;
+    console.log('accountId, ownerAccountId', account_id, owner_account_id);
 
     useEffect(() => {
         dispatch(myPageLoad({ account_id, owner_account_id, dispatch }));
@@ -51,9 +58,6 @@ const MyPage = (props) => {
     const info = useSelector((state) => state.myPage.myPage);
     const exp = useSelector((state) => state.myPage.history);
     const feed = useSelector((state) => state.myPage.feed);
-    const location = useLocation();
-    const a = location.pathname;
-    const b = a.split("/")[2];
 
     return (
         <>

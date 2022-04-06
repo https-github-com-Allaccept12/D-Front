@@ -9,7 +9,7 @@ import { Modal } from "../elements/Tools/Modal";
 
 const OHeader = (props) => {
     const [is_login, setIsLogin] = useState(false);
-    const [ownerId, setOwnerId] = useState("");
+    // const [ownerId, setOwnerId] = useState("");
     const [accountId, setAccountId] = useState("");
     const [modalOpen, setModalOpen] = useState(false);
     const dispatch = useDispatch();
@@ -34,15 +34,15 @@ const OHeader = (props) => {
         const account_id = getCookie("account_id");
         if (session) {
             setIsLogin(true);
-            setOwnerId(account_id);
+            // setOwnerId(account_id);
             setAccountId(account_id);
         } else {
             setIsLogin(false);
         }
     }, []);
-
     const goToMyPage = () => {
-        navigate(`/myspace/myprofile`, {
+        const ownerId = sessionStorage.getItem("account_id");
+        navigate(`/myspace/myprofile/${ownerId}`, {
             state: {
                 nickname: { nickname },
                 owner_id: { ownerId },

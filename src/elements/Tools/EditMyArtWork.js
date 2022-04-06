@@ -44,7 +44,7 @@ const EditMyArtWork = (props) => {
     const [is_master, setMaster] = useState(isMaster);
     const [is_public, setPublic] = useState(scope);
     console.log("in here, ", artwork_id);
-
+    console.log(is_master, is_public);
     const ClickMaster = () => {
         setMaster(!is_master);
         is_master ? dispatch(getMaster(artwork_id)) : dispatch(removeMaster(artwork_id));

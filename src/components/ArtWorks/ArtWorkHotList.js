@@ -9,40 +9,24 @@ import { ArtWorkCategory, ArtWorkWrite } from "../ArtWorks";
 const ArtWorkHotList = (props) => {
     const artworks = useSelector((state) => state.mainPage.artworks);
     console.log(artworks);
-    let arrayArtworks = () => {};
-    if (artworks) {
-        arrayArtworks = () => {
-            const arr = [];
-            for (let i = 0; i < artworks.length; i++) {
-                arr.push(
-                    <ArtPostMain
-                        profile={artworks[i].account_profile}
-                        nickname={artworks[i].account_nickname}
-                        thumbnail={artworks[i].img}
-                        is_like={artworks[i].is_like}
-                        like_count={artworks[i].like_count}
-                        id={artworks[i].artwork_id}
-                    />,
-                );
-            }
-            return arr;
-        };
-    }
 
-    const location = useLocation();
-    const a = location.pathname;
-    if (a === "/")
-        return (
-            // <>
-            //     {p.map((n) => {
-            //         return <ArtPost size="7" main />;
-            //     })}
-            // </>
-            <>{arrayArtworks()}</>
-        );
-    else {
-        return null;
-    }
+    return (
+        <>
+        {artworks && artworks.map((value) => {
+            return(
+                <ArtPostMain
+                    account_id={value.account_id}
+                    artwork_id={value.artwork_id}
+                    profile={value.account_profile}
+                    nickname={value.account_nickname}
+                    thumbnail={value.img}
+                    like_count={value.like_count}
+                />
+            )
+        })}
+        </>
+    )
+    
 };
 
 export default ArtWorkHotList;

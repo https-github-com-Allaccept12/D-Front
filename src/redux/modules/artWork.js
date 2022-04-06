@@ -346,7 +346,7 @@ export const UnMarkArtwork = createAsyncThunk("/UnMarkArtwork", (artwork_id) => 
 
 export const artworkSlice = createSlice({
     name: "artwork",
-    initialState: {modifyForPreview: {editImgs : {img: []}}
+    initialState: {modifyForPreview: {editImgs : {img: []}, detailArtwork : []}
     },
     reducers: {
         artworks: (state, action) => {

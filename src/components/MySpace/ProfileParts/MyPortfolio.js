@@ -32,6 +32,7 @@ const MyPortfolio = (props) => {
                         src={value.img}
                         artwork_id={value.artwork_id}
                         size="1"
+                        key={value.artwork_id}
                     />
                     )
                 })}
