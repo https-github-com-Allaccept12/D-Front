@@ -66,9 +66,9 @@ const HeaderMini = (props) => {
                     <Title size="6" className="">
                         <Link to="/art/list/all">모아보기</Link>
                     </Title>
-                    {/* <Title size="6">
+                    <Title size="6">
                         <Link to="/dimo/qna">디모</Link>
-                    </Title> */}
+                    </Title>
                     {is_login ? (
                         <>
                             <Title size="6">
