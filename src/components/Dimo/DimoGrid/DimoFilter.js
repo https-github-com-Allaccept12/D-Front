@@ -39,7 +39,7 @@ const DimoFilter = (props) => {
         // console.log(e.target.value);
         const category = e.target.value;
         const board = list.toUpperCase();
-        navigate(`/${category}`, {
+        navigate(`/dimo/qna/${category}`, {
             state: {
                 category: category,
             },

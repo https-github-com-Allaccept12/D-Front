@@ -64,11 +64,11 @@ function App() {
 
                     <Route path="/myspace" element={<MyPage />} />
                     <Route path="/myspace/*" element={<MyPage />} />
-                    <Route path="/myspace/myprofile/*" element={<MyPage />} />
-                    <Route path="/myspace/mywork/*" element={<MyArtWork />} />
-                    <Route path="/myspace/mypic/*" element={<MyPic />} />
-                    <Route path="/myspace/share/*" element={<MyPosts />} />
-                    <Route path="/myspace/qna/*" element={<MyQNA />} />
+                    <Route path="/myprofile/*" element={<MyPage />} />
+                    <Route path="/mywork/*" element={<MyArtWork />} />
+                    <Route path="/mypic/*" element={<MyPic />} />
+                    <Route path="/share/*" element={<MyPosts />} />
+                    <Route path="/qna/*" element={<MyQNA />} />
 
                     <Route path="/editmyspace" element={<EditMySpace />} />
                     <Route path="/editmyspace/*" element={<EditMySpace />} />
