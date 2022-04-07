@@ -88,6 +88,7 @@ const TopOfProfile = (props) => {
             state: {
                 title: { tendency },
                 from: true,
+                account_id: account_id
             },
         });
         // console.log('clicktendency');

@@ -55,6 +55,7 @@ const DimoQNAAnswer = (props) => {
         is_selected,
         like_count,
         modify_time,
+        post_id,
     } = props;
     const navigate = useNavigate();
     const dispatch = useDispatch();

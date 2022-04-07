@@ -64,6 +64,7 @@ const TendencyResult = ({ history, match }) => {
     const [is_loaded, setIsLoaded] = useState(false);
     const [myTendency, setMyTendency] = useState("");
     const fromMyPage = location.state.from;
+    const account_id = location.state.account_id;
     // console.log(location.state);
     // console.log(fromMyPage);
 
@@ -84,7 +85,7 @@ const TendencyResult = ({ history, match }) => {
     });
 
     const Back = () => {
-        navigate(-1);
+        navigate(`/myspace/myprofile/${account_id}`);
     };
 
     const dispatch = useDispatch();

@@ -125,6 +125,7 @@ const DimoQNADetail = ({ history, location, match }) => {
                                                           is_selected={value.is_selected}
                                                           like_count={value.like_count}
                                                           modify_time={value.modify_time}
+                                                          post_id={value?.post_id}
                                                       />
                                                   </div>
                                               );
