@@ -23,7 +23,8 @@ const Main = (props) => {
             sessionStorage.setItem("account_id", getCookie("account_id"));
         }
         // console.log(account_id);
-        dispatch(mainPageLoad({ account_id, dispatch }));
+        const visitor_account_id = account_id;
+        dispatch(mainPageLoad({ visitor_account_id, dispatch }));
     }, []);
 
     const [time, setTime] = useState(true);
@@ -60,11 +61,11 @@ const Main = (props) => {
                     <div className="-mt-32 lg:mt-24 mx-auto lg:pl-12 w-full xl:max-w-[90%]">
                         <Title
                             size="2"
-                            className="flex items-end justify-center col-start-2 row-start-1 my-3 xl:justify-start text-gray-700"
+                            className="flex items-end justify-center col-start-2 row-start-1 my-3 text-gray-700 xl:justify-start"
                         >
                             추천 아트워크
                         </Title>
-                        <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-4 2xl:gap-8 xl:justify-start pb-20">
+                        <div className="flex flex-wrap items-center justify-center gap-3 pb-20 lg:gap-4 2xl:gap-8 xl:justify-start">
                             <ArtWorkHotList />
                         </div>
                     </div>
