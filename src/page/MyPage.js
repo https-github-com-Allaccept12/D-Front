@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getCookie } from "../shared/cookie";
 import { myPageLoad, historyLoad, careerFeed } from "../redux/modules/myPage";
 import { useHistory, Link, useLocation } from "react-router-dom";
-import { Icon, Title } from "../elements";
+import { Icon, Title, PageLoadSpinner } from "../elements";
 import { MyPageCategory, MyProfile, MySpaceTab, TopOfProfile } from "../components/MySpace";
 import { useToggle } from "../hooks";
 import tw from "tailwind-styled-components";
@@ -25,11 +25,10 @@ flex flex-row py-2 px-2 font-min1 text-tiny hover:bg-dpurple-100 rounded-lg gap-
 `;
 
 const MyPage = (props) => {
-
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[2];
-    const myPageId = a.split('/')[3];
+    const myPageId = a.split("/")[3];
 
     const [showCategory, setShowCategory] = useToggle();
     const dispatch = useDispatch();
@@ -58,71 +57,80 @@ const MyPage = (props) => {
     const info = useSelector((state) => state.myPage.myPage);
     const exp = useSelector((state) => state.myPage.history);
     const feed = useSelector((state) => state.myPage.feed);
-
+    const [time, setTime] = useState(true);
+    useEffect(() => {
+        const aaa = setTimeout(() => {
+            setTime();
+        }, 500);
+    }, []);
     return (
         <>
-            <div className="grid-cols-5 2xl:grid">
-                <div className="hidden w-40 h-full mt-4 xl:contents md:ml-28 ">
-                    <MyPageCategory myPageId={myPageId} account_id={account_id}/>
-                </div>
-                {/* 내정보일땐 마이프로필 다른사람정보일땐 디폴리오 각 메뉴를 클릭하면 메뉴 */}
-                <Suspense fallback={<h1>Loading..</h1>}>
-                    <TopOfProfile info={info} exp={exp} feed={feed}/>
-                </Suspense>
-                
-            </div>
-
-            <MobileBtn onClick={setShowCategory}>
-                {showCategory ? (
-                    <>
-                        <Icon name="Link" iconSize="32" />
-                    </>
-                ) : (
-                    <>
-                        <Icon name="Search" iconSize="32" />
-                    </>
-                )}
-            </MobileBtn>
-
-            {showCategory && (
+            {time === true ? (
+                <PageLoadSpinner />
+            ) : (
                 <>
-                    <Grid>
-                        <Box>
-                            <Title size="5">프로필</Title>
-                            <div className="flex flex-row mb-3">
-                                <Link to="/myspace/myprofile">
-                                    <TabBtn>내 프로필</TabBtn>
-                                </Link>
-                                <Link to="/editmyspace/z">
-                                    <TabBtn>프로필 수정</TabBtn>
-                                </Link>
-                            </div>
-                            <Title size="5">프로젝트</Title>
+                    <div className="grid-cols-5 2xl:grid">
+                        <div className="hidden w-40 h-full mt-4 xl:contents md:ml-28 ">
+                            <MyPageCategory myPageId={myPageId} account_id={account_id} />
+                        </div>
+                        {/* 내정보일땐 마이프로필 다른사람정보일땐 디폴리오 각 메뉴를 클릭하면 메뉴 */}
+                        <Suspense fallback={<h1>Loading..</h1>}>
+                            <TopOfProfile info={info} exp={exp} feed={feed} />
+                        </Suspense>
+                    </div>
 
-                            <div className="flex flex-row mb-3">
-                                <Link to="/myspace/mywork">
-                                    <TabBtn>내 프로젝트</TabBtn>
-                                </Link>
-                                <Link to="/myspace/mypic">
-                                    <TabBtn>스크랩</TabBtn>
-                                </Link>
-                            </div>
+                    <MobileBtn onClick={setShowCategory}>
+                        {showCategory ? (
+                            <>
+                                <Icon name="Link" iconSize="32" />
+                            </>
+                        ) : (
+                            <>
+                                <Icon name="Search" iconSize="32" />
+                            </>
+                        )}
+                    </MobileBtn>
 
-                            <Title size="5">Dimo</Title>
-                            <div className="flex flex-row mb-3">
-                                <Link to="/myspace/share">
-                                    <TabBtn>게시글 관리</TabBtn>
-                                </Link>
-                                <Link to="/myspace/qna">
-                                    <TabBtn>QNA 관리</TabBtn>
-                                </Link>
-                            </div>
-                        </Box>
-                    </Grid>
+                    {showCategory && (
+                        <>
+                            <Grid>
+                                <Box>
+                                    <Title size="5">프로필</Title>
+                                    <div className="flex flex-row mb-3">
+                                        <Link to="/myspace/myprofile">
+                                            <TabBtn>내 프로필</TabBtn>
+                                        </Link>
+                                        <Link to="/editmyspace/z">
+                                            <TabBtn>프로필 수정</TabBtn>
+                                        </Link>
+                                    </div>
+                                    <Title size="5">프로젝트</Title>
+
+                                    <div className="flex flex-row mb-3">
+                                        <Link to="/myspace/mywork">
+                                            <TabBtn>내 프로젝트</TabBtn>
+                                        </Link>
+                                        <Link to="/myspace/mypic">
+                                            <TabBtn>스크랩</TabBtn>
+                                        </Link>
+                                    </div>
+
+                                    <Title size="5">Dimo</Title>
+                                    <div className="flex flex-row mb-3">
+                                        <Link to="/myspace/share">
+                                            <TabBtn>게시글 관리</TabBtn>
+                                        </Link>
+                                        <Link to="/myspace/qna">
+                                            <TabBtn>QNA 관리</TabBtn>
+                                        </Link>
+                                    </div>
+                                </Box>
+                            </Grid>
+                        </>
+                    )}
                 </>
             )}
         </>
     );
 };
-
 export default MyPage;

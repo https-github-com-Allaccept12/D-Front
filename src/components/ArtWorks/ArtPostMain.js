@@ -99,7 +99,7 @@ const ArtPostMain = (props) => {
                             {nickname}
                         </Subtitle>
                     </div>
-                    <div className="flex flex-row items-center mt-1 mr-1 text-dgray-400">
+                    <div className="flex flex-row items-center mr-1 text-gray-700">
                         <IconBtn name="HeartE" iconSize="20" count={like_count} />
                     </div>
                 </div>
