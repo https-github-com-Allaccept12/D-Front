@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Button, Title, SearchInput } from "../../elements";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import tw from "tailwind-styled-components";
 
 const TabBtn = tw.button`
 font-min1 Text-base w-full text-left px-3 py-2  indent-7
 `;
 const MyPageCategory = (props) => {
+    const navigate = useNavigate();
     const { myPageId, account_id } = props;
     const [active, setActive] = useState("0");
     const [isMine, setIsMine] = useState(false);
@@ -16,6 +17,27 @@ const MyPageCategory = (props) => {
             setIsMine(true);
         }
     })
+
+    const toEditMySpace = () => {
+        navigate(`/editmyspace/${myPageId}`);
+
+    }
+
+    const toMyPic = () => {
+        console.log('clickcccc');
+    }
+
+    const toMyWork = () => {
+        
+    }
+
+    const toShare = () => {
+        
+    }
+
+    const toQNA = () => {
+        
+    }
 
     return (
         <>
@@ -41,11 +63,11 @@ const MyPageCategory = (props) => {
                             </TabBtn>
                         </Link>
                         {isMine && 
-                            <Link to="/editmyspace/z">
-                                <TabBtn size="2">
+                            // <Link to='/editmyspace/${myPageId}'>
+                                <TabBtn onClick={toEditMySpace} size="2">
                                     <span className="text-dgray-500">프로필 수정</span>
                                 </TabBtn>
-                            </Link>
+                            // </Link>
                         }
                         
 
@@ -53,30 +75,30 @@ const MyPageCategory = (props) => {
                             🎨 Work
                         </Title>
 
-                        <Link to="/myspace/mywork">
+                        {/* <Link to="/myspace/mywork"> */}
                             <TabBtn
                                 size="2"
                                 onClick={() => {
                                     setActive("1");
-                                }}
+                                }, {toMyWork}}
                                 className={active === "1" ? "bg-dpurple-100 text-dpurple-200" : "text-dgray-500"}
                             >
                                 프로젝트
                             </TabBtn>
-                        </Link>
+                        {/* </Link> */}
 
                         {isMine &&
-                            <Link to="/myspace/mypic">
+                            // <Link to="/myspace/mypic">
                                 <TabBtn
                                     size="2"
                                     onClick={() => {
                                         setActive("2");
-                                    }}
+                                    }, {toMyPic}}
                                     className={active === "2" ? "bg-dpurple-100 text-dpurple-200" : "text-dgray-500"}
                                 >
                                     스크랩한 프로젝트
                                 </TabBtn>
-                            </Link>
+                            // </Link>
                         }
                         
                         {isMine &&
@@ -90,7 +112,7 @@ const MyPageCategory = (props) => {
                                     size="2"
                                     onClick={() => {
                                         setActive("3");
-                                    }}
+                                    }, {toShare}}
                                     className={active === "3" ? "bg-dpurple-100 text-dpurple-200" : "text-dgray-500"}
                                 >
                                     게시글
@@ -102,7 +124,7 @@ const MyPageCategory = (props) => {
                                     size="2"
                                     onClick={() => {
                                         setActive("4");
-                                    }}
+                                    }, {toQNA}}
                                     className={active === "4" ? "bg-dpurple-100 text-dpurple-200" : "text-dgray-500"}
                                 >
                                     QNA
