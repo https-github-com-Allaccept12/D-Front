@@ -569,12 +569,12 @@ const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) =
                                     </Badge>
                                 </Tooltip> */}
 
-                                {/* <div className="flex flex-row">
+                                <div className="flex flex-row">
                                     <Title size="3">저작권</Title>
-                                    <Tooltips>
+                                    {/* <Tooltips>
                                         <B>🐧</B>
-                                    </Tooltips>
-                                </div> */}
+                                    </Tooltips> */}
+                                </div>
 
                                 <select
                                     onChange={selectCopyRight}
