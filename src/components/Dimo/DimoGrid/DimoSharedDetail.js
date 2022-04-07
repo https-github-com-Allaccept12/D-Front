@@ -64,7 +64,7 @@ const DimoSharedDetail = () => {
     if (id_cookie) {
         account_id = id_cookie;
     }
-
+    const profile = sessionStorage.getItem("profile_img");
     let owner_account_id = dimos?.account_id;
     const visitor_account_id = account_id;
 
@@ -227,7 +227,7 @@ const DimoSharedDetail = () => {
                             </Subtitle>
                             <Profile
                                 size="5"
-                                src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
+                                src={profile}
                                 className="hidden lg:flex"
                             />
                         </div>
