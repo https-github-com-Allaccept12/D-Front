@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Title, Text, Subtitle, Thumbnail } from "../elements";
+import { Title, Text, Subtitle, PageLoadSpinner } from "../elements";
 import { MainSlider } from "../components";
 import { ArtWorkHotList, ArtWorkPost } from "../components/ArtWorks";
 import { mainPageLoad } from "../redux/modules/mainPageLoad";
@@ -24,40 +24,53 @@ const Main = (props) => {
         }
         // console.log(account_id);
         dispatch(mainPageLoad({ account_id, dispatch }));
-    });
+    }, []);
+
+    const [time, setTime] = useState(true);
+
+    useEffect(() => {
+        const aaa = setTimeout(() => {
+            setTime();
+        }, 500);
+    }, []);
 
     return (
         <>
-            <div className="w-full">
-                <div className="invisible text-white lg:visible lg:absolute inset-44 h-1/3 ">
-                    <Title size="2">Hot 디자이너</Title>
-                    <div className="mt-4 ml-1">
-                        <Subtitle size="1">
-                            현재 가장 핫한
-                            <br />
-                            디자이너님들을 소개합니다
-                        </Subtitle>
+            {time === true ? (
+                <PageLoadSpinner />
+            ) : (
+                <>
+                    <div className="w-full">
+                        <div className="invisible text-white lg:visible lg:absolute inset-44 h-1/3 ">
+                            <Title size="2">Hot 디자이너</Title>
+                            <div className="mt-4 ml-1">
+                                <Subtitle size="1">
+                                    현재 가장 핫한
+                                    <br />
+                                    디자이너님들을 소개합니다
+                                </Subtitle>
+                            </div>
+                        </div>
+
+                        <div className="fixed invisible lg:visible lg:absolute top-36 right-28">
+                            <MainSlider />
+                        </div>
                     </div>
-                </div>
 
-                <div className="fixed invisible lg:visible lg:absolute top-36 right-28">
-                    <MainSlider />
-                </div>
-            </div>
-
-            <div className="-mt-32 lg:mt-24 mx-auto lg:pl-12 w-full xl:max-w-[90%]">
-                <Title
-                    size="2"
-                    className="flex items-end justify-center col-start-2 row-start-1 my-3 xl:justify-start text-gray-700"
-                >
-                    추천 아트워크
-                </Title>
-                <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-4 2xl:gap-8 xl:justify-start">
-                    <ArtWorkHotList />
-                </div>
-            </div>
+                    <div className="-mt-32 lg:mt-24 mx-auto lg:pl-12 w-full xl:max-w-[90%]">
+                        <Title
+                            size="2"
+                            className="flex items-end justify-center col-start-2 row-start-1 my-3 xl:justify-start text-gray-700"
+                        >
+                            추천 아트워크
+                        </Title>
+                        <div className="flex flex-wrap items-center justify-center gap-3 lg:gap-4 2xl:gap-8 xl:justify-start pb-20">
+                            <ArtWorkHotList />
+                        </div>
+                    </div>
+                </>
+            )}
         </>
     );
 };
-
 export default Main;
