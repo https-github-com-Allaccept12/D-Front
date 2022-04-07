@@ -126,7 +126,7 @@ const Dimo = (props) => {
                             <Box>
                                 <div className="top-0 h-[44rem] invisible fixed xl:visible xl:sticky">
                                     <div className=" flex flex-col h-[44rem]">
-                                        <div className="flex flex-row justify-end items-end self-end w-[18.75rem] h-[44rem]">
+                                        <div className="flex flex-row justify-end items-end self-end -mt-[1.41rem] w-[18.75rem] h-[44rem]">
                                             <DimoFilter list={b} />
                                         </div>
                                     </div>
