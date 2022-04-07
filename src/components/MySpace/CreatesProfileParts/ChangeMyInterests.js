@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { interests } from "../../../redux/modules/interests.js";
-import { Text, Icon, PageLoadSpinner } from "../../../elements";
+import { Text, Icon, PageLoadSpinner, Button } from "../../../elements";
 import tw from "tailwind-styled-components";
 import typography from "../../../static/images/typography.svg";
 import crafts from "../../../static/images/crafts.svg";
@@ -175,7 +175,7 @@ const ChangeMyInterests = (props) => {
                                     <Ptext>건축 / 인테리어 / 환경</Ptext>
                                 </div>
                             </div>
-                            <div className="grdi place-content-center">
+                            <div className="grid place-content-center">
                             <Button onClick={saveInterest}>저장</Button>
                             </div>
                         </Body>
