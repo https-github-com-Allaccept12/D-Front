@@ -43,7 +43,7 @@ const ArtWorkInsideFilter = (props) => {
     useEffect(()=> {
         setCategory(location.pathname.split('/')[3]);
     }, [location])
-
+    
     // console.log('location: ', location.pathname.split('/')[3]);
     // console.log('location state: ', location.state.category);
     console.log('category: ', category); 
