@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 import { searchArtwork, orderByLike, orderByFollow, orderByTime } from "../../redux/modules/artWork";
@@ -38,7 +38,14 @@ const ArtWorkInsideFilter = (props) => {
     const dispatch = useDispatch();
     const location = useLocation();
     const visitor_account_id = sessionStorage.getItem("account_id");
-    const category = location?.state.category;;
+    const [category, setCategory] = useState('');
+
+    useEffect(()=> {
+        if(location?.state?.location){
+            setCategory(location?.state?.category);
+        }
+    })
+    // const category = location?.state.category;
     // if (location.state) {
     //     category = location?.state.category;
     // }
