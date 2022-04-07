@@ -154,7 +154,7 @@ const Slides = (props) => {
                             {/* </Link> */}
                         </div>
                         <div className="pt-6 pl-40">
-                            <Title size="5" className="truncate">
+                            <Title size="5" className="truncate text-gray-700">
                                 {props.nickname} 님
                             </Title>
                             <div className="-mt-1">
@@ -164,7 +164,7 @@ const Slides = (props) => {
                         <div className="flex justify-center mt-5">
                             {!is_fow === true ? (
                                 <Button size="3" color="1" onClick={makeFollow}>
-                                    팔로우🎉
+                                    팔로우 🎉
                                 </Button>
                             ) : (
                                 <Button size="3" color="4">
