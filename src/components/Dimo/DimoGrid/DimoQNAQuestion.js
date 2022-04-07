@@ -152,9 +152,9 @@ const DimoQNAQuestion = (props) => {
         setFollow(!follow);
         setBarFollow(!barFollow);
         if (follow) {
-            dispatch(requestUnFollow(owner_account_id));
+            dispatch(requestUnFollow(visitor_account_id));
         } else {
-            dispatch(requestFollow(owner_account_id));
+            dispatch(requestFollow(visitor_account_id));
         }
     };
 
