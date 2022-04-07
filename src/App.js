@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import { Header, OHeader, NotFound, HeaderMini, Footer } from "./NavComponents";
 import { TendencyTest, MyInterests, Result, CreateProfile } from "./components";
@@ -8,11 +8,30 @@ import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "./components/Dimo";
 import { ArtWorkWrite, ArtWorkCreate, ArtWorkInlineDetail } from "./components/ArtWorks";
 import { useSelector } from "react-redux";
 import KakaoRedirectHandler from "./shared/KakaoRedirectHandler";
+import ReactGA from "react-ga";
+
+ReactGA.event({
+    category: "User",
+    action: "Created an Account",
+});
+ReactGA.exception({
+    description: "An error ocurred",
+    fatal: true,
+});
 
 function App() {
     const location = useLocation();
     const a = location.pathname;
     let dimos = useSelector((state) => state.dimo.dimos?.postRecommendationFeed);
+
+    useEffect(() => {
+        ReactGA.initialize("user id");
+        history.listen((location) => {
+            ReactGA.set({ page: location.pathname }); // Update the user's current page
+            ReactGA.pageview(location.pathname); // Record a pageview for the given page
+        });
+        // ReactGA.pageview(window.location.pathname + window.location.search);
+    }, []);
 
     return (
         <>
