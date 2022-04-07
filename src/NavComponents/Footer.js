@@ -14,7 +14,7 @@ fixed bottom-0 text-dpurple-300 p-5 animate-pulse
 `;
 
 const SpBtn = tw.button`
-font-min1 text-[0.05rem] md:text-base text-white rounded-full bg-dpurple-300 sm:bg-dpurple-300 hover:bg-dpurple-300 p-2
+font-min1 text-[0.05rem] md:text-base text-white rounded-full bg-dpurple-300 sm:bg-dpurple-300 hover:bg-dpurple-400  p-2
 `;
 const Footer = (props) => {
     let navigate = useNavigate();
@@ -65,14 +65,19 @@ const Footer = (props) => {
                         </SpBtn>
                     </a>
                     <div className="hidden md:contents">
-                        <SpBtn
-                            onClick={() => {
-                                navigate(-1);
-                            }}
+                        <a
+                            target="_blank"
+                            href="https://www.notion.so/robinchoi11/HELLO-D-PLUS-3739025471ea45c6a4228f47331c0dd3"
                         >
-                            설문조사 제출하고
-                            <br className="md:hidden" /> 스타벅스 커피받기☕
-                        </SpBtn>
+                            <SpBtn
+                                onClick={() => {
+                                    navigate(-1);
+                                }}
+                            >
+                                설문조사 제출하고
+                                <br className="md:hidden" /> 스타벅스 커피받기☕
+                            </SpBtn>
+                        </a>
                     </div>
                 </div>
             </Foot>

@@ -49,14 +49,13 @@ const slidedlider = (props) => {
 
     let slided = useSelector((state) => state.dimo.dimos.postRecommendationFeed);
 
-    let makeSlides = () => {};
     const [time, setTime] = useState(true);
 
-    useEffect(() => {
-        const aaa = setTimeout(() => {
-            setTime();
-        }, 100);
-    }, 0);
+    // useEffect(() => {
+    //     const aaa = setTimeout(() => {
+    //         setTime();
+    //     }, 100);
+    // }, []);
     const settings = {
         dots: false, // 슬라이드 밑에 점 보이게
         infinite: true, // 무한으로 반복
@@ -97,37 +96,30 @@ const slidedlider = (props) => {
     if (list === "QNA")
         return (
             <>
-                {time === true ? (
-                    <></>
-                ) : (
-                    <>
-                        <div className="flex-row hidden md:flex">
-                            <PrevBtn onClick={() => slider?.current.slickPrev()}>
-                                <Icon name="ArrowL" iconSize="48" />
-                            </PrevBtn>
-                            <Slide {...settings} ref={slider}>
-                                {slided.map((value) => {
-                                    // console.log(value);
-                                    return (
-                                        // <Images src={value.img_url} />
-                                        <SS>
-                                            <Slides type="dimo" value={value} list="QNA" post_id={value.post_id} />
-                                        </SS>
-                                    );
-                                })}
-                            </Slide>
-                            <NextBtn onClick={() => slider?.current.slickNext()}>
-                                <Icon name="ArrowR" iconSize="48" />
-                            </NextBtn>
-                        </div>
-                    </>
-                )}
+                <div className="flex-row hidden md:flex">
+                    <PrevBtn onClick={() => slider?.current.slickPrev()}>
+                        <Icon name="ArrowL" iconSize="48" />
+                    </PrevBtn>
+                    <Slide {...settings} ref={slider}>
+                        {slided.map((value) => {
+                            // console.log(value);
+                            return (
+                                // <Images src={value.img_url} />
+                                <SS>
+                                    <Slides type="dimo" value={value} list="QNA" post_id={value.post_id} />
+                                </SS>
+                            );
+                        })}
+                    </Slide>
+                    <NextBtn onClick={() => slider?.current.slickNext()}>
+                        <Icon name="ArrowR" iconSize="48" />
+                    </NextBtn>
+                </div>
             </>
         );
     else
         return (
             <>
-                {}
                 <div className="flex-row hidden md:flex">
                     <PrevBtn onClick={() => slider?.current.slickPrev()}>
                         <Icon name="ArrowL" iconSize="48" />

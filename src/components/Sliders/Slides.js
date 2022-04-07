@@ -222,10 +222,10 @@ const Slides = (props) => {
                                 </div>
                             </div>
                             <div className="absolute px-10 top-28">
-                                <Text size="2" className="flex flex-wrap h-24 overflow-hidden w-80 text-ellipsis">
+                                <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
                                     {value.content}
                                 </Text>
-                                <Text size="2">(더보기)</Text>
+                                {/* <Text size="2">(더보기)</Text> */}
                             </div>
                             <IconBox>
                                 <div className="flex flex-row justify-end">
@@ -275,7 +275,7 @@ const Slides = (props) => {
                                 <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
                                     {value.content}
                                 </Text>
-                                <Text size="2">(더보기)</Text>
+                                {/* <Text size="2">(더보기)</Text> */}
                             </div>
                             <IconBox>
                                 <div className="flex flex-row justify-end">

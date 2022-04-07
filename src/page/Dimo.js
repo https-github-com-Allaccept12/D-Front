@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { DimoFilter, DimoList } from "../components/Dimo";
 import tw from "tailwind-styled-components";
-import { Title, Button, CategoryMini, Icon } from "../elements";
+import { Title, Button, CategoryMini, Icon, PageLoadSpinner } from "../elements";
 import { DimoSlider } from "../components";
 import { dimoPageLoad, categoryDimo } from "../redux/modules/dimo";
 import { useToggle } from "../hooks";
@@ -52,12 +52,13 @@ const Dimo = (props) => {
                 category: "uiux",
             },
         });
+        SetLight();
     };
     useEffect(() => {
         const board = b.toUpperCase();
         dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
         dispatch(dimoPageLoad({ dispatch, board, visitor_account_id }));
-    }, []);
+    }, [lights, lightss]);
 
     const goToINFO = () => {
         navigate(`/dimo/info`, {
@@ -66,6 +67,7 @@ const Dimo = (props) => {
                 category: "uiux",
             },
         });
+        SetLights();
     };
 
     const goToCreate = () => {
@@ -75,53 +77,76 @@ const Dimo = (props) => {
             },
         });
     };
+    const [time, setTime] = useState(true);
+
+    useEffect(() => {
+        const aaa = setTimeout(() => {
+            setTime();
+        }, 500);
+    }, []);
 
     return (
         <>
-            <div className="bg-dgray-200 min-h-screen h-[200rem]">
-                <div className="xl:grid xl:grid-cols-4 ">
-                    <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
-                        <Title size="5" value="QNA" onClick={goToQNA} className="text-dpurple-200 cursor-pointer">
-                            QNA
-                        </Title>
+            {time === true ? (
+                <PageLoadSpinner />
+            ) : (
+                <>
+                    <div className="bg-dgray-200 min-h-screen h-[200rem]">
+                        <div className="xl:grid xl:grid-cols-4 ">
+                            <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
+                                <Title
+                                    size="5"
+                                    value="QNA"
+                                    onClick={goToQNA}
+                                    className="text-dpurple-200 cursor-pointer"
+                                >
+                                    QNA
+                                </Title>
 
-                        <Title size="5" value="INFO" onClick={goToINFO} className="text-dpurple-200 cursor-pointer">
-                            정보공유
-                        </Title>
-                    </div>
-                    <div className="hidden xl:contents">
-                        <div className="col-start-4 w-36 xl:mt-10 2xl:ml-32 ">
-                            <Button size="3" onClick={goToCreate}>
-                                글쓰기
-                            </Button>
-                        </div>
-                    </div>
-                    <SlideBox>
-                        <DimoSlider list={board} slidedimo={dimos} />
-                    </SlideBox>
+                                <Title
+                                    size="5"
+                                    value="INFO"
+                                    onClick={goToINFO}
+                                    className="text-dpurple-200 cursor-pointer"
+                                >
+                                    정보공유
+                                </Title>
+                            </div>
+                            <div className="hidden xl:contents">
+                                <div className="col-start-4 w-36 xl:mt-10 2xl:ml-32 ">
+                                    <Button size="3" onClick={goToCreate}>
+                                        글쓰기
+                                    </Button>
+                                </div>
+                            </div>
+                            <SlideBox>
+                                <DimoSlider list={board} slidedimo={dimos} />
+                            </SlideBox>
 
-                    <Box>
-                        <div className="top-0 h-[44rem] invisible fixed xl:visible xl:sticky">
-                            <div className=" flex flex-col h-[44rem]">
-                                <div className="flex flex-row justify-end items-end self-end w-[18.75rem] h-[44rem]">
-                                    <DimoFilter list={b} />
+                            <Box>
+                                <div className="top-0 h-[44rem] invisible fixed xl:visible xl:sticky">
+                                    <div className=" flex flex-col h-[44rem]">
+                                        <div className="flex flex-row justify-end items-end self-end w-[18.75rem] h-[44rem]">
+                                            <DimoFilter list={b} />
+                                        </div>
+                                    </div>
+                                </div>
+                            </Box>
+
+                            <div className="w-full xl:row-start-3 xl:col-start-2 xl:col-end-5">
+                                <div className="w-full h-[200rem]">
+                                    <DimoList list={b} key="key" />
+                                    <CategoryMini list={b} />
+
+                                    <MobileBtn onClick={goToCreate}>
+                                        <Icon name="Edit" />
+                                    </MobileBtn>
                                 </div>
                             </div>
                         </div>
-                    </Box>
-
-                    <div className="w-full xl:row-start-3 xl:col-start-2 xl:col-end-5">
-                        <div className="w-full h-[200rem]">
-                            <DimoList list={b} key="key" />
-                            <CategoryMini list={b} />
-
-                            <MobileBtn onClick={goToCreate}>
-                                <Icon name="Edit" />
-                            </MobileBtn>
-                        </div>
                     </div>
-                </div>
-            </div>
+                </>
+            )}
         </>
     );
 };
