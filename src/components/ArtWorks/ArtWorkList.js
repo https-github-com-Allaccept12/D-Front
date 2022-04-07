@@ -49,6 +49,7 @@ const ArtWorkList = (props) => {
                                             is_like={value.is_like}
                                             is_bookmark={value.is_bookmark}
                                             size="3"
+                                            please={value.account_id}
                                         />
                                     </div>
                                 );
