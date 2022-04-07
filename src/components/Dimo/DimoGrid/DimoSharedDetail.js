@@ -185,7 +185,7 @@ const DimoSharedDetail = () => {
                                     </Button>
                                 ) : (
                                     <Button icon name="HeartE" color="4" size="3" count={like_cnt} onClick={addLike}>
-                                        <span className="hidden 2xl:contents">ddd좋아요</span>
+                                        <span className="hidden 2xl:contents">좋아요</span>
                                     </Button>
                                 )}
 
