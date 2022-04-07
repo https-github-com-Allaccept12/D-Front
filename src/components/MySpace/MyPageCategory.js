@@ -23,19 +23,25 @@ const MyPageCategory = (props) => {
 
     }
 
-    const toMyPic = () => {
-        console.log('clickcccc');
+    const toMyWork = () => {
+        setActive("1");
+        navigate(`/mywork/${myPageId}`);
     }
 
-    const toMyWork = () => {
-        
+    const toMyPic = () => {
+        setActive("2");
+        navigate(`/mypic/${myPageId}`);
     }
 
     const toShare = () => {
+        setActive("3");
+        navigate(`/share/${myPageId}`);
         
     }
 
     const toQNA = () => {
+        setActive("4");
+        navigate(`/qna/${myPageId}`);
         
     }
 
@@ -78,9 +84,7 @@ const MyPageCategory = (props) => {
                         {/* <Link to="/myspace/mywork"> */}
                             <TabBtn
                                 size="2"
-                                onClick={() => {
-                                    setActive("1");
-                                }, {toMyWork}}
+                                onClick={toMyWork}
                                 className={active === "1" ? "bg-dpurple-100 text-dpurple-200" : "text-dgray-500"}
                             >
                                 프로젝트
@@ -91,9 +95,7 @@ const MyPageCategory = (props) => {
                             // <Link to="/myspace/mypic">
                                 <TabBtn
                                     size="2"
-                                    onClick={() => {
-                                        setActive("2");
-                                    }, {toMyPic}}
+                                    onClick={toMyPic}
                                     className={active === "2" ? "bg-dpurple-100 text-dpurple-200" : "text-dgray-500"}
                                 >
                                     스크랩한 프로젝트
@@ -107,29 +109,25 @@ const MyPageCategory = (props) => {
                                 📑Community
                             </Title>
 
-                            <Link to="/myspace/share">
+                            {/* <Link to="/myspace/share"> */}
                                 <TabBtn
                                     size="2"
-                                    onClick={() => {
-                                        setActive("3");
-                                    }, {toShare}}
+                                    onClick={toShare}
                                     className={active === "3" ? "bg-dpurple-100 text-dpurple-200" : "text-dgray-500"}
                                 >
                                     게시글
                                 </TabBtn>
-                            </Link>
+                            {/* </Link> */}
 
-                            <Link to="/myspace/qna">
+                            {/* <Link to="/myspace/qna"> */}
                                 <TabBtn
                                     size="2"
-                                    onClick={() => {
-                                        setActive("4");
-                                    }, {toQNA}}
+                                    onClick={toQNA}
                                     className={active === "4" ? "bg-dpurple-100 text-dpurple-200" : "text-dgray-500"}
                                 >
                                     QNA
                                 </TabBtn>
-                            </Link>
+                            {/* </Link> */}
                             </>
                         }
                     </div>
