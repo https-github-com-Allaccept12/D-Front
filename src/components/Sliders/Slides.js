@@ -71,6 +71,7 @@ const Slides = (props) => {
         const account_id = { account_id: id };
         // console.log('account_id:', account_id, 'now:', follow);
         setIsfow(!is_fow);
+        console.log('is_follow: ', is_fow);
         if (follow) {
             dispatch(requestUnFollow(account_id));
         } else {

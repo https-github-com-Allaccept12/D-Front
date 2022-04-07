@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import { Header, OHeader, NotFound, HeaderMini, Footer } from "./NavComponents";
-import { TendencyTest, MyInterests, Result, CreateProfile } from "./components";
+import { TendencyTest, MyInterests, Result, CreateProfile, MyArtWork, MyPic, MyPosts, MyQNA } from "./components";
 import { Main, ArtWork, Dimo, Login, LogOut, EditMySpace, MyPage } from "./page";
 import { CompleteProfile } from "./components";
 import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "./components/Dimo";
