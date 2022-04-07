@@ -173,6 +173,7 @@ const ChangeMyInterests = (props) => {
                                     <Ptext>건축 / 인테리어 / 환경</Ptext>
                                 </div>
                             </div>
+                            <button>저장</button>
                         </Body>
                     </Grid>
                 </>
