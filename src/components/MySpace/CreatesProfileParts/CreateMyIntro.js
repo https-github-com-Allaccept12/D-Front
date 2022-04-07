@@ -10,16 +10,17 @@ const CreateMyIntro = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { info } = props;
+    console.log(info);
     const [title_content, setTitleContent] = useState("");
     const [sub_content, setSubContent] = useState("");
     useEffect(() => {
         if (info) {
-            setTitleContent(info.title_content);
-            setSubContent(info.sub_content);
+            setTitleContent(info?.title_content);
+            setSubContent(info?.sub_content);
         }
     }, [info]);
-    const validmaxlen = (value) => value.length <= 200;
-    const validmaxlen1000 = (value) => value.length <= 1000;
+    // const validmaxlen = (value) => value.length <= 200;
+    // const validmaxlen1000 = (value) => value.length <= 1000;
 
     let introTemp = "";
     let subTemp = "";
@@ -28,9 +29,9 @@ const CreateMyIntro = (props) => {
         introTemp = info.title_content;
         subTemp = info.sub_content;
     }
-
-    const intro = useInput(introTemp, [validmaxlen]);
-    const sub = useInput(subTemp, [validmaxlen1000]);
+    // validmaxlen1000, validmaxlen
+    const intro = useInput(introTemp, []);
+    const sub = useInput(subTemp, []);
     const SendIntro = () => {
         let data = {
             title_content: intro.value,
@@ -61,10 +62,10 @@ const CreateMyIntro = (props) => {
                                 title="한줄소개"
                                 textarea
                                 maxlen="200"
-                                value={intro.value}
-                                onChange={intro.onChange}
-                                is_error={intro.errors}
-                                is_value={intro && intro?.value?.length}
+                                value={intro?.value}
+                                onChange={intro?.onChange}
+                                // is_error={intro?.errors}
+                                // is_value={intro && intro?.value?.length}
                                 placeholder={title_content}
                             />
                         </div>
@@ -74,10 +75,10 @@ const CreateMyIntro = (props) => {
                                 textarea
                                 cardsize="3"
                                 maxlen="1000"
-                                value={sub.value}
-                                onChange={sub.onChange}
-                                is_error={sub.errors}
-                                is_value={sub && sub?.value.length}
+                                value={sub?.value}
+                                onChange={sub?.onChange}
+                                // is_error={sub?.errors}
+                                // is_value={sub && sub?.value.length}
                                 placeholder={sub_content}
                             />
                         </div>
