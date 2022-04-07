@@ -43,9 +43,9 @@ const DimoInsideFilter = (props) => {
     const board = b.toUpperCase();
     let category = "";
     if (location.state) {
-        category = location?.state.category;
+        category = location?.pathname.split('/')[2];
     }
-    // console.log(category);
+    console.log(category);
 
     const JobOptions = [
         { value: "uiux", label: "UI & UX" },
