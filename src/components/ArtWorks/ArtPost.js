@@ -39,6 +39,7 @@ const ArtPost = (props) => {
     };
 
     const clickProfile = () => {
+        console.log('click accountid', account_id);
         navigate(`/myspace/myprofile/${account_id}`);
     };
 
