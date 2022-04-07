@@ -25,7 +25,7 @@ const Thumbnail = (props) => {
 };
 
 Thumbnail.defaultProps = {
-    src: "https://user-images.githubusercontent.com/89088205/155078987-592a07cd-a490-49fc-aabc-bc47cb508963.jpg",
+    src: "https://user-images.githubusercontent.com/89088205/162211636-aee89859-b067-4e82-946d-8157354b1b99.png",
     size: "3",
 };
 

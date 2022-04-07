@@ -37,6 +37,7 @@ import Answer from "./Common/Answer";
 import FileEditDimo from "./Tools/FileEditDimo";
 import ButtonWithCount from "./Common/ButtonWithCount";
 import Tooltips from "./Icons/Tooltips";
+import PageLoadSpinner from "./Common/PageLoadSpinner";
 export {
     Title,
     Subtitle,
@@ -76,4 +77,5 @@ export {
     FileEditDimo,
     ButtonWithCount,
     Tooltips,
+    PageLoadSpinner,
 };
