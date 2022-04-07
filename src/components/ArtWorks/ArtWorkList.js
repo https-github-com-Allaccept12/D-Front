@@ -35,6 +35,7 @@ const ArtWorkList = (props) => {
                     <Grid>
                         {artworks &&
                             artworks.map((value) => {
+                                console.log('at ArtWorkList', value.account_id);
                                 return (
                                     <div>
                                         <ArtPost
