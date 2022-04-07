@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { Route, Routes, useLocation, useParams } from "react-router-dom";
 import { Header, OHeader, NotFound, HeaderMini, Footer } from "./NavComponents";
-import { TendencyTest, MyInterests, Result, CreateProfile, MyArtWork, MyPic, MyPosts, MyQNA } from "./components";
+import { TendencyTest, MyInterests, Result, CreateProfile } from "./components";
 import { Main, ArtWork, Dimo, Login, LogOut, EditMySpace, MyPage } from "./page";
 import { CompleteProfile } from "./components";
 import { DimoQNADetail, DimoSharedDetail, DimoCreate } from "./components/Dimo";
 import { ArtWorkWrite, ArtWorkCreate, ArtWorkInlineDetail } from "./components/ArtWorks";
+import { MyArtWork, MyPic, MyPosts, MyQNA } from "./components/MySpace";
 import { useSelector } from "react-redux";
 import KakaoRedirectHandler from "./shared/KakaoRedirectHandler";
 import ReactGA from "react-ga";
