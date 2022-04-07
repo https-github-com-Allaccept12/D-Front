@@ -15,7 +15,7 @@ export const CreateNewArtWork = createAsyncThunk("post/CreateNewArtWork", async 
     })
         .then((res) => {
             // console.log(res);
-            
+            dispatch(preview(""));
         })
         .catch((err) => {
             // console.log(err);
