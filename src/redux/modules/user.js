@@ -45,7 +45,7 @@ export const requestFollowing = createAsyncThunk("/requestFollowing", ({ account
 
 // 팔로워리스트
 export const requestFollower = createAsyncThunk("/requestFollower", ({ account_id, dispatch }) => {
-  URL.get(`/api/follow/follower`,{
+  URL.get(`/api/follow/follower`, account_id,{
         params: {
             account_id: account_id
         },
