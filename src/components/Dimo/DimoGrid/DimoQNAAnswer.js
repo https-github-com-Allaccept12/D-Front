@@ -5,7 +5,7 @@ import { useNavigate, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useToggle, useInput } from "../../../hooks";
-import { deleteAnswerDimo, editAnswerDimo, selectAnswerDimo } from "../../../redux/modules/dimo";
+import { deleteAnswerDimo, editAnswerDimo, selectAnswerDimo, likeDimoInfo } from "../../../redux/modules/dimo";
 import { requestFollow, requestUnFollow } from "../../../redux/modules/user";
 
 const UnderLine = tw.hr`
