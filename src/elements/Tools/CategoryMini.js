@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Title, Text, Icon } from "../../elements";
-import { useHistory, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
 import { useToggle } from "../../hooks";
 import { useDispatch } from "react-redux";
@@ -27,10 +27,19 @@ xl:hidden bg-dpurple-200 rounded-md fixed top-5 left-5 p-2 shadow-md text-white
 const CategoryMini = (props) => {
     const { list } = props;
     const [showCategory, setShowCategory] = useToggle();
+    const navigate = useNavigate();
     const location = useLocation();
     const a = location.pathname;
     const b = a.split("/")[2];
-
+    // console.log(b);
+    let account_id = 0;
+    // const id_cookie = getCookie("account_id");
+    const id_cookie = sessionStorage.getItem("account_id");
+    if (id_cookie) {
+        account_id = id_cookie;
+        // console.log("account_id: ", account_id);
+    }
+    const visitor_account_id = account_id;
     let dispatch = useDispatch();
     const ClickCategory = (e) => {
         // console.log(e.target.value);
@@ -39,6 +48,11 @@ const CategoryMini = (props) => {
             dispatch(artworkPageLoad(dispatch));
         } else {
             dispatch(categoryArtwork({ category, dispatch }));
+            navigate(`dimo/qna/${category}`, {
+                state: {
+                    category: category,
+                },
+            });
         }
     };
 
@@ -49,9 +63,19 @@ const CategoryMini = (props) => {
 
         if (b === "qna") {
             // console.log(category, board);
-            dispatch(categoryDimo({ category, dispatch, board }));
+            dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
+            navigate(`dimo/qna/${category}`, {
+                state: {
+                    category: category,
+                },
+            });
         } else if (b === "info") {
-            dispatch(categoryDimo({ category, dispatch, board }));
+            dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
+            navigate(`dimo/qna/${category}`, {
+                state: {
+                    category: category,
+                },
+            });
         } else return null;
     };
 
