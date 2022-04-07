@@ -212,7 +212,7 @@ export const searchArtwork = createAsyncThunk("/searchArtwork", ({ keyword, visi
 export const categoryArtwork = createAsyncThunk("/categoryArtwork", ({ category, dispatch }) => {
     URL.get(`/api/artwork/category/${category}/0`)
         .then((res) => {
-            // console.log(res);
+            console.log(res);
             dispatch(artworks(res.data.data));
         })
         .catch((err) => console.log(err));
@@ -220,10 +220,10 @@ export const categoryArtwork = createAsyncThunk("/categoryArtwork", ({ category,
 
 // 카테고리별 좋아요순 정렬
 export const orderByLike = createAsyncThunk("/orderByLike", ({ category, dispatch }) => {
-    // console.log(category);
+    console.log(category);
     URL.get(`/api/artwork/sort/${category}?start=0`)
         .then((res) => {
-            // console.log(res);
+            console.log(res);
             dispatch(artworks(res.data.data));
         })
         .catch((err) => console.log(err));
@@ -231,10 +231,10 @@ export const orderByLike = createAsyncThunk("/orderByLike", ({ category, dispatc
 
 // 카테고리별 최신순 정렬
 export const orderByTime = createAsyncThunk("/orderByTime", ({ category, dispatch }) => {
-    // console.log(category);
+    console.log(category);
     URL.get(`/api/artwork/category/${category}/0`)
         .then((res) => {
-            // console.log(res);
+            console.log(res);
             dispatch(artworks(res.data.data));
         })
         .catch((err) => console.log(err));
