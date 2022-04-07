@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "../../elements";
 import Comment from "./Comment";
 
 // 코멘트 맵돌려서 받아오기
