@@ -70,13 +70,14 @@ const Slides = (props) => {
     const makeFollow = () => {
         const account_id = { account_id: id };
         // console.log('account_id:', account_id, 'now:', follow);
-        setIsfow();
+        setIsfow(!is_fow);
         if (follow) {
             dispatch(requestUnFollow(account_id));
         } else {
             dispatch(requestFollow(account_id));
         }
     };
+
 
     const goToProfile = () => {
         navigate(`/myspace/myprofile/${id}`);
@@ -154,7 +155,7 @@ const Slides = (props) => {
                             {/* </Link> */}
                         </div>
                         <div className="pt-6 pl-40">
-                            <Title size="5" className="truncate text-gray-700">
+                            <Title size="5" className="text-gray-700 truncate">
                                 {props.nickname} 님
                             </Title>
                             <div className="-mt-1">
@@ -167,7 +168,7 @@ const Slides = (props) => {
                                     팔로우 🎉
                                 </Button>
                             ) : (
-                                <Button size="3" color="4">
+                                <Button size="3" color="4" onClick={makeFollow}>
                                     팔로잉
                                 </Button>
                             )}
@@ -216,7 +217,7 @@ const Slides = (props) => {
                                             ""
                                         )}
                                     </div>
-                                    <Title size="6" className="w-72 truncate">
+                                    <Title size="6" className="truncate w-72">
                                         {value.title}
                                     </Title>
                                 </div>
@@ -266,7 +267,7 @@ const Slides = (props) => {
                                             ""
                                         )}
                                     </div>
-                                    <Title size="6" className="w-72 truncate">
+                                    <Title size="6" className="truncate w-72">
                                         {value.title}
                                     </Title>
                                 </div>
