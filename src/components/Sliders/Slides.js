@@ -39,7 +39,6 @@ const Slides = (props) => {
         like_count,
         title,
     } = props;
-    console.log();
 
     const [is_fow, setIsfow] = useToggle(follow);
 
@@ -101,6 +100,10 @@ const Slides = (props) => {
             },
         });
     };
+
+    const clickSlides = () => {
+        navigate(`/detailart/${value.artwork_id}`);
+    }
 
     if (type === "main")
         return (
@@ -177,9 +180,10 @@ const Slides = (props) => {
     if (type === "artwork")
         return (
             <>
-                <div className="flex items-center justify-center rounded-lg">
+                <div onClick={clickSlides} className="flex items-center justify-center rounded-lg">
+                    <button data-bs-dismiss="modal">
                     <Thumbnail size="7" src={value.img} />
-                    {/* <Thumbnail size="7" src="https://thumb.ac-illust.com/a5/a5b68711f17ff70ea9974c0a32a2fcb5_t.jpeg" /> */}
+                    </button>
                     <div className="absolute bottom-0">
                         <div className="rounded-b-lg bg-dgray-500 opacity-80 w-[18.75rem] h-14">
                             <div className="flex items-center justify-center pt-3 font-min1">{value.artwork_title}</div>

@@ -44,7 +44,7 @@ const EditMyArtWork = (props) => {
     const [is_master, setMaster] = useState(isMaster);
     const [is_public, setPublic] = useState(scope);
     console.log("in here, ", artwork_id);
-    console.log(is_master, is_public);
+    console.log(isMaster, scope);
     const ClickMaster = () => {
         setMaster(!is_master);
         is_master ? dispatch(getMaster(artwork_id)) : dispatch(removeMaster(artwork_id));
@@ -69,6 +69,11 @@ const EditMyArtWork = (props) => {
         });
     };
 
+    const ClickDetail = () => {
+        console.log('ddfdfdckick');
+        navigate(`/detailart/${artwork_id}`);
+    }
+
     return (
         <>
             <Hover>
@@ -84,12 +89,15 @@ const EditMyArtWork = (props) => {
                             <CircleBtn name="MyStar" onClick={ClickMaster}></CircleBtn>
                             <CircleBtn name="Private" onClick={ClickPublic}></CircleBtn>
                         </FlexBox>
+                        <div>
+                            <CircleBtn name="Detail" onClick={ClickDetail}></CircleBtn>
+                        </div>
                     </Edit>
                 </Actives>
                 <Constan>
                     <BadgeBox>
                         <CircleBtn name="MyStarMini" states={is_master} />
-                        <CircleBtn name="PrivateMini" states={!is_public} />
+                        <CircleBtn name="PrivateMini" states={is_public} />
                     </BadgeBox>
                 </Constan>
             </Hover>

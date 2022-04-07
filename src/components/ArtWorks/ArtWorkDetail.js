@@ -172,7 +172,7 @@ const ArtWorkDetail = (props) => {
                         <div className="flex flex-row gap-2 ml-auto">
                             {specialty &&
                                 specialty.map((value) => {
-                                    return <SkillThumbnailMini skill={value} />;
+                                    return <SkillThumbnailMini skill={value}  key="1" />;
                                 })}
                         </div>
                     </Header>
@@ -261,7 +261,7 @@ const ArtWorkDetail = (props) => {
                                         is_submit
                                         onSubmit={commentSubmit}
                                     />
-                                    <Button size="3" className="invisible ">
+                                    <Button size="3" className="invisible">
                                         제출
                                     </Button>
                                 </div>

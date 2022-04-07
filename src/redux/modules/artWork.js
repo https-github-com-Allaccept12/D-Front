@@ -76,6 +76,7 @@ export const artworkPageLoad = createAsyncThunk("/artworkPageLoad", (dispatch) =
         .then((res) => {
             console.log(res);
             dispatch(artworks(res.data.data));
+            sessionStorage.removeItem("category");
         })
         .catch((err) => console.log(err));
 });
@@ -231,7 +232,7 @@ export const orderByLike = createAsyncThunk("/orderByLike", ({ category, dispatc
 
 // 카테고리별 최신순 정렬
 export const orderByTime = createAsyncThunk("/orderByTime", ({ category, dispatch }) => {
-    URL.get(`/api/artwork/category/${category}?start=0`)
+    URL.get(`/api/artwork/category/${category}/0`)
         .then((res) => {
             console.log(res);
             dispatch(artworks(res.data.data));

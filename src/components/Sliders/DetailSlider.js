@@ -27,10 +27,10 @@ const NextBtnDetail = tw.button`
   z-10 text-dgray-500
 `;
 
-const MainSlider = (props) => {
+const DetailSlider = (props) => {
     const slider = React.useRef(null);
     const { main, artwork, dimo, others } = props;
-
+    
     const DetailSettings = {
         dots: false, // 슬라이드 밑에 점 보이게
         infinite: true, // 무한으로 반복
@@ -65,7 +65,7 @@ const MainSlider = (props) => {
                 <PrevBtnDetail onClick={() => slider?.current?.slickPrev()}>
                     <Icon name="ArrowL" iconSize="48" />{" "}
                 </PrevBtnDetail>
-                <Slide {...DetailSettings} ref={slider}>
+                <Slide {...DetailSettings} ref={slider} key="4">
                     {main === "main" &&
                         others.length > 3 &&
                         others.map((value) => {
@@ -73,7 +73,7 @@ const MainSlider = (props) => {
                                 return (
                                     // <Images src={value.img_url} />
                                     <SS>
-                                        <Slides type="artwork" value={value} />
+                                        <Slides type="artwork" value={value}  key="2"/>
                                     </SS>
                                 );
                             else return <></>;
@@ -87,10 +87,10 @@ const MainSlider = (props) => {
     );
 };
 
-MainSlider.defaultProps = {
+DetailSlider.defaultProps = {
     main: false,
     dimo: false,
     artwork: true,
 };
 
-export default MainSlider;
+export default DetailSlider;

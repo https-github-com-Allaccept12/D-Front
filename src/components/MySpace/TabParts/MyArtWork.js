@@ -27,7 +27,7 @@ const MyArtWork = (props) => {
     <>
     <div className="flex flex-col items-start justify-start w-5/6 mx-auto mt-3">
 
-         <Title size="4">내 작업</Title> 
+         <Title size="4">프로젝트</Title> 
     
         <Line /> 
 

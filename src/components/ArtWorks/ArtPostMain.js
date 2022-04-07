@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { HeartButton, Subtitle, Icon, Thumbnail, Profile, Text, IconBtn } from "../../elements";
-
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { artworkDetailLoad, LikeArtwork, UnLikeArtwork, MarkArtwork, UnMarkArtwork } from "../../redux/modules/artWork";
 import { myPageLoad } from "../../redux/modules/myPage";
@@ -16,6 +16,7 @@ flex justify-center items-center flex-col shrink-0
 
 const ArtPostMain = (props) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const visitor_account_id = sessionStorage.getItem("account_id");
     const { profile, nickname, thumbnail, artwork_id, like_count, account_id } = props;
     
@@ -121,9 +122,11 @@ const ArtPostMain = (props) => {
 
                                 <div className="hidden lg:contents">
                                     <div className="flex flex-row justify-start w-20 gap-3 mx-auto lg:fixed top-20 right-10 2xl:right-48 lg:flex-col">
-                                    <div onclick={clickProfile} className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
+                                    <div onClick={clickProfile} className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                             <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                                <Profile onClick={clickProfile} size="5" src={tempProfile} />
+                                                <button onClick={clickProfile} data-bs-dismiss="modal">
+                                                <Profile size="5" src={tempProfile} />
+                                                </button>
                                             </div>
                                             <Text size="1">프로필</Text>
                                         </div>

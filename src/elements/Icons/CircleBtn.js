@@ -94,6 +94,21 @@ const CircleBtn = (props) => {
         );
     }
 
+    if (name === "Detail") {
+        return (
+            <>
+                <IconBox>
+                    <Icons>
+                        <Replace width="28" height="28" onClick={onClick} />
+                    </Icons>
+                    <Text size="1" className="mt-2 text-white">
+                        보러가기
+                    </Text>
+                </IconBox>
+            </>
+        );
+    }
+
     if (name === "MyStarMini") {
         return (
             <>
