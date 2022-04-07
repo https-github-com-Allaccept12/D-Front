@@ -71,12 +71,11 @@ const Slides = (props) => {
         const account_id = { account_id: id };
         // console.log('account_id:', account_id, 'now:', follow);
         setIsfow();
-        if(follow){
+        if (follow) {
             dispatch(requestUnFollow(account_id));
-        }else{
+        } else {
             dispatch(requestFollow(account_id));
         }
-        
     };
 
     const goToProfile = () => {
@@ -103,7 +102,7 @@ const Slides = (props) => {
 
     const clickSlides = () => {
         navigate(`/detailart/${value.artwork_id}`);
-    }
+    };
 
     if (type === "main")
         return (
@@ -182,7 +181,7 @@ const Slides = (props) => {
             <>
                 <div onClick={clickSlides} className="flex items-center justify-center rounded-lg">
                     <button data-bs-dismiss="modal">
-                    <Thumbnail size="7" src={value.img} />
+                        <Thumbnail size="7" src={value.img} />
                     </button>
                     <div className="absolute bottom-0">
                         <div className="rounded-b-lg bg-dgray-500 opacity-80 w-[18.75rem] h-14">
@@ -217,7 +216,9 @@ const Slides = (props) => {
                                             ""
                                         )}
                                     </div>
-                                    <Title size="6">{value.title}</Title>
+                                    <Title size="6" className="w-72 truncate">
+                                        {value.title}
+                                    </Title>
                                 </div>
                             </div>
                             <div className="absolute px-10 top-28">
@@ -265,7 +266,9 @@ const Slides = (props) => {
                                             ""
                                         )}
                                     </div>
-                                    <Title size="6">{value.title}</Title>
+                                    <Title size="6" className="w-72 truncate">
+                                        {value.title}
+                                    </Title>
                                 </div>
                             </div>
                             <div className="absolute px-10 top-28">
