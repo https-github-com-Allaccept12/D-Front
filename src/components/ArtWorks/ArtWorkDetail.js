@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import {
     Profile,
     HeartButton,
@@ -76,7 +76,7 @@ flex flex-col gap-2 justify-center items-center
 `;
 
 const ArtWorkDetail = (props) => {
-    const { closeRef, fromPostMain, setTempProfile, setBarArtWorkId, setBarBookMark, setBarLike, setBarFollow } = props;
+    const { fromPostMain, setTempProfile, setBarArtWorkId, setBarBookMark, setBarLike, setBarFollow } = props;
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const myProfileImg = sessionStorage.getItem("profile_img");
@@ -145,15 +145,16 @@ const ArtWorkDetail = (props) => {
     const name = useInput("", [validMaxLen]);
     const [showMenu, setShowMenu] = useToggle();
 
-    const commentSubmit = () => {
+    const closeRef = useRef();
+    const commentSubmit = (e) => {
+        e.target.value = '';
+        closeRef.current.click();
         const artwork_id = artworkId;
         const data = { content: name.value };
         dispatch(submitComment({ artwork_id, data }));
 
-        navigate(`/art/list/all`, { replace: true });
-        // history.goBack();
-        //여기에 뭔가 돌아가기버튼...
     };
+
     return (
         <>
             <Grid>
@@ -172,7 +173,7 @@ const ArtWorkDetail = (props) => {
                         <div className="flex flex-row gap-2 ml-auto">
                             {specialty &&
                                 specialty.map((value) => {
-                                    return <SkillThumbnailMini skill={value}  key="1" />;
+                                    return <SkillThumbnailMini skill={value}/>;
                                 })}
                         </div>
                     </Header>
@@ -261,7 +262,7 @@ const ArtWorkDetail = (props) => {
                                         is_submit
                                         onSubmit={commentSubmit}
                                     />
-                                    <Button size="3" className="invisible">
+                                    <Button data-bs-dismiss="modal" size="3" className="invisible">
                                         제출
                                     </Button>
                                 </div>
@@ -276,6 +277,7 @@ const ArtWorkDetail = (props) => {
                         </CommentBox>
                     </div>
                     <button
+                        ref={closeRef}
                         type="button"
                         className="box-content w-4 h-4 p-1 text-white border-none rounded-none btn-close opacity-80 focus:shadow-none focus:outline-none focus:opacity-100 md:hidden"
                         data-bs-dismiss="modal"
