@@ -125,12 +125,12 @@ export const getMaster = createAsyncThunk("/getMaster", (artwork_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            // console.log('post');
-            // console.log(res);
+            console.log('post');
+            console.log(res);
         })
         .catch((err) => {
-            // console.log('post');
-            // console.log(err);
+            console.log('post');
+            console.log(err);
         });
 });
 
@@ -143,12 +143,12 @@ export const removeMaster = createAsyncThunk("/removeMaster", (artwork_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            // console.log('delete');
-            // console.log(res);
+            console.log('delete');
+            console.log(res);
         })
         .catch((err) => {
-            // console.log('delete');
-            // console.log(err);
+            console.log('delete');
+            console.log(err);
         });
 
 });
@@ -189,7 +189,7 @@ export const deleteArtwork = createAsyncThunk("/deleteArtwork", ({artwork_id, ca
         withCredentials: true,
     })
         .then((res) => {
-            // console.log(res);
+            console.log(res);
         })
         .catch((err) => console.log(err));
 });
@@ -212,7 +212,7 @@ export const searchArtwork = createAsyncThunk("/searchArtwork", ({ keyword, visi
 export const categoryArtwork = createAsyncThunk("/categoryArtwork", ({ category, dispatch }) => {
     URL.get(`/api/artwork/category/${category}/0`)
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             dispatch(artworks(res.data.data));
         })
         .catch((err) => console.log(err));
@@ -223,7 +223,7 @@ export const orderByLike = createAsyncThunk("/orderByLike", ({ category, dispatc
     console.log(category);
     URL.get(`/api/artwork/sort/${category}?start=0`)
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             dispatch(artworks(res.data.data));
         })
         .catch((err) => console.log(err));
@@ -234,7 +234,7 @@ export const orderByTime = createAsyncThunk("/orderByTime", ({ category, dispatc
     console.log(category);
     URL.get(`/api/artwork/category/${category}/0`)
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             dispatch(artworks(res.data.data));
         })
         .catch((err) => console.log(err));
@@ -337,7 +337,7 @@ export const MarkArtwork = createAsyncThunk("/MarkArtwork", (artwork_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            // console.log(res);
+            console.log(res);
         })
         .catch((err) => console.log(err));
 });
@@ -351,7 +351,7 @@ export const UnMarkArtwork = createAsyncThunk("/UnMarkArtwork", (artwork_id) => 
         withCredentials: true,
     })
         .then((res) => {
-            // console.log(res);
+            console.log(res);
         })
         .catch((err) => console.log(err));
 });

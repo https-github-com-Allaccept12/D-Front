@@ -30,6 +30,11 @@ const ArtPost = (props) => {
     const [barBookMark, setBarBookMark] = useState();
     const [barAccountId, setBarAccountId] = useState();
     const [posterid, setposterid] = useState('');
+    const sessionId = sessionStorage.getItem("account_id");
+    const [isMine, setIsMine] = useState(false);
+    if(sessionId == account_id){
+        setIsMine(true);
+    }
     const ArtWorkURL = `dplusday.com/detailart/${barArtWorkId}`;
 
     const handleClickArtWork = () => {
@@ -147,6 +152,8 @@ const ArtPost = (props) => {
                                         </div>
                                         <Text size="1">프로필</Text>
                                     </div>
+                                    {isMine &&
+                                    <>
                                     <div
                                         onClick={clickFollow}
                                         className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110"
@@ -157,6 +164,7 @@ const ArtPost = (props) => {
                                         </div>
                                         <Text size="1">팔로우</Text>
                                     </div>
+                                    
                                     <div
                                         onClick={clickLike}
                                         className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110"
@@ -186,6 +194,8 @@ const ArtPost = (props) => {
                                         </div>
                                         <Text size="1">스크랩</Text>
                                     </div>
+                                    </>
+                                    }
                                     <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                         <CopyToClipboard text={ArtWorkURL}>
                                             <div
