@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { interests } from "../../../redux/modules/interests.js";
 import { Text, Icon, PageLoadSpinner } from "../../../elements";
 import tw from "tailwind-styled-components";
@@ -33,12 +33,8 @@ font-min1 text-sm lg:text-lg
 const ChangeMyInterests = (props) => {
     const [selectInterest, SetSelectInterest] = useState("");
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const SendInterests = () => {
-        // console.log(selectInterest);
-        dispatch(interests(selectInterest));
-        // history.replace('/CreateProfile');
-    };
     const [isClicked, setIsClicked] = useState(false);
     const handleClicked = (e) => {
         if (selectInterest === "") {
@@ -60,6 +56,12 @@ const ChangeMyInterests = (props) => {
 
     const [time, setTime] = useState(true);
 
+    const saveInterest = () => {
+        const interest = { interest: selectInterest };
+        dispatch(CreateInterests({ interest, token }));
+        navigate(-1);
+    }
+    
     useEffect(() => {
         const aaa = setTimeout(() => {
             setTime();
@@ -173,7 +175,9 @@ const ChangeMyInterests = (props) => {
                                     <Ptext>건축 / 인테리어 / 환경</Ptext>
                                 </div>
                             </div>
-                            <button>저장</button>
+                            <div className="grdi place-content-center">
+                            <Button onClick={saveInterest}>저장</Button>
+                            </div>
                         </Body>
                     </Grid>
                 </>

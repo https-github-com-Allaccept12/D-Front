@@ -54,6 +54,7 @@ const EditMyArtWork = (props) => {
         is_public ? dispatch(updateScope(artwork_id)) : dispatch(postScope(artwork_id));
     };
     const ClickDelete = () => {
+        console.log('click delete');
         dispatch(deleteArtwork({ artwork_id, category }));
     };
     const ClickEdit = () => {
