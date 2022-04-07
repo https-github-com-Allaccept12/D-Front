@@ -45,7 +45,7 @@ const MyPage = (props) => {
     // console.log('accountId, ownerAccountId', account_id, owner_account_id);
 
     useEffect(() => {
-        dispatch(myPageLoad({ visitor_account_id, owner_account_id, dispatch }));
+        dispatch(myPageLoad({ owner_account_id, visitor_account_id, dispatch }));
         dispatch(historyLoad({ owner_account_id, dispatch }));
         dispatch(careerFeed({ owner_account_id, dispatch }));
     }, [account_id, owner_account_id, dispatch]);

@@ -4,16 +4,17 @@ import skillList from "../../components/ArtWorks/skillList_code";
 
 export const myPageLoad = createAsyncThunk(
   "/myPageLoad",
-  async ({ visitor_account_id, owner_account_id, dispatch }) => {
+  async ({  owner_account_id, visitor_account_id, dispatch }) => {
+    console.log(owner_account_id, visitor_account_id);
     await axios
       .get(process.env.REACT_APP_MYPAGE, {
         params: {
-          visitor_account_id: visitor_account_id,
-          owner_account_id: owner_account_id
+          owner_account_id: owner_account_id,
+          visitor_account_id: visitor_account_id
         },
       })
       .then((res) => {
-        // console.log(res);
+        console.log(res);
         const mypage_data = res.data.data;
         let temp = ''
         let subspecialty = ''
