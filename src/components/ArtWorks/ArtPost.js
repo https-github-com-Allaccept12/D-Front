@@ -32,9 +32,12 @@ const ArtPost = (props) => {
     const [posterid, setposterid] = useState('');
     const sessionId = sessionStorage.getItem("account_id");
     const [isMine, setIsMine] = useState(false);
-    if(sessionId == account_id){
-        setIsMine(true);
-    }
+    useEffect(() => {
+        if(sessionId == account_id){
+            setIsMine(true);
+        }
+    }, [])
+    
     const ArtWorkURL = `dplusday.com/detailart/${barArtWorkId}`;
 
     const handleClickArtWork = () => {
