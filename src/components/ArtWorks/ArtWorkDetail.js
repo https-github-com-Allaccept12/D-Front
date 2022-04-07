@@ -106,7 +106,7 @@ const ArtWorkDetail = (props) => {
             setArtworkId(artworks.artWorkSubDetail.artwork_id);
             setNickname(artworks.artWorkSubDetail.account_nickname);
             setCategory(artworks.artWorkSubDetail.category);
-            setposterid(artworks?.artWorkSubDetail?.account_id);
+            // setposterid(artworks?.artWorkSubDetail?.account_id);
             setProfile(artworks.artWorkSubDetail.account_profile_img);
             setTempProfile(artworks.artWorkSubDetail.account_profile_img);
             setBarArtWorkId(artworks.artWorkSubDetail.artwork_id);
