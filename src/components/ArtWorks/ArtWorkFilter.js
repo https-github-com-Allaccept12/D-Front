@@ -47,7 +47,7 @@ const ArtWorkFilter = (props) => {
                         🌈 전체보기
                     </TabBtn>
                     <TabBtn value="ui" onClick={ClickCategory}>
-                        📱 UI/UX
+                        📱  UI/UX
                     </TabBtn>
                     <TabBtn value="graphic" onClick={ClickCategory}>
                         🎨 그래픽디자인
