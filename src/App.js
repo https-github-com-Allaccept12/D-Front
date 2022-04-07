@@ -22,16 +22,15 @@ ReactGA.exception({
 function App() {
     const location = useLocation();
     const a = location.pathname;
-    let dimos = useSelector((state) => state.dimo.dimos?.postRecommendationFeed);
-
     useEffect(() => {
-        ReactGA.initialize(process.env.REACT_APP_GOOGLE_ID);
+        ReactGA.initialize({ trackingId: process.env.REACT_APP_GOOGLE_ID });
         history.listen((location) => {
             ReactGA.set({ page: location.pathname }); // Update the user's current page
             ReactGA.pageview(location.pathname); // Record a pageview for the given page
         });
         // ReactGA.pageview(window.location.pathname + window.location.search);
     }, []);
+    let dimos = useSelector((state) => state.dimo.dimos?.postRecommendationFeed);
 
     return (
         <>
