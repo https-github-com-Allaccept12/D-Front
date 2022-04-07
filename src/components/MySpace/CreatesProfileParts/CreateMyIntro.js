@@ -53,7 +53,7 @@ const CreateMyIntro = (props) => {
                         value={intro.value}
                         onChange={intro.onChange}
                         is_error={intro.errors}
-                        is_value={intro && intro?.value?.length}
+                        // is_value={intro && intro?.value?.length}
                         placeholder={title_content}
                     />
                 </div>
