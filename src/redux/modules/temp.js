@@ -24,7 +24,7 @@ export const kakaoSlice = createAsyncThunk(
           sessionStorage.setItem("profile_img", profile_img);
           dispatch(preview(profile_img));
           dispatch(user(access_token));
-          if (have_to_signup) {
+          if (!have_to_signup) {
             navigate("/TendencyTest", {replace: true});
           } else {
             refreshSlice({ access_token, refresh_token });
