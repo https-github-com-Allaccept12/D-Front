@@ -44,10 +44,9 @@ const DimoInsideFilter = (props) => {
     // let category = "";
     const [category, setCategory] = useState('');
     if (location.state) {
-        setCategory(location.pathname.split('/')[1]);
+        setCategory(location.pathname.split('/')[3]);
     }
     console.log(location);
-    console.log(location.pathname.split('/')[3]);
     console.log(category);
 
     const JobOptions = [
