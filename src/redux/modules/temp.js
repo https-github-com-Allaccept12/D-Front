@@ -28,7 +28,8 @@ export const kakaoSlice = createAsyncThunk(
             navigate("/TendencyTest", {replace: true});
           } else {
             refreshSlice({ access_token, refresh_token });
-            window.location.href = "/";
+            // window.location.href = "/";
+            navigate('/', {replace: true});
           }
         }
       })
