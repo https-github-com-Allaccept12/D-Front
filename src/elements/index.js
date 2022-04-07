@@ -36,7 +36,7 @@ import FileUploadDimo from "./Tools/FileUploadDimo";
 import Answer from "./Common/Answer";
 import FileEditDimo from "./Tools/FileEditDimo";
 import ButtonWithCount from "./Common/ButtonWithCount";
-
+import Tooltips from "./Icons/Tooltips";
 export {
     Title,
     Subtitle,
@@ -75,4 +75,5 @@ export {
     Answer,
     FileEditDimo,
     ButtonWithCount,
+    Tooltips,
 };

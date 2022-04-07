@@ -9,7 +9,7 @@ import { Button, Title, Text } from "../../elements";
 import ArtWorkCreateModal from "./ArtWorkCreateModal";
 import { Portal } from "@mui/material";
 import ArtWorkChangeList from "./ArtWorkChangeList";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import tw from "tailwind-styled-components";
 
 const Grid = tw.div`
@@ -33,13 +33,13 @@ const ArtWorkCreate = () => {
     const info = useSelector((state) => state.artwork.modifyForInfo);
     const firstThumbnail = useSelector((state) => state.image.url);
     useEffect(() => {
-        if (location.state){
+        if (location.state) {
             const visitor_account_id = sessionStorage.getItem("account_id");
             setArtworkId(location.state.artwork_id);
             setIsEdit(location.state.isedit);
             // setFirstList(editImgs && editImgs.img);
             // setFirstThumbnail(editImgs && editImgs.artWorkSubDetail.thumbnail);
-            // if(firstList){ 
+            // if(firstList){
             // for(let pres of firstList){
             //     console.log('item:', pres);
             //     previews.push(pres);
@@ -50,15 +50,14 @@ const ArtWorkCreate = () => {
             // if (isEdit){
             //     dispatch(ModifyArtWork({artwork_id, visitor_account_id, dispatch}));
             // }
-        // }
-    }
-    }, [editImgs])
+            // }
+        }
+    }, [editImgs]);
 
     useEffect(() => {
-        if(isEdit){
+        if (isEdit) {
             SetPreviews(editImgs);
         }
-        
     }, [editImgs]);
 
     // console.log('isEdit', isEdit, artwork_id);
@@ -66,14 +65,14 @@ const ArtWorkCreate = () => {
     const [modalOn, setModalOn] = useState(false);
     const [deleteList, setDeleteList] = useState([]);
     console.log(deleteList);
-    console.log('deleteList: ', deleteList);
-    console.log('ediimgs: ', editImgs);
-    console.log('firstThumbnail: ', firstThumbnail);
-    console.log('info: ', info);
+    console.log("deleteList: ", deleteList);
+    console.log("ediimgs: ", editImgs);
+    console.log("firstThumbnail: ", firstThumbnail);
+    console.log("info: ", info);
 
     // useEffect(() => {
     //     console.log('firstList', firstList);
-    //     if(firstList){ 
+    //     if(firstList){
     //         for(let pres of firstList){
     //             console.log('item:', pres);
     //             previews.push(pres);
@@ -86,14 +85,14 @@ const ArtWorkCreate = () => {
     // }, [])
     // console.log(previews);
     const handleModal = () => {
-        if(!modalOn & previews.length === 0){
+        if (!modalOn & (previews.length === 0)) {
             Swal.fire({
-                icon: 'error',
-                title: '이미지를 추가해 주세요.',
+                icon: "error",
+                title: "이미지를 추가해 주세요.",
                 showConfirmButton: false,
-                timer: 1000
-              })
-            return
+                timer: 1000,
+            });
+            return;
         }
         setModalOn(!modalOn);
         dispatch(artworkFiles(images));
@@ -148,15 +147,31 @@ const ArtWorkCreate = () => {
                                 </Dropzone>
                             </div>
                             <div className="">
-                                <ArtWorkChangeList list={previews} setPreviews={SetPreviews} firstThumbnail={firstThumbnail} isEdit={isEdit} setDeleteList={setDeleteList}/>
+                                <ArtWorkChangeList
+                                    list={previews}
+                                    setPreviews={SetPreviews}
+                                    firstThumbnail={firstThumbnail}
+                                    isEdit={isEdit}
+                                    setDeleteList={setDeleteList}
+                                />
                             </div>
                         </div>
                     </div>
-                    <div className="flex flex-col justify-end">
+                    <div className="flex flex-col items-end md:justify-end">
                         <Button color="4" size="3" onClick={handleModal}>
                             다음
                         </Button>
-                        <Portal>{modalOn && <ArtWorkCreateModal onClose={handleModal} info={info}  isEdit={isEdit} deleteList={deleteList} artwork_id={artwork_id} />}</Portal>
+                        <Portal>
+                            {modalOn && (
+                                <ArtWorkCreateModal
+                                    onClose={handleModal}
+                                    info={info}
+                                    isEdit={isEdit}
+                                    deleteList={deleteList}
+                                    artwork_id={artwork_id}
+                                />
+                            )}
+                        </Portal>
                     </div>
                 </Grid>
             </div>
