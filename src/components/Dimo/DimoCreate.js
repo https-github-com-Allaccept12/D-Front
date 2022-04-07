@@ -62,32 +62,37 @@ const DimoCreate = ({ match }) => {
 
     const editsInfoImgs = useSelector((state) => state.dimo.detaildimoInfo);
     const editInfo = useSelector((state) => state.dimo?.detailDimoInfo?.postSubDetail);
-    console.log(editInfo.post_id);
-    console.log(editInfo);
-    const title = useInput("", []);
-    const content = useInput("", []);
-    const edit = useInput(edits?.title, []);
-    const editContents = useInput(edits?.content, []);
+    // console.log(editInfo.post_id);
+    // console.log(editInfo);
+    const validmaxlen30 = (value) => value.length <= 30;
+    const validmaxlen2000 = (value) => value.length <= 2000;
+    const title = useInput("", [validmaxlen30]);
+    const content = useInput("", [validmaxlen2000]);
+    const edit = useInput(edits?.title, [validmaxlen30]);
+    const editContents = useInput(edits?.content, [validmaxlen2000]);
 
-    const editInfoTitle = useInput(editInfo?.title, []);
-    const editInfoContents = useInput(editInfo?.content, []);
+    const editInfoTitle = useInput(editInfo?.title, [validmaxlen30]);
+    const editInfoContents = useInput(editInfo?.content, [validmaxlen2000]);
 
     const dispatch = useDispatch();
     const dimo = useSelector((state) => state.image.dimoFiles);
     console.log(editsInfoImgs);
 
     const JobOptions = [
-        { value: "uiux", label: "UI & UX" },
-        { value: "fashion", label: "패션" },
-        { value: "typo", label: "타이포그래피" },
-        { value: "craft", label: "공예" },
-        { value: "package", label: "패키지" },
-        { value: "graphic", label: "그래픽" },
-        { value: "video", label: "영상/모션" },
-        { value: "product", label: "제품" },
-        { value: "game", label: "게임/캐릭터" },
-        { value: "edit", label: "브랜딩/편집" },
-        { value: "eco", label: "건축/인테리어/환경" },
+        { value: "uiux", label: "📱 UI & UX" },
+        { value: "graphic", label: "🎨 그래픽디자인" },
+
+        { value: "edit", label: "📠 브랜딩/편집디자인" },
+        { value: "package", label: "🎁 패키지 디자인" },
+        { value: "product", label: "🏷️ 제품 디자인" },
+
+        { value: "typo", label: "📝 타이포그래피" },
+        { value: "video", label: "🎬 영상/모션그래픽" },
+        { value: "craft", label: "🧶 공예" },
+        { value: "fashion", label: "👗 패션" },
+        { value: "game", label: "🎮 게임/캐릭터 디자인" },
+
+        { value: "eco", label: "🏠 건축/인테리어/환경 디자인" },
     ];
     const [selected, setSelected] = useState("카테고리를 선택해주세요");
     const [hashtags, setHashtags] = useState([]);
@@ -153,8 +158,8 @@ const DimoCreate = ({ match }) => {
             console.log(pair);
         }
         dispatch(CreateNewDimo(formData));
-        // console.log(formData);
-        navigate("/dimo/qna/all", { replace: true });
+
+        navigate("/dimo/qna", { replace: true });
     };
 
     const sandEditData = () => {
@@ -197,6 +202,9 @@ const DimoCreate = ({ match }) => {
                     <Body>
                         <Title size="2">질문하기</Title>
                         <Subtitle size="1">디자이너님들에게 질문해보세요! 멋진 정보를 얻을 수 있을거에요!</Subtitle>
+                        <Subtitle size="2" className="text-dgray-300">
+                            주제와 관련없는 이미지 업로드시 무통보 삭제 조치 될수 있습니다..
+                        </Subtitle>
 
                         <InnerGrid>
                             <div className="grid grid-cols-2 gap-4 p-8">
@@ -229,10 +237,20 @@ const DimoCreate = ({ match }) => {
                                 <Hashtag hashtags={hashtags} setHashtags={setHashtags} />
                             </div>
                             <div className="flex flex-col px-8 gap-7">
-                                <InputNoTitle placeholder="제목" value={title.value} onChange={title.onChange} />
+                                <InputNoTitle
+                                    maxlen="30"
+                                    placeholder="제목"
+                                    value={title.value}
+                                    onChange={title.onChange}
+                                    is_error={title.errors}
+                                    is_value={title.value.length}
+                                />
                                 <InputNoTitle
                                     textarea
-                                    maxlen="80"
+                                    is_error={content.errors}
+                                    is_value={content.value.length}
+                                    cardsize="2"
+                                    maxlen="2000"
                                     placeholder="내용"
                                     value={content.value}
                                     onChange={content.onChange}
@@ -267,6 +285,9 @@ const DimoCreate = ({ match }) => {
                         <Subtitle size="1">
                             알고 계신 정보를 공유해주세요! 다른 디자이너분들께 큰 도움이 될 거에요!
                         </Subtitle>
+                        <Subtitle size="2" className="text-dgray-300">
+                            주제와 관련없는 이미지 업로드시 무통보 삭제 조치 될수 있습니다..
+                        </Subtitle>
 
                         <InnerGrid>
                             <div className="grid grid-cols-2 gap-4 p-8">
@@ -299,13 +320,23 @@ const DimoCreate = ({ match }) => {
                                 <Hashtag hashtags={hashtags} setHashtags={setHashtags} />
                             </div>
                             <div className="flex flex-col px-8 gap-7">
-                                <InputNoTitle placeholder="제목" value={title.value} onChange={title.onChange} />
+                                <InputNoTitle
+                                    maxlen="30"
+                                    placeholder="제목"
+                                    value={title.value}
+                                    onChange={title.onChange}
+                                    is_error={title.errors}
+                                    is_value={title.value.length}
+                                />
                                 <InputNoTitle
                                     textarea
-                                    maxlen="80"
+                                    maxlen="2000"
                                     placeholder="내용"
+                                    cardsize="2"
                                     value={content.value}
                                     onChange={content.onChange}
+                                    is_error={content.errors}
+                                    is_value={content.value.length}
                                 />
                             </div>
                             <div className="p-8">
@@ -335,6 +366,9 @@ const DimoCreate = ({ match }) => {
                     <Body>
                         <Title size="2">수정하기</Title>
                         <Subtitle size="1">글을 수정하고 싶을땐 여기</Subtitle>
+                        <Subtitle size="2" className="text-dgray-300">
+                            주제와 관련없는 이미지 업로드시 무통보 삭제 조치 될수 있습니다..
+                        </Subtitle>
 
                         <InnerGrid>
                             <div className="grid grid-cols-2 gap-4 p-8">
@@ -370,15 +404,21 @@ const DimoCreate = ({ match }) => {
                             <div className="flex flex-col px-8 gap-7">
                                 <InputNoTitle
                                     placeholder="제목"
+                                    maxlen="30"
                                     value={editInfoTitle.value}
                                     onChange={editInfoTitle.onChange}
+                                    is_error={editInfoTitle.errors}
+                                    is_value={editInfoTitle.value.length}
                                 />
                                 <InputNoTitle
                                     textarea
-                                    maxlen="80"
+                                    maxlen="2000"
                                     placeholder="내용"
+                                    cardsize="2"
                                     value={editInfoContents.value}
                                     onChange={editInfoContents.onChange}
+                                    is_error={editInfoContents.errors}
+                                    is_value={editInfoContents.value.length}
                                 />
                             </div>
                             <div className="p-8">
@@ -412,6 +452,9 @@ const DimoCreate = ({ match }) => {
                     <Body>
                         <Title size="2">수정하기</Title>
                         <Subtitle size="1">글을 수정하고 싶을땐 여기</Subtitle>
+                        <Subtitle size="2" className="text-dgray-300">
+                            주제와 관련없는 이미지 업로드시 무통보 삭제 조치 될수 있습니다..
+                        </Subtitle>
 
                         <InnerGrid>
                             <div className="grid grid-cols-2 gap-4 p-8">
@@ -445,13 +488,23 @@ const DimoCreate = ({ match }) => {
                                 <Hashtag hashtags={hashtags} setHashtags={setHashtags} />
                             </div>
                             <div className="flex flex-col px-8 gap-7">
-                                <InputNoTitle placeholder="제목" value={edit.value} onChange={edit.onChange} />
+                                <InputNoTitle
+                                    placeholder="제목"
+                                    value={edit.value}
+                                    onChange={edit.onChange}
+                                    maxlen="30"
+                                    is_error={edit.errors}
+                                    is_value={edit.value.length}
+                                />
                                 <InputNoTitle
                                     textarea
-                                    maxlen="80"
+                                    maxlen="2000"
                                     placeholder="내용"
+                                    cardsize="2"
                                     value={editContents.value}
                                     onChange={editContents.onChange}
+                                    is_error={editContents.errors}
+                                    is_value={editContents.value.length}
                                 />
                             </div>
                             <div className="p-8">

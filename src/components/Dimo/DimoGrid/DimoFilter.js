@@ -19,18 +19,27 @@ flex flex-row py-2 px-2 font-min1 text-tiny hover:bg-dpurple-100 rounded-lg gap-
 
 const DimoFilter = (props) => {
     const { list } = props;
-
+    // console.log(list);
     const navigate = useNavigate();
     const location = useLocation();
-    const a = location.pathname;
-    const b = a.split("/")[2];
     // let category = location.state.category;
 
     const dispatch = useDispatch();
+
+    // console.log(b);
+    let account_id = 0;
+    // const id_cookie = getCookie("account_id");
+    const id_cookie = sessionStorage.getItem("account_id");
+    if (id_cookie) {
+        account_id = id_cookie;
+        // console.log("account_id: ", account_id);
+    }
+    const visitor_account_id = account_id;
     const ClickCategory = (e) => {
         console.log(e.target.value);
         const category = e.target.value;
-        const board = b.toUpperCase();
+        const board = list.toUpperCase();
+        dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
     };
 
     const goToINFO = () => {
@@ -66,12 +75,13 @@ const DimoFilter = (props) => {
                         <TabBtn value="edit" onClick={ClickCategory}>
                             📠 브랜딩/편집디자인
                         </TabBtn>
-                        <TabBtn value="product" onClick={ClickCategory}>
-                        🏷️ 제품 디자인
-                        </TabBtn>
                         <TabBtn value="package" onClick={ClickCategory}>
                             🎁 패키지 디자인
                         </TabBtn>
+                        <TabBtn value="product" onClick={ClickCategory}>
+                            🏷️ 제품 디자인
+                        </TabBtn>
+
                         <TabBtn value="typo" onClick={ClickCategory}>
                             📝 타이포그래피
                         </TabBtn>
