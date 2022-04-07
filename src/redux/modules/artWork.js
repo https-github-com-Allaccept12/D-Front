@@ -317,6 +317,9 @@ export const UnLikeArtwork = createAsyncThunk("/UnLikeArtwork", (artwork_id) => 
         headers: {
             Authorization: "Bearer " + token,
         },
+        data: {
+            artwork_id: artwork_id
+        },
         withCredentials: true,
     })
         .then((res) => {
