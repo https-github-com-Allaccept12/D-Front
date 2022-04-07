@@ -1,18 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { kakaoLoginAxios } from "../redux/modules/user";
 import { kakaoSlice } from "../redux/modules/temp";
 import PageLoadSpinner from "../elements/Common/PageLoadSpinner";
 
 const KakaoRedirectHandler = (props) => {
     const dispatch = useDispatch();
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const code = new URL(window.location.href).searchParams.get("code");
 
     useEffect(() => {
         // dispatch(kakaoLoginAxios({code, history}))
-        dispatch(kakaoSlice({ code, history, dispatch }));
+        dispatch(kakaoSlice({ code, navigate, dispatch }));
     });
     // if (sessionStorage.getItem("access_token")) {
     //   setCookie("access_token", sessionStorage.getItem("access_token"), 7);

@@ -8,7 +8,7 @@ const initialState = {};
 
 export const kakaoSlice = createAsyncThunk(
   "post/kakao",
-  ({ code, history, dispatch }) => {
+  ({ code, navigate, dispatch }) => {
     URL.get(`/user/kakao/callback?code=${code}`)
       .then((res) => {
         // console.log(res);
@@ -25,7 +25,7 @@ export const kakaoSlice = createAsyncThunk(
           dispatch(preview(profile_img));
           dispatch(user(access_token));
           if (have_to_signup) {
-            history.replace("/TendencyTest");
+            navigate("/TendencyTest", {replace: true});
           } else {
             refreshSlice({ access_token, refresh_token });
             window.location.href = "/";
