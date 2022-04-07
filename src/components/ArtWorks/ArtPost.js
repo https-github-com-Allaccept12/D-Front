@@ -42,7 +42,7 @@ const ArtPost = (props) => {
     // console.log(please, account_id)
     const clickProfile = () => {
         console.log('click accountid', barAccountId);
-        navigate(`/myspace/myprofile/${barAccountId}`);
+        navigate(`/myspace/myprofile/${barArtWorkId}`);
     };
 
     const clickFollow = () => {

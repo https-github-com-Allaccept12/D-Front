@@ -27,7 +27,7 @@ const ArtPostMain = (props) => {
     const [barLike, setBarLike] = useState();
     const [barBookMark, setBarBookMark] = useState();
 
-    const ArtWorkURL = `localhost:3000/detailart/${barArtWorkId}`;
+    const ArtWorkURL = `dplusday.com/detailart/${barArtWorkId}`;
 
     const handleClickArtWork = () => {
         let owner_account_id = account_id;
