@@ -26,7 +26,7 @@ const Main = (props) => {
         const visitor_account_id = account_id;
         dispatch(mainPageLoad({ visitor_account_id, dispatch }));
     }, []);
- 
+
     const [time, setTime] = useState(true);
 
     useEffect(() => {
