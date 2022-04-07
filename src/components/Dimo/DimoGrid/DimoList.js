@@ -28,7 +28,7 @@ w-[95%] border mx-auto border-gray-300 my-6
 const DimoList = (props) => {
     const { list } = props;
     const dimos = useSelector((state) => state.dimo.categoryDimos);
-    // console.log(dimos);
+    console.log('dimos: ', dimos);
 
     // console.log(dimos);
     return (

@@ -28,6 +28,7 @@ const ArtPost = (props) => {
     const [barFollow, setBarFollow] = useState();
     const [barLike, setBarLike] = useState();
     const [barBookMark, setBarBookMark] = useState();
+    const [barAccountId, setBarAccountId] = useState();
     const ArtWorkURL = `localhost:3000/detailart/${barArtWorkId}`;
 
     const handleClickArtWork = () => {
@@ -39,8 +40,8 @@ const ArtPost = (props) => {
     };
     console.log(please, account_id)
     const clickProfile = () => {
-        console.log('click accountid', account_id);
-        navigate(`/myspace/myprofile/${please}`);
+        console.log('click accountid', barAccountId);
+        navigate(`/myspace/myprofile/${barAccountId}`);
     };
 
     const clickFollow = () => {
@@ -132,6 +133,7 @@ const ArtPost = (props) => {
                                 artwork_id={artwork_id}
                                 setTempProfile={setTempProfile}
                                 setBarArtWorkId={setBarArtWorkId}
+                                setBarAccountId={setBarAccountId}
                             />
 
                             <div className="hidden lg:contents">

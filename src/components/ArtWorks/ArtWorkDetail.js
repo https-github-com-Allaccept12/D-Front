@@ -76,14 +76,14 @@ flex flex-col gap-2 justify-center items-center
 `;
 
 const ArtWorkDetail = (props) => {
-    const { fromPostMain, setTempProfile, setBarArtWorkId, setBarBookMark, setBarLike, setBarFollow } = props;
+    const { fromPostMain, setTempProfile, setBarArtWorkId, setBarAccountId, setBarBookMark, setBarLike, setBarFollow } = props;
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const myProfileImg = sessionStorage.getItem("profile_img");
     const writerInfo = useSelector((state) => state.myPage.myPage);
     const artworks = useSelector((state) => state.artwork.detailArtwork);
 
-    // console.log(artworks);
+    console.log(artworks);
     const [artworkId, setArtworkId] = useState("");
     const [nickname, setNickname] = useState("");
     const [category, setCategory] = useState("");
@@ -109,6 +109,7 @@ const ArtWorkDetail = (props) => {
             setProfile(artworks.artWorkSubDetail.account_profile_img);
             setTempProfile(artworks.artWorkSubDetail.account_profile_img);
             setBarArtWorkId(artworks.artWorkSubDetail.artwork_id);
+            setBarAccountId(artworks.artWorkSubDetail.account_id);
             if(!fromPostMain){
                 setBarFollow(artworks.is_follow);
                 setBarLike(artworks.is_like);

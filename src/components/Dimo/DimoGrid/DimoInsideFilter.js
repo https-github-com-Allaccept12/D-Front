@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useLocation } from "react-router-dom";
 import { Icon, Text } from "../../../elements";
@@ -43,9 +43,9 @@ const DimoInsideFilter = (props) => {
     const board = b.toUpperCase();
     // let category = "";
     const [category, setCategory] = useState('');
-    if (location.state) {
+    useEffect(() => {
         setCategory(location.pathname.split('/')[3]);
-    }
+    }, [location])
     console.log(location);
     console.log(category);
 
