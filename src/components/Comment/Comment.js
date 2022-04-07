@@ -6,6 +6,7 @@ import { Button, Profile, Text, Subtitle, InputNoTitle, HeartButton } from "../.
 
 const Comment = (props) => {
     const { value } = props;
+    const login_id = sessionStorage.getItem("account_id");
     const [contentValue, setContentValue] = useState(value.content);
     const dispatch = useDispatch();
     const [commentContent, setContent] = useState("");
@@ -25,7 +26,6 @@ const Comment = (props) => {
         const comment_id = value.comment_id;
         const content = name.value;
         const data = { content: content };
-        console.log(content);
         dispatch(commentModify({ comment_id, data }));
         setContentValue(content);
         setContent(content);
@@ -35,6 +35,7 @@ const Comment = (props) => {
     const deleteComment = () => {
         dispatch(commentDelete(value.comment_id));
     };
+
     return (
         <>
             <div className="flex items-center justify-between gap-2">
@@ -76,13 +77,16 @@ const Comment = (props) => {
                         )}
                     </div>
                 </div>
+                {login_id == value.account_id &&
+                <div className="flex items-end">
                 {!modifyDiv && (
                     <>
-                        <button onClick={openModify}>수정</button>
+                        <button className="mr-3" onClick={openModify}>수정</button>
                         <button onClick={deleteComment}>삭제</button>
                     </>
                 )}
-                {/* <HeartButton like_cnt="4" is_like="" /> */}
+                </div>
+                }
             </div>
         </>
     );

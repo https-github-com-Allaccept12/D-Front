@@ -39,7 +39,6 @@ w-[95%] border mx-auto border-gray-300 my-6
 
 const ArtWorkList = (props) => {
     const artworks = useSelector((state) => state.artwork.artworks);
-    console.log(artworks);
     return (
         <>
             <Box>

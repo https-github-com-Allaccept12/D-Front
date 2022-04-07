@@ -44,6 +44,7 @@ const ArtWorkInsideFilter = (props) => {
     };
 
     const ByTime = () => {
+        const category = sessionStorage.getItem("category");
         dispatch(orderByTime({ category, dispatch}));
     };
 
