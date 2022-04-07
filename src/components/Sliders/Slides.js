@@ -158,7 +158,7 @@ const Slides = (props) => {
                             <Title size="5" className="text-gray-700 truncate">
                                 {props.nickname} 님
                             </Title>
-                            <div className="-mt-1">
+                            <div className="-mt-1 h-4">
                                 <Text size="5">{job} </Text>
                             </div>
                         </div>
