@@ -16,11 +16,11 @@ export const myPageLoad = createAsyncThunk(
       .then((res) => {
         console.log(res);
         const mypage_data = res.data.data;
-        let temp = ''
-        let subspecialty = ''
+        let temp = []
+        let subspecialty = []
         if(res.data.data.specialty != null){
-          const temp = res.data.data.specialty.split('/');
-          const subspecialty = res.data.data.other_specialty.split('/');
+          temp = res.data.data.specialty.split('/');
+          subspecialty = res.data.data.other_specialty.split('/');
         }
         const specialty = []
         temp.map((value) => {
