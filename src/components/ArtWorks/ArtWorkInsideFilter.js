@@ -46,7 +46,7 @@ const ArtWorkInsideFilter = (props) => {
 
     // console.log('location: ', location.pathname.split('/')[3]);
     // console.log('location state: ', location.state.category);
-    console.log('category: ', category);
+    console.log('category: ', category); 
     // const category = location?.state.category;
     // if (location.state) {
     //     category = location?.state.category;
