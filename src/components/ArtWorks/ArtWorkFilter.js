@@ -24,16 +24,16 @@ const ArtWorkFilter = (props) => {
     const ClickCategory = (e) => {
         // console.log(e.target.value);
         const category = e.target.value;
-        if (category === "all") {
-            dispatch(artworkPageLoad(dispatch));
-        } else {
-            dispatch(categoryArtwork({ category, dispatch }));
-            navigate(`list/${category}`, {
-                state: {
-                    category: category,
-                },
-            });
-        }
+        // if (category === "all") {
+        //     dispatch(artworkPageLoad(dispatch));
+        // } else {
+        dispatch(categoryArtwork({ category, dispatch }));
+        navigate(`list/${category}`, {
+            state: {
+                category: category,
+            },
+        });
+        // }
     };
     return (
         <>
