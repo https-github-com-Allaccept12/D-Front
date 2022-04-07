@@ -36,7 +36,7 @@ const DimoFilter = (props) => {
     }
     const visitor_account_id = account_id;
     const ClickCategory = (e) => {
-        // console.log(e.target.value);
+        console.log(e.target.value);
         const category = e.target.value;
         const board = list.toUpperCase();
         navigate(`/dimo/qna/${category}`, {

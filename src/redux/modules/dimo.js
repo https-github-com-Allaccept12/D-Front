@@ -80,14 +80,14 @@ export const dimoPageLoad = createAsyncThunk("/dimoPageLoad", ({ dispatch, board
 
 //카테고리 검색(전체보기 기능이 슬라이드랑 붙어있느라 디모엔 빠져서 uiux가 기본으로 나오게 세팅해둠 역시 페이지 폴더의 Dimo.js)
 export const categoryDimo = createAsyncThunk("/categoryDimo", ({ category, dispatch, board, visitor_account_id }) => {
-    // console.log(category, board);
+    console.log(category, board);
     URL.get(`/api/post/category/${category}/0/${board}`, {
         params: {
             visitor_account_id: visitor_account_id,
         },
     })
         .then((res) => {
-            // console.log(res);
+            console.log(res);
             dispatch(categoryDimos(res.data.data));
         })
         .catch((err) => {
