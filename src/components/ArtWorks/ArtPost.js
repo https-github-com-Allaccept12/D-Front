@@ -29,7 +29,8 @@ const ArtPost = (props) => {
     const [barLike, setBarLike] = useState();
     const [barBookMark, setBarBookMark] = useState();
     const [barAccountId, setBarAccountId] = useState();
-    const ArtWorkURL = `localhost:3000/detailart/${barArtWorkId}`;
+    const [posterid, setposterid] = useState('');
+    const ArtWorkURL = `dplusday.com/detailart/${barArtWorkId}`;
 
     const handleClickArtWork = () => {
         // setShowDetail(!showDetail);
@@ -133,7 +134,7 @@ const ArtPost = (props) => {
                                 artwork_id={artwork_id}
                                 setTempProfile={setTempProfile}
                                 setBarArtWorkId={setBarArtWorkId}
-                                setBarAccountId={setBarAccountId}
+                                setposterid={setposterid}
                             />
 
                             <div className="hidden lg:contents">
