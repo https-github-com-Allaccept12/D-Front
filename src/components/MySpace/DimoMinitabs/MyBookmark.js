@@ -11,7 +11,7 @@ const MyBookmark = (props) => {
     return (
         <>
             <Box>
-                {data.map((value) => {
+                {data && data.map((value) => {
                     return (
                         <DimoCard data={value} isMine={false}/>
                         )
