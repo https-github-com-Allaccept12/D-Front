@@ -25,7 +25,7 @@ function App() {
     let dimos = useSelector((state) => state.dimo.dimos?.postRecommendationFeed);
 
     useEffect(() => {
-        ReactGA.initialize("user id");
+        ReactGA.initialize(process.env.REACT_APP_GOOGLE_ID);
         history.listen((location) => {
             ReactGA.set({ page: location.pathname }); // Update the user's current page
             ReactGA.pageview(location.pathname); // Record a pageview for the given page

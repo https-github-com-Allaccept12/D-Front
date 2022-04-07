@@ -30,6 +30,7 @@ jobs:
                   echo "REACT_APP_MYPAGE=${{ secrets.REACT_APP_MYPAGE }}" >> .env
                   echo "REACT_APP_ARTWORK=${{ secrets.REACT_APP_ARTWORK }}" >> .env
                   echo "REACT_APP_PORTFOLIO=${{ secrets.REACT_APP_PORTFOLIO }}" >> .env
+                  echo "REACT_APP_PORTFOLIO=${{ secrets.REACT_APP_GOOGLE_ID }}" >> .env
                   cat .env
 
             - name: Build
