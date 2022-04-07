@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { categoryArtwork, artworkPageLoad } from "../../redux/modules/artWork";
 import { Title, Text, Icon } from "../../elements";
@@ -18,6 +18,8 @@ flex flex-row py-2 px-2 font-min1 text-tiny hover:bg-dpurple-100 rounded-lg gap-
 `;
 
 const ArtWorkFilter = (props) => {
+    const navigate = useNavigate();
+    const location = useLocation();
     let dispatch = useDispatch();
     const ClickCategory = (e) => {
         console.log(e.target.value);
@@ -26,6 +28,11 @@ const ArtWorkFilter = (props) => {
             dispatch(artworkPageLoad(dispatch));
         } else {
             dispatch(categoryArtwork({ category, dispatch }));
+            navigate(`list/${category}`, {
+                state: {
+                    category: category,
+                },
+            });
         }
     };
     return (

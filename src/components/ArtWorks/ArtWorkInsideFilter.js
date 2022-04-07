@@ -2,7 +2,7 @@ import React from "react";
 
 import { useDispatch } from "react-redux";
 import { searchArtwork, orderByLike, orderByFollow, orderByTime } from "../../redux/modules/artWork";
-
+import { useLocation } from "react-router-dom";
 import { Icon, Text } from "../../elements";
 import tw from "tailwind-styled-components";
 
@@ -37,7 +37,11 @@ hover:text-dgray-500 active:text-dpurple-300
 const ArtWorkInsideFilter = (props) => {
     const dispatch = useDispatch();
     const visitor_account_id = sessionStorage.getItem("account_id");
-
+    let category = "";
+    if (location.state) {
+        category = location?.state.category;
+    }
+    console.log(location.state);
     const ByLike = () => {
         const category = sessionStorage.getItem("category");
         dispatch(orderByLike({ category, dispatch }));
@@ -45,7 +49,7 @@ const ArtWorkInsideFilter = (props) => {
 
     const ByTime = () => {
         const category = sessionStorage.getItem("category");
-        dispatch(orderByTime({ category, dispatch}));
+        dispatch(orderByTime({ category, dispatch }));
     };
 
     const ByFollow = () => {

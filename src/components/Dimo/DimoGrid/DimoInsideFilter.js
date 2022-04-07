@@ -41,6 +41,11 @@ const DimoInsideFilter = (props) => {
     const a = location.pathname;
     const b = a.split("/")[2];
     const board = b.toUpperCase();
+    let category = "";
+    if (location.state) {
+        category = location?.state.category;
+    }
+    console.log(category);
 
     const JobOptions = [
         { value: "uiux", label: "UI & UX" },
@@ -57,13 +62,10 @@ const DimoInsideFilter = (props) => {
     ];
 
     const ByLike = () => {
-        const category = "uiux";
-        console.log("d");
         dispatch(orderByLikeDimo({ category, board, dispatch }));
     };
 
     const orderByNew = () => {
-        const category = "uiux";
         dispatch(orderByNewDimo({ category, board, dispatch }));
     };
 
@@ -79,7 +81,7 @@ const DimoInsideFilter = (props) => {
             <Grid>
                 <FilterBtn>
                     <TextCSS onClick={ByLike}>
-                        <Icon name="HeartE" iconSize="14"/>
+                        <Icon name="HeartE" iconSize="14" />
                         <ColorSpan>인기순</ColorSpan>
                     </TextCSS>
                     <InnerLine />

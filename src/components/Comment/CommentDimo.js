@@ -4,6 +4,11 @@ import { commentDeleteDimo, commentModifyDimo } from "../../redux/modules/dimo";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { useInput, useToggle } from "../../hooks";
 import { Button, Profile, Text, Subtitle, InputNoTitle, HeartButton } from "../../elements";
+import tw from "tailwind-styled-components";
+
+const MyBtn = tw.button`
+    font-min1 text-tiny text-dpurple-200 hover:text-dpurple-300 mr-1
+`;
 
 const CommentDimo = (props) => {
     const {
@@ -50,7 +55,14 @@ const CommentDimo = (props) => {
         navigate(`/dimo/info`, { replace: true });
         // forceUpdate();
     };
+    let a_id = "";
+    const id_cookie = sessionStorage.getItem("account_id");
+    if (id_cookie) {
+        a_id = id_cookie;
+    }
 
+    const visitor_account_id = a_id;
+    let owner_account_id = account_id;
     return (
         <>
             <div className="flex items-center justify-between gap-2">
@@ -95,8 +107,15 @@ const CommentDimo = (props) => {
                 {!modifyDiv && (
                     <>
                         <div className="flex justify-end flex-row font-min1 text-tiny gap-2">
-                            <button onClick={openModify}>수정</button>
-                            <button onClick={deleteComment}>삭제</button>
+                            {owner_account_id == visitor_account_id ? (
+                                <>
+                                    <MyBtn onClick={openModify}>수정</MyBtn>
+
+                                    <MyBtn onClick={deleteComment}>삭제</MyBtn>
+                                </>
+                            ) : (
+                                " "
+                            )}
                         </div>
                     </>
                 )}
