@@ -41,11 +41,10 @@ const ArtWorkInsideFilter = (props) => {
     const [category, setCategory] = useState('');
 
     useEffect(()=> {
-        if(location?.state?.location){
-            setCategory(location?.state?.category);
-        }
-    })
-    console.log('location: ', location.pathname.split('/')[3]);
+        setCategory(location.pathname.split('/')[3]);
+    }, [location])
+
+    // console.log('location: ', location.pathname.split('/')[3]);
     // console.log('location state: ', location.state.category);
     console.log('category: ', category);
     // const category = location?.state.category;
