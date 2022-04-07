@@ -24,9 +24,9 @@ function App() {
     const a = location.pathname;
     useEffect(() => {
         ReactGA.initialize({ trackingId: process.env.REACT_APP_GOOGLE_ID });
-        ReactGA.pageview(window.location.pathname + window.location.search);
+        ReactGA.pageview(location.pathname + location.search);
         // ReactGA.pageview(window.location.pathname + window.location.search);
-    }, []);
+    }, [location]);
     let dimos = useSelector((state) => state.dimo.dimos?.postRecommendationFeed);
 
     return (
