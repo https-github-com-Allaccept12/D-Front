@@ -42,7 +42,7 @@ const CategoryMini = (props) => {
     const visitor_account_id = account_id;
     let dispatch = useDispatch();
     const ClickCategory = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         const category = e.target.value;
         if (category === "all") {
             dispatch(artworkPageLoad(dispatch));
@@ -57,7 +57,7 @@ const CategoryMini = (props) => {
     };
 
     const ClickCategoryDimo = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         const category = e.target.value;
         const board = b.toUpperCase();
 

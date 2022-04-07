@@ -117,12 +117,12 @@ const CreateMySpaceUser = (props) => {
             insta: instagram.value,
             job: selected,
         };
-        console.log(data);
-        console.log(image);
+        // console.log(data);
+        // console.log(image);
         formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
         formData.append("imgFile", image);
         // dispatch(createProfile(data));
-        console.log(formData);
+        // console.log(formData);
         dispatch(createProfile({formData, dispatch}));
         navigate(-1);
     };

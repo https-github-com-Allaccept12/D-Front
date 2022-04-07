@@ -36,24 +36,22 @@ hover:text-dgray-500 active:text-dpurple-300
 
 const ArtWorkInsideFilter = (props) => {
     const dispatch = useDispatch();
+    const location = useLocation();
     const visitor_account_id = sessionStorage.getItem("account_id");
-    let category = "";
-    if (location.state) {
-        category = location?.state.category;
-    }
-    console.log(location.state);
+    const category = location?.state.category;;
+    // if (location.state) {
+    //     category = location?.state.category;
+    // }
+    // console.log(category);
     const ByLike = () => {
-        const category = sessionStorage.getItem("category");
         dispatch(orderByLike({ category, dispatch }));
     };
 
     const ByTime = () => {
-        const category = sessionStorage.getItem("category");
         dispatch(orderByTime({ category, dispatch }));
     };
 
     const ByFollow = () => {
-        const category = sessionStorage.getItem("category");
         dispatch(orderByFollow({ category, visitor_account_id, dispatch }));
     };
 

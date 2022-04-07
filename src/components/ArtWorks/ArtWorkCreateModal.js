@@ -18,7 +18,7 @@ justify-center items-center p-1 cursor-default peer mt-2 ml-1 md:mt-3 md:ml-2
 `;
 
 const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) => {
-    console.log(info, isEdit, deleteList, artwork_id);
+    // console.log(info, isEdit, deleteList, artwork_id);
     // 작품 수정 시 세팅
     const [titleTemp, setTitleTemp] = useState("");
     const [contentTemp, setContentTemp] = useState("");
@@ -259,7 +259,7 @@ const ArtWorkCreateModal = ({ onClose, info, isEdit, deleteList, artwork_id }) =
 
         // 멀티 폼데이터 생성
         const formData = new FormData();
-        console.log(data);
+        // console.log(data);
         formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
         formData.append("imgFile", forSendCover);
         artworkfiles.forEach((element) => formData.append("imgFile", element));

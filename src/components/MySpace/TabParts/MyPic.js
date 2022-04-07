@@ -17,7 +17,7 @@ const MyPic = (props) => {
   }, [])
   
   const marked = useSelector((state) => state.myPage.bookmarked);
-  console.log(marked);
+  // console.log(marked);
 
   return (
     <>

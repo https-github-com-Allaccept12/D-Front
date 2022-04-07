@@ -11,7 +11,7 @@ export const requestFollow = createAsyncThunk("/requestFollow", (account_id) => 
       withCredentials: true,
   })
       .then((res) => {
-          console.log(res);
+        //   console.log(res);
       })
       .catch((err) => console.log(err));
 });
@@ -25,7 +25,7 @@ export const requestUnFollow = createAsyncThunk("/requestFollow", (account_id) =
       withCredentials: true,
   })
       .then((res) => {
-          console.log(res);
+        //   console.log(res);
       })
       .catch((err) => console.log(err));
 });
@@ -38,7 +38,7 @@ export const requestFollowing = createAsyncThunk("/requestFollowing", ({ account
         },
         })
       .then((res) => {
-          console.log(res);
+        //   console.log(res);
       })
       .catch((err) => console.log(err));
 });
@@ -51,7 +51,7 @@ export const requestFollower = createAsyncThunk("/requestFollower", ({ account_i
         },
       })
       .then((res) => {
-          console.log(res);
+        //   console.log(res);
       })
       .catch((err) => console.log(err));
 });
@@ -63,24 +63,24 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder
         .addCase(requestFollow.pending, (state, action) => {
-            console.log("pending");
+            // console.log("pending");
         })
         .addCase(requestFollow.fulfilled, (state, action) => {
-            console.log("create fulfiled");
+            // console.log("create fulfiled");
         })
         .addCase(requestFollow.rejected, (state, action) => {
-            console.log(action.error.message);
-            console.log("create rejected");
+            // console.log(action.error.message);
+            // console.log("create rejected");
         })
         .addCase(requestFollowing.pending, (state, action) => {
-            console.log("pending");
+            // console.log("pending");
         })
         .addCase(requestFollowing.fulfilled, (state, action) => {
-            console.log("create fulfiled");
+            // console.log("create fulfiled");
         })
         .addCase(requestFollowing.rejected, (state, action) => {
-            console.log(action.error.message);
-            console.log("create rejected");
+            // console.log(action.error.message);
+            // console.log("create rejected");
         })
       }
 });

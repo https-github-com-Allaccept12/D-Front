@@ -15,7 +15,7 @@ export const checknickname = createAsyncThunk(
       withCredentials: true,
     })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.result === "success") {
           setNicknameState("available");
         } else {
@@ -33,14 +33,14 @@ export const checkNicknameSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(checknickname.pending, (state, action) => {
-        console.log("pending");
+        // console.log("pending");
       })
       .addCase(checknickname.fulfilled, (state, action) => {
-        console.log("create fulfiled");
+        // console.log("create fulfiled");
       })
       .addCase(checknickname.rejected, (state, action) => {
-        console.log(action.error.message);
-        console.log("create rejected");
+        // console.log(action.error.message);
+        // console.log("create rejected");
       });
   },
 });

@@ -39,7 +39,7 @@ const ArtPostMain = (props) => {
 
     
     const clickProfile = () => {
-        console.log('clickckcick');
+        // console.log('clickckcick');
         navigate(`/myspace/myprofile/${barArtWorkId}`, {
             state: {
                 owner_id: { barArtWorkId },

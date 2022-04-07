@@ -13,14 +13,14 @@ export const CreateNewDimo = createAsyncThunk("post/CreateDimo", async (formData
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -29,11 +29,11 @@ export const CreateNewDimo = createAsyncThunk("post/CreateDimo", async (formData
 // /api/post/{post_id}
 export const editDimo = createAsyncThunk("/editDimo", ({ post_id, formData }) => {
     for (var key of formData.keys()) {
-        console.log(key);
+        // console.log(key);
     }
 
     for (var value of formData.values()) {
-        console.log(value);
+        // console.log(value);
     }
     URL.patch(`/api/post/${post_id}`, formData, {
         headers: {
@@ -43,14 +43,14 @@ export const editDimo = createAsyncThunk("/editDimo", ({ post_id, formData }) =>
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -64,15 +64,15 @@ export const dimoPageLoad = createAsyncThunk("/dimoPageLoad", ({ dispatch, board
         },
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             dispatch(dimos(res.data.data));
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -80,22 +80,22 @@ export const dimoPageLoad = createAsyncThunk("/dimoPageLoad", ({ dispatch, board
 
 //카테고리 검색(전체보기 기능이 슬라이드랑 붙어있느라 디모엔 빠져서 uiux가 기본으로 나오게 세팅해둠 역시 페이지 폴더의 Dimo.js)
 export const categoryDimo = createAsyncThunk("/categoryDimo", ({ category, dispatch, board, visitor_account_id }) => {
-    console.log(category, board);
+    // console.log(category, board);
     URL.get(`/api/post/category/${category}/0/${board}`, {
         params: {
             visitor_account_id: visitor_account_id,
         },
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             dispatch(categoryDimos(res.data.data));
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -109,15 +109,15 @@ export const dimoQnaDetailLoad = createAsyncThunk("/dimoQnaDetailLoad", ({ post_
         },
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             dispatch(detailDimoQna(res.data.data));
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         }),
@@ -133,15 +133,15 @@ export const dimoQnaDetailSimilar = createAsyncThunk(
             },
         })
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 dispatch(dimoQnaDetailSimilars(res.data.data));
             })
             .catch((err) => {
                 const access_token = sessionStorage.getItem("access_token");
                 const refresh_token = sessionStorage.getItem("refresh_token");
-                console.log(err.response.data.status);
+                // console.log(err.response.data.status);
                 if (err.response.data.status == 444) {
-                    console.log("here");
+                    // console.log("here");
                     dispatch(refreshSlice({ access_token, refresh_token }));
                 }
             }),
@@ -156,14 +156,14 @@ export const likeDimoInfo = createAsyncThunk("/likeDimoInfo", (post_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -178,14 +178,14 @@ export const dislikeDimoInfo = createAsyncThunk("/dislikeDimoInfo", (post_id) =>
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -200,14 +200,14 @@ export const bookmarkAdd = createAsyncThunk("/bookmarkAdd", (post_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -221,14 +221,14 @@ export const bookmarkRemove = createAsyncThunk("/bookmarkRemove", (post_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -242,16 +242,16 @@ export const dimoInfoDetailLoad = createAsyncThunk("/dimoInfoDetailLoad", ({ pos
         },
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
 
             dispatch(detailDimoInfo(res.data.data));
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         }),
@@ -267,14 +267,14 @@ export const deleteDimo = createAsyncThunk("/deleteDimo", ({ post_id, category, 
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -290,14 +290,14 @@ export const deleteAnswerDimo = createAsyncThunk("/deleteAnswerDimo", (answer_id
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -315,14 +315,14 @@ export const CreateAnswerDimo = createAsyncThunk("/CreateAnswerDimo", async (dat
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -338,14 +338,14 @@ export const editAnswerDimo = createAsyncThunk("/editAnswerDimo", async ({ answe
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -361,14 +361,14 @@ export const selectAnswerDimo = createAsyncThunk("/selectAnswerDimo", async ({ a
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -386,14 +386,14 @@ export const CreateInfoDimo = createAsyncThunk("/CreateInfoDimo", async (data, t
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -408,14 +408,14 @@ export const commentModifyDimo = createAsyncThunk("/commentModifyDimo", ({ comme
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -430,14 +430,14 @@ export const commentDeleteDimo = createAsyncThunk("/commentDeleteDimo", (comment
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -451,15 +451,15 @@ export const searchDimo = createAsyncThunk("/searchDimo", ({ keyword, dispatch, 
         },
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             dispatch(categoryDimos(res.data.data));
         })
         .catch((err) => {
             const access_token = sessionStorage.getItem("access_token");
             const refresh_token = sessionStorage.getItem("refresh_token");
-            console.log(err.response.data.status);
+            // console.log(err.response.data.status);
             if (err.response.data.status == 444) {
-                console.log("here");
+                // console.log("here");
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
@@ -475,16 +475,16 @@ export const orderByNewDimo = createAsyncThunk(
             },
         })
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 dispatch(categoryDimos(res.data.data));
                 sessionStorage.setItem("category", category);
             })
             .catch((err) => {
                 const access_token = sessionStorage.getItem("access_token");
                 const refresh_token = sessionStorage.getItem("refresh_token");
-                console.log(err.response.data.status);
+                // console.log(err.response.data.status);
                 if (err.response.data.status == 444) {
-                    console.log("here");
+                    // console.log("here");
                     dispatch(refreshSlice({ access_token, refresh_token }));
                 }
             });
@@ -497,16 +497,16 @@ export const orderByLikeDimo = createAsyncThunk(
     ({ category, dispatch, board, visitor_account_id }) => {
         URL.get(`/api/post/category/like/${category}/${board}?start=0`)
             .then((res) => {
-                console.log(res);
+                // console.log(res);
                 dispatch(categoryDimos(res.data.data));
                 sessionStorage.setItem("category", category);
             })
             .catch((err) => {
                 const access_token = sessionStorage.getItem("access_token");
                 const refresh_token = sessionStorage.getItem("refresh_token");
-                console.log(err.response.data.status);
+                // console.log(err.response.data.status);
                 if (err.response.data.status == 444) {
-                    console.log("here");
+                    // console.log("here");
                     dispatch(refreshSlice({ access_token, refresh_token }));
                 }
             });
@@ -518,8 +518,8 @@ export const dimoSlice = createSlice({
     initialState: { dimos: { postRecommendationFeed: [] } },
     reducers: {
         dimos: (state, action) => {
-            console.log(state);
-            console.log(action);
+            // console.log(state);
+            // console.log(action);
             state.dimos = action.payload;
         },
         dimoSearch: (state, action) => {
@@ -543,69 +543,69 @@ export const dimoSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(CreateNewDimo.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(CreateNewDimo.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(CreateNewDimo.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
 
             .addCase(CreateAnswerDimo.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(CreateAnswerDimo.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(CreateAnswerDimo.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
 
             .addCase(CreateInfoDimo.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(CreateInfoDimo.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(CreateInfoDimo.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
 
             .addCase(editDimo.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(editDimo.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(editDimo.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
 
             .addCase(selectAnswerDimo.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(selectAnswerDimo.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(selectAnswerDimo.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
 
             .addCase(orderByLikeDimo.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(orderByLikeDimo.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(orderByLikeDimo.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             });
     },
 });

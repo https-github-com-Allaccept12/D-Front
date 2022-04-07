@@ -70,7 +70,7 @@ const MyInterests = (props) => {
 
     // 다음 버튼 function
     const SendInterests = () => {
-        console.log(selectInterest);
+        // console.log(selectInterest);
         const interest = { interest: selectInterest };
         dispatch(CreateInterests({ interest, token }));
         navigate("/CreateProfile", { replace: true });

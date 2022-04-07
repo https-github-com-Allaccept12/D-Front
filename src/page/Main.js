@@ -22,7 +22,7 @@ const Main = (props) => {
             sessionStorage.setItem("access_token", getCookie("access_token"));
             sessionStorage.setItem("account_id", getCookie("account_id"));
         }
-        console.log(account_id);
+        // console.log(account_id);
         dispatch(mainPageLoad({ account_id, dispatch }));
     });
 

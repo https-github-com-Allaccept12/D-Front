@@ -37,7 +37,7 @@ const CreateMyIntro = (props) => {
             title_content: intro.value,
             sub_content: sub.value,
         };
-        console.log(data);
+        // console.log(data);
         dispatch(editIntroduce(data));
         navigate(-1);
     };

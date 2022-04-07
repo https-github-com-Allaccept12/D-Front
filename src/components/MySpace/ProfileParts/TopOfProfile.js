@@ -28,7 +28,7 @@ const TopOfProfile = (props) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { info, exp, feed } = props;
-    console.log(info);
+    // console.log(info);
     let account_id = "";
     let nickname = "";
     let following = "";
@@ -90,7 +90,7 @@ const TopOfProfile = (props) => {
                 from: true,
             },
         });
-        console.log('clicktendency');
+        // console.log('clicktendency');
     }
 
     return (

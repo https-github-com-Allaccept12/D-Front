@@ -36,7 +36,7 @@ const DimoQNADetail = ({ history, location, match }) => {
     const dimos = useSelector((state) => state.dimo?.detaildimoQna);
     const dimosdetail = useSelector((state) => state.dimo.detaildimoQna?.postAnswerSubDetail);
     const dimoSimilars = useSelector((state) => state.dimo?.dimoQnaDetailSimilars);
-    console.log(dimos);
+    // console.log(dimos);
 
     useEffect(() => {
         dispatch(dimoQnaDetailLoad({ post_id, dispatch, visitor_account_id }));

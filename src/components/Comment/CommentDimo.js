@@ -43,7 +43,7 @@ const CommentDimo = (props) => {
     const modifyComment = () => {
         const content = name.value;
         const data = { content: content };
-        console.log(content);
+        // console.log(content);
         dispatch(commentModifyDimo({ comment_id, data }));
         setContentValue(content);
         setContent(content);
@@ -106,7 +106,7 @@ const CommentDimo = (props) => {
                 </div>
                 {!modifyDiv && (
                     <>
-                        <div className="flex justify-end flex-row font-min1 text-tiny gap-2">
+                        <div className="flex flex-row justify-end gap-2 font-min1 text-tiny">
                             {owner_account_id == visitor_account_id ? (
                                 <>
                                     <MyBtn onClick={openModify}>수정</MyBtn>

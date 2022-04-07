@@ -84,7 +84,7 @@ const ArtWorkInlineDetail = (props) => {
     const artwork_id = a.split('/')[2];
 
     useEffect(() => {
-        console.log('loading');
+        // console.log('loading');
         const visitor_account_id = sessionStorage.getItem('account_id');
         dispatch(artworkDetailLoad({artwork_id, visitor_account_id, dispatch}))
     }, [])
@@ -92,7 +92,7 @@ const ArtWorkInlineDetail = (props) => {
     const myProfileImg = sessionStorage.getItem("profile_img");
     
     const artworks = useSelector((state) => state.artwork.detailArtwork);
-    console.log(artworks);
+    // console.log(artworks);
 
     const [artworkId, setArtworkId] = useState("");
     const [nickname, setNickname] = useState("");

@@ -109,10 +109,10 @@ const CreateProfile = (props) => {
             // work_time: 0,
             work_time: " ",
         };
-        console.log(data);
+        // console.log(data);
         formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
         formData.append("imgFile", image);
-        console.log(formData);
+        // console.log(formData);
         dispatch(createProfile(formData));
         navigate("/CompleteProfile", { replace: true });
         // setCookie("nickname", nickname.value);

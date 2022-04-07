@@ -37,7 +37,7 @@ function FileUploadDimo(props) {
         setMyFiles([]);
     };
 
-    console.log(myFiles);
+    // console.log(myFiles);
     // const sandImageFiles = () => {
     // };
 

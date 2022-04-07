@@ -43,8 +43,8 @@ const EditMyArtWork = (props) => {
     const { src, size, isMaster, scope, artwork_id, category } = props;
     const [is_master, setMaster] = useState(isMaster);
     const [is_public, setPublic] = useState(scope);
-    console.log("in here, ", artwork_id);
-    console.log(isMaster, scope);
+    // console.log("in here, ", artwork_id);
+    // console.log(isMaster, scope);
     const ClickMaster = () => {
         setMaster(!is_master);
         is_master ? dispatch(getMaster(artwork_id)) : dispatch(removeMaster(artwork_id));
@@ -57,7 +57,7 @@ const EditMyArtWork = (props) => {
         dispatch(deleteArtwork({ artwork_id, category }));
     };
     const ClickEdit = () => {
-        console.log("click, ", artwork_id);
+        // console.log("click, ", artwork_id);
         const visitor_account_id = sessionStorage.getItem("account_id");
         dispatch(ModifyArtWork({ artwork_id, visitor_account_id, dispatch }));
         // navigate.push(`/createart?key=edit&artwork_id=${artwork_id}`);
@@ -70,7 +70,6 @@ const EditMyArtWork = (props) => {
     };
 
     const ClickDetail = () => {
-        console.log('ddfdfdckick');
         navigate(`/detailart/${artwork_id}`);
     }
 

@@ -19,7 +19,7 @@ const Grid = tw.div`
 const ArtWorkCreate = () => {
     const dispatch = useDispatch();
     const location = useLocation();
-    console.log(location.state);
+    // console.log(location.state);
     // let artwork_id = "";
     // let isEdit = false;
     const [isEdit, setIsEdit] = useState(false);
@@ -28,7 +28,7 @@ const ArtWorkCreate = () => {
     const [firstList, setFirstList] = useState([]);
     // const [firstThumbnail, setFirstThumbnail] = useState([]);
     const [previews, SetPreviews] = useState([]);
-    console.log(location.location);
+    // console.log(location.location);
     const editImgs = useSelector((state) => state.artwork.modifyForPreview);
     const info = useSelector((state) => state.artwork.modifyForInfo);
     const firstThumbnail = useSelector((state) => state.image.url);
@@ -64,11 +64,11 @@ const ArtWorkCreate = () => {
     const [images, setImages] = useState([]);
     const [modalOn, setModalOn] = useState(false);
     const [deleteList, setDeleteList] = useState([]);
-    console.log(deleteList);
-    console.log("deleteList: ", deleteList);
-    console.log("ediimgs: ", editImgs);
-    console.log("firstThumbnail: ", firstThumbnail);
-    console.log("info: ", info);
+    // console.log(deleteList);
+    // console.log("deleteList: ", deleteList);
+    // console.log("ediimgs: ", editImgs);
+    // console.log("firstThumbnail: ", firstThumbnail);
+    // console.log("info: ", info);
 
     // useEffect(() => {
     //     console.log('firstList', firstList);
@@ -110,7 +110,7 @@ const ArtWorkCreate = () => {
     }, []);
     // const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
-    console.log(images);
+    // console.log(images);
     return (
         <>
             <div className="flex flex-col w-full bg-gray-200 xl:p-10">
