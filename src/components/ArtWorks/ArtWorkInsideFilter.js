@@ -45,6 +45,9 @@ const ArtWorkInsideFilter = (props) => {
             setCategory(location?.state?.category);
         }
     })
+    console.log('location: ', location);
+    console.log('location state: ', location.state.category);
+    console.log('category: ', category);
     // const category = location?.state.category;
     // if (location.state) {
     //     category = location?.state.category;
@@ -69,6 +72,7 @@ const ArtWorkInsideFilter = (props) => {
             // console.log('enter', e.target.value);
         }
     };
+
     return (
         <>
             <Grid>

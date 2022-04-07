@@ -24,6 +24,7 @@ const ArtWorkFilter = (props) => {
     const ClickCategory = (e) => {
         // console.log(e.target.value);
         const category = e.target.value;
+        console.log(category);
         // if (category === "all") {
         //     dispatch(artworkPageLoad(dispatch));
         // } else {
