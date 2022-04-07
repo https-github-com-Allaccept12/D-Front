@@ -38,7 +38,7 @@ const ArtPost = (props) => {
         dispatch(artworkDetailLoad({ artwork_id, visitor_account_id, dispatch }));
         dispatch(myPageLoad({ account_id, owner_account_id, dispatch }));
     };
-    console.log(please, account_id)
+    // console.log(please, account_id)
     const clickProfile = () => {
         console.log('click accountid', barAccountId);
         navigate(`/myspace/myprofile/${barAccountId}`);
@@ -140,7 +140,7 @@ const ArtPost = (props) => {
                                 <div className="flex flex-row justify-start w-20 gap-3 mx-auto lg:fixed top-20 right-10 2xl:right-48 lg:flex-col">
                                     <div onClick={clickProfile} className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                         <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                            <button onClick={clickProfile} data-bs-dismiss="modal">
+                                            <button data-bs-dismiss="modal">
                                                 <Profile size="5" src={tempProfile} />
                                             </button>
                                         </div>
