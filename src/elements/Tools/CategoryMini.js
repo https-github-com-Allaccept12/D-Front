@@ -64,14 +64,14 @@ const CategoryMini = (props) => {
         if (b === "qna") {
             // console.log(category, board);
             dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
-            navigate(`dimo/qna/${category}`, {
+            navigate(`/dimo/qna/${category}`, {
                 state: {
                     category: category,
                 },
             });
         } else if (b === "info") {
             dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
-            navigate(`dimo/qna/${category}`, {
+            navigate(`dimo/info/${category}`, {
                 state: {
                     category: category,
                 },

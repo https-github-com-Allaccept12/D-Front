@@ -125,7 +125,9 @@ const DimoPost = (props) => {
                                     </div>
                                 </Header>
                                 <TextBox>
-                                    <p className="w-[20.25rem] h-24 text-ellipsis overflow-hidden">{content}</p>
+                                    <Text size="1" className="w-[20.25rem] h-24 text-ellipsis overflow-hidden">
+                                        {content}
+                                    </Text>
                                 </TextBox>
 
                                 <IconBox>
@@ -165,7 +167,9 @@ const DimoPost = (props) => {
                                     </div>
                                 </Header>
                                 <TextBox>
-                                    <p className="w-[20.25rem] h-24 text-ellipsis overflow-hidden">{content}</p>
+                                    <Text size="1" className="w-[20.25rem] h-24 text-ellipsis overflow-hidden">
+                                        {content}
+                                    </Text>
                                 </TextBox>
 
                                 <IconBox>

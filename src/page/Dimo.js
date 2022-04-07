@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { DimoFilter, DimoList } from "../components/Dimo";
@@ -46,21 +46,16 @@ const Dimo = (props) => {
     const visitor_account_id = account_id;
 
     const goToQNA = () => {
-        navigate(`/dimo/qna`, {
+        navigate(`/dimo/qna/uiux`, {
             state: {
                 board: "QNA",
                 category: "uiux",
             },
         });
     };
-    useEffect(() => {
-        const board = b.toUpperCase();
-        dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
-        dispatch(dimoPageLoad({ dispatch, board, visitor_account_id }));
-    }, []);
 
     const goToINFO = () => {
-        navigate(`/dimo/info`, {
+        navigate(`/dimo/info/uiux`, {
             state: {
                 board: "INFO",
                 category: "uiux",
@@ -68,6 +63,11 @@ const Dimo = (props) => {
         });
     };
 
+    useEffect(() => {
+        const board = b.toUpperCase();
+        dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
+        dispatch(dimoPageLoad({ dispatch, board, visitor_account_id }));
+    }, []);
     const goToCreate = () => {
         navigate(`/dimo/create/${b}`, {
             state: {

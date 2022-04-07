@@ -31,7 +31,7 @@ const slidedlider = (props) => {
     const a = location.pathname;
     const b = a.split("/")[2];
     let board = b.toUpperCase();
-    // console.log(board);
+    console.log(board);
 
     const dispatch = useDispatch();
     let account_id = 0;

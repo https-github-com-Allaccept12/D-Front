@@ -69,14 +69,13 @@ const Slides = (props) => {
 
     const makeFollow = () => {
         const account_id = { account_id: id };
-        console.log('account_id:', account_id, 'now:', follow);
+        console.log("account_id:", account_id, "now:", follow);
         setIsfow();
-        if(follow){
+        if (follow) {
             dispatch(requestUnFollow(account_id));
-        }else{
+        } else {
             dispatch(requestFollow(account_id));
         }
-        
     };
 
     const goToProfile = () => {
@@ -103,7 +102,7 @@ const Slides = (props) => {
 
     const clickSlides = () => {
         navigate(`/detailart/${value.artwork_id}`);
-    }
+    };
 
     if (type === "main")
         return (
@@ -182,7 +181,7 @@ const Slides = (props) => {
             <>
                 <div onClick={clickSlides} className="flex items-center justify-center rounded-lg">
                     <button data-bs-dismiss="modal">
-                    <Thumbnail size="7" src={value.img} />
+                        <Thumbnail size="7" src={value.img} />
                     </button>
                     <div className="absolute bottom-0">
                         <div className="rounded-b-lg bg-dgray-500 opacity-80 w-[18.75rem] h-14">
@@ -224,7 +223,7 @@ const Slides = (props) => {
                                 <Text size="2" className="flex flex-wrap h-24 overflow-hidden w-80 text-ellipsis">
                                     {value.content}
                                 </Text>
-                                <Text size="2">(더보기)</Text>
+                                {/* <Text size="2">(더보기)</Text> */}
                             </div>
                             <IconBox>
                                 <div className="flex flex-row justify-end">
@@ -272,7 +271,7 @@ const Slides = (props) => {
                                 <Text size="2" className="flex flex-wrap w-full h-24 overflow-hidden text-ellipsis">
                                     {value.content}
                                 </Text>
-                                <Text size="2">(더보기)</Text>
+                                {/* <Text size="2">(더보기)</Text> */}
                             </div>
                             <IconBox>
                                 <div className="flex flex-row justify-end">
