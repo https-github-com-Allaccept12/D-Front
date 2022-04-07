@@ -24,19 +24,6 @@ const Line = tw.hr`
 w-[95%] border mx-auto border-gray-300 my-6
 `;
 
-// const p = [
-//     { id: "11" },
-//     { id: "21" },
-//     { id: "31" },
-//     { id: "41" },
-//     { id: "51" },
-//     { id: "61" },
-//     { id: "71" },
-//     { id: "81" },
-//     { id: "91" },
-//     { id: "101" },
-// ];
-
 const ArtWorkList = (props) => {
     const artworks = useSelector((state) => state.artwork.artworks);
     return (
@@ -65,13 +52,6 @@ const ArtWorkList = (props) => {
                                     </div>
                                 );
                             })}
-                        {/* {p.map((n) => {
-                            return (
-                                <>
-                                    <ArtPost key={n.id.toString()} size="3" />
-                                </>
-                            );
-                        })} */}
                     </Grid>
                 </InnerBox>
             </Box>

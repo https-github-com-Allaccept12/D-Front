@@ -351,6 +351,29 @@ export const editAnswerDimo = createAsyncThunk("/editAnswerDimo", async ({ answe
         });
 });
 
+//답변채택
+export const selectAnswerDimo = createAsyncThunk("/selectAnswerDimo", async ({ answer_id }) => {
+    await URL.patch(`/api/post/answer/select/${answer_id}`, answer_id, {
+        headers: {
+            "content-type": "application/json",
+            Authorization: "Bearer " + token,
+        },
+        withCredentials: true,
+    })
+        .then((res) => {
+            console.log(res);
+        })
+        .catch((err) => {
+            const access_token = sessionStorage.getItem("access_token");
+            const refresh_token = sessionStorage.getItem("refresh_token");
+            console.log(err.response.data.status);
+            if (err.response.data.status == 444) {
+                console.log("here");
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
+});
+
 //인포댓글달기
 export const CreateInfoDimo = createAsyncThunk("/CreateInfoDimo", async (data, thunkAPI) => {
     const { content, post_id } = data;
@@ -559,6 +582,17 @@ export const dimoSlice = createSlice({
                 console.log("create fulfiled");
             })
             .addCase(editDimo.rejected, (state, action) => {
+                console.log(action.error.message);
+                console.log("create rejected");
+            })
+
+            .addCase(selectAnswerDimo.pending, (state, action) => {
+                console.log("pending");
+            })
+            .addCase(selectAnswerDimo.fulfilled, (state, action) => {
+                console.log("create fulfiled");
+            })
+            .addCase(selectAnswerDimo.rejected, (state, action) => {
                 console.log(action.error.message);
                 console.log("create rejected");
             })

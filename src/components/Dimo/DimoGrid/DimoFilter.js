@@ -39,21 +39,26 @@ const DimoFilter = (props) => {
         console.log(e.target.value);
         const category = e.target.value;
         const board = list.toUpperCase();
+        navigate(`dimo/qna/${category}`, {
+            state: {
+                category: category,
+            },
+        });
         dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
     };
 
-    const goToINFO = () => {
-        navigate(
-            `/dimo/info`,
-            {
-                state: {
-                    board: "INFO",
-                    category: "uiux",
-                },
-            },
-            { replace: true },
-        );
-    };
+    // const goToINFO = () => {
+    //     navigate(
+    //         `/dimo/info`,
+    //         {
+    //             state: {
+    //                 board: "INFO",
+    //                 category: "uiux",
+    //             },
+    //         },
+    //         { replace: true },
+    //     );
+    // };
 
     if (list === "qna")
         return (

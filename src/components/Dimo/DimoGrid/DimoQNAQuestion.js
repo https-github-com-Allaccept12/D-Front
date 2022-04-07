@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Button, Label, Profile, Title, Text, Subtitle, ButtonWithCount, FollowBtn, Answer } from "../../../elements";
-import { requestFollow } from "../../../redux/modules/user";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import tw from "tailwind-styled-components";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { useToggle, useInput } from "../../../hooks";
 import { CreateAnswerDimo } from "../../../redux/modules/dimo";
@@ -16,6 +15,7 @@ import {
     bookmarkAdd,
     bookmarkRemove,
 } from "../../../redux/modules/dimo";
+import { requestFollow, requestUnFollow } from "../../../redux/modules/user";
 const UnderLine = tw.hr`
 border border-dgray-300 w-full col-span-full mt-10 mb-5
 `;
@@ -55,7 +55,6 @@ const MyBtn = tw.button`
 const DimoQNAQuestion = (props) => {
     const { followed, value, post } = props;
 
-    const [is_fow, setIsfow] = useToggle(followed);
     const location = useLocation();
     const navigate = useNavigate();
     const currentUrl = window.location.href;
@@ -146,11 +145,17 @@ const DimoQNAQuestion = (props) => {
             },
         });
     };
+    const [follow, setFollow] = useState(followed);
+    const [barFollow, setBarFollow] = useState();
 
-    const makeFollow = () => {
-        const account_id = { account_id: visitor_account_id };
-        setIsfow();
-        dispatch(requestFollow(account_id));
+    const clickFollow = () => {
+        setFollow(!follow);
+        setBarFollow(!barFollow);
+        if (follow) {
+            dispatch(requestUnFollow(owner_account_id));
+        } else {
+            dispatch(requestFollow(owner_account_id));
+        }
     };
 
     return (
@@ -266,12 +271,14 @@ const DimoQNAQuestion = (props) => {
                                     name="Link"
                                     color="5"
                                     size="3"
-                                    onClick={() => Swal.fire({
-                                        icon: 'success',
-                                        title: '클립보드에 복사됐습니다.',
-                                        showConfirmButton: false,
-                                        timer: 1000
-                                      })}
+                                    onClick={() =>
+                                        Swal.fire({
+                                            icon: "success",
+                                            title: "클립보드에 복사됐습니다.",
+                                            showConfirmButton: false,
+                                            timer: 1000,
+                                        })
+                                    }
                                 >
                                     공유<span className="hidden xl:contents">하기</span>
                                 </Button>
@@ -291,7 +298,7 @@ const DimoQNAQuestion = (props) => {
                             </Title>
                         </div>
                     </div>
-                    <FollowBtn size="2" color="1" followed={followed} onClick={makeFollow} val={is_fow} />
+                    <FollowBtn size="2" color="1" followed={followed} onClick={clickFollow} />
                 </Footer>
             </Card>
             {showAnswer && (

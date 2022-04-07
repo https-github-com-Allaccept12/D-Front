@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Label, Profile, Title, Text, Answer, InputNoTitle, Icon } from "../../../elements";
+import { Button, Label, Profile, Title, Text, Answer, Subtitle, Icon } from "../../../elements";
 import { CommentDimo } from "../../Comment";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -52,9 +52,21 @@ const MyBtn = tw.button`
 `;
 
 const DimoSharedDetail = () => {
+    const dimo = useSelector((state) => state.dimo.detailDimoInfo);
+    const dimos = useSelector((state) => state.dimo.detailDimoInfo?.postSubDetail);
+    // console.log(dimos);
     let location = useLocation();
     let navigate = useNavigate();
     // const navigate = useNavigate();
+    let account_id = 0;
+    // const id_cookie = getCookie("account_id");
+    const id_cookie = sessionStorage.getItem("account_id");
+    if (id_cookie) {
+        account_id = id_cookie;
+    }
+
+    let owner_account_id = dimos?.account_id;
+    const visitor_account_id = account_id;
 
     const post_id = location.state.post_id;
     console.log(post_id);
@@ -69,19 +81,6 @@ const DimoSharedDetail = () => {
     const validMaxLen = (value) => value.length <= 30;
     const name = useInput("", [validMaxLen]);
 
-    const dimo = useSelector((state) => state.dimo.detailDimoInfo);
-    const dimos = useSelector((state) => state.dimo.detailDimoInfo?.postSubDetail);
-    console.log(dimos);
-
-    let account_id = 0;
-    // const id_cookie = getCookie("account_id");
-    const id_cookie = sessionStorage.getItem("account_id");
-    if (id_cookie) {
-        account_id = id_cookie;
-    }
-
-    let owner_account_id = dimos?.account_id;
-    const visitor_account_id = account_id;
     // console.log(owner_account_id);
     const commentSubmit = () => {
         const content = name.value;
@@ -137,11 +136,11 @@ const DimoSharedDetail = () => {
         });
     };
 
-    const makeFollow = () => {
-        const account_id = { account_id: visitor_account_id };
-        setIsfow();
-        dispatch(requestFollow(account_id));
-    };
+    // const makeFollow = () => {
+    //     const account_id = { account_id: visitor_account_id };
+    //     setIsfow();
+    //     dispatch(requestFollow(account_id));
+    // };
     return (
         <>
             <Bg>
@@ -223,9 +222,9 @@ const DimoSharedDetail = () => {
                 <Card>
                     <div className="bg-dgray-200 rounded-md flex p-5 xl:px-10 2xl:px-20 mt-20">
                         <div>
-                            <Title size="6" className="hidden lg:flex">
+                            <Subtitle size="1" className="hidden lg:flex">
                                 댓글 남기기
-                            </Title>
+                            </Subtitle>
                             <Profile
                                 size="5"
                                 src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"

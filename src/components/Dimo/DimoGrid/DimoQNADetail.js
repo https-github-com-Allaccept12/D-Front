@@ -46,11 +46,11 @@ const DimoQNADetail = ({ history, location, match }) => {
     const post_id = pathname.split("/")[3];
     // console.log(dimos);
 
-    // let owner_account_id = account_id;
+    let owner_account_id = account_id;
 
     return (
         <>
-            <div className="h-[100rem] xl:grid xl:grid-cols-4 bg-dgray-200">
+            <div className="h-[200rem] xl:grid xl:grid-cols-4 bg-dgray-200">
                 <div className="col-span-2 col-start-4 grid-rows-6 xl:grid ">
                     <div className="fixed invisible h-full top-28 2xl:visible 2xl:absolute">
                         <div className="flex flex-col ">

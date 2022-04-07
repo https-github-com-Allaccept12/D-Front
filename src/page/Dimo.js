@@ -57,7 +57,7 @@ const Dimo = (props) => {
         const board = b.toUpperCase();
         dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
         dispatch(dimoPageLoad({ dispatch, board, visitor_account_id }));
-    }, [navigate]);
+    }, []);
 
     const goToINFO = () => {
         navigate(`/dimo/info`, {
