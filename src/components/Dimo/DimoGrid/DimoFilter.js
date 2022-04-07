@@ -37,9 +37,11 @@ const DimoFilter = (props) => {
     const visitor_account_id = account_id;
     const ClickCategory = (e) => {
         console.log(e.target.value);
+        const bigCate = location.pathname.split('/')[2];
         const category = e.target.value;
-        const board = list.toUpperCase();
-        navigate(`/dimo/qna/${category}`, {
+        // const board = list.toUpperCase();
+        const board = bigCate.toUpperCase();
+        navigate(`/dimo/${bigCate}/${category}`, {
             state: {
                 category: category,
             },

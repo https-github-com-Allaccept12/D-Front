@@ -61,7 +61,7 @@ const Dimo = (props) => {
     }, [lights, lightss]);
 
     const goToINFO = () => {
-        navigate(`/dimo/info`, {
+        navigate(`/dimo/info/uiux`, {
             state: {
                 board: "INFO",
                 category: "uiux",
@@ -98,7 +98,7 @@ const Dimo = (props) => {
                                     size="5"
                                     value="QNA"
                                     onClick={goToQNA}
-                                    className="text-dpurple-200 cursor-pointer"
+                                    className="cursor-pointer text-dpurple-200"
                                 >
                                     QNA
                                 </Title>
@@ -107,7 +107,7 @@ const Dimo = (props) => {
                                     size="5"
                                     value="INFO"
                                     onClick={goToINFO}
-                                    className="text-dpurple-200 cursor-pointer"
+                                    className="cursor-pointer text-dpurple-200"
                                 >
                                     정보공유
                                 </Title>

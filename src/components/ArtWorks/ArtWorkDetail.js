@@ -83,7 +83,7 @@ const ArtWorkDetail = (props) => {
     const writerInfo = useSelector((state) => state.myPage.myPage);
     const artworks = useSelector((state) => state.artwork.detailArtwork);
 
-    console.log(artworks);
+    // console.log(artworks);
     const [artworkId, setArtworkId] = useState("");
     const [nickname, setNickname] = useState("");
     const [category, setCategory] = useState("");
