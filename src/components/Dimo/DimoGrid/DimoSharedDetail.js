@@ -68,7 +68,7 @@ const DimoSharedDetail = () => {
     let owner_account_id = dimos?.account_id;
     const visitor_account_id = account_id;
 
-    const post_id = location.state.post_id;
+    const post_id = location?.state?.post_id;
     console.log(post_id);
     // const post_id = match.params.name;
     const dispatch = useDispatch();
@@ -154,7 +154,7 @@ const DimoSharedDetail = () => {
                         " "
                     )}
                     <Header>
-                        <div className="flex flex-row gap-1 md:pt-10 pb-4">
+                        <div className="flex flex-row gap-1 pb-4 md:pt-10">
                             {dimo
                                 ? dimo?.hash_tag.map((value, idx) => {
                                       return <Label key={idx}>{value?.tag}</Label>;
@@ -178,7 +178,7 @@ const DimoSharedDetail = () => {
                             <Button size="3" onClick={setShowAnswer} className="invisible">
                                 답변남기기
                             </Button>
-                            <div className="flex flex-col md:flex-row gap-3">
+                            <div className="flex flex-col gap-3 md:flex-row">
                                 {is_like ? (
                                     <Button icon name="HeartF" color="5" size="3" count={like_cnt} onClick={cancelLike}>
                                         <span className="hidden 2xl:contents">좋아요</span>
@@ -216,11 +216,11 @@ const DimoSharedDetail = () => {
 
                 <div className="flex flex-row font-min1">
                     <Icon name="Talk" iconSize="32" />
-                    <span className="text-xl mb-1 pl-2">댓글 {dimo?.comment_count}개</span>
+                    <span className="pl-2 mb-1 text-xl">댓글 {dimo?.comment_count}개</span>
                 </div>
 
                 <Card>
-                    <div className="bg-dgray-200 rounded-md flex p-5 xl:px-10 2xl:px-20 mt-20">
+                    <div className="flex p-5 mt-20 rounded-md bg-dgray-200 xl:px-10 2xl:px-20">
                         <div>
                             <Subtitle size="1" className="hidden lg:flex">
                                 댓글 남기기
@@ -231,7 +231,7 @@ const DimoSharedDetail = () => {
                                 className="hidden lg:flex"
                             />
                         </div>
-                        <div className="w-full lg:w-11/12 ml-auto mt-12">
+                        <div className="w-full mt-12 ml-auto lg:w-11/12">
                             <Answer
                                 value={name.value}
                                 onChange={name.onChange}
@@ -241,7 +241,7 @@ const DimoSharedDetail = () => {
                                 cardsize="2"
                                 width="20"
                             />
-                            <Button size="3" className="xl:invisible visible mt-4" onClick={commentSubmit}>
+                            <Button size="3" className="visible mt-4 xl:invisible" onClick={commentSubmit}>
                                 제출
                             </Button>
                         </div>
