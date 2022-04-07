@@ -25,23 +25,23 @@ const MyPageCategory = (props) => {
 
     const toMyWork = () => {
         setActive("1");
-        navigate(`/mywork/${myPageId}`);
+        navigate(`/myspace/mywork/${myPageId}`);
     }
 
     const toMyPic = () => {
         setActive("2");
-        navigate(`/mypic/${myPageId}`);
+        navigate(`/myspace/mypic/${myPageId}`);
     }
 
     const toShare = () => {
         setActive("3");
-        navigate(`/share/${myPageId}`);
+        navigate(`/myspace/share/${myPageId}`);
         
     }
 
     const toQNA = () => {
         setActive("4");
-        navigate(`/qna/${myPageId}`);
+        navigate(`/myspace/qna/${myPageId}`);
         
     }
 
