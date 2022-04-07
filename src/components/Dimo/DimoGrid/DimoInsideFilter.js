@@ -46,6 +46,7 @@ const DimoInsideFilter = (props) => {
     if (location.state) {
         setCategory(location.pathname.split('/')[1]);
     }
+    console.log(location);
     console.log(location.pathname);
     console.log(category);
 

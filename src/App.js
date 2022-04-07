@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import KakaoRedirectHandler from "./shared/KakaoRedirectHandler";
 import ReactGA from "react-ga";
 
-ReactGA.event({
+ReactGA.event({ 
     category: "User",
     action: "Created an Account",
 });
