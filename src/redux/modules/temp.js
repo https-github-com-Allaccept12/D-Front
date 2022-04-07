@@ -11,7 +11,7 @@ export const kakaoSlice = createAsyncThunk(
   ({ code, history, dispatch }) => {
     URL.get(`/user/kakao/callback?code=${code}`)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.data.result === "success") {
           const access_token = res.data.data.access_token;
           const refresh_token = res.data.data.refresh_token;
@@ -41,8 +41,8 @@ export const kakaoSlice = createAsyncThunk(
 export const refreshSlice = createAsyncThunk(
   "post/refresh",
   async ({ access_token, refresh_token }) => {
-    console.log('access:', access_token);
-    console.log('refresh:', refresh_token);
+    // console.log('access:', access_token);
+    // console.log('refresh:', refresh_token);
 
     URL.get(`/user/refresh?accessToken`,{
       headers: {
@@ -73,14 +73,14 @@ export const tempSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(refreshSlice.pending, (state, action) => {
-        console.log("pending");
+        // console.log("pending");
       })
       .addCase(refreshSlice.fulfilled, (state, action) => {
-        console.log("create fulfiled");
+        // console.log("create fulfiled");
       })
       .addCase(refreshSlice.rejected, (state, action) => {
-        console.log(action.error.message);
-        console.log("create rejected");
+        // console.log(action.error.message);
+        // console.log("create rejected");
       });
   },
 });

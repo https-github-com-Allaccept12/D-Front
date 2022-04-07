@@ -56,10 +56,10 @@ const ArtPost = (props) => {
         setLike(!like);
         setBarLike(!barLike);
         if (like){
-            console.log('unlike');
+            // console.log('unlike');
             dispatch(UnLikeArtwork(barArtWorkId));
         } else{
-            console.log('like');
+            // console.log('like');
             dispatch(LikeArtwork(barArtWorkId));
 
         }
@@ -69,10 +69,10 @@ const ArtPost = (props) => {
         setBookmark(!bookmark);
         setBarBookMark(!barBookMark);
         if (bookmark){
-            console.log('unmark');
+            // console.log('unmark');
             dispatch(UnMarkArtwork(barArtWorkId));
         } else{
-            console.log('mark');
+            // console.log('mark');
             dispatch(MarkArtwork(barArtWorkId));
 
         }

@@ -45,7 +45,7 @@ const DimoInsideFilter = (props) => {
     if (location.state) {
         category = location?.state.category;
     }
-    console.log(category);
+    // console.log(category);
 
     const JobOptions = [
         { value: "uiux", label: "UI & UX" },

@@ -22,7 +22,7 @@ const ArtWorkFilter = (props) => {
     const location = useLocation();
     let dispatch = useDispatch();
     const ClickCategory = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         const category = e.target.value;
         if (category === "all") {
             dispatch(artworkPageLoad(dispatch));

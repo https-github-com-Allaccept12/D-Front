@@ -11,7 +11,7 @@ border border-gray-600 my-6 w-5/6 mx-auto
 
 const MyPortfolio = (props) => {
     const feed = useSelector((state) => state.myPage.careerFeed);
-    console.log('feed: ', feed);
+    // console.log('feed: ', feed);
     // const [feeds, setFeeds] = useState([]);
 
     // useEffect(() => {

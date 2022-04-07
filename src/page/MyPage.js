@@ -42,7 +42,7 @@ const MyPage = (props) => {
     }
     // console.log('location:', location.state.owner_id);
     const owner_account_id = myPageId;
-    console.log('accountId, ownerAccountId', account_id, owner_account_id);
+    // console.log('accountId, ownerAccountId', account_id, owner_account_id);
 
     useEffect(() => {
         dispatch(myPageLoad({ account_id, owner_account_id, dispatch }));

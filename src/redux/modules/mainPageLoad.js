@@ -14,7 +14,7 @@ export const mainPageLoad = createAsyncThunk(
         },
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         if (res.data.data){
           const top_artist = res.data.data.top_artist;
           const artwork = res.data.data.artwork;
@@ -32,14 +32,14 @@ export const mainPageSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(mainPageLoad.pending, (state, action) => {
-        console.log("pending");
+        // console.log("pending");
       })
       .addCase(mainPageLoad.fulfilled, (state, action) => {
-        console.log("create fulfiled");
+        // console.log("create fulfiled");
       })
       .addCase(mainPageLoad.rejected, (state, action) => {
-        console.log(action.error.message);
-        console.log("create rejected");
+        // console.log(action.error.message);
+        // console.log("create rejected");
       });
   },
 });

@@ -32,11 +32,11 @@ w-full bg-white
 
 const DimoCreate = ({ match }) => {
     let location = useLocation();
-    console.log(location.state.board);
+    // console.log(location.state.board);
 
     const navigate = useNavigate();
     const { pathname } = useLocation();
-    console.log(pathname);
+    // console.log(pathname);
     let post_id = "";
     let isEdit = false;
     let board = "";
@@ -76,7 +76,7 @@ const DimoCreate = ({ match }) => {
 
     const dispatch = useDispatch();
     const dimo = useSelector((state) => state.image.dimoFiles);
-    console.log(editsInfoImgs);
+    // console.log(editsInfoImgs);
 
     const JobOptions = [
         { value: "uiux", label: "📱 UI & UX" },
@@ -96,7 +96,7 @@ const DimoCreate = ({ match }) => {
     ];
     const [selected, setSelected] = useState("카테고리를 선택해주세요");
     const [hashtags, setHashtags] = useState([]);
-    console.log(selected);
+    // console.log(selected);
     const handleChangeSelect = (e) => {
         setSelected(e.target.value);
     };
@@ -155,7 +155,7 @@ const DimoCreate = ({ match }) => {
         formData.append("data", new Blob([JSON.stringify(data)], { type: "application/json" }));
         dimo.forEach((element) => formData.append("imgFile", element));
         for (var pair of formData.entries()) {
-            console.log(pair);
+            // console.log(pair);
         }
         dispatch(CreateNewDimo(formData));
 
@@ -173,10 +173,10 @@ const DimoCreate = ({ match }) => {
             formData.append("data", new Blob([JSON.stringify(editData)], { type: "application/json" }));
             dimo.forEach((element) => formData.append("imgFile", element));
             for (var pair of formData.entries()) {
-                console.log(pair);
+                // console.log(pair);
             }
             const post_id = bbb;
-            console.log(formData, post_id);
+            // console.log(formData, post_id);
             dispatch(editDimo({ formData, post_id }));
 
             navigate("/dimo/qna/all", { replace: true });
@@ -185,10 +185,10 @@ const DimoCreate = ({ match }) => {
             formData.append("data", new Blob([JSON.stringify(sandInfoEditData)], { type: "application/json" }));
             dimo.forEach((element) => formData.append("imgFile", element));
             for (var pair of formData.entries()) {
-                console.log(pair);
+                // console.log(pair);
             }
             const post_id = bbb;
-            console.log(formData, post_id);
+            // console.log(formData, post_id);
             dispatch(editDimo({ formData, post_id }));
 
             navigate("/dimo/qna/all", { replace: true });

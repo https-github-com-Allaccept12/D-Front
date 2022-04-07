@@ -72,7 +72,7 @@ const DimoQNAAnswer = (props) => {
     }
     let visitor_account_id = dimosdetail.account_id;
     let owner_account_id = a_id;
-    console.log(visitor_account_id);
+    // console.log(visitor_account_id);
     const ClickDelete = () => {
         dispatch(deleteAnswerDimo(answer_id));
         navigate("/dimo/qna");
@@ -89,7 +89,7 @@ const DimoQNAAnswer = (props) => {
     const modifyComment = () => {
         const content = name.value;
         const data = { content: content };
-        console.log(content);
+        // console.log(content);
         dispatch(editAnswerDimo({ answer_id, data }));
         setContentValue(content);
         setContent(content);
@@ -142,9 +142,9 @@ const DimoQNAAnswer = (props) => {
                     )}
 
                     {!modifyDiv && <></>}
-                    <div className="justify-start flex flex-row">
+                    <div className="flex flex-row justify-start">
                         <Profile size="5" src={account_profile_img} className="hidden md:flex" />
-                        <div className="-mt-2 ml-3">
+                        <div className="ml-3 -mt-2">
                             <Title size="5" className="my-3">
                                 {account_nickname}
                             </Title>

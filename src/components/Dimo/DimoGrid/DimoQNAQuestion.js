@@ -59,7 +59,7 @@ const DimoQNAQuestion = (props) => {
     const navigate = useNavigate();
     const currentUrl = window.location.href;
     const post_id = location.state.post_id;
-    console.log(post_id);
+    // console.log(post_id);
     let account_id = 0;
     // const id_cookie = getCookie("account_id");
     const id_cookie = sessionStorage.getItem("account_id");

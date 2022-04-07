@@ -42,8 +42,8 @@ const MyQNA = (props) => {
     
     const myqnas = useSelector((state) => state.myPage.myqnas);
     const myanswers = useSelector((state) => state.myPage.myanswers);
-    console.log(myqnas);
-    console.log(myanswers);
+    // console.log(myqnas);
+    // console.log(myanswers);
 
 
     const array_sample = [

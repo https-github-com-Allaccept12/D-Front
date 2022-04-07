@@ -33,7 +33,7 @@ export const editIntroduce = createAsyncThunk(
         withCredentials: true,
       })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
         })
         .catch((err) => {
           if(err.response.status == 401){
@@ -56,14 +56,14 @@ export const editIntroduce = createAsyncThunk(
         withCredentials: true,
       })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
         })
         .catch((err) => {
           if(err.response.status == 401){
             alert('다시 로그인 해주세요.');
             window.location.href = "/logout";
           }else{
-            console.log(err);
+            // console.log(err);
           }});
     }
   );
@@ -80,14 +80,14 @@ export const editIntroduce = createAsyncThunk(
         withCredentials: true,
       })
         .then((res) => {
-          console.log(res);
+          // console.log(res);
         })
         .catch((err) => {
           if(err.response.status == 401){
             alert('다시 로그인 해주세요.');
             window.location.href = "/logout";
           }else{
-            console.log(err);
+            // console.log(err);
           }});;
     }
   );
@@ -100,34 +100,34 @@ export const editProfileSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(editIntroduce.pending, (state, action) => {
-        console.log("pending");
+        // console.log("pending");
       })
       .addCase(editIntroduce.fulfilled, (state, action) => {
-        console.log("create fulfiled");
+        // console.log("create fulfiled");
       })
       .addCase(editIntroduce.rejected, (state, action) => {
-        console.log(action.error.message);
-        console.log("create rejected");
+        // console.log(action.error.message);
+        // console.log("create rejected");
       })
       .addCase(editExp.pending, (state, action) => {
-        console.log("pending");
+        // console.log("pending");
       })
       .addCase(editExp.fulfilled, (state, action) => {
-        console.log("create fulfiled");
+        // console.log("create fulfiled");
       })
       .addCase(editExp.rejected, (state, action) => {
-        console.log(action.error.message);
-        console.log("create rejected");
+        // console.log(action.error.message);
+        // console.log("create rejected");
       })
       .addCase(editSkills.pending, (state, action) => {
-        console.log("pending");
+        // console.log("pending");
       })
       .addCase(editSkills.fulfilled, (state, action) => {
-        console.log("create fulfiled");
+        // console.log("create fulfiled");
       })
       .addCase(editSkills.rejected, (state, action) => {
-        console.log(action.error.message);
-        console.log("create rejected");
+        // console.log(action.error.message);
+        // console.log("create rejected");
       })
   },
 });

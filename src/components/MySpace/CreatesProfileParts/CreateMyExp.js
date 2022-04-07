@@ -103,7 +103,7 @@ const CreateMyExp = (props) => {
             arr.push(inputList[i]);
         }
         data["history"] = arr;
-        console.log(data);
+        // console.log(data);
         dispatch(editExp(data));
         navigate(-1);
     };

@@ -33,7 +33,7 @@ const CategoryMini = (props) => {
 
     let dispatch = useDispatch();
     const ClickCategory = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         const category = e.target.value;
         if (category === "all") {
             dispatch(artworkPageLoad(dispatch));
@@ -43,12 +43,12 @@ const CategoryMini = (props) => {
     };
 
     const ClickCategoryDimo = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         const category = e.target.value;
         const board = b.toUpperCase();
 
         if (b === "qna") {
-            console.log(category, board);
+            // console.log(category, board);
             dispatch(categoryDimo({ category, dispatch, board }));
         } else if (b === "info") {
             dispatch(categoryDimo({ category, dispatch, board }));

@@ -69,7 +69,7 @@ const Slides = (props) => {
 
     const makeFollow = () => {
         const account_id = { account_id: id };
-        console.log('account_id:', account_id, 'now:', follow);
+        // console.log('account_id:', account_id, 'now:', follow);
         setIsfow();
         if(follow){
             dispatch(requestUnFollow(account_id));

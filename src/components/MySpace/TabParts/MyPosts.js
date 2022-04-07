@@ -39,9 +39,9 @@ const MyPosts = (props) => {
     const myposts = useSelector((state) => state.myPage.myposts);
     const mymarks = useSelector((state) => state.myPage.mymarks);
     const mycomments = useSelector((state) => state.myPage.mycomments);
-    console.log(myposts);
-    console.log(mymarks);
-    console.log(mycomments);
+    // console.log(myposts);
+    // console.log(mymarks);
+    // console.log(mycomments);
 
     const array_sample = [
         {

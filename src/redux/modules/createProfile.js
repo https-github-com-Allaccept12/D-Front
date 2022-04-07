@@ -18,14 +18,14 @@ export const createProfile = createAsyncThunk(
       withCredentials: true,
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         const access_token = sessionStorage.getItem("access_token");
         const refresh_token = sessionStorage.getItem("refresh_token");
-        console.log(err.response.data.status);
+        // console.log(err.response.data.status);
         if (err.response.data.status == 444){
-            console.log('here');
+            // console.log('here');
             dispatch(refreshSlice({access_token, refresh_token}));
         }
       });
@@ -43,14 +43,14 @@ export const profileSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(createProfile.pending, (state, action) => {
-        console.log("pending");
+        // console.log("pending");
       })
       .addCase(createProfile.fulfilled, (state, action) => {
-        console.log("create fulfiled");
+        // console.log("create fulfiled");
       })
       .addCase(createProfile.rejected, (state, action) => {
-        console.log(action.error.message);
-        console.log("create rejected");
+        // console.log(action.error.message);
+        // console.log("create rejected");
       });
   },
 });

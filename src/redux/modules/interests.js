@@ -11,7 +11,7 @@ export const CreateInterests = createAsyncThunk(
       withCredentials: true,
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => console.log(err));
   }

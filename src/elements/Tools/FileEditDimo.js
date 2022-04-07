@@ -23,7 +23,7 @@ function FileEditDimo(props) {
     const [myFiles, setMyFiles] = useState([]);
     const [deleteFiles, setDeleteFiles] = useState([]);
     const [mirror, setMirror] = useState([]);
-    console.log(deleteFiles);
+    // console.log(deleteFiles);
     const [active, setActive] = useState(false);
 
     const dispatch = useDispatch();
@@ -63,7 +63,7 @@ function FileEditDimo(props) {
         newFiles.splice(newFiles[idx], idx);
 
         const nextData = newFiles.filter((n) => console.log(n));
-        console.log(nextData);
+        // console.log(nextData);
         // setMirror(img);
         setDeleteFiles(img);
 
@@ -71,7 +71,7 @@ function FileEditDimo(props) {
         setDeleteFiles(delete_img);
 
         // newFiles.filter((v) => img !== img);
-        console.log(newFiles);
+        // console.log(newFiles);
         setMyEdits(newFiles);
     };
 
@@ -90,7 +90,7 @@ function FileEditDimo(props) {
             <>
                 {myEdits.length > 0 &&
                     myEdits.map((value, idx) => {
-                        console.log(value, idx);
+                        // console.log(value, idx);
                         return (
                             <>
                                 <p key={idx} ref={imageRef}>

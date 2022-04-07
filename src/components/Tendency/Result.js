@@ -64,8 +64,8 @@ const TendencyResult = ({ history, match }) => {
     const [is_loaded, setIsLoaded] = useState(false);
     const [myTendency, setMyTendency] = useState("");
     const fromMyPage = location.state.from;
-    console.log(location.state);
-    console.log(fromMyPage);
+    // console.log(location.state);
+    // console.log(fromMyPage);
 
     useEffect(() => {
         setMyTendency(location.state.title.tendency);
@@ -90,7 +90,7 @@ const TendencyResult = ({ history, match }) => {
     const dispatch = useDispatch();
     const SendTendency = () => {
         const tendency = { tendency: myTendency };
-        console.log(tendency);
+        // console.log(tendency);
         dispatch(CreateTendency({ tendency, token }));
 
         navigate("/MyInterests", { replace: true });

@@ -78,7 +78,7 @@ const CreateMySkill = (props) => {
         specialty: main,
         other_specialty: sub,
       };
-      console.log(data);
+      // console.log(data);
       dispatch(editSkills(data));
       navigate(-1);
     }

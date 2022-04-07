@@ -14,13 +14,13 @@ export const CreateNewArtWork = createAsyncThunk("post/CreateNewArtWork", async 
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             
         })
         .catch((err) => {
-            console.log(err);
+            // console.log(err);
             if (err.response.data.status == 444){
-                console.log('here');
+                // console.log('here');
                 dispatch(refreshSlice({access_token, refresh_token}));
             }
         });
@@ -28,7 +28,7 @@ export const CreateNewArtWork = createAsyncThunk("post/CreateNewArtWork", async 
 
 //작품 수정
 export const RequestModifyArtWork = createAsyncThunk("post/RequestModifyArtWork", async ({artwork_id, formData}) => {
-    console.log(artwork_id);
+    // console.log(artwork_id);
     await URL.patch(`/api/artwork/${artwork_id}`, formData, {
         headers: {
             "content-type": "multipart/form-data",
@@ -37,13 +37,13 @@ export const RequestModifyArtWork = createAsyncThunk("post/RequestModifyArtWork"
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             
         })
         .catch((err) => {
-            console.log(err);
+            // console.log(err);
             if (err.response.data.status == 444){
-                console.log('here');
+                // console.log('here');
                 dispatch(refreshSlice({access_token, refresh_token}));
             }
         });
@@ -57,7 +57,7 @@ export const ModifyArtWork = createAsyncThunk("post/ModifyArtWork", ({artwork_id
         },
     })
     .then((res) => {
-        console.log(res.data.data.artWorkSubDetail);
+        // console.log(res.data.data.artWorkSubDetail);
         const x = res.data.data.img;
         const temp = []
         for(var item of x){
@@ -74,7 +74,7 @@ export const ModifyArtWork = createAsyncThunk("post/ModifyArtWork", ({artwork_id
 export const artworkPageLoad = createAsyncThunk("/artworkPageLoad", (dispatch) => {
     URL.get(`/api/artwork/0`)
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             dispatch(artworks(res.data.data));
             sessionStorage.removeItem("category");
         })
@@ -83,7 +83,7 @@ export const artworkPageLoad = createAsyncThunk("/artworkPageLoad", (dispatch) =
 
 // 아트워크 상세페이지
 export const artworkDetailLoad = createAsyncThunk("/artworkDetailLoad", ({ artwork_id, visitor_account_id, dispatch }) => {
-    console.log(artwork_id, visitor_account_id),
+    // console.log(artwork_id, visitor_account_id),
     URL.get(`/api/artwork/detail/${artwork_id}`, {
         params: {
             visitor_account_id: visitor_account_id
@@ -91,7 +91,7 @@ export const artworkDetailLoad = createAsyncThunk("/artworkDetailLoad", ({ artwo
       })
     // ?visitor_account_id${visitor_account_id}`)
     .then((res) => {
-        console.log(res);
+        // console.log(res);
         dispatch(detailArtwork(res.data.data));
     })
     .catch((err) => console.log(err));
@@ -108,7 +108,7 @@ export const PortfolioLoad = createAsyncThunk("/PortfolioLoad", async ({ owner_a
           })
         //   ?owner_account_id=${owner_account_id}?visitor_account_id=${visitor_account_id}`)
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             const porfolio_data = res.data.data;
             dispatch(portfolios(porfolio_data));
             return porfolio_data;
@@ -125,12 +125,12 @@ export const getMaster = createAsyncThunk("/getMaster", (artwork_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            console.log('post');
-            console.log(res);
+            // console.log('post');
+            // console.log(res);
         })
         .catch((err) => {
-            console.log('post');
-            console.log(err);
+            // console.log('post');
+            // console.log(err);
         });
 });
 
@@ -143,12 +143,12 @@ export const removeMaster = createAsyncThunk("/removeMaster", (artwork_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            console.log('delete');
-            console.log(res);
+            // console.log('delete');
+            // console.log(res);
         })
         .catch((err) => {
-            console.log('delete');
-            console.log(err);
+            // console.log('delete');
+            // console.log(err);
         });
 
 });
@@ -162,7 +162,7 @@ export const updateScope = createAsyncThunk("/updateScope", (artwork_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => console.log(err));
 });
@@ -175,7 +175,7 @@ export const postScope = createAsyncThunk("/updateScope", (artwork_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => console.log(err));
 });
@@ -189,7 +189,7 @@ export const deleteArtwork = createAsyncThunk("/deleteArtwork", ({artwork_id, ca
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => console.log(err));
 });
@@ -202,7 +202,7 @@ export const searchArtwork = createAsyncThunk("/searchArtwork", ({ keyword, visi
             },
         })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             dispatch(artworks(res.data.data));
         })
         .catch((err) => console.log(err));
@@ -212,31 +212,30 @@ export const searchArtwork = createAsyncThunk("/searchArtwork", ({ keyword, visi
 export const categoryArtwork = createAsyncThunk("/categoryArtwork", ({ category, dispatch }) => {
     URL.get(`/api/artwork/category/${category}/0`)
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             dispatch(artworks(res.data.data));
-            sessionStorage.setItem("category", category);
         })
         .catch((err) => console.log(err));
 });
 
 // 카테고리별 좋아요순 정렬
 export const orderByLike = createAsyncThunk("/orderByLike", ({ category, dispatch }) => {
+    // console.log(category);
     URL.get(`/api/artwork/sort/${category}?start=0`)
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             dispatch(artworks(res.data.data));
-            sessionStorage.setItem("category", category);
         })
         .catch((err) => console.log(err));
 });
 
 // 카테고리별 최신순 정렬
 export const orderByTime = createAsyncThunk("/orderByTime", ({ category, dispatch }) => {
+    // console.log(category);
     URL.get(`/api/artwork/category/${category}/0`)
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             dispatch(artworks(res.data.data));
-            sessionStorage.setItem("category", category);
         })
         .catch((err) => console.log(err));
 });
@@ -249,9 +248,8 @@ export const orderByFollow = createAsyncThunk("/orderByFollow", ({ category, vis
             },
         })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
             dispatch(artworks(res.data.data));
-            sessionStorage.setItem("category", category);
         })
         .catch((err) => console.log(err));
 });
@@ -265,7 +263,7 @@ export const submitComment = createAsyncThunk("/categoryArtwork", ({ artwork_id,
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => console.log(err));
 });
@@ -279,7 +277,7 @@ export const commentModify = createAsyncThunk("/commentModify", ({ comment_id, d
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => console.log(err));
 });
@@ -293,7 +291,7 @@ export const commentDelete = createAsyncThunk("/commentDelete", (comment_id) => 
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => console.log(err));
 });
@@ -308,7 +306,7 @@ export const LikeArtwork = createAsyncThunk("/LikeArtwork", (artwork_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => console.log(err));
 });
@@ -322,7 +320,7 @@ export const UnLikeArtwork = createAsyncThunk("/UnLikeArtwork", (artwork_id) => 
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => console.log(err));
 });
@@ -336,7 +334,7 @@ export const MarkArtwork = createAsyncThunk("/MarkArtwork", (artwork_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => console.log(err));
 });
@@ -350,7 +348,7 @@ export const UnMarkArtwork = createAsyncThunk("/UnMarkArtwork", (artwork_id) => 
         withCredentials: true,
     })
         .then((res) => {
-            console.log(res);
+            // console.log(res);
         })
         .catch((err) => console.log(err));
 });
@@ -379,174 +377,174 @@ export const artworkSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(CreateNewArtWork.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(CreateNewArtWork.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(CreateNewArtWork.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(PortfolioLoad.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(PortfolioLoad.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(PortfolioLoad.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(getMaster.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(getMaster.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(getMaster.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(removeMaster.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(removeMaster.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(removeMaster.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(updateScope.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(updateScope.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(updateScope.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(deleteArtwork.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(deleteArtwork.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(deleteArtwork.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(searchArtwork.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(searchArtwork.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(searchArtwork.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(categoryArtwork.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(categoryArtwork.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(categoryArtwork.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(commentDelete.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(commentDelete.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(commentDelete.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(commentModify.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(commentModify.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(commentModify.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(LikeArtwork.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(LikeArtwork.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(LikeArtwork.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(UnLikeArtwork.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(UnLikeArtwork.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(UnLikeArtwork.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(MarkArtwork.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(MarkArtwork.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(MarkArtwork.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(UnMarkArtwork.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(UnMarkArtwork.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(UnMarkArtwork.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(orderByLike.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(orderByLike.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(orderByLike.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(ModifyArtWork.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(ModifyArtWork.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(ModifyArtWork.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             })
             .addCase(RequestModifyArtWork.pending, (state, action) => {
-                console.log("pending");
+                // console.log("pending");
             })
             .addCase(RequestModifyArtWork.fulfilled, (state, action) => {
-                console.log("create fulfiled");
+                // console.log("create fulfiled");
             })
             .addCase(RequestModifyArtWork.rejected, (state, action) => {
-                console.log(action.error.message);
-                console.log("create rejected");
+                // console.log(action.error.message);
+                // console.log("create rejected");
             });
     },
 });

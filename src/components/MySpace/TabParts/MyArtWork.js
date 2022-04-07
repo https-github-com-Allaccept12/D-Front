@@ -19,7 +19,7 @@ const MyArtWork = (props) => {
     dispatch(PortfolioLoad({owner_account_id, visitor_account_id, dispatch}))
   }, [info])
   const portfolios = useSelector((state) => state.post.portfolios);
-  console.log(portfolios);
+  // console.log(portfolios);
 
 
   return (

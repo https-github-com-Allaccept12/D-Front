@@ -28,7 +28,7 @@ const getListStyle = (isDraggingOver) => ({
 
 function ArtWorkChangeList(props) {
     const { list, setPreviews, setDeleteList, isEdit } = props;
-    console.log(list);
+    // console.log(list);
     const getItems = (count) =>
         Array.from({ length: count }, (v, k) => k).map((k) => ({
             id: `item-${k}`,
@@ -43,7 +43,7 @@ function ArtWorkChangeList(props) {
     // id를 가진 array centent만 보내기!!
 
     const trashOnClick = (idx, item) => {
-        console.log(isEdit, item);
+        // console.log(isEdit, item);
         var tempItems = items;
         tempItems.splice(idx, 1);
         setItems(tempItems);
