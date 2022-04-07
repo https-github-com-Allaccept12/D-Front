@@ -9,6 +9,18 @@ focus:border-dpurple-300 font-min1
 outline-none
 ${(props) => (props.is_error ? `ring-1 ring-dred-400` : "")};
 ${(props) => (props.cardsize === "1" ? `h-I01 px-4` : "")};
+${(props) => (props.cardsize === "2" ? `h-44 px-4` : "")};
+`;
+
+const TextareaStyles = tw.textarea`
+w-full px-4 border border-dgray-400 rounded-md py-1
+hover:border-dpurple-200 border-box peer
+active:border-dpurple-300 invalid:text-pink-600
+focus:border-dpurple-300 font-min1 p-2
+outline-none
+${(props) => (props.is_error ? `ring-1 ring-dred-400` : "")};
+${(props) => (props.cardsize === "1" ? `h-I01 px-4` : "")};
+${(props) => (props.cardsize === "2" ? `h-44 px-4` : "")};
 `;
 
 const Sp = tw.h2`
@@ -61,7 +73,37 @@ const InputNoTitle = (props) => {
                 </div>
             </>
         );
-    } else {
+    }
+
+    if (textarea) {
+        return (
+            <>
+                <div className="col-start-3 col-end-8 row-start-1">
+                    <label id={label}>
+                        <TextareaStyles
+                            textarea
+                            type={type}
+                            value={value}
+                            name={name}
+                            is_error={is_error}
+                            cardsize={cardsize}
+                            placeholder={placeholder}
+                            onChange={onChange}
+                            onBlur={onBlur}
+                            maxlen={maxlen}
+                            className={className}
+                        />
+                        {is_error && <Sp>글자수를 초과하였습니다.</Sp>}
+                        {maxlen && (
+                            <Sp>
+                                {is_value}/{maxlen}
+                            </Sp>
+                        )}
+                    </label>
+                </div>
+            </>
+        );
+    } else
         return (
             <>
                 <div className="col-start-3 col-end-8 row-start-1">
@@ -88,7 +130,6 @@ const InputNoTitle = (props) => {
                 </div>
             </>
         );
-    }
 };
 
 InputNoTitle.defaultProps = {

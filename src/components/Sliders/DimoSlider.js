@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, Route, Switch, useLocation } from "react-router-dom";
 import { dimoPageLoad, categoryDimo } from "../../redux/modules/dimo";
 export const Slide = tw(Slider)`
-w-full md:w-[32.5rem]  2xl:w-[96rem]
+w-full md:w-[32.5rem] lg:w-[70rem] 2xl:w-[96rem]
     mx-auto text-white pl-10 lg:ml-40 xl:ml-20
     overflow-hidden text-lg flex
 `;
@@ -76,7 +76,7 @@ const slidedlider = (props) => {
             {
                 breakpoint: 1700,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                 },
             },
             {
