@@ -31,14 +31,14 @@ const ArtPost = (props) => {
     } = props;
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [follow, setFollow] = useState(is_like);
+    const [follow, setFollow] = useState(is_follow);
     const [like, setLike] = useState(is_like);
     const [bookmark, setBookmark] = useState(is_bookmark);
     const [tempProfile, setTempProfile] = useState("");
     const [barArtWorkId, setBarArtWorkId] = useState("");
-    const [barFollow, setBarFollow] = useState();
-    const [barLike, setBarLike] = useState();
-    const [barBookMark, setBarBookMark] = useState();
+    const [barFollow, setBarFollow] = useState(is_follow);
+    const [barLike, setBarLike] = useState(is_like);
+    const [barBookMark, setBarBookMark] = useState(is_bookmark);
     const [barAccountId, setBarAccountId] = useState();
     const [posterid, setposterid] = useState("");
     const sessionId = sessionStorage.getItem("account_id");
@@ -78,25 +78,27 @@ const ArtPost = (props) => {
             timer: 1000;
             return;
         }
-        setFollow(!follow);
-        setBarFollow(!barFollow);
         if (follow) {
+            console.log('언팔');
             dispatch(requestUnFollow(account_id));
         } else {
+            console.log('팔로우');
             dispatch(requestFollow(account_id));
         }
+        setFollow(!follow);
+        setBarFollow(!barFollow);
     };
 
     const clickLike = () => {
-        setLike(!like);
-        setBarLike(!barLike);
         if (like) {
-            // console.log('unlike');
+            console.log('unlike');
             dispatch(UnLikeArtwork(barArtWorkId));
         } else {
-            // console.log('like');
+            console.log('like');
             dispatch(LikeArtwork(barArtWorkId));
         }
+        setLike(!like);
+        setBarLike(!barLike);
     };
 
     const clickBookmark = () => {
@@ -111,15 +113,15 @@ const ArtPost = (props) => {
             timer: 1000;
             return;
         }
-        setBookmark(!bookmark);
-        setBarBookMark(!barBookMark);
         if (bookmark) {
-            // console.log('unmark');
+            console.log('unmark');
             dispatch(UnMarkArtwork(barArtWorkId));
         } else {
-            // console.log('mark');
+            console.log('mark');
             dispatch(MarkArtwork(barArtWorkId));
         }
+        setBookmark(!bookmark);
+        setBarBookMark(!barBookMark);
     };
 
     const ClickShare = () => {
@@ -148,7 +150,7 @@ const ArtPost = (props) => {
                 <div className="flex flex-row items-stretch justify-between flex-shrink-0 w-full mt-1">
                     <div className="flex flex-row items-center gap-2">
                         <Profile size="7" src={profile} />
-                        <Subtitle size="2" className="text-dpurple-300 truncate w-32">
+                        <Subtitle size="2" className="w-32 truncate text-dpurple-300">
                             {nickname}
                         </Subtitle>
                     </div>
