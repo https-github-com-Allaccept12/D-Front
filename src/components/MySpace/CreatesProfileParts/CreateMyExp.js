@@ -241,7 +241,7 @@ const CreateMyExp = (props) => {
                                             <Title
                                                 size="4"
                                                 onClick={handleAddClick}
-                                                className="absolute text-dpurple-300 cursor-pointer top-[37rem] right-[39.7rem]"
+                                                className="absolute text-dpurple-300 cursor-pointer top-[37rem] right-[29.7rem]"
                                             >
                                                 +추가하기
                                             </Title>

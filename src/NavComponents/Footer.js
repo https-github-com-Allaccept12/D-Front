@@ -37,10 +37,7 @@ const Footer = (props) => {
                     >
                         뒤로가기
                     </SpBtn>
-                    <a
-                        target="_blank"
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSfPbNOUuxaVnWIeb_WgwLavnCCGHVss4LaEScQrTPj1uUSfbA/formrestricted"
-                    >
+                    <a target="_blank" href="https://open.kakao.com/o/sBAlRG9d">
                         <SpBtn
                             size="3"
                             onClick={() => {
@@ -67,7 +64,7 @@ const Footer = (props) => {
                     <div className="hidden md:contents">
                         <a
                             target="_blank"
-                            href="https://www.notion.so/robinchoi11/HELLO-D-PLUS-3739025471ea45c6a4228f47331c0dd3"
+                            href="https://docs.google.com/forms/d/e/1FAIpQLSfSN674wDe-jEqCN7yQEOEHhD2nl8aWC1IJLBxzCeJ6eY5miw/viewform"
                         >
                             <SpBtn
                                 onClick={() => {
