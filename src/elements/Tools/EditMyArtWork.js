@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ModifyArtWork } from "../../redux/modules/artWork";
 import { getMaster, removeMaster, updateScope, postScope, deleteArtwork } from "../../redux/modules/artWork";
 import CircleBtn from "../Icons/CircleBtn";
@@ -40,11 +40,16 @@ w-full flex flex-row justify-end items-end gap-3 p-5
 const EditMyArtWork = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
     const { src, size, isMaster, scope, artwork_id, category } = props;
     const [is_master, setMaster] = useState(isMaster);
     const [is_public, setPublic] = useState(scope);
     // console.log("in here, ", artwork_id);
     // console.log(isMaster, scope);
+
+    const from = location.pathname.split('/')[2]
+    console.log(from);
+
     const ClickMaster = () => {
         setMaster(!is_master);
         is_master ? dispatch(getMaster(artwork_id)) : dispatch(removeMaster(artwork_id));
@@ -69,7 +74,7 @@ const EditMyArtWork = (props) => {
             },
         });
     };
-
+    console.log(artwork_id);
     const ClickDetail = () => {
         navigate(`/detailart/${artwork_id}`);
     }
@@ -80,15 +85,14 @@ const EditMyArtWork = (props) => {
                 <ArtWorkImage src={src} size={size} />
                 <Actives>
                     <Edit>
+                        {from !== 'mypic'&& 
                         <FlexBox>
-                            {/* <CircleBtn name="Edit"></CircleBtn> */}
-                            {/* <Link to=`/createart?key=edit&artwork_id=${artwork_id}`> */}
                             <CircleBtn name="Edit" onClick={ClickEdit}></CircleBtn>
-                            {/* </Link> */}
                             <CircleBtn name="Delete" onClick={ClickDelete}></CircleBtn>
                             <CircleBtn name="MyStar" onClick={ClickMaster}></CircleBtn>
                             <CircleBtn name="Private" onClick={ClickPublic}></CircleBtn>
                         </FlexBox>
+                        }
                         <div>
                             <CircleBtn name="Detail" onClick={ClickDetail}></CircleBtn>
                         </div>
