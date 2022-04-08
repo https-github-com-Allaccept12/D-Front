@@ -44,16 +44,13 @@ const CategoryMini = (props) => {
     const ClickCategory = (e) => {
         // console.log(e.target.value);
         const category = e.target.value;
-        if (category === "all") {
-            dispatch(artworkPageLoad(dispatch));
-        } else {
-            dispatch(categoryArtwork({ category, dispatch }));
-            navigate(`dimo/qna/${category}`, {
-                state: {
-                    category: category,
-                },
-            });
-        }
+
+        dispatch(categoryArtwork({ category, dispatch }));
+        navigate(`list/${category}`, {
+            state: {
+                category: category,
+            },
+        });
     };
 
     const ClickCategoryDimo = (e) => {
@@ -64,14 +61,14 @@ const CategoryMini = (props) => {
         if (b === "qna") {
             // console.log(category, board);
             dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
-            navigate(`dimo/qna/${category}`, {
+            navigate(`/dimo/qna/${category}`, {
                 state: {
                     category: category,
                 },
             });
         } else if (b === "info") {
             dispatch(categoryDimo({ category, dispatch, board, visitor_account_id }));
-            navigate(`dimo/qna/${category}`, {
+            navigate(`/dimo/qna/${category}`, {
                 state: {
                     category: category,
                 },

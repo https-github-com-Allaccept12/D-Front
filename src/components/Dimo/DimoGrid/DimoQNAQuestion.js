@@ -84,6 +84,9 @@ const DimoQNAQuestion = (props) => {
     // const t = value.hash_tag;
     // console.log(post.post_id);
     const answerSubmit = () => {
+        if (account_id === 0) {
+            return alert("로그인하면 답변을 남길수 있어요!");
+        }
         const content = name.value;
 
         const data = { post_id, content };
@@ -120,6 +123,9 @@ const DimoQNAQuestion = (props) => {
     };
 
     const addLike = () => {
+        if (account_id === 0) {
+            return alert("로그인해주세요!");
+        }
         setIsLike(true);
         setLikeCnt(like_cnt + 1);
         dispatch(likeDimoInfo(post_id));
@@ -132,6 +138,9 @@ const DimoQNAQuestion = (props) => {
     };
 
     const addBook = () => {
+        if (account_id === 0) {
+            return alert("로그인해주세요!");
+        }
         setIsBookmark(true);
         setBookCnt(book_cnt + 1);
         dispatch(bookmarkAdd(post_id));
@@ -150,6 +159,9 @@ const DimoQNAQuestion = (props) => {
     const [barFollow, setBarFollow] = useState();
 
     const clickFollow = () => {
+        if (account_id === 0) {
+            return alert("로그인해주세요!");
+        }
         setFollow(!follow);
         setBarFollow(!barFollow);
         if (follow) {
@@ -211,12 +223,12 @@ const DimoQNAQuestion = (props) => {
                                 </Text>
                             </>
                         ) : (
-                            <Button size="3" onClick={setShowAnswer}>
+                            <Button size="3" onClick={setShowAnswer} className="shrink-0">
                                 답변남기기
                             </Button>
                         )}
 
-                        <div className="flex flex-col gap-3 xl:flex-row">
+                        <div className="flex flex-col gap-3 2xl:flex-row">
                             {is_like ? (
                                 <ButtonWithCount
                                     icon
@@ -299,7 +311,15 @@ const DimoQNAQuestion = (props) => {
                             </Title>
                         </div>
                     </div>
-                    <FollowBtn size="2" color="1" followed={followed} onClick={clickFollow} />
+                    {!followed === true ? (
+                        <Button size="3" color="1" onClick={clickFollow}>
+                            팔로우 🎉
+                        </Button>
+                    ) : (
+                        <Button size="3" color="4" onClick={clickFollow}>
+                            팔로잉
+                        </Button>
+                    )}
                 </Footer>
             </Card>
             {showAnswer && (

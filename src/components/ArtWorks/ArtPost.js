@@ -17,7 +17,18 @@ flex justify-center items-center flex-col shrink-0
 `;
 
 const ArtPost = (props) => {
-    const { please, account_id, profile, nickname, thumbnail, is_follow, is_like, like_count, artwork_id, is_bookmark } = props;
+    const {
+        please,
+        account_id,
+        profile,
+        nickname,
+        thumbnail,
+        is_follow,
+        is_like,
+        like_count,
+        artwork_id,
+        is_bookmark,
+    } = props;
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [follow, setFollow] = useState(is_like);
@@ -29,9 +40,17 @@ const ArtPost = (props) => {
     const [barLike, setBarLike] = useState();
     const [barBookMark, setBarBookMark] = useState();
     const [barAccountId, setBarAccountId] = useState();
-    const [posterid, setposterid] = useState('');
+    const [posterid, setposterid] = useState("");
     const sessionId = sessionStorage.getItem("account_id");
-    
+
+    const [isMine, setIsMine] = useState(false);
+    useEffect(() => {
+        if (sessionId == account_id) {
+            setIsMine(true);
+        }
+    }, []);
+
+
     const ArtWorkURL = `dplusday.com/detailart/${barArtWorkId}`;
 
     const handleClickArtWork = () => {
@@ -44,7 +63,7 @@ const ArtPost = (props) => {
     };
     // console.log(please, account_id)
     const clickProfile = () => {
-        console.log('click accountid', barAccountId);
+        console.log("click accountid", barAccountId);
         navigate(`/myspace/myprofile/${barArtWorkId}`);
     };
 
@@ -127,14 +146,14 @@ const ArtPost = (props) => {
                 >
                     <Thumbnail src={thumbnail} size="3" />
                 </button>
-                <div className="flex flex-row items-center justify-between flex-shrink-0 w-full px-2 mt-1">
+                <div className="flex flex-row items-stretch justify-between flex-shrink-0 w-full mt-1">
                     <div className="flex flex-row items-center gap-2">
                         <Profile size="7" src={profile} />
-                        <Subtitle size="1" className="text-gray-700">
+                        <Subtitle size="2" className="text-dpurple-300 truncate w-32">
                             {nickname}
                         </Subtitle>
                     </div>
-                    <div className="flex flex-row items-center text-gray-700">
+                    <div className="flex flex-row items-center text-gray-600">
                         <IconBtn name="HeartE" count={like_count} />
                     </div>
                 </div>
@@ -164,7 +183,10 @@ const ArtPost = (props) => {
 
                             <div className="hidden lg:contents">
                                 <div className="flex flex-row justify-start w-20 gap-3 mx-auto lg:fixed top-20 right-10 2xl:right-48 lg:flex-col">
-                                    <div onClick={clickProfile} className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
+                                    <div
+                                        onClick={clickProfile}
+                                        className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110"
+                                    >
                                         <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
                                             <button data-bs-dismiss="modal">
                                                 <Profile size="5" src={tempProfile} />
@@ -172,46 +194,52 @@ const ArtPost = (props) => {
                                         </div>
                                         <Text size="1">프로필</Text>
                                     </div>
-                                    <div
-                                        onClick={clickFollow}
-                                        className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110"
-                                    >
-                                        <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                            <Icon name="Plus" iconSize="48" className="absolute" />
-                                            <Profile size="5" className="invisible" />
-                                        </div>
-                                        <Text size="1">팔로우</Text>
-                                    </div>
-                                    
-                                    <div
-                                        onClick={clickLike}
-                                        className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110"
-                                    >
-                                        <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                            {!barLike ? (
-                                                <Icon name="HeartE" iconSize="48" className="absolute" />
-                                            ) : (
-                                                <Icon name="HeartF" iconSize="48" className="absolute" />
-                                            )}
-                                            <Profile size="5" className="invisible" />
-                                        </div>
-                                        <Text size="1">좋아요</Text>
-                                    </div>
-                                    <div
-                                        onClick={clickBookmark}
-                                        className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110"
-                                    >
-                                        <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                            {!barBookMark ? (
-                                                <Icon name="BookmarkE" iconSize="48" className="absolute" />
-                                            ) : (
-                                                <Icon name="BookmarkF" iconSize="48" className="absolute" />
-                                            )}
-                                            {/* <Icon name="BookmarkE" iconSize="48" className="absolute" /> */}
-                                            <Profile size="5" className="invisible" />
-                                        </div>
-                                        <Text size="1">스크랩</Text>
-                                    </div>
+
+                                    {isMine && (
+                                        <>
+                                            <div
+                                                onClick={clickFollow}
+                                                className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110"
+                                            >
+                                                <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
+                                                    <Icon name="Plus" iconSize="48" className="absolute" />
+                                                    <Profile size="5" className="invisible" />
+                                                </div>
+                                                <Text size="1">팔로우</Text>
+                                            </div>
+
+                                            <div
+                                                onClick={clickLike}
+                                                className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110"
+                                            >
+                                                <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
+                                                    {!barLike ? (
+                                                        <Icon name="HeartE" iconSize="48" className="absolute" />
+                                                    ) : (
+                                                        <Icon name="HeartF" iconSize="48" className="absolute" />
+                                                    )}
+                                                    <Profile size="5" className="invisible" />
+                                                </div>
+                                                <Text size="1">좋아요</Text>
+                                            </div>
+                                            <div
+                                                onClick={clickBookmark}
+                                                className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110"
+                                            >
+                                                <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
+                                                    {!barBookMark ? (
+                                                        <Icon name="BookmarkE" iconSize="48" className="absolute" />
+                                                    ) : (
+                                                        <Icon name="BookmarkF" iconSize="48" className="absolute" />
+                                                    )}
+                                                    {/* <Icon name="BookmarkE" iconSize="48" className="absolute" /> */}
+                                                    <Profile size="5" className="invisible" />
+                                                </div>
+                                                <Text size="1">스크랩</Text>
+                                            </div>
+                                        </>
+                                    )}
+
                                     <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                         <CopyToClipboard text={ArtWorkURL}>
                                             <div

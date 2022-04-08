@@ -92,14 +92,14 @@ const ArtPostMain = (props) => {
                 >
                     <Thumbnail src={thumbnail} size="7" />
                 </button>
-                <div className="flex flex-row items-center justify-between flex-shrink-0 w-full px-2 mt-1">
+                <div className="flex flex-row items-stretch justify-between flex-shrink-0 w-full mt-1">
                     <div className="flex flex-row items-center gap-2">
                         <Profile size="7" src={profile} />
-                        <Subtitle size="1" className="text-gray-700">
+                        <Subtitle size="2" className="text-dpurple-300 truncate w-40">
                             {nickname}
                         </Subtitle>
                     </div>
-                    <div className="flex flex-row items-center mr-1 text-gray-700">
+                    <div className="flex flex-row items-center mr-1 text-gray-600">
                         <IconBtn name="HeartE" iconSize="20" count={like_count} />
                     </div>
                 </div>

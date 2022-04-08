@@ -53,7 +53,7 @@ const DimoPost = (props) => {
         title,
         list,
     } = props;
-    // console.log(title);
+
     let dispatch = useDispatch();
     let navigate = useNavigate();
     let account_id = 0;
@@ -171,7 +171,11 @@ const DimoPost = (props) => {
                                 <IconBox>
                                     <div className="flex flex-row justify-end items-end">
                                         <div className="flex flex-row gap-5 text-dgray-400">
-                                            <IconBtn name="Talk" iconSize="20" count={comment_count} />
+                                            <IconBtn
+                                                name="Talk"
+                                                iconSize="20"
+                                                count={comment_count ? comment_count : "0"}
+                                            />
                                             <IconBtn name="HeartE" iconSize="20" count={like_count} />
                                         </div>
                                     </div>
