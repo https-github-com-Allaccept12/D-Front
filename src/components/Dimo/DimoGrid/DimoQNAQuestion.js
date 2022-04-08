@@ -114,7 +114,7 @@ const DimoQNAQuestion = (props) => {
 
     const [like_cnt, setLikeCnt] = useState(post?.like_count);
     const [is_like, setIsLike] = useState(post?.is_like);
-    const [book_cnt, setBookCnt] = useState(post?.bookMark_count);
+    const [book_cnt, setBookCnt] = useState(post?.bookMark_count ? post.bookMark_count : 0);
     const [is_bookmark, setIsBookmark] = useState(post?.is_bookmark);
     const cancelLike = () => {
         setIsLike(false);
@@ -133,7 +133,7 @@ const DimoQNAQuestion = (props) => {
 
     const cancelBook = () => {
         setIsBookmark(false);
-        setBookCnt(book_cnt - 1);
+        setBookCnt(bookMark_count - 1);
         dispatch(bookmarkRemove(post_id));
     };
 
@@ -142,7 +142,7 @@ const DimoQNAQuestion = (props) => {
             return alert("로그인해주세요!");
         }
         setIsBookmark(true);
-        setBookCnt(book_cnt + 1);
+        setBookCnt(bookMark_count + 1);
         dispatch(bookmarkAdd(post_id));
     };
 
@@ -329,11 +329,7 @@ const DimoQNAQuestion = (props) => {
                             <Title size="6" className="hidden lg:flex">
                                 답변 남기기
                             </Title>
-                            <Profile
-                                size="5"
-                                src={profile}
-                                className="hidden lg:flex"
-                            />
+                            <Profile size="5" src={profile} className="hidden lg:flex" />
                         </div>
                         <div className="w-full mt-12 ml-auto lg:w-11/12">
                             <Answer
