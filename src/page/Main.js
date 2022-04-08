@@ -61,7 +61,7 @@ const Main = (props) => {
                     <div className="-mt-32 lg:mt-24 mx-auto lg:pl-12 w-full xl:max-w-[90%]">
                         <Title
                             size="2"
-                            className="flex items-end justify-center col-start-2 row-start-1 my-3 text-gray-700 xl:justify-start"
+                            className="flex items-end justify-center col-start-2 row-start-1 my-3 text-gray-700 xl:justify-start ml-0 md:ml-10 lg:ml-0"
                         >
                             추천 아트워크
                         </Title>

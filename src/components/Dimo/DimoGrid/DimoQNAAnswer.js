@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useToggle, useInput } from "../../../hooks";
 import { deleteAnswerDimo, editAnswerDimo, selectAnswerDimo, likeDimoInfo } from "../../../redux/modules/dimo";
 import { requestFollow, requestUnFollow } from "../../../redux/modules/user";
+import Swal from "sweetalert2";
 
 const UnderLine = tw.hr`
 border border-dgray-300 w-full col-span-full mt-10 mb-5
@@ -122,15 +123,48 @@ const DimoQNAAnswer = (props) => {
     const [barFollow, setBarFollow] = useState();
 
     const clickFollow = () => {
+        if (a_id === 0) {
+            Swal.fire({
+                icon: "info",
+                title: "로그인해주세요!",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
+        }
+        if (owner_account_id == a_id) {
+            Swal.fire({
+                icon: "error",
+                title: "자신은 팔로우할 수 없습니다",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
+        }
         setFollow(!follow);
         setBarFollow(!barFollow);
-        if (a_id === 0) {
-            return alert("로그인해주세요!");
-        }
         if (follow) {
             dispatch(requestUnFollow(visitor_account_id));
+            Swal.fire({
+                icon: "success",
+                title: "언팔로우되었습니다!",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
         } else {
             dispatch(requestFollow(visitor_account_id));
+            Swal.fire({
+                icon: "success",
+                title: "팔로우되었습니다!",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
         }
     };
 

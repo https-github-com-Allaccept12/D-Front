@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Art = tw.div`
-flex justify-center items-center flex-col shrink-0
+flex justify-center items-center flex-col shrink-0 ml-0  md:ml-10 lg:ml-0
 
 `;
 

@@ -21,7 +21,7 @@ border h-6 mx-4
 
 const SInput = tw.input`
 border-2 border-dgray-200 rounded-full max-w-[24.375rem] h-[3rem]
-box-border px-12 relative w-full md:w-fit
+px-12 relative w-full md:w-fit 
 `;
 
 const TextCSS = tw.p`
@@ -42,10 +42,10 @@ const DimoInsideFilter = (props) => {
     const b = a.split("/")[2];
     const board = b.toUpperCase();
     // let category = "";
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState("");
     useEffect(() => {
-        setCategory(location.pathname.split('/')[3]);
-    }, [location])
+        setCategory(location.pathname.split("/")[3]);
+    }, [location]);
     console.log(location);
     console.log(category);
 
@@ -94,7 +94,7 @@ const DimoInsideFilter = (props) => {
                 </FilterBtn>
                 <div className="relative">
                     <SInput placeholder="Search" type="text" onKeyPress={keyPress} />
-                    <Icon name="Search" className="absolute inset-3 Text-dgray-500" />
+                    <Icon name="Search" className="absolute inset-3 Text-dgray-500 w-10" />
                 </div>
             </Grid>
         </>
