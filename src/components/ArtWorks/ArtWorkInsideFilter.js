@@ -38,15 +38,15 @@ const ArtWorkInsideFilter = (props) => {
     const dispatch = useDispatch();
     const location = useLocation();
     const visitor_account_id = sessionStorage.getItem("account_id");
-    const [category, setCategory] = useState('');
+    const [category, setCategory] = useState("");
 
-    useEffect(()=> {
-        setCategory(location.pathname.split('/')[3]);
-    }, [location])
-    
+    useEffect(() => {
+        setCategory(location.pathname.split("/")[3]);
+    }, [location]);
+
     // console.log('location: ', location.pathname.split('/')[3]);
     // console.log('location state: ', location.state.category);
-    console.log('category: ', category); 
+    console.log("category: ", category);
     // const category = location?.state.category;
     // if (location.state) {
     //     category = location?.state.category;
@@ -93,7 +93,7 @@ const ArtWorkInsideFilter = (props) => {
                 </FilterBtn>
                 <div className="relative">
                     <SInput placeholder="Search" type="text" onKeyPress={keyPress} />
-                    <Icon name="Search" className="absolute inset-3 text-dgray-500" />
+                    <Icon name="Search" className="absolute inset-3 Text-dgray-500 w-10" />
                 </div>
             </Grid>
         </>

@@ -114,7 +114,7 @@ const DimoQNAQuestion = (props) => {
 
     const [like_cnt, setLikeCnt] = useState(post?.like_count);
     const [is_like, setIsLike] = useState(post?.is_like);
-    const [book_cnt, setBookCnt] = useState(post?.bookMark_count ? post.bookMark_count : 0);
+    const [book_cnt, setBookCnt] = useState(post?.bookmark_count ? post.bookmark_count : 0);
     const [is_bookmark, setIsBookmark] = useState(post?.is_bookmark);
     const cancelLike = () => {
         setIsLike(false);
@@ -133,7 +133,7 @@ const DimoQNAQuestion = (props) => {
 
     const cancelBook = () => {
         setIsBookmark(false);
-        setBookCnt(bookMark_count - 1);
+        setBookCnt(bookmark_count - 1);
         dispatch(bookmarkRemove(post_id));
     };
 
@@ -160,7 +160,24 @@ const DimoQNAQuestion = (props) => {
 
     const clickFollow = () => {
         if (account_id === 0) {
-            return alert("로그인해주세요!");
+            Swal.fire({
+                icon: "info",
+                title: "로그인해주세요!",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
+        }
+        if (owner_account_id == visitor_account_id) {
+            Swal.fire({
+                icon: "error",
+                title: "자신은 팔로우할 수 없습니다",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
         }
         setFollow(!follow);
         setBarFollow(!barFollow);
@@ -193,7 +210,7 @@ const DimoQNAQuestion = (props) => {
 
                     <Title size="5">{post?.title}</Title>
                     <div className="flex flex-row py-3">
-                        <Text size="1">{post?.modify_time}</Text>
+                        <Text size="1">{post?.modify_time.split("T")[0]}</Text>
                         <InnerLine />
                         <Text size="1">조회수 {post?.view_count}</Text>
                         <InnerLine />
