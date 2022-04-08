@@ -24,14 +24,28 @@ const MyProfile = (props) => {
 
     // const info = useSelector(state => state.myPage.myPage);
     const { info, exp, feed } = props;
-
+    console.log(info);
+    console.log(exp);
+    console.log(feed);
     return (
         <>
             <Suspense fallback={<h1>Loading..</h1>}>
-                <MyIntro info={info} />
-                <MySkill info={info} />
-                <MyPortfolio feed={feed} />
-                <MyExp exp={exp}/>
+                {info ? (
+                    <MyIntro info={info} />
+                ) : (
+                    <>
+                        <p>소개를 올려보세요!</p>
+                    </>
+                )}
+                {info && <MySkill info={info} />}
+                {feed ? (
+                    <MyPortfolio feed={feed} />
+                ) : (
+                    <>
+                        <p>포스트를 올려보세요!</p>
+                    </>
+                )}
+                {exp && <MyExp exp={exp} />}
             </Suspense>
             {/* <MyTimeLine info={info} /> */}
         </>
