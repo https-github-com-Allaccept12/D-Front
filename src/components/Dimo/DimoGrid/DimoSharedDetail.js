@@ -110,7 +110,14 @@ const DimoSharedDetail = () => {
 
     const addLike = () => {
         if (account_id === 0) {
-            return alert("로그인해주세요!");
+            Swal.fire({
+                icon: "info",
+                title: "로그인해주세요!",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
         }
         setIsLike(true);
         setLikeCnt(like_cnt + 1);
@@ -128,7 +135,24 @@ const DimoSharedDetail = () => {
 
     const addBook = () => {
         if (account_id === 0) {
-            return alert("로그인해주세요!");
+            Swal.fire({
+                icon: "info",
+                title: "로그인해주세요!",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
+        }
+        if (owner_account_id == visitor_account_id) {
+            Swal.fire({
+                icon: "error",
+                title: "내가 작성한 글은 스크랩 할수 없어요!",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
         }
         setIsBookmark(true);
         setBookCnt(book_cnt + 1);
