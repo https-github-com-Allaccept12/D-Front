@@ -18,7 +18,7 @@ export const requestFollow = createAsyncThunk("/requestFollow", (account_id) => 
 
 // 언팔로우
 export const requestUnFollow = createAsyncThunk("/requestFollow", (account_id) => {
-  URL.delete(`/api/follow`, account_id, {
+  URL.patch(`/api/follow`, account_id, {
       headers: {
           Authorization: "Bearer " + token,
       },
