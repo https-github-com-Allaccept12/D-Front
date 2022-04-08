@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Label, Profile, Title, Text, Answer, Subtitle, Icon } from "../../../elements";
+import { Button, Label, Profile, Title, Text, Answer, Subtitle, Icon, PageLoadSpinner } from "../../../elements";
 import { CommentDimo } from "../../Comment";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import tw from "tailwind-styled-components";
@@ -83,6 +83,9 @@ const DimoSharedDetail = () => {
 
     // console.log(owner_account_id);
     const commentSubmit = () => {
+        if (account_id === 0) {
+            return alert("로그인하면 댓글을 남길수 있어요!");
+        }
         const content = name.value;
         const data = { post_id, content };
 
@@ -106,6 +109,9 @@ const DimoSharedDetail = () => {
     };
 
     const addLike = () => {
+        if (account_id === 0) {
+            return alert("로그인해주세요!");
+        }
         setIsLike(true);
         setLikeCnt(like_cnt + 1);
         dispatch(likeDimoInfo(post_id));
@@ -121,6 +127,9 @@ const DimoSharedDetail = () => {
     };
 
     const addBook = () => {
+        if (account_id === 0) {
+            return alert("로그인해주세요!");
+        }
         setIsBookmark(true);
         setBookCnt(book_cnt + 1);
         dispatch(bookmarkAdd(post_id));
@@ -136,138 +145,167 @@ const DimoSharedDetail = () => {
         });
     };
 
-    // const makeFollow = () => {
-    //     const account_id = { account_id: visitor_account_id };
-    //     setIsfow();
-    //     dispatch(requestFollow(account_id));
-    // };
+    const [time, setTime] = useState(true);
+
+    useEffect(() => {
+        const aaa = setTimeout(() => {
+            setTime();
+        }, 100);
+    }, []);
     return (
         <>
-            <Bg>
-                <Card>
-                    {owner_account_id == visitor_account_id ? (
-                        <>
-                            <MyBtn onClick={goToEdit}>수정</MyBtn>
-                            <MyBtn onClick={ClickDelete}>삭제</MyBtn>
-                        </>
-                    ) : (
-                        " "
-                    )}
-                    <Header>
-                        <div className="flex flex-row gap-1 pb-4 md:pt-10">
-                            {dimo
-                                ? dimo?.hash_tag.map((value, idx) => {
-                                      return <Label key={idx}>{value?.tag}</Label>;
-                                  })
-                                : ""}
-                        </div>
-                        <Title size="5">{dimos?.title}</Title>
-                        <div className="flex flex-row py-3">
-                            <Text size="1">{dimos?.create_time}</Text>
-                            <InnerLine />
-                            <Text size="1">조회수 {dimos?.view_count}</Text>
-                        </div>
-                    </Header>
-                    <Body>
-                        <Text size="2" className="flex flex-wrap w-full pt-4 pb-16">
-                            {dimos?.content}
-                        </Text>
-                    </Body>
-                    <Btns>
-                        <div className="flex flex-row justify-between">
-                            <Button size="3" onClick={setShowAnswer} className="invisible">
-                                답변남기기
-                            </Button>
-                            <div className="flex flex-col gap-3 md:flex-row">
-                                {is_like ? (
-                                    <Button icon name="HeartF" color="5" size="3" count={like_cnt} onClick={cancelLike}>
-                                        <span className="hidden 2xl:contents">좋아요</span>
+            {time === true ? (
+                <PageLoadSpinner />
+            ) : (
+                <>
+                    <Bg>
+                        <Card>
+                            {owner_account_id == visitor_account_id ? (
+                                <>
+                                    <MyBtn onClick={goToEdit}>수정</MyBtn>
+                                    <MyBtn onClick={ClickDelete}>삭제</MyBtn>
+                                </>
+                            ) : (
+                                " "
+                            )}
+                            <Header>
+                                <div className="flex flex-row gap-1 pb-4 md:pt-10">
+                                    {dimo
+                                        ? dimo?.hash_tag.map((value, idx) => {
+                                              return <Label key={idx}>{value?.tag}</Label>;
+                                          })
+                                        : ""}
+                                </div>
+                                <Title size="5">{dimos?.title}</Title>
+                                <div className="flex flex-row py-3">
+                                    <Text size="1">{dimos?.create_time}</Text>
+                                    <InnerLine />
+                                    <Text size="1">조회수 {dimos?.view_count}</Text>
+                                </div>
+                            </Header>
+                            <Body>
+                                <Text size="2" className="flex flex-wrap w-full pt-4 pb-16">
+                                    {dimos?.content}
+                                </Text>
+                            </Body>
+                            <Btns>
+                                <div className="flex flex-row justify-between">
+                                    <Button size="3" onClick={setShowAnswer} className="invisible">
+                                        답변남기기
                                     </Button>
-                                ) : (
-                                    <Button icon name="HeartE" color="4" size="3" count={like_cnt} onClick={addLike}>
-                                        <span className="hidden 2xl:contents">좋아요</span>
-                                    </Button>
-                                )}
+                                    <div className="flex flex-col gap-3 md:flex-row">
+                                        {is_like ? (
+                                            <Button
+                                                icon
+                                                name="HeartF"
+                                                color="5"
+                                                size="3"
+                                                count={like_cnt}
+                                                onClick={cancelLike}
+                                            >
+                                                <span className="hidden 2xl:contents">좋아요</span>
+                                            </Button>
+                                        ) : (
+                                            <Button
+                                                icon
+                                                name="HeartE"
+                                                color="4"
+                                                size="3"
+                                                count={like_cnt}
+                                                onClick={addLike}
+                                            >
+                                                <span className="hidden 2xl:contents">좋아요</span>
+                                            </Button>
+                                        )}
 
-                                {is_bookmark ? (
-                                    <Button
-                                        icon
-                                        name="BookmarkF"
-                                        color="5"
-                                        size="3"
-                                        count={book_cnt}
-                                        onClick={cancelBook}
-                                    >
-                                        <span className="hidden 2xl:contents">스크랩</span>
+                                        {is_bookmark ? (
+                                            <Button
+                                                icon
+                                                name="BookmarkF"
+                                                color="5"
+                                                size="3"
+                                                count={book_cnt}
+                                                onClick={cancelBook}
+                                            >
+                                                <span className="hidden 2xl:contents">스크랩</span>
+                                            </Button>
+                                        ) : (
+                                            <Button
+                                                icon
+                                                name="BookmarkE"
+                                                color="5"
+                                                size="3"
+                                                count={book_cnt}
+                                                onClick={addBook}
+                                            >
+                                                <span className="hidden 2xl:contents">스크랩</span>
+                                            </Button>
+                                        )}
+                                        <Button icon name="Link" color="5" size="3">
+                                            공유<span className="hidden xl:contents">하기</span>
+                                        </Button>
+                                    </div>
+                                </div>
+                            </Btns>
+                        </Card>
+                        <UnderLine />
+
+                        <div className="flex flex-row font-min1">
+                            <Icon name="Talk" iconSize="32" />
+                            <span className="pl-2 mb-1 text-xl">댓글 {dimo?.comment_count}개</span>
+                        </div>
+
+                        <Card>
+                            <div className="flex p-5 mt-20 rounded-md bg-dgray-200 xl:px-10 2xl:px-20">
+                                <div>
+                                    <Subtitle size="1" className="hidden lg:flex">
+                                        댓글 남기기
+                                    </Subtitle>
+                                    <Profile
+                                        size="5"
+                                        src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
+                                        className="hidden lg:flex"
+                                    />
+                                </div>
+                                <div className="w-full mt-12 ml-auto lg:w-11/12">
+                                    <Answer
+                                        value={name.value}
+                                        onChange={name.onChange}
+                                        textarea
+                                        is_submit
+                                        onSubmit={commentSubmit}
+                                        cardsize="2"
+                                        width="20"
+                                    />
+                                    <Button size="3" className="visible mt-4 xl:invisible" onClick={commentSubmit}>
+                                        제출
                                     </Button>
-                                ) : (
-                                    <Button icon name="BookmarkE" color="5" size="3" count={book_cnt} onClick={addBook}>
-                                        <span className="hidden 2xl:contents">스크랩</span>
-                                    </Button>
-                                )}
-                                <Button icon name="Link" color="5" size="3">
-                                    공유<span className="hidden xl:contents">하기</span>
-                                </Button>
+                                </div>
                             </div>
-                        </div>
-                    </Btns>
-                </Card>
-                <UnderLine />
-
-                <div className="flex flex-row font-min1">
-                    <Icon name="Talk" iconSize="32" />
-                    <span className="pl-2 mb-1 text-xl">댓글 {dimo?.comment_count}개</span>
-                </div>
-
-                <Card>
-                    <div className="flex p-5 mt-20 rounded-md bg-dgray-200 xl:px-10 2xl:px-20">
-                        <div>
-                            <Subtitle size="1" className="hidden lg:flex">
-                                댓글 남기기
-                            </Subtitle>
-                            <Profile
-                                size="5"
-                                src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
-                                className="hidden lg:flex"
-                            />
-                        </div>
-                        <div className="w-full mt-12 ml-auto lg:w-11/12">
-                            <Answer
-                                value={name.value}
-                                onChange={name.onChange}
-                                textarea
-                                is_submit
-                                onSubmit={commentSubmit}
-                                cardsize="2"
-                                width="20"
-                            />
-                            <Button size="3" className="visible mt-4 xl:invisible" onClick={commentSubmit}>
-                                제출
-                            </Button>
-                        </div>
-                    </div>
-                    <div className="p-4">
-                        {dimo?.comment_count && dimo?.comment_count > 0
-                            ? dimo?.comment.map((value) => {
-                                  return (
-                                      <div key={value?.comment_id}>
-                                          <CommentDimo
-                                              account_id={value?.account_id}
-                                              account_nickname={value?.nickname}
-                                              account_profile_img={value?.profile_img}
-                                              comment_id={value?.comment_id}
-                                              content={value?.content}
-                                              is_comment_like={value?.is_comment_like}
-                                              like_count={value?.like_count}
-                                              modify_time={value?.modify_time}
-                                          />
-                                      </div>
-                                  );
-                              })
-                            : ""}
-                    </div>
-                </Card>
-            </Bg>
+                            <div className="p-4">
+                                {dimo?.comment_count && dimo?.comment_count > 0
+                                    ? dimo?.comment.map((value) => {
+                                          return (
+                                              <div key={value?.comment_id}>
+                                                  <CommentDimo
+                                                      account_id={value?.account_id}
+                                                      account_nickname={value?.nickname}
+                                                      account_profile_img={value?.profile_img}
+                                                      comment_id={value?.comment_id}
+                                                      content={value?.content}
+                                                      is_comment_like={value?.is_comment_like}
+                                                      like_count={value?.like_count}
+                                                      modify_time={value?.modify_time}
+                                                  />
+                                              </div>
+                                          );
+                                      })
+                                    : ""}
+                            </div>
+                        </Card>
+                    </Bg>
+                </>
+            )}
         </>
     );
 };

@@ -66,13 +66,13 @@ const DimoQNAAnswer = (props) => {
     const [modifyDiv, setModifyDiv] = useState(false);
 
     const name = useInput("", []);
-    let a_id = "";
+    let a_id = 0;
     const id_cookie = sessionStorage.getItem("account_id");
     if (id_cookie) {
         a_id = id_cookie;
     }
-    let visitor_account_id = dimosdetail.account_id;
-    let owner_account_id = a_id;
+    let visitor_account_id = a_id;
+    let owner_account_id = dimosdetail.account_id;
     // console.log(visitor_account_id);
     const ClickDelete = () => {
         dispatch(deleteAnswerDimo(answer_id));
@@ -111,6 +111,9 @@ const DimoQNAAnswer = (props) => {
     };
 
     const addLike = () => {
+        if (a_id === "") {
+            return alert("로그인해주세요!");
+        }
         setIsLike(true);
         setLikeCnt(like_cnt + 1);
         dispatch(likeDimoInfo(post_id));
@@ -121,6 +124,9 @@ const DimoQNAAnswer = (props) => {
     const clickFollow = () => {
         setFollow(!follow);
         setBarFollow(!barFollow);
+        if (a_id === 0) {
+            return alert("로그인해주세요!");
+        }
         if (follow) {
             dispatch(requestUnFollow(visitor_account_id));
         } else {
@@ -132,16 +138,17 @@ const DimoQNAAnswer = (props) => {
         <>
             <Card is_selected={is_selected}>
                 <Footer>
-                    {owner_account_id == account_id ? (
-                        <>
-                            <MyBtn onClick={openModify}>수정</MyBtn>
+                    <div className="order-1">
+                        {owner_account_id == account_id ? (
+                            <>
+                                <MyBtn onClick={openModify}>수정</MyBtn>
 
-                            <MyBtn onClick={ClickDelete}>삭제</MyBtn>
-                        </>
-                    ) : (
-                        " "
-                    )}
-
+                                <MyBtn onClick={ClickDelete}>삭제</MyBtn>
+                            </>
+                        ) : (
+                            " "
+                        )}
+                    </div>
                     {!modifyDiv && <></>}
                     <div className="flex flex-row justify-start">
                         <Profile size="5" src={account_profile_img} className="hidden md:flex" />
@@ -159,7 +166,17 @@ const DimoQNAAnswer = (props) => {
                             </div> */}
                         </div>
                     </div>
-                    <FollowBtn size="2" color="1" followed={is_follow} onClick={clickFollow} />
+                    <div className="order-1">
+                        {!is_follow === true ? (
+                            <Button size="3" color="1" onClick={clickFollow}>
+                                팔로우 🎉
+                            </Button>
+                        ) : (
+                            <Button size="3" color="4" onClick={clickFollow}>
+                                팔로잉
+                            </Button>
+                        )}
+                    </div>
                 </Footer>
                 <UnderLine />
                 <Header>

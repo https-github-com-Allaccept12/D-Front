@@ -81,7 +81,9 @@ const DimoQNADetail = ({ history, location, match }) => {
                                                                     account_nickname={value?.account_nickname}
                                                                     account_profile_img={value?.account_profile_img}
                                                                     category={value?.category}
-                                                                    comment_count={value?.comment_count}
+                                                                    comment_count={
+                                                                        value.comment_count ? value.comment_count : "0"
+                                                                    }
                                                                     content={value?.content}
                                                                     create_time={value?.create_time}
                                                                     hash_tag={value?.hash_tag}

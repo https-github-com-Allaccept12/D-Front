@@ -8,7 +8,7 @@ import ArtWorkInsideFilter from "./ArtWorkInsideFilter";
 
 const Grid = tw.div` 
 flex flex-row flex-wrap items-center justify-center 
-xl:justify-start gap-6 sm:px-3 md:px-4 xl:px-8 2xl:px-20
+xl:justify-start gap-6 sm:px-3 md:px-4 xl:px-8 2xl:px-10
 
 `;
 
@@ -35,7 +35,7 @@ const ArtWorkList = (props) => {
                     <Grid>
                         {artworks &&
                             artworks.map((value) => {
-                                console.log('at ArtWorkList', value.account_id);
+                                console.log("at ArtWorkList", value.account_id);
                                 return (
                                     <div>
                                         <ArtPost
