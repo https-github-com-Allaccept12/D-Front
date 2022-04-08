@@ -25,7 +25,11 @@ const DimoCard = (props) => {
     const { size } = props;
     
     const goToDetail = () => {
-        navigate(`/dimo/infodetail/${data.post_id}`);
+        navigate(`/dimo/infodetail/${data.post_id}`, {
+            state: {
+                post_id: data.post_id,
+            }
+        });
     };
 
     return (

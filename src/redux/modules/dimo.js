@@ -171,7 +171,7 @@ export const likeDimoInfo = createAsyncThunk("/likeDimoInfo", (post_id) => {
 
 //게시글에 안좋아요
 export const dislikeDimoInfo = createAsyncThunk("/dislikeDimoInfo", (post_id) => {
-    URL.delete(`/api/post/like/${post_id}`, {
+    URL.patch(`/api/post/like/${post_id}`, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -214,7 +214,7 @@ export const bookmarkAdd = createAsyncThunk("/bookmarkAdd", (post_id) => {
 });
 
 export const bookmarkRemove = createAsyncThunk("/bookmarkRemove", (post_id) => {
-    URL.delete(`/api/bookmark/post/${post_id}`, {
+    URL.patch(`/api/bookmark/post/${post_id}`, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -259,7 +259,8 @@ export const dimoInfoDetailLoad = createAsyncThunk("/dimoInfoDetailLoad", ({ pos
 
 //  삭제 /api/post/{post_id}?category=’category’&board=’board’
 export const deleteDimo = createAsyncThunk("/deleteDimo", ({ post_id, category, board }) => {
-    URL.delete(`/api/post/${post_id}?board=${board}`, {
+    // URL.delete(`/api/post/del/${post_id}?board=${board}`, {
+    URL.patch(`/api/post/del/${post_id}`, {
         headers: {
             // "content-type": "application/json",
             Authorization: "Bearer " + token,
@@ -282,7 +283,7 @@ export const deleteDimo = createAsyncThunk("/deleteDimo", ({ post_id, category, 
 
 //답변삭제
 export const deleteAnswerDimo = createAsyncThunk("/deleteAnswerDimo", (answer_id) => {
-    URL.delete(`/api/post/answer/${answer_id}`, {
+    URL.patch(`/api/post/del/answer/${answer_id}`, {
         headers: {
             // "content-type": "application/json",
             Authorization: "Bearer " + token,
@@ -423,7 +424,7 @@ export const commentModifyDimo = createAsyncThunk("/commentModifyDimo", ({ comme
 
 // 인포댓글 삭제
 export const commentDeleteDimo = createAsyncThunk("/commentDeleteDimo", (comment_id) => {
-    URL.delete(`/api/post/comment/${comment_id}`, {
+    URL.patch(`/api/post/comment/del/${comment_id}`, {
         headers: {
             Authorization: "Bearer " + token,
         },

@@ -19,7 +19,11 @@ const DimoQNAComment = (props) => {
     const b = a.split("/")[1];
 
     const goToDetail = () => {
-        navigate(`/dimo/qnadetail/${data.post_id}`);
+        navigate(`/dimo/qnadetail/${data.post_id}`, {
+            state: {
+                post_id: data.post_id,
+            }
+        });
     };
 
 
