@@ -38,13 +38,7 @@ const MyProfile = (props) => {
                     </>
                 )}
                 {info && <MySkill info={info} />}
-                {feed ? (
-                    <MyPortfolio feed={feed} />
-                ) : (
-                    <>
-                        <p>포스트를 올려보세요!</p>
-                    </>
-                )}
+                <MyPortfolio feed={feed} />
                 {exp && <MyExp exp={exp} />}
             </Suspense>
             {/* <MyTimeLine info={info} /> */}

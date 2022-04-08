@@ -26,33 +26,23 @@ const MyPortfolio = (props) => {
             </div>
             <Line />
             <div className="flex flex-row flex-wrap items-center justify-center gap-10">
-                {feed && feed.map((value) => {
-                    return (
-                    <EditMyArtWork
-                        src={value.img}
-                        artwork_id={value.artwork_id}
-                        size="1"
-                        key={value.artwork_id}
-                        isMaster={value.is_master}
-                    />
-                    )
-                })}
-                {/* <EditMyArtWork
-                    src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg"
-                    size="1"
-                />
-                <EditMyArtWork
-                    src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg"
-                    size="1"
-                />
-                <EditMyArtWork
-                    src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg"
-                    size="1"
-                />
-                <EditMyArtWork
-                    src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg"
-                    size="1"
-                /> */}
+                {!feed && (
+                    <>
+                        <Title size="5">작품을 업로드하고, 대표작품을 설정해 나만의 포트폴리오를 만들어보세요!</Title>
+                    </>
+                )}
+                {feed &&
+                    feed.map((value) => {
+                        return (
+                            <EditMyArtWork
+                                src={value.img}
+                                artwork_id={value.artwork_id}
+                                size="1"
+                                key={value.artwork_id}
+                                isMaster={value.is_master}
+                            />
+                        );
+                    })}
             </div>
         </>
     );
