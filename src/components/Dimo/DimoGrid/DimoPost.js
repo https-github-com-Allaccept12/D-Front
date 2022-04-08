@@ -31,7 +31,7 @@ absolute top-9 left-[7rem]
 `;
 
 const TextBox = tw.div`
- px-5 text-ellipsis w-[19.25rem] h-22 absolute left-2 top-28
+ px-5 text-ellipsis w-[19.25rem] h-22 absolute left-2 top-28 text-gray-600 font-min2
 `;
 
 const IconBox = tw.div`
@@ -119,7 +119,7 @@ const DimoPost = (props) => {
                                     </LabelBox>
 
                                     <div className="absolute top-[3.5rem] left-[7rem] w-[13rem] overflow-hidden">
-                                        <Title size="5" className="text-left truncate">
+                                        <Title size="5" className="text-left truncate text-gray-600">
                                             {title}
                                         </Title>
                                     </div>
@@ -130,7 +130,7 @@ const DimoPost = (props) => {
 
                                 <IconBox>
                                     <div className="flex flex-row justify-end items-end">
-                                        <div className="flex flex-row gap-5 text-dgray-400">
+                                        <div className="flex flex-row gap-5 text-gray-500">
                                             <IconBtn name="Talk" iconSize="20" count={comment_count} />
                                             <IconBtn name="HeartE" iconSize="20" count={like_count} />
                                         </div>

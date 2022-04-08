@@ -31,7 +31,7 @@ hover:border-dgray-400 active:text-dpurple-300
 `;
 
 const ColorSpan = tw.span`
-hover:text-dgray-500 active:text-dpurple-300
+hover:text-dgray-500 active:text-dpurple-300 
 `;
 
 const DimoInsideFilter = (props) => {

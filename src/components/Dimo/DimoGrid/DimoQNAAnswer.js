@@ -112,8 +112,15 @@ const DimoQNAAnswer = (props) => {
     };
 
     const addLike = () => {
-        if (a_id === "") {
-            return alert("로그인해주세요!");
+        if (a_id === 0) {
+            Swal.fire({
+                icon: "info",
+                title: "로그인해주세요!",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
         }
         setIsLike(true);
         setLikeCnt(like_cnt + 1);

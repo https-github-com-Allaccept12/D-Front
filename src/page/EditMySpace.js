@@ -46,7 +46,7 @@ flex flex-col justify-center items-center w-full mx-auto
 `;
 
 const ProgBoxMobile = tw.div`
-fixed top-0 bg-white opacity-70 xl:hidden
+fixed top-0 bg-white opacity-70 2xl:hidden
 `;
 
 const EditMySpace = (props) => {

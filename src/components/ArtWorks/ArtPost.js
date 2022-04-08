@@ -50,7 +50,6 @@ const ArtPost = (props) => {
         }
     }, []);
 
-
     const ArtWorkURL = `dplusday.com/detailart/${barArtWorkId}`;
 
     const handleClickArtWork = () => {
@@ -69,7 +68,7 @@ const ArtPost = (props) => {
 
     const clickFollow = () => {
         const artworker = localStorage.getItem("artworker");
-        if(artworker == account_id){
+        if (artworker == account_id) {
             Swal.fire({
                 icon: "error",
                 title: "자신은 팔로우할 수 없습니다.",
@@ -102,7 +101,7 @@ const ArtPost = (props) => {
 
     const clickBookmark = () => {
         const artworker = localStorage.getItem("artworker");
-        if(artworker == account_id){
+        if (artworker == account_id) {
             Swal.fire({
                 icon: "error",
                 title: "내 작품은 스크랩할 수 없습니다.",
@@ -195,7 +194,7 @@ const ArtPost = (props) => {
                                         <Text size="1">프로필</Text>
                                     </div>
 
-                                    {isMine && (
+                                    {!isMine && (
                                         <>
                                             <div
                                                 onClick={clickFollow}
