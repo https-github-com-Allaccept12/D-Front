@@ -64,7 +64,7 @@ const DimoSharedDetail = () => {
     if (id_cookie) {
         account_id = id_cookie;
     }
-
+    const profile = sessionStorage.getItem("profile_img");
     let owner_account_id = dimos?.account_id;
     const visitor_account_id = account_id;
 
@@ -282,30 +282,67 @@ const DimoSharedDetail = () => {
                                     </Button>
                                 </div>
                             </div>
-                            <div className="p-4">
-                                {dimo?.comment_count && dimo?.comment_count > 0
-                                    ? dimo?.comment.map((value) => {
-                                          return (
-                                              <div key={value?.comment_id}>
-                                                  <CommentDimo
-                                                      account_id={value?.account_id}
-                                                      account_nickname={value?.nickname}
-                                                      account_profile_img={value?.profile_img}
-                                                      comment_id={value?.comment_id}
-                                                      content={value?.content}
-                                                      is_comment_like={value?.is_comment_like}
-                                                      like_count={value?.like_count}
-                                                      modify_time={value?.modify_time}
-                                                  />
-                                              </div>
-                                          );
-                                      })
-                                    : ""}
-                            </div>
-                        </Card>
-                    </Bg>
-                </>
-            )}
+
+                        </div>
+                    </Btns>
+                </Card>
+                <UnderLine />
+
+                <div className="flex flex-row font-min1">
+                    <Icon name="Talk" iconSize="32" />
+                    <span className="pl-2 mb-1 text-xl">댓글 {dimo?.comment_count}개</span>
+                </div>
+
+                <Card>
+                    <div className="flex p-5 mt-20 rounded-md bg-dgray-200 xl:px-10 2xl:px-20">
+                        <div>
+                            <Subtitle size="1" className="hidden lg:flex">
+                                댓글 남기기
+                            </Subtitle>
+                            <Profile
+                                size="5"
+                                src={profile}
+                                className="hidden lg:flex"
+                            />
+                        </div>
+                        <div className="w-full mt-12 ml-auto lg:w-11/12">
+                            <Answer
+                                value={name.value}
+                                onChange={name.onChange}
+                                textarea
+                                is_submit
+                                onSubmit={commentSubmit}
+                                cardsize="2"
+                                width="20"
+                            />
+                            <Button size="3" className="visible mt-4 xl:invisible" onClick={commentSubmit}>
+                                제출
+                            </Button>
+                        </div>
+                    </div>
+                    <div className="p-4">
+                        {dimo?.comment_count && dimo?.comment_count > 0
+                            ? dimo?.comment.map((value) => {
+                                  return (
+                                      <div key={value?.comment_id}>
+                                          <CommentDimo
+                                              account_id={value?.account_id}
+                                              account_nickname={value?.nickname}
+                                              account_profile_img={value?.profile_img}
+                                              comment_id={value?.comment_id}
+                                              content={value?.content}
+                                              is_comment_like={value?.is_comment_like}
+                                              like_count={value?.like_count}
+                                              modify_time={value?.modify_time}
+                                          />
+                                      </div>
+                                  );
+                              })
+                            : ""}
+                    </div>
+                </Card>
+            </Bg>
+
         </>
     );
 };

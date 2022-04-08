@@ -5,6 +5,7 @@ import { Label, Title, HeartButton, Text, Card, Profile, Button, Thumbnail, Icon
 import tw from "tailwind-styled-components";
 import { useToggle } from "../../hooks";
 import { useNavigate, Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import { DimoWorkPost } from "../Dimo";
 const IconBox = tw.div`
 absolute bottom-6 px-9 w-full
@@ -68,6 +69,18 @@ const Slides = (props) => {
     }
 
     const makeFollow = () => {
+        const sessionId = sessionStorage.getItem("account_id");
+        console.log(sessionId, id);
+        if(sessionId == id){
+            Swal.fire({
+                icon: "error",
+                title: "팔로우할 수 없습니다",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
+        }
         const account_id = { account_id: id };
         // console.log('account_id:', account_id, 'now:', follow);
         setIsfow(!is_fow);
@@ -159,7 +172,7 @@ const Slides = (props) => {
                             <Title size="5" className="text-gray-700 truncate">
                                 {props.nickname} 님
                             </Title>
-                            <div className="-mt-1 h-4">
+                            <div className="h-4 -mt-1">
                                 <Text size="5">{job} </Text>
                             </div>
                         </div>

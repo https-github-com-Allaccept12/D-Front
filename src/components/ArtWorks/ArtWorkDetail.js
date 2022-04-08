@@ -105,7 +105,31 @@ const ArtWorkDetail = (props) => {
         if (artworks) {
             setArtworkId(artworks.artWorkSubDetail.artwork_id);
             setNickname(artworks.artWorkSubDetail.account_nickname);
-            setCategory(artworks.artWorkSubDetail.category);
+            const catemp = artworks.artWorkSubDetail.category;
+            if(catemp === 'ui'){
+                setCategory('UI / UX');
+            } else if(catemp === 'graphic') {
+                setCategory('그래픽');
+            } else if(catemp === 'branding') {
+                setCategory('브랜딩 / 편집');
+            } else if(catemp === 'package') {
+                setCategory('패키지');
+            } else if(catemp === 'product') {
+                setCategory('제품');
+            } else if(catemp === 'typo') {
+                setCategory('타이포그래피');
+            } else if(catemp === 'video') {
+                setCategory('영상 / 모션');
+            } else if(catemp === 'crafts') {
+                setCategory('공예');
+            } else if(catemp === 'fashion') {
+                setCategory('패션');
+            } else if(catemp === 'game') {
+                setCategory('게임 / 캐릭터');
+            } else if(catemp === 'interior') {
+                setCategory('건축 / 인테리어 / 환경');
+            }
+            // setCategory(artworks.artWorkSubDetail.category);
             // setposterid(artworks?.artWorkSubDetail?.account_id);
             setProfile(artworks.artWorkSubDetail.account_profile_img);
             setTempProfile(artworks.artWorkSubDetail.account_profile_img);

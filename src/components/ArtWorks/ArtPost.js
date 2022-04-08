@@ -42,6 +42,7 @@ const ArtPost = (props) => {
     const [barAccountId, setBarAccountId] = useState();
     const [posterid, setposterid] = useState("");
     const sessionId = sessionStorage.getItem("account_id");
+
     const [isMine, setIsMine] = useState(false);
     useEffect(() => {
         if (sessionId == account_id) {
@@ -49,11 +50,13 @@ const ArtPost = (props) => {
         }
     }, []);
 
+
     const ArtWorkURL = `dplusday.com/detailart/${barArtWorkId}`;
 
     const handleClickArtWork = () => {
         // setShowDetail(!showDetail);
         let owner_account_id = account_id;
+        localStorage.setItem("artworker", account_id);
         const visitor_account_id = sessionStorage.getItem("account_id");
         dispatch(artworkDetailLoad({ artwork_id, visitor_account_id, dispatch }));
         dispatch(myPageLoad({ account_id, owner_account_id, dispatch }));
@@ -65,6 +68,17 @@ const ArtPost = (props) => {
     };
 
     const clickFollow = () => {
+        const artworker = localStorage.getItem("artworker");
+        if(artworker == account_id){
+            Swal.fire({
+                icon: "error",
+                title: "자신은 팔로우할 수 없습니다.",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
+        }
         setFollow(!follow);
         setBarFollow(!barFollow);
         if (follow) {
@@ -87,6 +101,17 @@ const ArtPost = (props) => {
     };
 
     const clickBookmark = () => {
+        const artworker = localStorage.getItem("artworker");
+        if(artworker == account_id){
+            Swal.fire({
+                icon: "error",
+                title: "내 작품은 스크랩할 수 없습니다.",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
+        }
         setBookmark(!bookmark);
         setBarBookMark(!barBookMark);
         if (bookmark) {
@@ -169,6 +194,7 @@ const ArtPost = (props) => {
                                         </div>
                                         <Text size="1">프로필</Text>
                                     </div>
+
                                     {isMine && (
                                         <>
                                             <div
@@ -213,6 +239,7 @@ const ArtPost = (props) => {
                                             </div>
                                         </>
                                     )}
+
                                     <div className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110">
                                         <CopyToClipboard text={ArtWorkURL}>
                                             <div

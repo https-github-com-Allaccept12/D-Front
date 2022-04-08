@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { CreateInterests } from "../../../redux/modules/interests.js";
 import { interests } from "../../../redux/modules/interests.js";
 import { Text, Icon, PageLoadSpinner, Button } from "../../../elements";
 import tw from "tailwind-styled-components";
