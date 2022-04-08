@@ -17,7 +17,7 @@ const MyPic = (props) => {
   }, [])
   
   const marked = useSelector((state) => state.myPage.bookmarked);
-  // console.log(marked);
+  console.log(marked);
 
   return (
     <>
@@ -33,7 +33,7 @@ const MyPic = (props) => {
     <div className="flex flex-row flex-wrap items-center justify-center gap-6">
      {marked && marked.map((value) => {
        return (
-        <EditMyArtWork src={value.img} size="1" />
+        <EditMyArtWork src={value.img} artwork_id={value.artwork_id} size="1" />
        )
      })}
 {/* <EditMyArtWork src="https://ohfun.net/contents/article/images/2016/0526/1464221994635450.jpg" size="1" />

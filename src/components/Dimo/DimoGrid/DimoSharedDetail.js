@@ -288,7 +288,7 @@ const DimoSharedDetail = () => {
                                         </Subtitle>
                                         <Profile
                                             size="5"
-                                            src="http://kids.donga.com/www/data/news/201408/2014080726.jpg"
+                                            src={profile}
                                             className="hidden lg:flex"
                                         />
                                     </div>

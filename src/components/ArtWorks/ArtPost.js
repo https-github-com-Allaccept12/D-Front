@@ -68,7 +68,8 @@ const ArtPost = (props) => {
 
     const clickFollow = () => {
         const artworker = localStorage.getItem("artworker");
-        if (artworker == account_id) {
+        const clicker = sessionStorage.getItem("account_id");
+        if (artworker == clicker) {
             Swal.fire({
                 icon: "error",
                 title: "자신은 팔로우할 수 없습니다.",
@@ -90,7 +91,8 @@ const ArtPost = (props) => {
     };
 
     const clickLike = () => {
-        if (like) {
+        console.log(barLike);
+        if (barLike) {
             console.log('unlike');
             dispatch(UnLikeArtwork(barArtWorkId));
         } else {
@@ -103,7 +105,8 @@ const ArtPost = (props) => {
 
     const clickBookmark = () => {
         const artworker = localStorage.getItem("artworker");
-        if (artworker == account_id) {
+        const clicker = sessionStorage.getItem("account_id");
+        if (artworker == clicker) {
             Swal.fire({
                 icon: "error",
                 title: "내 작품은 스크랩할 수 없습니다.",
