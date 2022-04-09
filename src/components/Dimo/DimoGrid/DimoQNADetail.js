@@ -6,7 +6,7 @@ import { Comment } from "../../Comment";
 import DimoPost from "./DimoPost";
 import DimoQNAQuestion from "./DimoQNAQuestion";
 import DimoQNAAnswer from "./DimoQNAAnswer";
-import { detailDimoQna, deleteDimo, dimoQnaDetailLoad } from "../../../redux/modules/dimo";
+import dimo, { detailDimoQna, deleteDimo, dimoQnaDetailLoad } from "../../../redux/modules/dimo";
 import tw from "tailwind-styled-components";
 
 const Box = tw.div`
@@ -105,7 +105,7 @@ const DimoQNADetail = ({ history, location, match }) => {
                         <div className="col-start-1 col-end-4 row-start-1 col-span-full">
                             <Box>
                                 <Grid>
-                                    <DimoQNAQuestion followed="true" value={dimos} post={dimosdetail} />
+                                    <DimoQNAQuestion followed={dimo.is_follow} value={dimos} post={dimosdetail} />
                                     <InnerLine />
                                     <div className="flex flex-row items-center justify-start gap-3">
                                         <Icon name="Talk" iconSize="36" />
