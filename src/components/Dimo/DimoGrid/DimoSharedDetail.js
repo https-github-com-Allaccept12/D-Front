@@ -85,7 +85,7 @@ const DimoSharedDetail = () => {
     const visitor_account_id = account_id;
 
     const post_id = location?.state?.post_id;
-    console.log(dimo.is_like);
+    // console.log(dimo?.is_like);
     // const post_id = match.params.name;
     const dispatch = useDispatch();
 
@@ -307,31 +307,30 @@ const DimoSharedDetail = () => {
                                                 <span className="hidden 2xl:contents">좋아요</span>
                                             </ButtonWithCount>
                                         )}
-
-                                        {/* {is_bookmark ? (
-                                <ButtonWithCount
-                                    icon
-                                    name="BookmarkF"
-                                    iconColor="book"
-                                    color="5"
-                                    size="3"
-                                    count={book_cnt}
-                                    onClick={cancelBook}
-                                >
-                                    <span className="hidden 2xl:contents">스크랩</span>
-                                </ButtonWithCount>
-                            ) : (
-                                <ButtonWithCount
-                                    icon
-                                    name="BookmarkE"
-                                    color="4"
-                                    size="3"
-                                    count={book_cnt}
-                                    onClick={addBook}
-                                >
-                                    <span className="hidden 2xl:contents">스크랩</span>
-                                </ButtonWithCount>
-                            )} */}
+                                        {is_bookmark ? (
+                                            <ButtonWithCount
+                                                icon
+                                                name="BookmarkF"
+                                                iconColor="book"
+                                                color="5"
+                                                size="3"
+                                                count={book_cnt}
+                                                onClick={cancelBook}
+                                            >
+                                                <span className="hidden 2xl:contents">스크랩</span>
+                                            </ButtonWithCount>
+                                        ) : (
+                                            <ButtonWithCount
+                                                icon
+                                                name="BookmarkE"
+                                                color="4"
+                                                size="3"
+                                                count={book_cnt}
+                                                onClick={addBook}
+                                            >
+                                                <span className="hidden 2xl:contents">스크랩</span>
+                                            </ButtonWithCount>
+                                        )}
                                         <CopyToClipboard text={currentUrl}>
                                             <Button
                                                 icon
