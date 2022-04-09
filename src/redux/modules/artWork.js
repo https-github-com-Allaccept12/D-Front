@@ -172,7 +172,7 @@ export const updateScope = createAsyncThunk("/updateScope", (artwork_id) => {
 
 export const postScope = createAsyncThunk("/updateScope", (artwork_id) => {
     const data = { id: artwork_id }
-    URL.patch(`/api/my-page/hidepiece`, data, {
+    URL.post(`/api/my-page/hidepiece`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
