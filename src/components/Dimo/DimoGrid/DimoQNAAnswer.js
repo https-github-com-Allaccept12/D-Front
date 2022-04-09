@@ -44,6 +44,8 @@ py-10 flex flex-row justify-between
 
 const DimoQNAAnswer = (props) => {
     const dimosdetail = useSelector((state) => state.dimo.detaildimoQna?.postAnswerSubDetail);
+    const dimopost = useSelector((state) => state.dimo?.detaildimoQna);
+    // console.log(dimopost);
     const {
         selected,
         account_id,
@@ -72,8 +74,11 @@ const DimoQNAAnswer = (props) => {
     if (id_cookie) {
         a_id = id_cookie;
     }
+
     let visitor_account_id = a_id;
-    let owner_account_id = dimosdetail.answer_id;
+    // let question_account_id =
+    let answer_account_id = dimosdetail.answer_id;
+    let owner_account_id = dimopost.account_id;
     // console.log(visitor_account_id);
     const ClickDelete = () => {
         dispatch(deleteAnswerDimo(answer_id));
@@ -184,7 +189,7 @@ const DimoQNAAnswer = (props) => {
             <Card is_selected={is_selected}>
                 <Footer>
                     <div className="order-1">
-                        {owner_account_id == a_id ? (
+                        {visitor_account_id == answer_account_id ? (
                             <>
                                 <MyBtn onClick={openModify}>수정</MyBtn>
 
