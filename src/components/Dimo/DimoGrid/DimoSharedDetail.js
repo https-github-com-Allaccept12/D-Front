@@ -67,10 +67,10 @@ const MyBtn = tw.button`
 
 const DimoSharedDetail = () => {
     const currentUrl = window.location.href;
-    const dimo = useSelector((state) => state.dimo.detailDimoInfo);
-    const dimos = useSelector((state) => state.dimo.detailDimoInfo?.postSubDetail);
+    const dimo = useSelector((state) => state.dimo?.detailDimoInfo);
+    const dimos = useSelector((state) => state.dimo?.detailDimoInfo?.postSubDetail);
     // const myProfileImg = sessionStorage.getItem("profile_img");
-    console.log(dimo);
+
     let location = useLocation();
     let navigate = useNavigate();
     // const navigate = useNavigate();
@@ -85,7 +85,7 @@ const DimoSharedDetail = () => {
     const visitor_account_id = account_id;
 
     const post_id = location?.state?.post_id;
-    console.log(dimos?.like_count);
+
     // const post_id = match.params.name;
     const dispatch = useDispatch();
 
@@ -140,7 +140,7 @@ const DimoSharedDetail = () => {
         dispatch(likeDimoInfo(post_id));
     };
 
-    const [book_cnt, setBookCnt] = useState(dimos?.bookMark_count);
+    const [book_cnt, setBookCnt] = useState(dimo?.bookmark_count);
     const [is_bookmark, setIsBookmark] = useState(dimo?.is_bookmark);
 
     const cancelBook = () => {
@@ -373,7 +373,7 @@ const DimoSharedDetail = () => {
                                         </Title>
                                     </div>
                                 </div>
-                                {!dimo.is_follow === true ? (
+                                {!dimo.is_follow ? (
                                     <Button size="3" color="1" onClick={clickFollow}>
                                         팔로우 🎉
                                     </Button>
