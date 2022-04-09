@@ -14,7 +14,7 @@ w-full
 `;
 
 const Grid = tw.div`
-w-full xl:w-5/6  p-3 sm:p-10 ml-auto
+w-full xl:w-5/6 p-3 sm:p-10 ml-auto
 `;
 
 const InnerLine = tw.hr`
@@ -62,9 +62,9 @@ const DimoQNADetail = ({ history, location, match }) => {
                 <PageLoadSpinner />
             ) : (
                 <>
-                    <div className="h-[200rem] xl:grid xl:grid-cols-4 bg-dgray-200">
-                        <div className="col-span-2 col-start-4 grid-rows-6 xl:grid ">
-                            <div className="fixed invisible h-full top-28 2xl:visible 2xl:absolute">
+                    <div className="h-[200rem] lg:grid lg:grid-cols-4 bg-dgray-200">
+                        <div className="col-span-2 col-start-4 grid-rows-6 lg:grid ">
+                            <div className="fixed invisible h-full top-28 lg:visible lg:absolute">
                                 <div className="flex flex-col ">
                                     <div className="flex flex-row items-end self-end justify-end">
                                         <div className="row-start-1 ">
