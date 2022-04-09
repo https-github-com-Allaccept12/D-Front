@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { ModifyArtWork } from "../../redux/modules/artWork";
+import { ModifyArtWork, UnMarkArtwork } from "../../redux/modules/artWork";
 import { getMaster, removeMaster, updateScope, postScope, deleteArtwork } from "../../redux/modules/artWork";
 import CircleBtn from "../Icons/CircleBtn";
 import tw from "tailwind-styled-components";
@@ -45,7 +45,7 @@ const EditMyArtWork = (props) => {
     const [is_master, setMaster] = useState(isMaster);
     const [is_public, setPublic] = useState(scope);
     // console.log("in here, ", artwork_id);
-    // console.log(isMaster, scope);
+    console.log(isMaster, scope);
 
     const from = location.pathname.split('/')[2]
     console.log(from);
@@ -60,7 +60,7 @@ const EditMyArtWork = (props) => {
     };
     const ClickDelete = () => {
         console.log('click delete');
-        const data = {artwork_id: artwork_id};
+        const data = {id: artwork_id};
         dispatch(deleteArtwork({ data, category }));
     };
     const ClickEdit = () => {
@@ -80,23 +80,29 @@ const EditMyArtWork = (props) => {
         navigate(`/detailart/${artwork_id}`);
     }
 
+    const ClickBookMark = () => {
+        dispatch(UnMarkArtwork(artwork_id));
+    }
+
     return (
         <>
             <Hover>
                 <ArtWorkImage src={src} size={size} />
                 <Actives>
                     <Edit>
-                        {from !== 'mypic'&& 
+                        {from !== 'mypic' ? 
                         <FlexBox>
                             <CircleBtn name="Edit" onClick={ClickEdit}></CircleBtn>
                             <CircleBtn name="Delete" onClick={ClickDelete}></CircleBtn>
                             <CircleBtn name="MyStar" onClick={ClickMaster}></CircleBtn>
                             <CircleBtn name="Private" onClick={ClickPublic}></CircleBtn>
                         </FlexBox>
-                        }
-                        <div>
+                        :
+                        <FlexBox>
+                            <CircleBtn name="BookMark" onClick={ClickBookMark}></CircleBtn>
                             <CircleBtn name="Detail" onClick={ClickDetail}></CircleBtn>
-                        </div>
+                        </FlexBox>
+                        }
                     </Edit>
                 </Actives>
                 <Constan>

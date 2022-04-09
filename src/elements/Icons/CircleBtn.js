@@ -109,6 +109,21 @@ const CircleBtn = (props) => {
         );
     }
 
+    if (name === "BookMark") {
+        return (
+            <>
+                <IconBox>
+                    <Icons>
+                        <BookmarkF width="28" height="28" onClick={onClick} />
+                    </Icons>
+                    <Text size="1" className="mt-2 text-white">
+                        스크랩 해제
+                    </Text>
+                </IconBox>
+            </>
+        );
+    }
+
     if (name === "MyStarMini") {
         return (
             <>
