@@ -181,8 +181,8 @@ export const postScope = createAsyncThunk("/updateScope", (artwork_id) => {
 });
 
 // 작품 삭제
-export const deleteArtwork = createAsyncThunk("/deleteArtwork", ({artwork_id, category}) => {
-    URL.patch(`/api/artwork/del/${category}`, artwork_id, {
+export const deleteArtwork = createAsyncThunk("/deleteArtwork", ({data, category}) => {
+    URL.patch(`/api/artwork/del/${category}`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
