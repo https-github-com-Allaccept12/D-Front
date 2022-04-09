@@ -12,9 +12,12 @@ export const requestFollow = createAsyncThunk("/requestFollow", (account_id) => 
       withCredentials: true,
   })
       .then((res) => {
-        //   console.log(res);
+          console.log(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {if (err.response.data.status == 444){
+        // console.log('here');
+        dispatch(refreshSlice({access_token, refresh_token}));
+    }});
 });
 
 // 언팔로우
@@ -27,9 +30,12 @@ export const requestUnFollow = createAsyncThunk("/requestFollow", (account_id) =
       withCredentials: true,
   })
       .then((res) => {
-        //   console.log(res);
+          console.log(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {if (err.response.data.status == 444){
+        // console.log('here');
+        dispatch(refreshSlice({access_token, refresh_token}));
+    }});
 });
 
 // 팔로잉리스트

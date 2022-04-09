@@ -96,11 +96,11 @@ const EditMyArtWork = (props) => {
                             <CircleBtn name="Delete" onClick={ClickDelete}></CircleBtn>
                             <CircleBtn name="MyStar" onClick={ClickMaster}></CircleBtn>
                             <CircleBtn name="Private" onClick={ClickPublic}></CircleBtn>
+                            <CircleBtn name="Detail" onClick={ClickDetail}></CircleBtn>
                         </FlexBox>
                         :
                         <FlexBox>
                             <CircleBtn name="BookMark" onClick={ClickBookMark}></CircleBtn>
-                            <CircleBtn name="Detail" onClick={ClickDetail}></CircleBtn>
                         </FlexBox>
                         }
                     </Edit>
