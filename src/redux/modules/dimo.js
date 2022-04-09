@@ -2,9 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { refreshSlice } from "./temp";
 import axios from "axios";
 import { URL, token } from "../UrlForAxios";
-import { useDispatch } from "react-redux";
+import { useDispatch as dispatch } from "react-redux";
 
-//디모게시글 생성(어째선지 파일은 등록이 안됨)
+//
 export const CreateNewDimo = createAsyncThunk("post/CreateDimo", async (formData, thunkAPI) => {
     await URL.post("/api/post", formData, {
         headers: {
@@ -57,7 +57,7 @@ export const editDimo = createAsyncThunk("/editDimo", ({ post_id, formData }) =>
         });
 });
 
-// 슬라이드 받아오는 애... 두개를 하나로합치고 useEffect를 먹여줬으나 그래도....
+// ..
 export const dimoPageLoad = createAsyncThunk("/dimoPageLoad", ({ dispatch, board, visitor_account_id }) => {
     URL.get(`/api/post/recommend/${board}`, {
         params: {
@@ -335,8 +335,8 @@ export const CreateAnswerDimo = createAsyncThunk("/CreateAnswerDimo", async (dat
 });
 
 //답변수정
-export const editAnswerDimo = createAsyncThunk("/editAnswerDimo", async ({ answer_id, data }) => {
-    await URL.patch(`/api/post/answer/${answer_id}`, data, {
+export const editAnswerDimo = createAsyncThunk("/editAnswerDimo", async ({ data }) => {
+    await URL.patch(`/api/post/answer`, data, {
         headers: {
             "content-type": "application/json",
             Authorization: "Bearer " + token,
@@ -359,7 +359,8 @@ export const editAnswerDimo = createAsyncThunk("/editAnswerDimo", async ({ answe
 
 //답변채택
 export const selectAnswerDimo = createAsyncThunk("/selectAnswerDimo", async ({ answer_id }) => {
-    await URL.patch(`/api/post/answer/select/${answer_id}`, answer_id, {
+    const data = { id: answer_id };
+    await URL.patch(`/api/post/answer/select`, data, {
         headers: {
             "content-type": "application/json",
             Authorization: "Bearer " + token,
