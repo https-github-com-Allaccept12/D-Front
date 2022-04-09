@@ -85,7 +85,8 @@ const DimoSharedDetail = () => {
             setTime();
         }, 100);
         // navigate(`/dimo/infodtail/${post_id}`, { replace: true });
-    }, [post_id]);
+        console.log('Rerendering...')
+    }, [location]);
 
     const dimo = useSelector((state) => state.dimo.detailDimoInfo);
     const dimos = useSelector((state) => state.dimo.detailDimoInfo?.postSubDetail);
