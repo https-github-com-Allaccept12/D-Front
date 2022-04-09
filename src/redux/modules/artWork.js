@@ -136,7 +136,8 @@ export const getMaster = createAsyncThunk("/getMaster", (artwork_id) => {
 
 // 대표작품 해제
 export const removeMaster = createAsyncThunk("/removeMaster", (artwork_id) => {
-    URL.post(`/api/my-page/masterpiece/${artwork_id}`, artwork_id, {
+    const data = { id: artwork_id };
+    URL.patch(`/api/my-page/masterpiece`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -155,7 +156,8 @@ export const removeMaster = createAsyncThunk("/removeMaster", (artwork_id) => {
 
 // 공개 비공개 전환
 export const updateScope = createAsyncThunk("/updateScope", (artwork_id) => {
-    URL.post(`/api/my-page/hidepiece/${artwork_id}`, artwork_id, {
+    const data = { id: artwork_id };
+    URL.post(`/api/my-page/hidepiece`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -168,7 +170,8 @@ export const updateScope = createAsyncThunk("/updateScope", (artwork_id) => {
 });
 
 export const postScope = createAsyncThunk("/updateScope", (artwork_id) => {
-    URL.post(`/api/my-page/hidepiece/${artwork_id}`, artwork_id, {
+    const data = { id: artworkd_id }
+    URL.patch(`/api/my-page/hidepiece`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -284,14 +287,15 @@ export const commentModify = createAsyncThunk("/commentModify", ({ comment_id, d
 
 // 댓글 삭제
 export const commentDelete = createAsyncThunk("/commentDelete", (comment_id) => {
-    URL.patch(`/api/artwork/comment/del`, comment_id, {
+    const data = { id:comment_id } 
+    URL.patch(`/api/artwork/comment/del`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
         withCredentials: true,
     })
         .then((res) => {
-            // console.log(res);
+            console.log(res);
         })
         .catch((err) => console.log(err));
 });
@@ -313,7 +317,8 @@ export const LikeArtwork = createAsyncThunk("/LikeArtwork", (artwork_id) => {
 
 // 좋아요 해제
 export const UnLikeArtwork = createAsyncThunk("/UnLikeArtwork", (artwork_id) => {
-    URL.patch(`/api/artwork/like`, artwork_id, {
+    const data = { id:artwork_id }
+    URL.patch(`/api/artwork/like`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -341,7 +346,8 @@ export const MarkArtwork = createAsyncThunk("/MarkArtwork", (artwork_id) => {
 
 // 북마크 해제
 export const UnMarkArtwork = createAsyncThunk("/UnMarkArtwork", (artwork_id) => {
-    URL.patch(`/api/bookmark/artwork`, artwork_id, {
+    const data = { id:artwork_id }
+    URL.patch(`/api/bookmark/artwork`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
