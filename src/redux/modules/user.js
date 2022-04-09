@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { URL, token } from "../UrlForAxios";
 
+const dispatch = useDispatch();
 
 // 팔로우
 export const requestFollow = createAsyncThunk("/requestFollow", (account_id) => {
