@@ -40,6 +40,7 @@ const MyPortfolio = (props) => {
                                 size="1"
                                 key={value.artwork_id}
                                 isMaster={value.is_master}
+                                scope={value.scope}
                             />
                         );
                     })}
