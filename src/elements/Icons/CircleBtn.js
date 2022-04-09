@@ -137,7 +137,7 @@ const CircleBtn = (props) => {
     if (name === "PrivateMini") {
         return (
             <>
-                <Badge states={states}>
+                <Badge states={!states}>
                     <Private width="16" height="16" onClick={onClick} />
                 </Badge>
             </>
