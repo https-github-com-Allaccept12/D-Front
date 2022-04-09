@@ -26,6 +26,8 @@ const ArtPostMain = (props) => {
     const [barArtWorkId, setBarArtWorkId] = useState("");
     const [barLike, setBarLike] = useState();
     const [barBookMark, setBarBookMark] = useState();
+    const [barAccountId, setBarAccountId] = useState();
+    // const [barFollow, setBarFollow] = useState(is_follow);
 
     const ArtWorkURL = `dplusday.com/detailart/${barArtWorkId}`;
 
@@ -38,7 +40,7 @@ const ArtPostMain = (props) => {
 
     const clickProfile = () => {
         // console.log('clickckcick');
-        navigate(`/myspace/myprofile/${barArtWorkId}`, {
+        navigate(`/myspace/myprofile/${barAccountId}`, {
             state: {
                 owner_id: { barArtWorkId },
             },
@@ -95,7 +97,7 @@ const ArtPostMain = (props) => {
                 <div className="flex flex-row items-stretch justify-between flex-shrink-0 w-full mt-1">
                     <div className="flex flex-row items-center gap-2">
                         <Profile size="7" src={profile} />
-                        <Subtitle size="2" className="text-dpurple-300 truncate w-40">
+                        <Subtitle size="2" className="w-40 truncate text-dpurple-300">
                             {nickname}
                         </Subtitle>
                     </div>
@@ -124,6 +126,8 @@ const ArtPostMain = (props) => {
                                     artwork_id={artwork_id}
                                     setTempProfile={setTempProfile}
                                     setBarArtWorkId={setBarArtWorkId}
+                                    setBarAccountId={setBarAccountId}
+                                    // setBarFollow={setBarFollow}
                                 />
 
                                 <div className="hidden lg:contents">

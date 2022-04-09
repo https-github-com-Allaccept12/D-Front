@@ -1,9 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { URL } from "../UrlForAxios";
+import { URL, token } from "../UrlForAxios";
 
 export const CreateInterests = createAsyncThunk(
   "post/interests",
-  ({interest, token}, thunkAPI) => {
+  (interest, thunkAPI) => {
     URL.post("/api/profile/interest", interest, {
       headers: {
         Authorization: "Bearer " + token,

@@ -139,6 +139,7 @@ const ArtWorkDetail = (props) => {
                 setBarLike(artworks.is_like);
                 setBarBookMark(artworks.is_bookmark);
             }
+            setBarAccountId(artworks.artWorkSubDetail.account_id);
             setContent(artworks.artWorkSubDetail.content);
             setCopyright(artworks.artWorkSubDetail.account_nickname);
             setTime(artworks.artWorkSubDetail.create_time);
