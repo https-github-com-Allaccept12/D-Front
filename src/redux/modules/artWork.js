@@ -182,7 +182,7 @@ export const postScope = createAsyncThunk("/updateScope", (artwork_id) => {
 
 // 작품 삭제
 export const deleteArtwork = createAsyncThunk("/deleteArtwork", ({artwork_id, category}) => {
-    URL.patch(`/api/artwork/del/${artwork_id}/${category}`, {
+    URL.patch(`/api/artwork/del/${category}`, artwork_id, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -284,7 +284,7 @@ export const commentModify = createAsyncThunk("/commentModify", ({ comment_id, d
 
 // 댓글 삭제
 export const commentDelete = createAsyncThunk("/commentDelete", (comment_id) => {
-    URL.patch(`/api/artwork/comment/del/${comment_id}`, {
+    URL.patch(`/api/artwork/comment/del`, comment_id, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -313,7 +313,7 @@ export const LikeArtwork = createAsyncThunk("/LikeArtwork", (artwork_id) => {
 
 // 좋아요 해제
 export const UnLikeArtwork = createAsyncThunk("/UnLikeArtwork", (artwork_id) => {
-    URL.patch(`/api/artwork/like/${artwork_id}`, artwork_id, {
+    URL.patch(`/api/artwork/like`, artwork_id, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -341,7 +341,7 @@ export const MarkArtwork = createAsyncThunk("/MarkArtwork", (artwork_id) => {
 
 // 북마크 해제
 export const UnMarkArtwork = createAsyncThunk("/UnMarkArtwork", (artwork_id) => {
-    URL.patch(`/api/bookmark/artwork/${artwork_id}`, {
+    URL.patch(`/api/bookmark/artwork`, artwork_id, {
         headers: {
             Authorization: "Bearer " + token,
         },
