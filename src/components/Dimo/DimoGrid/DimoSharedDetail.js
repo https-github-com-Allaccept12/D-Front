@@ -84,8 +84,8 @@ const DimoSharedDetail = () => {
         var aaa = setTimeout(() => {
             setTime();
         }, 100);
-        navigate(`dimo/infodtail/${post_id}`, { replace: true });
-    }, []);
+        // navigate(`/dimo/infodtail/${post_id}`, { replace: true });
+    }, [dispatch]);
 
     const dimo = useSelector((state) => state.dimo.detailDimoInfo);
     const dimos = useSelector((state) => state.dimo.detailDimoInfo?.postSubDetail);
@@ -125,8 +125,8 @@ const DimoSharedDetail = () => {
         navigate("/dimo/info/uiux", { replace: true });
     };
 
-    const [like_cnt, setLikeCnt] = useState(dimos?.like_count);
-    const [is_like, setIsLike] = useState(dimo?.is_like);
+    const [like_cnt, setLikeCnt] = useState(dimos ? dimos?.like_count : 0);
+    const [is_like, setIsLike] = useState(dimo ? dimo?.is_like : 0);
     const cancelLike = () => {
         setIsLike(false);
         setLikeCnt(like_cnt - 1);
