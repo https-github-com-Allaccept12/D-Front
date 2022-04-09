@@ -71,7 +71,8 @@ D Plus는 디자이너들의 이러한 고민을 줄여드리기 위해 만들�
 
 1. 폴더 구조
 2. 디자인 시스템
-3. 광고용 미니 테스트 사이트 https://dplustest-d15f5.web.app/
+3. 트러블 슈팅
+4. 광고용 미니 테스트 사이트 https://dplustest-d15f5.web.app/
 
 
 
