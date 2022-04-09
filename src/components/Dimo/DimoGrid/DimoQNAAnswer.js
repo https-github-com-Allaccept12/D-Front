@@ -79,7 +79,8 @@ const DimoQNAAnswer = (props) => {
     // let question_account_id =
     let answer_account_id = dimosdetail.answer_id;
     // console.log(answer_id);
-    let owner_account_id = dimopost.account_id;
+    let owner_account_id = dimosdetail.account_id;
+    console.log(owner_account_id);
     // console.log(visitor_account_id);
     const ClickDelete = () => {
         dispatch(deleteAnswerDimo(answer_id));
