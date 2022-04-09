@@ -71,7 +71,7 @@ const MyPage = (props) => {
             ) : (
                 <>
                     <div className="grid-cols-5 2xl:grid">
-                        <div className="hidden w-40 h-full mt-4 xl:contents md:ml-28 ">
+                        <div className="top-0 h-[44rem] invisible fixed 2xl:visible 2xl:sticky">
                             <MyPageCategory myPageId={myPageId} account_id={account_id} />
                         </div>
                         {/* 내정보일땐 마이프로필 다른사람정보일땐 디폴리오 각 메뉴를 클릭하면 메뉴 */}

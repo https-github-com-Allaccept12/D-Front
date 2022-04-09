@@ -66,16 +66,32 @@ const MyBtn = tw.button`
 `;
 
 const DimoSharedDetail = () => {
-    const currentUrl = window.location.href;
-    const dimo = useSelector((state) => state.dimo?.detailDimoInfo);
-    const dimos = useSelector((state) => state.dimo?.detailDimoInfo?.postSubDetail);
-    // const myProfileImg = sessionStorage.getItem("profile_img");
-
-    let location = useLocation();
     let navigate = useNavigate();
-    // const navigate = useNavigate();
+    let location = useLocation();
+    const currentUrl = window.location.href;
+    let post_id = location.pathname.split("/")[3];
+
+    const [time, setTime] = useState(true);
+
+    // useEffect(() => {
+    //     var aaa = setTimeout(() => {
+    //         setTime();
+    //     }, 100);
+    // }, []);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(dimoInfoDetailLoad({ post_id, dispatch, visitor_account_id }));
+        var aaa = setTimeout(() => {
+            setTime();
+        }, 100);
+        navigate(`dimo/infodtail/${post_id}`, { replace: true });
+    }, []);
+
+    const dimo = useSelector((state) => state.dimo.detailDimoInfo);
+    const dimos = useSelector((state) => state.dimo.detailDimoInfo?.postSubDetail);
+
     let account_id = 0;
-    // const id_cookie = getCookie("account_id");
+
     const id_cookie = sessionStorage.getItem("account_id");
     if (id_cookie) {
         account_id = id_cookie;
@@ -84,14 +100,7 @@ const DimoSharedDetail = () => {
     let owner_account_id = dimos?.account_id;
     const visitor_account_id = account_id;
 
-    const post_id = location?.state?.post_id;
-
     // const post_id = match.params.name;
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(dimoInfoDetailLoad({ post_id, dispatch, visitor_account_id }));
-    }, []);
 
     const [showAnswer, setShowAnswer] = useToggle();
     const validMaxLen = (value) => value.length <= 30;
@@ -113,7 +122,7 @@ const DimoSharedDetail = () => {
         const board = `INFO`;
         const category = dimos?.category;
         dispatch(deleteDimo({ post_id, category, board }));
-        navigate("/dimo/info", { replace: true });
+        navigate("/dimo/info/uiux", { replace: true });
     };
 
     const [like_cnt, setLikeCnt] = useState(dimos?.like_count);
@@ -142,7 +151,7 @@ const DimoSharedDetail = () => {
 
     const [book_cnt, setBookCnt] = useState(dimo?.bookmark_count);
     const [is_bookmark, setIsBookmark] = useState(dimo?.is_bookmark);
-
+    console.log(dimo?.bookmark_count, dimo?.is_bookmark);
     const cancelBook = () => {
         setIsBookmark(false);
         setBookCnt(book_cnt - 1);
@@ -239,13 +248,6 @@ const DimoSharedDetail = () => {
         navigate(`/myspace/myprofile/${owner_account_id}`);
     };
 
-    const [time, setTime] = useState(true);
-
-    useEffect(() => {
-        const aaa = setTimeout(() => {
-            setTime();
-        }, 100);
-    }, []);
     return (
         <>
             {time === true ? (

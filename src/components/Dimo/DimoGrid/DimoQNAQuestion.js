@@ -54,7 +54,7 @@ const MyBtn = tw.button`
 
 const DimoQNAQuestion = (props) => {
     const { followed, value, post } = props;
-    console.log(value);
+    // console.log(value);
     const location = useLocation();
     const navigate = useNavigate();
     const currentUrl = window.location.href;
