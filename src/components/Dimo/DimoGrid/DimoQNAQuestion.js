@@ -54,7 +54,7 @@ const MyBtn = tw.button`
 
 const DimoQNAQuestion = (props) => {
     const { followed, value, post } = props;
-
+    console.log(value);
     const location = useLocation();
     const navigate = useNavigate();
     const currentUrl = window.location.href;
@@ -114,8 +114,8 @@ const DimoQNAQuestion = (props) => {
 
     const [like_cnt, setLikeCnt] = useState(post?.like_count);
     const [is_like, setIsLike] = useState(post?.is_like);
-    const [book_cnt, setBookCnt] = useState(post?.bookmark_count ? post.bookmark_count : 0);
-    const [is_bookmark, setIsBookmark] = useState(post?.is_bookmark);
+    const [book_cnt, setBookCnt] = useState(value?.bookMark_count ? value.bookMark_count : 0);
+    const [is_bookmark, setIsBookmark] = useState(value?.is_bookmark);
     const cancelLike = () => {
         setIsLike(false);
         setLikeCnt(like_cnt - 1);
@@ -140,7 +140,7 @@ const DimoQNAQuestion = (props) => {
 
     const cancelBook = () => {
         setIsBookmark(false);
-        setBookCnt(bookmark_count - 1);
+        setBookCnt(book_cnt - 1);
         dispatch(bookmarkRemove(post_id));
     };
 
@@ -166,7 +166,7 @@ const DimoQNAQuestion = (props) => {
             return;
         }
         setIsBookmark(true);
-        setBookCnt(bookMark_count + 1);
+        setBookCnt(book_cnt + 1);
         dispatch(bookmarkAdd(post_id));
     };
 

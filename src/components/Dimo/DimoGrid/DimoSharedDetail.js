@@ -14,6 +14,7 @@ import {
     bookmarkRemove,
     deleteDimo,
 } from "../../../redux/modules/dimo";
+import { requestFollow, requestUnFollow } from "../../../redux/modules/user";
 
 const UnderLine = tw.hr`
 border border-dgray-300 w-full col-span-full mt-10 mb-5
@@ -54,7 +55,8 @@ const MyBtn = tw.button`
 const DimoSharedDetail = () => {
     const dimo = useSelector((state) => state.dimo.detailDimoInfo);
     const dimos = useSelector((state) => state.dimo.detailDimoInfo?.postSubDetail);
-    // console.log(dimos);
+    const myProfileImg = sessionStorage.getItem("profile_img");
+    console.log(myProfileImg);
     let location = useLocation();
     let navigate = useNavigate();
     // const navigate = useNavigate();
@@ -169,6 +171,55 @@ const DimoSharedDetail = () => {
         });
     };
 
+    const [follow, setFollow] = useState(dimo?.is_follow);
+    const [barFollow, setBarFollow] = useState();
+
+    const clickFollow = () => {
+        if (account_id === 0) {
+            Swal.fire({
+                icon: "info",
+                title: "로그인해주세요!",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
+        }
+        if (owner_account_id == visitor_account_id) {
+            Swal.fire({
+                icon: "error",
+                title: "자신은 팔로우할 수 없습니다",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
+        }
+        setFollow(!follow);
+        setBarFollow(!barFollow);
+        if (follow) {
+            dispatch(requestUnFollow(visitor_account_id));
+            Swal.fire({
+                icon: "success",
+                title: "언팔로우되었습니다!",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
+        } else {
+            dispatch(requestFollow(visitor_account_id));
+            Swal.fire({
+                icon: "success",
+                title: "팔로우되었습니다!",
+                showConfirmButton: false,
+                timer: 1000,
+            });
+            timer: 1000;
+            return;
+        }
+    };
+
     const [time, setTime] = useState(true);
 
     useEffect(() => {
@@ -271,6 +322,27 @@ const DimoSharedDetail = () => {
                                     </div>
                                 </div>
                             </Btns>
+
+                            <UnderLine />
+                            <Footer>
+                                <div className="flex flex-row justify-start">
+                                    <Profile size="5" src={dimos.account_profile_img} className="hidden md:flex" />
+                                    <div className="ml-3 -mt-2">
+                                        <Title size="5" className="my-3">
+                                            {dimos.account_nickname}
+                                        </Title>
+                                    </div>
+                                </div>
+                                {!dimo.is_follow === true ? (
+                                    <Button size="3" color="1" onClick={clickFollow}>
+                                        팔로우 🎉
+                                    </Button>
+                                ) : (
+                                    <Button size="3" color="4" onClick={clickFollow}>
+                                        팔로잉
+                                    </Button>
+                                )}
+                            </Footer>
                         </Card>
                         <UnderLine />
 
@@ -281,12 +353,11 @@ const DimoSharedDetail = () => {
 
                         <Card>
                             <Btns>
-                                <div className="flex p-5 mt-20 rounded-md bg-dgray-200 xl:px-10 2xl:px-20">
+                                <div className="flex p-5 mt-20 rounded-md bg-dgray-200 ">
                                     <div>
-                                        <Subtitle size="1" className="hidden lg:flex">
-                                            댓글 남기기
+                                        <Subtitle size="2" className="hidden lg:flex">
+                                            댓글쓰기
                                         </Subtitle>
-                                        <Profile size="5" src={profile} className="hidden lg:flex" />
                                     </div>
                                     <div className="w-full mt-12 ml-auto lg:w-11/12">
                                         <Answer
