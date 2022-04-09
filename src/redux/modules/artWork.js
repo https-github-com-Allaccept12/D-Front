@@ -313,7 +313,7 @@ export const LikeArtwork = createAsyncThunk("/LikeArtwork", (artwork_id) => {
 
 // 좋아요 해제
 export const UnLikeArtwork = createAsyncThunk("/UnLikeArtwork", (artwork_id) => {
-    URL.patch(`/api/artwork/like/${artwork_id}`,{
+    URL.patch(`/api/artwork/like/${artwork_id}`, artwork_id, {
         headers: {
             Authorization: "Bearer " + token,
         },
