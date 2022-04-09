@@ -138,7 +138,7 @@ export const getMaster = createAsyncThunk("/getMaster", (artwork_id) => {
 // 대표작품 해제
 export const removeMaster = createAsyncThunk("/removeMaster", (artwork_id) => {
     const data = { id: artwork_id };
-    URL.patch(`/api/my-page/masterpiece`, data, {
+    URL.post(`/api/my-page/masterpiece`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
