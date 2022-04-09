@@ -378,7 +378,7 @@ const DimoQNAQuestion = (props) => {
                             </Title>
                         </div>
                     </div>
-                    {!followed === true ? (
+                    {!followed ? (
                         <Button size="3" color="1" onClick={clickFollow}>
                             팔로우 🎉
                         </Button>

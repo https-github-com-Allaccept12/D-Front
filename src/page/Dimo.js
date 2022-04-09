@@ -46,7 +46,7 @@ const Dimo = (props) => {
     const visitor_account_id = account_id;
 
     const goToQNA = () => {
-        navigate(`/dimo/qna`, {
+        navigate(`/dimo/qna/uiux`, {
             state: {
                 board: "QNA",
                 category: "uiux",
