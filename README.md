@@ -9,9 +9,6 @@
 <br>
 <img width="905" alt="플러스하다" src="https://user-images.githubusercontent.com/79740505/161507027-ac3024b5-44cb-48e2-a1b8-f2f609336e97.png">
 
-📌 **시연 영상** : [시연영상](https:/시연영상 링크.com/) <br>
-📌 **발표 자료** : [구글 프레젠테이션으로 이동](https:/발표자료 링크.com/)
-
 <br>
 
 ## 1. D+ 소개<br/>
@@ -31,27 +28,26 @@ D Plus는 디자이너들의 이러한 고민을 줄여드리기 위해 만들�
 <br>
 
 ## 3. 기술 스택
-
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">
-<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"> 
-<img src="https://img.shields.io/badge/create%20react%20app-09D3AC?style=for-the-badge&logo=create%20react%20app&logoColor=white"> 
- <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
- <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">  
-  <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
-<img src="https://img.shields.io/badge/github%20actions-181717?style=for-the-badge&logo=github%20actions&logoColor=white">
- <img src="https://img.shields.io/badge/amazon%20aws-232F3E?style=for-the-badge&logo=amazon%20aws&logoColor=white">
- <img src="https://img.shields.io/badge/amazon%20s3-232F3E?style=for-the-badge&logo=amazon%20s3&logoColor=white">
- <img src="https://img.shields.io/badge/cloud%20front-00A8E1?style=for-the-badge&logo=amazon%20aws&logoColor=white">
-  <img src="https://img.shields.io/badge/react%20router%20dom-CA4245?style=for-the-badge&logo=react%20router&logoColor=white">
- <img src="https://img.shields.io/badge/mui-007FFF?style=for-the-badge&logo=mui&logoColor=white">
-   <img src="https://img.shields.io/badge/tailwind%20css-06B6D4?style=for-the-badge&logo=tailwind%20css&logoColor=white">
-  <img src="https://img.shields.io/badge/react%20slick-F4C51C?style=for-the-badge&logo=&logoColor=white">
-  <img src="https://img.shields.io/badge/react%20drop%20zone-F4C51C?style=for-the-badge&logo=&logoColor=white">
-    <img src="https://img.shields.io/badge/react%20beautiful%20dnd-FF6D70?style=for-the-badge&logo=&logoColor=white">
-        <img src="https://img.shields.io/badge/sweet%20alert2-00897B?style=for-the-badge&logo=&logoColor=white">
+<div align="center">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=white">
+<img src="https://img.shields.io/badge/react-61DAFB?style=flat-square&logo=react&logoColor=white"> 
+<img src="https://img.shields.io/badge/create%20react%20app-09D3AC?style=flat-square&logo=create%20react%20app&logoColor=white"> 
+ <img src="https://img.shields.io/badge/html5-E34F26?style=flat-square&logo=html5&logoColor=white"> 
+ <img src="https://img.shields.io/badge/css-1572B6?style=flat-square&logo=css3&logoColor=white">  
+  <img src="https://img.shields.io/badge/github-181717?style=flat-square&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/github%20actions-181717?style=flat-square&logo=github%20actions&logoColor=white">
+ <img src="https://img.shields.io/badge/amazon%20aws-232F3E?style=flat-square&logo=amazon%20aws&logoColor=white">
+ <img src="https://img.shields.io/badge/amazon%20s3-232F3E?style=flat-square&logo=amazon%20s3&logoColor=white">
+ <img src="https://img.shields.io/badge/cloud%20front-00A8E1?style=flat-square&logo=amazon%20aws&logoColor=white">
+  <img src="https://img.shields.io/badge/react%20router%20dom-CA4245?style=flat-square&logo=react%20router&logoColor=white">
+ <img src="https://img.shields.io/badge/mui-007FFF?style=flat-square&logo=mui&logoColor=white">
+   <img src="https://img.shields.io/badge/tailwind%20css-06B6D4?style=flat-square&logo=tailwind%20css&logoColor=white">
+  <img src="https://img.shields.io/badge/react%20slick-F4C51C?style=flat-square&logo=&logoColor=white">
+  <img src="https://img.shields.io/badge/react%20drop%20zone-F4C51C?style=flat-square&logo=&logoColor=white">
+    <img src="https://img.shields.io/badge/react%20beautiful%20dnd-FF6D70?style=flat-square&logo=&logoColor=white">
+        <img src="https://img.shields.io/badge/sweet%20alert2-00897B?style=flat-square&logo=&logoColor=white">
         
-
-  <img src="https://user-images.githubusercontent.com/89088205/162547900-2452b687-dea3-488a-aba8-f536a9eaa231.svg">
+</div>
 
 **`Front-end`**
 - [React Repository이동](https://github.com/https-github-com-Allaccept12/D_Team_Front)
@@ -65,18 +61,18 @@ D Plus는 디자이너들의 이러한 고민을 줄여드리기 위해 만들�
 
 ## 5. 개발 포인트
 
-
-## 6. 설계
-
-
-https://dplusday.com/
-
-광고
-https://dplustest-d15f5.web.app/
-
 1. 작품을 올리고 공유하는 기능(crud)
 2. 사용자를 팔로우/팔로잉하고 정보를 공유하는 커뮤니티 기능(질문/답변, 스크랩, 북마크)
 3. 포트폴리오 템플릿 기능
+
+## 6. 설계
+
+위키 링크
+
+1. 폴더 구조
+2. 디자인 시스템
+3. 광고용 미니 테스트 사이트 https://dplustest-d15f5.web.app/
+
 
 
 
