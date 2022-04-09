@@ -81,7 +81,7 @@ const Slides = (props) => {
             timer: 1000;
             return;
         }
-        const account_id = { account_id: id };
+        // const account_id = { account_id: id };
         // console.log('account_id:', account_id, 'now:', follow);
         setIsfow(!is_fow);
         console.log('is_follow: ', is_fow);

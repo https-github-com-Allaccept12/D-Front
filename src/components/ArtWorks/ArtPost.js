@@ -67,6 +67,7 @@ const ArtPost = (props) => {
     };
 
     const clickFollow = () => {
+        console.log(barFollow);
         const artworker = localStorage.getItem("artworker");
         const clicker = sessionStorage.getItem("account_id");
         if (artworker == clicker) {
@@ -206,7 +207,13 @@ const ArtPost = (props) => {
                                                 className="flex flex-col items-center justify-center gap-1 cursor-pointer hover:scale-110"
                                             >
                                                 <div className="flex flex-col items-center justify-center bg-white rounded-full font-min2">
-                                                    <Icon name="Plus" iconSize="48" className="absolute" />
+                                                    {!barFollow ? (
+                                                        <Icon name="Plus" iconSize="48" className="absolute" />
+                                                        
+                                                    ):
+                                                    (
+                                                        <Icon name="Success" iconSize="48" className="absolute" />
+                                                    )}
                                                     <Profile size="5" className="invisible" />
                                                 </div>
                                                 <Text size="1">팔로우</Text>
