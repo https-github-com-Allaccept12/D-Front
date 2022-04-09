@@ -286,11 +286,7 @@ const DimoSharedDetail = () => {
                                         <Subtitle size="1" className="hidden lg:flex">
                                             댓글 남기기
                                         </Subtitle>
-                                        <Profile
-                                            size="5"
-                                            src={profile}
-                                            className="hidden lg:flex"
-                                        />
+                                        <Profile size="5" src={profile} className="hidden lg:flex" />
                                     </div>
                                     <div className="w-full mt-12 ml-auto lg:w-11/12">
                                         <Answer
@@ -308,6 +304,26 @@ const DimoSharedDetail = () => {
                                     </div>
                                 </div>
                             </Btns>
+                            <div className="p-4">
+                                {dimo?.comment_count && dimo?.comment_count > 0
+                                    ? dimo?.comment.map((value) => {
+                                          return (
+                                              <div key={value?.comment_id}>
+                                                  <CommentDimo
+                                                      account_id={value?.account_id}
+                                                      account_nickname={value?.nickname}
+                                                      account_profile_img={value?.profile_img}
+                                                      comment_id={value?.comment_id}
+                                                      content={value?.content}
+                                                      is_comment_like={value?.is_comment_like}
+                                                      like_count={value?.like_count}
+                                                      modify_time={value?.modify_time}
+                                                  />
+                                              </div>
+                                          );
+                                      })
+                                    : ""}
+                            </div>
                         </Card>
                         <UnderLine />
                     </Bg>
