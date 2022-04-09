@@ -85,7 +85,7 @@ const DimoSharedDetail = () => {
             setTime();
         }, 100);
         // navigate(`/dimo/infodtail/${post_id}`, { replace: true });
-    }, [dispatch]);
+    }, []);
 
     const dimo = useSelector((state) => state.dimo.detailDimoInfo);
     const dimos = useSelector((state) => state.dimo.detailDimoInfo?.postSubDetail);
@@ -221,7 +221,7 @@ const DimoSharedDetail = () => {
         setFollow(!follow);
         setBarFollow(!barFollow);
         if (follow) {
-            dispatch(requestUnFollow(visitor_account_id));
+            dispatch(requestUnFollow(owner_account_id));
             Swal.fire({
                 icon: "success",
                 title: "언팔로우되었습니다!",
@@ -231,7 +231,7 @@ const DimoSharedDetail = () => {
             timer: 1000;
             return;
         } else {
-            dispatch(requestFollow(visitor_account_id));
+            dispatch(requestFollow(owner_account_id));
             Swal.fire({
                 icon: "success",
                 title: "팔로우되었습니다!",
@@ -366,7 +366,7 @@ const DimoSharedDetail = () => {
                                     <Profile
                                         size="5"
                                         src={dimos.account_profile_img}
-                                        className="hidden md:flex cursor-pointer"
+                                        className="hidden cursor-pointer md:flex"
                                         onClick={clickProfile}
                                     />
                                     <div className="ml-3 -mt-2">
@@ -375,7 +375,7 @@ const DimoSharedDetail = () => {
                                         </Title>
                                     </div>
                                 </div>
-                                {!dimo.is_follow ? (
+                                {!dimos.is_follow ? (
                                     <Button size="3" color="1" onClick={clickFollow}>
                                         팔로우 🎉
                                     </Button>
