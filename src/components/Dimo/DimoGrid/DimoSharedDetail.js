@@ -85,7 +85,7 @@ const DimoSharedDetail = () => {
     const visitor_account_id = account_id;
 
     const post_id = location?.state?.post_id;
-    // console.log(dimo?.is_like);
+    console.log(dimos?.like_count);
     // const post_id = match.params.name;
     const dispatch = useDispatch();
 
@@ -116,7 +116,7 @@ const DimoSharedDetail = () => {
         navigate("/dimo/info", { replace: true });
     };
 
-    const [like_cnt, setLikeCnt] = useState(dimo?.like_count);
+    const [like_cnt, setLikeCnt] = useState(dimos?.like_count);
     const [is_like, setIsLike] = useState(dimo?.is_like);
     const cancelLike = () => {
         setIsLike(false);
@@ -140,7 +140,7 @@ const DimoSharedDetail = () => {
         dispatch(likeDimoInfo(post_id));
     };
 
-    const [book_cnt, setBookCnt] = useState(dimo?.bookMark_count);
+    const [book_cnt, setBookCnt] = useState(dimos?.bookMark_count);
     const [is_bookmark, setIsBookmark] = useState(dimo?.is_bookmark);
 
     const cancelBook = () => {
@@ -232,6 +232,11 @@ const DimoSharedDetail = () => {
             timer: 1000;
             return;
         }
+    };
+
+    const clickProfile = () => {
+        // console.log("click accountid", barAccountId);
+        navigate(`/myspace/myprofile/${owner_account_id}`);
     };
 
     const [time, setTime] = useState(true);
@@ -356,7 +361,12 @@ const DimoSharedDetail = () => {
                             <UnderLine />
                             <Footer>
                                 <div className="flex flex-row justify-start">
-                                    <Profile size="5" src={dimos.account_profile_img} className="hidden md:flex" />
+                                    <Profile
+                                        size="5"
+                                        src={dimos.account_profile_img}
+                                        className="hidden md:flex cursor-pointer"
+                                        onClick={clickProfile}
+                                    />
                                     <div className="ml-3 -mt-2">
                                         <Title size="5" className="my-3">
                                             {dimos.account_nickname}
