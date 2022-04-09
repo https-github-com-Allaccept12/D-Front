@@ -5,7 +5,6 @@ import axios from "axios";
 import { URL, token } from "../UrlForAxios";
 import { useDispatch } from "react-redux";
 
-const dispatch = useDispatch();
 
 // 작품 등록
 export const CreateNewArtWork = createAsyncThunk("post/CreateNewArtWork", async (formData, thunkAPI) => {
@@ -22,6 +21,7 @@ export const CreateNewArtWork = createAsyncThunk("post/CreateNewArtWork", async 
         })
         .catch((err) => {
             // console.log(err);
+            const dispatch = useDispatch();
             if (err.response.data.status == 444){
                 // console.log('here');
                 dispatch(refreshSlice({access_token, refresh_token}));
@@ -45,6 +45,7 @@ export const RequestModifyArtWork = createAsyncThunk("post/RequestModifyArtWork"
         })
         .catch((err) => {
             // console.log(err);
+            const dispatch = useDispatch();
             if (err.response.data.status == 444){
                 // console.log('here');
                 dispatch(refreshSlice({access_token, refresh_token}));
@@ -135,6 +136,7 @@ export const getMaster = createAsyncThunk("/getMaster", (artwork_id) => {
         .catch((err) => {
             if (err.response.data.status == 444){
                 // console.log('here');
+                const dispatch = useDispatch();
                 dispatch(refreshSlice({access_token, refresh_token}));
             }
         });
@@ -157,6 +159,7 @@ export const removeMaster = createAsyncThunk("/removeMaster", (artwork_id) => {
             console.log('delete');
             if (err.response.data.status == 444){
                 // console.log('here');
+                const dispatch = useDispatch();
                 dispatch(refreshSlice({access_token, refresh_token}));
             }
         });
@@ -177,6 +180,7 @@ export const updateScope = createAsyncThunk("/updateScope", (artwork_id) => {
         })
         .catch((err) => {if (err.response.data.status == 444){
             // console.log('here');
+            const dispatch = useDispatch();
             dispatch(refreshSlice({access_token, refresh_token}));
         }});
 });
@@ -194,6 +198,7 @@ export const postScope = createAsyncThunk("/updateScope", (artwork_id) => {
         })
         .catch((err) => {if (err.response.data.status == 444){
             // console.log('here');
+            const dispatch = useDispatch();
             dispatch(refreshSlice({access_token, refresh_token}));
         }});
 });
@@ -288,6 +293,7 @@ export const submitComment = createAsyncThunk("/categoryArtwork", ({ artwork_id,
         })
         .catch((err) => {if (err.response.data.status == 444){
             // console.log('here');
+            const dispatch = useDispatch();
             dispatch(refreshSlice({access_token, refresh_token}));
         }});
 });
@@ -305,6 +311,7 @@ export const commentModify = createAsyncThunk("/commentModify", ({ comment_id, d
         })
         .catch((err) => {if (err.response.data.status == 444){
             // console.log('here');
+            const dispatch = useDispatch();
             dispatch(refreshSlice({access_token, refresh_token}));
         }});
 });
@@ -342,6 +349,7 @@ export const LikeArtwork = createAsyncThunk("/LikeArtwork", (artwork_id) => {
         })
         .catch((err) => {if (err.response.data.status == 444){
             // console.log('here');
+            const dispatch = useDispatch();
             dispatch(refreshSlice({access_token, refresh_token}));
         }});
 });
@@ -360,6 +368,7 @@ export const UnLikeArtwork = createAsyncThunk("/UnLikeArtwork", (artwork_id) => 
         })
         .catch((err) => {if (err.response.data.status == 444){
             // console.log('here');
+            const dispatch = useDispatch();
             dispatch(refreshSlice({access_token, refresh_token}));
         }});
 });
@@ -378,6 +387,7 @@ export const MarkArtwork = createAsyncThunk("/MarkArtwork", (artwork_id) => {
         })
         .catch((err) => {if (err.response.data.status == 444){
             // console.log('here');
+            const dispatch = useDispatch();
             dispatch(refreshSlice({access_token, refresh_token}));
         }});
 });
@@ -396,6 +406,7 @@ export const UnMarkArtwork = createAsyncThunk("/UnMarkArtwork", (artwork_id) => 
         })
         .catch((err) => {if (err.response.data.status == 444){
             // console.log('here');
+            const dispatch = useDispatch();
             dispatch(refreshSlice({access_token, refresh_token}));
         }});
 });
