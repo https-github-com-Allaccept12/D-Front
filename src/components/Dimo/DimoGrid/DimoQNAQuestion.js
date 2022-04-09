@@ -311,7 +311,7 @@ const DimoQNAQuestion = (props) => {
                                 </ButtonWithCount>
                             )}
 
-                            {is_bookmark ? (
+                            {/* {is_bookmark ? (
                                 <ButtonWithCount
                                     icon
                                     name="BookmarkF"
@@ -334,7 +334,7 @@ const DimoQNAQuestion = (props) => {
                                 >
                                     <span className="hidden 2xl:contents">스크랩</span>
                                 </ButtonWithCount>
-                            )}
+                            )} */}
                             <CopyToClipboard text={currentUrl}>
                                 <Button
                                     icon

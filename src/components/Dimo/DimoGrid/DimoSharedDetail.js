@@ -1,10 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Button, Label, Profile, Title, Text, Answer, Subtitle, Icon, PageLoadSpinner } from "../../../elements";
+import {
+    Button,
+    ButtonWithCount,
+    Label,
+    Profile,
+    Title,
+    Text,
+    Answer,
+    Subtitle,
+    Icon,
+    PageLoadSpinner,
+} from "../../../elements";
 import { CommentDimo } from "../../Comment";
 import { useNavigate, Link, useLocation } from "react-router-dom";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import tw from "tailwind-styled-components";
 import { useToggle, useInput } from "../../../hooks";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from "sweetalert2";
 import {
     dimoInfoDetailLoad,
     CreateInfoDimo,
@@ -53,10 +66,11 @@ const MyBtn = tw.button`
 `;
 
 const DimoSharedDetail = () => {
+    const currentUrl = window.location.href;
     const dimo = useSelector((state) => state.dimo.detailDimoInfo);
     const dimos = useSelector((state) => state.dimo.detailDimoInfo?.postSubDetail);
-    const myProfileImg = sessionStorage.getItem("profile_img");
-    console.log(myProfileImg);
+    // const myProfileImg = sessionStorage.getItem("profile_img");
+    console.log(dimo);
     let location = useLocation();
     let navigate = useNavigate();
     // const navigate = useNavigate();
@@ -66,12 +80,12 @@ const DimoSharedDetail = () => {
     if (id_cookie) {
         account_id = id_cookie;
     }
-    const profile = sessionStorage.getItem("profile_img");
+    // const profile = sessionStorage.getItem("profile_img");
     let owner_account_id = dimos?.account_id;
     const visitor_account_id = account_id;
 
     const post_id = location?.state?.post_id;
-    console.log(post_id);
+    console.log(dimo.is_like);
     // const post_id = match.params.name;
     const dispatch = useDispatch();
 
@@ -102,7 +116,7 @@ const DimoSharedDetail = () => {
         navigate("/dimo/info", { replace: true });
     };
 
-    const [like_cnt, setLikeCnt] = useState(dimos?.like_count);
+    const [like_cnt, setLikeCnt] = useState(dimo?.like_count);
     const [is_like, setIsLike] = useState(dimo?.is_like);
     const cancelLike = () => {
         setIsLike(false);
@@ -126,7 +140,7 @@ const DimoSharedDetail = () => {
         dispatch(likeDimoInfo(post_id));
     };
 
-    const [book_cnt, setBookCnt] = useState(dimo?.bookmark_count);
+    const [book_cnt, setBookCnt] = useState(dimo?.bookMark_count);
     const [is_bookmark, setIsBookmark] = useState(dimo?.is_bookmark);
 
     const cancelBook = () => {
@@ -268,20 +282,21 @@ const DimoSharedDetail = () => {
                                     <Button size="3" onClick={setShowAnswer} className="invisible">
                                         답변남기기
                                     </Button>
-                                    <div className="flex flex-col gap-3 md:flex-row">
+                                    <div className="flex flex-col gap-3 2xl:flex-row">
                                         {is_like ? (
-                                            <Button
+                                            <ButtonWithCount
                                                 icon
                                                 name="HeartF"
+                                                iconColor="heart"
                                                 color="5"
                                                 size="3"
                                                 count={like_cnt}
                                                 onClick={cancelLike}
                                             >
                                                 <span className="hidden 2xl:contents">좋아요</span>
-                                            </Button>
+                                            </ButtonWithCount>
                                         ) : (
-                                            <Button
+                                            <ButtonWithCount
                                                 icon
                                                 name="HeartE"
                                                 color="4"
@@ -290,35 +305,51 @@ const DimoSharedDetail = () => {
                                                 onClick={addLike}
                                             >
                                                 <span className="hidden 2xl:contents">좋아요</span>
-                                            </Button>
+                                            </ButtonWithCount>
                                         )}
 
-                                        {is_bookmark ? (
+                                        {/* {is_bookmark ? (
+                                <ButtonWithCount
+                                    icon
+                                    name="BookmarkF"
+                                    iconColor="book"
+                                    color="5"
+                                    size="3"
+                                    count={book_cnt}
+                                    onClick={cancelBook}
+                                >
+                                    <span className="hidden 2xl:contents">스크랩</span>
+                                </ButtonWithCount>
+                            ) : (
+                                <ButtonWithCount
+                                    icon
+                                    name="BookmarkE"
+                                    color="4"
+                                    size="3"
+                                    count={book_cnt}
+                                    onClick={addBook}
+                                >
+                                    <span className="hidden 2xl:contents">스크랩</span>
+                                </ButtonWithCount>
+                            )} */}
+                                        <CopyToClipboard text={currentUrl}>
                                             <Button
                                                 icon
-                                                name="BookmarkF"
+                                                name="Link"
                                                 color="5"
                                                 size="3"
-                                                count={book_cnt}
-                                                onClick={cancelBook}
+                                                onClick={() =>
+                                                    Swal.fire({
+                                                        icon: "success",
+                                                        title: "클립보드에 복사됐습니다.",
+                                                        showConfirmButton: false,
+                                                        timer: 1000,
+                                                    })
+                                                }
                                             >
-                                                <span className="hidden 2xl:contents">스크랩</span>
+                                                공유<span className="hidden xl:contents">하기</span>
                                             </Button>
-                                        ) : (
-                                            <Button
-                                                icon
-                                                name="BookmarkE"
-                                                color="5"
-                                                size="3"
-                                                count={book_cnt}
-                                                onClick={addBook}
-                                            >
-                                                <span className="hidden 2xl:contents">스크랩</span>
-                                            </Button>
-                                        )}
-                                        <Button icon name="Link" color="5" size="3">
-                                            공유<span className="hidden xl:contents">하기</span>
-                                        </Button>
+                                        </CopyToClipboard>
                                     </div>
                                 </div>
                             </Btns>
