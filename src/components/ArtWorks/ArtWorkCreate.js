@@ -117,6 +117,10 @@ const ArtWorkCreate = () => {
                 <Title size="3" className="flex items-start justify-start text-left xl:py-10">
                     작업 업로드
                 </Title>
+                <Text size="3" className="flex items-start justify-start text-left xl:py-10">
+                    작품 등록 후, 마이페이지에서 [수정], [삭제], [대표작품으로 등록]하여 포트폴리오로 사용하실 수
+                    있습니다.
+                </Text>
                 <Grid>
                     <div className="row-span-6 row-start-2 my-5 h-5/6">
                         <div className="grid w-full col-span-7 col-start-2 row-start-1 row-end-7 border-2 border-dgray-300 border-dashed place-content-center h-fit min-h-[40rem] rounded-md">

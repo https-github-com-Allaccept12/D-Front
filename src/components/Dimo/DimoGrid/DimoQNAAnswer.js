@@ -73,7 +73,7 @@ const DimoQNAAnswer = (props) => {
         a_id = id_cookie;
     }
     let visitor_account_id = a_id;
-    let owner_account_id = dimosdetail.account_id;
+    let owner_account_id = dimosdetail.answer_id;
     // console.log(visitor_account_id);
     const ClickDelete = () => {
         dispatch(deleteAnswerDimo(answer_id));
