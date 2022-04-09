@@ -78,11 +78,12 @@ const DimoQNAAnswer = (props) => {
     let visitor_account_id = a_id;
     // let question_account_id =
     let answer_account_id = dimosdetail.answer_id;
+    // console.log(answer_id);
     let owner_account_id = dimopost.account_id;
     // console.log(visitor_account_id);
     const ClickDelete = () => {
         dispatch(deleteAnswerDimo(answer_id));
-        navigate("/dimo/qna");
+        navigate("/dimo/qna/uiux");
     };
 
     useEffect(() => {
@@ -189,7 +190,7 @@ const DimoQNAAnswer = (props) => {
             <Card is_selected={is_selected}>
                 <Footer>
                     <div className="order-1">
-                        {visitor_account_id == answer_account_id ? (
+                        {visitor_account_id == account_id ? (
                             <>
                                 <MyBtn onClick={openModify}>수정</MyBtn>
 
