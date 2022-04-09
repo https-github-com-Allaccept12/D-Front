@@ -3,6 +3,9 @@ import { refreshSlice } from "./temp";
 import { preview } from "./image";
 import axios from "axios";
 import { URL, token } from "../UrlForAxios";
+import { useDispatch } from "react-redux";
+
+const dispatch = useDispatch();
 
 // 작품 등록
 export const CreateNewArtWork = createAsyncThunk("post/CreateNewArtWork", async (formData, thunkAPI) => {
