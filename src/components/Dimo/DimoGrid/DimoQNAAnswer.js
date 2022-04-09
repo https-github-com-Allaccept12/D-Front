@@ -97,9 +97,9 @@ const DimoQNAAnswer = (props) => {
 
     const modifyComment = () => {
         const content = name.value;
-        const data = { content: content };
+        const data = { content: content, id: answer_id };
         // console.log(content);
-        dispatch(editAnswerDimo({ answer_id, data }));
+        dispatch(editAnswerDimo({ data }));
         setContentValue(content);
         setContent(content);
         setModifyDiv(!modifyDiv);

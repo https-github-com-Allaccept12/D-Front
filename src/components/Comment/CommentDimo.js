@@ -42,9 +42,9 @@ const CommentDimo = (props) => {
 
     const modifyComment = () => {
         const content = name.value;
-        const data = { content: content };
+        const data = { content: content, id: comment_id };
         // console.log(content);
-        dispatch(commentModifyDimo({ comment_id, data }));
+        dispatch(commentModifyDimo({ data }));
         setContentValue(content);
         setContent(content);
         setModifyDiv(!modifyDiv);
@@ -63,7 +63,7 @@ const CommentDimo = (props) => {
 
     const visitor_account_id = a_id;
     let owner_account_id = account_id;
-    console.log('in comment, ', visitor_account_id, owner_account_id);
+    console.log("in comment, ", visitor_account_id, owner_account_id);
     const clickProfile = () => {
         // console.log("click accountid", barAccountId);
         navigate(`/myspace/myprofile/${account_id}`);
