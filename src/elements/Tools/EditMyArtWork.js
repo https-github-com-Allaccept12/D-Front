@@ -60,7 +60,8 @@ const EditMyArtWork = (props) => {
     };
     const ClickDelete = () => {
         console.log('click delete');
-        dispatch(deleteArtwork({ artwork_id, category }));
+        const data = {artwork_id: artwork_id};
+        dispatch(deleteArtwork({ data, category }));
     };
     const ClickEdit = () => {
         // console.log("click, ", artwork_id);
