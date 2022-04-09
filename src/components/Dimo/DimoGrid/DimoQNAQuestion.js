@@ -206,7 +206,7 @@ const DimoQNAQuestion = (props) => {
         setFollow(!follow);
         setBarFollow(!barFollow);
         if (follow) {
-            dispatch(requestUnFollow(visitor_account_id));
+            dispatch(requestUnFollow(owner_account_id));
             Swal.fire({
                 icon: "success",
                 title: "언팔로우되었습니다!",
@@ -216,7 +216,7 @@ const DimoQNAQuestion = (props) => {
             timer: 1000;
             return;
         } else {
-            dispatch(requestFollow(visitor_account_id));
+            dispatch(requestFollow(owner_account_id));
             Swal.fire({
                 icon: "success",
                 title: "팔로우되었습니다!",
@@ -369,7 +369,7 @@ const DimoQNAQuestion = (props) => {
                         <Profile
                             size="5"
                             src={post?.account_profile_img}
-                            className="hidden md:flex cursor-pointer"
+                            className="hidden cursor-pointer md:flex"
                             onClick={clickProfile}
                         />
                         <div className="ml-3 -mt-2">
