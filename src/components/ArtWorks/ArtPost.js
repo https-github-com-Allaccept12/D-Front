@@ -116,7 +116,7 @@ const ArtPost = (props) => {
             timer: 1000;
             return;
         }
-        if (bookmark) {
+        if (barBookMark) {
             console.log('unmark');
             dispatch(UnMarkArtwork(barArtWorkId));
         } else {
