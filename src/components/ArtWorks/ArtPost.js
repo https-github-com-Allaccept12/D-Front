@@ -63,7 +63,7 @@ const ArtPost = (props) => {
     // console.log(please, account_id)
     const clickProfile = () => {
         console.log("click accountid", barAccountId);
-        navigate(`/myspace/myprofile/${barArtWorkId}`);
+        navigate(`/myspace/myprofile/${barAccountId}`);
     };
 
     console.log('follow, is_follow, barFollow', follow, is_follow, barFollow);
@@ -185,6 +185,7 @@ const ArtPost = (props) => {
                                 setTempProfile={setTempProfile}
                                 setBarArtWorkId={setBarArtWorkId}
                                 setposterid={setposterid}
+                                setBarAccountId={setBarAccountId}
                             />
 
                             <div className="hidden lg:contents">

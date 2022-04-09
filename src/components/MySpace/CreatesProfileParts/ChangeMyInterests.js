@@ -59,7 +59,7 @@ const ChangeMyInterests = (props) => {
 
     const saveInterest = () => {
         const interest = { interest: selectInterest };
-        dispatch(CreateInterests({ interest, token }));
+        dispatch(CreateInterests(interest));
         navigate(-1);
     }
     
