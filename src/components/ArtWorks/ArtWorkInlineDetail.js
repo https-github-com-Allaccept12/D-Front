@@ -87,7 +87,7 @@ const ArtWorkInlineDetail = (props) => {
         // console.log('loading');
         const visitor_account_id = sessionStorage.getItem('account_id');
         dispatch(artworkDetailLoad({artwork_id, visitor_account_id, dispatch}))
-    }, [])
+    }, [location])
 
     const myProfileImg = sessionStorage.getItem("profile_img");
     
