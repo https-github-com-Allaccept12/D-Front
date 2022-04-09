@@ -4,7 +4,7 @@
 
 디자이너 커뮤니티 사이트, <br>
 **D+ 를 체험해보세요!<br><br/>
-[디플러스 바로가기](https:/dplusday.com/)**<br>
+[디플러스 바로가기](https://dplusday.com/)**<br>
 
 <br>
 <img width="905" alt="플러스하다" src="https://user-images.githubusercontent.com/79740505/161507027-ac3024b5-44cb-48e2-a1b8-f2f609336e97.png">
