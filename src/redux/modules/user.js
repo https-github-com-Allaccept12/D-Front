@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { URL, token } from "../UrlForAxios";
+import { useDispatch } from "react-redux";
 
-const dispatch = useDispatch();
 
 // 팔로우
 export const requestFollow = createAsyncThunk("/requestFollow", (account_id) => {
@@ -17,6 +17,7 @@ export const requestFollow = createAsyncThunk("/requestFollow", (account_id) => 
       })
       .catch((err) => {if (err.response.data.status == 444){
         // console.log('here');
+        const dispatch = useDispatch();
         dispatch(refreshSlice({access_token, refresh_token}));
     }});
 });
@@ -34,7 +35,9 @@ export const requestUnFollow = createAsyncThunk("/requestFollow", (account_id) =
           console.log(res);
       })
       .catch((err) => {if (err.response.data.status == 444){
+        // console.log('here');ta.status == 444){
         // console.log('here');
+        const dispatch = useDispatch();
         dispatch(refreshSlice({access_token, refresh_token}));
     }});
 });
