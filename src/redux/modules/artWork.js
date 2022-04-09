@@ -5,7 +5,6 @@ import axios from "axios";
 import { URL, token } from "../UrlForAxios";
 import { useDispatch } from "react-redux";
 
-
 // 작품 등록
 export const CreateNewArtWork = createAsyncThunk("post/CreateNewArtWork", async (formData, thunkAPI) => {
     await URL.post("/api/artwork", formData, {
@@ -22,15 +21,15 @@ export const CreateNewArtWork = createAsyncThunk("post/CreateNewArtWork", async 
         .catch((err) => {
             // console.log(err);
             const dispatch = useDispatch();
-            if (err.response.data.status == 444){
+            if (err.response.data.status == 444) {
                 // console.log('here');
-                dispatch(refreshSlice({access_token, refresh_token}));
+                dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
 });
 
 //작품 수정
-export const RequestModifyArtWork = createAsyncThunk("post/RequestModifyArtWork", async ({artwork_id, formData}) => {
+export const RequestModifyArtWork = createAsyncThunk("post/RequestModifyArtWork", async ({ artwork_id, formData }) => {
     // console.log(artwork_id);
     await URL.patch(`/api/artwork/${artwork_id}`, formData, {
         headers: {
@@ -41,37 +40,36 @@ export const RequestModifyArtWork = createAsyncThunk("post/RequestModifyArtWork"
     })
         .then((res) => {
             // console.log(res);
-            
         })
         .catch((err) => {
             // console.log(err);
             const dispatch = useDispatch();
-            if (err.response.data.status == 444){
+            if (err.response.data.status == 444) {
                 // console.log('here');
-                dispatch(refreshSlice({access_token, refresh_token}));
+                dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
 });
 
 // 작품 수정을 위한 preview
-export const ModifyArtWork = createAsyncThunk("post/ModifyArtWork", ({artwork_id, visitor_account_id, dispatch}) => {
+export const ModifyArtWork = createAsyncThunk("post/ModifyArtWork", ({ artwork_id, visitor_account_id, dispatch }) => {
     URL.get(`/api/artwork/detail/${artwork_id}`, {
         params: {
-            visitor_account_id: visitor_account_id
+            visitor_account_id: visitor_account_id,
         },
     })
-    .then((res) => {
-        // console.log(res.data.data.artWorkSubDetail);
-        const x = res.data.data.img;
-        const temp = []
-        for(var item of x){
-            temp.push(item.img_url);
-        }
-        dispatch(modifyForPreview(temp));
-        dispatch(preview(res.data.data.artWorkSubDetail.thumbnail));
-        dispatch(modifyForInfo(res.data.data.artWorkSubDetail));
-    })
-    .catch((err) => console.log(err));
+        .then((res) => {
+            // console.log(res.data.data.artWorkSubDetail);
+            const x = res.data.data.img;
+            const temp = [];
+            for (var item of x) {
+                temp.push(item.img_url);
+            }
+            dispatch(modifyForPreview(temp));
+            dispatch(preview(res.data.data.artWorkSubDetail.thumbnail));
+            dispatch(modifyForInfo(res.data.data.artWorkSubDetail));
+        })
+        .catch((err) => console.log(err));
 });
 
 // 모아보기 페이지 로드
@@ -86,43 +84,49 @@ export const artworkPageLoad = createAsyncThunk("/artworkPageLoad", (dispatch) =
 });
 
 // 아트워크 상세페이지
-export const artworkDetailLoad = createAsyncThunk("/artworkDetailLoad", ({ artwork_id, visitor_account_id, dispatch }) => {
-    // console.log(artwork_id, visitor_account_id),
-    URL.get(`/api/artwork/detail/${artwork_id}`, {
-        params: {
-            visitor_account_id: visitor_account_id
-        },
-      })
-    // ?visitor_account_id${visitor_account_id}`)
-    .then((res) => {
-        // console.log(res);
-        dispatch(detailArtwork(res.data.data));
-    })
-    .catch((err) => console.log(err));
-});
+export const artworkDetailLoad = createAsyncThunk(
+    "/artworkDetailLoad",
+    ({ artwork_id, visitor_account_id, dispatch }) => {
+        // console.log(artwork_id, visitor_account_id),
+        URL.get(`/api/artwork/detail/${artwork_id}`, {
+            params: {
+                visitor_account_id: visitor_account_id,
+            },
+        })
+            // ?visitor_account_id${visitor_account_id}`)
+            .then((res) => {
+                // console.log(res);
+                dispatch(detailArtwork(res.data.data));
+            })
+            .catch((err) => console.log(err));
+    },
+);
 
 // 내 작품 불러오기
-export const PortfolioLoad = createAsyncThunk("/PortfolioLoad", async ({ owner_account_id, visitor_account_id, dispatch }) => {
-    await axios
-        .get(process.env.REACT_APP_PORTFOLIO + `/0`, {
-            params: {
-                owner_account_id: owner_account_id,
-                visitor_account_id: visitor_account_id
-            },
-          })
-        //   ?owner_account_id=${owner_account_id}?visitor_account_id=${visitor_account_id}`)
-        .then((res) => {
-            // console.log(res);
-            const porfolio_data = res.data.data;
-            dispatch(portfolios(porfolio_data));
-            return porfolio_data;
-        })
-        .catch((err) => console.log(err));
-});
+export const PortfolioLoad = createAsyncThunk(
+    "/PortfolioLoad",
+    async ({ owner_account_id, visitor_account_id, dispatch }) => {
+        await axios
+            .get(process.env.REACT_APP_PORTFOLIO + `/0`, {
+                params: {
+                    owner_account_id: owner_account_id,
+                    visitor_account_id: visitor_account_id,
+                },
+            })
+            //   ?owner_account_id=${owner_account_id}?visitor_account_id=${visitor_account_id}`)
+            .then((res) => {
+                // console.log(res);
+                const porfolio_data = res.data.data;
+                dispatch(portfolios(porfolio_data));
+                return porfolio_data;
+            })
+            .catch((err) => console.log(err));
+    },
+);
 
 // 대표작품 설정
 export const getMaster = createAsyncThunk("/getMaster", (artwork_id) => {
-    const data = { id: artwork_id }
+    const data = { id: artwork_id };
     URL.post(`/api/my-page/masterpiece`, data, {
         headers: {
             Authorization: "Bearer " + token,
@@ -130,14 +134,14 @@ export const getMaster = createAsyncThunk("/getMaster", (artwork_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            console.log('post');
+            console.log("post");
             console.log(res);
         })
         .catch((err) => {
-            if (err.response.data.status == 444){
+            if (err.response.data.status == 444) {
                 // console.log('here');
                 const dispatch = useDispatch();
-                dispatch(refreshSlice({access_token, refresh_token}));
+                dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
 });
@@ -152,18 +156,17 @@ export const removeMaster = createAsyncThunk("/removeMaster", (artwork_id) => {
         withCredentials: true,
     })
         .then((res) => {
-            console.log('delete');
+            console.log("delete");
             console.log(res);
         })
         .catch((err) => {
-            console.log('delete');
-            if (err.response.data.status == 444){
+            console.log("delete");
+            if (err.response.data.status == 444) {
                 // console.log('here');
                 const dispatch = useDispatch();
-                dispatch(refreshSlice({access_token, refresh_token}));
+                dispatch(refreshSlice({ access_token, refresh_token }));
             }
         });
-
 });
 
 // 공개 비공개 전환
@@ -178,15 +181,17 @@ export const updateScope = createAsyncThunk("/updateScope", (artwork_id) => {
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => {if (err.response.data.status == 444){
-            // console.log('here');
-            const dispatch = useDispatch();
-            dispatch(refreshSlice({access_token, refresh_token}));
-        }});
+        .catch((err) => {
+            if (err.response.data.status == 444) {
+                // console.log('here');
+                const dispatch = useDispatch();
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 export const postScope = createAsyncThunk("/updateScope", (artwork_id) => {
-    const data = { id: artwork_id }
+    const data = { id: artwork_id };
     URL.post(`/api/my-page/hidepiece`, data, {
         headers: {
             Authorization: "Bearer " + token,
@@ -196,15 +201,17 @@ export const postScope = createAsyncThunk("/updateScope", (artwork_id) => {
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => {if (err.response.data.status == 444){
-            // console.log('here');
-            const dispatch = useDispatch();
-            dispatch(refreshSlice({access_token, refresh_token}));
-        }});
+        .catch((err) => {
+            if (err.response.data.status == 444) {
+                // console.log('here');
+                const dispatch = useDispatch();
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 // 작품 삭제
-export const deleteArtwork = createAsyncThunk("/deleteArtwork", ({data, category}) => {
+export const deleteArtwork = createAsyncThunk("/deleteArtwork", ({ data, category }) => {
     URL.patch(`/api/artwork/del/${category}`, data, {
         headers: {
             Authorization: "Bearer " + token,
@@ -214,19 +221,21 @@ export const deleteArtwork = createAsyncThunk("/deleteArtwork", ({data, category
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => {if (err.response.data.status == 444){
-            // console.log('here');
-            dispatch(refreshSlice({access_token, refresh_token}));
-        }});
+        .catch((err) => {
+            if (err.response.data.status == 444) {
+                // console.log('here');
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 // 작품 검색
 export const searchArtwork = createAsyncThunk("/searchArtwork", ({ keyword, visitor_account_id, dispatch }) => {
     URL.get(`/api/artwork/search/0/${keyword}`, {
         params: {
-            visitor_account_id: visitor_account_id
-            },
-        })
+            visitor_account_id: visitor_account_id,
+        },
+    })
         .then((res) => {
             // console.log(res);
             dispatch(artworks(res.data.data));
@@ -270,9 +279,9 @@ export const orderByTime = createAsyncThunk("/orderByTime", ({ category, dispatc
 export const orderByFollow = createAsyncThunk("/orderByFollow", ({ category, visitor_account_id, dispatch }) => {
     URL.get(`/api/artwork/sort-follow/${category}/0`, {
         params: {
-            visitor_account_id: visitor_account_id
-            },
-        })
+            visitor_account_id: visitor_account_id,
+        },
+    })
         .then((res) => {
             // console.log(res);
             dispatch(artworks(res.data.data));
@@ -291,11 +300,13 @@ export const submitComment = createAsyncThunk("/categoryArtwork", ({ artwork_id,
         .then((res) => {
             // console.log(res);
         })
-        .catch((err) => {if (err.response.data.status == 444){
-            // console.log('here');
-            const dispatch = useDispatch();
-            dispatch(refreshSlice({access_token, refresh_token}));
-        }});
+        .catch((err) => {
+            if (err.response.data.status == 444) {
+                // console.log('here');
+                const dispatch = useDispatch();
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 // 댓글 수정
@@ -309,16 +320,18 @@ export const commentModify = createAsyncThunk("/commentModify", ({ comment_id, d
         .then((res) => {
             // console.log(res);
         })
-        .catch((err) => {if (err.response.data.status == 444){
-            // console.log('here');
-            const dispatch = useDispatch();
-            dispatch(refreshSlice({access_token, refresh_token}));
-        }});
+        .catch((err) => {
+            if (err.response.data.status == 444) {
+                // console.log('here');
+                const dispatch = useDispatch();
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 // 댓글 삭제
 export const commentDelete = createAsyncThunk("/commentDelete", (comment_id) => {
-    const data = { id:comment_id } 
+    const data = { id: comment_id };
     URL.patch(`/api/artwork/comment/del`, data, {
         headers: {
             Authorization: "Bearer " + token,
@@ -328,16 +341,17 @@ export const commentDelete = createAsyncThunk("/commentDelete", (comment_id) => 
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => {if (err.response.data.status == 444){
-            // console.log('here');
-            dispatch(refreshSlice({access_token, refresh_token}));
-        }});
+        .catch((err) => {
+            if (err.response.data.status == 444) {
+                // console.log('here');
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
-
 
 // 좋아요
 export const LikeArtwork = createAsyncThunk("/LikeArtwork", (artwork_id) => {
-    const data = { id: artwork_id }
+    const data = { id: artwork_id };
     URL.post(`/api/artwork/like`, data, {
         headers: {
             Authorization: "Bearer " + token,
@@ -347,16 +361,18 @@ export const LikeArtwork = createAsyncThunk("/LikeArtwork", (artwork_id) => {
         .then((res) => {
             // console.log(res);
         })
-        .catch((err) => {if (err.response.data.status == 444){
-            // console.log('here');
-            const dispatch = useDispatch();
-            dispatch(refreshSlice({access_token, refresh_token}));
-        }});
+        .catch((err) => {
+            if (err.response.data.status == 444) {
+                // console.log('here');
+                const dispatch = useDispatch();
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 // 좋아요 해제
 export const UnLikeArtwork = createAsyncThunk("/UnLikeArtwork", (artwork_id) => {
-    const data = { id:artwork_id }
+    const data = { id: artwork_id };
     URL.patch(`/api/artwork/like`, data, {
         headers: {
             Authorization: "Bearer " + token,
@@ -366,16 +382,18 @@ export const UnLikeArtwork = createAsyncThunk("/UnLikeArtwork", (artwork_id) => 
         .then((res) => {
             // console.log(res);
         })
-        .catch((err) => {if (err.response.data.status == 444){
-            // console.log('here');
-            const dispatch = useDispatch();
-            dispatch(refreshSlice({access_token, refresh_token}));
-        }});
+        .catch((err) => {
+            if (err.response.data.status == 444) {
+                // console.log('here');
+                const dispatch = useDispatch();
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 // 북마크
 export const MarkArtwork = createAsyncThunk("/MarkArtwork", (artwork_id) => {
-    const data = { id: artwork_id }
+    const data = { id: artwork_id };
     URL.post(`/api/bookmark/artwork`, data, {
         headers: {
             Authorization: "Bearer " + token,
@@ -385,16 +403,18 @@ export const MarkArtwork = createAsyncThunk("/MarkArtwork", (artwork_id) => {
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => {if (err.response.data.status == 444){
-            // console.log('here');
-            const dispatch = useDispatch();
-            dispatch(refreshSlice({access_token, refresh_token}));
-        }});
+        .catch((err) => {
+            if (err.response.data.status == 444) {
+                // console.log('here');
+                const dispatch = useDispatch();
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 // 북마크 해제
 export const UnMarkArtwork = createAsyncThunk("/UnMarkArtwork", (artwork_id) => {
-    const data = { id:artwork_id }
+    const data = { id: artwork_id };
     URL.patch(`/api/bookmark/artwork`, data, {
         headers: {
             Authorization: "Bearer " + token,
@@ -404,17 +424,18 @@ export const UnMarkArtwork = createAsyncThunk("/UnMarkArtwork", (artwork_id) => 
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => {if (err.response.data.status == 444){
-            // console.log('here');
-            const dispatch = useDispatch();
-            dispatch(refreshSlice({access_token, refresh_token}));
-        }});
+        .catch((err) => {
+            if (err.response.data.status == 444) {
+                // console.log('here');
+                const dispatch = useDispatch();
+                dispatch(refreshSlice({ access_token, refresh_token }));
+            }
+        });
 });
 
 export const artworkSlice = createSlice({
     name: "artwork",
-    initialState: {modifyForPreview: {editImgs : {img: []}, detailArtwork : []}
-    },
+    initialState: { modifyForPreview: { editImgs: { img: [] }, detailArtwork: [] } },
     reducers: {
         artworks: (state, action) => {
             state.artworks = action.payload;
@@ -430,7 +451,7 @@ export const artworkSlice = createSlice({
         },
         modifyForInfo: (state, action) => {
             state.modifyForInfo = action.payload;
-        }
+        },
     },
     extraReducers: (builder) => {
         builder

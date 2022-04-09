@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { refreshSlice } from "./temp";
 import axios from "axios";
 import { URL, token } from "../UrlForAxios";
+import { useDispatch } from "react-redux";
 
 //디모게시글 생성(어째선지 파일은 등록이 안됨)
 export const CreateNewDimo = createAsyncThunk("post/CreateDimo", async (formData, thunkAPI) => {
@@ -149,7 +150,8 @@ export const dimoQnaDetailSimilar = createAsyncThunk(
 
 // 게시글에 좋아요 /api/post/like/{post_id} 근데 만들다보니 얘는 공통이라 qna에도 적용
 export const likeDimoInfo = createAsyncThunk("/likeDimoInfo", (post_id) => {
-    URL.post(`/api/post/like/${post_id}`, post_id, {
+    const data = { id: post_id };
+    URL.post(`/api/post/like`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -171,7 +173,8 @@ export const likeDimoInfo = createAsyncThunk("/likeDimoInfo", (post_id) => {
 
 //게시글에 안좋아요
 export const dislikeDimoInfo = createAsyncThunk("/dislikeDimoInfo", (post_id) => {
-    URL.patch(`/api/post/like/${post_id}`, {
+    const data = { id: post_id };
+    URL.patch(`/api/post/like`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -193,7 +196,8 @@ export const dislikeDimoInfo = createAsyncThunk("/dislikeDimoInfo", (post_id) =>
 
 //북마크랑 북마크 취소
 export const bookmarkAdd = createAsyncThunk("/bookmarkAdd", (post_id) => {
-    URL.post(`/api/bookmark/post/${post_id}`, post_id, {
+    const data = { id: post_id };
+    URL.post(`/api/bookmark/post`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -214,7 +218,8 @@ export const bookmarkAdd = createAsyncThunk("/bookmarkAdd", (post_id) => {
 });
 
 export const bookmarkRemove = createAsyncThunk("/bookmarkRemove", (post_id) => {
-    URL.patch(`/api/bookmark/post/${post_id}`, {
+    const data = { id: post_id };
+    URL.patch(`/api/bookmark/post`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
