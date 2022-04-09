@@ -130,8 +130,10 @@ export const getMaster = createAsyncThunk("/getMaster", (artwork_id) => {
             console.log(res);
         })
         .catch((err) => {
-            console.log('post');
-            console.log(err);
+            if (err.response.data.status == 444){
+                // console.log('here');
+                dispatch(refreshSlice({access_token, refresh_token}));
+            }
         });
 });
 
@@ -150,7 +152,10 @@ export const removeMaster = createAsyncThunk("/removeMaster", (artwork_id) => {
         })
         .catch((err) => {
             console.log('delete');
-            console.log(err);
+            if (err.response.data.status == 444){
+                // console.log('here');
+                dispatch(refreshSlice({access_token, refresh_token}));
+            }
         });
 
 });
@@ -167,7 +172,10 @@ export const updateScope = createAsyncThunk("/updateScope", (artwork_id) => {
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {if (err.response.data.status == 444){
+            // console.log('here');
+            dispatch(refreshSlice({access_token, refresh_token}));
+        }});
 });
 
 export const postScope = createAsyncThunk("/updateScope", (artwork_id) => {
@@ -181,7 +189,10 @@ export const postScope = createAsyncThunk("/updateScope", (artwork_id) => {
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {if (err.response.data.status == 444){
+            // console.log('here');
+            dispatch(refreshSlice({access_token, refresh_token}));
+        }});
 });
 
 // 작품 삭제
@@ -195,7 +206,10 @@ export const deleteArtwork = createAsyncThunk("/deleteArtwork", ({data, category
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {if (err.response.data.status == 444){
+            // console.log('here');
+            dispatch(refreshSlice({access_token, refresh_token}));
+        }});
 });
 
 // 작품 검색
@@ -269,7 +283,10 @@ export const submitComment = createAsyncThunk("/categoryArtwork", ({ artwork_id,
         .then((res) => {
             // console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {if (err.response.data.status == 444){
+            // console.log('here');
+            dispatch(refreshSlice({access_token, refresh_token}));
+        }});
 });
 
 // 댓글 수정
@@ -283,7 +300,10 @@ export const commentModify = createAsyncThunk("/commentModify", ({ comment_id, d
         .then((res) => {
             // console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {if (err.response.data.status == 444){
+            // console.log('here');
+            dispatch(refreshSlice({access_token, refresh_token}));
+        }});
 });
 
 // 댓글 삭제
@@ -298,7 +318,10 @@ export const commentDelete = createAsyncThunk("/commentDelete", (comment_id) => 
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {if (err.response.data.status == 444){
+            // console.log('here');
+            dispatch(refreshSlice({access_token, refresh_token}));
+        }});
 });
 
 
@@ -314,7 +337,10 @@ export const LikeArtwork = createAsyncThunk("/LikeArtwork", (artwork_id) => {
         .then((res) => {
             // console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {if (err.response.data.status == 444){
+            // console.log('here');
+            dispatch(refreshSlice({access_token, refresh_token}));
+        }});
 });
 
 // 좋아요 해제
@@ -329,7 +355,10 @@ export const UnLikeArtwork = createAsyncThunk("/UnLikeArtwork", (artwork_id) => 
         .then((res) => {
             // console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {if (err.response.data.status == 444){
+            // console.log('here');
+            dispatch(refreshSlice({access_token, refresh_token}));
+        }});
 });
 
 // 북마크
@@ -344,7 +373,10 @@ export const MarkArtwork = createAsyncThunk("/MarkArtwork", (artwork_id) => {
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {if (err.response.data.status == 444){
+            // console.log('here');
+            dispatch(refreshSlice({access_token, refresh_token}));
+        }});
 });
 
 // 북마크 해제
@@ -359,7 +391,10 @@ export const UnMarkArtwork = createAsyncThunk("/UnMarkArtwork", (artwork_id) => 
         .then((res) => {
             console.log(res);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {if (err.response.data.status == 444){
+            // console.log('here');
+            dispatch(refreshSlice({access_token, refresh_token}));
+        }});
 });
 
 export const artworkSlice = createSlice({
