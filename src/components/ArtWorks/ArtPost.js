@@ -79,7 +79,7 @@ const ArtPost = (props) => {
             timer: 1000;
             return;
         }
-        if (follow) {
+        if (barFollow) {
             console.log('언팔');
             dispatch(requestUnFollow(account_id));
         } else {
