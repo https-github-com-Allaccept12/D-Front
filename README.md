@@ -2,9 +2,9 @@
 
 ### **“디자이너를 위한, 디자이너에 의한 매력적인 포트폴리오 사이트는 없을까?”**
 
-디자이너 그들만의 커뮤니티 사이트, <br>
+디자이너 커뮤니티 사이트, <br>
 **D+ 를 체험해보세요!<br><br/>
-[디플러스 바로가기](https:/링크.com/)**<br>
+[디플러스 바로가기](https:/dplusday.com/)**<br>
 
 <br>
 <img width="905" alt="플러스하다" src="https://user-images.githubusercontent.com/79740505/161507027-ac3024b5-44cb-48e2-a1b8-f2f609336e97.png">
@@ -31,19 +31,27 @@ D Plus는 디자이너들의 이러한 고민을 줄여드리기 위해 만들�
 <br>
 
 ## 3. 기술 스택
-    
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-  <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black"> 
-<img src="https://img.shields.io/badge/aws-232F3E?style=for-the-badge&logo=aws&logoColor=white">
 
-  <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
-  <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">  
-  
-
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"> 
+<img src="https://img.shields.io/badge/create%20react%20app-09D3AC?style=for-the-badge&logo=create%20react%20app&logoColor=white"> 
+ <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> 
+ <img src="https://img.shields.io/badge/css-1572B6?style=for-the-badge&logo=css3&logoColor=white">  
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
-  <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
+<img src="https://img.shields.io/badge/github%20actions-181717?style=for-the-badge&logo=github%20actions&logoColor=white">
+ <img src="https://img.shields.io/badge/amazon%20aws-232F3E?style=for-the-badge&logo=amazon%20aws&logoColor=white">
+ <img src="https://img.shields.io/badge/amazon%20s3-232F3E?style=for-the-badge&logo=amazon%20s3&logoColor=white">
+ <img src="https://img.shields.io/badge/cloud%20front-00A8E1?style=for-the-badge&logo=amazon%20aws&logoColor=white">
+  <img src="https://img.shields.io/badge/react%20router%20dom-CA4245?style=for-the-badge&logo=react%20router&logoColor=white">
+ <img src="https://img.shields.io/badge/mui-007FFF?style=for-the-badge&logo=mui&logoColor=white">
+   <img src="https://img.shields.io/badge/tailwind%20css-06B6D4?style=for-the-badge&logo=tailwind%20css&logoColor=white">
+  <img src="https://img.shields.io/badge/react%20slick-F4C51C?style=for-the-badge&logo=&logoColor=white">
+  <img src="https://img.shields.io/badge/react%20drop%20zone-F4C51C?style=for-the-badge&logo=&logoColor=white">
+    <img src="https://img.shields.io/badge/react%20beautiful%20dnd-FF6D70?style=for-the-badge&logo=&logoColor=white">
+        <img src="https://img.shields.io/badge/sweet%20alert2-00897B?style=for-the-badge&logo=&logoColor=white">
+        
 
-  
+  <img src="https://user-images.githubusercontent.com/89088205/162547900-2452b687-dea3-488a-aba8-f536a9eaa231.svg">
 
 **`Front-end`**
 - [React Repository이동](https://github.com/https-github-com-Allaccept12/D_Team_Front)
