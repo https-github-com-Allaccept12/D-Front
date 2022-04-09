@@ -63,11 +63,21 @@ const CommentDimo = (props) => {
 
     const visitor_account_id = a_id;
     let owner_account_id = account_id;
+
+    const clickProfile = () => {
+        // console.log("click accountid", barAccountId);
+        navigate(`/myspace/myprofile/${account_id}`);
+    };
     return (
         <>
             <div className="flex items-center justify-between gap-2">
                 <div className="flex flex-row justify-start">
-                    <Profile size="5" className="hidden sm:flex" src={account_profile_img} />
+                    <Profile
+                        size="5"
+                        className="hidden sm:flex cursor-pointer"
+                        src={account_profile_img}
+                        onClick={clickProfile}
+                    />
                     <div className="flex flex-col ">
                         <div className="flex flex-row items-center gap-3 mt-1">
                             <Subtitle size="1" className="">

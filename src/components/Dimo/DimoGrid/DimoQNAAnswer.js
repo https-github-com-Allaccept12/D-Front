@@ -175,6 +175,10 @@ const DimoQNAAnswer = (props) => {
         }
     };
 
+    const clickProfile = () => {
+        // console.log("click accountid", barAccountId);
+        navigate(`/myspace/myprofile/${account_id}`);
+    };
     return (
         <>
             <Card is_selected={is_selected}>
@@ -192,7 +196,12 @@ const DimoQNAAnswer = (props) => {
                     </div>
                     {!modifyDiv && <></>}
                     <div className="flex flex-row justify-start">
-                        <Profile size="5" src={account_profile_img} className="hidden md:flex" />
+                        <Profile
+                            size="5"
+                            src={account_profile_img}
+                            className="hidden md:flex cursor-pointer"
+                            onClick={clickProfile}
+                        />
                         <div className="ml-3 -mt-2">
                             <Title size="5" className="my-3">
                                 {account_nickname}
