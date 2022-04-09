@@ -4,7 +4,8 @@ import { URL, token } from "../UrlForAxios";
 
 // 팔로우
 export const requestFollow = createAsyncThunk("/requestFollow", (account_id) => {
-  URL.post(`/api/follow`, account_id, {
+  const data = { id: account_id }
+  URL.post(`/api/follow`, data, {
       headers: {
           Authorization: "Bearer " + token,
       },
@@ -18,7 +19,8 @@ export const requestFollow = createAsyncThunk("/requestFollow", (account_id) => 
 
 // 언팔로우
 export const requestUnFollow = createAsyncThunk("/requestFollow", (account_id) => {
-  URL.patch(`/api/follow`, account_id, {
+  const data = { id: account_id }
+  URL.patch(`/api/follow`, data, {
       headers: {
           Authorization: "Bearer " + token,
       },
