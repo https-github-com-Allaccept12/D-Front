@@ -184,7 +184,7 @@ const DimoQNAAnswer = (props) => {
             <Card is_selected={is_selected}>
                 <Footer>
                     <div className="order-1">
-                        {owner_account_id == account_id ? (
+                        {owner_account_id == a_id ? (
                             <>
                                 <MyBtn onClick={openModify}>수정</MyBtn>
 
