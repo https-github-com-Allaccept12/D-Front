@@ -66,6 +66,7 @@ const ArtPost = (props) => {
         navigate(`/myspace/myprofile/${barArtWorkId}`);
     };
 
+    console.log('follow, is_follow, barFollow', follow, is_follow, barFollow);
     const clickFollow = () => {
         console.log(barFollow);
         const artworker = localStorage.getItem("artworker");
