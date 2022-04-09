@@ -118,7 +118,8 @@ export const PortfolioLoad = createAsyncThunk("/PortfolioLoad", async ({ owner_a
 
 // 대표작품 설정
 export const getMaster = createAsyncThunk("/getMaster", (artwork_id) => {
-    URL.post(`/api/my-page/masterpiece/${artwork_id}`, artwork_id, {
+    const data = { id: artwork_id }
+    URL.post(`/api/my-page/masterpiece`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -170,7 +171,7 @@ export const updateScope = createAsyncThunk("/updateScope", (artwork_id) => {
 });
 
 export const postScope = createAsyncThunk("/updateScope", (artwork_id) => {
-    const data = { id: artworkd_id }
+    const data = { id: artwork_id }
     URL.patch(`/api/my-page/hidepiece`, data, {
         headers: {
             Authorization: "Bearer " + token,
@@ -303,7 +304,8 @@ export const commentDelete = createAsyncThunk("/commentDelete", (comment_id) => 
 
 // 좋아요
 export const LikeArtwork = createAsyncThunk("/LikeArtwork", (artwork_id) => {
-    URL.post(`/api/artwork/like/${artwork_id}`, artwork_id, {
+    const data = { id: artwork_id }
+    URL.post(`/api/artwork/like`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
@@ -332,7 +334,8 @@ export const UnLikeArtwork = createAsyncThunk("/UnLikeArtwork", (artwork_id) => 
 
 // 북마크
 export const MarkArtwork = createAsyncThunk("/MarkArtwork", (artwork_id) => {
-    URL.post(`/api/bookmark/artwork/${artwork_id}`, artwork_id, {
+    const data = { id: artwork_id }
+    URL.post(`/api/bookmark/artwork`, data, {
         headers: {
             Authorization: "Bearer " + token,
         },
