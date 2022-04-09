@@ -95,7 +95,7 @@ export const artworkDetailLoad = createAsyncThunk(
         })
             // ?visitor_account_id${visitor_account_id}`)
             .then((res) => {
-                // console.log(res);
+                console.log(res);
                 dispatch(detailArtwork(res.data.data));
             })
             .catch((err) => console.log(err));
