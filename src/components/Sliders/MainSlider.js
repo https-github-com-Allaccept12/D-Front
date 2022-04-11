@@ -38,29 +38,6 @@ const MainSlider = (props) => {
     const slider = useRef(null);
 
     let hotlists = useSelector((state) => state.mainPage.artist);
-    let makeSlides = () => {};
-    if (hotlists) {
-        makeSlides = () => {
-            const arr = [];
-            for (let i = 0; i < hotlists.length; i++) {
-                arr.push(
-                    <SS>
-                        <Slides
-                            type="main"
-                            account_id={hotlists[i].account_id}
-                            image={hotlists[i].account_profile}
-                            nickname={hotlists[i].account_nickname}
-                            thumnail1={hotlists[i].artWorks[0]}
-                            thumnail2={hotlists[i].artWorks[1]}
-                            job={hotlists[i].account_job}
-                            follow={hotlists[i].is_follow}
-                        />
-                    </SS>,
-                );
-            }
-            return arr;
-        };
-    }
 
     const settings = {
         dots: false, // 슬라이드 밑에 점 보이게
@@ -106,18 +83,20 @@ const MainSlider = (props) => {
                     <Icon name="ArrowL" iconSize="48" />{" "}
                 </PrevBtn>
                 <Slide {...settings} ref={slider}>
-                    {makeSlides()}
-                    {/* {hotlists.map((item, index) => (<SS><Slides main key={index} info={item}/></SS>))} */}
-
-                    {/* <SS>
-                        <Slides type="main" />
-                    </SS>
-                    <SS>
-                        <Slides type="main" />
-                    </SS>
-                    <SS>
-                        <Slides type="main" />
-                    </SS> */}
+                    {hotlists.map((hotlists, index) => (
+                        <SS key={hotlists.account_id}>
+                            <Slides
+                                type="main"
+                                account_id={hotlists.account_id}
+                                image={hotlists.account_profile}
+                                nickname={hotlists.account_nickname}
+                                thumnail1={hotlists.artWorks[0]}
+                                thumnail2={hotlists.artWorks[1]}
+                                job={hotlists.account_job}
+                                follow={hotlists.is_follow}
+                            />
+                        </SS>
+                    ))}
                 </Slide>
                 <NextBtn onClick={() => slider?.current?.slickNext()}>
                     <Icon name="ArrowR" iconSize="48" />
