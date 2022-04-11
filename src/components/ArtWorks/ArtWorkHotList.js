@@ -12,9 +12,10 @@ const ArtWorkHotList = (props) => {
 
     return (
         <>
-        {artworks && artworks.map((value) => {
+        {artworks && artworks.map((value, i) => {
             return(
                 <ArtPostMain
+                    key={i}
                     account_id={value.account_id}
                     artwork_id={value.artwork_id}
                     profile={value.account_profile}
