@@ -363,7 +363,7 @@ export const LikeArtwork = createAsyncThunk("/LikeArtwork", (artwork_id) => {
         })
         .catch((err) => {
             if (err.response.data.status == 444) {
-                // console.log('here');
+                console.log('here');
                 const dispatch = useDispatch();
                 dispatch(refreshSlice({ access_token, refresh_token }));
             }

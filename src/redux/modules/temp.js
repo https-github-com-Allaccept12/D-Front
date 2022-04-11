@@ -42,8 +42,8 @@ export const kakaoSlice = createAsyncThunk(
 export const refreshSlice = createAsyncThunk(
   "post/refresh",
   async ({ access_token, refresh_token }) => {
-    // console.log('access:', access_token);
-    // console.log('refresh:', refresh_token);
+    console.log('access:', access_token);
+    console.log('refresh:', refresh_token);
 
     URL.get(`/user/refresh?accessToken`,{
       headers: {
