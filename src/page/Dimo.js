@@ -87,66 +87,60 @@ const Dimo = (props) => {
 
     return (
         <>
-            {time === true ? (
-                <PageLoadSpinner />
-            ) : (
-                <>
-                    <div className="bg-dgray-200 min-h-screen h-[200rem]">
-                        <div className="xl:grid xl:grid-cols-4 ">
-                            <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
-                                <Title
-                                    size="5"
-                                    value="QNA"
-                                    onClick={goToQNA}
-                                    className="cursor-pointer text-dpurple-200"
-                                >
-                                    QNA
-                                </Title>
+            <div className="bg-dgray-200 min-h-screen h-[200rem]">
+                <div className="xl:grid xl:grid-cols-4 ">
+                    <div className="flex flex-row p-4 xl:pl-28 2xl:pl-44 gap-3 h-[7rem] justify-start items-center">
+                        <Title
+                            size="5"
+                            value="QNA"
+                            onClick={goToQNA}
+                            className="cursor-pointer text-dpurple-200"
+                        >
+                            QNA
+                        </Title>
 
-                                <Title
-                                    size="5"
-                                    value="INFO"
-                                    onClick={goToINFO}
-                                    className="cursor-pointer text-dpurple-200"
-                                >
-                                    정보공유
-                                </Title>
-                            </div>
-                            <div className="hidden xl:contents">
-                                <div className="col-start-4 w-36 xl:mt-10 2xl:ml-32 ">
-                                    <Button size="3" onClick={goToCreate}>
-                                        글쓰기
-                                    </Button>
-                                </div>
-                            </div>
-                            <SlideBox>
-                                <DimoSlider list={board} slidedimo={dimos} />
-                            </SlideBox>
+                        <Title
+                            size="5"
+                            value="INFO"
+                            onClick={goToINFO}
+                            className="cursor-pointer text-dpurple-200"
+                        >
+                            정보공유
+                        </Title>
+                    </div>
+                    <div className="hidden xl:contents">
+                        <div className="col-start-4 w-36 xl:mt-10 2xl:ml-32 ">
+                            <Button size="3" onClick={goToCreate}>
+                                글쓰기
+                            </Button>
+                        </div>
+                    </div>
+                    <SlideBox>
+                        <DimoSlider list={board} slidedimo={dimos} />
+                    </SlideBox>
 
-                            <Box>
-                                <div className="top-0 h-[44rem] invisible fixed xl:visible xl:sticky">
-                                    <div className=" flex flex-col h-[44rem]">
-                                        <div className="flex flex-row justify-end items-end self-end -mt-[1.41rem] w-[18.75rem] h-[44rem]">
-                                            <DimoFilter list={b} />
-                                        </div>
-                                    </div>
-                                </div>
-                            </Box>
-
-                            <div className="w-full xl:row-start-3 xl:col-start-2 xl:col-end-5">
-                                <div className="w-full h-[200rem]">
-                                    <DimoList list={b} key="key" />
-                                    <CategoryMini list={b} />
-
-                                    <MobileBtn onClick={goToCreate}>
-                                        <Icon name="Edit" />
-                                    </MobileBtn>
+                    <Box>
+                        <div className="top-0 h-[44rem] invisible fixed xl:visible xl:sticky">
+                            <div className=" flex flex-col h-[44rem]">
+                                <div className="flex flex-row justify-end items-end self-end -mt-[1.41rem] w-[18.75rem] h-[44rem]">
+                                    <DimoFilter list={b} />
                                 </div>
                             </div>
                         </div>
+                    </Box>
+
+                    <div className="w-full xl:row-start-3 xl:col-start-2 xl:col-end-5">
+                        <div className="w-full h-[200rem]">
+                            <DimoList list={b} key="key" />
+                            <CategoryMini list={b} />
+
+                            <MobileBtn onClick={goToCreate}>
+                                <Icon name="Edit" />
+                            </MobileBtn>
+                        </div>
                     </div>
-                </>
-            )}
+                </div>
+            </div>
         </>
     );
 };

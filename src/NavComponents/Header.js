@@ -43,30 +43,30 @@ const Header = (props) => {
     };
 
     return (
-        <div className="bg-gradient-to-r from-[#A162F7] to-[#6F88FC] h-32 md:h-[30rem] relative w-full ">
-            <div className="xl:max-w-[1620px] w-full flex justify-between"> 
-            <div className="hidden lg:flex lg:flex-row md:h-[7.8rem] w-full lg:w-4/6 xl:w-3/4 ml-auto text-white md:pl-10 xl:pl-10 2xl:pl-1">
-                {/* <Title size="6"><Link to="/">홈</Link></Title> */}
-                <div className="flex justify-center items-center mx-auto md:absolute md:top-[2.25rem] md:left-[7.375rem] py-5 md:py-0 ">
-                    <Link to="/">
-                        <Logo name="DplusCF" logoSizeW="200" logoSizeH="59" />
-                    </Link>
-                </div>
-                <div className="flex items-center gap-8">
-                    <Title size="6">
-                        <Link to="/art/list/all">모아보기</Link>
-                    </Title>
-                    <Title size="6">
-                        <Link to="/dimo/qna/uiux">디모</Link>
-                    </Title>
-
-                    {is_login && (
-                        <Title size="6" onClick={goToMyPage} className="cursor-pointer">
-                            마이페이지
+        <div className="bg-gradient-to-r from-[#A162F7] to-[#6F88FC] h-32 md:h-[30rem] relative w-[1920px] mx-auto">
+            <div className="w-[1620px] flex justify-between mx-auto"> 
+                <div className="hidden w-[1620px] lg:flex lg:flex-row md:h-[7.8rem] lg:w-4/6 xl:w-3/4 ml-auto text-white md:pl-10 xl:pl-10 2xl:pl-1">
+                    {/* <Title size="6"><Link to="/">홈</Link></Title> */}
+                    <div className="flex mx-auto md:absolute md:top-[2.25rem] md:left-[9.375rem] py-5 md:py-0 ">
+                        <Link to="/">
+                            <Logo name="DplusCF" logoSizeW="200" logoSizeH="59" />
+                        </Link>
+                    </div>
+                    <div className="flex items-center gap-8 md:absolute md:top-[2.7rem] md:left-[26rem]">
+                        <Title size="6">
+                            <Link to="/art/list/all">모아보기</Link>
                         </Title>
-                    )}
+                        <Title size="6">
+                            <Link to="/dimo/qna/uiux">디모</Link>
+                        </Title>
+
+                        {is_login && (
+                            <Title size="6" onClick={goToMyPage} className="cursor-pointer">
+                                마이페이지
+                            </Title>
+                        )}
+                    </div>
                 </div>
-            </div>
             {is_login ? (
                 <>
                     <div className="xl:absolute xl:right-10 2xl:right-36 top-8">
@@ -102,8 +102,8 @@ const Header = (props) => {
                     </Modal>
                 </>
             )}
+            </div>
         </div>
-    </div>
     );
 };
 
