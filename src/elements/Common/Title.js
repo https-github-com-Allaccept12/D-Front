@@ -8,6 +8,9 @@ ${(props) => (props.size === "3" ? `font-minB text-xl md:text-3xl` : "")};
 ${(props) => (props.size === "4" ? `font-minB text-2xl` : "")};
 ${(props) => (props.size === "5" ? `font-minB text-xl` : "")};
 ${(props) => (props.size === "6" ? `font-min1 text-sm md:text-xl` : "")};
+${(props) => (props.size === "7" ? `font-minB text-[18px]` : "")};
+${(props) => (props.size === "8" ? `font-min1 text-[12px]` : "")};
+${(props) => (props.size === "9" ? `font-minB text-[32px]` : "")};
 ${(props) => (props.color === "W" ? `text-white` : "")};
 `;
 

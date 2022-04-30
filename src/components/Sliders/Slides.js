@@ -163,23 +163,23 @@ const Slides = (props) => {
                         className="-mt-36 overflow-hidden bg-white
         rounded-b-xl w-[18.75rem] h-[8.9rem]"
                     >
-                        <div className="absolute bottom-[5rem] pl-6 hover:scale-110 cursor-pointer">
+                        <div className="absolute bottom-[5rem] pl-6 cursor-pointer">
                             {/* <Link to='/myspace/myprofile?id='> */}
                             <Profile size="3" src={props.image} onClick={goToProfile} />
                             {/* </Link> */}
                         </div>
                         <div className="pt-6 pl-40">
-                            <Title size="5" className="text-gray-700 truncate">
+                            <Title size="7" className="text-gray-900 truncate">
                                 {props.nickname} 님
                             </Title>
                             <div className="h-4 -mt-1">
-                                <Text size="5">{job} </Text>
+                                <Text size="8" className="text-gray-700">{job} </Text>
                             </div>
                         </div>
                         <div className="flex justify-center mt-5">
                             {!is_fow === true ? (
                                 <Button size="3" color="1" onClick={makeFollow}>
-                                    팔로우 🎉
+                                    팔로우
                                 </Button>
                             ) : (
                                 <Button size="3" color="4" onClick={makeFollow}>

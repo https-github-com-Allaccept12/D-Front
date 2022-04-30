@@ -37,40 +37,34 @@ const Main = (props) => {
 
     return (
         <>
-            {time === true ? (
-                <PageLoadSpinner />
-            ) : (
-                <>
-                    <div className="w-full">
-                        <div className="invisible text-white lg:visible lg:absolute inset-44 h-1/3 ">
-                            <Title size="2">Hot 디자이너</Title>
-                            <div className="mt-4 ml-1">
-                                <Subtitle size="1">
-                                    현재 가장 핫한
-                                    <br />
-                                    디자이너님들을 소개합니다
-                                </Subtitle>
-                            </div>
-                        </div>
-
-                        <div className="fixed invisible lg:visible lg:absolute top-36 right-28">
-                            <MainSlider />
-                        </div>
+            <div>
+                <div className="invisible text-white lg:visible lg:absolute inset-44 h-1/3 w-[1620px]">
+                    <Title size="2">HOT 디자이너</Title>
+                    <div className="mt-4 ml-1">
+                        <Subtitle size="1">
+                            현재 가장 핫한
+                            <br />
+                            디자이너님들을 소개합니다!
+                        </Subtitle>
                     </div>
+                </div>
 
-                    <div className="-mt-32 lg:mt-24 mx-auto w-full xl:max-w-[1620px]">
-                        <Title
-                            size="2"
-                            className="flex items-end justify-center col-start-2 row-start-1 my-3 ml-0 text-gray-700 xl:justify-start md:ml-10 lg:ml-0"
-                        >
-                            추천 아트워크
-                        </Title>
-                        <div className="flex flex-wrap items-center justify-center gap-3 pb-20 lg:gap-4 2xl:gap-[30px] xl:justify-start">
-                            <ArtWorkHotList />
-                        </div>
-                    </div>
-                </>
-            )}
+                <div className="fixed invisible lg:visible lg:absolute top-36 right-28">
+                    <MainSlider />
+                </div>
+            </div>
+
+            <div className="-mt-32 lg:mt-24 mx-auto w-full xl:max-w-[1620px]">
+                <Title
+                    size="9"
+                    className="flex items-end justify-center col-start-2 row-start-1 my-3 ml-0 text-gray-900 xl:justify-start md:ml-10 lg:ml-0"
+                >
+                    추천 아트워크
+                </Title>
+                <div className="flex flex-wrap items-center justify-center gap-3 pb-20 lg:gap-4 2xl:gap-[30px] xl:justify-start">
+                    <ArtWorkHotList />
+                </div>
+            </div>
         </>
     );
 };

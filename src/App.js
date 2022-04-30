@@ -34,7 +34,7 @@ function App() {
         <>
             <div id="modal"></div>
             <div id="root"></div>
-            <div className="w-full m-auto App ">
+            <div className="w-[1920px] m-auto App ">
                 {a === "/" && (
                     <>
                         <Header />

@@ -30,42 +30,36 @@ const ArtWork = (props) => {
 
     return (
         <>
-            {time === true ? (
-                <PageLoadSpinner />
-            ) : (
-                <>
-                    <div className="bg-dgray-200">
-                        <div className="xl:grid xl:grid-cols-4 ">
-                            {/* <div className="">
-                        <ArtWorkCategory />
-                    </div> */}
-                            <div className="top-0 h-[44rem] invisible fixed xl:visible xl:sticky">
-                                <div className=" flex flex-col h-[44rem]">
-                                    <div className="flex flex-row justify-end items-end self-end w-[18.75rem] h-[44rem]">
-                                        <ArtWorkFilter />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="w-full xl:col-start-2 xl:col-end-5 xl:row-start-1">
-                                <div className="w-full h-[200rem]">
-                                    <ArtWorkList />
-                                    <CategoryMini />
-                                    <Link to="/createart">
-                                        <MobileBtn>
-                                            <Icon name="Edit" />
-                                        </MobileBtn>
-                                    </Link>
-                                </div>
+            <div className="bg-dgray-200">
+                <div className="xl:grid xl:grid-cols-4 ">
+                    {/* <div className="">
+                <ArtWorkCategory />
+            </div> */}
+                    <div className="top-0 h-[44rem] invisible fixed xl:visible xl:sticky">
+                        <div className=" flex flex-col h-[44rem]">
+                            <div className="flex flex-row justify-end items-end self-end w-[18.75rem] h-[44rem]">
+                                <ArtWorkFilter />
                             </div>
                         </div>
-                        <Routes>
-                            {/* <Route exact path="/art/list/:name" component={ArtWorkAllList} /> */}
-                            <Route path="/art/detail" element={<ArtWorkInlineDetail />} />
-                        </Routes>
                     </div>
-                </>
-            )}
+
+                    <div className="w-full xl:col-start-2 xl:col-end-5 xl:row-start-1">
+                        <div className="w-full h-[200rem]">
+                            <ArtWorkList />
+                            <CategoryMini />
+                            <Link to="/createart">
+                                <MobileBtn>
+                                    <Icon name="Edit" />
+                                </MobileBtn>
+                            </Link>
+                        </div>
+                    </div>
+                </div>
+                <Routes>
+                    {/* <Route exact path="/art/list/:name" component={ArtWorkAllList} /> */}
+                    <Route path="/art/detail" element={<ArtWorkInlineDetail />} />
+                </Routes>
+            </div>
         </>
     );
 };
